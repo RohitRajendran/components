@@ -97,26 +97,25 @@
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding: 1rem 4rem;
     border-radius: 0.25rem;
     &.on-light {
       background-color: $violet-blue;
-      color: white;
+      color: $white-four;
       @include hoverColor($eggplant, $violet-blue);
       @include disabledStyle {
         color: rgba(white, 0.3) !important;
       }
     }
     &.on-dark {
-      background-color: $easter-purple;
-      color: $dark-blue;
-      @include hoverColor($lilac, $easter-purple);
+      background-color: $white-four;
+      color: $stratos;
+      @include hoverColor($white-three, $easter-purple);
       @include disabledStyle {
         color: rgba($dark-blue, 0.3) !important;
       }
       &.white {
-        background-color: $white;
+        background-color: $stratos;
       }
     }
     .spinner-wrapper {
@@ -131,8 +130,7 @@
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding: 1rem 4rem;
     border-radius: 0.25rem;
     &.on-dark {
       background-color: $white-four;
@@ -147,7 +145,7 @@
       background-color: transparent;
       border: 1px solid $violet-blue;
       color: $violet-blue;
-      @include hoverColor(white, transparent);
+      @include hoverColor($white-four, transparent);
       @include disabledStyle {
         color: rgba($violet-blue, 0.3) !important;
       }
