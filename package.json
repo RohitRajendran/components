@@ -23,6 +23,7 @@
     "style-loader": "*"
   },
   "dependencies": {
+    "classnames": "*",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*"

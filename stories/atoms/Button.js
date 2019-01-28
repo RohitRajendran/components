@@ -1,9 +1,11 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-// import Loader from '../../components/Loader';
+import Button from '../../components/Button';
 
-storiesOf('Atoms/Button', module).add('default', () => <button>Text</button>);
+storiesOf('Atoms/Button', module).add('default', () => (
+  <Button>Testing</Button>
+));
 
 storiesOf('Atoms/Button', module).add('disabled', () => (
-  <button disabled>Text</button>
+  <Button disabled>Testing</Button>
 ));
