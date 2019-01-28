@@ -10,7 +10,12 @@
     "workbox": true,
     "clients": true
   },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": [
+    "eslint:recommended", 
+    "prettier", 
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2018,
     "ecmaFeatures": {
@@ -18,8 +23,9 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "jsx-a11y"],
   "rules": {
+    "react/prop-types": "error",
     "linebreak-style": ["error", "unix"],
     "quotes": [
       "error",
@@ -190,6 +196,23 @@
     "react/jsx-uses-vars": 1,
     "react/jsx-no-target-blank": "error",
     "curly": ["error", "all"]
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect",
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [
+        "forbidExtraProps",
+        {"property": "freeze", "object": "Object"},
+        {"property": "myFavoriteWrapper"}
+    ],
+    "linkComponents": [
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
+    ]
   }
 }
 
