@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import './style.scss';
+
 const Button = ({children, type, dark, light, disabled, handleClick}) => {
   const btnClass = classNames({
     btn: true,
