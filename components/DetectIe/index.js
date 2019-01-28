@@ -51,7 +51,7 @@ export function detectIe(WrappedComponent) {
 
     /** @inheritdoc */
     render() {
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent isIe={this.state.isIe} {...this.props} />;
     }
   };
 }
