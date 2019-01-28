@@ -1,43 +1,73 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withKnobs, select, text} from '@storybook/addon-knobs';
 import Button from '../../components/Button';
 
-storiesOf('Atoms/Button', module).add('primary light', () => (
-  <Button type="primary" light>
-    Testing
-  </Button>
-));
+const stories = storiesOf('Atoms/Button', module);
 
-storiesOf('Atoms/Button', module).add('primary dark', () => (
-  <Button type="primary" dark>
-    Testing
-  </Button>
-));
+stories.addDecorator(withKnobs);
 
-storiesOf('Atoms/Button', module).add('secondary light', () => (
-  <Button type="secondary" light>
-    Testing
-  </Button>
-));
+const permutations = [
+  {
+    type: 'primary',
+    background: 'light',
+  },
+  {
+    type: 'secondary',
+    background: 'light',
+  },
+  {
+    type: 'secondary',
+    background: 'dark',
+  },
+  {
+    type: 'tertiary',
+    background: 'light',
+  },
+  {
+    type: 'tertiary',
+    background: 'dark',
+  },
+];
 
-storiesOf('Atoms/Button', module).add('secondary dark', () => (
-  <Button type="secondary" dark>
-    Testing
-  </Button>
-));
+const defaultProps = (
+  defaultType = 'primary',
+  defaultBackground = 'light'
+) => ({
+  type: select(
+    'Type',
+    {
+      Primary: 'primary',
+      Secondary: 'secondary',
+      Tertiary: 'tertiary',
+    },
+    defaultType
+  ),
+  background: select(
+    'Background',
+    {
+      Light: 'light',
+      Dark: 'dark',
+    },
+    defaultBackground
+  ),
+  text: text('Button Text', 'Become A Member'),
+});
 
-storiesOf('Atoms/Button', module).add('tertiary light', () => (
-  <Button type="tertiary" light>
-    Testing
-  </Button>
-));
+for (const permutation of permutations) {
+  stories.add(`${permutation.type} ${permutation.background}`, () => {
+    const props = defaultProps(permutation.type, permutation.background);
 
-storiesOf('Atoms/Button', module).add('tertiary dark', () => (
-  <Button type="tertiary" dark>
-    Testing
-  </Button>
-));
+    return (
+      <Button
+        type={props.type}
+        light={props.background === 'light'}
+        dark={props.background === 'dark'}
+      >
+        {props.text}
+      </Button>
+    );
+  });
+}
 
-storiesOf('Atoms/Button', module).add('disabled', () => (
-  <Button disabled>Testing</Button>
-));
+stories.add('disabled', () => <Button disabled>Testing</Button>);

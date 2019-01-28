@@ -24,6 +24,7 @@
   outline: none;
   position: relative;
   transition: background-color 500ms, color 500ms;
+  border: none;
 
   // Remove default bootstrap styling on active buttons
   &.active,
@@ -67,6 +68,7 @@
     height: 6rem;
     color: white;
     padding: 2rem 4rem 2rem 4rem;
+    border-radius: 0.5rem;
     @include source-sans-pro(2rem);
     font-weight: 600;
     line-height: 1;
@@ -97,6 +99,7 @@
     @include source-sans-pro(1.4rem);
     padding-left: 3rem;
     padding-right: 3rem;
+    border-radius: 0.25rem;
     &.on-light {
       background-color: $violet-blue;
       color: white;
@@ -130,6 +133,7 @@
     @include source-sans-pro(1.4rem);
     padding-left: 3rem;
     padding-right: 3rem;
+    border-radius: 0.25rem;
     &.on-dark {
       background-color: $white-four;
       border: 1px solid $white-four;
