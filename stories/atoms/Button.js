@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withKnobs, select, text} from '@storybook/addon-knobs';
+import {withKnobs, select, text, boolean} from '@storybook/addon-knobs';
 import Button from '../../components/Button';
 
 const stories = storiesOf('Atoms/Button', module);
@@ -52,6 +52,7 @@ const defaultProps = (
     defaultBackground
   ),
   text: text('Button Text', 'Become A Member'),
+  disabled: boolean('Disabled', false),
 });
 
 for (const permutation of permutations) {
@@ -63,6 +64,7 @@ for (const permutation of permutations) {
         type={props.type}
         light={props.background === 'light'}
         dark={props.background === 'dark'}
+        disabled={props.disabled}
       >
         {props.text}
       </Button>
