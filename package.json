@@ -1,0 +1,30 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "start-storybook -p 9001 -c .storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "devDependencies": {
+    "@babel/core": "*",
+    "@storybook/react": "*",
+    "babel-loader": "*",
+    "css-loader": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-react": "*",
+    "mini-css-extract-plugin": "*",
+    "node-sass": "*",
+    "prettier": "*",
+    "sass-loader": "*",
+    "style-loader": "*"
+  },
+  "dependencies": {
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*"
+  }
+}
