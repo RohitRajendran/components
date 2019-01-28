@@ -1,13 +1,24 @@
 {
   "name": "components",
+  "description": "React library for all United Income Front-End projects.",
+  "author": "United Income",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\"",
+    "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
+    "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write './components/**/*.scss' --parser=css"
   },
-  "author": "",
+  "homepage": "https://github.com/UnitedIncome/component",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UnitedIncome/component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/UnitedIncome/component/issues"
+  },
   "devDependencies": {
     "@babel/core": "*",
     "@storybook/react": "*",
@@ -15,10 +26,12 @@
     "css-loader": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
+    "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-react": "*",
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
     "prettier": "*",
+    "sass-lint": "=1.12.1",
     "sass-loader": "*",
     "style-loader": "*"
   },

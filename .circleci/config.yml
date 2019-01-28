@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: unitedincome/std:latest
+        auth:
+          username: unitedincome
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "./package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing Dependencies
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - ~/project/node_modules
+          key: v1-dependencies-{{ checksum "./package.json" }}
+
+      - run:
+          name: Linting Build
+          command: yarn lint
+
+      - run:
+          name: Running Tests
+          command: yarn test
