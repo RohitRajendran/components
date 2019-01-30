@@ -3,7 +3,7 @@
   "description": "React library for all United Income Front-End projects.",
   "author": "United Income",
   "version": "1.0.0",
-  "main": "dist",
+  "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
@@ -40,7 +40,7 @@
     "eslint-plugin-react": "*",
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "optimize-css-assets-webpack-plugin": "*",
     "prettier": "*",
     "prop-types": "*",
     "react": "*",
@@ -49,6 +49,7 @@
     "sass-lint": "*",
     "sass-loader": "*",
     "style-loader": "*",
+    "uglifyjs-webpack-plugin": "*",
     "webpack-cli": "*"
   },
   "peerDependencies": {
