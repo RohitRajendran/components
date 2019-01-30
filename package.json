@@ -50,6 +50,7 @@
     "sass-loader": "*",
     "style-loader": "*",
     "uglifyjs-webpack-plugin": "*",
+    "webpack": "*",
     "webpack-cli": "*"
   },
   "peerDependencies": {
