@@ -11,14 +11,13 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "./package.json" }}
-            - v1-dependencies-
+
       - run:
           name: Installing Dependencies
           command:
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
             yarn install
-            yarn list --depth=0
 
       - save_cache:
           paths:
