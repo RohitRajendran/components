@@ -2,13 +2,14 @@
   "name": "@unitedincome/components",
   "description": "React library for all United Income Front-End projects.",
   "author": "United Income",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "webpack",
     "test": "echo \"Error: no test specified\"",
+    "prepublish": "yarn build",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write './components/**/*.scss' --parser=css"
   },

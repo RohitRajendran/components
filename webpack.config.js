@@ -4,11 +4,17 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const entries = glob
+  .sync('./components/*/index.js')
+  .reduce((allEntries, entry) => {
+    return Object.assign(allEntries, {[entry.split('/')[2]]: entry});
+  }, {});
+
+entries.index = path.resolve(__dirname, 'components/index.js');
+
 module.exports = {
   mode: 'production',
-  entry: glob.sync('./components/**/index.js').reduce((entries, entry) => {
-    return Object.assign(entries, {[entry.split('/')[2]]: entry});
-  }, {}),
+  entry: entries,
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
