@@ -2,7 +2,7 @@
   "name": "@unitedincome/components",
   "description": "React library for all United Income Front-End projects.",
   "author": "United Income",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
