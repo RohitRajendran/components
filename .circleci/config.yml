@@ -16,7 +16,7 @@ jobs:
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-            yarn --frozen-lockfile
+            yarn install
 
       - save_cache:
           key: dependency-cache-1-{{ checksum "yarn.lock" }}
