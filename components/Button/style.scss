@@ -1,16 +1,26 @@
 @mixin hoverColor($normalColor, $disabledColor) {
-  &:hover, &:active, &:focus, &:active:focus {
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:focus {
     background-color: $normalColor;
   }
-  &:disabled, &[disabled], &.disabled {
-    &:hover, &:active, &:focus, &:active:focus {
+  &:disabled,
+  &[disabled],
+  &.disabled {
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
       background-color: $disabledColor;
       cursor: not-allowed;
     }
   }
 }
 @mixin disabledStyle {
-  &[disabled], &:disabled, &.disabled {
+  &[disabled],
+  &:disabled,
+  &.disabled {
     @content;
     opacity: 1 !important; // override bootstrap disabled opacity of 0.65
     cursor: not-allowed !important;
@@ -32,7 +42,10 @@
     box-shadow: none;
   }
 
-  &:hover, &:active, &:focus, &:active:focus {
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:focus {
     outline: 0 !important;
   }
   .spinner-wrapper {
@@ -67,7 +80,7 @@
     border: none;
     height: 6rem;
     color: white;
-    padding: 2rem 4rem 2rem 4rem;
+    padding: 2rem 4rem;
     border-radius: 0.5rem;
     @include source-sans-pro(2rem);
     font-weight: 600;
@@ -97,7 +110,7 @@
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding: 1rem 4rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
     &.on-light {
       background-color: $violet-blue;
@@ -110,7 +123,7 @@
     &.on-dark {
       background-color: $white-four;
       color: $stratos;
-      @include hoverColor($white-three, $easter-purple);
+      @include hoverColor($midnight-20, $easter-purple);
       @include disabledStyle {
         color: rgba($dark-blue, 0.3) !important;
       }
@@ -130,13 +143,12 @@
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding: 1rem 4rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
     &.on-dark {
-      background-color: $white-four;
       border: 1px solid $white-four;
-      color: $stratos;
-      @include hoverColor($white-six, transparent);
+      color: $white-four;
+      @include hoverColor($white-15, transparent);
       @include disabledStyle {
         color: rgba($stratos, 0.3) !important;
       }
@@ -145,14 +157,31 @@
       background-color: transparent;
       border: 1px solid $violet-blue;
       color: $violet-blue;
-      @include hoverColor($white-four, transparent);
+      @include hoverColor($midnight-10, transparent);
       @include disabledStyle {
         color: rgba($violet-blue, 0.3) !important;
       }
     }
   }
 
-  &.btn-tertiary, &.btn-secondary {
+  //------------------------
+  // Link buttons
+  //------------------------
+  &.btn-link {
+    outline: none;
+    color: $violet-blue;
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    text-decoration: underline;
+    cursor: pointer;
+    @include source-sans-pro(1.4rem);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &.btn-tertiary,
+  &.btn-secondary {
     &.has-spinner {
       svg {
         margin-bottom: -0.5rem;

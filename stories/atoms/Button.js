@@ -9,39 +9,40 @@ stories.addDecorator(withKnobs);
 
 const permutations = [
   {
-    type: 'primary',
+    variant: 'primary',
     background: 'light',
   },
   {
-    type: 'secondary',
+    variant: 'secondary',
     background: 'light',
   },
   {
-    type: 'secondary',
+    variant: 'secondary',
     background: 'dark',
   },
   {
-    type: 'tertiary',
+    variant: 'tertiary',
     background: 'light',
   },
   {
-    type: 'tertiary',
+    variant: 'tertiary',
     background: 'dark',
   },
 ];
 
 const defaultProps = (
-  defaultType = 'primary',
+  defaultVariant = 'primary',
   defaultBackground = 'light'
 ) => ({
-  type: select(
-    'Type',
+  variant: select(
+    'Variant',
     {
       Primary: 'primary',
       Secondary: 'secondary',
       Tertiary: 'tertiary',
+      Link: 'link',
     },
-    defaultType
+    defaultVariant
   ),
   background: select(
     'Background',
@@ -56,12 +57,12 @@ const defaultProps = (
 });
 
 for (const permutation of permutations) {
-  stories.add(`${permutation.type} ${permutation.background}`, () => {
-    const props = defaultProps(permutation.type, permutation.background);
+  stories.add(`${permutation.variant} ${permutation.background}`, () => {
+    const props = defaultProps(permutation.variant, permutation.background);
 
     return (
       <Button
-        type={props.type}
+        variant={props.variant}
         light={props.background === 'light'}
         dark={props.background === 'dark'}
         disabled={props.disabled}
