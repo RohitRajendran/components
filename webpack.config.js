@@ -67,6 +67,12 @@ module.exports = {
       amd: 'ClassNames',
       root: 'ClassNames',
     },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'PropTypes',
+      root: 'PropTypes',
+    },
   },
   optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})],
