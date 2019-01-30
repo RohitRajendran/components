@@ -9,20 +9,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v2-dependencies-{{ checksum "./package.json" }}
+          key: dependency-cache-1-{{ checksum "yarn.lock" }}
 
       - run:
-          name: Installing Dependencies
-          command:
+          name: Install Node dependencies
+          command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-            yarn install
+            yarn --frozen-lockfile
 
       - save_cache:
+          key: dependency-cache-1-{{ checksum "yarn.lock" }}
           paths:
-            - ~/project/node_modules
-          key: v2-dependencies-{{ checksum "./package.json" }}
+            - ~/.cache/yarn
+            - ./node_modules
 
       - run:
           name: Linting Build
