@@ -18,6 +18,7 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
             yarn install
+            yarn list --depth=0
 
       - save_cache:
           paths:
