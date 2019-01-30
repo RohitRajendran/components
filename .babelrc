@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "@babel/transform-spread",
+    "@babel/transform-runtime"
+  ],
+    "presets": [
+      ["@babel/env", {
+        "debug": true,
+        "modules": false,
+        "useBuiltIns": "usage"
+      }],
+      "@babel/react"
+    ]
+}

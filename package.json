@@ -1,12 +1,13 @@
 {
-  "name": "components",
+  "name": "@unitedincome/components",
   "description": "React library for all United Income Front-End projects.",
   "author": "United Income",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist",
   "license": "UNLICENSED",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\"",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write './components/**/*.scss' --parser=css"
@@ -21,9 +22,17 @@
   },
   "devDependencies": {
     "@babel/core": "*",
+    "@babel/plugin-transform-runtime": "*",
+    "@babel/plugin-transform-spread": "*",
+    "@babel/polyfill": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "@babel/register": "*",
+    "@babel/runtime": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/react": "*",
     "babel-loader": "*",
+    "classnames": "*",
     "css-loader": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
@@ -31,14 +40,18 @@
     "eslint-plugin-react": "*",
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prettier": "*",
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "3",
     "sass-lint": "*",
     "sass-loader": "*",
-    "style-loader": "*"
+    "style-loader": "*",
+    "webpack-cli": "*"
   },
-  "dependencies": {
-    "classnames": "*",
-    "prop-types": "*",
+  "peerDependencies": {
     "react": "*",
     "react-dom": "*",
     "react-router": "3"
