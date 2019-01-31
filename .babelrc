@@ -10,5 +10,19 @@
       "useBuiltIns": "usage"
     }],
     "@babel/react"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/env", {
+          "modules": "commonjs",
+          "useBuiltIns": "usage"
+        }],
+        "@babel/react"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    },
+  }
 }
