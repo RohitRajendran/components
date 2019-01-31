@@ -9,17 +9,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "./package.json" }}
-            - v1-dependencies-
+          key: dependency-cache-1-{{ checksum "yarn.lock" }}
+
       - run:
-          name: Installing Dependencies
-          command: yarn install
+          name: Install Node dependencies
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+            yarn install
 
       - save_cache:
+          key: dependency-cache-1-{{ checksum "yarn.lock" }}
           paths:
-            - ~/project/node_modules
-          key: v1-dependencies-{{ checksum "./package.json" }}
+            - ~/.cache/yarn
+            - ./node_modules
 
       - run:
           name: Linting Build
@@ -28,3 +31,22 @@ jobs:
       - run:
           name: Running Tests
           command: yarn test
+
+      - run:
+          name: Build package
+          command: yarn build
+
+      - run:
+          name: Configure Git
+          command: |
+            git config user.email "engineering@unitedincome.com"
+            git config user.name "United Income Engineering"
+
+      - deploy:
+          name: Publish to NPM
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "v1.1" ]; then
+              npm version patch -m "Bumping up version to %s [skip ci]"
+              npm publish
+              git push --set-upstream origin $CIRCLE_BRANCH
+            fi
