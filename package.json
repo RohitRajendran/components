@@ -9,6 +9,7 @@
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "webpack",
     "test": "yarn testSingle 'tests/**/*.js' | faucet",
+    "testVr": "jest vr-tests",
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "prepublish": "yarn build",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
@@ -70,5 +71,8 @@
     "react": "*",
     "react-dom": "*",
     "react-router": "3"
+  },
+  "dependencies": {
+    "jest": "^24.0.0"
   }
 }
