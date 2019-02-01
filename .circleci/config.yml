@@ -55,5 +55,5 @@ jobs:
           name: Publish Storybook
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              npm publishStorybook
+              yarn publishStorybook
             fi

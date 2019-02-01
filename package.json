@@ -13,7 +13,7 @@
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "prepublish": "yarn build",
     "buildStorybook": "build-storybook -c .storybook -o .build",
-    "publishStorybook": "./publishStorybook.sh",
+    "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write './components/**/*.scss' --parser=css"
   },
