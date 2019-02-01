@@ -34,6 +34,7 @@
     "@babel/runtime": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/react": "*",
+    "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
     "classnames": "*",

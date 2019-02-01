@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router';
 
@@ -32,7 +33,7 @@ const Button = ({
     });
 
     return (
-      <Link to={to} className={linkClass}>
+      <Link role="button" to={to} className={linkClass}>
         {children}
       </Link>
     );
@@ -50,6 +51,23 @@ const Button = ({
   );
 };
 
+const exclusiveProps = (exclusives) => (props, propName, componentName) => {
+  const multiples = [];
+
+  for (const exclusive of exclusives) {
+    if (typeof props[exclusive] !== 'undefined') {
+      multiples.push(exclusive);
+    }
+  }
+  if (multiples.length > 0 && typeof props[propName] !== 'undefined') {
+    return new Error(
+      `Invalid prop ${propName} supplied to ${componentName}. Other exclusive props already defined: ${multiples.join(
+        ', '
+      )}`
+    );
+  }
+};
+
 Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
@@ -58,8 +76,8 @@ Button.propTypes = {
   dark: PropTypes.bool,
   light: PropTypes.bool,
   disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  to: PropTypes.string,
+  onClick: and([PropTypes.func, exclusiveProps(['to'])]),
+  to: and([PropTypes.string, exclusiveProps(['onClick'])]),
 };
 
 Button.defaultProps = {
