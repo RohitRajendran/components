@@ -16,6 +16,7 @@ const Button = ({
   disabled,
   to,
   onClick,
+  ...props
 }) => {
   const btnClass = classNames(
     {
@@ -33,7 +34,7 @@ const Button = ({
     });
 
     return (
-      <Link role="button" to={to} className={linkClass}>
+      <Link role="button" to={to} className={linkClass} {...props}>
         {children}
       </Link>
     );
@@ -45,6 +46,7 @@ const Button = ({
       className={btnClass}
       onClick={onClick}
       disabled={disabled}
+      {...props}
     >
       {children}
     </button>
