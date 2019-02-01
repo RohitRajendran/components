@@ -56,6 +56,7 @@ jspm_packages
 # Dist (build) folder
 dist
 dist-old
+.build
 
 # .DS_Store
 .DS_Store
