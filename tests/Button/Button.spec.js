@@ -51,3 +51,27 @@ test('Button - disabling', (t) => {
     'should include "disabled" class'
   );
 });
+
+test('Button - variant', (t) => {
+  t.plan(2);
+
+  const variantPrimary = mount(<Button variant="primary">Hello</Button>);
+
+  t.true(
+    variantPrimary
+      .find('button')
+      .first()
+      .hasClass('btn-primary'),
+    'should render a primary button'
+  );
+
+  const noVariant = mount(<Button>Hello</Button>);
+
+  t.false(
+    noVariant
+      .find('button')
+      .first()
+      .hasClass('btn-primary'),
+    'should not have a variant class'
+  );
+});
