@@ -29,8 +29,22 @@ jobs:
           command: yarn lint
 
       - run:
-          name: Running Tests
-          command: yarn test
+          name: Run unit tests
+          command: |
+            mkdir -p ./reports/tape
+            yarn testCI
+
+      - run:
+          name: Push coverage report to CodeCov
+          command: |
+            echo $CODECOV_TOKEN
+            bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f coverage/lcov.info -F unit
+
+      - store_test_results:
+          path: ./reports
+      - store_artifacts:
+          path: ./reports
+          destination: tests/
 
       - run:
           name: Build package
