@@ -2,7 +2,7 @@
   "sourceMap": false,
   "instrument": false,
   "include": [
-    "src"
+    "components"
   ],
   "reporter": [
     "lcov"
