@@ -61,6 +61,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               npm version patch -m "Bumping up version to %s [skip ci]"
+              yarn build
               npm publish
               git push --set-upstream origin $CIRCLE_BRANCH
             fi
