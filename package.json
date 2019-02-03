@@ -13,7 +13,6 @@
     "coverage": "nyc report",
     "testVr": "jest vr-tests",
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
-    "prepublish": "yarn build",
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
@@ -51,6 +50,7 @@
     "eslint-plugin-react": "*",
     "faucet": "*",
     "ignore-styles": "*",
+    "jest": "*",
     "jsdom": "*",
     "jsdom-global": "*",
     "mini-css-extract-plugin": "*",
@@ -78,8 +78,5 @@
     "react": "*",
     "react-dom": "*",
     "react-router": "3"
-  },
-  "dependencies": {
-    "jest": "^24.0.0"
   }
 }
