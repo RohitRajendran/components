@@ -6570,7 +6570,7 @@ jest-worker@^24.0.0:
     merge-stream "^1.0.1"
     supports-color "^6.1.0"
 
-jest@^24.0.0:
+jest@*:
   version "24.0.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-24.0.0.tgz#b8e2c8e6274e1092c7f56e57762a1fdc7800201e"
   integrity sha512-1Z2EblP4BnERbWZGtipGb9zjHDq7nCHgCY7V57F5SYaFRJV4DE1HKoOz+CRC5OrAThN9OVhRlUhTzsTFArg2iQ==
