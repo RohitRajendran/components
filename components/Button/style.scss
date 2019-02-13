@@ -180,7 +180,12 @@
     text-align: center;
 
     &.on-dark {
-      color: $white 
+      color: $white;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $eggplant;
     }
   }
 
