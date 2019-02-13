@@ -61,7 +61,8 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router": "3",
+    "react-router": "*",
+    "react-router-dom": "*",
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
@@ -77,6 +78,7 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router": "3"
+    "react-router": "*",
+    "react-router-dom": "*"
   }
 }

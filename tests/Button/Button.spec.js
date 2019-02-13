@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Button from '../../components/Button';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 test('Button - rendering', (t) => {
   t.plan(2);
