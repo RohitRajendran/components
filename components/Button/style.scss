@@ -181,6 +181,10 @@
 
     &.on-dark {
       color: $white-four;
+
+      &:hover {
+        color: $white-four;
+      }
     }
 
     &:hover {
