@@ -179,6 +179,10 @@
     font-weight: 600;
     text-align: center;
 
+    &.on-dark {
+      color: $white-four;
+    }
+
     &:hover {
       text-decoration: none;
       color: $eggplant;
