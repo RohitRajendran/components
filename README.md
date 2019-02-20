@@ -51,7 +51,7 @@ Because this library is so foundational to the rest of the codebase, it's vitall
 
 ### Testing Changes
 
-As you're developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the lifecycle of publishing new versions, the easier way of handling this is utilizing "linking" in yarn or npm.
+As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the lifecycle of publishing new versions, the easier way of handling this is utilizing "linking" in yarn or npm.
 
 You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
 
