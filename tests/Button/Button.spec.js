@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Button from '../../components/Button';
-import {Link} from 'react-router-dom';
+import {Link, MemoryRouter} from 'react-router-dom';
 
 test('Button - rendering', (t) => {
   t.plan(2);
@@ -15,7 +15,11 @@ test('Button - rendering', (t) => {
     'should render as an html button'
   );
 
-  const linkComponent = mount(<Button to="/url">Testing</Button>);
+  const linkComponent = mount(
+    <MemoryRouter>
+      <Button to="/url">Testing</Button>
+    </MemoryRouter>
+  );
 
   t.equal(linkComponent.find(Link).length, 1, 'should render as a Link');
 });
@@ -38,9 +42,11 @@ test('Button - disabling', (t) => {
   );
 
   const linkComponent = mount(
-    <Button disabled to="/url">
-      Testing
-    </Button>
+    <MemoryRouter>
+      <Button disabled to="/url">
+        Testing
+      </Button>
+    </MemoryRouter>
   );
 
   t.true(
