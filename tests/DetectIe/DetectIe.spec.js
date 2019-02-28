@@ -2,7 +2,7 @@ import test from 'tape';
 import {detectBrowser} from '../../components/DetectIe';
 
 test('detectIe - Should return a string if the userAgent matches the param', (t) => {
-  t.plan(7);
+  t.plan(8);
 
   // No UA
   t.false(
@@ -20,6 +20,14 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
 
   navigator.__defineGetter__('userAgent', () => {
     return 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; rv:11.0) like Gecko';
+  });
+
+  t.true(
+    detectBrowser(),
+  );
+
+  navigator.__defineGetter__('userAgent', () => {
+    return 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)';
   });
 
   t.true(
