@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    "@babel/transform-spread",
+    "@babel/transform-runtime"
+  ],
+  "presets": [
+    ["@babel/env", {
+      "debug": true,
+      "modules": false,
+      "useBuiltIns": "usage"
+    }],
+    "@babel/react"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/env", {
+          "modules": "commonjs",
+          "useBuiltIns": "usage"
+        }],
+        "@babel/react"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    },
+  }
+}
