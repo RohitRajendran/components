@@ -9,7 +9,11 @@ import * as d3Interpolate from 'd3-interpolate';
 
 import './style.scss';
 
-const percentDescriptor = (percent) => {
+/** Accepts a percent and returns a string representing how high your chance of success is.
+ * @param {integer} percent - The Chance of Success percent.
+ * @returns {string} - Returns a string with the likely hood of success.
+ */
+export const percentDescriptor = (percent) => {
   if (percent > 84) {
     return 'Very High';
   } else if (percent > 69) {
@@ -23,10 +27,14 @@ const percentDescriptor = (percent) => {
   }
 };
 
-const percentIsValid = (percent) =>
+/** Accepts a percent and returns true or false if the percent is in range.
+ * @param {integer} percent - The Chance of Success percent.
+ * @returns {boolean} - Returns true or false if the percent is in range.
+ */
+export const percentIsValid = (percent) =>
   percent !== null && percent >= 0 && percent <= 100;
 
-/** Displays the ChanceofSuccess meter.
+/** Displays the ChanceOfSuccess metre.
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the ChanceOfSuccess component.
  */
@@ -164,6 +172,7 @@ const ChanceOfSuccess = (props) => {
         animation-fill-mode: forwards;
       }`}
       </style>
+
       <svg
         viewBox={`${-shadowOffset} 0 ${svgSize + 2 * shadowOffset} ${svgSize}`}
         className={`chance-of-success ${
@@ -266,11 +275,9 @@ const ChanceOfSuccess = (props) => {
                 fontSize="1.4rem"
                 textAnchor="middle"
               >
-                {refreshedPlanChanceOfSuccess && !isDraftPlan ? (
-                  <Fragment>{refreshedPlanChanceOfSuccessDifference}%</Fragment>
-                ) : (
-                  percentDescriptor(percent)
-                )}
+                {refreshedPlanChanceOfSuccess && !isDraftPlan
+                  ? `${refreshedPlanChanceOfSuccessDifference}%`
+                  : percentDescriptor(percent)}
               </text>
             </g>
           )}
@@ -281,15 +288,16 @@ const ChanceOfSuccess = (props) => {
 };
 
 ChanceOfSuccess.propTypes = {
-  currentPlanChanceOfSuccess: PropTypes.integer,
-  refreshedPlanChanceOfSuccess: PropTypes.integer,
+  currentPlanChanceOfSuccess: PropTypes.number,
+  refreshedPlanChanceOfSuccess: PropTypes.number,
   identifier: PropTypes.string,
-  percent: PropTypes.integer,
-  isRunningPlan: PropTypes.boolean,
+  percent: PropTypes.number,
+  isRunningPlan: PropTypes.bool,
   className: PropTypes.string,
-  isDraftPlan: PropTypes.boolean,
-  compact: PropTypes.boolean,
-  isIe: PropTypes.boolean,
+  isDraftPlan: PropTypes.bool,
+  compact: PropTypes.bool,
+  isIe: PropTypes.bool,
 };
 
 export default detectIe(ChanceOfSuccess);
+export {ChanceOfSuccess as PureChanceOfSuccess};

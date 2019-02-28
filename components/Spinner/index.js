@@ -1,13 +1,18 @@
 /** @module Spinner */
 import React from 'react';
-import {string, object, boolean} from 'prop-types';
+import PropTypes from 'prop-types';
 import detectIe from '../DetectIe';
 
-const Spinner = ({width, height, fill, style, isIe}) => {
+/** Displays the Spinner component.
+ * @param {object} props - Component props.
+ * @returns {*} - JSX representation of the Spinner component.
+ */
+const Spinner = (props) => {
+  const {width, height, fill, style, isIe} = props;
   if (isIe) {
     return (
       <svg
-        className="ui-spinner spin"
+        className="ui-spinner spin spinner-ie"
         width={width}
         height={height}
         viewBox={`0 0 100 100`}
@@ -109,7 +114,7 @@ const Spinner = ({width, height, fill, style, isIe}) => {
 
   return (
     <svg
-      className="ui-spinner"
+      className="ui-spinner spinner-normal"
       width={width}
       height={height}
       viewBox={`0 0 100 100`}
@@ -274,18 +279,18 @@ const Spinner = ({width, height, fill, style, isIe}) => {
 };
 
 Spinner.propTypes = {
-  width: string,
-  height: string,
-  fill: string,
-  style: object,
-  isIe: boolean,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fill: PropTypes.string,
+  style: PropTypes.object,
+  isIe: PropTypes.bool,
 };
 
 Spinner.defaultProps = {
   width: '20px',
   height: '20px',
   fill: '#ffffff',
-  style: {},
 };
 
 export default detectIe(Spinner);
+export {Spinner as PureSpinner};

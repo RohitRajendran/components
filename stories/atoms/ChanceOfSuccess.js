@@ -8,7 +8,12 @@ const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 stories.addDecorator(withKnobs).add('default', () => (
   <div style={{backgroundColor: 'black'}}>
     <ChanceOfSuccess
-      percent={number('percent', '20')}
+      percent={number('percent', 0, {
+        range: true,
+        min: 0,
+        max: 100,
+        step: 1,
+      })}
       isDraftPlan={boolean('isDraftPlan', false)}
       currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
       refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
