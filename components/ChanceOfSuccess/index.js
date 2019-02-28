@@ -34,7 +34,6 @@ const ChanceOfSuccess = (props) => {
   const {
     currentPlanChanceOfSuccess,
     refreshedPlanChanceOfSuccess,
-    refreshedPlanChanceOfSuccessDifference,
     identifier,
     percent,
     isRunningPlan,
@@ -43,6 +42,11 @@ const ChanceOfSuccess = (props) => {
     compact,
     isIe,
   } = props;
+
+  const refreshedPlanChanceOfSuccessDifference =
+    (currentPlanChanceOfSuccess && refreshedPlanChanceOfSuccess) !== null
+      ? Math.abs(currentPlanChanceOfSuccess - refreshedPlanChanceOfSuccess)
+      : null;
   const diameter = compact ? 74 : 135;
   const radius = diameter / 2;
   const thickness = compact ? 4 : 6;
@@ -279,7 +283,6 @@ const ChanceOfSuccess = (props) => {
 ChanceOfSuccess.propTypes = {
   currentPlanChanceOfSuccess: PropTypes.integer,
   refreshedPlanChanceOfSuccess: PropTypes.integer,
-  refreshedPlanChanceOfSuccessDifference: PropTypes.integer,
   identifier: PropTypes.string,
   percent: PropTypes.integer,
   isRunningPlan: PropTypes.boolean,

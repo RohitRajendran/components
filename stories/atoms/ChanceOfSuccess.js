@@ -12,9 +12,6 @@ stories.addDecorator(withKnobs).add('default', () => (
       isDraftPlan={boolean('isDraftPlan', false)}
       currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
       refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
-      refreshedPlanChanceOfSuccessDifference={number(
-        'refreshedPlanChanceOfSuccessDifference'
-      )}
       identifier={text('identifier')}
       isRunningPlan={boolean('isRunningPlan', false)}
       className={text('className')}
