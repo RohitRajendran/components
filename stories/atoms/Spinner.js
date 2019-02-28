@@ -1,11 +1,17 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Spinner from '../../components/Spinner';
+import {withKnobs, text} from '@storybook/addon-knobs';
 
-storiesOf('Atoms/Spinner', module).add('default', () => <Spinner />);
-storiesOf('Atoms/Spinner', module).add('filled', () => (
-  <Spinner fill="#000000" />
-));
-storiesOf('Atoms/Spinner', module).add('advanced', () => (
-  <Spinner fill="#000000" height="60px" width="60px" />
-));
+const stories = storiesOf('Atoms/Spinner', module);
+
+stories
+  .addDecorator(withKnobs)
+  .add('default', () => (
+    <Spinner
+      fill={text('fill', '#000')}
+      height={text('height', '20px')}
+      width={text('width', '20px')}
+      className={text('style')}
+    />
+  ));

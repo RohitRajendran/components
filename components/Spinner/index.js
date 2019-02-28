@@ -1,7 +1,7 @@
 /** @module Spinner */
 import React from 'react';
 import {string, object, boolean} from 'prop-types';
-import {detectIe} from '../DetectIe';
+import detectIe from '../DetectIe';
 
 const Spinner = ({width, height, fill, style, isIe}) => {
   if (isIe) {
@@ -106,6 +106,7 @@ const Spinner = ({width, height, fill, style, isIe}) => {
       </svg>
     );
   }
+
   return (
     <svg
       className="ui-spinner"
@@ -271,6 +272,7 @@ const Spinner = ({width, height, fill, style, isIe}) => {
     </svg>
   );
 };
+
 Spinner.propTypes = {
   width: string,
   height: string,
@@ -278,6 +280,7 @@ Spinner.propTypes = {
   style: object,
   isIe: boolean,
 };
+
 Spinner.defaultProps = {
   width: '20px',
   height: '20px',
