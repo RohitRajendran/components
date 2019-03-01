@@ -1,0 +1,40 @@
+@keyframes chance-of-success_in-progress {
+  0% {
+    transform: rotate(-130deg);
+    fill: $danger-red;
+  }
+
+  20% {
+    fill: #b34d00;
+  }
+
+  40% {
+    fill: #c76501;
+  }
+
+  60% {
+    fill: #ed9403;
+  }
+
+  80% {
+    fill: #6bb508;
+  }
+
+  100% {
+    transform: rotate(130deg);
+    fill: $safe-green;
+  }
+}
+
+.chance-of-success {
+  height: 141px;
+  transition: height 0.3s ease;
+
+  &.chance-of-success__in-progress {
+    circle {
+      animation: chance-of-success_in-progress 2.3s
+        cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+      background-color: blue;
+    }
+  }
+}
