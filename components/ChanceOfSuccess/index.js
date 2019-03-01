@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {disallowedIf} from 'airbnb-prop-types';
 import {colors} from '../../constants/colors';
 import detectIe from '../DetectIe';
 import _ from 'lodash';
@@ -55,6 +56,7 @@ const ChanceOfSuccess = (props) => {
     (currentPlanChanceOfSuccess && refreshedPlanChanceOfSuccess) !== null
       ? Math.abs(currentPlanChanceOfSuccess - refreshedPlanChanceOfSuccess)
       : null;
+
   const diameter = compact ? 74 : 135;
   const radius = diameter / 2;
   const thickness = compact ? 4 : 6;
@@ -103,11 +105,12 @@ const ChanceOfSuccess = (props) => {
     percentageSize = '4rem';
   }
 
-  // Add approximate space for the shadow on the indicator circle
+  // Adds approximate space for the shadow on the indicator circle
   const shadowOffset = 5;
 
   // Gets the difference between the start and end of the circle (-130 and 130)
   // and then runs a calculation to get the correct degree for the stop animation.
+  // Inline styles are provided to map this to the animation.
   const circleRange = 130;
   const circleEndFrame = Math.round(percent * 2.6 - circleRange);
 
@@ -288,8 +291,16 @@ const ChanceOfSuccess = (props) => {
 };
 
 ChanceOfSuccess.propTypes = {
-  currentPlanChanceOfSuccess: PropTypes.number,
-  refreshedPlanChanceOfSuccess: PropTypes.number,
+  currentPlanChanceOfSuccess: disallowedIf(
+    PropTypes.number,
+    'isDraftPlan',
+    PropTypes.bool
+  ),
+  refreshedPlanChanceOfSuccess: disallowedIf(
+    PropTypes.number,
+    'isDraftPlan',
+    PropTypes.bool
+  ),
   identifier: PropTypes.string,
   percent: PropTypes.number,
   isRunningPlan: PropTypes.bool,
