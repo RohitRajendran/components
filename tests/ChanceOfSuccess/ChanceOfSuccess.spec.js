@@ -9,7 +9,6 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
     currentPlanChanceOfSuccess: 30,
     refreshedPlanChanceOfSuccess: 30,
     isRunningPlan: false,
-    isDraftPlan: false,
   };
 
   const component = mount(
@@ -34,7 +33,7 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
 
 test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid ', (t) => {
   const props = {
-    percent: 'not a real percent',
+    percent: 20000,
     isRunningPlan: false,
     isDraftPlan: false,
   };
