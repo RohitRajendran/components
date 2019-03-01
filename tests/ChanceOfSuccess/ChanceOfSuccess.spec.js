@@ -3,14 +3,15 @@ import React from 'react';
 import {shallow, mount} from 'enzyme';
 import ChanceOfSuccess, {percentDescriptor, percentIsValid} from '../../components/ChanceOfSuccess';
 
-test('Spinner - renders', (t) => {
+test('ChanceOfSuccess - renders correctly ', (t) => {
   const props = {
     percent: 30,
     currentPlanChanceOfSuccess: 30,
     refreshedPlanChanceOfSuccess: 30,
     isRunningPlan: false,
     isDraftPlan: false,
-  }
+  };
+
   const component = mount(
     <ChanceOfSuccess
       {...props}
@@ -26,6 +27,33 @@ test('Spinner - renders', (t) => {
     component.find('style').length,
     1,
     'Should include the component inline styles'
+  );
+
+  t.end();
+});
+
+test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid ', (t) => {
+  const props = {
+    percent: 'not a real percent',
+    isRunningPlan: false,
+    isDraftPlan: false,
+  };
+  
+  const component = mount(
+    <ChanceOfSuccess
+      {...props}
+    />);
+  
+  t.equals(
+    component.find('svg').find('text').at(0).prop('fontSize'),
+    '4rem',
+    'Should have the correct font size'
+  );
+
+  t.equals(
+    component.find('svg').find('text').text(),
+    'TBD',
+    'Should have the correct text indicating it is TBD'
   );
 
   t.end();
