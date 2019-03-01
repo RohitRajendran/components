@@ -254,31 +254,39 @@ const ChanceOfSuccess = (props) => {
           </text>
           {isPercentageValid && !compact && (
             <g>
-              {refreshedPlanChanceOfSuccess && !isDraftPlan && (
-                <polygon
-                  transform={`translate(-15.000000, 49.000000) scale(1, ${
-                    refreshedPlanChanceOfSuccess < currentPlanChanceOfSuccess
-                      ? '-1'
-                      : '1'
-                  }) translate(-6.000000, -11.000000)`}
-                  points="6 6 12 16 2.76445533e-14 16"
-                  fill={`${
-                    refreshedPlanChanceOfSuccess < currentPlanChanceOfSuccess
-                      ? '#b70048'
-                      : '#009a00'
-                  }`}
-                />
-              )}
+              {refreshedPlanChanceOfSuccess &&
+                currentPlanChanceOfSuccess &&
+                !isDraftPlan && (
+                  <polygon
+                    transform={`translate(-15.000000, 49.000000) scale(1, ${
+                      refreshedPlanChanceOfSuccess < currentPlanChanceOfSuccess
+                        ? '-1'
+                        : '1'
+                    }) translate(-6.000000, -11.000000)`}
+                    points="6 6 12 16 2.76445533e-14 16"
+                    fill={`${
+                      refreshedPlanChanceOfSuccess < currentPlanChanceOfSuccess
+                        ? '#b70048'
+                        : '#009a00'
+                    }`}
+                  />
+                )}
               <text
                 fill={colors.white}
                 x={`${
-                  refreshedPlanChanceOfSuccess && !isDraftPlan ? '8' : '0'
+                  refreshedPlanChanceOfSuccess &&
+                  currentPlanChanceOfSuccess &&
+                  !isDraftPlan
+                    ? '8'
+                    : '0'
                 }`}
                 y={radius - 14}
                 fontSize="1.4rem"
                 textAnchor="middle"
               >
-                {refreshedPlanChanceOfSuccess && !isDraftPlan
+                {refreshedPlanChanceOfSuccess &&
+                currentPlanChanceOfSuccess &&
+                !isDraftPlan
                   ? `${refreshedPlanChanceOfSuccessDifference}%`
                   : percentDescriptor(percent)}
               </text>
