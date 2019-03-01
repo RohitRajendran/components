@@ -1,11 +1,33 @@
 import test from 'tape';
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import ChanceOfSuccess, {percentDescriptor, percentIsValid} from '../../components/ChanceOfSuccess';
 
 test('Spinner - renders', (t) => {
-  shallow(<ChanceOfSuccess />);
-  t.pass('Renders');
+  const props = {
+    percent: 30,
+    currentPlanChanceOfSuccess: 30,
+    refreshedPlanChanceOfSuccess: 30,
+    isRunningPlan: false,
+    isDraftPlan: false,
+  }
+  const component = mount(
+    <ChanceOfSuccess
+      {...props}
+    />);
+  
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should locate the SVG'
+  );
+
+  t.equals(
+    component.find('style').length,
+    1,
+    'Should include the component inline styles'
+  );
+
   t.end();
 });
 
