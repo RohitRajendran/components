@@ -1,7 +1,7 @@
 import test from 'tape';
 import React from 'react';
-import {shallow, mount} from 'enzyme';
-import ChanceOfSuccess, {percentDescriptor, percentIsValid} from '../../components/ChanceOfSuccess';
+import {mount} from 'enzyme';
+import PureChanceOfSuccess, {percentDescriptor, percentIsValid} from '../../components/ChanceOfSuccess';
 
 test('ChanceOfSuccess - renders correctly ', (t) => {
   const props = {
@@ -13,7 +13,7 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
   };
 
   const component = mount(
-    <ChanceOfSuccess
+    <PureChanceOfSuccess
       {...props}
     />);
   
@@ -40,7 +40,7 @@ test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid 
   };
   
   const component = mount(
-    <ChanceOfSuccess
+    <PureChanceOfSuccess
       {...props}
     />);
   
