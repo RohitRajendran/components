@@ -1,4 +1,11 @@
 .mcgonagall-input {
+  position: relative;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+
   input {
     @include source-sans-pro(2rem);
     color: $dark-blue;
@@ -26,7 +33,6 @@
   label {
     @include source-sans-pro(1.2rem);
     color: black;
-    top: .5rem;
     position: absolute;
     padding: 1.2rem;
     color: $slate;
@@ -41,16 +47,43 @@
     &:before {
       content: '$';
       position: absolute;
-      top: 3.4rem;
-      left: 2.1rem;
+      top: 2.6rem;
+      left: 1.3rem;
       z-index: 9999;
       color: $dark-blue;
       font-size: 2rem;
-
     }
 
     input {
       padding-left: 2.3rem;
     }
   }
+
+  &.input-append {
+    &.focus:after {
+      color: $violet-blue;
+    }
+  }
+}
+
+.input-append[data-value]:after {
+  @include source-sans-pro(2rem);
+  content: attr(data-value) "%";
+  color: $dark-blue;
+  position: absolute;
+  width: 100%;
+  left: 1.3rem;
+  top: 2.6rem;
+
+  &:focus, &:active {
+    color: $violet-blue;
+  }
+}
+
+.input-append[data-value] input {
+  color: rgba(255, 255, 255, 0);
+  z-index: 9999;
+  background-color: transparent;
+  position: relative;
+  caret-color: $violet-blue;
 }

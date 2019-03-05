@@ -9,8 +9,9 @@ stories.addDecorator(withKnobs).add('default', () =>
   <div className="row">
     <div className="col-xs-12">
       <Input
-      value={text('value')}
-
+        label={text('label'), 'Address'}
+        append={boolean('append')}
+        prepend={boolean('prepend')}
       />
     </div>
   </div>
