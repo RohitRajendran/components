@@ -12,10 +12,11 @@
     height: 6rem;
     border: 1px solid $white-seven;
     background-color: $white-four;
-    padding: 2.6rem 1.2rem 1rem 1.2rem;;
+    padding: 2.6rem 1.2rem 1rem 1.2rem;
     width: 100%;
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
       border: 1px solid $violet-blue;
       color: $violet-blue;
       box-shadow: 0 0 4px 0 rgba(77, 0, 186, 0.5);
@@ -37,7 +38,6 @@
     padding: 1.2rem;
     color: $slate;
   }
-
 
   &.input-prepend {
     &.focus:before {
@@ -68,14 +68,16 @@
 
 .input-append[data-value]:after {
   @include source-sans-pro(2rem);
-  content: attr(data-value) "%";
+
+  content: attr(data-value) '%';
   color: $dark-blue;
   position: absolute;
   width: 100%;
   left: 1.3rem;
   top: 2.6rem;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     color: $violet-blue;
   }
 }

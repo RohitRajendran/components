@@ -30,31 +30,37 @@ class Input extends Component {
    * @returns {undefined}
    */
   updateValue(event) {
-    this.setState({value: event.target.value})
+    this.setState({value: event.target.value});
   }
-
 
   /** @inheritdoc */
   render() {
-    const {append, prepend} = this.props;
+    const {append, prepend, name, type} = this.props;
+
+    const attributes = {
+      name,
+      type,
+    };
 
     return (
-    <div
-      className={`mcgonagall-input ${append ? 'input-append' : prepend ? 'input-prepend' : null} ${this.state.isActive ? 'focus' : ''}`}
-      data-value={this.state.value}
+      <div
+        className={`mcgonagall-input ${
+          append ? 'input-append' : prepend ? 'input-prepend' : null
+        } ${this.state.isActive ? 'focus' : ''}`}
+        data-value={this.state.value}
       >
-      <label>{this.props.label}</label>
-      <input
-        type="text"
-        className=""
-        aria-label={this.props.label}
-        onChange={this.updateValue}
-        onFocus={this.toggleFocus}
-        onBlur={this.toggleFocus}
-        >
-      </input>
-      <div className="validation-error"></div>
-    </div>
+        <label>{this.props.label}</label>
+        <input
+          type="text"
+          className=""
+          aria-label={this.props.label}
+          onChange={this.updateValue}
+          onFocus={this.toggleFocus}
+          onBlur={this.toggleFocus}
+          {...attributes}
+        />
+        <div className="validation-error" />
+      </div>
     );
   }
 }
@@ -64,6 +70,8 @@ Input.propTypes = {
   label: PropTypes.string,
   append: PropTypes.bool,
   prepend: PropTypes.bool,
+  name: PropTypes.name,
+  type: PropTypes.string,
 };
 
 export default Input;
