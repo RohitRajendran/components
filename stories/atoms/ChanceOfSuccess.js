@@ -8,7 +8,7 @@ const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 stories.addDecorator(withKnobs).add('default', () => (
   <div style={{backgroundColor: 'black'}}>
     <ChanceOfSuccess
-      percent={number('percent', 0, {
+      percent={number('percent', 50, {
         range: true,
         min: 0,
         max: 100,
@@ -19,6 +19,66 @@ stories.addDecorator(withKnobs).add('default', () => (
       refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
       identifier={text('identifier')}
       isRunningPlan={boolean('isRunningPlan', false)}
+      className={text('className')}
+      compact={boolean('compact', false)}
+    />
+  </div>
+));
+
+stories.addDecorator(withKnobs).add('draft plan', () => (
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={number('percent', 50, {
+        range: true,
+        min: 0,
+        max: 100,
+        step: 1,
+      })}
+      isDraftPlan={boolean('isDraftPlan', true)}
+      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+      identifier={text('identifier')}
+      isRunningPlan={boolean('isRunningPlan', false)}
+      className={text('className')}
+      compact={boolean('compact', false)}
+    />
+  </div>
+));
+
+stories.addDecorator(withKnobs).add('compact', () => (
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={number('percent', 50, {
+        range: true,
+        min: 0,
+        max: 100,
+        step: 1,
+      })}
+      isDraftPlan={boolean('isDraftPlan', false)}
+      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+      identifier={text('identifier')}
+      isRunningPlan={boolean('isRunningPlan', false)}
+      className={text('className')}
+      compact={boolean('compact', true)}
+    />
+  </div>
+));
+
+stories.addDecorator(withKnobs).add('running plan', () => (
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={number('percent', null, {
+        range: true,
+        min: 0,
+        max: 100,
+        step: 1,
+      })}
+      isDraftPlan={boolean('isDraftPlan', false)}
+      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+      identifier={text('identifier')}
+      isRunningPlan={boolean('isRunningPlan', true)}
       className={text('className')}
       compact={boolean('compact', false)}
     />
