@@ -5,4 +5,13 @@ import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Atoms/Input', module);
 
-stories.addDecorator(withKnobs).add('default', () => <Input />);
+stories.addDecorator(withKnobs).add('default', () => 
+  <div className="row">
+    <div className="col-xs-12">
+      <Input
+      value={text('value')}
+
+      />
+    </div>
+  </div>
+);
