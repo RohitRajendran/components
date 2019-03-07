@@ -1,7 +1,7 @@
 import test from 'tape';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import Input from '../../components/Input';
+import Input, { getDeepestInputElement } from '../../components/Input';
 import {DateMask, CurrencyMask} from '../../stories/atoms/Input';
 
 test('Input - Renders props as attributes on the input', (t) => {
@@ -93,6 +93,135 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
     component.find('.description').text(),
     'This is the description',
     'Should render the description.'
+  );
+
+  t.end();
+});
+
+test('Input - Handles the input change', (t) => {
+  const component = mount(<Input
+    name="fancy_input"
+    append="%"
+    label="Amount"
+    type="text"
+    value="05/01/1980"
+    placeholder="some placeholder"
+    ariaLabel="label"
+    mask={DateMask}
+    description="This is the description"
+  />);
+
+  component.instance().updateValue({
+    target: {
+      value: 'Updated value',
+    },
+  });
+
+  t.equals(
+    component.find('.mcgonagall-input').prop('data-value'),
+    null,
+    'Should default to null.'
+  );
+
+  t.equals(
+    component.state().value,
+    'Updated value',
+    'Updates the component value state.'
+  );
+
+  // Force re-render to test data-value.
+  component.update();
+
+  t.equals(
+    component.find('.mcgonagall-input').prop('data-value'),
+    'Updated value',
+    'The data value should update correctly.'
+  );
+
+  t.end();
+});
+
+test('Input - Gets the deepest input element', (t) => {
+  t.plan(3);
+
+  const component = mount(<Input
+    name="input_name"
+    append="%"
+    label="Amount"
+    type="text"
+    value="05/01/1980"
+    placeholder="some placeholder"
+    ariaLabel="label"
+    mask={DateMask}
+    description="This is the description"
+  />);
+
+  const result = getDeepestInputElement(component.instance());
+
+  t.equals(
+    result.name,
+    'input_name',
+    'Should be the correct input name.'
+  );
+
+  t.equals(
+    result.type,
+    'text',
+    'Should be the correct input type.'
+  );
+
+
+  t.equals(
+    result.value,
+    '05/01/1980',
+    'Should be the correct input value.'
+  );
+});
+
+test('Input - Correctly toggles focus', (t) => {
+  const component = mount(<Input
+    name="input_name"
+    append="%"
+    label="Amount"
+    type="text"
+    value="05/01/1980"
+    placeholder="some placeholder"
+    ariaLabel="label"
+    mask={DateMask}
+    description="This is the description"
+  />);
+
+  component.instance().toggleFocus();
+
+  t.equals(
+    component.state().isActive,
+    true,
+    'Should toggle the focus state.'
+  );
+
+  t.end();
+});
+
+test('Input - onBlur correctly fires both handlers', (t) => {
+  const component = mount(<Input
+    name="input_name"
+    append="%"
+    label="Amount"
+    type="text"
+    value="05/01/1980"
+    placeholder="some placeholder"
+    ariaLabel="label"
+    mask={DateMask}
+    description="This is the description"
+    validateOnBlur={true}
+  />);
+
+  component.find('input').simulate('blur');
+
+  t.equals(
+    component.state().isActive,
+    true,
+    'Should toggle the focus state when something is blurred even with validateOnBlur toggled.'
   );
 
   t.end();
