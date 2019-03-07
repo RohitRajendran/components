@@ -1,8 +1,8 @@
 import test from 'tape';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import Input, { getDeepestInputElement } from '../../components/Input';
-import {DateMask, CurrencyMask} from '../../stories/atoms/Input';
+import Input, {getDeepestInputElement} from '../../components/Input';
+import {DateMask, CurrencyMask} from '../../stories/util';
 
 test('Input - Renders props as attributes on the input', (t) => {
   t.plan(8);
@@ -29,7 +29,7 @@ test('Input - Renders props as attributes on the input', (t) => {
   t.equal(componentInputProps.maxLength, 5);
 });
 
-test('TypedInput - Renders a masked input if mask is provided', (t) => {
+test('Input - Renders a masked input if mask is provided', (t) => {
   const component = shallow(
     <Input
       name="fancy_input"
@@ -37,7 +37,6 @@ test('TypedInput - Renders a masked input if mask is provided', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      ariaLabel="label"
       mask={DateMask}
     />
   );
@@ -62,7 +61,6 @@ test('Input - Renders an error message when the form is invalid', (t) => {
     type="text"
     value="05/01/1980"
     placeholder="some placeholder"
-    ariaLabel="label"
     mask={DateMask}
     isInvalid={() => true}
     validationErrorMsg="This is not valid!"
@@ -84,7 +82,6 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
     type="text"
     value="05/01/1980"
     placeholder="some placeholder"
-    ariaLabel="label"
     mask={DateMask}
     description="This is the description"
   />);
@@ -93,49 +90,6 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
     component.find('.description').text(),
     'This is the description',
     'Should render the description.'
-  );
-
-  t.end();
-});
-
-test('Input - Handles the input change', (t) => {
-  const component = mount(<Input
-    name="fancy_input"
-    append="%"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    ariaLabel="label"
-    mask={DateMask}
-    description="This is the description"
-  />);
-
-  component.instance().updateValue({
-    target: {
-      value: 'Updated value',
-    },
-  });
-
-  t.equals(
-    component.find('.mcgonagall-input').prop('data-value'),
-    null,
-    'Should default to null.'
-  );
-
-  t.equals(
-    component.state().value,
-    'Updated value',
-    'Updates the component value state.'
-  );
-
-  // Force re-render to test data-value.
-  component.update();
-
-  t.equals(
-    component.find('.mcgonagall-input').prop('data-value'),
-    'Updated value',
-    'The data value should update correctly.'
   );
 
   t.end();
@@ -151,7 +105,6 @@ test('Input - Gets the deepest input element', (t) => {
     type="text"
     value="05/01/1980"
     placeholder="some placeholder"
-    ariaLabel="label"
     mask={DateMask}
     description="This is the description"
   />);
@@ -186,7 +139,6 @@ test('Input - Correctly toggles focus', (t) => {
     type="text"
     value="05/01/1980"
     placeholder="some placeholder"
-    ariaLabel="label"
     mask={DateMask}
     description="This is the description"
   />);
@@ -210,7 +162,6 @@ test('Input - onBlur correctly fires both handlers', (t) => {
     type="text"
     value="05/01/1980"
     placeholder="some placeholder"
-    ariaLabel="label"
     mask={DateMask}
     description="This is the description"
     validateOnBlur={true}

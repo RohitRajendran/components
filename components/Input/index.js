@@ -18,7 +18,7 @@ export const getDeepestInputElement = (startObject) => {
   return getDeepestInputElement(startObject.inputElement);
 };
 
-/** Renders an Input field. */
+/** Renders the Input field component. */
 class Input extends Component {
   /** @inheritdoc */
   constructor(props) {
@@ -26,11 +26,10 @@ class Input extends Component {
 
     this.state = {
       isActive: false,
-      value: '',
+      value: props.value,
     };
 
     this.toggleFocus = this.toggleFocus.bind(this);
-    this.updateValue = this.updateValue.bind(this);
     this.isValid = this.isValid.bind(this);
   }
 
@@ -39,14 +38,6 @@ class Input extends Component {
    */
   toggleFocus() {
     this.setState({isActive: !this.state.isActive});
-  }
-
-  /** Updates the data-value part of the component, used for input pre-pending.
-   * @param {object} event - The event object.
-   * @returns {undefined}
-   */
-  updateValue(event) {
-    this.setState({value: event.target.value});
   }
 
   /**
@@ -133,15 +124,17 @@ class Input extends Component {
     return (
       <div
         className={`mcgonagall-input ${
-          append
+          append && value > 0
             ? `input-append input-append-${identifier}`
             : prepend
-            ? `input-prepend input-prepend-${identifier}`
+            ? `input-prepend input-prepend-${identifier} ${
+                (value && value.length < 1) || !value ? 'empty' : ''
+              }`
             : ''
         } ${this.state.isActive ? 'focus' : ''} ${
           showInvalidity ? 'error' : ''
         }`}
-        data-value={this.state.value.length > 0 ? this.state.value : null}
+        data-value={value}
       >
         {append && (
           <style>
@@ -197,11 +190,35 @@ Input.propTypes = {
   append: PropTypes.string,
   prepend: PropTypes.string,
   label: PropTypes.string.isRequired,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   description: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.oneOf([
+    'button',
+    'checkbox',
+    'color',
+    'date',
+    'datetime-local',
+    'email',
+    'file',
+    'hidden',
+    'image',
+    'month',
+    'number',
+    'password',
+    'radio',
+    'range',
+    'reset',
+    'search',
+    'search',
+    'submit',
+    'tel',
+    'text',
+    'time',
+    'url',
+    'week',
+  ]),
   placeholder: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
   required: PropTypes.bool,
   pattern: PropTypes.string,
   maxLength: PropTypes.number,
@@ -210,7 +227,6 @@ Input.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
-  onBlur: PropTypes.func,
   validationErrorMsg: PropTypes.string,
   validateOnBlur: PropTypes.bool,
   disabled: PropTypes.bool,

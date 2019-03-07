@@ -9,7 +9,6 @@
       color: $red-magenta;
       box-shadow: none;
       border: 1px solid $red-magenta;
-      color: $red-magenta;
 
       &:focus,
       &:active {
@@ -58,11 +57,14 @@
         box-shadow: none;
       }
     }
+
+    &::placeholder {
+      color: $bluey-grey;
+    }
   }
 
   label {
     @include source-sans-pro(1.2rem);
-    color: black;
     position: absolute;
     padding: 1.2rem;
     color: $slate;
@@ -73,6 +75,11 @@
   &.input-prepend {
     &.focus:before {
       color: $violet-blue;
+    }
+
+    // Configures the placeholder color on the pre-pended string.
+    &.empty:before {
+      color: $bluey-grey;
     }
 
     &:before {

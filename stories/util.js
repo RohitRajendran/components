@@ -1,7 +1,3 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Input from '../../components/Input';
-import {withKnobs, text} from '@storybook/addon-knobs';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import _ from 'lodash';
@@ -157,67 +153,3 @@ export const ApexAccount = {
   mask: [/\d/, /[A-Z]/, /[A-Z]/, /\d/, /\d/, /\d/, /\d/, /\d/],
   regex: /\d[A-Z]{2}\d{5}/,
 };
-
-const stories = storiesOf('Atoms/Input', module);
-
-stories.addDecorator(withKnobs).add('default', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        label={(text('label'), 'Address')}
-        append={text('append')}
-        prepend={text('prepend')}
-      />
-    </div>
-  </div>
-));
-
-stories.addDecorator(withKnobs).add('value', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        name="value"
-        type="text"
-        prepend="$"
-        label="Value"
-        mask={CurrencyMask}
-        validateOnBlur
-      />
-    </div>
-  </div>
-));
-
-stories.addDecorator(withKnobs).add('percent', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        name="increase"
-        label="Appreciate Rate"
-        append="%"
-        autoComplete="off"
-        pattern="\d*"
-        placeholder="0%"
-        required
-        mask={PercentageWithDecimalMaskAllowNegative}
-      />
-    </div>
-  </div>
-));
-
-stories.addDecorator(withKnobs).add('disabled', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        name="increase"
-        label="Appreciate Rate"
-        append="%"
-        autoComplete="off"
-        pattern="\d*"
-        placeholder="0%"
-        required
-        mask={PercentageWithDecimalMaskAllowNegative}
-        disabled
-      />
-    </div>
-  </div>
-));
