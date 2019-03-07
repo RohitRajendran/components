@@ -163,7 +163,6 @@ class Input extends Component {
           </style>
         )}
 
-        <label>{label}</label>
         <InputType
           type="text"
           className={inputClasses}
@@ -177,6 +176,7 @@ class Input extends Component {
           }}
           {...attrs}
         />
+        <label>{label}</label>
         {description && !showInvalidity ? (
           <div className="description">{description}</div>
         ) : description && showInvalidity ? (

@@ -203,3 +203,21 @@ stories.addDecorator(withKnobs).add('percent', () => (
     </div>
   </div>
 ));
+
+stories.addDecorator(withKnobs).add('disabled', () => (
+  <div className="row">
+    <div className="col-xs-12">
+      <Input
+        name="increase"
+        label="Appreciate Rate"
+        append="%"
+        autoComplete="off"
+        pattern="\d*"
+        placeholder="0%"
+        required
+        mask={PercentageWithDecimalMaskAllowNegative}
+        disabled
+      />
+    </div>
+  </div>
+));

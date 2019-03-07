@@ -24,6 +24,11 @@
     }
   }
 
+  // Styles the label of the input which appears directly beneath it in the DOM.
+  input:disabled + label {
+    color: $slate;
+  }
+
   input {
     @include source-sans-pro(2rem);
     color: $dark-blue;
@@ -40,6 +45,19 @@
       box-shadow: 0 0 4px 0 rgba(77, 0, 186, 0.5);
       outline: none;
     }
+
+    &:disabled {
+      background-color: $pampas;
+      color: $slate;
+
+      /* Resets the focus and active styles for the input
+        when it's in a disabled state. */
+      &:focus,
+      &:active {
+        border: 1px solid $white-seven;
+        box-shadow: none;
+      }
+    }
   }
 
   label {
@@ -49,6 +67,7 @@
     padding: 1.2rem;
     color: $slate;
     font-weight: normal;
+    left: 0;
   }
 
   &.input-prepend {
