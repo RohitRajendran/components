@@ -66,10 +66,12 @@
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
+    "react-text-mask": "*",
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
     "style-loader": "*",
+    "text-mask-addons": "*",
     "tap-xunit": "*",
     "tape": "*",
     "uglifyjs-webpack-plugin": "*",
@@ -82,6 +84,7 @@
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
-    "react-router-dom": "*"
+    "react-router-dom": "*",
+    "react-text-mask": "*"
   }
 }

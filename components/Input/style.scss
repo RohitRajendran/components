@@ -1,10 +1,28 @@
 .mcgonagall-input {
   position: relative;
-  text-overflow: ellipsis;
+  line-height: normal;
+  margin: 1.2rem 0;
+  text-align: left;
 
-  /* Required for text-overflow to do anything */
-  white-space: nowrap;
-  overflow: hidden;
+  &.error {
+    input {
+      color: $red-magenta;
+      box-shadow: none;
+      border: 1px solid $red-magenta;
+      color: $red-magenta;
+
+      &:focus,
+      &:active {
+        border: 1px solid $red-magenta;
+        box-shadow: none;
+        color: $red-magenta;
+      }
+    }
+
+    .validation-error {
+      visibility: visible;
+    }
+  }
 
   input {
     @include source-sans-pro(2rem);
@@ -22,13 +40,6 @@
       box-shadow: 0 0 4px 0 rgba(77, 0, 186, 0.5);
       outline: none;
     }
-
-    &.error {
-      color: $red-magenta;
-      box-shadow: none;
-      border: 1px solid $red-magenta;
-      color: $red-magenta;
-    }
   }
 
   label {
@@ -37,6 +48,7 @@
     position: absolute;
     padding: 1.2rem;
     color: $slate;
+    font-weight: normal;
   }
 
   &.input-prepend {
@@ -45,7 +57,6 @@
     }
 
     &:before {
-      content: '$';
       position: absolute;
       top: 2.6rem;
       left: 1.3rem;
@@ -60,16 +71,34 @@
   }
 
   &.input-append {
+    /* Mimic's text overflowing for masked/hidden inputs. */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     &.focus:after {
       color: $violet-blue;
     }
+  }
+
+  .validation-error {
+    color: $red-magenta;
+    font-weight: bold;
+    visibility: hidden;
+  }
+
+  .description {
+    font-style: italic;
+  }
+
+  .validation-error,
+  .description {
+    @include source-sans-pro(1.2rem);
   }
 }
 
 .input-append[data-value]:after {
   @include source-sans-pro(2rem);
-
-  content: attr(data-value) '%';
   color: $dark-blue;
   position: absolute;
   width: 100%;
