@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Input from '../../components/Input';
-import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
+import {withKnobs, text} from '@storybook/addon-knobs';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import _ from 'lodash';
@@ -181,9 +181,6 @@ stories.addDecorator(withKnobs).add('value', () => (
         prepend="$"
         label="Value"
         mask={CurrencyMask}
-        onChange={(event) =>
-          console.log(`Input changed with input ${event.target.value}`)
-        }
         validateOnBlur
       />
     </div>
@@ -202,9 +199,6 @@ stories.addDecorator(withKnobs).add('percent', () => (
         placeholder="0%"
         required
         mask={PercentageWithDecimalMaskAllowNegative}
-        onChange={(event) =>
-          console.log(`Input changed with input ${event.target.value}`)
-        }
       />
     </div>
   </div>
