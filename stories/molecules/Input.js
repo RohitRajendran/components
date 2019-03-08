@@ -28,7 +28,7 @@ stories.addDecorator(withKnobs).add(
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'default input')}
-            description={text('description')}
+            description={text('description', 'This is where you live.')}
             type={text('type', 'text')}
             placeholder={text('placeholder', '1660 L Street')}
             value={store.get('value')}
