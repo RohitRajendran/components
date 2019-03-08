@@ -7,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const entries = glob
   .sync('./components/*/index.js')
   .reduce((allEntries, entry) => {
-    console.log(allEntries, entry);
     return Object.assign(allEntries, {[entry.split('/')[2]]: entry});
   }, {});
 

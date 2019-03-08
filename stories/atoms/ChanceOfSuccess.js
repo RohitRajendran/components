@@ -3,13 +3,13 @@ import {storiesOf} from '@storybook/react';
 import ChanceOfSuccess from '../../components/ChanceOfSuccess';
 import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import ChanceOfSuccessReadMe from '../../components/ChanceOfSuccess/README.md';
+import ChanceOfSuccessReadme from '../../components/ChanceOfSuccess/README.md';
 
 const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 
 stories.addDecorator(withKnobs).add(
   'default',
-  withReadme(ChanceOfSuccessReadMe, () => (
+  withReadme(ChanceOfSuccessReadme, () => (
     <div style={{backgroundColor: 'black'}}>
       <ChanceOfSuccess
         percent={number('percent', 50, {
@@ -32,7 +32,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'draft plan',
-  withReadme(ChanceOfSuccessReadMe, () => (
+  withReadme(ChanceOfSuccessReadme, () => (
     <div style={{backgroundColor: 'black'}}>
       <ChanceOfSuccess
         percent={number('percent', 50, {
@@ -55,7 +55,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'compact',
-  withReadme(ChanceOfSuccessReadMe, () => (
+  withReadme(ChanceOfSuccessReadme, () => (
     <div style={{backgroundColor: 'black'}}>
       <ChanceOfSuccess
         percent={number('percent', 50, {
@@ -78,7 +78,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'running plan',
-  withReadme(ChanceOfSuccessReadMe, () => (
+  withReadme(ChanceOfSuccessReadme, () => (
     <div style={{backgroundColor: 'black'}}>
       <ChanceOfSuccess
         percent={number('percent', null, {

@@ -2,6 +2,8 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
 import detectIe from '../../components/DetectIe';
+import {withReadme} from 'storybook-readme';
+import DetectIeReadme from '../../components/DetectIe/README.md';
 
 const stories = storiesOf('Utility/detectIe', module);
 
@@ -17,4 +19,7 @@ TestComponent.propTypes = {
 
 const WrappedTestComponent = detectIe(TestComponent);
 
-stories.add('default', () => <WrappedTestComponent />);
+stories.add(
+  'default',
+  withReadme(DetectIeReadme, () => <WrappedTestComponent />)
+);

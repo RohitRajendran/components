@@ -21,4 +21,4 @@ The following component props are valid.
 | **width**    |  String   |    `20px`       | The width of the spinner. | No |
 | **height**    |  String   |    `20px`       | The height of the spinner. | No |
 | **style**    |  String   |           | Additional styles to apply to the spinner. | No |
-| **isIe**    | Boolean   |           | Adjusts the styline of the spinner if a user is using Internet Explorer. | No |
+| **isIe**    | Boolean   |   `false`        | Adjusts the styling of the spinner if a user is using Internet Explorer. | No |

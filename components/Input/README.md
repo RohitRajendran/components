@@ -39,6 +39,7 @@ The following component props are valid.
 | **step**    | Integer  |             | The [step value](https://www.w3schools.com/tags/att_input_step.asp). | No |
 | **validationErrorMsg**    | String  |            | The error message to display when the input fails validation. | No |
 | **validateOnBlur**    | Boolean  |    `false`        | Runs the validation logic on every blur event if toggled as true. | No |
+| **error**    | Boolean  |    `false`        | Forces the input error state. | No |
 | **disabled**    | Boolean  |    `false`        | Determines if the input field should prevent the user interacting with it. | No |
 | **inputClasses**    | String  |      | Adds class names to the input field. | No |
 | **setRef**    | Function  |      | Sets the ref to the input. | No |

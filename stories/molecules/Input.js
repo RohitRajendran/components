@@ -7,7 +7,7 @@ import {
   CurrencyMask,
   PercentageWithDecimalMaskAllowNegative,
 } from '../../stories/util';
-import InputReadMe from '../../components/Input/README.md';
+import InputReadme from '../../components/Input/README.md';
 import Input from '../../components/Input';
 import {State, Store} from '@sambego/storybook-state';
 
@@ -19,7 +19,7 @@ const stories = storiesOf('Molecules/Input', module);
 
 stories.addDecorator(withKnobs).add(
   'default',
-  withReadme(InputReadMe, () => (
+  withReadme(InputReadme, () => (
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
@@ -40,6 +40,7 @@ stories.addDecorator(withKnobs).add(
             step={number('step')}
             validationErrorMsg={text('validationErrorMsg')}
             validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
             onChange={(event) => store.set({value: event.target.value})}
@@ -52,7 +53,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'currency',
-  withReadme(InputReadMe, () => (
+  withReadme(InputReadme, () => (
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
@@ -73,6 +74,7 @@ stories.addDecorator(withKnobs).add(
             step={number('step')}
             validationErrorMsg={text('validationErrorMsg')}
             validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
             mask={CurrencyMask}
@@ -86,7 +88,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'percent',
-  withReadme(InputReadMe, () => (
+  withReadme(InputReadme, () => (
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
@@ -107,6 +109,7 @@ stories.addDecorator(withKnobs).add(
             step={number('step')}
             validationErrorMsg={text('validationErrorMsg')}
             validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
             onChange={(event) => store.set({value: event.target.value})}
@@ -120,7 +123,7 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'date',
-  withReadme(InputReadMe, () => (
+  withReadme(InputReadme, () => (
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
@@ -141,6 +144,7 @@ stories.addDecorator(withKnobs).add(
             step={number('step')}
             validationErrorMsg={text('validationErrorMsg')}
             validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
             onChange={(event) => store.set({value: event.target.value})}
@@ -153,8 +157,42 @@ stories.addDecorator(withKnobs).add(
 );
 
 stories.addDecorator(withKnobs).add(
+  'error',
+  withReadme(InputReadme, () => (
+    <div className="row">
+      <div className="col-xs-12">
+        <State store={store}>
+          <Input
+            label={(text('label'), 'Address')}
+            append={text('append')}
+            prepend={text('prepend')}
+            name={text('name', 'disabled input')}
+            description={text('description')}
+            type={text('type')}
+            placeholder={text('placeholder', '1660 L Street')}
+            value={store.get('value') || '1660 L Street'}
+            required={boolean('required')}
+            pattern={text('pattern')}
+            maxLength={number('maxLength')}
+            min={number('min')}
+            max={number('max')}
+            step={number('step')}
+            validationErrorMsg={text('validationErrorMsg', 'Not a valid input')}
+            validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', true)}
+            disabled={boolean('disabled', false)}
+            inputClasses={text('inputClasses')}
+            onChange={(event) => store.set({value: event.target.value})}
+          />
+        </State>
+      </div>
+    </div>
+  ))
+);
+
+stories.addDecorator(withKnobs).add(
   'disabled',
-  withReadme(InputReadMe, () => (
+  withReadme(InputReadme, () => (
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
@@ -175,6 +213,7 @@ stories.addDecorator(withKnobs).add(
             step={number('step')}
             validationErrorMsg={text('validationErrorMsg')}
             validateOnBlur={boolean('validateOnBlur')}
+            error={boolean('error', false)}
             disabled={boolean('disabled', true)}
             inputClasses={text('inputClasses')}
             onChange={(event) => store.set({value: event.target.value})}

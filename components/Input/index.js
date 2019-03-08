@@ -60,6 +60,7 @@ class Input extends Component {
       append,
       prepend,
       description,
+      error,
       label,
       name,
       type,
@@ -132,7 +133,7 @@ class Input extends Component {
               }`
             : ''
         } ${this.state.isActive ? 'focus' : ''} ${
-          showInvalidity ? 'error' : ''
+          showInvalidity || error ? 'error' : ''
         }`}
         data-value={value}
       >
@@ -170,9 +171,9 @@ class Input extends Component {
           {...attrs}
         />
         <label>{label}</label>
-        {description && !showInvalidity ? (
+        {description && (!showInvalidity || !error) ? (
           <div className="description">{description}</div>
-        ) : description && showInvalidity ? (
+        ) : description && (showInvalidity || error) ? (
           <div className="validation-error">
             {validationErrorMsg || 'Valid'}
           </div>
@@ -234,6 +235,7 @@ Input.propTypes = {
   setRef: PropTypes.func,
   hideValidity: PropTypes.func,
   isValid: PropTypes.func,
+  error: PropTypes.bool,
 };
 
 export default Input;
