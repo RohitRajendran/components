@@ -78,4 +78,7 @@ for (const permutation of permutations) {
   );
 }
 
-stories.add('disabled', () => <Button disabled>Testing</Button>);
+stories.add(
+  'disabled',
+  withReadme(ButtonReadme, () => <Button disabled>Testing</Button>)
+);
