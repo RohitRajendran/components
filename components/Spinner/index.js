@@ -8,7 +8,7 @@ import detectIe from '../DetectIe';
  * @returns {*} - JSX representation of the Spinner component.
  */
 const Spinner = (props) => {
-  const {width, height, fill, style, isIe} = props;
+  const {width, height, fill, isIe} = props;
   if (isIe) {
     return (
       <svg
@@ -17,7 +17,6 @@ const Spinner = (props) => {
         height={height}
         viewBox={`0 0 100 100`}
         preserveAspectRatio="xMidYMid"
-        style={style}
       >
         <rect x="0" y="0" width="100" height="100" fill="none" />
         <rect
@@ -119,7 +118,6 @@ const Spinner = (props) => {
       height={height}
       viewBox={`0 0 100 100`}
       preserveAspectRatio="xMidYMid"
-      style={style}
     >
       <rect x="0" y="0" width="100" height="100" fill="none" />
       <rect
@@ -282,7 +280,6 @@ Spinner.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   fill: PropTypes.string,
-  style: PropTypes.object,
   isIe: PropTypes.bool,
 };
 

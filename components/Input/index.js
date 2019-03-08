@@ -223,7 +223,12 @@ Input.propTypes = {
   required: PropTypes.bool,
   pattern: PropTypes.string,
   maxLength: PropTypes.number,
-  mask: PropTypes.object,
+  mask: PropTypes.shape({
+    mask: PropTypes.func.isRequired,
+    regex: PropTypes.string.isRequired,
+    pipe: PropTypes.func,
+    type: PropTypes.string,
+  }),
   onChange: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
