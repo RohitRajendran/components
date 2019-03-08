@@ -1,12 +1,13 @@
 import test from 'tape';
-import {detectBrowser} from '../../components/DetectIe';
+import {detectInternetExplorer, detectIOS} from '../../components/DetectBrowser';
+import { platform } from 'os';
 
-test('detectIe - Should return a string if the userAgent matches the param', (t) => {
+test('detectInternetExplorer - Should return a string if the userAgent matches the param', (t) => {
   t.plan(8);
 
   // No UA
   t.false(
-    detectBrowser()
+    detectInternetExplorer()
   );
 
   // Internet Explorer
@@ -15,7 +16,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
   });
 
   t.true(
-    detectBrowser(),
+    detectInternetExplorer(),
   );
 
   navigator.__defineGetter__('userAgent', () => {
@@ -23,7 +24,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
   });
 
   t.true(
-    detectBrowser(),
+    detectInternetExplorer(),
   );
 
   navigator.__defineGetter__('userAgent', () => {
@@ -31,7 +32,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
   });
 
   t.true(
-    detectBrowser(),
+    detectInternetExplorer(),
   );
 
   // Edge
@@ -40,7 +41,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
   });
 
   t.true(
-    detectBrowser(),
+    detectInternetExplorer(),
   );
 
   // Chrome
@@ -49,7 +50,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
   });
 
   t.false(
-    detectBrowser(),
+    detectInternetExplorer(),
   );
 
     // Firefox
@@ -58,7 +59,7 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
     });
   
     t.false(
-      detectBrowser(),
+      detectInternetExplorer(),
     );
 
   
@@ -68,6 +69,15 @@ test('detectIe - Should return a string if the userAgent matches the param', (t)
     });
   
     t.false(
-      detectBrowser(),
+      detectInternetExplorer(),
     );
+});
+
+
+test('detectIOS - Should return true or false if the user is on iOS', (t) => {
+  t.false(
+    detectIOS()
+  );
+
+  t.end();
 });
