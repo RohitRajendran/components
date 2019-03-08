@@ -2,10 +2,6 @@
 DOCS_BUCKET=docs.unitedincome.team
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-# Installs awscli
-apt-get update && \
-apt-get install awscli
-
 #Parse any options passed in
 while [[ $# -gt 1 ]]
 do
