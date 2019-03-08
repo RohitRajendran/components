@@ -77,7 +77,7 @@ jobs:
           name: Visual Regression Testing
           command: |
             if [[ -n ${CIRCLE_PR_NUMBER} ]]
-            then
+            thenå
               curl -L "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64" \
                 -o jq
               chmod +x jq
@@ -85,7 +85,7 @@ jobs:
               target_branch=$(
                 curl "$url" | ./jq '.base.ref' | tr -d '"'
               )
-              if [ "${target_branch}" == "master" ] then
+              if [ "${target_branch}" == "master" ]; then
                 yarn snapshot
               fi
             fi
