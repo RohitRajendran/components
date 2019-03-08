@@ -24,7 +24,6 @@ The following component props are valid.
 | **append**             | String   |         | A string or symbol to append to the end of the input. For example `%`.                  | No       |
 | **prepend**            | String   |         | A string or symbol to pre-pend to the start of the input. For example `$`.              | No       |
 | **label**              | String   |         | The label representing the input field.                                                 | Yes      |
-| **label**              | String   |         | The label representing the input field.                                                 | Yes      |
 | **name**               | String   |         | The [name of the input field](https://www.w3schools.com/tags/att_input_name.asp).       | Yes      |
 | **description**        | String   |         | The description of the input field. Displayed separately to the label.                  | No       |
 | **type**               | String   | `text`  | [The type of input field](https://www.w3schools.com/tags/att_input_type.asp) to render. | Yes      |
