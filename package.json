@@ -39,7 +39,7 @@
     "@sambego/storybook-state": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/react": "*",
-    "@percy-io/percy-storybook": "^2.1.0",
+    "@percy-io/percy-storybook": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
