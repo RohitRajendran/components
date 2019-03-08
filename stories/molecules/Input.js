@@ -12,7 +12,11 @@ import Input from '../../components/Input';
 import {State, Store} from '@sambego/storybook-state';
 
 const store = new Store({
-  input: '',
+  default: '',
+  currency: '',
+  percent: '',
+  date: '',
+  error: '',
 });
 
 const stories = storiesOf('Molecules/Input', module);
@@ -31,7 +35,7 @@ stories.addDecorator(withKnobs).add(
             description={text('description', 'This is where you live.')}
             type={text('type', 'text')}
             placeholder={text('placeholder', '1660 L Street')}
-            value={store.get('value')}
+            value={store.get('default')}
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -43,7 +47,7 @@ stories.addDecorator(withKnobs).add(
             error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
-            onChange={(event) => store.set({value: event.target.value})}
+            onChange={(event) => store.set({default: event.target.value})}
           />
         </State>
       </div>
@@ -65,7 +69,7 @@ stories.addDecorator(withKnobs).add(
             description={text('description')}
             type={text('type', 'text')}
             placeholder={(text('placeholder'), '0')}
-            value={store.get('value')}
+            value={store.get('currency')}
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -78,7 +82,7 @@ stories.addDecorator(withKnobs).add(
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
             mask={CurrencyMask}
-            onChange={(event) => store.set({value: event.target.value})}
+            onChange={(event) => store.set({currency: event.target.value})}
           />
         </State>
       </div>
@@ -100,7 +104,7 @@ stories.addDecorator(withKnobs).add(
             description={text('description')}
             type={text('type', 'text')}
             placeholder={text('placeholder', '0%')}
-            value={store.get('value')}
+            value={store.get('percent')}
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -112,7 +116,7 @@ stories.addDecorator(withKnobs).add(
             error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
-            onChange={(event) => store.set({value: event.target.value})}
+            onChange={(event) => store.set({percent: event.target.value})}
             mask={PercentageWithDecimalMaskAllowNegative}
           />
         </State>
@@ -135,7 +139,7 @@ stories.addDecorator(withKnobs).add(
             description={text('description')}
             type={text('type', 'text')}
             placeholder={text('placeholder', 'MM/DD/YYYY')}
-            value={store.get('value')}
+            value={store.get('date')}
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -147,7 +151,7 @@ stories.addDecorator(withKnobs).add(
             error={boolean('error', false)}
             disabled={boolean('disabled')}
             inputClasses={text('inputClasses')}
-            onChange={(event) => store.set({value: event.target.value})}
+            onChange={(event) => store.set({date: event.target.value})}
             mask={DateMask}
           />
         </State>
@@ -170,7 +174,7 @@ stories.addDecorator(withKnobs).add(
             description={text('description')}
             type={text('type')}
             placeholder={text('placeholder', '1660 L Street')}
-            value={store.get('value') || '1660 L Street'}
+            value={store.get('error') || '1660 L Street'}
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -182,7 +186,7 @@ stories.addDecorator(withKnobs).add(
             error={boolean('error', true)}
             disabled={boolean('disabled', false)}
             inputClasses={text('inputClasses')}
-            onChange={(event) => store.set({value: event.target.value})}
+            onChange={(event) => store.set({error: event.target.value})}
           />
         </State>
       </div>
@@ -197,14 +201,14 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Percent')}
+            label={(text('label'), 'Address')}
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'disabled input')}
             description={text('description')}
             type={text('type')}
             placeholder={text('placeholder', '0%')}
-            value={store.get('value')}
+            value="1660 L Street"
             required={boolean('required')}
             pattern={text('pattern')}
             maxLength={number('maxLength')}
@@ -216,8 +220,6 @@ stories.addDecorator(withKnobs).add(
             error={boolean('error', false)}
             disabled={boolean('disabled', true)}
             inputClasses={text('inputClasses')}
-            onChange={(event) => store.set({value: event.target.value})}
-            mask={PercentageWithDecimalMaskAllowNegative}
           />
         </State>
       </div>
