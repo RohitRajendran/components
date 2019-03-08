@@ -1,8 +1,10 @@
-# UI Component Library
+# United Income Component Library 💰📘
+
+[![Master Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](http://docs.unitedincome.team/components/master/?selectedKind=Atoms%2FButton&selectedStory=primary%20light&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs) [![Develop Storybook](https://img.shields.io/badge/view-develop-blue.svg)](http://docs.unitedincome.team/components/develop/?selectedKind=Atoms%2FButton&selectedStory=primary%20light&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs)  [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components)
 
 This library aims to standardize the implementation and appearance of React components throughout United Income's properties. This has a series of exportable components that can be reused. It also utilizes Storybook to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
-## Usage
+## Getting Started 🚀
 
 ### Within an application
 
@@ -36,7 +38,7 @@ Individually, you will find those at `@unitedincome/components/dist/Button.css`.
 
 To begin Storybook, just run `yarn start`. This will open a new window to Storybook.
 
-## Development
+## Development 🔧
 
 ### Best Practices
 
