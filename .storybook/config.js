@@ -1,4 +1,5 @@
 import { configure, getStorybook, setAddon } from '@storybook/react';
+import createPercyAddon from '@percy-io/percy-storybook';
 
 const req = require.context('../stories', true, /\.js$/);
 
@@ -7,6 +8,6 @@ function loadStories() {
 }
 
 const { percyAddon, serializeStories } = createPercyAddon();
-setAddon(percyAddon);
+setAddon(percyAddon); // Initializes the Percy addon.
 configure(loadStories, module);
-serializeStories(getStorybook);
+serializeStories(getStorybook); // Serializes the stories so Percy can access them.

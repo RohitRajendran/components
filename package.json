@@ -56,7 +56,6 @@
     "eslint-plugin-react": "*",
     "faucet": "*",
     "ignore-styles": "*",
-    "jest": "*",
     "jsdom": "*",
     "jsdom-global": "*",
     "mini-css-extract-plugin": "*",
