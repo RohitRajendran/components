@@ -2,11 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: unitedincome/std:latest
+        auth:
+          username: unitedincome
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-2-{{ checksum "yarn.lock" }}
+          key: dependency-cache-3-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -16,7 +19,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-2-{{ checksum "yarn.lock" }}
+          key: dependency-cache-3-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
@@ -68,11 +71,4 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "develop" ]; then
               yarn publishStorybook
-            fi
-
-      - run:
-          name: Visual Regression Testing
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              yarn snapshot
             fi
