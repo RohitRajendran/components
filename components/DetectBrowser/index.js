@@ -28,11 +28,6 @@ export function detectInternetExplorer() {
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
 
-  const ios = ua.indexOf('/iPad|iPhone|iPod/');
-  if (ios > 0) {
-    return parseInt(ua.substring(ios + 5, ua.indexOf('.', ios)), 10);
-  }
-
   return 0;
 }
 /* eslint-enable */
