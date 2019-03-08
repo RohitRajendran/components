@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 /* eslint-disable */
-/** Detects if the browser is of a certain type.
+/** Detects if the user is using IE.
  * @returns {integer} - Returns an integer if the browser matches a certain type.
  */
-export function detectBrowser() {
+export function detectInternetExplorer() {
   if (typeof window === 'undefined') return 0;
 
   const ua = window.navigator.userAgent;
@@ -28,9 +28,21 @@ export function detectBrowser() {
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
 
+  const ios = ua.indexOf('/iPad|iPhone|iPod/');
+  if (ios > 0) {
+    return parseInt(ua.substring(ios + 5, ua.indexOf('.', ios)), 10);
+  }
+
   return 0;
 }
 /* eslint-enable */
+
+/** Detects if the user is using iOS.
+ * @returns {Boolean} - Returns true or false if a user is on iOS or not.
+ */
+export function detectIOS() {
+  return /^(iPhone|iPad|iPod)/.test(navigator.platform);
+}
 
 /**
  * Higher order component which detects if the user is currently using Internet Explorer or not.
@@ -38,12 +50,15 @@ export function detectBrowser() {
  * @param {*} WrappedComponent - JSX Component.
  * @returns {*} - Returns JSX.
  */
-export default function detectIe(WrappedComponent) {
+export default function detectBrowser(WrappedComponent) {
   return class DetectIe extends Component {
     /** @inheritdoc */
     render() {
-      const isIe = detectBrowser();
-      return <WrappedComponent isIe={Boolean(isIe)} {...this.props} />;
+      const isIe = detectInternetExplorer();
+      const isIos = detectIOS();
+      return (
+        <WrappedComponent isIe={Boolean(isIe)} isIos={isIos} {...this.props} />
+      );
     }
   };
 }

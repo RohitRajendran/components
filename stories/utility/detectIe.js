@@ -1,25 +1,27 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
-import detectIe from '../../components/DetectIe';
+import detectBrowser from '../../components/DetectBrowser';
 import {withReadme} from 'storybook-readme';
-import DetectIeReadme from '../../components/DetectIe/README.md';
+import DetectBrowserReadme from '../../components/DetectBrowser/README.md';
 
-const stories = storiesOf('Utility/detectIe', module);
+const stories = storiesOf('Utility/detectBrowser', module);
 
 const TestComponent = (props) => (
   <Fragment>
     <h1>Are you using Internet Explorer? {props.isIe ? 'Yes!' : 'No!'}</h1>
+    <h1>Are you using iOS? {props.isIos ? 'Yes!' : 'No'}</h1>
   </Fragment>
 );
 
 TestComponent.propTypes = {
   isIe: PropTypes.bool,
+  isIos: PropTypes.bool,
 };
 
-const WrappedTestComponent = detectIe(TestComponent);
+const WrappedTestComponent = detectBrowser(TestComponent);
 
 stories.add(
   'default',
-  withReadme(DetectIeReadme, () => <WrappedTestComponent />)
+  withReadme(DetectBrowserReadme, () => <WrappedTestComponent />)
 );
