@@ -2,7 +2,8 @@
   "sourceMap": false,
   "instrument": false,
   "include": [
-    "components"
+    "components",
+    "proptypes"
   ],
   "reporter": [
     "lcov"
