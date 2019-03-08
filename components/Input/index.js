@@ -243,4 +243,8 @@ Input.propTypes = {
   error: PropTypes.bool,
 };
 
+Input.defaultProps = {
+  type: 'text',
+};
+
 export default Input;

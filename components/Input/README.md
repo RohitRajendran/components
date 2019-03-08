@@ -27,7 +27,7 @@ The following component props are valid.
 | **label**              | String   |         | The label representing the input field.                                                 | Yes      |
 | **name**               | String   |         | The [name of the input field](https://www.w3schools.com/tags/att_input_name.asp).       | Yes      |
 | **description**        | String   |         | The description of the input field. Displayed separately to the label.                  | No       |
-| **type**               | String   |         | [The type of input field](https://www.w3schools.com/tags/att_input_type.asp) to render. | Yes      |
+| **type**               | String   |         | [The type of input field](https://www.w3schools.com/tags/att_input_type.asp) to render. | No       |
 | **placeholder**        | String   |         | The placeholder text of the input field. This is displayed if there's no value.         | No       |
 | **value**              | String   |         | The default value of the input field.                                                   | No       |
 | **required**           | Boolean  | `false` | Boolean representing if the input value is required in a form.                          | No       |
