@@ -10,7 +10,7 @@ const stories = storiesOf('Utility/detectBrowser', module);
 const TestComponent = (props) => (
   <Fragment>
     <h1>Are you using Internet Explorer? {props.isIe ? 'Yes!' : 'No!'}</h1>
-    <h1>Are you using iOS? {props.isIos ? 'Yes!' : 'No'}</h1>
+    <h1>Are you using iOS? {props.isIos ? 'Yes!' : 'No!'}</h1>
   </Fragment>
 );
 

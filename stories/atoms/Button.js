@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
-import ButtonReadme from '../../components/Input/README.md';
+import ButtonReadme from '../../components/Button/README.md';
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs';
 import Button from '../../components/Button';
 
