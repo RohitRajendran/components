@@ -2,10 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: unitedincome/std:latest
-        auth:
-          username: unitedincome
-          password: $DOCKERHUB_PASSWORD
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       - restore_cache:
@@ -75,7 +72,7 @@ jobs:
 
       - run:
           name: Visual Regression Testing
-          command: yarn snapshot
-          filters:
-            branches:
-              only: develop
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              yarn snapshot
+            fi
