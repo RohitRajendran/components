@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {disallowedIf} from 'airbnb-prop-types';
 import {colors} from '../../constants/colors';
-import detectIe from '../DetectIe';
+import detectBrowser from '../DetectBrowser';
 import _ from 'lodash';
 import * as d3Shape from 'd3-shape';
 import * as d3Scale from 'd3-scale';
@@ -318,5 +318,5 @@ ChanceOfSuccess.propTypes = {
   isIe: PropTypes.bool,
 };
 
-export default detectIe(ChanceOfSuccess);
+export default detectBrowser(ChanceOfSuccess);
 export {ChanceOfSuccess as PureChanceOfSuccess};

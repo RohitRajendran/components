@@ -80,6 +80,12 @@ module.exports = {
       amd: 'PropTypes',
       root: 'PropTypes',
     },
+    'react-text-mask': {
+      commonjs: 'react-text-mask',
+      commonjs2: 'react-text-mask',
+      amd: 'ReactTextMask',
+      root: 'ReactTextMask',
+    },
   },
   optimization: {
     minimizer: [

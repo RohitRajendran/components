@@ -1,7 +1,7 @@
 /** @module Spinner */
 import React from 'react';
 import PropTypes from 'prop-types';
-import detectIe from '../DetectIe';
+import detectBrowser from '../DetectBrowser';
 
 /** Displays the Spinner component.
  * @param {object} props - Component props.
@@ -282,7 +282,7 @@ Spinner.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   fill: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.objectOf(PropTypes.string),
   isIe: PropTypes.bool,
 };
 
@@ -292,5 +292,5 @@ Spinner.defaultProps = {
   fill: '#ffffff',
 };
 
-export default detectIe(Spinner);
+export default detectBrowser(Spinner);
 export {Spinner as PureSpinner};

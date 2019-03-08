@@ -16,7 +16,7 @@
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
-    "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write './components/**/*.scss' --parser=css"
+    "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write  './components/**/*.md' './stories/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
   },
   "homepage": "https://github.com/UnitedIncome/component",
   "repository": {
@@ -37,14 +37,15 @@
     "@babel/runtime": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/react": "*",
+    "@sambego/storybook-state": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
     "classnames": "*",
     "css-loader": "*",
+    "d3-interpolate": "*",
     "d3-scale": "*",
     "d3-shape": "*",
-    "d3-interpolate": "*",
     "enzyme": "*",
     "enzyme-adapter-react-16": "*",
     "eslint": "*",
@@ -66,12 +67,15 @@
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
+    "react-text-mask": "*",
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
+    "storybook-readme": "*",
     "style-loader": "*",
     "tap-xunit": "*",
     "tape": "*",
+    "text-mask-addons": "*",
     "uglifyjs-webpack-plugin": "*",
     "webpack": "*",
     "webpack-cli": "*"
@@ -82,6 +86,7 @@
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
-    "react-router-dom": "*"
+    "react-router-dom": "*",
+    "react-text-mask": "*"
   }
 }
