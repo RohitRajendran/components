@@ -144,7 +144,7 @@ workflows:
     jobs:
       - visual
       - deploy
-        - requires: visual
+      requires: visual
     filters:
       branches:
         only: develop
