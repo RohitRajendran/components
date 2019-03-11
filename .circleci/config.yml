@@ -139,15 +139,12 @@ workflows:
       branches:
         # The deploy job runs on both develop and master, except only the develop branch
         # runs the visual tests prior to deploying.
-        only:
-          - master
+        only: master
   visual-and-deploy:
     jobs:
       - visual
       - deploy
-        - requires:
-          - visual
+        - requires: visual
     filters:
       branches:
-        only:
-          - develop
+        only: develop
