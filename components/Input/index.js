@@ -161,7 +161,6 @@ class Input extends Component {
           type="text"
           className={inputClasses}
           aria-label={this.props.label}
-          onInput={this.updateValue}
           onFocus={this.toggleFocus}
           onBlur={this.toggleFocus}
           ref={(input) => {
