@@ -49,22 +49,30 @@ test('Input - Creates error when currency has no onChange function', (t) => {
   t.plan(1);
   t.throws(() =>
     shallow(
-      <Input name="test" label="Amount" type="text" value="100,000" mask={CurrencyMask} />
+      <Input
+        name="test"
+        label="Amount"
+        type="text"
+        value="100,000"
+        mask={CurrencyMask}
+      />
     )
   );
 });
 
 test('Input - Renders an error message when the form is invalid', (t) => {
-  const component = mount(<Input
-    name="fancy_input"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    mask={DateMask}
-    isInvalid={() => true}
-    validationErrorMsg="This is not valid!"
-  />);
+  const component = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask={DateMask}
+      isInvalid={() => true}
+      validationErrorMsg="This is not valid!"
+    />
+  );
 
   t.equals(
     component.find('.validation-error').text(),
@@ -76,15 +84,17 @@ test('Input - Renders an error message when the form is invalid', (t) => {
 });
 
 test('Input - Shows a description field beneath the text if applicable', (t) => {
-  const component = mount(<Input
-    name="fancy_input"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    mask={DateMask}
-    description="This is the description"
-  />);
+  const component = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask={DateMask}
+      description="This is the description"
+    />
+  );
 
   t.equals(
     component.find('.description').text(),
@@ -98,74 +108,63 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
 test('Input - Gets the deepest input element', (t) => {
   t.plan(3);
 
-  const component = mount(<Input
-    name="input_name"
-    append="%"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    mask={DateMask}
-    description="This is the description"
-  />);
+  const component = mount(
+    <Input
+      name="input_name"
+      append="%"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask={DateMask}
+      description="This is the description"
+    />
+  );
 
   const result = getDeepestInputElement(component.instance());
 
-  t.equals(
-    result.name,
-    'input_name',
-    'Should be the correct input name.'
-  );
+  t.equals(result.name, 'input_name', 'Should be the correct input name.');
 
-  t.equals(
-    result.type,
-    'text',
-    'Should be the correct input type.'
-  );
+  t.equals(result.type, 'text', 'Should be the correct input type.');
 
-
-  t.equals(
-    result.value,
-    '05/01/1980',
-    'Should be the correct input value.'
-  );
+  t.equals(result.value, '05/01/1980', 'Should be the correct input value.');
 });
 
 test('Input - Correctly toggles focus', (t) => {
-  const component = mount(<Input
-    name="input_name"
-    append="%"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    mask={DateMask}
-    description="This is the description"
-  />);
+  const component = mount(
+    <Input
+      name="input_name"
+      append="%"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask={DateMask}
+      description="This is the description"
+    />
+  );
 
   component.instance().toggleFocus();
 
-  t.equals(
-    component.state().isActive,
-    true,
-    'Should toggle the focus state.'
-  );
+  t.equals(component.state().isActive, true, 'Should toggle the focus state.');
 
   t.end();
 });
 
 test('Input - onBlur correctly fires both handlers', (t) => {
-  const component = mount(<Input
-    name="input_name"
-    append="%"
-    label="Amount"
-    type="text"
-    value="05/01/1980"
-    placeholder="some placeholder"
-    mask={DateMask}
-    description="This is the description"
-    validateOnBlur={true}
-  />);
+  const component = mount(
+    <Input
+      name="input_name"
+      append="%"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask={DateMask}
+      description="This is the description"
+      validateOnBlur={true}
+    />
+  );
 
   component.find('input').simulate('blur');
 

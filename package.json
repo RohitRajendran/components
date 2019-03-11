@@ -16,8 +16,8 @@
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
-    "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
-    "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write  './components/**/*.md' './stories/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
+    "lint": "eslint './stories/**/*.js' './components/**/*.js' './tests/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
+    "format": "prettier --write './components/**/*.js' './stories/**/*.js' './tests/**/*.js' && prettier --write  './components/**/*.md' './stories/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
   },
   "homepage": "https://github.com/UnitedIncome/component",
   "repository": {
