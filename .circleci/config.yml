@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -19,7 +19,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
@@ -53,7 +53,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-node-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -63,7 +63,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-node-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
@@ -91,7 +91,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -101,7 +101,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-4-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
