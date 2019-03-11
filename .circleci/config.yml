@@ -1,6 +1,5 @@
 version: 2
 jobs:
-
   test:
     docker:
       - image: unitedincome/std:latest
@@ -81,7 +80,6 @@ jobs:
             else
               yarn snapshot
             fi
-
 
   deploy:
     docker:
