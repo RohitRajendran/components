@@ -28,7 +28,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Address')}
+            label={text('label', 'Address')}
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'default input')}
@@ -62,7 +62,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Amount')}
+            label={text('label', 'Amount')}
             append={text('append')}
             prepend={text('prepend', '$')}
             name={text('name', 'currency input')}
@@ -97,7 +97,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Increase')}
+            label={text('label', 'Increase')}
             append={text('append', '%')}
             prepend={text('prepend')}
             name={text('name', 'percent input')}
@@ -132,7 +132,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Date')}
+            label={text('label', 'Date')}
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'date input')}
@@ -167,7 +167,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Address')}
+            label={text('label', 'Address')}
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'disabled input')}
@@ -201,7 +201,7 @@ stories.addDecorator(withKnobs).add(
       <div className="col-xs-12">
         <State store={store}>
           <Input
-            label={(text('label'), 'Address')}
+            label={text('label', 'Address')}
             append={text('append')}
             prepend={text('prepend')}
             name={text('name', 'disabled input')}
