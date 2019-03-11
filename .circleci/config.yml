@@ -74,7 +74,6 @@ jobs:
             if [[ -z $CI_PULL_REQUEST  ]]; then
               echo "Skipping visual testing as this is not a pull request."
             else
-              echo $CI_PULL_REQUEST
               yarn build
             fi
 
