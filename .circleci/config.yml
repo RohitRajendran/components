@@ -70,12 +70,7 @@ jobs:
 
       - run:
           name: Build package
-          command: |
-            if [[ -z $CI_PULL_REQUEST  ]]; then
-              echo "Skipping visual testing as this is not a pull request."
-            else
-              yarn build
-            fi
+          command: yarn build
 
       - run:
           name: Run Visual Regression Tests
