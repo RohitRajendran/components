@@ -143,8 +143,8 @@ workflows:
   visual-and-deploy:
     jobs:
       - visual
-      - deploy
-      requires: visual
+      - deploy:
+        requires: visual
     filters:
       branches:
         only: develop
