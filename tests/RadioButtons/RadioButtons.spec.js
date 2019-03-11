@@ -1,6 +1,7 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
+import {stub} from 'sinon';
 import RadioButtons from '../../components/RadioButtons';
 
 test('RadioButtons - Should be able to render a basic question.', (t) => {
@@ -116,6 +117,39 @@ test('RadioButtons - Followup question should be hidden if the parent question i
   );
 
   t.false(component.find('.followup-question').length);
+
+  t.end();
+});
+
+test('RadioButtons - onChange should pass back the correct value', (t) => {
+  const props = {
+    name: 'yesNo',
+    options: [
+      {
+        label: 'Yes',
+        value: 'yes',
+      },
+      {
+        label: 'No',
+        value: 'no',
+      },
+    ],
+    value: 'no',
+    onChange: stub(),
+  };
+
+  const component = mount(<RadioButtons {...props} />);
+
+  component
+    .find('input')
+    .at(0)
+    .prop('onChange')();
+
+  t.equals(
+    props.onChange.args[0][0],
+    'yes',
+    'Should fire the onChange handler and pass back the value of the first item'
+  );
 
   t.end();
 });

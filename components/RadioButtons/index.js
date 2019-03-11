@@ -12,8 +12,13 @@ const RadioButtons = ({
   required,
   value,
   onChange,
+  className,
 }) => (
-  <div className={`mcgonagall-radio-button-container ${table ? 'table' : ''}`}>
+  <div
+    className={`mcgonagall-radio-button-container ${table ? 'table' : ''} ${
+      className ? className : ''
+    }`}
+  >
     {options.map((option) => (
       <div className="mcgonagall-radio-button" key={option.value}>
         <label
@@ -48,6 +53,7 @@ const RadioButtons = ({
 
 RadioButtons.propTypes = {
   name: PropTypes.string.isRequired,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   table: PropTypes.bool,
   options: PropTypes.arrayOf(
