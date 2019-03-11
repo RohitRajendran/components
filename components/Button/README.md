@@ -25,3 +25,4 @@ The following component props are valid.
 | **onClick**   | Function |         | The handler to fire when the button is clicked.                                                          | No       |
 | **to**        | String   |         | The URL that the user should be directed to when the button is clicked. Used primarily for link buttons. | No       |
 | **children**  | Object   |         | HTML element that should appear within the button.                                                       | Yes      |
+| **isLoading** | Boolean  | `false` | Show loading spinner instead of content                                                                  | No       |

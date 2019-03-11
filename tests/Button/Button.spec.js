@@ -81,3 +81,43 @@ test('Button - variant', (t) => {
     'should not have a variant class'
   );
 });
+
+test('Button - loading', (t) => {
+  t.plan(3);
+
+  const loadingPrimary = mount(
+    <Button variant="primary" isLoading>
+      Hello
+    </Button>
+  );
+
+  t.equals(
+    loadingPrimary.find('Spinner').prop('fill'),
+    '#ffffff',
+    'Shows white spinner'
+  );
+
+  const loadingSecondaryDark = mount(
+    <Button variant="secondary" dark isLoading>
+      Hello
+    </Button>
+  );
+
+  t.equals(
+    loadingSecondaryDark.find('Spinner').prop('fill'),
+    '#0b0037',
+    'Shows colored spinner'
+  );
+
+  const loadingTertiaryLight = mount(
+    <Button variant="tertiary" light isLoading>
+      Hello
+    </Button>
+  );
+
+  t.equals(
+    loadingTertiaryLight.find('Spinner').prop('fill'),
+    '#4d00ba',
+    'Shows colored spinner'
+  );
+});

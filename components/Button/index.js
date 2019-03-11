@@ -6,17 +6,19 @@ import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 
 import './style.scss';
+import Spinner from '../Spinner';
 
 const Button = ({
-  className,
   children,
-  variant,
-  type,
+  className,
   dark,
-  light,
   disabled,
-  to,
+  isLoading,
+  light,
   onClick,
+  to,
+  type,
+  variant,
   ...props
 }) => {
   const btnClass = classNames(
@@ -25,6 +27,7 @@ const Button = ({
       [`btn-${variant}`]: variant,
       'on-light': light,
       'on-dark': dark,
+      'has-spinner': isLoading,
     },
     className
   );
@@ -41,6 +44,13 @@ const Button = ({
     );
   }
 
+  const spinnerColor =
+    variant === 'secondary' && dark
+      ? '#0b0037'
+      : variant === 'tertiary' && light
+      ? '#4d00ba'
+      : '#ffffff';
+
   return (
     <button
       type={type}
@@ -49,21 +59,22 @@ const Button = ({
       disabled={disabled}
       {...props}
     >
-      {children}
+      {isLoading ? <Spinner fill={spinnerColor} /> : children}
     </button>
   );
 };
 
 Button.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'link']),
+  className: PropTypes.string,
   dark: PropTypes.bool,
-  light: PropTypes.bool,
   disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  light: PropTypes.bool,
   onClick: and([PropTypes.func, exclusive(['to'])]),
   to: and([PropTypes.string, exclusive(['onClick'])]),
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'link']),
 };
 
 Button.defaultProps = {

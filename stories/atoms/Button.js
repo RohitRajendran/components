@@ -15,6 +15,14 @@ const permutations = [
     background: 'light',
   },
   {
+    variant: 'primary',
+    background: 'light',
+  },
+  {
+    variant: 'secondary',
+    background: 'light',
+  },
+  {
     variant: 'secondary',
     background: 'light',
   },
@@ -23,8 +31,20 @@ const permutations = [
     background: 'dark',
   },
   {
+    variant: 'secondary',
+    background: 'dark',
+  },
+  {
     variant: 'tertiary',
     background: 'light',
+  },
+  {
+    variant: 'tertiary',
+    background: 'light',
+  },
+  {
+    variant: 'tertiary',
+    background: 'dark',
   },
   {
     variant: 'tertiary',
@@ -56,6 +76,7 @@ const defaultProps = (
   ),
   text: text('Button Text', 'Become A Member'),
   disabled: boolean('Disabled', false),
+  isLoading: boolean('isLoading', false),
 });
 
 for (const permutation of permutations) {
@@ -70,6 +91,7 @@ for (const permutation of permutations) {
           light={props.background === 'light'}
           dark={props.background === 'dark'}
           disabled={props.disabled}
+          isLoading={props.isLoading}
         >
           {props.text}
         </Button>
