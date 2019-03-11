@@ -223,8 +223,8 @@ Input.propTypes = {
   pattern: PropTypes.string,
   maxLength: PropTypes.number,
   mask: PropTypes.shape({
-    mask: PropTypes.func.isRequired,
-    regex: PropTypes.string.isRequired,
+    mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+    regex: PropTypes.regexp,
     pipe: PropTypes.func,
     type: PropTypes.string,
   }),

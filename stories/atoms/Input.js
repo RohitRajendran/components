@@ -27,7 +27,7 @@ stories.addDecorator(withKnobs).add(
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
-          {(state, index) => [
+          {(state) => [
             <Input
               label={text('label', 'Address')}
               append={text('append')}
@@ -49,7 +49,7 @@ stories.addDecorator(withKnobs).add(
               disabled={boolean('disabled')}
               inputClasses={text('inputClasses')}
               onChange={(event) => store.set({default: event.target.value})}
-              key={index}
+              key="address"
             />,
           ]}
         </State>
@@ -64,7 +64,7 @@ stories.addDecorator(withKnobs).add(
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
-          {(state, index) => [
+          {(state) => [
             <Input
               label={text('label', 'Amount')}
               append={text('append')}
@@ -87,7 +87,7 @@ stories.addDecorator(withKnobs).add(
               inputClasses={text('inputClasses')}
               mask={CurrencyMask}
               onChange={(event) => store.set({currency: event.target.value})}
-              key={index}
+              key="amount"
             />,
           ]}
         </State>
@@ -102,7 +102,7 @@ stories.addDecorator(withKnobs).add(
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
-          {(state, index) => [
+          {(state) => [
             <Input
               label={text('label', 'Increase')}
               append={text('append', '%')}
@@ -125,7 +125,7 @@ stories.addDecorator(withKnobs).add(
               inputClasses={text('inputClasses')}
               onChange={(event) => store.set({percent: event.target.value})}
               mask={PercentageWithDecimalMaskAllowNegative}
-              key={index}
+              key="increase"
             />,
           ]}
         </State>
@@ -140,7 +140,7 @@ stories.addDecorator(withKnobs).add(
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
-          {(state, index) => [
+          {(state) => [
             <Input
               label={text('label', 'Date')}
               append={text('append')}
@@ -163,7 +163,7 @@ stories.addDecorator(withKnobs).add(
               inputClasses={text('inputClasses')}
               onChange={(event) => store.set({date: event.target.value})}
               mask={DateMask}
-              key={index}
+              key="date"
             />,
           ]}
         </State>
@@ -178,7 +178,7 @@ stories.addDecorator(withKnobs).add(
     <div className="row">
       <div className="col-xs-12">
         <State store={store}>
-          {(state, index) => [
+          {(state) => [
             <Input
               label={text('label', 'Address')}
               append={text('append')}
@@ -203,7 +203,7 @@ stories.addDecorator(withKnobs).add(
               disabled={boolean('disabled', false)}
               inputClasses={text('inputClasses')}
               onChange={(event) => store.set({error: event.target.value})}
-              key={index}
+              key="address"
             />,
           ]}
         </State>
