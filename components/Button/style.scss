@@ -157,6 +157,7 @@ a {
     padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
     &.on-dark {
+      background-color: transparent;
       border: 1px solid $white-four;
       color: $white-four;
       @include hoverColor($white-15, transparent);
@@ -165,7 +166,6 @@ a {
       }
     }
     &.on-light {
-      background-color: transparent;
       border: 1px solid $violet-blue;
       color: $violet-blue;
       @include hoverColor($midnight-10, transparent);
@@ -209,7 +209,7 @@ a {
     &.has-spinner {
       svg {
         margin-bottom: -0.5rem;
-        min-width: 12rem;
+        min-width: 8rem;
       }
     }
   }

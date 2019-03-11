@@ -1,5 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withReadme} from 'storybook-readme';
+import ButtonReadme from '../../components/Button/README.md';
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs';
 import Button from '../../components/Button';
 
@@ -13,6 +15,14 @@ const permutations = [
     background: 'light',
   },
   {
+    variant: 'primary',
+    background: 'light',
+  },
+  {
+    variant: 'secondary',
+    background: 'light',
+  },
+  {
     variant: 'secondary',
     background: 'light',
   },
@@ -21,8 +31,20 @@ const permutations = [
     background: 'dark',
   },
   {
+    variant: 'secondary',
+    background: 'dark',
+  },
+  {
     variant: 'tertiary',
     background: 'light',
+  },
+  {
+    variant: 'tertiary',
+    background: 'light',
+  },
+  {
+    variant: 'tertiary',
+    background: 'dark',
   },
   {
     variant: 'tertiary',
@@ -54,23 +76,31 @@ const defaultProps = (
   ),
   text: text('Button Text', 'Become A Member'),
   disabled: boolean('Disabled', false),
+  isLoading: boolean('isLoading', false),
 });
 
 for (const permutation of permutations) {
-  stories.add(`${permutation.variant} ${permutation.background}`, () => {
-    const props = defaultProps(permutation.variant, permutation.background);
+  stories.add(
+    `${permutation.variant} ${permutation.background}`,
+    withReadme(ButtonReadme, () => {
+      const props = defaultProps(permutation.variant, permutation.background);
 
-    return (
-      <Button
-        variant={props.variant}
-        light={props.background === 'light'}
-        dark={props.background === 'dark'}
-        disabled={props.disabled}
-      >
-        {props.text}
-      </Button>
-    );
-  });
+      return (
+        <Button
+          variant={props.variant}
+          light={props.background === 'light'}
+          dark={props.background === 'dark'}
+          disabled={props.disabled}
+          isLoading={props.isLoading}
+        >
+          {props.text}
+        </Button>
+      );
+    })
+  );
 }
 
-stories.add('disabled', () => <Button disabled>Testing</Button>);
+stories.add(
+  'disabled',
+  withReadme(ButtonReadme, () => <Button disabled>Testing</Button>)
+);

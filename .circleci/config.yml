@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: unitedincome/std:latest
         auth:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-1-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -19,7 +19,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-1-{{ checksum "yarn.lock" }}
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
@@ -46,6 +46,66 @@ jobs:
           path: ./reports
           destination: tests/
 
+  visual:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-node-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install Node dependencies
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+            yarn install
+
+      - save_cache:
+          key: dependency-cache-node-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ./node_modules
+
+      - run:
+          name: Build package
+          command: yarn build
+
+      - run:
+          name: Run Visual Regression Tests
+          command: |
+            if [[ -z $CI_PULL_REQUEST  ]]; then
+              echo "Skipping visual testing as this is not a pull request."
+            else
+              yarn snapshot
+            fi
+  
+  deploy:
+    docker:
+      - image: unitedincome/std:latest
+        auth:
+          username: unitedincome
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install Node dependencies
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+            yarn install
+
+      - save_cache:
+          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ./node_modules
+
       - run:
           name: Build package
           command: yarn build
@@ -68,7 +128,24 @@ jobs:
 
       - run:
           name: Publish Storybook
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              yarn publishStorybook
-            fi
+          command: yarn publishStorybook
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+  deploy:
+    jobs:
+      - visual:
+          filters:
+            branches:
+              only: develop
+      - deploy:
+          filters:
+            branches:
+              # The deploy job runs on both develop and master, except only the develop branch
+              # runs the visual tests prior to deploying.
+              only: 
+                - master
+                - develop
