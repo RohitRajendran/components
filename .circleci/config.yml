@@ -75,11 +75,7 @@ jobs:
       - run:
           name: Run Visual Regression Tests
           command: |
-            if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
-              echo "Skipping visual testing as this is not a pull request."
-            else
-              yarn snapshot
-            fi
+            - if [[ ! -z $CI_PULL_REQUEST ]] ; then yarn snapshot ; fi
 
   deploy:
     docker:
