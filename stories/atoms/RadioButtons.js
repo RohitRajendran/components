@@ -3,7 +3,7 @@ import {storiesOf} from '@storybook/react';
 import RadioButtons from '../../components/RadioButtons';
 import {withKnobs, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import RadioButtonReadme from '../../components/RadioButton/README.md';
+import RadioButtonReadme from '../../components/RadioButtons/README.md';
 import Input from '../../components/Input';
 import {State, Store} from '@sambego/storybook-state';
 
