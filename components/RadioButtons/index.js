@@ -40,7 +40,7 @@ const RadioButtons = ({
           <span className="radio" />
           <span className="label-value">{option.label}</span>
 
-          {option.followup && option.value === value ? (
+          {option.followup && option.value === value && (<div className="followup">{option.followup}</div>)}
             <div className="followup">{option.followup}</div>
           ) : null}
         </label>
