@@ -150,6 +150,7 @@ test('SelectButtons - onChange should pass back the correct value', (t) => {
     .prop('onChange')({
     target: {
       value: 'yesNo',
+      checked: true,
     },
     stopPropagation: stub(),
   });
