@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const entries = glob
-  .sync('./components/*/index.js')
+  .sync('./components/**/*.js', {ignore: './components/**/*.spec.js'})
   .reduce((allEntries, entry) => {
     return Object.assign(allEntries, {[entry.split('/')[2]]: entry});
   }, {});
