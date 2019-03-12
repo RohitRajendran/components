@@ -1,12 +1,12 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
 
-.mcgonagall-radio-button-container {
+.mcgonagall-checkbox-button-container {
   &.table {
     border: 1px solid $white-seven;
     margin: 1.4rem 0;
 
-    .mcgonagall-radio-button {
+    .mcgonagall-checkbox-button {
       padding: 1.4rem;
       border-bottom: 1px solid $white-seven;
       margin: 0;
@@ -19,7 +19,7 @@ $button-padding: 1.6rem;
   }
 }
 
-.mcgonagall-radio-button {
+.mcgonagall-checkbox-button {
   @include source-sans-pro(1.6rem);
   display: flex;
   justify-content: space-between;
@@ -28,17 +28,17 @@ $button-padding: 1.6rem;
     margin-bottom: 2.8rem;
   }
 
-  .radio-input {
+  .checkbox-input {
     position: absolute;
     opacity: 0;
     left: 0;
 
-    &:focus + .option-box-radio {
+    &:focus + .option-box-check {
       border: 1px solid $violet-blue;
     }
   }
 
-  .radio-label {
+  .checkbox-label {
     display: block;
     color: $slate;
     user-select: none;
@@ -48,12 +48,11 @@ $button-padding: 1.6rem;
     width: 100%;
     cursor: pointer;
 
-    // Radio Button disabled state.
     &.disabled {
       opacity: 0.6;
       cursor: default;
 
-      .radio {
+      .checkbox {
         opacity: 0.6;
         cursor: default;
       }

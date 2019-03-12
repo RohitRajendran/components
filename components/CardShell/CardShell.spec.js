@@ -4,6 +4,7 @@ import {mount} from 'enzyme';
 import CardShell from './CardShell';
 import Input from '../Input/Input';
 import RadioButtons from '../RadioButtons/RadioButtons';
+import SelectButtons from '../SelectButtons/SelectButtons';
 import {stub} from 'sinon';
 import {DateMask} from '../../stories/util';
 
@@ -119,7 +120,7 @@ test('CardShell - validates different input constraints', (t) => {
     selectedFollowup: '3',
   };
 
-  const numInputs = 8;
+  const numInputs = 10;
 
   const getInput = (values, index) => {
     const inputs = [
@@ -211,6 +212,81 @@ test('CardShell - validates different input constraints', (t) => {
         required
       />,
       <RadioButtons
+        name="bank"
+        table
+        options={[
+          {
+            label: 'Bank of America Checking …3456',
+            value: '1',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Bank of America Money Market …9364',
+            value: '2',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Capital One Savings …8932',
+            value: '3',
+            secondaryLabel: '$1,234,567.89',
+            followup: (
+              <span>
+                <Input
+                  key={6}
+                  name="date"
+                  type="text"
+                  value={values.date}
+                  float
+                  onChange={stub()}
+                  mask={DateMask}
+                  label="test"
+                  required
+                />{' '}
+              </span>
+            ),
+          },
+          {
+            label: 'Wells Fargo Checking …9867',
+            value: '4',
+            secondaryLabel: '$1,234,567.89',
+          },
+        ]}
+        onChange={stub()}
+        value={values.selectedFollowup}
+        key="bank"
+        required
+      />,
+      <SelectButtons
+        name="bank"
+        table
+        options={[
+          {
+            label: 'Bank of America Checking …3456',
+            value: '1',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Bank of America Money Market …9364',
+            value: '2',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Capital One Savings …8932',
+            value: '3',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Wells Fargo Checking …9867',
+            value: '4',
+            secondaryLabel: '$1,234,567.89',
+          },
+        ]}
+        onChange={stub()}
+        value={values.selectedNormal}
+        key="bank"
+        required
+      />,
+      <SelectButtons
         name="bank"
         table
         options={[

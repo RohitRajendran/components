@@ -1,11 +1,11 @@
-# RadioButtons Component
+# SelectButtons Component
 
-The RadioButton component renders a group of HTML radio buttons with a number of customization options.
+The SelectButtons component renders a group of HTML select buttons with a number of customization options.
 
 ## Example 🚀
 
 ```javascript
-<RadioButtons
+<SelectButtons
   name="bestCat"
   table={false}
   options={[
@@ -31,7 +31,7 @@ The RadioButton component renders a group of HTML radio buttons with a number of
       disabled: false,
     },
   ]}
-  onChange={(value) => store.set({selected: value})}
+  onChange={(name, value) => store.set({selected: value})}
   value={state.selected}
 />
 ```
@@ -58,6 +58,6 @@ The following component props are valid.
 | Prop               | Type   | Default | Description                                                          | Required |
 | ------------------ | ------ | ------- | -------------------------------------------------------------------- | -------- |
 | **label**          | String |         | The text that should appear next to the radio button.                | Yes      |
-| **value**          | String |         | The value of the radio button, for example `yes` or `no`.            | Yes      |
+| **value**          | String |         | The value of the radio button, for example `yes` or `no`.            | No       |
 | **secondaryLabel** | String |         | Displays a secondary label to the far right of the radio button.     | No       |
 | **followup**       | JSX    |         | Renders a followup input or message if the radio button is selected. | No       |

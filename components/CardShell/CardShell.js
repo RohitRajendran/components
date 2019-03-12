@@ -31,8 +31,6 @@ export const validateChildren = (children) => {
           );
         } else if (child.props.mask) {
           return child.props.mask.regex.test(child.props.value);
-        } else if (child.props.checked) {
-          return child.props.checked;
         }
         return Boolean(child.props.value);
       } else if (
