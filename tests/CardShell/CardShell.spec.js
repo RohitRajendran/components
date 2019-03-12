@@ -3,6 +3,7 @@ import test from 'tape';
 import {mount} from 'enzyme';
 import CardShell from '../../components/CardShell';
 import Input from '../../components/Input';
+import RadioButtons from '../../components/RadioButtons';
 import {stub} from 'sinon';
 import {DateMask} from '../../stories/util';
 
@@ -101,6 +102,8 @@ test('CardShell - validates different input constraints', (t) => {
     checkbox: false,
     multiselect: [],
     date: 'nope',
+    selectedNormal: '',
+    selectedFollowup: '',
   };
   const goodValues = {
     textValue: 'abcdef',
@@ -112,9 +115,11 @@ test('CardShell - validates different input constraints', (t) => {
     checkbox: true,
     multiselect: ['A'],
     date: '05/01/1980',
+    selectedNormal: '2',
+    selectedFollowup: '3',
   };
 
-  const numInputs = 6;
+  const numInputs = 8;
 
   const getInput = (values, index) => {
     const inputs = [
@@ -173,6 +178,81 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         mask={DateMask}
         label="test"
+        required
+      />,
+      <RadioButtons
+        name="bank"
+        table
+        options={[
+          {
+            label: 'Bank of America Checking …3456',
+            value: '1',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Bank of America Money Market …9364',
+            value: '2',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Capital One Savings …8932',
+            value: '3',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Wells Fargo Checking …9867',
+            value: '4',
+            secondaryLabel: '$1,234,567.89',
+          },
+        ]}
+        onChange={stub()}
+        value={values.selectedNormal}
+        key="bank"
+        required
+      />,
+      <RadioButtons
+        name="bank"
+        table
+        options={[
+          {
+            label: 'Bank of America Checking …3456',
+            value: '1',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Bank of America Money Market …9364',
+            value: '2',
+            secondaryLabel: '$1,234,567.89',
+          },
+          {
+            label: 'Capital One Savings …8932',
+            value: '3',
+            secondaryLabel: '$1,234,567.89',
+            followup: (
+              <span>
+                <Input
+                  key={6}
+                  name="date"
+                  type="text"
+                  value={values.date}
+                  float
+                  onChange={stub()}
+                  mask={DateMask}
+                  label="test"
+                  required
+                />{' '}
+              </span>
+            ),
+          },
+          {
+            label: 'Wells Fargo Checking …9867',
+            value: '4',
+            secondaryLabel: '$1,234,567.89',
+          },
+        ]}
+        onChange={stub()}
+        value={values.selectedFollowup}
+        key="bank"
         required
       />,
     ];

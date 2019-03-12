@@ -1,0 +1,104 @@
+$button-size: 1.6rem;
+$button-padding: 1.6rem;
+
+.mcgonagall-radio-button-container {
+  &.table {
+    border: 1px solid $white-seven;
+    margin: 1.4rem 0;
+
+    .mcgonagall-radio-button {
+      padding: 1.4rem;
+      border-bottom: 1px solid $white-seven;
+      margin: 0;
+      background-color: $white-four;
+
+      &:nth-of-type(2n) {
+        background-color: $white-three;
+      }
+    }
+  }
+}
+
+.mcgonagall-radio-button {
+  @include source-sans-pro(1.6rem);
+  display: flex;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 2.8rem;
+  }
+
+  .radio-input:checked ~ .radio {
+    background-color: $white-four;
+
+    &:after {
+      top: 0.15rem;
+      left: 0.15rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: $violet-blue;
+    }
+  }
+
+  .radio-input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+
+    &:checked ~ .radio:after {
+      display: block;
+    }
+  }
+
+  .radio-label {
+    display: block;
+    color: $slate;
+    user-select: none;
+    position: relative;
+    display: block;
+    padding-left: $button-size + $button-padding;
+    width: 100%;
+    cursor: pointer;
+
+    // Radio Button disabled state.
+    &.disabled {
+      opacity: 0.6;
+      cursor: default;
+
+      .radio {
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
+  }
+
+  .radio {
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    border: 1px solid $bluey-grey-two;
+    cursor: pointer;
+
+    &:focus {
+      border: 2px solid orange;
+    }
+
+    &:after {
+      content: ' ';
+      position: absolute;
+    }
+  }
+
+  .followup {
+    margin-top: 0.6rem;
+  }
+
+  .label-value-secondary {
+    color: $dark-blue;
+    font-weight: 800;
+  }
+}

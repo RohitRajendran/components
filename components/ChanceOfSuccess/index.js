@@ -1,3 +1,4 @@
+/** @module ChanceOfSuccess */
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {disallowedIf} from 'airbnb-prop-types';
