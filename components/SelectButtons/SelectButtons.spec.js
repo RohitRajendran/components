@@ -125,7 +125,7 @@ test('SelectButtons - Followup question should be hidden if the parent question 
   t.end();
 });
 
-test('SelectButtons - onChange should pass back the correct value', (t) => {
+test('SelectButtons - onChange should pass back the correct values.', (t) => {
   const props = {
     name: 'yesNo',
     options: [
@@ -138,7 +138,7 @@ test('SelectButtons - onChange should pass back the correct value', (t) => {
         value: 'no',
       },
     ],
-    value: 'no',
+    value: '',
     onChange: stub(),
   };
 
@@ -149,16 +149,32 @@ test('SelectButtons - onChange should pass back the correct value', (t) => {
     .at(0)
     .prop('onChange')({
     target: {
-      value: 'yesNo',
+      value: 'yes',
       checked: true,
     },
     stopPropagation: stub(),
   });
 
-  t.equals(
-    props.onChange.args[0][0],
-    'yesNo',
-    'Should fire the onChange handler and pass back the value of the first item'
+  t.deepEquals(
+    props.onChange.args[0],
+    ['yesNo', ['', 'yes']],
+    'Should add yes to the array.'
+  );
+
+  component
+    .find('input')
+    .at(0)
+    .prop('onChange')({
+    target: {
+      value: 'yes',
+    },
+    stopPropagation: stub(),
+  });
+
+  t.deepEquals(
+    props.onChange.args[1],
+    ['yesNo', ['']],
+    'Should remove yes from the array.'
   );
 
   t.end();
