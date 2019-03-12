@@ -28,26 +28,13 @@ $button-padding: 1.6rem;
     margin-bottom: 2.8rem;
   }
 
-  .radio-input:checked ~ .radio {
-    background-color: $white-four;
-
-    &:after {
-      top: 0.15rem;
-      left: 0.15rem;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background: $violet-blue;
-    }
-  }
-
   .radio-input {
     position: absolute;
     opacity: 0;
     left: 0;
 
-    &:checked ~ .radio:after {
-      display: block;
+    &:focus + .option-box-radio {
+      border: 1px solid $violet-blue;
     }
   }
 
@@ -70,22 +57,6 @@ $button-padding: 1.6rem;
         opacity: 0.6;
         cursor: default;
       }
-    }
-  }
-
-  .radio {
-    position: absolute;
-    left: 0;
-    top: 0.2rem;
-    height: 1.6rem;
-    width: 1.6rem;
-    border-radius: 50%;
-    border: 1px solid $bluey-grey-two;
-    cursor: pointer;
-
-    &:after {
-      content: ' ';
-      position: absolute;
     }
   }
 

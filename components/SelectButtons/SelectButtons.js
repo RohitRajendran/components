@@ -98,7 +98,7 @@ SelectButtons.propTypes = {
     })
   ),
   required: PropTypes.bool,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

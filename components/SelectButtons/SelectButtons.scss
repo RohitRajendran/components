@@ -28,28 +28,13 @@ $button-padding: 1.6rem;
     margin-bottom: 2.8rem;
   }
 
-  .checkbox-input:checked ~ .checkbox {
-    background: $violet-blue;
-    border-color: transparent;
-
-    &:after {
-      top: 0.1rem;
-      left: 0.4rem;
-      width: 0.4rem;
-      height: 0.8rem;
-      border: solid $white-four;
-      border-width: 0 0.2rem 0.2rem 0;
-      transform: rotate(40deg);
-    }
-  }
-
   .checkbox-input {
     position: absolute;
     opacity: 0;
     left: 0;
 
-    &:checked ~ .checkbox:after {
-      display: block;
+    &:focus + .option-box-check {
+      border: 1px solid $violet-blue;
     }
   }
 
@@ -71,21 +56,6 @@ $button-padding: 1.6rem;
         opacity: 0.6;
         cursor: default;
       }
-    }
-  }
-
-  .checkbox {
-    position: absolute;
-    left: 0;
-    top: 0.2rem;
-    height: 1.6rem;
-    width: 1.6rem;
-    border: 1px solid $bluey-grey-two;
-    cursor: pointer;
-
-    &:after {
-      content: ' ';
-      position: absolute;
     }
   }
 
