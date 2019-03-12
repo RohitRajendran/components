@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import OptionBox from '../OptionBox/OptionBox';
 
 import './RadioButtons.scss';
 
@@ -43,7 +44,11 @@ const RadioButtons = ({
               checked={option.value === value}
               onChange={() => onChange(option.value)}
             />
-            <span className="radio" />
+            <OptionBox
+              variant="radio"
+              checked={option.value === value}
+              disabled={disabled || option.disabled}
+            />
             <span className="label-value">{option.label}</span>
 
             {option.followup && option.value === value && (

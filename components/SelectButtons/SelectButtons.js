@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import OptionBox from '../OptionBox/OptionBox';
 
 import './SelectButtons.scss';
 
@@ -59,7 +60,11 @@ const SelectButtons = ({
               onChange={handleChange}
               required={required}
             />
-            <span className="checkbox" />
+            <OptionBox
+              variant="check"
+              checked={values.has(option.value)}
+              disabled={disabled || option.disabled}
+            />
             <span className="label-value">{option.label}</span>
 
             {option.followup && values.has(option.value) && (

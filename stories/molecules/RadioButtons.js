@@ -1,27 +1,27 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import SelectButtons from '../../components/SelectButtons/SelectButtons';
+import RadioButtons from '../../components/RadioButtons/RadioButtons';
 import {withKnobs, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SelectButtonReadme from '../../components/SelectButtons/SelectButtons.md';
-import {State, Store} from '@sambego/storybook-state';
+import RadioButtonReadme from '../../components/RadioButtons/RadioButtons.md';
 import Input from '../../components/Input/Input';
+import {State, Store} from '@sambego/storybook-state';
 
-const stories = storiesOf('Atoms/SelectButtons', module);
+const stories = storiesOf('Molecules/RadioButtons', module);
 
 const store = new Store({
-  yesNo: null,
-  followup: null,
-  bank: null,
+  yesNo: '',
+  followup: 'custom',
   input: '',
+  bank: '',
 });
 
 stories.addDecorator(withKnobs).add(
   'default',
-  withReadme(SelectButtonReadme, () => (
+  withReadme(RadioButtonReadme, () => (
     <State store={store}>
       {(state) => [
-        <SelectButtons
+        <RadioButtons
           name="yesNo"
           table={boolean('table', false)}
           options={[
@@ -39,7 +39,7 @@ stories.addDecorator(withKnobs).add(
               disabled: true,
             },
           ]}
-          onChange={(name, value) => store.set({yesNo: value})}
+          onChange={(value) => store.set({yesNo: value})}
           value={state.yesNo}
           key="yesNo"
         />,
@@ -50,10 +50,10 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'followup',
-  withReadme(SelectButtonReadme, () => (
+  withReadme(RadioButtonReadme, () => (
     <State store={store}>
       {(state) => [
-        <SelectButtons
+        <RadioButtons
           name="followup"
           table={boolean('table', false)}
           options={[
@@ -77,7 +77,7 @@ stories.addDecorator(withKnobs).add(
               ),
             },
           ]}
-          onChange={(name, value) => store.set({followup: value})}
+          onChange={(value) => store.set({followup: value})}
           value={state.followup}
           key="followup"
         />,
@@ -88,10 +88,10 @@ stories.addDecorator(withKnobs).add(
 
 stories.addDecorator(withKnobs).add(
   'table',
-  withReadme(SelectButtonReadme, () => (
+  withReadme(RadioButtonReadme, () => (
     <State store={store}>
       {(state) => [
-        <SelectButtons
+        <RadioButtons
           name="bank"
           table={boolean('table', true)}
           options={[
@@ -116,7 +116,7 @@ stories.addDecorator(withKnobs).add(
               secondaryLabel: '$1,234,567.89',
             },
           ]}
-          onChange={(name, value) => store.set({bank: value})}
+          onChange={(value) => store.set({bank: value})}
           value={state.bank}
           key="bank"
         />,
