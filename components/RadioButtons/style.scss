@@ -60,6 +60,17 @@ $button-padding: 1.6rem;
     padding-left: $button-size + $button-padding;
     width: 100%;
     cursor: pointer;
+
+    // Radio Button disabled state.
+    &.disabled {
+      opacity: 0.6;
+      cursor: default;
+
+      .radio {
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
   }
 
   .radio {

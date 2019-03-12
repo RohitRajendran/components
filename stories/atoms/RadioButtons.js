@@ -36,6 +36,7 @@ stories.addDecorator(withKnobs).add(
             {
               label: "I don't know",
               value: 'idk',
+              disabled: true,
             },
           ]}
           onChange={(value) => store.set({yesNo: value})}
