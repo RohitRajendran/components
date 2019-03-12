@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 import {withKnobs, text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SpinnerReadme from '../../components/Spinner/README.md';
+import SpinnerReadme from '../../components/Spinner/Spinner.md';
 
 const stories = storiesOf('Atoms/Spinner', module);
 

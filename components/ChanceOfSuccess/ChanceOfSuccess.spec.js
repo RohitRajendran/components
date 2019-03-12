@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 import PureChanceOfSuccess, {
   percentDescriptor,
   percentIsValid,
-} from '../../components/ChanceOfSuccess';
+} from './ChanceOfSuccess';
 
 test('ChanceOfSuccess - renders correctly ', (t) => {
   const props = {

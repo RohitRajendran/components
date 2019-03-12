@@ -2,8 +2,8 @@ import {boolean, text, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {withReadme} from 'storybook-readme';
-import CardShell from '../../components/CardShell/index';
-import CardShellReadme from '../../components/CardShell/README.md';
+import CardShell from '../../components/CardShell/CardShell';
+import CardShellReadme from '../../components/CardShell/CardShell.md';
 
 const stories = storiesOf('Molecules/CardShell', module);
 

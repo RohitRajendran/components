@@ -1,7 +1,7 @@
 /** @module Loader */
 import React from 'react';
 
-import './style.scss';
+import './Loader.scss';
 
 const Loader = () => (
   <div className="container ui-app-container ui-footer-spacing">

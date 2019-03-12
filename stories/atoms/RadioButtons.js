@@ -1,10 +1,10 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import RadioButtons from '../../components/RadioButtons';
+import RadioButtons from '../../components/RadioButtons/RadioButtons';
 import {withKnobs, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import RadioButtonReadme from '../../components/RadioButtons/README.md';
-import Input from '../../components/Input';
+import RadioButtonReadme from '../../components/RadioButtons/RadioButtons.md';
+import Input from '../../components/Input/Input';
 import {State, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Atoms/RadioButtons', module);

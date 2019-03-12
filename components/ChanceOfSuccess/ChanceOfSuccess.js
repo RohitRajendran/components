@@ -3,13 +3,13 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {disallowedIf} from 'airbnb-prop-types';
 import {colors} from '../../constants/colors';
-import detectBrowser from '../DetectBrowser';
+import detectBrowser from '../DetectBrowser/DetectBrowser';
 import _ from 'lodash';
 import * as d3Shape from 'd3-shape';
 import * as d3Scale from 'd3-scale';
 import * as d3Interpolate from 'd3-interpolate';
 
-import './style.scss';
+import './ChanceOfSuccess.scss';
 
 /** Accepts a percent and returns a string representing how high your chance of success is.
  * @param {integer} percent - The Chance of Success percent.

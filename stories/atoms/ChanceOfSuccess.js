@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import ChanceOfSuccess from '../../components/ChanceOfSuccess';
+import ChanceOfSuccess from '../../components/ChanceOfSuccess/ChanceOfSuccess';
 import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import ChanceOfSuccessReadme from '../../components/ChanceOfSuccess/README.md';
+import ChanceOfSuccessReadme from '../../components/ChanceOfSuccess/ChanceOfSuccess.md';
 
 const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 

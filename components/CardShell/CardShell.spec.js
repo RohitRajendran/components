@@ -1,9 +1,9 @@
 import React from 'react';
 import test from 'tape';
 import {mount} from 'enzyme';
-import CardShell from '../../components/CardShell';
-import Input from '../../components/Input';
-import RadioButtons from '../../components/RadioButtons';
+import CardShell from './CardShell';
+import Input from '../Input/Input';
+import RadioButtons from '../RadioButtons/RadioButtons';
 import {stub} from 'sinon';
 import {DateMask} from '../../stories/util';
 

@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
-import detectBrowser from '../../components/DetectBrowser';
+import detectBrowser from '../../components/DetectBrowser/DetectBrowser';
 import {withReadme} from 'storybook-readme';
-import DetectBrowserReadme from '../../components/DetectBrowser/README.md';
+import DetectBrowserReadme from '../../components/DetectBrowser/DetectBrowser.md';
 
 const stories = storiesOf('Utility/detectBrowser', module);
 

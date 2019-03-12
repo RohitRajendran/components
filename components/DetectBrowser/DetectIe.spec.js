@@ -1,8 +1,5 @@
 import test from 'tape';
-import {
-  detectInternetExplorer,
-  detectIOS,
-} from '../../components/DetectBrowser';
+import {detectInternetExplorer, detectIOS} from './DetectBrowser';
 
 test('detectInternetExplorer - Should return a string if the userAgent matches the param', (t) => {
   t.plan(8);
