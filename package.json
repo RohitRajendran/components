@@ -69,7 +69,6 @@
     "react-router": "*",
     "react-router-dom": "*",
     "react-text-mask": "*",
-    "react-select": "*",
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
