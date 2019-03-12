@@ -102,8 +102,8 @@ test('CardShell - validates different input constraints', (t) => {
     checkbox: false,
     multiselect: [],
     date: 'nope',
-    selectedNormal: '600',
-    selectedFollowup: '700',
+    selectedNormal: '',
+    selectedFollowup: '',
   };
   const goodValues = {
     textValue: 'abcdef',
@@ -119,7 +119,7 @@ test('CardShell - validates different input constraints', (t) => {
     selectedFollowup: '3',
   };
 
-  const numInputs = 6;
+  const numInputs = 8;
 
   const getInput = (values, index) => {
     const inputs = [
@@ -182,7 +182,7 @@ test('CardShell - validates different input constraints', (t) => {
       />,
       <RadioButtons
         name="bank"
-        table={true}
+        table
         options={[
           {
             label: 'Bank of America Checking …3456',
@@ -208,10 +208,11 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         value={values.selectedNormal}
         key="bank"
+        required
       />,
       <RadioButtons
         name="bank"
-        table={true}
+        table
         options={[
           {
             label: 'Bank of America Checking …3456',
@@ -252,6 +253,7 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         value={values.selectedFollowup}
         key="bank"
+        required
       />,
     ];
     return inputs[index];
