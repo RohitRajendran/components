@@ -44,7 +44,7 @@ $button-padding: 1.6rem;
   .radio-input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
+    left: 0;
 
     &:checked ~ .radio:after {
       display: block;
@@ -59,6 +59,7 @@ $button-padding: 1.6rem;
     display: block;
     padding-left: $button-size + $button-padding;
     width: 100%;
+    cursor: pointer;
   }
 
   .radio {
@@ -69,11 +70,15 @@ $button-padding: 1.6rem;
     width: 1.6rem;
     border-radius: 50%;
     border: 1px solid $bluey-grey-two;
+    cursor: pointer;
+
+    &:focus {
+      border: 2px solid orange;
+    }
 
     &:after {
       content: ' ';
       position: absolute;
-      display: none;
     }
   }
 
