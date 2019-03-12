@@ -2,9 +2,9 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../Button/index';
+import Button from '../Button/Button';
 
-import './style.scss';
+import './CardShell.scss';
 
 /**
  * Validates children to see if it is valid

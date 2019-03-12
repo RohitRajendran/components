@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
-import ButtonReadme from '../../components/Button/README.md';
+import ButtonReadme from '../../components/Button/Button.md';
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 
 const stories = storiesOf('Atoms/Button', module);
 

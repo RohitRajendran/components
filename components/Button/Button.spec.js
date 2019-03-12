@@ -1,8 +1,8 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
-import Button from '../../components/Button';
+import React from 'react';
 import {Link, MemoryRouter} from 'react-router-dom';
+import test from 'tape';
+import Button from './Button';
 import {colors} from '../../constants/colors';
 
 test('Button - rendering', (t) => {

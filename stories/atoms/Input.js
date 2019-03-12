@@ -7,8 +7,8 @@ import {
   CurrencyMask,
   PercentageWithDecimalMaskAllowNegative,
 } from '../util';
-import InputReadme from '../../components/Input/README.md';
-import Input from '../../components/Input';
+import InputReadme from '../../components/Input/Input.md';
+import Input from '../../components/Input/Input';
 import {State, Store} from '@sambego/storybook-state';
 
 const store = new Store({

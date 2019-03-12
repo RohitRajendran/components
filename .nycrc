@@ -5,6 +5,9 @@
     "components",
     "proptypes"
   ],
+  "exclude": [
+    "**/*.spec.js"
+  ],
   "reporter": [
     "lcov"
   ]

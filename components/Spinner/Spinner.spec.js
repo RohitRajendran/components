@@ -1,7 +1,7 @@
 import test from 'tape';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {PureSpinner} from '../../components/Spinner';
+import {PureSpinner} from './Spinner';
 
 test('Spinner - renders the IE version', (t) => {
   const component = shallow(<PureSpinner fill="white" isIe={true} />);
