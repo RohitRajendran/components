@@ -1,0 +1,55 @@
+.mcgonagall-card {
+  background-color: $white-four;
+  border: solid 1px $white-seven;
+  margin: 0 auto;
+  max-width: 764px;
+  width: 100%;
+  margin: 0 auto;
+
+  &.active {
+    border-top: solid 4px $violet-blue;
+    padding: 4rem 3.5rem;
+    margin-top: 3.6rem;
+    margin-bottom: 3.6rem;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.collapsed {
+    padding: 0.3rem 0.3rem;
+    margin-top: 1.2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.error {
+      padding: 0.2rem 0.2rem;
+    }
+  }
+
+  &.error {
+    padding: 4.2rem 3.4rem 3.9rem;
+    border: solid 2px $red-magenta;
+  }
+
+  .card-after-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+  }
+
+  .card-before-button {
+    margin-bottom: 1rem;
+  }
+
+  .card-after-button {
+    margin-top: 1rem;
+  }
+}

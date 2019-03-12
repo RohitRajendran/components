@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {exclusive} from '../../proptypes';
+import {colors} from '../../constants/colors';
 import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
@@ -47,10 +48,10 @@ const Button = ({
 
   const spinnerColor =
     variant === 'secondary' && dark
-      ? '#0b0037'
+      ? colors.stratos
       : variant === 'tertiary' && light
-      ? '#4d00ba'
-      : '#ffffff';
+      ? colors['violet-blue']
+      : colors.white;
 
   return (
     <button
