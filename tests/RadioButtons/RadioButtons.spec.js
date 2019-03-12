@@ -21,6 +21,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
         },
       ]}
       value="no"
+      onChange={stub()}
     />
   );
 
@@ -59,6 +60,7 @@ test('RadioButtons - Should be able to display a secondaryLabel', (t) => {
         },
       ]}
       value="no"
+      onChange={stub()}
     />
   );
 
@@ -86,6 +88,7 @@ test('RadioButtons - Should be able to display a followup question', (t) => {
         },
       ]}
       value="yes"
+      onChange={stub()}
     />
   );
 
@@ -113,6 +116,7 @@ test('RadioButtons - Followup question should be hidden if the parent question i
         },
       ]}
       value="no"
+      onChange={stub()}
     />
   );
 

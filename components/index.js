@@ -6,4 +6,12 @@ import ChanceOfSuccess from './ChanceOfSuccess';
 import CardShell from './CardShell';
 import RadioButtons from './RadioButtons';
 
-export {Button, Loader, Input, ChanceOfSuccess, Spinner, CardShell, RadioButtons};
+export {
+  Button,
+  Loader,
+  Input,
+  ChanceOfSuccess,
+  Spinner,
+  CardShell,
+  RadioButtons,
+};
