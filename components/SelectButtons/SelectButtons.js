@@ -1,57 +1,73 @@
-/** @module RadioButtons */
+/** @module SelectButtons */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OptionBox from '../OptionBox/OptionBox';
 
-import './RadioButtons.scss';
+import './SelectButtons.scss';
 
-const RadioButtons = ({
+const SelectButtons = ({
   name,
   disabled,
   table,
   options,
   required,
   value,
-  onChange,
   className,
+  onChange,
 }) => {
   const containerClasses = classNames(
     {
-      'mcgonagall-radio-button-container': true,
+      'mcgonagall-checkbox-button-container': true,
       table,
     },
     className
   );
 
+  // Stores the values of all of the selected items.
+  const values = new Set(Array.isArray(value) ? value : [value]);
+
+  const handleChange = (event) => {
+    event.stopPropagation();
+    const selectedValue = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      values.add(selectedValue);
+    } else {
+      values.delete(selectedValue);
+    }
+
+    return onChange(name, Array.from(values));
+  };
+
   return (
     <div className={containerClasses}>
       {options.map((option) => (
-        <div className="mcgonagall-radio-button" key={option.value}>
+        <div className="mcgonagall-checkbox-button" key={option.value}>
           <label
             className={`${
               disabled || option.disabled ? 'disabled' : ''
-            } radio-label`}
-            key={option.value}
+            } checkbox-label`}
           >
             <input
               name={name}
-              className="radio-input"
-              type="radio"
+              className="checkbox-input"
+              type="checkbox"
+              defaultValue={option.value}
               disabled={disabled || option.disabled}
+              checked={values.has(option.value)}
+              onChange={handleChange}
               required={required}
-              value={option.value}
-              checked={option.value === value}
-              onChange={() => onChange(option.value)}
             />
             <OptionBox
-              variant="radio"
-              checked={option.value === value}
+              variant="check"
+              checked={values.has(option.value)}
               disabled={disabled || option.disabled}
             />
             <span className="label-value">{option.label}</span>
 
-            {option.followup && option.value === value && (
+            {option.followup && values.has(option.value) && (
               <div className="followup">{option.followup}</div>
             )}
           </label>
@@ -66,7 +82,8 @@ const RadioButtons = ({
     </div>
   );
 };
-RadioButtons.propTypes = {
+
+SelectButtons.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -81,8 +98,8 @@ RadioButtons.propTypes = {
     })
   ),
   required: PropTypes.bool,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
-export default RadioButtons;
+export default SelectButtons;
