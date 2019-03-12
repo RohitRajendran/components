@@ -1,12 +1,12 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
 
-.mcgonagall-radio-button-container {
+.mcgonagall-checkbox-button-container {
   &.table {
     border: 1px solid $white-seven;
     margin: 1.4rem 0;
 
-    .mcgonagall-radio-button {
+    .mcgonagall-checkbox-button {
       padding: 1.4rem;
       border-bottom: 1px solid $white-seven;
       margin: 0;
@@ -19,7 +19,7 @@ $button-padding: 1.6rem;
   }
 }
 
-.mcgonagall-radio-button {
+.mcgonagall-checkbox-button {
   @include source-sans-pro(1.6rem);
   display: flex;
   justify-content: space-between;
@@ -28,30 +28,32 @@ $button-padding: 1.6rem;
     margin-bottom: 2.8rem;
   }
 
-  .radio-input:checked ~ .radio {
-    background-color: $white-four;
+  .checkbox-input:checked ~ .checkbox {
+    background: $violet-blue;
+    border-color: transparent;
 
     &:after {
-      top: 0.15rem;
-      left: 0.15rem;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background: $violet-blue;
+      top: 0.1rem;
+      left: 0.4rem;
+      width: 0.4rem;
+      height: 0.8rem;
+      border: solid $white-four;
+      border-width: 0 .2rem .2rem 0;
+      transform: rotate(40deg);
     }
   }
 
-  .radio-input {
+  .checkbox-input {
     position: absolute;
     opacity: 0;
     left: 0;
 
-    &:checked ~ .radio:after {
+    &:checked ~ .checkbox:after {
       display: block;
     }
   }
 
-  .radio-label {
+  .checkbox-label {
     display: block;
     color: $slate;
     user-select: none;
@@ -61,27 +63,26 @@ $button-padding: 1.6rem;
     width: 100%;
     cursor: pointer;
 
-    // Radio Button disabled state.
     &.disabled {
       opacity: 0.6;
       cursor: default;
 
-      .radio {
+      .checkbox {
         opacity: 0.6;
         cursor: default;
       }
     }
   }
 
-  .radio {
+  .checkbox {
     position: absolute;
     left: 0;
     top: 0.2rem;
     height: 1.6rem;
     width: 1.6rem;
-    border-radius: 50%;
     border: 1px solid $bluey-grey-two;
     cursor: pointer;
+
 
     &:after {
       content: ' ';
