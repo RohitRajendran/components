@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './style.scss';
+import './SelectButtons.scss';
 
 const SelectButtons = ({
   name,
@@ -57,6 +57,7 @@ const SelectButtons = ({
               disabled={disabled || option.disabled}
               checked={values.has(option.value)}
               onChange={handleChange}
+              required={required}
             />
             <span className="checkbox" />
             <span className="label-value">{option.label}</span>

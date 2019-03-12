@@ -38,7 +38,7 @@ $button-padding: 1.6rem;
       width: 0.4rem;
       height: 0.8rem;
       border: solid $white-four;
-      border-width: 0 .2rem .2rem 0;
+      border-width: 0 0.2rem 0.2rem 0;
       transform: rotate(40deg);
     }
   }
@@ -82,7 +82,6 @@ $button-padding: 1.6rem;
     width: 1.6rem;
     border: 1px solid $bluey-grey-two;
     cursor: pointer;
-
 
     &:after {
       content: ' ';

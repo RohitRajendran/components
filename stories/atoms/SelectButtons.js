@@ -1,11 +1,11 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import SelectButtons from '../../components/SelectButtons';
+import SelectButtons from '../../components/SelectButtons/SelectButtons';
 import {withKnobs, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SelectButtonReadme from '../../components/SelectButtons/README.md';
+import SelectButtonReadme from '../../components/SelectButtons/SelectButtons.md';
 import {State, Store} from '@sambego/storybook-state';
-import Input from '../../components/Input';
+import Input from '../../components/Input/Input';
 
 const stories = storiesOf('Atoms/SelectButtons', module);
 
@@ -47,7 +47,6 @@ stories.addDecorator(withKnobs).add(
     </State>
   ))
 );
-
 
 stories.addDecorator(withKnobs).add(
   'followup',
