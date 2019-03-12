@@ -58,18 +58,18 @@ stories.addDecorator(withKnobs).add(
           table={boolean('table', false)}
           options={[
             {
-              label: 'Use the United Income estimate',
+              label: 'I would like to be called Montezuma',
               value: 'estimate',
             },
             {
-              label: 'Enter my own estimate',
+              label: 'I would also like to be called...',
               value: 'custom',
               followup: (
                 <div>
                   <Input
-                    name="estimate"
-                    label="Estimate"
-                    placeholder="Enter an estimate..."
+                    name="other"
+                    label="Alternative Name"
+                    placeholder="Enter a name..."
                     value={state.input}
                     onChange={(event) => store.set({input: event.target.value})}
                   />
