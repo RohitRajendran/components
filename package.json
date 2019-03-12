@@ -19,13 +19,13 @@
     "lint": "eslint './stories/**/*.js' './components/**/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './stories/**/*.js' && prettier --write  './components/**/*.md' './stories/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
   },
-  "homepage": "https://github.com/UnitedIncome/component",
+  "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UnitedIncome/component.git"
+    "url": "https://github.com/UnitedIncome/components.git"
   },
   "bugs": {
-    "url": "https://github.com/UnitedIncome/component/issues"
+    "url": "https://github.com/UnitedIncome/components/issues"
   },
   "devDependencies": {
     "@babel/core": "*",
