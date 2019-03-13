@@ -24,46 +24,52 @@ const RadioButtons = ({
     className
   );
 
+  const legendClasses = classNames({
+    table,
+  });
+
   return (
-    <div className={containerClasses}>
-      {options.map((option) => (
-        <div className="mcgonagall-radio-button" key={option.value}>
-          <label
-            className={`${
-              disabled || option.disabled ? 'disabled' : ''
-            } radio-label`}
-            key={option.value}
-          >
-            <input
-              name={name}
-              className="radio-input"
-              type="radio"
-              disabled={disabled || option.disabled}
-              required={required}
-              value={option.value}
-              checked={option.value === value}
-              onChange={() => onChange(option.value)}
-            />
-            <OptionBox
-              variant="radio"
-              checked={option.value === value}
-              disabled={disabled || option.disabled}
-            />
-            <span className="label-value">{option.label}</span>
+    <fieldset role="group" className={containerClasses}>
+      <legend className={legendClasses}>
+        {options.map((option) => (
+          <div className="mcgonagall-radio-button" key={option.value}>
+            <label
+              className={`${
+                disabled || option.disabled ? 'disabled' : ''
+              } radio-label`}
+              key={option.value}
+            >
+              <input
+                name={name}
+                className="radio-input"
+                type="radio"
+                disabled={disabled || option.disabled}
+                required={required}
+                value={option.value}
+                checked={option.value === value}
+                onChange={() => onChange(option.value)}
+              />
+              <OptionBox
+                variant="radio"
+                checked={option.value === value}
+                disabled={disabled || option.disabled}
+              />
+              <span className="label-value">{option.label}</span>
 
-            {option.followup && option.value === value && (
-              <div className="followup">{option.followup}</div>
+              {option.followup && option.value === value && (
+                <div className="followup">{option.followup}</div>
+              )}
+            </label>
+
+            {option.secondaryLabel && (
+              <span className="label-value-secondary">
+                {option.secondaryLabel}
+              </span>
             )}
-          </label>
-
-          {option.secondaryLabel && (
-            <span className="label-value-secondary">
-              {option.secondaryLabel}
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
+          </div>
+        ))}
+      </legend>
+    </fieldset>
   );
 };
 RadioButtons.propTypes = {

@@ -221,7 +221,7 @@ const ChanceOfSuccess = (props) => {
                   endAngle: angleScale(endDomainValue),
                 })}
                 fill={colorScale(value)}
-                id="motionPath"
+                id={`motionPath-${index}`}
               />
             );
           })}

@@ -1168,7 +1168,7 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
-"@storybook/addon-a11y@^5.0.1":
+"@storybook/addon-a11y@*":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.1.tgz#3e4d1bb5f1d34f72ce729bf5a513d9d75458350c"
   integrity sha512-uL12UXnFTEU3PXPAos8QoV3ijp6AWIvvCjWz0XmZOfkvBytByZfP67p4/2Toq7xzFj12DgdzqxbDS/zgfBEugA==
@@ -1210,7 +1210,7 @@
     react-select "^2.3.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-viewport@^5.0.1":
+"@storybook/addon-viewport@*":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.0.1.tgz#ae015ee49e2c3fa9f07b723099c22291fddd7140"
   integrity sha512-sT035CiOyjr3/RMU2ccstY+c1I5382ThWKTxN97LdTXQoJhpGVZTHBGQDhfIFpChluDd/nmPCi64mObhkrs1Lg==

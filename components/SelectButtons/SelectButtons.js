@@ -19,10 +19,13 @@ const SelectButtons = ({
   const containerClasses = classNames(
     {
       'mcgonagall-checkbox-button-container': true,
-      table,
     },
     className
   );
+
+  const legendClasses = classNames({
+    table,
+  });
 
   // Stores the values of all of the selected items.
   const values = new Set(Array.isArray(value) ? value : [value]);
@@ -42,44 +45,47 @@ const SelectButtons = ({
   };
 
   return (
-    <div className={containerClasses}>
-      {options.map((option) => (
-        <div className="mcgonagall-checkbox-button" key={option.value}>
-          <label
-            className={`${
-              disabled || option.disabled ? 'disabled' : ''
-            } checkbox-label`}
-          >
-            <input
-              name={name}
-              className="checkbox-input"
-              type="checkbox"
-              defaultValue={option.value}
-              disabled={disabled || option.disabled}
-              checked={values.has(option.value)}
-              onChange={handleChange}
-              required={required}
-            />
-            <OptionBox
-              variant="check"
-              checked={values.has(option.value)}
-              disabled={disabled || option.disabled}
-            />
-            <span className="label-value">{option.label}</span>
+    <fieldset role="group" className={containerClasses}>
+      <legend className={legendClasses}>
+        {options.map((option) => (
+          <div className="mcgonagall-checkbox-button" key={option.value}>
+            <label
+              className={`${
+                disabled || option.disabled ? 'disabled' : ''
+              } checkbox-label`}
+            >
+              <input
+                name={name}
+                className="checkbox-input"
+                type="checkbox"
+                defaultValue={option.value}
+                disabled={disabled || option.disabled}
+                checked={values.has(option.value)}
+                onChange={handleChange}
+                required={required}
+                aria-label=""
+              />
+              <OptionBox
+                variant="check"
+                checked={values.has(option.value)}
+                disabled={disabled || option.disabled}
+              />
+              <span className="label-value">{option.label}</span>
 
-            {option.followup && values.has(option.value) && (
-              <div className="followup">{option.followup}</div>
+              {option.followup && values.has(option.value) && (
+                <div className="followup">{option.followup}</div>
+              )}
+            </label>
+
+            {option.secondaryLabel && (
+              <span className="label-value-secondary">
+                {option.secondaryLabel}
+              </span>
             )}
-          </label>
-
-          {option.secondaryLabel && (
-            <span className="label-value-secondary">
-              {option.secondaryLabel}
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
+          </div>
+        ))}
+      </legend>
+    </fieldset>
   );
 };
 
