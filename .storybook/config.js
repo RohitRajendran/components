@@ -1,7 +1,21 @@
-import { configure, getStorybook, setAddon } from '@storybook/react';
+import {configure, getStorybook, setAddon, addDecorator} from '@storybook/react';
 import createPercyAddon from '@percy-io/percy-storybook';
+import {withA11y} from '@storybook/addon-a11y';
+import {withKnobs} from '@storybook/addon-knobs';
+import {addParameters} from '@storybook/react';
+import unitedIncomeTheme from './theme';
+
+addParameters({
+  options: {
+    theme: unitedIncomeTheme,
+  },
+});
 
 const req = require.context('../stories', true, /\.js$/);
+
+// Registers global decorators.
+addDecorator(withA11y);
+addDecorator(withKnobs);
 
 function loadStories() {
   req.keys().forEach((filename) => req(filename));

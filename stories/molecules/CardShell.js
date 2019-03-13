@@ -1,4 +1,4 @@
-import {boolean, text, withKnobs} from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {withReadme} from 'storybook-readme';
@@ -6,6 +6,8 @@ import CardShell from '../../components/CardShell/CardShell';
 import CardShellReadme from '../../components/CardShell/CardShell.md';
 
 const stories = storiesOf('Molecules/CardShell', module);
+
+stories.addDecorator(withReadme(CardShellReadme));
 
 const defaultProps = (isCollapsed = false) => ({
   afterButton: text('afterButton'),
@@ -19,20 +21,14 @@ const defaultProps = (isCollapsed = false) => ({
   summary: <h1>Collapsed summary content</h1>,
 });
 
-stories.addDecorator(withKnobs).add(
-  'active',
-  withReadme(CardShellReadme, () => (
-    <CardShell {...defaultProps(false)}>
-      <h1>Some card content</h1>
-    </CardShell>
-  ))
-);
+stories.add('active', () => (
+  <CardShell {...defaultProps(false)}>
+    <h1>Some card content</h1>
+  </CardShell>
+));
 
-stories.addDecorator(withKnobs).add(
-  'collapsed',
-  withReadme(CardShellReadme, () => (
-    <CardShell {...defaultProps(true)}>
-      <h1>Some card content</h1>
-    </CardShell>
-  ))
-);
+stories.add('collapsed', () => (
+  <CardShell {...defaultProps(true)}>
+    <h1>Some card content</h1>
+  </CardShell>
+));
