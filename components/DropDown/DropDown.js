@@ -1,98 +1,135 @@
-/** @module DropDown */
-import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import Select, {Async} from 'react-select';
+import {isUndefined, isNullOrUndefined} from 'util';
 import _ from 'lodash';
 
-import './DropDown.scss';
+export const FormContext = React.createContext({
+  isSubmitted: false,
+});
 
-const dropDownStyles = {
-  option: (styles, {data, isDisabled, isFocused, isSelected}) => {
-    return {
-      ...styles,
-      color: '#FFF',
-      cursor: isDisabled ? 'not-allowed' : 'default',
-    };
-  },
-  menuContainerStyle: () => {
-    return {
-      color: 'blue',
-    };
-  },
-};
+
+import './DropDown.scss';
 
 /**
  Component to define a select with typeahed functionality.
  Wraps react-select
  */
 class DropDown extends Component {
-  /**
-   * Standard constructor to bind event handlers and set default state.
-   * @param {object} props - component properties
-   */
+  /** @inheritdoc */
   constructor(props) {
     super(props);
-    _.bindAll(this, ['updateValue', 'onBlur', 'onInputChange', 'getOptions']);
+
+    _.bindAll(this, [
+      'validate',
+      'onFocus',
+      'onBlur',
+      'onChange',
+      'getOptions',
+    ]);
+
     this.state = {
-      hasValue: Boolean(props.value),
-      hasTypedValue: false,
       options: {},
+      isFocused: false,
+      touched: false,
+      isValid: true,
+      validationMessage: '',
     };
   }
 
-  /**
-   * React method which is executed when new props are received.
-   * @param {Object} nextProps - component properties.
-   * @returns {void}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.value && !nextProps.value) {
-      this.setState({hasValue: false});
-    } else if (!this.props.value && nextProps.value) {
-      // if parent component sets value
-      this.setState({hasValue: true});
+  /** @inheritdoc */
+  componentDidMount() {
+    if (
+      this.context.isSubmitted ||
+      (!isNullOrUndefined(this.props.value) && this.props.value !== '')
+    ) {
+      this.validate();
     }
-    this.setState({hasTypedValue: false});
+  }
+
+  /** @inheritdoc */
+  componentDidUpdate(prevProps) {
+    if (
+      (!this.state.touched && this.context.isSubmitted) ||
+      (this.state.touched &&
+        (prevProps.value !== this.props.value ||
+          prevProps.validate !== this.props.validate))
+    ) {
+      this.setState(
+        {touched: this.state.touched || this.context.isSubmitted},
+        this.validate
+      );
+    }
   }
 
   /**
-   * Called when an update to the select component happens.
-   * @param {object} newValue - the selected value
+   * Run validation against this input.
    * @returns {undefined}
    */
-  updateValue(newValue) {
+  validate() {
+    const validationResult = (this.props.validate || [])
+      .map((validator) => validator(this.props.value))
+      .find((result) => !result.isValid);
+
+    if (isUndefined(validationResult)) {
+      this.setState({
+        isValid: true,
+        validationMessage: '',
+      });
+    } else {
+      this.setState({
+        isValid: false,
+        validationMessage: validationResult.message,
+      });
+    }
+  }
+
+  /**
+   * Event handler to set when the field gets focus.
+   * @param {Event} event - The triggering onfocus DOM event
+   * @return {void}
+   */
+  onFocus(event) {
+    this.setState({isFocused: true});
+    const onFocus = this.props.onFocus || (() => null);
+    onFocus(event);
+  }
+
+  /**
+   * Event handler to set when the field loses focus.
+   * @param {Event} event - The triggering onblur DOM event
+   * @return {void}
+   */
+  onBlur(event) {
+    if (!this.state.touched) {
+      this.validate();
+    }
+
+    this.setState({isFocused: false, touched: true});
+    const onBlur = this.props.onBlur || (() => null);
+    onBlur(event);
+  }
+
+  /**
+   * Event handler to set when the selected dropdown value.
+   * @param {string} newValue - The new selected value
+   * @returns {void}
+   */
+  onChange(newValue) {
     if (this.props.getOptions) {
-      this.props.setField(
+      this.props.onChange(
         this.state.options[newValue]
           ? {label: this.state.options[newValue], value: newValue}
           : ''
       );
     } else {
-      this.props.setField(newValue || '');
+      this.props.onChange(newValue || '');
     }
   }
 
   /**
-   * Event handler for InputChange event
-   * @param {object} inputValue - the typed value
-   * @returns {undefined}
-   */
-  onInputChange(inputValue) {
-    this.setState({hasTypedValue: Boolean(inputValue)});
-  }
-
-  /**
-   * Event handler for blur event
-   * @returns {undefined}
-   */
-  onBlur() {
-    this.setState({hasTypedValue: false});
-  }
-
-  /**
-   * Get option wraper to store value in state too
-   * @param {String} input - typed value
-   * @returns {Promise} resolves to array of value/label objects
+   * Get option wrapper to store value in state.
+   * @param {string} input - Type-ahead value
+   * @returns {Promise} Resolves to array of value/label objects
    */
   getOptions(input) {
     return this.props.getOptions(input).then(({options}) => {
@@ -109,58 +146,58 @@ class DropDown extends Component {
     });
   }
 
-  /**
-   * Renders React JSX
-   * @return {React.DOM} Render a typeahed select input.
-   */
+  /** @inheritdoc */
   render() {
-    const hasValueCSS =
-      this.state.hasValue || this.state.hasTypedValue ? 'select-has-value' : '';
-    const wrapperCSS = `mcgonagall-dropdown ${hasValueCSS} ${
-      this.props.selectTypeCSS
-    }`;
-    // simpleValue prop in Select sets the param to updateValue a string, not an object.
+    const {label, options, value, disabled, className} = this.props;
+
     let Component, optionProps;
     if (this.props.getOptions) {
       Component = Async;
       optionProps = {
         loadOptions: this.getOptions,
-        // disable filtering, all done by API
-        filterOptions: (options) => options,
+        // Disable filtering; it should be done by the API layer
+        filterOptions: (originalOptions) => originalOptions,
       };
     } else {
       Component = Select;
-      optionProps = {options: this.props.options};
+      optionProps = {options};
     }
+
     return (
-      <div className={wrapperCSS}>
-        <Component
-          classNamePrefix="mcgonagall-dropdown"
-          required={this.props.required || false}
-          autosize={true}
-          name={this.props.name}
-          disabled={this.props.disabled}
-          value={this.props.value}
-          onChange={this.updateValue}
-          searchable={
-            _.has(this.props, 'searchable') ? this.props.searchable : false
-          }
-          simpleValue={true}
-          onBlur={this.onBlur}
-          resetValue={this.props.resetValue}
-          placeholder={this.props.placeholder || ''}
-          clearable={
-            _.has(this.props, 'clearable') ? this.props.clearable : false
-          }
-          backspaceRemoves={this.props.backspaceRemoves}
-          deleteRemoves={this.props.deleteRemoves}
-          optionComponent={this.props.optionComponent}
-          valueComponent={this.props.valueComponent}
-          onInputChange={this.onInputChange}
-          styles={dropDownStyles}
-          {...optionProps}
-        />
-        <label>{this.props.label}</label>
+      <div className={className}>
+        <div
+          className={`ui-block-dropdown ui-light-block ${
+            !this.state.isValid ? 'ui-block-input--invalid' : ''
+          } ${this.state.isFocused ? 'ui-block-input--focused' : ''} ${
+            disabled ? 'ui-block-dropdown--disabled ' : ''
+          }`}
+        >
+          <div className="ui-block-input__label">{label}</div>
+          <div>
+            <Component
+              {...this.props}
+              classNamePrefix="ui-block-dropdown"
+              className="ui-block-dropdown__select dropdown-toggle"
+              value={value}
+              placeholder={this.props.placeholder || ''}
+              onChange={this.onChange}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              autosize={true}
+              simpleValue={true}
+              searchable={
+                _.has(this.props, 'searchable') ? this.props.searchable : true
+              }
+              clearable={
+                _.has(this.props, 'clearable') ? this.props.clearable : true
+              }
+              {...optionProps}
+            />
+          </div>
+        </div>
+        <p className="ui-block-input__error margin-bottom-0 margin-left-1">
+          {!this.state.isValid && this.state.validationMessage}
+        </p>
       </div>
     );
   }

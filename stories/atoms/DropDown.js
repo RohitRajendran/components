@@ -31,7 +31,7 @@ stories.addDecorator(withKnobs).add(
           ]}
           selectTypeCSS="large-inline-on-light-select sentence-input sentence-large"
           value={state.selectedExample1}
-          setField={(value) => store.set({selectedExample1: value})}
+          onChange={(value) => store.set({selectedExample1: value})}
           placeholder="1660 L Street"
           key="selectedExample1"
           label="Address"
