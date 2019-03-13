@@ -196,7 +196,8 @@
     "react/jsx-uses-vars": 1,
     "react/jsx-no-target-blank": "error",
     "react/forbid-prop-types": 2,
-    "curly": ["error", "all"]
+    "curly": ["error", "all"],
+    "prefer-destructuring":"error"
   },
   "settings": {
     "react": {

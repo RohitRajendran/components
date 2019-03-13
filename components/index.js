@@ -5,6 +5,7 @@ import Spinner from './Spinner/Spinner';
 import ChanceOfSuccess from './ChanceOfSuccess/ChanceOfSuccess';
 import CardShell from './CardShell/CardShell';
 import RadioButtons from './RadioButtons/RadioButtons';
+import QuestionCard from './QuestionCard/QuestionCard';
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   Spinner,
   CardShell,
   RadioButtons,
+  QuestionCard,
 };

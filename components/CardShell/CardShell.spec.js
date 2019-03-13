@@ -16,6 +16,7 @@ const defaultProps = {
 test('CardShell - active', (t) => {
   const props = {
     ...defaultProps,
+    onSubmit: stub(),
     beforeButton: <p>Before</p>,
     afterButton: <p>After</p>,
   };
@@ -36,6 +37,13 @@ test('CardShell - active', (t) => {
 
   t.equals(comp.find('p').length, 2, 'Shows before and after content');
   t.equals(comp.find('Button').length, 1, 'Shows button');
+
+  comp
+    .find('form')
+    .first()
+    .simulate('submit', {preventDefault: stub()});
+
+  t.true(props.onSubmit.calledOnce, 'Called on submit');
 
   t.end();
 });
@@ -168,6 +176,7 @@ test('CardShell - validates different input constraints', (t) => {
         mask={DateMask}
         label="test"
         isValid={() => values.date !== 'nope'}
+        required
       />,
       // 6
       <Input
