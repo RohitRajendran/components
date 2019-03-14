@@ -10,7 +10,7 @@ This library aims to standardize the implementation and appearance of React comp
 
 First, make sure you install this library.
 
-```
+```bash
 yarn add @unitedincome/components
 ```
 
@@ -18,13 +18,13 @@ Then, you'll need to decide if you want to use this library by importing compone
 
 For individual importing, you can pull in files from the `dist` folder:
 
-```
+```javascript
 import Button from '@unitedincome/components/dist/Button';
 ```
 
 To import all components together, you can import more simply:
 
-```
+```javascript
 import {Button} from '@unitedincome/components';
 ```
 
