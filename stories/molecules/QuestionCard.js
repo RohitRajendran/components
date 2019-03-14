@@ -1,4 +1,4 @@
-import {boolean, text, withKnobs} from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {withReadme} from 'storybook-readme';
@@ -6,6 +6,8 @@ import QuestionCard from '../../components/QuestionCard/QuestionCard';
 import QuestionCardReadme from '../../components/QuestionCard/QuestionCard.md';
 
 const stories = storiesOf('Molecules/QuestionCard', module);
+
+stories.addDecorator(withReadme(QuestionCardReadme));
 
 const defaultProps = (isCollapsed = false, clearFuture = false) => ({
   afterButton: text('afterButton'),
@@ -28,20 +30,14 @@ const defaultProps = (isCollapsed = false, clearFuture = false) => ({
   title: text('title', 'This is where the question goes.'),
 });
 
-stories.addDecorator(withKnobs).add(
-  'active',
-  withReadme(QuestionCardReadme, () => (
-    <QuestionCard {...defaultProps(false)}>
-      <p>Some card content</p>
-    </QuestionCard>
-  ))
-);
+stories.add('active', () => (
+  <QuestionCard {...defaultProps(false)}>
+    <p>Some card content</p>
+  </QuestionCard>
+));
 
-stories.addDecorator(withKnobs).add(
-  'collapsed',
-  withReadme(QuestionCardReadme, () => (
-    <QuestionCard {...defaultProps(true)}>
-      <p>Some card content</p>
-    </QuestionCard>
-  ))
-);
+stories.add('collapsed', () => (
+  <QuestionCard {...defaultProps(true)}>
+    <p>Some card content</p>
+  </QuestionCard>
+));

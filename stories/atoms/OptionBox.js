@@ -3,30 +3,18 @@ import {storiesOf} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
 import OptionBox from '../../components/OptionBox/OptionBox';
 import OptionBoxReadme from '../../components/OptionBox/OptionBox.md';
-import {withKnobs, boolean, select} from '@storybook/addon-knobs';
-
-const optionDefaults = (defaultVariant) => ({
-  variant: select('Variant', ['check', 'radio'], defaultVariant),
-  checked: boolean('checked', true),
-  disabled: boolean('disabled', false),
-});
+import {boolean, select} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Atoms/OptionBox', module);
 
-stories
-  .addDecorator(withKnobs)
-  .add(
-    'check',
-    withReadme(OptionBoxReadme, () => (
-      <OptionBox {...optionDefaults('check')} />
-    ))
-  );
+stories.addDecorator(withReadme(OptionBoxReadme));
 
-stories
-  .addDecorator(withKnobs)
-  .add(
-    'radio',
-    withReadme(OptionBoxReadme, () => (
-      <OptionBox {...optionDefaults('radio')} />
-    ))
-  );
+const optionDefaults = (defaultVariant, checked) => ({
+  variant: select('Variant', ['check', 'radio'], defaultVariant),
+  checked: boolean('checked', checked),
+  disabled: boolean('disabled', false),
+});
+
+stories.add('check', () => <OptionBox {...optionDefaults('check')} />);
+
+stories.add('radio', () => <OptionBox {...optionDefaults('radio')} />);
