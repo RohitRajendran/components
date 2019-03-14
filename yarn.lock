@@ -1188,7 +1188,7 @@
     react-dom "^16.8.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-backgrounds@^5.0.1":
+"@storybook/addon-backgrounds@*":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.1.tgz#7e112e160942d2baf6659e33bd844cb750ca7c02"
   integrity sha512-COW69MYajhE8K53aIqNxeZO1OBtmXCuSUE71XF8Z9mjLNJMOQWQqLbx6No9GHALp1uxQx/25ukUROsaX0iT2+Q==
