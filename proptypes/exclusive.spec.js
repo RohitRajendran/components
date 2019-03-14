@@ -1,5 +1,5 @@
 import test from 'tape';
-import {exclusive} from '../../proptypes';
+import {exclusive} from '.';
 
 test('Custom PropTypes - Exclusive - should flag problems', (t) => {
   t.plan(1);

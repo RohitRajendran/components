@@ -1,3 +1,4 @@
+/** @module Button */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {exclusive} from '../../proptypes';
@@ -5,8 +6,9 @@ import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 
-import './style.scss';
-import Spinner from '../Spinner';
+import './Button.scss';
+import Spinner from '../Spinner/Spinner';
+import {colors} from '../../constants/colors';
 
 const Button = ({
   children,
@@ -46,10 +48,10 @@ const Button = ({
 
   const spinnerColor =
     variant === 'secondary' && dark
-      ? '#0b0037'
+      ? colors.stratos
       : variant === 'tertiary' && light
-      ? '#4d00ba'
-      : '#ffffff';
+      ? colors['violet-blue']
+      : colors.white;
 
   return (
     <button

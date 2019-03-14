@@ -1,13 +1,13 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
-import ButtonReadme from '../../components/Button/README.md';
-import {withKnobs, select, text, boolean} from '@storybook/addon-knobs';
-import Button from '../../components/Button';
+import ButtonReadme from '../../components/Button/Button.md';
+import {select, text, boolean} from '@storybook/addon-knobs';
+import Button from '../../components/Button/Button';
 
 const stories = storiesOf('Atoms/Button', module);
 
-stories.addDecorator(withKnobs);
+stories.addDecorator(withReadme(ButtonReadme));
 
 const permutations = [
   {
@@ -80,27 +80,21 @@ const defaultProps = (
 });
 
 for (const permutation of permutations) {
-  stories.add(
-    `${permutation.variant} ${permutation.background}`,
-    withReadme(ButtonReadme, () => {
-      const props = defaultProps(permutation.variant, permutation.background);
+  stories.add(`${permutation.variant} ${permutation.background}`, () => {
+    const props = defaultProps(permutation.variant, permutation.background);
 
-      return (
-        <Button
-          variant={props.variant}
-          light={props.background === 'light'}
-          dark={props.background === 'dark'}
-          disabled={props.disabled}
-          isLoading={props.isLoading}
-        >
-          {props.text}
-        </Button>
-      );
-    })
-  );
+    return (
+      <Button
+        variant={props.variant}
+        light={props.background === 'light'}
+        dark={props.background === 'dark'}
+        disabled={props.disabled}
+        isLoading={props.isLoading}
+      >
+        {props.text}
+      </Button>
+    );
+  });
 }
 
-stories.add(
-  'disabled',
-  withReadme(ButtonReadme, () => <Button disabled>Testing</Button>)
-);
+stories.add('disabled', () => <Button disabled>Testing</Button>);

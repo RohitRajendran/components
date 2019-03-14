@@ -1,8 +1,9 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
-import Button from '../../components/Button';
+import React from 'react';
 import {Link, MemoryRouter} from 'react-router-dom';
+import test from 'tape';
+import Button from './Button';
+import {colors} from '../../constants/colors';
 
 test('Button - rendering', (t) => {
   t.plan(2);
@@ -93,7 +94,7 @@ test('Button - loading', (t) => {
 
   t.equals(
     loadingPrimary.find('Spinner').prop('fill'),
-    '#ffffff',
+    colors.white,
     'Shows white spinner'
   );
 
@@ -105,7 +106,7 @@ test('Button - loading', (t) => {
 
   t.equals(
     loadingSecondaryDark.find('Spinner').prop('fill'),
-    '#0b0037',
+    colors.stratos,
     'Shows colored spinner'
   );
 
@@ -117,7 +118,7 @@ test('Button - loading', (t) => {
 
   t.equals(
     loadingTertiaryLight.find('Spinner').prop('fill'),
-    '#4d00ba',
+    colors['violet-blue'],
     'Shows colored spinner'
   );
 });

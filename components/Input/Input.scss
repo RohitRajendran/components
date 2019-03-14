@@ -30,7 +30,6 @@
   input {
     @include source-sans-pro(2rem);
     color: $dark-blue;
-    height: 6rem;
     border: 1px solid $white-seven;
     background-color: $white-four;
     padding: 2.6rem 1.2rem 1rem 1.2rem;
@@ -83,7 +82,7 @@
 
     &:before {
       position: absolute;
-      top: 2.6rem;
+      top: 2.7rem;
       left: 1.3rem;
       z-index: 9999;
       color: $dark-blue;

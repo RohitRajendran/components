@@ -1,8 +1,9 @@
+/** @module Input */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 
-import './style.scss';
+import './Input.scss';
 
 export const hideValidityFalse = () => false;
 export const MaskTypes = {currency: 'currency'};
@@ -223,8 +224,8 @@ Input.propTypes = {
   pattern: PropTypes.string,
   maxLength: PropTypes.number,
   mask: PropTypes.shape({
-    mask: PropTypes.func.isRequired,
-    regex: PropTypes.string.isRequired,
+    mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+    regex: PropTypes.regexp,
     pipe: PropTypes.func,
     type: PropTypes.string,
   }),
