@@ -61,11 +61,11 @@ $button-padding: 1.6rem;
 
     // Radio Button disabled state.
     &.disabled {
-      opacity: 0.6;
+      opacity: .5;
       cursor: default;
 
       .radio {
-        opacity: 0.6;
+        opacity: .5;
         cursor: default;
       }
     }
