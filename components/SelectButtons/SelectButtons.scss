@@ -60,11 +60,11 @@ $button-padding: 1.6rem;
     cursor: pointer;
 
     &.disabled {
-      opacity: .5;
+      opacity: 0.5;
       cursor: default;
 
       .checkbox {
-        opacity: .5;
+        opacity: 0.5;
         cursor: default;
       }
     }
