@@ -15,16 +15,7 @@ export const validateChildren = (children) => {
   const childValidity = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (child.props.required) {
-        if (child.props.getField) {
-          const getFieldValue = child.props.getField(child.props.name);
-          if (
-            getFieldValue === true ||
-            (getFieldValue && getFieldValue.length > 0)
-          ) {
-            return true;
-          }
-          return false;
-        } else if (child.props.mask && child.props.isValid) {
+        if (child.props.mask && child.props.isValid) {
           return (
             child.props.mask.regex.test(child.props.value) &&
             child.props.isValid()
@@ -56,47 +47,66 @@ export const validateChildren = (children) => {
   return true;
 };
 
-const CardShell = (props) => {
-  const isInvalid = !validateChildren(props.children);
+const CardShell = ({
+  afterButton,
+  beforeButton,
+  buttonText,
+  children,
+  className,
+  disabled,
+  hasError,
+  hideButton,
+  isCollapsed,
+  loading,
+  onChange,
+  onSubmit,
+  summary,
+}) => {
+  const isInvalid = !validateChildren(children);
 
   const cardClass = classNames(
     {
       'mcgonagall-card': true,
-      active: !props.isCollapsed,
-      collapsed: props.isCollapsed,
-      error: props.hasError,
+      active: !isCollapsed,
+      collapsed: isCollapsed,
+      error: hasError,
     },
-    props.className
+    className
   );
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
 
   return (
     <div className={cardClass}>
-      {props.isCollapsed ? (
-        props.summary
+      {isCollapsed ? (
+        summary
       ) : (
-        <form onChange={props.onChange} onSubmit={props.onSubmit}>
-          {props.children}
+        <form onChange={onChange} onSubmit={submitForm}>
+          {children}
 
           <div className="card-after-content">
-            {props.beforeButton && (
-              <div className="card-before-button">{props.beforeButton}</div>
+            {beforeButton && (
+              <div className="card-before-button">{beforeButton}</div>
             )}
 
-            {!props.hideButton && (
+            {!hideButton && (
               <Button
                 className="card-submit"
-                disabled={isInvalid || props.disabled}
-                isLoading={props.loading}
+                disabled={isInvalid || disabled}
+                isLoading={loading}
                 light
                 type="submit"
                 variant="secondary"
               >
-                {props.buttonText}
+                {buttonText}
               </Button>
             )}
 
-            {props.afterButton && (
-              <div className="card-after-button">{props.afterButton}</div>
+            {afterButton && (
+              <div className="card-after-button">{afterButton}</div>
             )}
           </div>
         </form>
