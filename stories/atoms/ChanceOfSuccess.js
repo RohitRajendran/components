@@ -10,81 +10,73 @@ const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 stories.addDecorator(withReadme(ChanceOfSuccessReadme));
 
 stories.add('default', () => (
-  <div style={{backgroundColor: 'black'}}>
-    <ChanceOfSuccess
-      percent={number('percent', 50, {
-        range: true,
-        min: 0,
-        max: 100,
-        step: 1,
-      })}
-      isDraftPlan={boolean('isDraftPlan', false)}
-      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
-      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
-      identifier={text('identifier')}
-      isRunningPlan={boolean('isRunningPlan', false)}
-      className={text('className')}
-      compact={boolean('compact', false)}
-    />
-  </div>
+  <ChanceOfSuccess
+    percent={number('percent', 50, {
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+    })}
+    isDraftPlan={boolean('isDraftPlan', false)}
+    currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+    refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+    identifier={text('identifier')}
+    isRunningPlan={boolean('isRunningPlan', false)}
+    className={text('className')}
+    compact={boolean('compact', false)}
+  />
 ));
 
 stories.add('draft plan', () => (
-  <div style={{backgroundColor: 'black'}}>
-    <ChanceOfSuccess
-      percent={number('percent', 50, {
-        range: true,
-        min: 0,
-        max: 100,
-        step: 1,
-      })}
-      isDraftPlan={boolean('isDraftPlan', true)}
-      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
-      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
-      identifier={text('identifier')}
-      isRunningPlan={boolean('isRunningPlan', false)}
-      className={text('className')}
-      compact={boolean('compact', false)}
-    />
-  </div>
+  <ChanceOfSuccess
+    percent={number('percent', 50, {
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+    })}
+    isDraftPlan={boolean('isDraftPlan', true)}
+    currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+    refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+    identifier={text('identifier')}
+    isRunningPlan={boolean('isRunningPlan', false)}
+    className={text('className')}
+    compact={boolean('compact', false)}
+  />
 ));
 
 stories.add('compact', () => (
-  <div style={{backgroundColor: 'black'}}>
-    <ChanceOfSuccess
-      percent={number('percent', 50, {
-        range: true,
-        min: 0,
-        max: 100,
-        step: 1,
-      })}
-      isDraftPlan={boolean('isDraftPlan', false)}
-      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
-      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
-      identifier={text('identifier')}
-      isRunningPlan={boolean('isRunningPlan', false)}
-      className={text('className')}
-      compact={boolean('compact', true)}
-    />
-  </div>
+  <ChanceOfSuccess
+    percent={number('percent', 50, {
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+    })}
+    isDraftPlan={boolean('isDraftPlan', false)}
+    currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+    refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+    identifier={text('identifier')}
+    isRunningPlan={boolean('isRunningPlan', false)}
+    className={text('className')}
+    compact={boolean('compact', true)}
+  />
 ));
 
 stories.add('running plan', () => (
-  <div style={{backgroundColor: 'black'}}>
-    <ChanceOfSuccess
-      percent={number('percent', null, {
-        range: true,
-        min: 0,
-        max: 100,
-        step: 1,
-      })}
-      isDraftPlan={boolean('isDraftPlan', false)}
-      currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
-      refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
-      identifier={text('identifier')}
-      isRunningPlan={boolean('isRunningPlan', true)}
-      className={text('className')}
-      compact={boolean('compact', false)}
-    />
-  </div>
+  <ChanceOfSuccess
+    percent={number('percent', null, {
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+    })}
+    isDraftPlan={boolean('isDraftPlan', false)}
+    currentPlanChanceOfSuccess={number('currentPlanChanceOfSuccess')}
+    refreshedPlanChanceOfSuccess={number('refreshedPlanChanceOfSuccess')}
+    identifier={text('identifier')}
+    isRunningPlan={boolean('isRunningPlan', true)}
+    className={text('className')}
+    compact={boolean('compact', false)}
+  />
 ));
