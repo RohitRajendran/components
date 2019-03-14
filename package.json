@@ -41,6 +41,7 @@
     "@storybook/addon-a11y": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/addon-viewport": "*",
+    "@storybook/addon-backgrounds": "*",
     "@storybook/react": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
@@ -91,8 +92,5 @@
     "react-router": "*",
     "react-router-dom": "*",
     "react-text-mask": "*"
-  },
-  "dependencies": {
-    "@storybook/addon-backgrounds": "^5.0.1"
   }
 }
