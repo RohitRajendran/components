@@ -166,18 +166,17 @@ class DropDown extends Component {
     return (
       <div className={className}>
         <div
-          className={`ui-block-dropdown ui-light-block ${
+          className={`mcgonagall-dropdown ui-light-block ${
             !this.state.isValid ? 'ui-block-input--invalid' : ''
           } ${this.state.isFocused ? 'ui-block-input--focused' : ''} ${
             disabled ? 'ui-block-dropdown--disabled ' : ''
           }`}
         >
-          <div className="ui-block-input__label">{label}</div>
+          <label className="ui-block-input__label">{label}</label>
           <div>
             <Component
               {...this.props}
-              classNamePrefix="ui-block-dropdown"
-              className="ui-block-dropdown__select dropdown-toggle"
+              classNamePrefix="mcgonagall-dropdown"
               value={value}
               placeholder={this.props.placeholder || ''}
               onChange={this.onChange}

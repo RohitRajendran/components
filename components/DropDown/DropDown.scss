@@ -3,96 +3,126 @@ $transition-duration: 0.25s;
 
 
 
-.ui-block-input__label {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: $slate;
-}
-
-.ui-block-dropdown {
+.mcgonagall-dropdown {
   margin: 0;
-  padding: 1rem;
   text-align: left;
   transition-property: color, border-color, box-shadow;
   transition-duration: $transition-duration;
+  position: relative;
+
+
+  label {
+    @include source-sans-pro(1.2rem);
+    position: absolute;
+    padding: 1.2rem;
+    color: $slate;
+    font-weight: normal;
+    left: 0;
+    top: 0;
+    z-index: 999;
+  }
+
+
+  .mcgonagall-dropdown__value-container {
+    padding: 0;
+
+    * {
+      margin: 0;
+    }
+  }
+
+
+  .mcgonagall-dropdown__indicator {
+    padding: 0 8px;
+  }
+
+
+  .mcgonagall-dropdown__control {
+    @include source-sans-pro(2rem);
+    border-radius: 0;
+    padding: 2.3rem 1.2rem 1rem 1.2rem;
+    max-height: 63px;
+    font-style: normal;
+
+    .mcgonagall-dropdown__placeholder {
+      margin: 0;
+      font-style: normal;
+    }
+  }
+}
+
+.mcgonagall-dropdown--disabled {
+  background-color: $white-three;
+
+  .mcgonagall-dropdown__input {
+    color: $slate;
+  }
+
+  .mcgonagall-dropdown.is-disabled > .mcgonagall-dropdown__control {
+    background-color: $white-three;
+    cursor: default;
+
+    .mcgonagall-dropdown__value .mcgonagall-dropdown__value-label {
+      color: $slate;
+    }
+  }
+
+}
+
+// Customized react-select component styles
+.mcgonagall-dropdown__control {
+  height: 1.7rem;
+  border: none;
+  font-size: 2rem;
+  font-weight: 400;
+  cursor: pointer;
 
   position: relative;
   line-height: normal;
   text-align: left;
   border: 1px solid $white-seven;
   background-color: $white-four;
-  padding: 2.6rem 1.2rem 1rem 1.2rem;
   width: 100%;
+  height: 100%;
 
-}
-
-.ui-block-dropdown--disabled {
-  background-color: $white-three;
-
-  .ui-block-input__input {
-    color: $slate;
-  }
-
-  .ui-block-dropdown.is-disabled > .ui-block-dropdown__control {
-    background-color: $white-three;
-    cursor: default;
-
-    .ui-block-dropdown__value .ui-block-dropdown__value-label {
-      color: $slate;
-    }
-  }
-}
-
-// Customized react-select component styles
-.ui-block-dropdown__select {
-  // Select dropdown
-  .ui-block-dropdown__control {
-    height: 1.7rem;
-    border: none;
-    font-size: 2rem;
-    font-weight: 400;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: none;
-    }
+  &:hover {
+    box-shadow: none;
   }
 
   // Focused select dropdown selected value
-  &.ui-block-dropdown.is-focused,
-  &.ui-block-dropdown.is-focused.is-focused.has-value.ui-block-dropdown__single-value {
-    & > .ui-block-dropdown__control .ui-block-dropdown__value .ui-block-dropdown__value-label {
+  &.mcgonagall-dropdown.is-focused,
+  &.mcgonagall-dropdown.is-focused.is-focused.has-value.mcgonagall-dropdown__single-value {
+    & > .mcgonagall-dropdown__control .mcgonagall-dropdown__value .mcgonagall-dropdown__value-label {
       color: $violet-blue;
     }
   }
 
   // Placeholder and selected value
-  .ui-block-dropdown__placeholder,
-  &.ui-block-dropdown__single-value > .ui-block-dropdown__control .ui-block-dropdown__value {
+  .mcgonagall-dropdown__placeholder,
+  &.mcgonagall-dropdown__single-value > .mcgonagall-dropdown__control .mcgonagall-dropdown__value {
     padding-left: 0;
     line-height: 2.7rem;
   }
 
   // Selected value
-  &.ui-block-dropdown__single-value > .ui-block-dropdown__control .ui-block-dropdown__value {
+  &.mcgonagall-dropdown__single-value > .mcgonagall-dropdown__control .mcgonagall-dropdown__value {
     padding: 0;
     color: $dark-blue;
     border: none;
     transition: color $transition-duration;
   }
 
-  &.ui-block-dropdown__single-value > .ui-block-dropdown__control .ui-block-dropdown__value .ui-block-dropdown__value-label {
+  &.mcgonagall-dropdown__single-value > .mcgonagall-dropdown__control .mcgonagall-dropdown__value .mcgonagall-dropdown__value-label {
     transition: color $transition-duration;
   }
 
-  .ui-block-dropdown__placeholder {
+  .mcgonagall-dropdown__placeholder {
     font-style: italic;
     color: $bluey-grey;
   }
 
   // Typeable input
-  .ui-block-dropdown__input {
+  .mcgonagall-dropdown__input {
     height: 2rem;
     padding-left: 0;
     vertical-align: initial;
@@ -105,16 +135,16 @@ $transition-duration: 0.25s;
   }
 
   // Clear value button
-  .ui-block-dropdown__clear {
+  .mcgonagall-dropdown__clear {
     font-size: 25px;
   }
 
-  .ui-block-dropdown__arrow {
+  .mcgonagall-dropdown__arrow {
     border-width: 7.5px 6px 2.5px;
     color: $slate;
   }
 
-  &.is-open > .ui-block-dropdown__control .ui-block-dropdown__arrow {
+  &.is-open > .mcgonagall-dropdown__control .mcgonagall-dropdown__arrow {
     border-width: 0 6px 7.5px;
   }
 }
