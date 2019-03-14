@@ -12,32 +12,59 @@ const store = new Store({
 
 const stories = storiesOf('Atoms/DropDown', module);
 
-stories.addDecorator(withKnobs).add(
-  'default',
-  withReadme(DropDownReadme, () => (
-    <State store={store}>
-      {(state) => [
-        <DropDown
-          name="selectedExample1"
-          options={[
-            {
-              value: 'YES',
-              label: 'purchased',
-            },
-            {
-              value: 'NO',
-              label: 'a gift or inheritance',
-            },
-          ]}
-          selectTypeCSS="large-inline-on-light-select sentence-input sentence-large"
-          value={state.selectedExample1}
-          onChange={(value) => store.set({selectedExample1: value})}
-          placeholder="1660 L Street"
-          key="selectedExample1"
-          label="Address"
-          required
-        />,
-      ]}
-    </State>
-  ))
-);
+stories.addDecorator(withReadme(DropDownReadme));
+
+stories.addDecorator(withKnobs).add('default', () => (
+  <State store={store}>
+    {(state) => [
+      <DropDown
+        name="selectedExample1"
+        options={[
+          {
+            value: 'YES',
+            label: 'purchased',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+          {
+            value: 'NO',
+            label: 'a gift or inheritance',
+          },
+        ]}
+        selectTypeCSS="large-inline-on-light-select sentence-input sentence-large"
+        value={state.selectedExample1}
+        onChange={(value) => store.set({selectedExample1: value})}
+        placeholder="1660 L Street"
+        key="selectedExample1"
+        label="Address"
+        required
+      />,
+    ]}
+  </State>
+));

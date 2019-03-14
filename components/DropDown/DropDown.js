@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Select, {Async} from 'react-select';
 import {isUndefined, isNullOrUndefined} from 'util';
 import _ from 'lodash';
@@ -6,7 +7,6 @@ import _ from 'lodash';
 export const FormContext = React.createContext({
   isSubmitted: false,
 });
-
 
 import './DropDown.scss';
 
@@ -148,7 +148,15 @@ class DropDown extends Component {
 
   /** @inheritdoc */
   render() {
-    const {label, options, value, disabled, className} = this.props;
+    const {
+      label,
+      options,
+      value,
+      disabled,
+      className,
+      description,
+      validationErrorMsg,
+    } = this.props;
 
     let Component, optionProps;
     if (this.props.getOptions) {
@@ -166,16 +174,15 @@ class DropDown extends Component {
     return (
       <div className={className}>
         <div
-          className={`mcgonagall-dropdown ui-light-block ${
-            !this.state.isValid ? 'ui-block-input--invalid' : ''
-          } ${this.state.isFocused ? 'ui-block-input--focused' : ''} ${
-            disabled ? 'ui-block-dropdown--disabled ' : ''
+          className={`mcgonagall-dropdown ${
+            !this.state.isValid ? 'error' : ''
+          } ${this.state.isFocused ? 'focused' : ''} ${
+            disabled ? 'disabled ' : ''
           }`}
         >
-          <label className="ui-block-input__label">{label}</label>
+          <label>{label}</label>
           <div>
             <Component
-              {...this.props}
               classNamePrefix="mcgonagall-dropdown"
               value={value}
               placeholder={this.props.placeholder || ''}
@@ -185,21 +192,40 @@ class DropDown extends Component {
               autosize={true}
               simpleValue={true}
               searchable={
-                _.has(this.props, 'searchable') ? this.props.searchable : true
+                _.has(this.props, 'searchable') ? this.props.searchable : false
               }
               clearable={
-                _.has(this.props, 'clearable') ? this.props.clearable : true
+                _.has(this.props, 'clearable') ? this.props.clearable : false
               }
+              isDisabled={disabled}
+              aria-label={label}
               {...optionProps}
             />
           </div>
+          {description && (!showInvalidity || !error) ? (
+            <div className="description">{description}</div>
+          ) : description && (showInvalidity || error) ? (
+            <div className="validation-error">
+              {validationErrorMsg || 'Valid'}
+            </div>
+          ) : (
+            <div className="validation-error">
+              {validationErrorMsg || 'Valid'}
+            </div>
+          )}
         </div>
-        <p className="ui-block-input__error margin-bottom-0 margin-left-1">
-          {!this.state.isValid && this.state.validationMessage}
-        </p>
       </div>
     );
   }
 }
+
+DropDown.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  getOptions: PropTypes.func,
+};
 
 export default DropDown;
