@@ -64,7 +64,7 @@ stories.add('followup', () => (
             followup: (
               <div>
                 <Input
-                  name="estimate"
+                  name="followup"
                   label="Estimate"
                   placeholder="Enter an estimate..."
                   value={state.input}
