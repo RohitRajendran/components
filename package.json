@@ -74,7 +74,7 @@
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
-    "storybook-readme": "*",
+    "storybook-readme": "^5.0.0",
     "style-loader": "*",
     "tap-xunit": "*",
     "tape": "*",
