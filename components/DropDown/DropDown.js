@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select, {Async} from 'react-select';
+import classNames from 'classnames';
 import {isUndefined, isNullOrUndefined} from 'util';
 import _ from 'lodash';
+
+import './DropDown.scss';
 
 export const FormContext = React.createContext({
   isSubmitted: false,
 });
 
-import './DropDown.scss';
-
-/**
- Component to define a select with typeahed functionality.
- Wraps react-select
- */
+/** Renders the DropDown field component which wraps react-select. */
 class DropDown extends Component {
   /** @inheritdoc */
   constructor(props) {
@@ -62,7 +60,7 @@ class DropDown extends Component {
   }
 
   /**
-   * Run validation against this input.
+   * Runs validation against this input.
    * @returns {undefined}
    */
   validate() {
@@ -156,23 +154,33 @@ class DropDown extends Component {
       className,
       description,
       validationErrorMsg,
+      showInvalidity,
+      error,
+      placeholder,
+      onFocus,
+      onChange,
+      onBlur,
+      searchable,
+      clearable,
     } = this.props;
 
-    let Component, optionProps;
+    let ComponentType, optionProps;
     if (this.props.getOptions) {
-      Component = Async;
+      ComponentType = Async;
       optionProps = {
         loadOptions: this.getOptions,
         // Disable filtering; it should be done by the API layer
         filterOptions: (originalOptions) => originalOptions,
       };
     } else {
-      Component = Select;
+      ComponentType = Select;
       optionProps = {options};
     }
 
+    const containerClasses = classNames(className);
+
     return (
-      <div className={className}>
+      <div className={containerClasses}>
         <div
           className={`mcgonagall-dropdown ${
             !this.state.isValid ? 'error' : ''
@@ -182,29 +190,25 @@ class DropDown extends Component {
         >
           <label>{label}</label>
           <div>
-            <Component
+            <ComponentType
               classNamePrefix="mcgonagall-dropdown"
               value={value}
-              placeholder={this.props.placeholder || ''}
-              onChange={this.onChange}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
+              placeholder={placeholder}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               autosize={true}
               simpleValue={true}
-              searchable={
-                _.has(this.props, 'searchable') ? this.props.searchable : false
-              }
-              clearable={
-                _.has(this.props, 'clearable') ? this.props.clearable : false
-              }
+              searchable={searchable}
+              clearable={clearable}
               isDisabled={disabled}
               aria-label={label}
               {...optionProps}
             />
           </div>
-          {description && (!showInvalidity || !error) ? (
+          {description && (!this.state.isValid || !error) ? (
             <div className="description">{description}</div>
-          ) : description && (showInvalidity || error) ? (
+          ) : description && (this.state.isValid || error) ? (
             <div className="validation-error">
               {validationErrorMsg || 'Valid'}
             </div>
@@ -221,11 +225,28 @@ class DropDown extends Component {
 
 DropDown.propTypes = {
   label: PropTypes.string.isRequired,
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  description: PropTypes.string,
+  validateErrorMsg: PropTypes.string,
+  placeholder: PropTypes.string,
+  error: PropTypes.string,
+  validationErrorMsg: PropTypes.string,
+  validate: PropTypes.func,
   getOptions: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  searchable: PropTypes.bool,
+  clearable: PropTypes.bool,
+};
+
+DropDown.defaultProps = {
+  searchable: true,
+  clearable: true,
+  placeholder: '',
 };
 
 export default DropDown;
