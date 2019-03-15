@@ -2,7 +2,6 @@ import test from 'tape';
 import React from 'react';
 import {shallow} from 'enzyme';
 import {spy, stub} from 'sinon';
-
 import DropDown from './DropDown';
 
 test('DropDown - renders', (t) => {
@@ -50,10 +49,24 @@ test('DropDown - onChange', (t) => {
   );
   t.true(onChangeSpy.calledOnce, 'Call method once');
 
+  onChangeSpy.resetHistory();
+
+  const component2 = shallow(
+    <DropDown value="" onChange={onChangeSpy} getOptions={true} />
+  );
+
+  component2.instance().onChange('testval');
+
+  t.equals(
+    onChangeSpy.callCount,
+    1,
+    'Should fire provided props function when getOptions is present also.'
+  );
+
   t.end();
 });
 
-test('DropDown - blur and focus', (t) => {
+test('DropDown - Blur and Focus', (t) => {
   const onFocusSpy = spy();
   const onBlurSpy = spy();
 
@@ -75,22 +88,93 @@ test('DropDown - blur and focus', (t) => {
 });
 
 test('DropDown - getOptions', async (t) => {
-  const getOptionsStub = stub().resolves({
-    options: [{label: 'Boy', value: 'boy'}],
-  });
+  const props = {
+    getOptions: stub().resolves({
+      options: [{label: 'Boy', value: 'boy'}],
+    }),
+    value: '',
+  };
 
-  const component = shallow(<DropDown value="" getOptions={getOptionsStub} />);
+  const component = shallow(<DropDown {...props} />);
 
   t.equal(component.find('Async').length, 1, 'Render Async dropdown component');
 
   try {
     await component.instance().getOptions();
 
-    t.true(getOptionsStub.calledOnce, 'Call getOptions request');
+    t.true(props.getOptions.calledOnce, 'Call getOptions request');
     t.deepEqual(component.state().options, {boy: 'Boy'});
   } catch (err) {
     t.fail(err.message);
   } finally {
     t.end();
   }
+});
+
+test('DropDown - validationResult', (t) => {
+  t.plan(2);
+
+  /** Validator function.
+   * @param {object} obj - The value of the dropdown.
+   * @returns {object} - Returns an object with the isValid key.
+   **/
+  function validator(obj) {
+    if (obj.value === 'invalid') {
+      return {isValid: false};
+    } else {
+      return {isValid: true};
+    }
+  }
+
+  const props = {
+    validate: [validator],
+    options: [
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ],
+    value: {
+      value: 'invalid',
+      label: 'Montezuma is not the best cat',
+    },
+  };
+
+  const component = shallow(<DropDown {...props} />);
+
+  t.deepEqual(
+    component.instance().validationResults(props.validate),
+    {isValid: false},
+    'Should not be valid.'
+  );
+
+  const props2 = {
+    validate: [validator],
+    options: [
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ],
+    value: {
+      value: 'valid',
+      label: 'Montezuma is the best cat',
+    },
+  };
+
+  const component2 = shallow(<DropDown {...props2} />);
+
+  t.deepEqual(
+    component2.instance().validationResults(props2.validate),
+    undefined,
+    'Should return undefined if valid.'
+  );
 });

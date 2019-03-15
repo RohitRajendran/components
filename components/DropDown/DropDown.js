@@ -64,10 +64,7 @@ class DropDown extends Component {
    * @returns {undefined}
    */
   validate() {
-    const validationResult = (this.props.validate || [])
-      .map((validator) => validator(this.props.value))
-      .find((result) => !result.isValid);
-
+    const validationResult = this.validationResults(this.props.validate || []);
     if (isUndefined(validationResult)) {
       this.setState({
         isValid: true,
@@ -79,6 +76,16 @@ class DropDown extends Component {
         validationMessage: validationResult.message,
       });
     }
+  }
+
+  /** Gets the results of the validation array.
+   * @param {array} validators - An array of validator functions
+   * @returns {object|undefined} - Returns an object if not valid, undefined if valid.
+   */
+  validationResults(validators) {
+    return validators
+      .map((validator) => validator(this.props.value))
+      .find((result) => !result.isValid);
   }
 
   /**
@@ -115,8 +122,8 @@ class DropDown extends Component {
   onChange(newValue) {
     if (this.props.getOptions) {
       this.props.onChange(
-        this.state.options[newValue]
-          ? {label: this.state.options[newValue], value: newValue}
+        this.state.options[newValue.value]
+          ? {label: newValue.label, value: newValue.value}
           : ''
       );
     } else {
@@ -131,6 +138,11 @@ class DropDown extends Component {
    */
   getOptions(input) {
     return this.props.getOptions(input).then(({options}) => {
+      const newOptions = options.reduce(
+        (acc, {label, value}) => ({...acc, [value]: label}),
+        {}
+      );
+
       this.setState({
         options: {
           ...this.state.options,
@@ -140,7 +152,7 @@ class DropDown extends Component {
           ),
         },
       });
-      return {options};
+      return options;
     });
   }
 
@@ -153,12 +165,7 @@ class DropDown extends Component {
       disabled,
       className,
       description,
-      validationErrorMsg,
-      error,
       placeholder,
-      onFocus,
-      onChange,
-      onBlur,
       searchable,
       clearable,
     } = this.props;
@@ -168,8 +175,8 @@ class DropDown extends Component {
       ComponentType = Async;
       optionProps = {
         loadOptions: this.getOptions,
-        // Disable filtering; it should be done by the API layer
-        filterOptions: (originalOptions) => originalOptions,
+        // disable filtering, all done by API
+        filterOptions: (options) => options,
       };
     } else {
       ComponentType = Select;
@@ -190,12 +197,13 @@ class DropDown extends Component {
           <label>{label}</label>
           <div>
             <ComponentType
+              {...this.props}
               classNamePrefix="mcgonagall-dropdown"
               value={value}
               placeholder={placeholder}
-              onChange={onChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
+              onChange={this.onChange}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
               autosize={true}
               simpleValue={true}
               searchable={searchable}
@@ -205,17 +213,13 @@ class DropDown extends Component {
               {...optionProps}
             />
           </div>
-          {description && (!this.state.isValid || !error) ? (
+          {description && this.state.isValid ? (
             <div className="description">{description}</div>
-          ) : description && (this.state.isValid || error) ? (
+          ) : !this.state.isValid ? (
             <div className="validation-error">
-              {validationErrorMsg || 'Valid'}
+              {this.state.validationMessage || 'Valid'}
             </div>
-          ) : (
-            <div className="validation-error">
-              {validationErrorMsg || 'Valid'}
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     );
@@ -227,14 +231,16 @@ DropDown.propTypes = {
   options: PropTypes.shape({
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
+  }),
+  value: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
   }).isRequired,
-  value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
   description: PropTypes.string,
   validateErrorMsg: PropTypes.string,
   placeholder: PropTypes.string,
-  error: PropTypes.string,
   validationErrorMsg: PropTypes.string,
   validate: PropTypes.func,
   getOptions: PropTypes.func,
@@ -249,6 +255,7 @@ DropDown.defaultProps = {
   searchable: true,
   clearable: true,
   placeholder: '',
+  options: [],
 };
 
 export default DropDown;
