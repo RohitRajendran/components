@@ -6,6 +6,7 @@ import ChanceOfSuccess from './ChanceOfSuccess/ChanceOfSuccess';
 import CardShell from './CardShell/CardShell';
 import RadioButtons from './RadioButtons/RadioButtons';
 import QuestionCard from './QuestionCard/QuestionCard';
+import DropDown from './DropDown/DropDown';
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   CardShell,
   RadioButtons,
   QuestionCard,
+  DropDown,
 };
