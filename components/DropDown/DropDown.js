@@ -154,7 +154,6 @@ class DropDown extends Component {
       className,
       description,
       validationErrorMsg,
-      showInvalidity,
       error,
       placeholder,
       onFocus,
@@ -225,7 +224,10 @@ class DropDown extends Component {
 
 DropDown.propTypes = {
   label: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }).isRequired,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
