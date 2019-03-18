@@ -138,11 +138,6 @@ class DropDown extends Component {
    */
   getOptions(input) {
     return this.props.getOptions(input).then(({options}) => {
-      const newOptions = options.reduce(
-        (acc, {label, value}) => ({...acc, [value]: label}),
-        {}
-      );
-
       this.setState({
         options: {
           ...this.state.options,
@@ -175,8 +170,7 @@ class DropDown extends Component {
       ComponentType = Async;
       optionProps = {
         loadOptions: this.getOptions,
-        // disable filtering, all done by API
-        filterOptions: (options) => options,
+        filterOptions: (originalOptions) => originalOptions,
       };
     } else {
       ComponentType = Select;

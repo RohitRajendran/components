@@ -1,19 +1,26 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withKnobs} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import DropDown from '../../components/DropDown/DropDown';
 import DropDownReadme from '../../components/DropDown/DropDown.md';
 import {State, Store} from '@sambego/storybook-state';
 
+/** Creates a timeout for async functions.
+ * @param {integer} time - The length of the timeout.
+ * @returns {Promise.resolve} - Returns a resolved promise.
+ */
 function promiseTimeout(time) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
       resolve(time);
     }, time);
   });
 }
 
+/** Fake validation function.
+ * @param {object} obj - The input object.
+ * @returns {object} - Returns an object stating if it's true or false.
+ */
 function validate(obj) {
   if (obj.value === 'invalid') {
     return {
@@ -25,6 +32,10 @@ function validate(obj) {
   }
 }
 
+/** Fakes an API endpoint to gather data for the input story.
+ * @param {string} input - The text input.
+ * @returns {object} Returns an object keyed with 'options' with the requested data if applicable.
+ */
 async function getOptions(input) {
   if (input) {
     await promiseTimeout(1000);
@@ -51,8 +62,6 @@ async function getOptions(input) {
     return {};
   }
 }
-
-console.log(getOptions('montezuma'));
 
 const store = new Store({
   selectedExample: {},
@@ -101,7 +110,6 @@ stories.add('api', () => (
         value={state.apiExample}
         onChange={(value) => store.set({apiExample: value})}
         placeholder="Choose a pet name"
-        key="apiExample"
         description="Type a common office pet name in the box above"
         label="Pet Name"
         key="apiExample"
