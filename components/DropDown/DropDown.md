@@ -46,8 +46,9 @@ The following component props are valid.
 | **searchable**  | Boolean  | `true`  | Toggles type ahead functionality on/off.                                                                                                                                                                              | No       |
 | **clearable**   | Boolean  | `true`  | Toggles the ability to clear the search field on/off.                                                                                                                                                                 | No       |
 | **loading**     | Boolean  | `false` | Toggles the loading state of the input on/off.                                                                                                                                                                        | No       |
-| **required**    | Boolean  | `false` | Determines if this field is required or not.                                                                                                                                                                          |
-| **isSubmitted** | Boolean  | `false` | Determines if this field has been submitted or not. This will typically be passed down using a context provider/consumer. This prop can be used to run additional validation on the field prior to a form submitting. |
+| **required**    | Boolean  | `false` | Determines if this field is required or not.                                                                                                                                                                          | No       |
+| **isSubmitted** | Boolean  | `false` | Determines if this field has been submitted or not. This will typically be passed down using a context provider/consumer. This prop can be used to run additional validation on the field prior to a form submitting. | No       |
+| **onChange**    | Function |         | Hands back the dropdown name and the selected field value.                                                                                                                                                            | No       |
 
 ### props.validate
 
