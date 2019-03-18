@@ -130,7 +130,7 @@ test('DropDown - validationResult', (t) => {
   t.plan(2);
 
   /** Validator function.
-   * @param {object} obj - The value of the dropdown.
+   * @param {object} value - The value of the dropdown.
    * @returns {object} - Returns an object with the isValid key.
    **/
   function validator(value) {
@@ -198,7 +198,6 @@ test('DropDown - componentDidUpdate', (t) => {
     name: 'name',
     label: 'label',
     options: [{label: 'some label', value: 'some_value'}],
-    label: 'My Options',
     placeholder: 'Find your option',
     value: 'some_old_value',
   };
@@ -207,7 +206,6 @@ test('DropDown - componentDidUpdate', (t) => {
     name: 'name',
     label: 'label',
     options: [{label: 'some label', value: 'some_value'}],
-    label: 'My Options',
     placeholder: 'Find your option',
     value: 'some_value',
   };
@@ -242,7 +240,6 @@ test('DropDown - getCurrentOption', (t) => {
       {label: 'some label', value: 'some_value'},
       {label: 'another label', value: 'some_other_value'},
     ],
-    label: 'My Options',
     placeholder: 'Find your option',
     value: 'some_other_value',
   };
@@ -259,7 +256,6 @@ test('DropDown - getCurrentOption', (t) => {
     name: 'name',
     label: 'label',
     options: [],
-    label: 'My Options',
     placeholder: 'Find your option',
     value: 'montezuma',
     getOptions: stub(),

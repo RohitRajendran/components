@@ -229,7 +229,7 @@ class DropDown extends Component {
             <div className="description">{description}</div>
           ) : !this.state.isValid ? (
             <div className="validation-error">
-              {this.state.validationMessage || 'Valid'}
+              {this.state.validationMessage || 'Invalid'}
             </div>
           ) : null}
         </div>
