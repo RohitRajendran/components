@@ -20,6 +20,18 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: '',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
