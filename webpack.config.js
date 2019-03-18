@@ -39,17 +39,17 @@ module.exports = {
               data: '@import "./constants/sass/manifest.scss";',
             },
           },
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
           {
-            test: /\.(png|jpg|jpeg|gif|svg)$/,
-            use: [
-              {
-                loader: 'file-loader',
-                options: {
-                  name: '[path][name].[ext]',
-                  context: '',
-                },
-              },
-            ],
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: '',
+            },
           },
         ],
       },
