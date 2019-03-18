@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
+import IncompleteSummary from '../../CardSummaries/IncompleteSummary/IncompleteSummary';
 import CardShell from '../CardShell/CardShell';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
   beforeButton,
+  cardUrl,
   children,
   className,
   clearFuture,
@@ -14,6 +16,8 @@ const QuestionCard = ({
   isCollapsed,
   isLatestCard,
   moreDetail,
+  shortTitle,
+  summary,
   title,
   ...props
 }) => {
@@ -34,6 +38,13 @@ const QuestionCard = ({
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
       isLatestCard={isLatestCard}
+      summary={
+        isIncompleteCollapsedCard ? (
+          <IncompleteSummary shortTitle={shortTitle} cardUrl={cardUrl} />
+        ) : (
+          summary
+        )
+      }
       beforeButton={
         <Fragment>
           {beforeButton}
@@ -77,7 +88,7 @@ QuestionCard.propTypes = {
   isCollapsed: PropTypes.bool,
   isLatestCard: PropTypes.bool,
   loading: PropTypes.bool,
-  makeActiveCard: PropTypes.func,
+  cardUrl: PropTypes.string.isRequired,
   moreDetail: PropTypes.node,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,

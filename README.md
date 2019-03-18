@@ -34,6 +34,8 @@ You will also need to import the relevant css files. Again, you have the choice 
 
 Individually, you will find those at `@unitedincome/components/dist/Button.css`. In bulk, you can find those at `@unitedincome/components/dist/index.css`.
 
+You will also need to import the css for the 'uic--' prefixed bootstrap grid and util classes separately. You can find that at `@unitedincome/components/dist/util.css`.
+
 ### Running Storybook
 
 To begin Storybook, just run `yarn start`. This will open a new window to Storybook.
