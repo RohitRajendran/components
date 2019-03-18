@@ -101,6 +101,7 @@ stories.add('default', () => (
         loading={boolean('loading', false)}
         disabled={boolean('disabled', false)}
         required={boolean('required', false)}
+        isSubmitted={boolean('isSubmitted', false)}
         key="selectedExample"
       />,
     ]}
@@ -135,6 +136,7 @@ stories.add('open', () => (
         required={boolean('required', false)}
         key="selectedExample2"
         menuIsOpen={true}
+        isSubmitted={boolean('isSubmitted', false)}
       />,
     ]}
   </State>
@@ -153,13 +155,13 @@ stories.add('api', () => (
           'description',
           'Type a common office pet name in the box above'
         )}
-        clearable={boolean('clearable')}
         label={text('label', 'Pet Name')}
         searchable={boolean('searchable', true)}
         clearable={boolean('clearable', true)}
         loading={boolean('loading', false)}
         disabled={boolean('disabled', false)}
         required={boolean('required', false)}
+        isSubmitted={boolean('isSubmitted', false)}
         key="apiExample"
       />,
     ]}
@@ -192,6 +194,7 @@ stories.add('invalid', () => (
         loading={boolean('loading', false)}
         disabled={boolean('disabled', false)}
         required={boolean('required', false)}
+        isSubmitted={boolean('isSubmitted', false)}
         key="validExample"
       />,
     ]}
@@ -219,6 +222,7 @@ stories.add('disabled', () => (
     loading={boolean('loading', false)}
     disabled={boolean('disabled', true)}
     required={boolean('required', false)}
+    isSubmitted={boolean('isSubmitted', false)}
     key="disabledExample"
   />
 ));
