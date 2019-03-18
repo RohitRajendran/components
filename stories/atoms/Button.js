@@ -50,6 +50,14 @@ const permutations = [
     variant: 'tertiary',
     background: 'dark',
   },
+  {
+    variant: 'link',
+    background: 'light',
+  },
+  {
+    variant: 'link',
+    background: 'dark',
+  },
 ];
 
 const defaultProps = (

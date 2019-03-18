@@ -1,0 +1,19 @@
+.card-summary-group {
+  h3.card-summary-label {
+    font-weight: 600;
+  }
+
+  .uic--row {
+    margin-top: 0.75rem;
+  }
+
+  &:not(.striped) {
+    padding-top: 0.5rem;
+  }
+
+  &.striped:nth-of-type(2n) {
+    background-color: $pampas;
+    border-top: solid 1px $white-seven;
+    border-bottom: solid 1px $white-seven;
+  }
+}

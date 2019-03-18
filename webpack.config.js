@@ -3,14 +3,29 @@ const glob = require('glob');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PostcssPrefixer = require('postcss-prefixer');
 
 const entries = glob
-  .sync('./components/**/*.js', {ignore: './components/**/*.spec.js'})
+  .sync('./components/**/*.js', {
+    ignore: './components/**/*.spec.js',
+  })
   .reduce((allEntries, entry) => {
-    return Object.assign(allEntries, {[entry.split('/')[2]]: entry});
+    const splitPath = entry.split('/');
+    const fileName = splitPath[splitPath.length - 1];
+    const [compName] = fileName.split('.');
+
+    return Object.assign(allEntries, {
+      [compName]: entry,
+    });
   }, {});
 
+const prefixUtilFilepath = path.resolve(
+  __dirname,
+  'constants/sass/util/prefixed-utils.scss'
+);
+
 entries.index = path.resolve(__dirname, 'components/index.js');
+entries.util = prefixUtilFilepath;
 
 module.exports = {
   mode: 'production',
@@ -23,9 +38,34 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.jsx?$/, use: ['babel-loader'], exclude: /node_modules/},
+      {
+        test: /\.jsx?$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        include: prefixUtilFilepath,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [PostcssPrefixer({prefix: 'uic--'})],
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
       {
         test: /\.scss$/,
+        exclude: prefixUtilFilepath,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -37,6 +77,18 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               data: '@import "./constants/sass/manifest.scss";',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: '',
             },
           },
         ],

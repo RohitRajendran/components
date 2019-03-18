@@ -11,6 +11,7 @@
   &:after {
     content: ' ';
     position: absolute;
+    box-sizing: initial;
   }
 
   &.checked {
@@ -49,6 +50,7 @@
   &:after {
     content: ' ';
     position: absolute;
+    box-sizing: initial;
   }
 
   &.checked {

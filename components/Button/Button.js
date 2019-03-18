@@ -61,7 +61,11 @@ const Button = ({
       disabled={disabled}
       {...props}
     >
-      {isLoading ? <Spinner fill={spinnerColor} /> : children}
+      {isLoading ? (
+        <Spinner height={'19px'} width={'19px'} fill={spinnerColor} />
+      ) : (
+        children
+      )}
     </button>
   );
 };
