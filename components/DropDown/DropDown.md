@@ -35,6 +35,7 @@ The following component props are valid.
 | **searchable**  | Boolean  | `true`  | Toggles type ahead functionality on/off.                                                                            | No       |
 | **clearable**   | Boolean  | `true`  | Toggles the ability to clear the search field on/off.                                                               | No       |
 | **loading**     | Boolean  | `false` | Toggles the loading state of the input on/off.                                                                      | No       |
+| **required**    | Boolean  | `false` | Determines if this field is required or not.                                                                        |
 
 ### props.validate
 

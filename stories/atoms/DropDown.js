@@ -4,6 +4,7 @@ import {withReadme} from 'storybook-readme';
 import DropDown from '../../components/DropDown/DropDown';
 import DropDownReadme from '../../components/DropDown/DropDown.md';
 import {State, Store} from '@sambego/storybook-state';
+import {text, boolean} from '@storybook/addon-knobs';
 
 /** Creates a timeout for async functions.
  * @param {integer} time - The length of the timeout.
@@ -65,6 +66,7 @@ async function getOptions(input) {
 
 const store = new Store({
   selectedExample: {value: '', label: ''},
+  selectedExample2: {value: 'uk', label: 'United Kingdom'},
   validExample: {value: 'invalid', label: 'Montezuma is not the best cat'},
   apiExample: {value: '', label: ''},
 });
@@ -91,11 +93,46 @@ stories.add('default', () => (
         ]}
         value={state.selectedExample}
         onChange={(value) => store.set({selectedExample: value})}
-        placeholder="Choose a country"
+        placeholder={text('placeholder', 'Choose a country')}
+        description={text('description', 'Pick your country')}
+        label={text('label', 'Country')}
+        searchable={boolean('searchable')}
+        loading={boolean('loading')}
+        disabled={boolean('disabled')}
+        required={boolean('required')}
         key="selectedExample"
-        description="Pick your country"
-        label="Country"
-        required
+      />,
+    ]}
+  </State>
+));
+
+stories.add('open', () => (
+  <State store={store}>
+    {(state) => [
+      <DropDown
+        name="selectedExample2"
+        validate={[validate]}
+        options={[
+          {
+            value: 'uk',
+            label: 'United Kingdom',
+          },
+          {
+            value: 'usa',
+            label: 'United States',
+          },
+        ]}
+        value={state.selectedExample2}
+        onChange={(value) => store.set({selectedExample2: value})}
+        placeholder={text('placeholder', 'Choose a country')}
+        description={text('description', 'Pick your country')}
+        label={text('label', 'Country')}
+        searchable={boolean('searchable')}
+        loading={boolean('loading')}
+        disabled={boolean('disabled')}
+        required={boolean('required')}
+        key="selectedExample2"
+        menuIsOpen={true}
       />,
     ]}
   </State>
@@ -109,12 +146,18 @@ stories.add('api', () => (
         getOptions={getOptions}
         value={state.apiExample}
         onChange={(value) => store.set({apiExample: value})}
-        placeholder="Choose a pet name"
-        description="Type a common office pet name in the box above"
-        clearable={true}
-        label="Pet Name"
+        placeholder={text('placeholder', 'Choose a pet name')}
+        description={text(
+          'description',
+          'Type a common office pet name in the box above'
+        )}
+        clearable={boolean('clearable')}
+        label={text('label', 'Pet Name')}
+        searchable={boolean('searchable')}
+        loading={boolean('loading')}
+        disabled={boolean('disabled')}
+        required={boolean('required')}
         key="apiExample"
-        required
       />,
     ]}
   </State>
@@ -138,11 +181,14 @@ stories.add('invalid', () => (
         ]}
         value={state.validExample}
         onChange={(value) => store.set({validExample: value})}
-        placeholder="Is Montezuma the best cat?"
+        placeholder={text('placeholder', 'Is Montezuma the best cat?')}
+        description={text('description', 'Who is the best cat?')}
+        label={text('label', 'Best Cat')}
+        searchable={boolean('searchable')}
+        loading={boolean('loading')}
+        disabled={boolean('disabled')}
+        required={boolean('required')}
         key="validExample"
-        description="Who is the best cat?"
-        label="Best Cat"
-        required
       />,
     ]}
   </State>
@@ -150,7 +196,7 @@ stories.add('invalid', () => (
 
 stories.add('disabled', () => (
   <DropDown
-    name="validExample"
+    name="disabledExample"
     options={[
       {
         value: 'valid',
@@ -161,10 +207,13 @@ stories.add('disabled', () => (
         label: 'Montezuma is not the best cat',
       },
     ]}
-    placeholder="Is Montezuma the best cat?"
-    key="validExample"
-    description="Who is the best cat?"
-    label="Best Cat"
-    disabled
+    placeholder={text('placeholder', 'Is Montezuma the best cat?')}
+    description={text('description', 'Who is the best cat?')}
+    label={text('label', 'Best Cat')}
+    searchable={boolean('searchable')}
+    loading={boolean('loading')}
+    disabled={boolean('disabled')}
+    required={boolean('required')}
+    key="disabledExample"
   />
 ));
