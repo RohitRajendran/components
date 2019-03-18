@@ -1,6 +1,6 @@
 import test from 'tape';
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import {spy, stub} from 'sinon';
 import DropDown from './DropDown';
 
@@ -178,4 +178,33 @@ test('DropDown - validationResult', (t) => {
     undefined,
     'Should return undefined if valid.'
   );
+});
+
+test('DropDown - componentDidUpdate', (t) => {
+  const props = {
+    options: [{label: 'some label', value: 'some_value'}],
+    label: 'My Options',
+    placeholder: 'Find your option',
+    value: 'some_value',
+  };
+  const component = mount(<DropDown {...props} />);
+
+  props.value = 'different_value';
+  component.setState({touched: true});
+
+  component.update();
+
+  t.deepEqual(
+    component.state(),
+    {
+      options: {},
+      isFocused: false,
+      touched: true,
+      isValid: true,
+      validationMessage: '',
+    },
+    'Set verify validation on update.'
+  );
+
+  t.end();
 });

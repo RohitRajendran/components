@@ -170,7 +170,6 @@ class DropDown extends Component {
       ComponentType = Async;
       optionProps = {
         loadOptions: this.getOptions,
-        filterOptions: (originalOptions) => originalOptions,
       };
     } else {
       ComponentType = Select;
