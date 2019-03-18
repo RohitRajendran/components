@@ -58,7 +58,7 @@
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-react": "*",
     "faucet": "*",
-    "file-loader": "^3.0.1",
+    "file-loader": "*",
     "ignore-styles": "*",
     "jsdom": "*",
     "jsdom-global": "*",
