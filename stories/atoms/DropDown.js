@@ -45,16 +45,17 @@ async function getOptions(input) {
         label: 'Peterson',
         value: 'peterson',
       },
-    ].filter((data) => input === data.value);
+    ].filter((data) => input.toLowerCase() === data.value);
     return {options};
   } else {
-    return Promise.resolve({});
+    return {};
   }
 }
 
 console.log(getOptions('montezuma'));
 
 const store = new Store({
+  selectedExample: {},
   validExample: {value: 'invalid', label: 'Montezuma is not the best cat'},
   apiExample: {},
 });
@@ -67,7 +68,7 @@ stories.add('default', () => (
   <State store={store}>
     {(state) => [
       <DropDown
-        name="selectedExample1"
+        name="selectedExample"
         validate={[validate]}
         options={[
           {
@@ -79,7 +80,7 @@ stories.add('default', () => (
             label: 'United States',
           },
         ]}
-        value={{}}
+        value={state.selectedExample}
         onChange={(value) => store.set({selectedExample: value})}
         placeholder="Choose a country"
         key="selectedExample"
@@ -103,6 +104,7 @@ stories.add('api', () => (
         key="apiExample"
         description="Type a common office pet name in the box above"
         label="Pet Name"
+        key="apiExample"
         required
       />,
     ]}
@@ -128,7 +130,7 @@ stories.add('invalid', () => (
         value={state.validExample}
         onChange={(value) => store.set({validExample: value})}
         placeholder="Is Montezuma the best cat?"
-        key="selectedExample1"
+        key="validExample"
         description="Who is the best cat?"
         label="Best Cat"
         required
