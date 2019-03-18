@@ -64,9 +64,9 @@ async function getOptions(input) {
 }
 
 const store = new Store({
-  selectedExample: '',
+  selectedExample: {value: '', label: ''},
   validExample: {value: 'invalid', label: 'Montezuma is not the best cat'},
-  apiExample: '',
+  apiExample: {value: '', label: ''},
 });
 
 const stories = storiesOf('Atoms/DropDown', module);
