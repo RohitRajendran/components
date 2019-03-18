@@ -96,10 +96,11 @@ stories.add('default', () => (
         placeholder={text('placeholder', 'Choose a country')}
         description={text('description', 'Pick your country')}
         label={text('label', 'Country')}
-        searchable={boolean('searchable')}
-        loading={boolean('loading')}
-        disabled={boolean('disabled')}
-        required={boolean('required')}
+        searchable={boolean('searchable', false)}
+        clearable={boolean('clearable', true)}
+        loading={boolean('loading', false)}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', false)}
         key="selectedExample"
       />,
     ]}
@@ -127,10 +128,11 @@ stories.add('open', () => (
         placeholder={text('placeholder', 'Choose a country')}
         description={text('description', 'Pick your country')}
         label={text('label', 'Country')}
-        searchable={boolean('searchable')}
-        loading={boolean('loading')}
-        disabled={boolean('disabled')}
-        required={boolean('required')}
+        searchable={boolean('searchable', true)}
+        clearable={boolean('clearable', true)}
+        loading={boolean('loading', false)}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', false)}
         key="selectedExample2"
         menuIsOpen={true}
       />,
@@ -153,10 +155,11 @@ stories.add('api', () => (
         )}
         clearable={boolean('clearable')}
         label={text('label', 'Pet Name')}
-        searchable={boolean('searchable')}
-        loading={boolean('loading')}
-        disabled={boolean('disabled')}
-        required={boolean('required')}
+        searchable={boolean('searchable', true)}
+        clearable={boolean('clearable', true)}
+        loading={boolean('loading', false)}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', false)}
         key="apiExample"
       />,
     ]}
@@ -184,10 +187,11 @@ stories.add('invalid', () => (
         placeholder={text('placeholder', 'Is Montezuma the best cat?')}
         description={text('description', 'Who is the best cat?')}
         label={text('label', 'Best Cat')}
-        searchable={boolean('searchable')}
-        loading={boolean('loading')}
-        disabled={boolean('disabled')}
-        required={boolean('required')}
+        searchable={boolean('searchable', true)}
+        clearable={boolean('clearable', true)}
+        loading={boolean('loading', false)}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', false)}
         key="validExample"
       />,
     ]}
@@ -210,10 +214,11 @@ stories.add('disabled', () => (
     placeholder={text('placeholder', 'Is Montezuma the best cat?')}
     description={text('description', 'Who is the best cat?')}
     label={text('label', 'Best Cat')}
-    searchable={boolean('searchable')}
-    loading={boolean('loading')}
-    disabled={boolean('disabled')}
-    required={boolean('required')}
+    searchable={boolean('searchable', true)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', true)}
+    required={boolean('required', false)}
     key="disabledExample"
   />
 ));
