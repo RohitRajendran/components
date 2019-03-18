@@ -1,6 +1,7 @@
 import Button from './Button/Button';
 import Loader from './Loader/Loader';
 import Input from './Input/Input';
+import DropDown from './DropDown/DropDown';
 import Spinner from './Spinner/Spinner';
 import ChanceOfSuccess from './ChanceOfSuccess/ChanceOfSuccess';
 import CardShell from './Cards/CardShell/CardShell';
@@ -14,6 +15,7 @@ export {
   Button,
   Loader,
   Input,
+  DropDown,
   ChanceOfSuccess,
   Spinner,
   CardShell,

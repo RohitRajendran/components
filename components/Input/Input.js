@@ -126,7 +126,7 @@ class Input extends Component {
     return (
       <div
         className={`mcgonagall-input ${
-          append && value > 0
+          append && value.length > 0
             ? `input-append input-append-${identifier}`
             : prepend
             ? `input-prepend input-prepend-${identifier} ${
