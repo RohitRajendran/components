@@ -9,6 +9,7 @@ import createPercyAddon from '@percy-io/percy-storybook';
 import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
+import '../constants/sass/util/prefixed-utils.scss';
 
 const req = require.context('../stories', true, /\.js$/);
 const {percyAddon, serializeStories} = createPercyAddon();
