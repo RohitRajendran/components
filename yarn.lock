@@ -1169,15 +1169,15 @@
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
 "@storybook/addon-a11y@*":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.1.tgz#3e4d1bb5f1d34f72ce729bf5a513d9d75458350c"
-  integrity sha512-uL12UXnFTEU3PXPAos8QoV3ijp6AWIvvCjWz0XmZOfkvBytByZfP67p4/2Toq7xzFj12DgdzqxbDS/zgfBEugA==
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.3.tgz#d062207a704423e337752af605390adca7f51128"
+  integrity sha512-yQM6K1oLBTB/CqbZhnW6B7Us4fDi2qM04cn/Z7vlZO2jhKPtrqOPEk3jYO0efamwvmBehFDmZ0vkVXc47Bz7Eg==
   dependencies:
-    "@storybook/addons" "5.0.1"
-    "@storybook/client-logger" "5.0.1"
-    "@storybook/components" "5.0.1"
-    "@storybook/core-events" "5.0.1"
-    "@storybook/theming" "5.0.1"
+    "@storybook/addons" "5.0.3"
+    "@storybook/client-logger" "5.0.3"
+    "@storybook/components" "5.0.3"
+    "@storybook/core-events" "5.0.3"
+    "@storybook/theming" "5.0.3"
     axe-core "^3.1.2"
     common-tags "^1.8.0"
     core-js "^2.6.5"
@@ -5169,6 +5169,14 @@ file-entry-cache@^5.0.1:
   dependencies:
     flat-cache "^2.0.1"
 
+file-loader@*, file-loader@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-3.0.1.tgz#f8e0ba0b599918b51adfe45d66d1e771ad560faa"
+  integrity sha512-4sNIOXgtH/9WZq4NvlfU3Opn5ynUsqBwSLyM+I7UOwdGigTBYfVVQEwe/msZNX/j4pCJTIM14Fsw66Svo1oVrw==
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^1.0.0"
+
 file-loader@1.1.11:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
@@ -5176,14 +5184,6 @@ file-loader@1.1.11:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
-
-file-loader@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-3.0.1.tgz#f8e0ba0b599918b51adfe45d66d1e771ad560faa"
-  integrity sha512-4sNIOXgtH/9WZq4NvlfU3Opn5ynUsqBwSLyM+I7UOwdGigTBYfVVQEwe/msZNX/j4pCJTIM14Fsw66Svo1oVrw==
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^1.0.0"
 
 file-system-cache@^1.0.5:
   version "1.0.5"
