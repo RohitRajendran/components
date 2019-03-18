@@ -7,6 +7,7 @@ import DropDown from './DropDown';
 test('DropDown - renders', (t) => {
   const component = shallow(
     <DropDown
+      name="dropdown"
       options={[{label: 'some label', value: 'some_value'}]}
       label="My Options"
       placeholder="Find your option"
@@ -32,7 +33,7 @@ test('DropDown - renders', (t) => {
 test('DropDown - onChange', (t) => {
   const onChangeSpy = spy();
   const component = shallow(
-    <DropDown name="test" value="" onChange={onChangeSpy} />
+    <DropDown name="test" value="" onChange={onChangeSpy} label="label" />
   );
 
   component.instance().onChange({value: 'testval', label: 'thing'});
@@ -54,7 +55,13 @@ test('DropDown - onChange', (t) => {
   onChangeSpy.resetHistory();
 
   const component2 = shallow(
-    <DropDown name="test" value="" onChange={onChangeSpy} getOptions={true} />
+    <DropDown
+      name="test"
+      value=""
+      onChange={onChangeSpy}
+      getOptions={stub()}
+      label="label"
+    />
   );
 
   component2.instance().onChange({value: 'testval', label: 'thing'});
@@ -73,7 +80,13 @@ test('DropDown - Blur and Focus', (t) => {
   const onBlurSpy = spy();
 
   const component = shallow(
-    <DropDown name="test" value="" onFocus={onFocusSpy} onBlur={onBlurSpy} />
+    <DropDown
+      name="test"
+      label="label"
+      value=""
+      onFocus={onFocusSpy}
+      onBlur={onBlurSpy}
+    />
   );
 
   t.equal(component.state().isFocused, false, 'Start without focus');
@@ -97,7 +110,7 @@ test('DropDown - getOptions', async (t) => {
     value: '',
   };
 
-  const component = shallow(<DropDown {...props} />);
+  const component = shallow(<DropDown {...props} name="name" label="label" />);
 
   t.equal(component.find('Async').length, 1, 'Render Async dropdown component');
 
@@ -120,8 +133,8 @@ test('DropDown - validationResult', (t) => {
    * @param {object} obj - The value of the dropdown.
    * @returns {object} - Returns an object with the isValid key.
    **/
-  function validator(obj) {
-    if (obj.value === 'invalid') {
+  function validator(value) {
+    if (value === 'invalid') {
       return {isValid: false};
     } else {
       return {isValid: true};
@@ -129,6 +142,8 @@ test('DropDown - validationResult', (t) => {
   }
 
   const props = {
+    name: 'name',
+    label: 'label',
     validate: [validator],
     options: [
       {
@@ -140,10 +155,7 @@ test('DropDown - validationResult', (t) => {
         label: 'Montezuma is not the best cat',
       },
     ],
-    value: {
-      value: 'invalid',
-      label: 'Montezuma is not the best cat',
-    },
+    value: 'invalid',
   };
 
   const component = shallow(<DropDown {...props} />);
@@ -155,6 +167,8 @@ test('DropDown - validationResult', (t) => {
   );
 
   const props2 = {
+    name: 'name',
+    label: 'label',
     validate: [validator],
     options: [
       {
@@ -166,10 +180,7 @@ test('DropDown - validationResult', (t) => {
         label: 'Montezuma is not the best cat',
       },
     ],
-    value: {
-      value: 'valid',
-      label: 'Montezuma is the best cat',
-    },
+    value: 'valid',
   };
 
   const component2 = shallow(<DropDown {...props2} />);
@@ -184,6 +195,8 @@ test('DropDown - validationResult', (t) => {
 
 test('DropDown - componentDidUpdate', (t) => {
   const prevProps = {
+    name: 'name',
+    label: 'label',
     options: [{label: 'some label', value: 'some_value'}],
     label: 'My Options',
     placeholder: 'Find your option',
@@ -191,6 +204,8 @@ test('DropDown - componentDidUpdate', (t) => {
   };
 
   const props = {
+    name: 'name',
+    label: 'label',
     options: [{label: 'some label', value: 'some_value'}],
     label: 'My Options',
     placeholder: 'Find your option',
@@ -217,10 +232,12 @@ test('DropDown - componentDidUpdate', (t) => {
   t.end();
 });
 
-test('DropDown - componentDidUpdate', (t) => {
+test('DropDown - getCurrentOption', (t) => {
   t.plan(2);
 
   const props = {
+    name: 'name',
+    label: 'label',
     options: [
       {label: 'some label', value: 'some_value'},
       {label: 'another label', value: 'some_other_value'},
@@ -239,6 +256,8 @@ test('DropDown - componentDidUpdate', (t) => {
   );
 
   const props2 = {
+    name: 'name',
+    label: 'label',
     options: [],
     label: 'My Options',
     placeholder: 'Find your option',
