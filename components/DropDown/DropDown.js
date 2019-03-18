@@ -122,7 +122,7 @@ class DropDown extends Component {
   onChange(newValue) {
     if (this.props.getOptions) {
       this.props.onChange(
-        this.state.options[newValue.value]
+        newValue && this.state.options[newValue.value]
           ? {label: newValue.label, value: newValue.value}
           : ''
       );
@@ -163,6 +163,7 @@ class DropDown extends Component {
       placeholder,
       searchable,
       clearable,
+      loading,
     } = this.props;
 
     let ComponentType, optionProps;
@@ -188,7 +189,7 @@ class DropDown extends Component {
           }`}
         >
           <label>{label}</label>
-          <div>
+          <div className="mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}
               classNamePrefix="mcgonagall-dropdown"
@@ -199,9 +200,10 @@ class DropDown extends Component {
               onBlur={this.onBlur}
               autosize={true}
               simpleValue={true}
-              searchable={searchable}
-              clearable={clearable}
+              isSearchable={searchable}
+              isClearable={clearable}
               isDisabled={disabled}
+              isLoading={loading}
               aria-label={label}
               {...optionProps}
             />
@@ -221,13 +223,15 @@ class DropDown extends Component {
 
 DropDown.propTypes = {
   label: PropTypes.string.isRequired,
-  options: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  }),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ),
   value: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    value: PropTypes.string,
   }).isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
@@ -235,13 +239,14 @@ DropDown.propTypes = {
   validateErrorMsg: PropTypes.string,
   placeholder: PropTypes.string,
   validationErrorMsg: PropTypes.string,
-  validate: PropTypes.func,
+  validate: PropTypes.arrayOf(PropTypes.func),
   getOptions: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   searchable: PropTypes.bool,
   clearable: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 DropDown.defaultProps = {

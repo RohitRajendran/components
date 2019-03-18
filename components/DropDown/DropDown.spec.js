@@ -181,18 +181,24 @@ test('DropDown - validationResult', (t) => {
 });
 
 test('DropDown - componentDidUpdate', (t) => {
+  const prevProps = {
+    options: [{label: 'some label', value: 'some_value'}],
+    label: 'My Options',
+    placeholder: 'Find your option',
+    value: 'some_old_value',
+  };
+
   const props = {
     options: [{label: 'some label', value: 'some_value'}],
     label: 'My Options',
     placeholder: 'Find your option',
     value: 'some_value',
   };
+
   const component = mount(<DropDown {...props} />);
 
-  component.setProps({value: 'some_new_value'});
   component.setState({touched: true});
-
-  component.update();
+  component.instance().componentDidUpdate(prevProps);
 
   t.deepEqual(
     component.state(),
@@ -203,7 +209,7 @@ test('DropDown - componentDidUpdate', (t) => {
       isValid: true,
       validationMessage: '',
     },
-    'Set verify validation on update.'
+    'Should validate on updates.'
   );
 
   t.end();

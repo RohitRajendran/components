@@ -7,6 +7,10 @@ $transition-duration: 0.25s;
   transition-duration: $transition-duration;
   position: relative;
 
+  .mcgonagall-dropdown-wrapper {
+    background-color: $white-four;
+  }
+
   .validation-error,
   .description {
     @include source-sans-pro(1.2rem);
@@ -35,13 +39,19 @@ $transition-duration: 0.25s;
   }
 
   &.disabled {
-    background-color: $pampas;
     color: $slate;
+
+    .mcgonagall-dropdown-wrapper {
+      background-color: $pampas;
+    }
 
     .mcgonagall-dropdown__control {
       color: $slate;
-      background-color: $pampas;
       border-color: $white-seven;
+
+      .mcgonagall-dropdown-wrapper {
+        background-color: $pampas;
+      }
 
       &:focus,
       &:active {
@@ -121,6 +131,7 @@ $transition-duration: 0.25s;
     font-style: normal;
     border-color: $white-seven;
     z-index: 999;
+    background-color: transparent;
 
     input {
       @include source-sans-pro(2rem);

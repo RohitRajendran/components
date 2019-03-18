@@ -34,6 +34,7 @@ The following component props are valid.
 | **onBlur**      | Function |         | Handler which is run whenever the input fired a blur event.                                                         | No       |
 | **searchable**  | Boolean  | `true`  | Toggles type ahead functionality on/off.                                                                            | No       |
 | **clearable**   | Boolean  | `true`  | Toggles the ability to clear the search field on/off.                                                               | No       |
+| **loading**     | Boolean  | `false` | Toggles the loading state of the input on/off.                                                                      | No       |
 
 ### props.validate
 

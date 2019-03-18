@@ -64,9 +64,9 @@ async function getOptions(input) {
 }
 
 const store = new Store({
-  selectedExample: {},
+  selectedExample: '',
   validExample: {value: 'invalid', label: 'Montezuma is not the best cat'},
-  apiExample: {},
+  apiExample: '',
 });
 
 const stories = storiesOf('Atoms/DropDown', module);
@@ -111,6 +111,7 @@ stories.add('api', () => (
         onChange={(value) => store.set({apiExample: value})}
         placeholder="Choose a pet name"
         description="Type a common office pet name in the box above"
+        clearable={true}
         label="Pet Name"
         key="apiExample"
         required
@@ -145,4 +146,25 @@ stories.add('invalid', () => (
       />,
     ]}
   </State>
+));
+
+stories.add('disabled', () => (
+  <DropDown
+    name="validExample"
+    options={[
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ]}
+    placeholder="Is Montezuma the best cat?"
+    key="validExample"
+    description="Who is the best cat?"
+    label="Best Cat"
+    disabled
+  />
 ));
