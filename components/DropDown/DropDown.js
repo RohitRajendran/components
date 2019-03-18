@@ -7,10 +7,6 @@ import _ from 'lodash';
 
 import './DropDown.scss';
 
-export const FormContext = React.createContext({
-  isSubmitted: false,
-});
-
 /** Renders the DropDown field component which wraps react-select. */
 class DropDown extends Component {
   /** @inheritdoc */
@@ -37,7 +33,7 @@ class DropDown extends Component {
   /** @inheritdoc */
   componentDidMount() {
     if (
-      this.context.isSubmitted ||
+      this.props.isSubmitted ||
       (!isNullOrUndefined(this.props.value) && this.props.value !== '')
     ) {
       this.validate();
@@ -47,13 +43,13 @@ class DropDown extends Component {
   /** @inheritdoc */
   componentDidUpdate(prevProps) {
     if (
-      (!this.state.touched && this.context.isSubmitted) ||
+      (!this.state.touched && this.props.isSubmitted) ||
       (this.state.touched &&
         (prevProps.value !== this.props.value ||
           prevProps.validate !== this.props.validate))
     ) {
       this.setState(
-        {touched: this.state.touched || this.context.isSubmitted},
+        {touched: this.state.touched || this.props.isSubmitted},
         this.validate
       );
     }
@@ -246,6 +242,7 @@ DropDown.propTypes = {
   searchable: PropTypes.bool,
   clearable: PropTypes.bool,
   loading: PropTypes.bool,
+  isSubmitted: PropTypes.bool,
 };
 
 DropDown.defaultProps = {
