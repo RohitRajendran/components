@@ -189,7 +189,7 @@ test('DropDown - componentDidUpdate', (t) => {
   };
   const component = mount(<DropDown {...props} />);
 
-  props.value = 'different_value';
+  component.setProps({value: 'some_new_value'});
   component.setState({touched: true});
 
   component.update();

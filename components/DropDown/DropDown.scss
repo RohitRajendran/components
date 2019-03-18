@@ -32,7 +32,6 @@ $transition-duration: 0.25s;
     font-weight: normal;
     left: 0;
     top: 0;
-    z-index: 999;
   }
 
   &.disabled {
@@ -121,6 +120,7 @@ $transition-duration: 0.25s;
     max-height: 63px;
     font-style: normal;
     border-color: $white-seven;
+    z-index: 999;
 
     input {
       @include source-sans-pro(2rem);
