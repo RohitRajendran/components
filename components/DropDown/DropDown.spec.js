@@ -31,11 +31,13 @@ test('DropDown - renders', (t) => {
 
 test('DropDown - onChange', (t) => {
   const onChangeSpy = spy();
-  const component = shallow(<DropDown value="" onChange={onChangeSpy} />);
+  const component = shallow(
+    <DropDown name="test" value="" onChange={onChangeSpy} />
+  );
 
-  component.instance().onChange('testval');
+  component.instance().onChange({value: 'testval', label: 'thing'});
   t.true(
-    onChangeSpy.withArgs('testval').calledOnce,
+    onChangeSpy.withArgs('test', 'testval').calledOnce,
     'should call the method with value provided'
   );
   t.true(onChangeSpy.calledOnce, 'Call method once');
@@ -44,7 +46,7 @@ test('DropDown - onChange', (t) => {
 
   component.instance().onChange(null);
   t.true(
-    onChangeSpy.withArgs('').calledOnce,
+    onChangeSpy.withArgs('test', '').calledOnce,
     'Call the method with an empty string'
   );
   t.true(onChangeSpy.calledOnce, 'Call method once');
@@ -52,10 +54,10 @@ test('DropDown - onChange', (t) => {
   onChangeSpy.resetHistory();
 
   const component2 = shallow(
-    <DropDown value="" onChange={onChangeSpy} getOptions={true} />
+    <DropDown name="test" value="" onChange={onChangeSpy} getOptions={true} />
   );
 
-  component2.instance().onChange('testval');
+  component2.instance().onChange({value: 'testval', label: 'thing'});
 
   t.equals(
     onChangeSpy.callCount,
@@ -71,7 +73,7 @@ test('DropDown - Blur and Focus', (t) => {
   const onBlurSpy = spy();
 
   const component = shallow(
-    <DropDown value="" onFocus={onFocusSpy} onBlur={onBlurSpy} />
+    <DropDown name="test" value="" onFocus={onFocusSpy} onBlur={onBlurSpy} />
   );
 
   t.equal(component.state().isFocused, false, 'Start without focus');
@@ -213,4 +215,48 @@ test('DropDown - componentDidUpdate', (t) => {
   );
 
   t.end();
+});
+
+test('DropDown - componentDidUpdate', (t) => {
+  t.plan(2);
+
+  const props = {
+    options: [
+      {label: 'some label', value: 'some_value'},
+      {label: 'another label', value: 'some_other_value'},
+    ],
+    label: 'My Options',
+    placeholder: 'Find your option',
+    value: 'some_other_value',
+  };
+
+  const component = mount(<DropDown {...props} />);
+
+  t.deepEqual(
+    component.instance().getCurrentOption(props.options),
+    [{label: 'another label', value: 'some_other_value'}],
+    'Should get the currently selected option.'
+  );
+
+  const props2 = {
+    options: [],
+    label: 'My Options',
+    placeholder: 'Find your option',
+    value: 'montezuma',
+    getOptions: stub(),
+  };
+
+  const component2 = mount(<DropDown {...props2} />);
+
+  component2.setState({
+    options: {
+      montezuma: 'Montezuma',
+    },
+  });
+
+  t.deepEqual(
+    component2.instance().getCurrentOption(props2.options),
+    [{label: 'Montezuma', value: 'montezuma'}],
+    'Should get the currently selected option from state.'
+  );
 });

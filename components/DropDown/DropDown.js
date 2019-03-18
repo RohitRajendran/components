@@ -118,12 +118,14 @@ class DropDown extends Component {
   onChange(newValue) {
     if (this.props.getOptions) {
       this.props.onChange(
-        newValue && this.state.options[newValue.value]
-          ? {label: newValue.label, value: newValue.value}
-          : ''
+        this.props.name,
+        newValue && this.state.options[newValue.value] ? newValue.value : ''
       );
     } else {
-      this.props.onChange(newValue || '');
+      this.props.onChange(
+        this.props.name,
+        newValue && newValue.value ? newValue.value : ''
+      );
     }
   }
 
@@ -147,12 +149,25 @@ class DropDown extends Component {
     });
   }
 
+  /**
+   * Filters down the current option list by value.
+   * @param {array} options - An array of options
+   * @returns {array} - Returns a filtered down array with the option.
+   */
+  getCurrentOption(options) {
+    if (this.props.getOptions && this.state.options) {
+      return [
+        {value: this.props.value, label: this.state.options[this.props.value]},
+      ];
+    }
+    return options.filter((obj) => obj.value === this.props.value);
+  }
+
   /** @inheritdoc */
   render() {
     const {
       label,
       options,
-      value,
       disabled,
       className,
       description,
@@ -175,6 +190,11 @@ class DropDown extends Component {
 
     const containerClasses = classNames(className);
 
+    const selectedValue =
+      (optionProps && optionProps.options) || this.state.options
+        ? this.getCurrentOption(optionProps.options)
+        : [];
+
     return (
       <div className={containerClasses}>
         <div
@@ -189,7 +209,7 @@ class DropDown extends Component {
             <ComponentType
               {...this.props}
               classNamePrefix="mcgonagall-dropdown"
-              value={value}
+              value={selectedValue}
               placeholder={placeholder}
               onChange={this.onChange}
               onFocus={this.onFocus}
@@ -225,10 +245,8 @@ DropDown.propTypes = {
       value: PropTypes.string.isRequired,
     })
   ),
-  value: PropTypes.shape({
-    label: PropTypes.string,
-    value: PropTypes.string,
-  }).isRequired,
+  value: PropTypes.string,
+  name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
   description: PropTypes.string,

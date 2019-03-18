@@ -19,11 +19,11 @@ function promiseTimeout(time) {
 }
 
 /** Fake validation function.
- * @param {object} obj - The input object.
+ * @param {string} value - String representing an invalid value.
  * @returns {object} - Returns an object stating if it's true or false.
  */
-function validate(obj) {
-  if (obj.value === 'invalid') {
+function validate(value) {
+  if (value === 'invalid') {
     return {
       isValid: false,
       message: 'Monte is actually the best.',
@@ -65,10 +65,10 @@ async function getOptions(input) {
 }
 
 const store = new Store({
-  selectedExample: {value: '', label: ''},
-  selectedExample2: {value: 'uk', label: 'United Kingdom'},
-  validExample: {value: 'invalid', label: 'Montezuma is not the best cat'},
-  apiExample: {value: '', label: ''},
+  selectedExample: '',
+  selectedExample2: 'uk',
+  validExample: 'invalid',
+  apiExample: '',
 });
 
 const stories = storiesOf('Atoms/DropDown', module);
@@ -92,7 +92,7 @@ stories.add('default', () => (
           },
         ]}
         value={state.selectedExample}
-        onChange={(value) => store.set({selectedExample: value})}
+        onChange={(name, value) => store.set({[name]: value})}
         placeholder={text('placeholder', 'Choose a country')}
         description={text('description', 'Pick your country')}
         label={text('label', 'Country')}
@@ -125,7 +125,7 @@ stories.add('open', () => (
           },
         ]}
         value={state.selectedExample2}
-        onChange={(value) => store.set({selectedExample2: value})}
+        onChange={(name, value) => store.set({[name]: value})}
         placeholder={text('placeholder', 'Choose a country')}
         description={text('description', 'Pick your country')}
         label={text('label', 'Country')}
@@ -149,7 +149,7 @@ stories.add('api', () => (
         name="apiExample"
         getOptions={getOptions}
         value={state.apiExample}
-        onChange={(value) => store.set({apiExample: value})}
+        onChange={(name, value) => store.set({[name]: value})}
         placeholder={text('placeholder', 'Choose a pet name')}
         description={text(
           'description',
@@ -185,7 +185,7 @@ stories.add('invalid', () => (
           },
         ]}
         value={state.validExample}
-        onChange={(value) => store.set({validExample: value})}
+        onChange={(name, value) => store.set({[name]: value})}
         placeholder={text('placeholder', 'Is Montezuma the best cat?')}
         description={text('description', 'Who is the best cat?')}
         label={text('label', 'Best Cat')}

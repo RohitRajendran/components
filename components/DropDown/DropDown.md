@@ -8,11 +8,22 @@ The DropDown component displays a series options in a dropdown list. The list ca
 <DropDown
   name="suffix"
   label="Suffix"
-  options={SuffixOptions}
+  options={[
+    {
+      value: 'valid',
+      label: 'Montezuma is the best cat',
+    },
+    {
+      value: 'invalid',
+      label: 'Montezuma is not the best cat',
+    },
+  ]}
   placeholder="optional"
-  value={user.get('suffix') || ''}
-  onChange={onChangeSelect('suffix')}
-  disabled={isReadOnly}
+  value={user.get('suffix')}
+  value={state.apiExample}
+  onChange={(name, value) => store.set({[name]: value})}
+  disabled={false}
+  required={true}
 />
 ```
 
@@ -22,6 +33,7 @@ The following component props are valid.
 
 | Prop            | Type     | Default | Description                                                                                                               | Required |
 | --------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **name**        | String   |         | The name of the input field.                                                                                              | Yes      |
 | **label**       | String   |         | The label which appears above the form label.                                                                             | Yes      |
 | **options**     | Array    |         | An array of options such as label and value, see the detailed example below.                                              | Yes      |
 | **value**       | String   |         | The currently selected option in the dropdown.                                                                            | Yes      |
@@ -43,8 +55,8 @@ The following component props are valid.
 `props.validate` requires an array of functions which should look something like the following.
 
 ```javascript
-function validator(obj) {
-  if (obj.value === 'invalid') {
+function validator(value) {
+  if (value === 'invalid') {
     return {
       isValid: false,
       message: 'Message to display beneath the input',
