@@ -41,6 +41,10 @@ $transition-duration: 0.25s;
   &.disabled {
     color: $slate;
 
+    label {
+      color: $bluey-grey;
+    }
+
     .mcgonagall-dropdown-wrapper {
       background-color: $pampas;
     }
@@ -73,6 +77,10 @@ $transition-duration: 0.25s;
           color: $slate !important; // Required to override react-select input styles.
         }
       }
+    }
+
+    .description {
+      color: $bluey-grey;
     }
   }
 
@@ -119,8 +127,20 @@ $transition-duration: 0.25s;
     }
   }
 
+  // Dropdown Indicators
   .mcgonagall-dropdown__indicator {
     padding: 0 8px;
+  }
+
+  .mcgonagall-dropdown__indicators {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1rem;
+  }
+
+  .mcgonagall-dropdown__indicator-separator {
+    visibility: hidden;
   }
 
   // Main input field
@@ -133,6 +153,7 @@ $transition-duration: 0.25s;
     border-color: $white-seven;
     z-index: 999;
     background-color: transparent;
+    position: relative;
 
     input {
       @include source-sans-pro(2rem);

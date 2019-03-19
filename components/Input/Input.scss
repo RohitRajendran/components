@@ -22,9 +22,15 @@
     }
   }
 
+  &.disabled {
+    .description {
+      color: $bluey-grey;
+    }
+  }
+
   // Styles the label of the input which appears directly beneath it in the DOM.
   input:disabled + label {
-    color: $slate;
+    color: $bluey-grey;
   }
 
   input {

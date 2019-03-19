@@ -45,3 +45,4 @@ The following component props are valid.
 | **setRef**             | Function |         | Sets the ref to the input.                                                              | No       |
 | **hideValidity**       | Function |         | Hides the validation message under the defined conditions.                              | No       |
 | **isValid**            | Function |         | Validates the input based on the provided logic.                                        | No       |
+| **className**          | String   |         | Optional class names to apply to the container.                                         | No       |
