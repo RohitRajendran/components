@@ -17,7 +17,6 @@ test('CardShell - active', (t) => {
   const props = {
     ...defaultProps,
     onSubmit: stub(),
-    onChange: stub(),
     beforeButton: <p>Before</p>,
     afterButton: <p>After</p>,
   };
@@ -45,16 +44,6 @@ test('CardShell - active', (t) => {
     .simulate('submit', {preventDefault: stub()});
 
   t.true(props.onSubmit.calledOnce, 'Called on submit');
-
-  comp
-    .find('form')
-    .first()
-    .simulate('change', {
-      preventDefault: stub(),
-      target: {name: 'name', value: 'val'},
-    });
-
-  t.deepEquals(props.onChange.args[0], ['name', 'val'], 'Called on change');
 
   t.end();
 });
