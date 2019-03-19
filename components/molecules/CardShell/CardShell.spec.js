@@ -2,10 +2,10 @@ import {mount} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import Input from '../../Input/Input';
-import {DateMask} from '../../../stories/util';
-import RadioButtons from '../../RadioButtons/RadioButtons';
-import SelectButtons from '../../SelectButtons/SelectButtons';
+import Input from '../../atoms/Input/Input';
+import {DateMask} from '../../util';
+import RadioButtons from '../RadioButtons/RadioButtons';
+import SelectButtons from '../SelectButtons/SelectButtons';
 import CardShell from './CardShell';
 
 const defaultProps = {

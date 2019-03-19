@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 import Input, {getDeepestInputElement} from './Input';
-import {DateMask, CurrencyMask} from '../../stories/util';
+import {DateMask, CurrencyMask} from '../../util';
 
 test('Input - Renders props as attributes on the input', (t) => {
   t.plan(8);
