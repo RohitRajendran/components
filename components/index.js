@@ -1,18 +1,37 @@
-import Button from './Button/Button';
-import Loader from './Loader/Loader';
-import Input from './Input/Input';
-import DropDown from './DropDown/DropDown';
-import Spinner from './Spinner/Spinner';
-import ChanceOfSuccess from './ChanceOfSuccess/ChanceOfSuccess';
-import CardShell from './Cards/CardShell/CardShell';
-import RadioButtons from './RadioButtons/RadioButtons';
-import QuestionCard from './Cards/QuestionCard/QuestionCard';
-import SimpleSummary from './CardSummaries/SimpleSummary/SimpleSummary';
-import FormSummary from './CardSummaries/FormSummary/FormSummary';
-import IncompleteSummary from './CardSummaries/IncompleteSummary/IncompleteSummary';
-import MessageCard from './Cards/MessageCard/MessageCard';
+// Atoms
+import Button from './atoms/Button/Button';
+import Loader from './atoms/Loader/Loader';
+import Input from './atoms/Input/Input';
+import DropDown from './atoms/DropDown/DropDown';
+import Spinner from './atoms/Spinner/Spinner';
+import ChanceOfSuccess from './atoms/ChanceOfSuccess/ChanceOfSuccess';
+import ArrowIcon from './atoms/ArrowIcon/ArrowIcon';
+import CloseIcon from './atoms/CloseIcon/CloseIcon';
+import TrashIcon from './atoms/TrashIcon/TrashIcon';
+import OptionBox from './atoms/OptionBox/OptionBox';
+
+// Molecules
+import CardShell from './molecules/CardShell/CardShell';
+import RadioButtons from './molecules/RadioButtons/RadioButtons';
+import SelectButtons from './molecules/SelectButtons/SelectButtons';
+import SimpleSummary from './molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import FormSummary from './molecules/CardSummaries/FormSummary/FormSummary';
+import IncompleteSummary from './molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+
+// Organisms
+import QuestionCard from './organisms/QuestionCard/QuestionCard';
+import MessageCard from './organisms/MessageCard/MessageCard';
+
+// Utilities
+import detectBrowser from './utilities/DetectBrowser/DetectBrowser';
 
 export {
+  ArrowIcon,
+  CloseIcon,
+  TrashIcon,
+  OptionBox,
+  SelectButtons,
+  detectBrowser,
   Button,
   Loader,
   Input,
