@@ -79,12 +79,17 @@ const CardShell = ({
     onSubmit();
   };
 
+  const ChangeForm = (e) => {
+    e.preventDefault();
+    onChange(e.target.name, e.target.value);
+  };
+
   return (
     <div className={cardClass}>
       {isCollapsed ? (
         summary
       ) : (
-        <form onChange={onChange} onSubmit={submitForm}>
+        <form onChange={ChangeForm} onSubmit={submitForm}>
           {children}
 
           <div className="card-after-content">

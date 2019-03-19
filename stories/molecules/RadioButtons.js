@@ -69,6 +69,7 @@ stories.add('followup', () => (
               placeholder="Enter an estimate..."
               value={store.get('input')}
               onChange={(event) => store.set({input: event.target.value})}
+              required
             />
           </div>
         ),
