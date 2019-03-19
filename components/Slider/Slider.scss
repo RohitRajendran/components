@@ -1,0 +1,147 @@
+@import '~rc-slider/assets/index.css';
+
+.slider-marker-highlighted {
+  background-image: url(../../assets/icons/star.svg);
+  background-color: $green !important;
+  border-color: $green !important;
+  background-size: 80%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.slider-wrapper {
+  margin: 16rem 11rem 0rem 11rem;
+  position: relative;
+
+  &.highlighted {
+    .tooltip {
+    background-color: $green;
+
+    &::before {
+      border-color: $green transparent transparent transparent;
+    }
+  } 
+  .rc-slider-with-marks {
+    .rc-slider-handle {
+      @extend .slider-marker-highlighted;
+    }
+  }
+}
+
+  // Markers which appear to the left and right of the slider.
+  .left-annotate,
+  .right-annotate {
+    position: absolute;
+    color: $dark-blue;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .left-annotate {
+    left: -11rem;
+    bottom: -1rem;
+  }
+
+  .right-annotate {
+    right: -11rem;
+    bottom: -1rem;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -15rem;
+    width: 20rem;
+    height: 10rem;
+    margin-left: -10rem;
+    background-color: $dark-blue;
+    text-align: left;
+    color: white;
+    padding: 1.5rem 2rem;
+    transition-duration: 200ms;
+    transition-property: left;
+    transition-timing-function: ease-in-out;
+
+    &::before {
+      border-color: $dark-blue transparent transparent transparent;
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 1.04rem 0.6rem 0 0.6rem;
+      left: 46.5%;
+      bottom: -1rem;
+    }
+  }
+
+  .tooltip-sticky-hint {
+    position: absolute;
+    text-align: center;
+    top: 3rem;
+    width: 18rem;
+    height: 10rem;
+    margin-left: -9rem;
+
+    &.show {
+      &::after {
+        content: ' ';
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: $grey;
+        border-radius: 50%;
+        left: 44.5%;
+        top: -3.4rem;
+        z-index: -5;
+      }
+    }
+
+    &.green-star::after {
+      @extend .slider-marker-highlighted;
+      background-size: 60%;
+    }
+  }
+
+  @for $i from 0 through 11 {
+    .tooltip-position-#{$i} {
+      @if $i < 1 {
+        left: 0;
+      } @else {
+        left: #{$i}0%;
+      }
+    }
+  }
+
+  // Overrides for React Slider
+  .rc-slider-with-marks {
+    margin: 5rem 0rem 7rem 0rem;
+
+    .rc-slider-rail {
+      height: 2px;
+      color: $grey;
+      z-index: -10;
+    }
+
+    .rc-slider-dot {
+      display: none;
+    }
+
+    .rc-slider-handle {
+      height: 20px !important;
+      width: 20px !important;
+      margin-left: -10px !important;
+      margin-top: -9px !important;
+      background-color: $violet-blue;
+      border-color: $violet-blue;
+    }
+
+    .rc-slider-mark {
+      top: -30px;
+    }
+
+    .rc-slider-mark .rc-slider-mark-text {
+      font-weight: 700;
+      color: $dark-blue;
+    }
+  }
+}

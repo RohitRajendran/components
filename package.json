@@ -71,6 +71,7 @@
     "postcss-prefixer": "*",
     "prettier": "*",
     "prop-types": "*",
+    "rc-slider": "*",
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
