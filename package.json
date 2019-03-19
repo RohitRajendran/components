@@ -85,8 +85,8 @@
     "style-loader": "*",
     "tap-xunit": "*",
     "tape": "*",
+    "terser-webpack-plugin": "*",
     "text-mask-addons": "*",
-    "uglifyjs-webpack-plugin": "*",
     "webpack": "*",
     "webpack-cli": "*"
   },

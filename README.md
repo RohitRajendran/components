@@ -43,6 +43,7 @@ To begin Storybook, just run `yarn start`. This will open a new window to Storyb
 ## Development 🔧
 
 ### Best Practices
+
 Because this library is so foundational to the rest of the codebase, it's vitally important to create a solid foundation for these components. The following are some best practices to keep these building blocks sane and straightforward.
 
 1. Carefully scope CSS to the component to prevent side effects.
@@ -53,6 +54,7 @@ Because this library is so foundational to the rest of the codebase, it's vitall
 6. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 
 ### Testing Changes
+
 As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the lifecycle of publishing new versions, the easier way of handling this is utilizing "linking" in yarn or npm.
 
 You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
@@ -60,7 +62,8 @@ You can mimic publishing this repository locally by running `yarn link` in the d
 At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
 
 ### State Wrapper
-If your component requires state you'll need to utilize a State wrapper in order to correctly preview it in Storybook. This can be achieved using the following pattern. You can find more information about the State wrapper we utilize [here](https://github.com/Sambego/storybook-state). 
+
+If your component requires state you'll need to utilize a State wrapper in order to correctly preview it in Storybook. This can be achieved using the following pattern. You can find more information about the State wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
 ```javascript
 import React from 'react';
@@ -77,9 +80,8 @@ const store = new Store({
   bank: '',
 });
 
-// You'll need to add the StateDecorator as a Storybook decorator using addDecorator.  
-stories
-  .addDecorator(StateDecorator(store));
+// You'll need to add the StateDecorator as a Storybook decorator using addDecorator.
+stories.addDecorator(StateDecorator(store));
 
 // Subscribes to store changes and forces the component to re-render.
 store.subscribe(() => {
