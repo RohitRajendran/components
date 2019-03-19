@@ -96,7 +96,6 @@ test('MessageCard - latest collapsed', (t) => {
     onSubmit: () => true,
     name: 'test',
     title: 'Title',
-    shortTitle: 'Q',
     cardUrl: '/',
     description: 'Description',
     isCollapsed: true,
@@ -111,10 +110,10 @@ test('MessageCard - latest collapsed', (t) => {
 
   t.equals(
     comp
-      .find('h2')
+      .find('p')
       .first()
       .text(),
-    'Q',
+    'Pick up where you left off',
     'Shows incomplete summary'
   );
   t.true(
