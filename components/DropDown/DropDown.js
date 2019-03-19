@@ -1,3 +1,4 @@
+/** @module DropDown */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select, {Async} from 'react-select';
