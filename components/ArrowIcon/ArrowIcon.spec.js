@@ -7,7 +7,7 @@ test('ArrowIcon - renders', (t) => {
   const component = shallow(<ArrowIcon fill="white" />);
 
   t.equals(
-    component.find('ArrowIcon').length,
+    component.find('svg').length,
     1,
     'Should load the ArrowIcon component.'
   );

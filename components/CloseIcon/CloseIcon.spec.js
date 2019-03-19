@@ -7,7 +7,7 @@ test('CloseIcon - renders', (t) => {
   const component = shallow(<CloseIcon fill="white" />);
 
   t.equals(
-    component.find('CloseIcon').length,
+    component.find('svg').length,
     1,
     'Should load the CloseIcon component.'
   );

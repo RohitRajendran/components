@@ -7,7 +7,7 @@ test('TrashIcon - renders', (t) => {
   const component = shallow(<TrashIcon fill="white" />);
 
   t.equals(
-    component.find('TrashIcon').length,
+    component.find('svg').length,
     1,
     'Should load the TrashIcon component.'
   );
