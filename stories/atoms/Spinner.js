@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Spinner from '../../components/Spinner/Spinner';
+import {PureSpinner as Spinner} from '../../components/Spinner/Spinner';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import SpinnerReadme from '../../components/Spinner/Spinner.md';

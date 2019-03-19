@@ -9,10 +9,16 @@ import createPercyAddon from '@percy-io/percy-storybook';
 import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
+import {jsxDecorator} from 'storybook-addon-jsx';
 import '../constants/sass/util/prefixed-utils.scss';
 
 const req = require.context('../stories', true, /\.js$/);
 const {percyAddon, serializeStories} = createPercyAddon();
+
+// Registers global decorators.
+addDecorator(withA11y);
+addDecorator(withKnobs);
+addDecorator(jsxDecorator);
 
 // Configures global parameters.
 addParameters({
@@ -29,10 +35,6 @@ addParameters({
     {name: 'Middle Purple', value: '#260070'},
   ],
 });
-
-// Registers global decorators.
-addDecorator(withA11y);
-addDecorator(withKnobs);
 
 /** Loads each story into Storybook.
  * @returns {undefined}

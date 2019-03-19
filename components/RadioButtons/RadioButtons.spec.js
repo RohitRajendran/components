@@ -126,6 +126,8 @@ test('RadioButtons - Followup question should be hidden if the parent question i
 });
 
 test('RadioButtons - onChange should pass back the correct value', (t) => {
+  t.plan(2);
+
   const props = {
     name: 'yesNo',
     options: [
@@ -151,9 +153,13 @@ test('RadioButtons - onChange should pass back the correct value', (t) => {
 
   t.equals(
     props.onChange.args[0][0],
-    'yes',
+    'yesNo',
     'Should fire the onChange handler and pass back the value of the first item'
   );
 
-  t.end();
+  t.equals(
+    props.onChange.args[0][1],
+    'yes',
+    'Should fire the onChange handler and pass back the value of the first item'
+  );
 });
