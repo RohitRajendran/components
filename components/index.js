@@ -10,6 +10,7 @@ import QuestionCard from './Cards/QuestionCard/QuestionCard';
 import SimpleSummary from './CardSummaries/SimpleSummary/SimpleSummary';
 import FormSummary from './CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from './CardSummaries/IncompleteSummary/IncompleteSummary';
+import MessageCard from './Cards/MessageCard/MessageCard';
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   SimpleSummary,
   FormSummary,
   IncompleteSummary,
+  MessageCard,
 };

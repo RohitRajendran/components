@@ -1,36 +1,42 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {Fragment} from 'react';
+import React from 'react';
+import '../../CardSummaries/CardSummaries.scss';
 import IncompleteSummary from '../../CardSummaries/IncompleteSummary/IncompleteSummary';
 import '../Cards.scss';
 import CardShell from '../CardShell/CardShell';
-import './QuestionCard.scss';
+import './MessageCard.scss';
 
-const QuestionCard = ({
+const MessageCard = ({
   beforeButton,
-  cardUrl,
-  children,
   className,
-  clearFuture,
   description,
   hasError,
   isCollapsed,
   isLatestCard,
-  moreDetail,
-  shortTitle,
-  summary,
   title,
+  featureImage,
+  shortTitle,
+  cardUrl,
   ...props
 }) => {
   const cardClass = classNames(
     {
-      'mcgonagall-question-card': true,
+      'mcgonagall-message-card': true,
     },
     className
   );
 
-  const showEditWarning = clearFuture && !isLatestCard && !isCollapsed;
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
+
+  const content = (
+    <div className="card-titleset uic--text-center">
+      {featureImage && <div className="card-feature-image">{featureImage}</div>}
+
+      <h2>{title}</h2>
+      {description && <p>{description}</p>}
+    </div>
+  );
 
   return (
     <CardShell
@@ -38,67 +44,46 @@ const QuestionCard = ({
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
-      isLatestCard={isLatestCard}
       summary={
         isIncompleteCollapsedCard ? (
-          <IncompleteSummary shortTitle={shortTitle} cardUrl={cardUrl} />
+          <IncompleteSummary
+            shortTitle={shortTitle}
+            cardUrl={cardUrl}
+            text="Pick up where you left off."
+          />
         ) : (
-          summary
+          <div className="card-message-summary">{content}</div>
         )
       }
-      beforeButton={
-        <Fragment>
-          {beforeButton}
-          {showEditWarning && (
-            <p className="warning-message">
-              Note: The answer to this question has an impact on subsequent
-              questions. If you change this answer, all further progress will be
-              lost.
-            </p>
-          )}
-        </Fragment>
-      }
+      beforeButton={beforeButton}
     >
-      <div className="card-titleset">
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
-
-        {moreDetail && <div className="card-more-detail">{moreDetail}</div>}
-
-        <hr className="margin-top-4" />
-      </div>
-
-      {children}
+      {content}
     </CardShell>
   );
 };
 
-export default QuestionCard;
+export default MessageCard;
 
-QuestionCard.propTypes = {
+MessageCard.propTypes = {
   afterButton: PropTypes.node,
   beforeButton: PropTypes.node,
   buttonText: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  cardUrl: PropTypes.string.isRequired,
   className: PropTypes.string,
-  clearFuture: PropTypes.bool,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   disabled: PropTypes.bool,
+  featureImage: PropTypes.node,
   hasError: PropTypes.bool,
   hideButton: PropTypes.bool,
   isCollapsed: PropTypes.bool,
   isLatestCard: PropTypes.bool,
   loading: PropTypes.bool,
-  cardUrl: PropTypes.string.isRequired,
-  moreDetail: PropTypes.node,
-  onChange: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,
-  summary: PropTypes.node,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
-QuestionCard.defaultProps = {
+MessageCard.defaultProps = {
   buttonText: 'Continue',
 };

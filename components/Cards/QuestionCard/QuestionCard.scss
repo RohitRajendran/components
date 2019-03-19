@@ -1,24 +1,8 @@
 .mcgonagall-question-card {
-  .card-question {
-    h2 {
-      @include source-sans-pro(2rem);
-      color: $dark-blue;
-      font-weight: 400;
-      margin: 0;
-    }
-
-    p {
-      @include source-sans-pro(1.4rem);
-      font-style: italic;
-      color: $dark-blue;
-      margin: 1rem 0 0 0;
-    }
-
-    hr {
-      margin: 4rem 0;
-      border: 0;
-      border-top: 1px solid $grey;
-    }
+  hr {
+    margin: 4rem 0;
+    border: 0;
+    border-top: 1px solid $grey;
   }
 
   .card-more-detail {

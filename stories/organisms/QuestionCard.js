@@ -21,7 +21,11 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = (isCollapsed = false, clearFuture = false) => ({
+const defaultProps = (
+  isCollapsed = false,
+  clearFuture = false,
+  isLatestCard = false
+) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),
   buttonText: text('buttonText'),
@@ -34,7 +38,7 @@ const defaultProps = (isCollapsed = false, clearFuture = false) => ({
   hasError: boolean('hasError', false),
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
-  isLatestCard: boolean('isLatestCard', false),
+  isLatestCard: boolean('isLatestCard', isLatestCard),
   loading: boolean('loading', false),
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',
@@ -77,6 +81,34 @@ stories.add('active', () => (
   </MemoryRouter>
 ));
 
+stories.add('active and clears future', () => (
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(false, true)}>
+      <RadioButtons
+        name="yesNo"
+        options={[
+          {
+            label: 'Yes',
+            value: 'yes',
+          },
+          {
+            label: 'No',
+            value: 'no',
+          },
+          {
+            label: "I don't know",
+            value: 'idk',
+            disabled: true,
+          },
+        ]}
+        onChange={(value) => store.set({[name]: value})}
+        value={store.get('yesNo')}
+        key="yesNo"
+      />
+    </QuestionCard>
+  </MemoryRouter>
+));
+
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
     <QuestionCard {...defaultProps(true)}>
@@ -98,6 +130,34 @@ stories.add('collapsed', () => (
           },
         ]}
         onChange={(name, value) => store.set({[name]: value})}
+        value={store.get('yesNo')}
+        key="yesNo"
+      />
+    </QuestionCard>
+  </MemoryRouter>
+));
+
+stories.add('incomplete collapsed', () => (
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(true, false, true)}>
+      <RadioButtons
+        name="yesNo"
+        options={[
+          {
+            label: 'Yes',
+            value: 'yes',
+          },
+          {
+            label: 'No',
+            value: 'no',
+          },
+          {
+            label: "I don't know",
+            value: 'idk',
+            disabled: true,
+          },
+        ]}
+        onChange={(value) => store.set({[name]: value})}
         value={store.get('yesNo')}
         key="yesNo"
       />

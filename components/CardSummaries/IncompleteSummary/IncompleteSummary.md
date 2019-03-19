@@ -27,7 +27,8 @@ This component renders an incomplete summary that tells the user this step still
 
 The following component props are valid.
 
-| Prop           | Type   | Default | Description                                                     | Required |
-| -------------- | ------ | ------- | --------------------------------------------------------------- | -------- |
-| **cardUrl**    | String |         | The url for this current step which is used for the edit button | Yes      |
-| **shortTitle** | String |         | A shorter version of the card title                             | Yes      |
+| Prop           | Type   | Default                                   | Description                                                     | Required |
+| -------------- | ------ | ----------------------------------------- | --------------------------------------------------------------- | -------- |
+| **cardUrl**    | String |                                           | The url for this current step which is used for the edit button | Yes      |
+| **shortTitle** | String |                                           | A shorter version of the card title                             | Yes      |
+| **text**       | String | 'You still have to answer this question.' | Text that tells the user they need to finish this step          | No       |

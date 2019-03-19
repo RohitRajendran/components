@@ -10459,7 +10459,7 @@ stealthy-require@^1.1.1:
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
-storybook-addon-jsx@^7.0.1:
+storybook-addon-jsx@*:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.0.1.tgz#4bde85ddc00fa51ef5f2a91c185a888fe4834d6a"
   integrity sha512-vA9d+yIc6iqNWv6QxHC5TBAf68nEMLihxNIXyTm99ifP0WFHWKvn+8BWTIT/VLDSF/br3W8ljXl1d8TyFIuaug==

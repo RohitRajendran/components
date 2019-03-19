@@ -3,3 +3,10 @@
 */
 
 @import "~bootstrap/scss/bootstrap-grid.scss"; // Includes display and flex utilities
+
+@import "~bootstrap/scss/mixins/_deprecate.scss";
+@import "~bootstrap/scss/mixins/_hover.scss";
+@import "~bootstrap/scss/mixins/_text-emphasis.scss";
+@import "~bootstrap/scss/mixins/_text-hide.scss";
+@import "~bootstrap/scss/mixins/_text-truncate.scss";
+@import "~bootstrap/scss/utilities/_text.scss";
