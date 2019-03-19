@@ -1,11 +1,11 @@
-# Spinner Component
+# CloseIcon Component
 
-The Spinner component displays a spinning SVG to indicate that something is loading.
+The CloseIcon component creates a close icon using inline SVG.
 
 ## Example 🚀
 
 ```javascript
-<Spinner fill="#000" height="20" width="20" />
+<CloseIcon fill="#000" height="20" width="20" />
 ```
 
 ## Props 🔧

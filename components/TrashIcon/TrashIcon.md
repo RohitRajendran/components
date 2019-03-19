@@ -1,11 +1,11 @@
-# Spinner Component
+# TrashIcon Component
 
-The Spinner component displays a spinning SVG to indicate that something is loading.
+The TrashIcon component creates a close icon using inline SVG.
 
 ## Example 🚀
 
 ```javascript
-<Spinner fill="#000" height="20" width="20" />
+<TrashIcon fill="#000" height="20" width="20" />
 ```
 
 ## Props 🔧

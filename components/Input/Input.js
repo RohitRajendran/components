@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
+import classNames from 'classnames';
 
 import './Input.scss';
 
@@ -78,6 +79,7 @@ class Input extends Component {
       validateOnBlur,
       disabled,
       inputClasses,
+      className,
     } = this.props;
 
     const attrs = {
@@ -123,21 +125,20 @@ class Input extends Component {
       };
     }
 
+    const containerClasses = classNames(
+      {
+        [`input-append input-append-${identifier}`]: append && value.length > 0,
+        [`input-prepend input-prepend-${identifier}`]: prepend,
+        empty: (value && value.length < 1) || !value,
+        focus: this.state.isActive,
+        error: showInvalidity || error,
+        disabled,
+      },
+      `mcgonagall-input ${className}`
+    );
+
     return (
-      <div
-        className={`mcgonagall-input ${
-          append && value.length > 0
-            ? `input-append input-append-${identifier}`
-            : prepend
-            ? `input-prepend input-prepend-${identifier} ${
-                (value && value.length < 1) || !value ? 'empty' : ''
-              }`
-            : ''
-        } ${this.state.isActive ? 'focus' : ''} ${
-          showInvalidity || error ? 'error' : ''
-        }`}
-        data-value={value}
-      >
+      <div className={containerClasses} data-value={value}>
         {append && (
           <style>
             {`
@@ -241,6 +242,7 @@ Input.propTypes = {
   hideValidity: PropTypes.func,
   isValid: PropTypes.func,
   error: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Input.defaultProps = {
