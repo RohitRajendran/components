@@ -1,16 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {PureSpinner as Spinner} from '../../components/Spinner/Spinner';
+import CloseIcon from '../../components/CloseIcon/CloseIcon';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SpinnerReadme from '../../components/Spinner/Spinner.md';
+import CloseIconReadme from '../../components/CloseIcon/CloseIcon.md';
 
-const stories = storiesOf('Atoms/Spinner', module);
+const stories = storiesOf('Atoms/CloseIcon', module);
 
-stories.addDecorator(withReadme(SpinnerReadme));
+stories.addDecorator(withReadme(CloseIconReadme));
 
 stories.add('default', () => (
-  <Spinner
+  <CloseIcon
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}
