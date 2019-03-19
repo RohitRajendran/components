@@ -1,15 +1,13 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf, forceReRender} from '@storybook/react';
 import RadioButtons from '../../components/RadioButtons/RadioButtons';
 import {boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import RadioButtonReadme from '../../components/RadioButtons/RadioButtons.md';
 import Input from '../../components/Input/Input';
-import {State, Store} from '@sambego/storybook-state';
+import {StateDecorator, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Molecules/RadioButtons', module);
-
-stories.addDecorator(withReadme(RadioButtonReadme));
 
 const store = new Store({
   yesNo: '',
@@ -18,102 +16,98 @@ const store = new Store({
   bank: '',
 });
 
+stories
+  .addDecorator(withReadme(RadioButtonReadme))
+  .addDecorator(StateDecorator(store));
+
+store.subscribe(() => {
+  forceReRender();
+});
+
 stories.add('default', () => (
-  <State store={store}>
-    {(state) => [
-      <RadioButtons
-        name="yesNo"
-        table={boolean('table', false)}
-        options={[
-          {
-            label: 'Yes',
-            value: 'yes',
-          },
-          {
-            label: 'No',
-            value: 'no',
-          },
-          {
-            label: "I don't know",
-            value: 'idk',
-            disabled: true,
-          },
-        ]}
-        onChange={(value) => store.set({yesNo: value})}
-        value={state.yesNo}
-        key="yesNo"
-      />,
+  <RadioButtons
+    name="yesNo"
+    table={boolean('table', false)}
+    options={[
+      {
+        label: 'Yes',
+        value: 'yes',
+      },
+      {
+        label: 'No',
+        value: 'no',
+      },
+      {
+        label: "I don't know",
+        value: 'idk',
+        disabled: true,
+      },
     ]}
-  </State>
+    onChange={(name, value) => store.set({[name]: value})}
+    value={store.get('yesNo')}
+    key="yesNo"
+  />
 ));
 
 stories.add('followup', () => (
-  <State store={store}>
-    {(state) => [
-      <RadioButtons
-        name="followup"
-        table={boolean('table', false)}
-        options={[
-          {
-            label: 'Use the United Income estimate',
-            value: 'estimate',
-          },
-          {
-            label: 'Enter my own estimate',
-            value: 'custom',
-            followup: (
-              <div>
-                <Input
-                  name="followup"
-                  label="Estimate"
-                  placeholder="Enter an estimate..."
-                  value={state.input}
-                  onChange={(event) => store.set({input: event.target.value})}
-                />
-              </div>
-            ),
-          },
-        ]}
-        onChange={(value) => store.set({followup: value})}
-        value={state.followup}
-        key="followup"
-      />,
+  <RadioButtons
+    name="followup"
+    table={boolean('table', false)}
+    options={[
+      {
+        label: 'Use the United Income estimate',
+        value: 'estimate',
+      },
+      {
+        label: 'Enter my own estimate',
+        value: 'custom',
+        followup: (
+          <div>
+            <Input
+              name="followup"
+              label="Estimate"
+              placeholder="Enter an estimate..."
+              value={store.get('input')}
+              onChange={(event) => store.set({input: event.target.value})}
+            />
+          </div>
+        ),
+      },
     ]}
-  </State>
+    onChange={(name, value) => store.set({[name]: value})}
+    value={store.get('followup')}
+    key="followup"
+  />
 ));
 
 stories.add('table', () => (
-  <State store={store}>
-    {(state) => [
-      <RadioButtons
-        name="bank"
-        table={boolean('table', true)}
-        options={[
-          {
-            label: 'Bank of America Checking …3456',
-            value: '1',
-            secondaryLabel: '$1,234,567.89',
-          },
-          {
-            label: 'Bank of America Money Market …9364',
-            value: '2',
-            secondaryLabel: '$1,234,567.89',
-          },
-          {
-            label: 'Capital One Savings …8932',
-            value: '3',
-            secondaryLabel: '$1,234,567.89',
-          },
-          {
-            label: 'Wells Fargo Checking …9867',
-            value: '4',
-            secondaryLabel: '$1,234,567.89',
-          },
-        ]}
-        onChange={(value) => store.set({bank: value})}
-        value={state.bank}
-        key="bank"
-      />,
+  <RadioButtons
+    name="bank"
+    table={boolean('table', true)}
+    options={[
+      {
+        label: 'Bank of America Checking …3456',
+        value: '1',
+        secondaryLabel: '$1,234,567.89',
+      },
+      {
+        label: 'Bank of America Money Market …9364',
+        value: '2',
+        secondaryLabel: '$1,234,567.89',
+      },
+      {
+        label: 'Capital One Savings …8932',
+        value: '3',
+        secondaryLabel: '$1,234,567.89',
+      },
+      {
+        label: 'Wells Fargo Checking …9867',
+        value: '4',
+        secondaryLabel: '$1,234,567.89',
+      },
     ]}
-  </State>
+    onChange={(name, value) => store.set({[name]: value})}
+    value={store.get('bank')}
+    key="bank"
+  />
 ));

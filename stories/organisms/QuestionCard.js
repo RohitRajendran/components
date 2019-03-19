@@ -1,6 +1,6 @@
-import {State, Store} from '@sambego/storybook-state';
+import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, text} from '@storybook/addon-knobs';
-import {storiesOf} from '@storybook/react';
+import {storiesOf, forceReRender} from '@storybook/react';
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
@@ -9,7 +9,17 @@ import QuestionCardReadme from '../../components/Cards/QuestionCard/QuestionCard
 
 const stories = storiesOf('Organisims/QuestionCard', module);
 
-stories.addDecorator(withReadme(QuestionCardReadme));
+const store = new Store({
+  yesNo: '',
+});
+
+stories
+  .addDecorator(withReadme(QuestionCardReadme))
+  .addDecorator(StateDecorator(store));
+
+store.subscribe(() => {
+  forceReRender();
+});
 
 const defaultProps = (isCollapsed = false, clearFuture = false) => ({
   afterButton: text('afterButton'),
@@ -39,70 +49,58 @@ const defaultProps = (isCollapsed = false, clearFuture = false) => ({
   cardUrl: '/',
 });
 
-const store = new Store({
-  yesNo: '',
-});
-
 stories.add('active', () => (
-  <State store={store}>
-    {(state) => [
-      <MemoryRouter key="question">
-        <QuestionCard {...defaultProps(false)}>
-          <RadioButtons
-            name="yesNo"
-            options={[
-              {
-                label: 'Yes',
-                value: 'yes',
-              },
-              {
-                label: 'No',
-                value: 'no',
-              },
-              {
-                label: "I don't know",
-                value: 'idk',
-                disabled: true,
-              },
-            ]}
-            onChange={(value) => store.set({yesNo: value})}
-            value={state.yesNo}
-            key="yesNo"
-          />
-        </QuestionCard>
-      </MemoryRouter>,
-    ]}
-  </State>
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(false)}>
+      <RadioButtons
+        name="yesNo"
+        options={[
+          {
+            label: 'Yes',
+            value: 'yes',
+          },
+          {
+            label: 'No',
+            value: 'no',
+          },
+          {
+            label: "I don't know",
+            value: 'idk',
+            disabled: true,
+          },
+        ]}
+        onChange={(name, value) => store.set({[name]: value})}
+        value={store.get('yesNo')}
+        key="yesNo"
+      />
+    </QuestionCard>
+  </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
-  <State store={store}>
-    {(state) => [
-      <MemoryRouter key="question">
-        <QuestionCard {...defaultProps(true)}>
-          <RadioButtons
-            name="yesNo"
-            options={[
-              {
-                label: 'Yes',
-                value: 'yes',
-              },
-              {
-                label: 'No',
-                value: 'no',
-              },
-              {
-                label: "I don't know",
-                value: 'idk',
-                disabled: true,
-              },
-            ]}
-            onChange={(value) => store.set({yesNo: value})}
-            value={state.yesNo}
-            key="yesNo"
-          />
-        </QuestionCard>
-      </MemoryRouter>,
-    ]}
-  </State>
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(true)}>
+      <RadioButtons
+        name="yesNo"
+        options={[
+          {
+            label: 'Yes',
+            value: 'yes',
+          },
+          {
+            label: 'No',
+            value: 'no',
+          },
+          {
+            label: "I don't know",
+            value: 'idk',
+            disabled: true,
+          },
+        ]}
+        onChange={(name, value) => store.set({[name]: value})}
+        value={store.get('yesNo')}
+        key="yesNo"
+      />
+    </QuestionCard>
+  </MemoryRouter>
 ));
