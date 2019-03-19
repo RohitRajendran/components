@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import ChanceOfSuccess from '../../components/ChanceOfSuccess/ChanceOfSuccess';
+import {PureChanceOfSuccess as ChanceOfSuccess} from '../../components/ChanceOfSuccess/ChanceOfSuccess';
 import {text, boolean, number} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import ChanceOfSuccessReadme from '../../components/ChanceOfSuccess/ChanceOfSuccess.md';

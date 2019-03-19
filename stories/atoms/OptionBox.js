@@ -15,6 +15,6 @@ const optionDefaults = (defaultVariant, checked) => ({
   disabled: boolean('disabled', false),
 });
 
-stories.add('check', () => <OptionBox {...optionDefaults('check')} />);
+stories.add('check', () => <OptionBox {...optionDefaults('check', true)} />);
 
-stories.add('radio', () => <OptionBox {...optionDefaults('radio')} />);
+stories.add('radio', () => <OptionBox {...optionDefaults('radio', true)} />);

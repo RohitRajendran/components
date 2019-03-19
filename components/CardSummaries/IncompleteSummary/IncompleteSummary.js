@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '../../Button/Button';
 import '../CardSummaries.scss';
 
-const IncompleteSummary = ({shortTitle, cardUrl}) => {
+const IncompleteSummary = ({shortTitle, cardUrl, text}) => {
   return (
     <div className="card-summary incomplete-card uic--container-fluid">
       <div className="uic--row">
@@ -19,9 +19,7 @@ const IncompleteSummary = ({shortTitle, cardUrl}) => {
           </div>
         </div>
         <div className="uic--col-12 uic--col-sm-5">
-          <p className="card-summary-answer error">
-            You still have to answer this question.
-          </p>
+          <p className="card-summary-answer error">{text}</p>
         </div>
       </div>
     </div>
@@ -31,6 +29,11 @@ const IncompleteSummary = ({shortTitle, cardUrl}) => {
 IncompleteSummary.propTypes = {
   cardUrl: PropTypes.string.isRequired,
   shortTitle: PropTypes.string.isRequired,
+  text: PropTypes.string,
+};
+
+IncompleteSummary.defaultProps = {
+  text: 'You still have to answer this question.',
 };
 
 export default React.memo(IncompleteSummary);

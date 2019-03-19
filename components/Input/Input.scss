@@ -32,7 +32,7 @@
     color: $dark-blue;
     border: 1px solid $white-seven;
     background-color: $white-four;
-    padding: 2.6rem 1.2rem 1rem 1.2rem;
+    padding: 2.6rem 1.2rem 1rem 1rem;
     width: 100%;
 
     &:focus,
@@ -45,7 +45,8 @@
 
     &:disabled {
       background-color: $pampas;
-      color: $slate;
+      color: $bluey-grey;
+      font-style: italic;
 
       /* Resets the focus and active styles for the input
         when it's in a disabled state. */
@@ -57,6 +58,8 @@
     }
 
     &::placeholder {
+      font-weight: normal;
+      font-style: italic;
       color: $bluey-grey;
     }
   }
@@ -78,6 +81,7 @@
     // Configures the placeholder color on the pre-pended string.
     &.empty:before {
       color: $bluey-grey;
+      font-style: italic;
     }
 
     &:before {
@@ -114,12 +118,12 @@
   .description {
     color: $slate;
     font-style: italic;
-    padding-left: 1.2rem;
   }
 
   .validation-error,
   .description {
     @include source-sans-pro(1.2rem);
+    padding: 0.5rem 0 0 1rem;
   }
 }
 

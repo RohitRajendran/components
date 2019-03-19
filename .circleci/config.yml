@@ -35,6 +35,10 @@ jobs:
             yarn testCI
 
       - run:
+          name: Verifying build
+          command: yarn build
+
+      - run:
           name: Push coverage report to CodeCov
           command: |
             echo $CODECOV_TOKEN
