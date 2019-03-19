@@ -62,7 +62,7 @@ const Button = ({
       {...props}
     >
       {isLoading ? (
-        <Spinner height={'19px'} width={'19px'} fill={spinnerColor} />
+        <Spinner height={'19'} width={'19'} fill={spinnerColor} />
       ) : (
         children
       )}
