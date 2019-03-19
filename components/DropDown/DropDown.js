@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Select, {Async} from 'react-select';
+import Select, {components, Async} from 'react-select';
 import classNames from 'classnames';
 import {isUndefined, isNullOrUndefined} from 'util';
+import ArrowIcon from '../ArrowIcon/ArrowIcon';
+import CloseIcon from '../CloseIcon/CloseIcon';
 import _ from 'lodash';
 
 import './DropDown.scss';
@@ -202,6 +204,24 @@ class DropDown extends Component {
         ? this.getCurrentOption(optionProps.options)
         : [];
 
+    // Renders a react-select compatible dropdown indicator.
+    const DropdownIndicator = (props) => {
+      return (
+        <components.DropdownIndicator {...props}>
+          <ArrowIcon fill={this.props.disabled ? '#9fa6bb' : '#5b6279'} />
+        </components.DropdownIndicator>
+      );
+    };
+
+    // Renders a react-select compatible clear indicator.
+    const ClearIndicator = (props) => {
+      return (
+        <components.ClearIndicator {...props}>
+          <CloseIcon fill={this.props.disabled ? '#9fa6bb' : '#5b6279'} />
+        </components.ClearIndicator>
+      );
+    };
+
     return (
       <div className={containerClasses}>
         <div className={dropDownClasses}>
@@ -209,6 +229,7 @@ class DropDown extends Component {
           <div className="mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}
+              components={{DropdownIndicator, ClearIndicator}}
               classNamePrefix="mcgonagall-dropdown"
               value={selectedValue}
               placeholder={placeholder}

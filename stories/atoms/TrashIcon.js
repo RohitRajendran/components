@@ -1,16 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {PureSpinner as Spinner} from '../../components/Spinner/Spinner';
+import TrashIcon from '../../components/TrashIcon/TrashIcon';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SpinnerReadme from '../../components/Spinner/Spinner.md';
+import TrashIconReadme from '../../components/TrashIcon/TrashIcon.md';
 
-const stories = storiesOf('Atoms/Spinner', module);
+const stories = storiesOf('Atoms/TrashIcon', module);
 
-stories.addDecorator(withReadme(SpinnerReadme));
+stories.addDecorator(withReadme(TrashIconReadme));
 
 stories.add('default', () => (
-  <Spinner
+  <TrashIcon
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}

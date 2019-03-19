@@ -2,17 +2,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import detectBrowser from '../DetectBrowser/DetectBrowser';
+import classNames from 'classnames';
 
 /** Displays the Spinner component.
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the Spinner component.
  */
 const Spinner = (props) => {
-  const {width, height, fill, style, isIe} = props;
+  const {width, height, fill, style, isIe, className} = props;
+
+  const containerClasses = classNames(
+    {
+      [`spinner-${isIe ? 'ie' : 'normal'}`]: true,
+    },
+    className
+  );
   if (isIe) {
     return (
       <svg
-        className="ui-spinner spin spinner-ie"
+        className={containerClasses}
         width={width}
         height={height}
         viewBox={`0 0 100 100`}
@@ -114,7 +122,7 @@ const Spinner = (props) => {
 
   return (
     <svg
-      className="ui-spinner spinner-normal"
+      className={containerClasses}
       width={width}
       height={height}
       viewBox={`0 0 100 100`}
@@ -284,11 +292,12 @@ Spinner.propTypes = {
   fill: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.string),
   isIe: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Spinner.defaultProps = {
-  width: '20px',
-  height: '20px',
+  width: '20',
+  height: '20',
   fill: '#ffffff',
 };
 
