@@ -4,7 +4,7 @@ import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
-import {RadioButtonCard} from '..';
+import RadioButtonCard from './RadioButtonCard';
 import RadioButtonCardReadme from './RadioButtonCard.md';
 
 const stories = storiesOf('Templates/RadioButtonCard', module);
@@ -78,10 +78,7 @@ stories.add('active and clears future', () => (
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard
-      {...defaultProps(true)}
-      answers={store.get('radioBtnQuestion')}
-    />
+    <RadioButtonCard {...defaultProps(true)} answers={['Yup']} />
   </MemoryRouter>
 ));
 

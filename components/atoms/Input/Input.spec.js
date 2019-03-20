@@ -1,8 +1,11 @@
 import test from 'tape';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import Input, {getDeepestInputElement} from './Input';
-import {DateMask, CurrencyMask} from '~components/util';
+import Input, {
+  getDeepestInputElement,
+  commaSeparatedMask,
+  tickerMask,
+} from './Input';
 
 test('Input - Renders props as attributes on the input', (t) => {
   t.plan(8);
@@ -37,7 +40,7 @@ test('Input - Renders a masked input if mask is provided', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
     />
   );
 
@@ -54,7 +57,7 @@ test('Input - Creates error when currency has no onChange function', (t) => {
         label="Amount"
         type="text"
         value="100,000"
-        mask={CurrencyMask}
+        mask="Currency"
       />
     )
   );
@@ -68,7 +71,7 @@ test('Input - Renders an error message when the form is invalid', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
       isInvalid={() => true}
       validationErrorMsg="This is not valid!"
     />
@@ -91,7 +94,7 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
       description="This is the description"
     />
   );
@@ -116,7 +119,7 @@ test('Input - Gets the deepest input element', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
       description="This is the description"
     />
   );
@@ -139,7 +142,7 @@ test('Input - Correctly toggles focus', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
       description="This is the description"
     />
   );
@@ -160,7 +163,7 @@ test('Input - onBlur correctly fires both handlers', (t) => {
       type="text"
       value="05/01/1980"
       placeholder="some placeholder"
-      mask={DateMask}
+      mask="Date"
       description="This is the description"
       validateOnBlur={true}
     />
@@ -174,5 +177,30 @@ test('Input - onBlur correctly fires both handlers', (t) => {
     'Should toggle the focus state when something is blurred even with validateOnBlur toggled.'
   );
 
+  t.end();
+});
+
+test('Input - tickerMask', (t) => {
+  t.deepEquals(
+    tickerMask.mask('hello'),
+    [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/],
+    'Mask should return the correct pattern.'
+  );
+  t.end();
+});
+
+test('Input - commaSeparatedMask', (t) => {
+  t.deepEquals(
+    commaSeparatedMask.mask('hello'),
+    [
+      /[A-Za-z, ]/,
+      /[A-Za-z, ]/,
+      /[A-Za-z, ]/,
+      /[A-Za-z, ]/,
+      /[A-Za-z, ]/,
+      /[A-Za-z, ]/,
+    ],
+    'Mask should return the correct pattern.'
+  );
   t.end();
 });
