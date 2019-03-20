@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Select, {components, Async} from 'react-select';
 import classNames from 'classnames';
 import {isUndefined, isNullOrUndefined} from 'util';
-import ArrowIcon from '../ArrowIcon/ArrowIcon';
-import CloseIcon from '../CloseIcon/CloseIcon';
+import ArrowIcon from '~components/atoms/ArrowIcon/ArrowIcon';
+import CloseIcon from '~components/atoms/CloseIcon/CloseIcon';
 import _ from 'lodash';
 
 import './DropDown.scss';

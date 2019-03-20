@@ -36,6 +36,7 @@
     "@babel/preset-react": "*",
     "@babel/register": "*",
     "@babel/runtime": "*",
+    "babel-plugin-module-resolver": "*",
     "@percy-io/percy-storybook": "*",
     "@sambego/storybook-state": "*",
     "@storybook/addon-a11y": "*",

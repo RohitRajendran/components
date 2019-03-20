@@ -1,7 +1,7 @@
 /** @module Spinner */
 import React from 'react';
 import PropTypes from 'prop-types';
-import detectBrowser from '../../utilities/DetectBrowser/DetectBrowser';
+import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import classNames from 'classnames';
 
 /** Displays the Spinner component.

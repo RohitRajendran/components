@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import OptionBox from '../../atoms/OptionBox/OptionBox';
+import OptionBox from '~components/atoms/OptionBox/OptionBox';
 
 import './RadioButtons.scss';
 

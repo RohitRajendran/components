@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../../atoms/Button/Button';
+import Button from '~components/atoms/Button/Button';
 
 import './CardShell.scss';
 

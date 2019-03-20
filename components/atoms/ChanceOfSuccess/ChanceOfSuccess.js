@@ -2,8 +2,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {disallowedIf} from 'airbnb-prop-types';
-import {colors} from '../../../constants/colors';
-import detectBrowser from '../../utilities/DetectBrowser/DetectBrowser';
+import {colors} from '~constants/js/colors';
+import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import _ from 'lodash';
 import * as d3Shape from 'd3-shape';
 import * as d3Scale from 'd3-scale';

@@ -3,7 +3,7 @@ import React from 'react';
 import {Link, MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import Button from './Button';
-import {colors} from '../../../constants/colors';
+import {colors} from '~constants/js/colors';
 
 test('Button - rendering', (t) => {
   t.plan(2);

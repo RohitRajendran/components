@@ -1,29 +1,29 @@
 // Atoms
-import Button from './atoms/Button/Button';
-import Loader from './atoms/Loader/Loader';
-import Input from './atoms/Input/Input';
-import DropDown from './atoms/DropDown/DropDown';
-import Spinner from './atoms/Spinner/Spinner';
-import ChanceOfSuccess from './atoms/ChanceOfSuccess/ChanceOfSuccess';
-import ArrowIcon from './atoms/ArrowIcon/ArrowIcon';
-import CloseIcon from './atoms/CloseIcon/CloseIcon';
-import TrashIcon from './atoms/TrashIcon/TrashIcon';
-import OptionBox from './atoms/OptionBox/OptionBox';
+import Button from '~components/atoms/Button/Button';
+import Loader from '~components/atoms/Loader/Loader';
+import Input from '~components/atoms/Input/Input';
+import DropDown from '~components/atoms/DropDown/DropDown';
+import Spinner from '~components/atoms/Spinner/Spinner';
+import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
+import ArrowIcon from '~components/atoms/ArrowIcon/ArrowIcon';
+import CloseIcon from '~components/atoms/CloseIcon/CloseIcon';
+import TrashIcon from '~components/atoms/TrashIcon/TrashIcon';
+import OptionBox from '~components/atoms/OptionBox/OptionBox';
 
 // Molecules
-import CardShell from './molecules/CardShell/CardShell';
-import RadioButtons from './molecules/RadioButtons/RadioButtons';
-import SelectButtons from './molecules/SelectButtons/SelectButtons';
-import SimpleSummary from './molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import FormSummary from './molecules/CardSummaries/FormSummary/FormSummary';
-import IncompleteSummary from './molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+import CardShell from '~components/molecules/CardShell/CardShell';
+import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import SelectButtons from '~components/molecules/SelectButtons/SelectButtons';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
+import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 
 // Organisms
-import QuestionCard from './organisms/QuestionCard/QuestionCard';
-import MessageCard from './organisms/MessageCard/MessageCard';
+import QuestionCard from '~components/organisms/QuestionCard/QuestionCard';
+import MessageCard from '~components/organisms/MessageCard/MessageCard';
 
 // Utilities
-import detectBrowser from './utilities/DetectBrowser/DetectBrowser';
+import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 export {
   ArrowIcon,

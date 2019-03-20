@@ -1,7 +1,7 @@
 /** @module IncompleteSummary */
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../../../atoms/Button/Button';
+import Button from '~components/atoms/Button/Button';
 import '../CardSummaries.scss';
 
 const IncompleteSummary = ({shortTitle, cardUrl, text}) => {

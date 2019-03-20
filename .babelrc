@@ -1,7 +1,14 @@
 {
   "plugins": [
     "@babel/transform-spread",
-    "@babel/transform-runtime"
+    "@babel/transform-runtime",
+    ["module-resolver", {
+      "alias": {
+        "~components": "./components",
+        "~proptypes": "./proptypes",
+        "~constants": "./constants"
+      }
+    }]
   ],
   "presets": [
     ["@babel/env", {

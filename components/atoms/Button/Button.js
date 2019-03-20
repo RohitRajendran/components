@@ -1,14 +1,14 @@
 /** @module Button */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {exclusive} from '../../../proptypes';
+import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 
 import './Button.scss';
-import Spinner from '../Spinner/Spinner';
-import {colors} from '../../../constants/colors';
+import Spinner from '~components/atoms/Spinner/Spinner';
+import {colors} from '~constants/js/colors';
 
 const Button = ({
   children,

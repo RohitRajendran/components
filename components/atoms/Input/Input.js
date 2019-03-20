@@ -176,11 +176,11 @@ class Input extends Component {
           <div className="description">{description}</div>
         ) : description && (showInvalidity || error) ? (
           <div className="validation-error">
-            {validationErrorMsg || 'Valid'}
+            {validationErrorMsg || 'Invalid'}
           </div>
         ) : (
           <div className="validation-error">
-            {validationErrorMsg || 'Valid'}
+            {validationErrorMsg || 'Invalid'}
           </div>
         )}
       </div>

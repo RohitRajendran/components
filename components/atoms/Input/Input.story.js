@@ -6,7 +6,7 @@ import {
   DateMask,
   CurrencyMask,
   PercentageWithDecimalMaskAllowNegative,
-} from '../../util';
+} from '~components/util';
 import InputReadme from './Input.md';
 import Input from './Input';
 import {StateDecorator, Store} from '@sambego/storybook-state';

@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
-import IncompleteSummary from '../../molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
-import CardShell from '../../molecules/CardShell/CardShell';
+import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+import CardShell from '~components/molecules/CardShell/CardShell';
 
-import '../../molecules/CardShell/Cards.scss';
+import '~components/molecules/CardShell/Cards.scss';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
