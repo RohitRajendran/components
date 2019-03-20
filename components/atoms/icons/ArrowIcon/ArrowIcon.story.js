@@ -5,7 +5,7 @@ import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import ArrowIconReadme from './ArrowIcon.md';
 
-const stories = storiesOf('Atoms/ArrowIcon', module);
+const stories = storiesOf('Atoms/Icons/ArrowIcon', module);
 
 stories.addDecorator(withReadme(ArrowIconReadme));
 

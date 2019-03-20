@@ -5,9 +5,9 @@ import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
-import ArrowIcon from '~components/atoms/ArrowIcon/ArrowIcon';
-import CloseIcon from '~components/atoms/CloseIcon/CloseIcon';
-import TrashIcon from '~components/atoms/TrashIcon/TrashIcon';
+import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 
 // Molecules
