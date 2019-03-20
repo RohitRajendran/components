@@ -1,8 +1,8 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
-import Slider from '~components/Slider/Slider';
+import Slider from '~components/atoms/Slider/Slider';
 import {withReadme} from 'storybook-readme';
-import SliderReadme from '~components/Slider/Slider.md';
+import SliderReadme from '~components/atoms/Slider/Slider.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 import _ from 'lodash';
 
