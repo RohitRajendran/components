@@ -1,7 +1,7 @@
 @import '~rc-slider/assets/index.css';
 
 .slider-marker-highlighted {
-  background-image: url(../assets/icons/star.svg);
+  background-image: url(../../../assets/icons/star.svg);
   background-color: $green !important;
   border-color: $green !important;
   background-size: 80%;
@@ -15,45 +15,44 @@
 
   &.highlighted {
     .tooltip {
-    background-color: $green;
+      background-color: $green;
 
-    &::before {
-      border-color: $green transparent transparent transparent;
+      &::before {
+        border-color: $green transparent transparent transparent;
+      }
     }
-  } 
-  .rc-slider-with-marks {
-    .rc-slider-handle {
-      @extend .slider-marker-highlighted;
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @extend .slider-marker-highlighted;
+      }
     }
   }
-}
 
   // Markers which appear to the left and right of the slider.
   .left-annotate,
   .right-annotate {
+    @include source-sans-pro(1.6rem);
     position: absolute;
-    color: $dark-blue;
-    font-size: 1.4rem;
-    font-weight: 600;
+    color: $slate;
   }
 
   .left-annotate {
-    left: -11rem;
-    bottom: -1rem;
+    left: -4rem;
+    bottom: -8rem;
   }
 
   .right-annotate {
-    right: -11rem;
-    bottom: -1rem;
+    right: -4rem;
+    bottom: -8rem;
   }
 
   .tooltip {
     position: absolute;
-    top: -15rem;
+    top: -13rem;
     width: 20rem;
     height: 10rem;
     margin-left: -10rem;
-    background-color: $dark-blue;
+    background-color: $violet-blue;
     text-align: left;
     color: white;
     padding: 1.5rem 2rem;
@@ -62,7 +61,7 @@
     transition-timing-function: ease-in-out;
 
     &::before {
-      border-color: $dark-blue transparent transparent transparent;
+      border-color: $violet-blue transparent transparent transparent;
       content: ' ';
       position: absolute;
       width: 0;
@@ -102,12 +101,13 @@
     }
   }
 
-  @for $i from 0 through 11 {
+  @for $i from 1 through 10 {
     .tooltip-position-#{$i} {
       @if $i < 1 {
         left: 0;
       } @else {
-        left: #{$i}0%;
+        $position: percentage(($i - 1) * 1/9);
+        left: $position;
       }
     }
   }
@@ -140,8 +140,10 @@
     }
 
     .rc-slider-mark .rc-slider-mark-text {
-      font-weight: 700;
+      @include source-sans-pro(1.8rem);
+      color: $slate;
       color: $dark-blue;
+      top: 6rem;
     }
   }
 }

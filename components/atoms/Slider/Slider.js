@@ -3,6 +3,7 @@ import React from 'react';
 import ReactSlider from 'rc-slider';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import './Slider.scss';
 
@@ -10,63 +11,53 @@ const Slider = ({
   name,
   onChange,
   value,
-  min,
-  max,
   step,
   tooltip,
   leftAnnotate,
   rightAnnotate,
   tooltipStickyPosition,
   tooltipStickyHint,
-  marks,
 }) => {
-
   const tooltipClasses = classNames(`tooltip tooltip-position-${value}`);
-  const tooltipStickyClasses = classNames({
-    'show': tooltipStickyPosition !== value,
-  }, `tooltip-sticky-hint tooltip-position-${tooltipStickyPosition} green-star`);
+  const tooltipStickyClasses = classNames(
+    {
+      show: tooltipStickyPosition !== value,
+    },
+    `tooltip-sticky-hint tooltip-position-${tooltipStickyPosition} green-star`
+  );
   const wrapperClasses = classNames(
     {
-      'highlighted': tooltipStickyPosition && (tooltipStickyPosition === value),
+      highlighted: tooltipStickyPosition && tooltipStickyPosition === value,
     },
     'slider-wrapper'
   );
+  const markers = _.fromPairs(_.range(1, 11).map((x) => [x, x]));
 
   return (
-      <div className={wrapperClasses}>
-        {tooltip &&
-          <div className={tooltipClasses}>
-            {tooltip}
-          </div>
-        }
+    <div className={wrapperClasses}>
+      <style>
+        {`
+            .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition}) {
+                color: #008422 !important;
+              }`}
+      </style>
+      {tooltip && <div className={tooltipClasses}>{tooltip}</div>}
 
-        {leftAnnotate &&
-          <div className="left-annotate">
-            {leftAnnotate}
-          </div>
-        }
-        {rightAnnotate &&
-          <div className="right-annotate">
-            {rightAnnotate}
-          </div>
-        }
-        <div
-          className={tooltipStickyClasses}
-        >
-          {tooltipStickyHint}
-        </div>
-        <ReactSlider
-          name={name}
-          value={value}
-          onChange={onChange}
-          min={min}
-          max={max}
-          marks={marks}
-          step={step}
-          included={false}
-        />
-      </div>
-    );
+      {leftAnnotate && <div className="left-annotate">{leftAnnotate}</div>}
+      {rightAnnotate && <div className="right-annotate">{rightAnnotate}</div>}
+      <div className={tooltipStickyClasses}>{tooltipStickyHint}</div>
+      <ReactSlider
+        name={name}
+        value={value}
+        onChange={onChange}
+        min={1}
+        max={10}
+        marks={markers}
+        step={step}
+        included={false}
+      />
+    </div>
+  );
 };
 
 Slider.propTypes = {
@@ -89,6 +80,5 @@ Slider.defaultProps = {
   max: 10,
   step: 1,
 };
-
 
 export default Slider;

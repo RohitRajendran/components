@@ -4,9 +4,6 @@ import Slider from '~components/atoms/Slider/Slider';
 import {withReadme} from 'storybook-readme';
 import SliderReadme from '~components/atoms/Slider/Slider.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import _ from 'lodash';
-
-const marks = _.fromPairs(_.range(11).map((x) => [x, x]));
 
 const stories = storiesOf('Atoms/Slider', module);
 
@@ -18,8 +15,19 @@ stories
   .addDecorator(withReadme(SliderReadme))
   .addDecorator(StateDecorator(store));
 
-  store.subscribe(() => {
-    forceReRender();
-  });
+store.subscribe(() => {
+  forceReRender();
+});
 
-stories.add('default', () => <Slider value={store.get('value')} name="mySlider" tooltip={<div>Hello</div>} marks={marks} tooltipStickyVariant="green-star" tooltipStickyPosition={5} onChange={(value) => store.set({value})} />);
+stories.add('default', () => (
+  <Slider
+    value={store.get('value')}
+    leftAnnotate="Lower Risk"
+    rightAnnotate="Higher Risk"
+    name="mySlider"
+    tooltip={<div>Hello</div>}
+    tooltipStickyVariant="green-star"
+    tooltipStickyPosition={5}
+    onChange={(value) => store.set({value})}
+  />
+));
