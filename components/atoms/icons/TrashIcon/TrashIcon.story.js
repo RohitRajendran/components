@@ -1,16 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CloseIcon from './CloseIcon';
+import TrashIcon from './TrashIcon';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import CloseIconReadme from './CloseIcon.md';
+import TrashIconReadme from './TrashIcon.md';
 
-const stories = storiesOf('Atoms/CloseIcon', module);
+const stories = storiesOf('Atoms/Icons/TrashIcon', module);
 
-stories.addDecorator(withReadme(CloseIconReadme));
+stories.addDecorator(withReadme(TrashIconReadme));
 
 stories.add('default', () => (
-  <CloseIcon
+  <TrashIcon
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}

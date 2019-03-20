@@ -5,9 +5,9 @@ import Input from './atoms/Input/Input';
 import DropDown from './atoms/DropDown/DropDown';
 import Spinner from './atoms/Spinner/Spinner';
 import ChanceOfSuccess from './atoms/ChanceOfSuccess/ChanceOfSuccess';
-import ArrowIcon from './atoms/ArrowIcon/ArrowIcon';
-import CloseIcon from './atoms/CloseIcon/CloseIcon';
-import TrashIcon from './atoms/TrashIcon/TrashIcon';
+import ArrowIcon from './atoms/icons/ArrowIcon/ArrowIcon';
+import CloseIcon from './atoms/icons/CloseIcon/CloseIcon';
+import TrashIcon from './atoms/icons/TrashIcon/TrashIcon';
 import OptionBox from './atoms/OptionBox/OptionBox';
 
 // Molecules

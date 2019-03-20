@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Select, {components, Async} from 'react-select';
 import classNames from 'classnames';
-import {isUndefined, isNullOrUndefined} from 'util';
-import ArrowIcon from '../ArrowIcon/ArrowIcon';
-import CloseIcon from '../CloseIcon/CloseIcon';
 import _ from 'lodash';
-
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import Select, {Async, components} from 'react-select';
+import {isNullOrUndefined, isUndefined} from 'util';
 import './DropDown.scss';
+import ArrowIcon from '../icons/ArrowIcon/ArrowIcon';
+import CloseIcon from '../icons/CloseIcon/CloseIcon';
 
 /** Renders the DropDown field component which wraps react-select. */
 class DropDown extends Component {
