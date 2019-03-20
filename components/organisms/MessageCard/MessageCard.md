@@ -56,5 +56,4 @@ The following component props are valid.
 | **isLatestCard** | Boolean    | `false`    | Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary | No       |
 | **loading**      | Boolean    | `false`    | Show loading indicator in button                                                                                 | No       |
 | **onSubmit**     | Function   |            | The handler to fire when the Submit button is clicked                                                            | Yes      |
-| **shortTitle**   | JSX/String |            | Shorter title to be used with the card summary                                                                   | No       |
 | **title**        | JSX/String |            | Title of the card                                                                                                | Yes      |

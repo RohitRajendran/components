@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
-import IncompleteSummary from '../../molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
-import CardShell from '../../molecules/CardShell/CardShell';
-
-import '../../molecules/CardSummaries/CardSummaries.scss';
-import '../../molecules/CardShell/Cards.scss';
+import React, {Fragment} from 'react';
+import Button from '../../Button/Button';
+import '../../CardSummaries/CardSummaries.scss';
+import '../Cards.scss';
+import CardShell from '../CardShell/CardShell';
 import './MessageCard.scss';
 
 const MessageCard = ({
@@ -17,7 +16,6 @@ const MessageCard = ({
   isLatestCard,
   title,
   featureImage,
-  shortTitle,
   cardUrl,
   ...props
 }) => {
@@ -35,7 +33,16 @@ const MessageCard = ({
       {featureImage && <div className="card-feature-image">{featureImage}</div>}
 
       <h2>{title}</h2>
-      {description && <p>{description}</p>}
+      {isIncompleteCollapsedCard ? (
+        <Fragment>
+          <p>Pick up where you left off</p>
+          <Button variant="link" to={cardUrl}>
+            Resume
+          </Button>
+        </Fragment>
+      ) : (
+        description && <p>{description}</p>
+      )}
     </div>
   );
 
@@ -45,17 +52,7 @@ const MessageCard = ({
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
-      summary={
-        isIncompleteCollapsedCard ? (
-          <IncompleteSummary
-            shortTitle={shortTitle}
-            cardUrl={cardUrl}
-            text="Pick up where you left off."
-          />
-        ) : (
-          <div className="card-message-summary">{content}</div>
-        )
-      }
+      summary={<div className="card-message-summary">{content}</div>}
       beforeButton={beforeButton}
     >
       {content}
@@ -80,8 +77,6 @@ MessageCard.propTypes = {
   isLatestCard: PropTypes.bool,
   loading: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
-  shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-    .isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 

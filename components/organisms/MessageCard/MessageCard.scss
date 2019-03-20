@@ -7,3 +7,15 @@
     padding: 4rem 3.5rem;
   }
 }
+
+.mcgonagall-card.error .card-message-summary {
+  p,
+  .btn-link {
+    color: $red-magenta;
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
