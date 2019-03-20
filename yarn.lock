@@ -1308,7 +1308,7 @@
     recompose "^0.30.0"
     render-fragment "^0.1.1"
 
-"@storybook/core-events@5.0.3", "@storybook/core-events@^5.0.1":
+"@storybook/core-events@5.0.3", "@storybook/core-events@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.3.tgz#1b9d6265f7a2b16a0ddee274975e104d7a02c9f6"
   integrity sha512-a+GbuuhGcfL6ovFlzfYi1oEu2gVa5m2tY5sHEYA03lWdKR2aa4R5Q8haVujox6yxQ6L8gNh1RZff0s1kx64Drw==
@@ -10470,11 +10470,11 @@ storybook-addon-jsx@*:
     react-element-to-jsx-string "^14.0.2"
 
 storybook-readme@*:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.0.tgz#9d159a0cb5f99117aff10236bd558a9b21e505de"
-  integrity sha512-fgxXMQWZq7hNIu8WSWbsDGE6ZmtqXpF0s8ZfdRtfeBsp12Ys2J5GP4FMJgta1VHtth0vbpzMuook2IXqWmdmvA==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.1.tgz#679a98a80254e7a5f46ed0f6592a79876a9bf9c2"
+  integrity sha512-MQCBfJZIOMt62rVf0UqUuAMnZdR8sLKZTEobemjNIXT+BeQNRLp2glWOifvGFJDSJxdkr/gZFW7c6mYvrG3VIA==
   dependencies:
-    "@storybook/core-events" "^5.0.1"
+    "@storybook/core-events" "^5.0.3"
     highlight.js "^9.15.6"
     html-loader "^0.5.5"
     lodash "^4.17.11"
