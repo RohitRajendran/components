@@ -3,11 +3,166 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import classNames from 'classnames';
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
+import _ from 'lodash';
 
 import './Input.scss';
 
 export const hideValidityFalse = () => false;
 export const MaskTypes = {currency: 'currency'};
+
+/** @constant {regex[]} The mask for a phone number */
+export const phoneNumberMask = {
+  mask: [
+    '(',
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ')',
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ],
+  regex: /\(?[1-9]\d{2}\)? ?\d{3}-?\d{4}/,
+};
+
+/** @constant {regex[]} The mask for an SSN */
+export const ssnNumberMask = {
+  mask: [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  regex: /\d{3}-\d{2}-\d{4}/,
+};
+
+/** @constant {regex[]} The mask for a date */
+export const dateMask = {
+  mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+  pipe: createAutoCorrectedDatePipe('mm/dd/yyyy'),
+  regex: /\d\d\/\d\d\/\d\d\d\d/,
+};
+
+/** @constant {regex[]} The mask for a month/year date */
+export const monthMask = {
+  mask: [/\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+  pipe: createAutoCorrectedDatePipe('mm/yyyy'),
+  regex: /\d\d\/\d\d\d\d/,
+};
+
+/** @constant {regex[]} The mask for a zip code */
+export const zipMask = {
+  mask: [/\d/, /\d/, /\d/, /\d/, /\d/],
+  regex: /^\d{5}(-\d{4})?$/,
+};
+
+/**
+ * Create a ticker mask which only accepts capital letters
+ * @param {string} input - raw input from component
+ * @returns {regex[]} The mask
+ */
+export const tickerMask = {
+  /* istanbul ignore next */
+  mask(input) {
+    return _.fill(Array(input.length), /[a-zA-Z]/);
+  },
+  regex: /[a-zA-Z]+/,
+};
+
+/**
+ * Create a mask which only accepts letters, commas, and spaces
+ * @param {string} input - raw input from component
+ * @returns {regex[]} the mask
+ */
+export const commaSeparatedMask = {
+  /* istanbul ignore next */
+  mask(input) {
+    return _.fill(Array(input.length + 1), /[A-Za-z, ]/);
+  },
+  regex: /[A-Za-z]+[A-Za-z, ]*/,
+};
+
+/** @constant {Object} - A currency mask */
+export const currencyMask = {
+  mask: createNumberMask({prefix: ''}),
+  regex: /[0-9]+/,
+  type: MaskTypes.currency,
+};
+
+/** @constant {Object} A currency mask */
+export const currencyMaskAllowNegative = {
+  mask: createNumberMask({prefix: '', allowNegative: true}),
+  regex: /[0-9]+/,
+  type: MaskTypes.currency,
+};
+
+/** @constant {Object} - A currency mask that accepts decimals */
+export const currencyDecimalMask = {
+  mask: createNumberMask({
+    prefix: '',
+    allowDecimal: true,
+  }),
+  regex: /[0-9]+/,
+  type: MaskTypes.currency,
+};
+
+/** @constant {Object} - A number mask */
+export const numberMask = {
+  mask: createNumberMask({
+    prefix: '',
+    includeThousandsSeparator: false,
+    allowLeadingZeroes: true,
+  }),
+  regex: /[0-9]+/,
+};
+
+/** @constant {Object} - A percentage mask that allows decimals */
+export const percentageWithDecimalMask = {
+  mask: createNumberMask({
+    prefix: '',
+    allowDecimal: true,
+    includeThousandsSeparator: false,
+    decimalLimit: 3,
+  }),
+  regex: /[0-9]+/,
+};
+
+/** @constant {Object} - A percentage mask that allows decimals */
+export const percentageWithDecimalMaskAllowNegative = {
+  mask: createNumberMask({
+    prefix: '',
+    allowNegative: true,
+    allowDecimal: true,
+    includeThousandsSeparator: false,
+    decimalLimit: 3,
+  }),
+  regex: /[0-9]+/,
+};
+
+/**
+ * @constant {Object} - A percentage mask for percentages < 100% and up
+ * to three digits after the decimal place.
+ */
+export const smallPercentageWithDecimalMask = {
+  mask: createNumberMask({
+    prefix: '',
+    suffix: '%',
+    allowDecimal: true,
+    includeThousandsSeparator: false,
+    decimalLimit: 3,
+    integerLimit: 2,
+  }),
+  regex: /\d{0,2}(\.\d{0,3})?/,
+};
+
+/** @constant {Object} - A mask to loosely match Apex account numbers */
+export const apexAccount = {
+  mask: [/\d/, /[A-Z]/, /[A-Z]/, /\d/, /\d/, /\d/, /\d/, /\d/],
+  regex: /\d[A-Z]{2}\d{5}/,
+};
 
 /** Gets the deepest input element for validation.
  * @param {object} startObject - The first input.
@@ -18,6 +173,23 @@ export const getDeepestInputElement = (startObject) => {
     return startObject;
   }
   return getDeepestInputElement(startObject.inputElement);
+};
+
+/** @constant {Object} - Maps prop names prop mask types. */
+export const maskEnum = {
+  PhoneNumber: phoneNumberMask,
+  SsnNumber: ssnNumberMask,
+  Date: dateMask,
+  Month: monthMask,
+  Zip: zipMask,
+  Ticker: tickerMask,
+  CommaSeparated: commaSeparatedMask,
+  Currency: currencyMask,
+  CurrencyDecimal: currencyDecimalMask,
+  CurrencyAllowNegative: currencyMaskAllowNegative,
+  Number: numberMask,
+  PercentageWithDecimal: percentageWithDecimalMask,
+  SmallPercentageWithDecimal: smallPercentageWithDecimalMask,
 };
 
 /** Renders the Input field component. */
@@ -106,15 +278,17 @@ class Input extends Component {
     }
 
     if (this.props.mask) {
-      if (this.props.mask.type === MaskTypes.currency && !onChange) {
+      const mask = maskEnum[this.props.mask] || null;
+
+      if (mask.type === MaskTypes.currency && !onChange) {
         throw new Error(
           'CurrencyMasks require explicit onChange handler for IE11'
         );
       }
-      attrs.mask = this.props.mask.mask;
+      attrs.mask = mask.mask;
       attrs.guide = false;
-      if (this.props.mask.pipe) {
-        attrs.pipe = this.props.mask.pipe;
+      if (mask.pipe) {
+        attrs.pipe = mask.pipe;
         attrs.keepCharPositions = true;
       }
     }
@@ -224,12 +398,20 @@ Input.propTypes = {
   required: PropTypes.bool,
   pattern: PropTypes.string,
   maxLength: PropTypes.number,
-  mask: PropTypes.shape({
-    mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
-    regex: PropTypes.regexp,
-    pipe: PropTypes.func,
-    type: PropTypes.string,
-  }),
+  mask: PropTypes.oneOf([
+    'PhoneNumber',
+    'SsnNumber',
+    'Date',
+    'Month',
+    'Zip',
+    'Ticker',
+    'CommaSeparated',
+    'Currency',
+    'CurrencyAllowNegative',
+    'Number',
+    'PercentageWithDecimal',
+    'SmallPercentageWithDecimal',
+  ]),
   onChange: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
