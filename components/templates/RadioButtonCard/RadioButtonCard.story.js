@@ -78,10 +78,7 @@ stories.add('active and clears future', () => (
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard
-      {...defaultProps(true)}
-      answers={store.get('radioBtnQuestion')}
-    />
+    <RadioButtonCard {...defaultProps(true)} answers={['Yup']} />
   </MemoryRouter>
 ));
 
