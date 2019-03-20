@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
-import Button from '../../Button/Button';
-import '../../CardSummaries/CardSummaries.scss';
-import '../Cards.scss';
-import CardShell from '../CardShell/CardShell';
+import Button from '../../atoms/Button/Button';
+import '../../molecules/CardShell/Cards.scss';
+import CardShell from '../../molecules/CardShell/CardShell';
+import '../../molecules/CardSummaries/CardSummaries.scss';
 import './MessageCard.scss';
 
 const MessageCard = ({
