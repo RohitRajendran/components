@@ -22,6 +22,9 @@ import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSum
 import QuestionCard from '~components/organisms/QuestionCard/QuestionCard';
 import MessageCard from '~components/organisms/MessageCard/MessageCard';
 
+// Templates
+import RadioButtonCard from '~components/templates/RadioButtonCard/RadioButtonCard';
+
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
@@ -45,4 +48,5 @@ export {
   FormSummary,
   IncompleteSummary,
   MessageCard,
+  RadioButtonCard,
 };

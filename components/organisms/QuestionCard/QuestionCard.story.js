@@ -53,6 +53,7 @@ const defaultProps = (
   ),
   title: text('title', 'This is where the question goes.'),
   cardUrl: '/',
+  onChange: (name, value) => store.set({[name]: value}),
 });
 
 stories.add('active', () => (
@@ -75,7 +76,6 @@ stories.add('active', () => (
             disabled: true,
           },
         ]}
-        onChange={(name, value) => store.set({[name]: value})}
         value={store.get('yesNo')}
         key="yesNo"
       />
@@ -103,7 +103,6 @@ stories.add('active and clears future', () => (
             disabled: true,
           },
         ]}
-        onChange={(value) => store.set({[name]: value})}
         value={store.get('yesNo')}
         key="yesNo"
       />
@@ -131,7 +130,6 @@ stories.add('collapsed', () => (
             disabled: true,
           },
         ]}
-        onChange={(name, value) => store.set({[name]: value})}
         value={store.get('yesNo')}
         key="yesNo"
       />
@@ -159,7 +157,6 @@ stories.add('incomplete collapsed', () => (
             disabled: true,
           },
         ]}
-        onChange={(value) => store.set({[name]: value})}
         value={store.get('yesNo')}
         key="yesNo"
       />

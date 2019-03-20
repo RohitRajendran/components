@@ -17,6 +17,7 @@ test('CardShell - active', (t) => {
   const props = {
     ...defaultProps,
     onSubmit: stub(),
+    onChange: stub(),
     beforeButton: <p>Before</p>,
     afterButton: <p>After</p>,
   };
@@ -38,12 +39,16 @@ test('CardShell - active', (t) => {
   t.equals(comp.find('p').length, 2, 'Shows before and after content');
   t.equals(comp.find('Button').length, 1, 'Shows button');
 
-  comp
-    .find('form')
-    .first()
-    .simulate('submit', {preventDefault: stub()});
+  comp.instance().onSubmit({preventDefault: stub()});
 
   t.true(props.onSubmit.calledOnce, 'Called on submit');
+
+  comp.instance().onChange({
+    preventDefault: stub(),
+    target: {name: 'name', value: 'val'},
+  });
+
+  t.deepEquals(props.onChange.args[0], ['name', 'val'], 'Called on change');
 
   t.end();
 });

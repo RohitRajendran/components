@@ -88,7 +88,7 @@ RadioButtons.propTypes = {
   ),
   required: PropTypes.bool,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default RadioButtons;

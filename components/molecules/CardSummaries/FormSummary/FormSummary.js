@@ -11,10 +11,10 @@ const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
     <Fragment>
       <div className="card-summary uic--container-fluid">
         <div className="uic--row">
-          <div className="uic--col-10">
+          <div className="uic--col-6 uic--col-sm-11">
             <h2 className="card-summary-label">{shortTitle}</h2>
           </div>
-          <div className="uic--col-2">
+          <div className="uic--col-6 uic--col-sm-1">
             <div className="uic--d-flex uic--justify-content-end">
               <Button to={cardUrl} variant={'link'}>
                 Edit

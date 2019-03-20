@@ -1,7 +1,7 @@
 /** @module CardShell */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 import Button from '~components/atoms/Button/Button';
 
 import './CardShell.scss';
@@ -47,73 +47,107 @@ export const validateChildren = (children) => {
   return true;
 };
 
-const CardShell = ({
-  afterButton,
-  beforeButton,
-  buttonText,
-  children,
-  className,
-  disabled,
-  hasError,
-  hideButton,
-  isCollapsed,
-  loading,
-  onChange,
-  onSubmit,
-  summary,
-}) => {
-  const isInvalid = !validateChildren(children);
+/** CardShell Component */
+class CardShell extends Component {
+  /**
+   * Standard react constructor method
+   * @param {Object} props - component props
+   * @returns {undefined}
+   */
+  constructor(props) {
+    super(props);
 
-  const cardClass = classNames(
-    {
-      'mcgonagall-card': true,
-      active: !isCollapsed,
-      collapsed: isCollapsed,
-      error: hasError,
-    },
-    className
-  );
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
 
-  const submitForm = (e) => {
+  /**
+   * Calls the onSubmit function from props
+   * @param {object} e event
+   * @returns {undefined}
+   */
+  onSubmit(e) {
     e.preventDefault();
-    onSubmit();
-  };
+    this.props.onSubmit();
+  }
 
-  return (
-    <div className={cardClass}>
-      {isCollapsed ? (
-        summary
-      ) : (
-        <form onChange={onChange} onSubmit={submitForm}>
-          {children}
+  /**
+   * Calls the onChange function from props with field name and value passed through
+   * @param {object} e event
+   * @returns {undefined}
+   */
+  onChange(e) {
+    e.preventDefault();
+    this.props.onChange(e.target.name, e.target.value);
+  }
 
-          <div className="card-after-content">
-            {beforeButton && (
-              <div className="card-before-button">{beforeButton}</div>
-            )}
+  /**
+   * Standard render method
+   * @returns {JSX} - react JSX
+   */
+  render() {
+    const {
+      afterButton,
+      beforeButton,
+      buttonText,
+      children,
+      className,
+      disabled,
+      hasError,
+      hideButton,
+      isCollapsed,
+      loading,
+      summary,
+    } = this.props;
 
-            {!hideButton && (
-              <Button
-                className="card-submit"
-                disabled={isInvalid || disabled}
-                isLoading={loading}
-                light
-                type="submit"
-                variant="secondary"
-              >
-                {buttonText}
-              </Button>
-            )}
+    const isInvalid = !validateChildren(children);
 
-            {afterButton && (
-              <div className="card-after-button">{afterButton}</div>
-            )}
-          </div>
-        </form>
-      )}
-    </div>
-  );
-};
+    const cardClass = classNames(
+      {
+        'mcgonagall-card': true,
+        active: !isCollapsed,
+        collapsed: isCollapsed,
+        error: hasError,
+      },
+      className
+    );
+
+    return (
+      <div className={cardClass}>
+        {isCollapsed ? (
+          summary
+        ) : (
+          <form onChange={this.onChange} onSubmit={this.onSubmit}>
+            {children}
+
+            <div className="card-after-content">
+              {beforeButton && (
+                <div className="card-before-button">{beforeButton}</div>
+              )}
+
+              {!hideButton && (
+                <Button
+                  className="card-submit"
+                  disabled={isInvalid || disabled}
+                  isLoading={loading}
+                  light
+                  type="submit"
+                  variant="secondary"
+                >
+                  {buttonText}
+                </Button>
+              )}
+
+              {afterButton && (
+                <div className="card-after-button">{afterButton}</div>
+              )}
+            </div>
+          </form>
+        )}
+      </div>
+    );
+  }
+}
 
 CardShell.propTypes = {
   afterButton: PropTypes.node,

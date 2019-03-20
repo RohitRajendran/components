@@ -40,16 +40,16 @@ The RadioButton component renders a group of HTML radio buttons with a number of
 
 The following component props are valid.
 
-| Prop          | Type     | Default | Description                                                                                         | Required |
-| ------------- | -------- | ------- | --------------------------------------------------------------------------------------------------- | -------- |
-| **name**      | String   |         | A string representing the name of the radio button group. For example `yesNo` or something similar. | Yes      |
-| **disabled**  | Boolean  | `false` | Determines if the entire group of radio buttons should be disabled or not.                          | No       |
-| **table**     | Boolean  | `false` | Renders the radio button group in a table.                                                          | No       |
-| **required**  | Boolean  | `false` | Determines if an input from the group is required or not for form validation.                       | No       |
-| **value**     | String   |         | The current selected option in the radio button group.                                              | Yes      |
-| **onChange**  | Function |         | Change handler which passes back the `value` of the option which is currently selected.             | Yes      |
-| **className** | String   |         | Applies a series of class names to the radio button container.                                      | Yes      |
-| **options**   | Array    |         | An array of objects containing options that should be rendered. These options are explained below.  | Yes      |
+| Prop          | Type     | Default | Description                                                                                                      | Required |
+| ------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| **name**      | String   |         | A string representing the name of the radio button group. For example `yesNo` or something similar.              | Yes      |
+| **disabled**  | Boolean  | `false` | Determines if the entire group of radio buttons should be disabled or not.                                       | No       |
+| **table**     | Boolean  | `false` | Renders the radio button group in a table.                                                                       | No       |
+| **required**  | Boolean  | `false` | Determines if an input from the group is required or not for form validation.                                    | No       |
+| **value**     | String   |         | The current selected option in the radio button group.                                                           | Yes      |
+| **onChange**  | Function |         | Change handler which takes in the `name` of the input and the `value` of the option which is currently selected. | Yes      |
+| **className** | String   |         | Applies a series of class names to the radio button container.                                                   | Yes      |
+| **options**   | Array    |         | An array of objects containing options that should be rendered. These options are explained below.               | Yes      |
 
 ### props.options
 
