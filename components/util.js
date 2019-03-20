@@ -57,6 +57,7 @@ export const ZipMask = {
  * @returns {regex[]} The mask
  */
 export const TickerMask = {
+  /* istanbul ignore next */
   mask(input) {
     return _.fill(Array(input.length), /[a-zA-Z]/);
   },
@@ -69,6 +70,7 @@ export const TickerMask = {
  * @returns {regex[]} the mask
  */
 export const CommaSeparatedMask = {
+  /* istanbul ignore next */
   mask(input) {
     return _.fill(Array(input.length + 1), /[A-Za-z, ]/);
   },
