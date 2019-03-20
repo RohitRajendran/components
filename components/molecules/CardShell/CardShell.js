@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import Button from '~components/atoms/Button/Button';
+import {maskEnum} from '~components/atoms/Input/Input';
 
 import './CardShell.scss';
 
@@ -17,11 +18,11 @@ export const validateChildren = (children) => {
       if (child.props.required) {
         if (child.props.mask && child.props.isValid) {
           return (
-            child.props.mask.regex.test(child.props.value) &&
+            maskEnum[child.props.mask].regex.test(child.props.value) &&
             child.props.isValid()
           );
         } else if (child.props.mask) {
-          return child.props.mask.regex.test(child.props.value);
+          return maskEnum[child.props.mask].regex.test(child.props.value);
         }
         return Boolean(child.props.value);
       } else if (

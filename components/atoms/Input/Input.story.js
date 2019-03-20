@@ -1,12 +1,7 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
-import {text, boolean, number} from '@storybook/addon-knobs';
-import {
-  DateMask,
-  CurrencyMask,
-  PercentageWithDecimalMaskAllowNegative,
-} from '~components/util';
+import {text, boolean, number, select} from '@storybook/addon-knobs';
 import InputReadme from './Input.md';
 import Input from './Input';
 import {StateDecorator, Store} from '@sambego/storybook-state';
@@ -29,6 +24,26 @@ store.subscribe(() => {
   forceReRender();
 });
 
+const inputMask = (defaultMask) =>
+  select(
+    'mask',
+    [
+      'PhoneNumber',
+      'SsnNumber',
+      'Date',
+      'Month',
+      'Zip',
+      'Ticker',
+      'CommaSeparated',
+      'Currency',
+      'CurrencyAllowNegative',
+      'Number',
+      'PercentageWithDecimal',
+      'SmallPercentageWithDecimal',
+    ],
+    defaultMask
+  );
+
 stories.add('default', () => (
   <div className="row">
     <div className="col-xs-12">
@@ -44,6 +59,7 @@ stories.add('default', () => (
         required={boolean('required')}
         pattern={text('pattern')}
         maxLength={number('maxLength')}
+        mask={inputMask()}
         min={number('min')}
         max={number('max')}
         step={number('step')}
@@ -82,7 +98,7 @@ stories.add('currency', () => (
         error={boolean('error', false)}
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
-        mask={CurrencyMask}
+        mask={inputMask('Currency')}
         onChange={(event) => store.set({currency: event.target.value})}
         key="amount"
       />
@@ -114,7 +130,7 @@ stories.add('percent', () => (
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
         onChange={(event) => store.set({percent: event.target.value})}
-        mask={PercentageWithDecimalMaskAllowNegative}
+        mask={inputMask('PercentageWithDecimal')}
         key="increase"
       />
     </div>
@@ -145,7 +161,7 @@ stories.add('date', () => (
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
         onChange={(event) => store.set({date: event.target.value})}
-        mask={DateMask}
+        mask={inputMask('Date')}
         key="date"
       />
     </div>
@@ -176,6 +192,7 @@ stories.add('error', () => (
         disabled={boolean('disabled', false)}
         inputClasses={text('inputClasses')}
         onChange={(event) => store.set({error: event.target.value})}
+        mask={inputMask()}
         key="address"
       />
     </div>
@@ -205,6 +222,7 @@ stories.add('disabled', () => (
         error={boolean('error', false)}
         disabled={boolean('disabled', true)}
         inputClasses={text('inputClasses')}
+        mask={inputMask()}
       />
     </div>
   </div>

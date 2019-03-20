@@ -3,7 +3,6 @@ import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
 import Input from '../../atoms/Input/Input';
-import {DateMask} from '../../util';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import SelectButtons from '../SelectButtons/SelectButtons';
 import CardShell from './CardShell';
@@ -178,7 +177,7 @@ test('CardShell - validates different input constraints', (t) => {
         value={values.date}
         float
         onChange={stub()}
-        mask={DateMask}
+        mask="Date"
         label="test"
         isValid={() => values.date !== 'nope'}
         required
@@ -191,7 +190,7 @@ test('CardShell - validates different input constraints', (t) => {
         value={values.date}
         float
         onChange={stub()}
-        mask={DateMask}
+        mask="Date"
         label="test"
         required
       />,
@@ -252,7 +251,7 @@ test('CardShell - validates different input constraints', (t) => {
                   value={values.date}
                   float
                   onChange={stub()}
-                  mask={DateMask}
+                  mask="Date"
                   label="test"
                   required
                 />{' '}
@@ -327,7 +326,7 @@ test('CardShell - validates different input constraints', (t) => {
                   value={values.date}
                   float
                   onChange={stub()}
-                  mask={DateMask}
+                  mask="Date"
                   label="test"
                   required
                 />{' '}
