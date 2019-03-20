@@ -12,7 +12,8 @@ import unitedIncomeTheme from './theme';
 import {jsxDecorator} from 'storybook-addon-jsx';
 import '../constants/sass/util/prefixed-utils.scss';
 
-const req = require.context('../stories', true, /\.js$/);
+const req = require.context('../components', true, /story\.js$/);
+
 const {percyAddon, serializeStories} = createPercyAddon();
 
 // Registers global decorators.
@@ -40,7 +41,7 @@ addParameters({
  * @returns {undefined}
  */
 function loadStories() {
-  req.keys().forEach((filename) => req(filename));
+  req.keys().forEach(req);
 }
 
 setAddon(percyAddon); // Initializes the Percy addon.
