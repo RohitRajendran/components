@@ -10,6 +10,7 @@ import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
 import {jsxDecorator} from 'storybook-addon-jsx';
+import { withPropsTable } from 'storybook-addon-react-docgen';
 import '../constants/sass/util/prefixed-utils.scss';
 
 const req = require.context('../components', true, /story\.js$/);
@@ -20,6 +21,7 @@ const {percyAddon, serializeStories} = createPercyAddon();
 addDecorator(withA11y);
 addDecorator(withKnobs);
 addDecorator(jsxDecorator);
+addDecorator(withPropsTable);
 
 // Configures global parameters.
 addParameters({

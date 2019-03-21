@@ -261,6 +261,11 @@ class DropDown extends Component {
 DropDown.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
+    /**
+     * Overrides styles of addon. The object should follow this shape:
+     * https://github.com/storybooks/storybook/blob/master/addons/info/src/components/Story.js#L19.
+     * This prop can also accept a function which has the default stylesheet passed as an argument
+     */
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
