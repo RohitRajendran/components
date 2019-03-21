@@ -41,8 +41,6 @@ test('Slider - renders', (t) => {
 });
 
 test('Slider - onChange', (t) => {
-  t.plan(2);
-
   const props = {
     onChange: stub(),
     name: 'test',
@@ -55,17 +53,13 @@ test('Slider - onChange', (t) => {
   component
     .find('Slider')
     .at(0)
-    .prop('onChange')(props.name, props.value);
+    .prop('onChange')(5);
 
   t.equals(
     props.onChange.args[0][0],
-    'test',
+    5,
     'Should fire the onChange handler correctly when prompted.'
   );
 
-  t.equals(
-    props.onChange.args[0][1],
-    7,
-    'Should fire the onChange handler correctly when prompted.'
-  );
+  t.end();
 });

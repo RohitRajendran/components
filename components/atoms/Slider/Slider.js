@@ -38,6 +38,10 @@ const Slider = ({
   );
   const markers = _.fromPairs(_.range(1, 11).map((x) => [x, x]));
 
+  const handleChange = (newValue) => {
+    return onChange(name, newValue);
+  };
+
   return (
     <div className={wrapperClasses}>
       {tooltipStickyVariant && (
@@ -64,7 +68,7 @@ const Slider = ({
       <ReactSlider
         name={name}
         value={value}
-        onChange={(val) => onChange && onChange(name, val)}
+        onChange={onChange && handleChange}
         min={1}
         max={10}
         step={1}
