@@ -260,13 +260,13 @@ class Input extends Component {
       placeholder,
       value,
       required,
-      pattern,
       onChange,
       maxLength,
       min,
       max,
       step,
       disabled,
+      pattern,
     };
 
     const showInvalidity = !this.isValid();
@@ -332,7 +332,6 @@ class Input extends Component {
             `}
           </style>
         )}
-
         <InputType
           type="text"
           className={inputClasses}

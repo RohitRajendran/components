@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
-import './DropDown.scss';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+
+import './DropDown.scss';
 
 /** Renders the DropDown field component which wraps react-select. */
 class DropDown extends Component {
