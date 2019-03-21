@@ -1,9 +1,18 @@
 @import '~rc-slider/assets/index.css';
 
-.slider-marker-highlighted {
+.slider-marker-highlighted-green {
   background-image: url(../../../assets/icons/star.svg);
   background-color: $green !important;
   border-color: $green !important;
+  background-size: 80%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.slider-marker-highlighted-orange {
+  background-image: url(../../../assets/icons/star.svg);
+  background-color: $orange !important;
+  border-color: $orange !important;
   background-size: 80%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -13,7 +22,7 @@
   margin: 16rem 11rem 0rem 11rem;
   position: relative;
 
-  &.highlighted {
+  &.highlighted-green {
     .tooltip {
       background-color: $green;
 
@@ -23,7 +32,22 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
-        @extend .slider-marker-highlighted;
+        @extend .slider-marker-highlighted-green;
+      }
+    }
+  }
+
+  &.highlighted-orange {
+    .tooltip {
+      background-color: $orange;
+
+      &::before {
+        border-color: $orange transparent transparent transparent;
+      }
+    }
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @extend .slider-marker-highlighted-orange;
       }
     }
   }
@@ -95,8 +119,13 @@
       }
     }
 
-    &.green-star::after {
-      @extend .slider-marker-highlighted;
+    &.green::after {
+      @extend .slider-marker-highlighted-green;
+      background-size: 60%;
+    }
+
+    &.orange::after {
+      @extend .slider-marker-highlighted-orange;
       background-size: 60%;
     }
   }
