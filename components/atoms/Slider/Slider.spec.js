@@ -1,7 +1,7 @@
 import React from 'react';
 import test from 'tape';
-import {shallow} from 'enzyme';
-import {spy} from 'sinon';
+import {shallow, mount} from 'enzyme';
+import {spy, stub} from 'sinon';
 import Slider from './Slider';
 
 test('Slider - renders', (t) => {
@@ -37,5 +37,30 @@ test('Slider - renders', (t) => {
     'The sticky hint should be present.'
   );
 
+  t.end();
+});
+
+test('Slider - onChange', (t) => {
+  t.plan(2);
+
+  const props = {
+    onChange: stub(),
+    name: 'test',
+    value: 7,
+    tooltipStickyPosition: 5,
+  };
+
+  const component = mount(<Slider {...props} />);
+
+  component
+    .find('Slider')
+    .at(0)
+    .prop('onChange')();
+
+  t.equals(
+    props.onChange.callCount,
+    1,
+    'Should fire the onChange handler correctly when prompted.'
+  );
   t.end();
 });
