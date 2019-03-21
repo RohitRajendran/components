@@ -61,7 +61,7 @@ const SelectButtons = ({
                 defaultValue={option.value}
                 disabled={disabled || option.disabled}
                 checked={values.has(option.value)}
-                onChange={handleChange}
+                onChange={onChange && handleChange}
                 required={required}
                 aria-label=""
               />
