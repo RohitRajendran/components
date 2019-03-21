@@ -311,10 +311,6 @@ class Input extends Component {
       `mcgonagall-input ${className}`
     );
 
-    console.log(
-      pattern
-    )
-
     return (
       <div className={containerClasses} data-value={value}>
         {append && (

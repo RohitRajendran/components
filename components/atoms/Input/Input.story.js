@@ -155,7 +155,10 @@ stories.add('date', () => (
         min={number('min')}
         max={number('max')}
         step={number('step')}
-        validationErrorMsg={text('validationErrorMsg', 'Not a valid date range')}
+        validationErrorMsg={text(
+          'validationErrorMsg',
+          'Not a valid date range'
+        )}
         validateOnBlur={boolean('validateOnBlur', true)}
         error={boolean('error', false)}
         disabled={boolean('disabled')}
