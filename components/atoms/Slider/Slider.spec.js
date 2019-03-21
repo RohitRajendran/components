@@ -41,7 +41,7 @@ test('Slider - renders', (t) => {
 });
 
 test('Slider - onChange', (t) => {
-  t.plan(2);
+  t.plan(1);
 
   const props = {
     onChange: stub(),
