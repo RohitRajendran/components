@@ -47,7 +47,7 @@ const RadioButtons = ({
                 required={required}
                 value={option.value}
                 checked={option.value === value}
-                onChange={() => onChange(name, option.value)}
+                onChange={() => onChange && onChange(name, option.value)}
               />
               <OptionBox
                 variant="radio"
