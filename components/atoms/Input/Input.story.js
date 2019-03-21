@@ -65,7 +65,6 @@ stories.add('default', () => (
         step={number('step')}
         validationErrorMsg={text('validationErrorMsg')}
         validateOnBlur={boolean('validateOnBlur')}
-        pattern="^\d{5}$"
         error={boolean('error', false)}
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
