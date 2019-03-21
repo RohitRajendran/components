@@ -10496,9 +10496,9 @@ stealthy-require@^1.1.1:
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
 storybook-addon-jsx@*:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.0.1.tgz#4bde85ddc00fa51ef5f2a91c185a888fe4834d6a"
-  integrity sha512-vA9d+yIc6iqNWv6QxHC5TBAf68nEMLihxNIXyTm99ifP0WFHWKvn+8BWTIT/VLDSF/br3W8ljXl1d8TyFIuaug==
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.0.2.tgz#b331ef9c132979e10ee3afc24d9667a41c4094b1"
+  integrity sha512-eDpNY2BQgtwLFL1uCnLVTZBt6Cb0lP817duQBoWT4juLxW4hqo/r8B6Z7k0h/42RrAyn7iRkPZEOE601VjAitw==
   dependencies:
     js-beautify "^1.8.8"
     prismjs "^1.15.0"
