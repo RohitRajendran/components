@@ -65,6 +65,7 @@ stories.add('default', () => (
         step={number('step')}
         validationErrorMsg={text('validationErrorMsg')}
         validateOnBlur={boolean('validateOnBlur')}
+        pattern="^\d{5}$"
         error={boolean('error', false)}
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
@@ -155,13 +156,14 @@ stories.add('date', () => (
         min={number('min')}
         max={number('max')}
         step={number('step')}
-        validationErrorMsg={text('validationErrorMsg')}
-        validateOnBlur={boolean('validateOnBlur')}
+        validationErrorMsg={text('validationErrorMsg', 'Not a valid date range')}
+        validateOnBlur={boolean('validateOnBlur', true)}
         error={boolean('error', false)}
         disabled={boolean('disabled')}
         inputClasses={text('inputClasses')}
         onChange={(event) => store.set({date: event.target.value})}
         mask={inputMask('Date')}
+        isValid={() => store.get('date').length === 10}
         key="date"
       />
     </div>
