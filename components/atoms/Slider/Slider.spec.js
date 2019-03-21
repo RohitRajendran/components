@@ -2,11 +2,11 @@ import React from 'react';
 import test from 'tape';
 import {shallow, mount} from 'enzyme';
 import {spy, stub} from 'sinon';
-import Slider from './Slider';
+import {PureSlider} from './Slider';
 
 test('Slider - renders', (t) => {
   const component = shallow(
-    <Slider
+    <PureSlider
       name="slider"
       value={8}
       tooltipStickyVariant="green"
@@ -22,7 +22,7 @@ test('Slider - renders', (t) => {
   );
 
   const component2 = shallow(
-    <Slider
+    <PureSlider
       name="test"
       value={7}
       tooltipStickyPosition={5}
@@ -41,6 +41,8 @@ test('Slider - renders', (t) => {
 });
 
 test('Slider - onChange', (t) => {
+  t.plan(2);
+
   const props = {
     onChange: stub(),
     name: 'test',
@@ -48,18 +50,22 @@ test('Slider - onChange', (t) => {
     tooltipStickyPosition: 5,
   };
 
-  const component = mount(<Slider {...props} />);
+  const component = mount(<PureSlider {...props} />);
 
   component
-    .find('Slider')
+    .find('.react-slider')
     .at(0)
     .prop('onChange')(5);
 
   t.equals(
     props.onChange.args[0][0],
-    5,
+    'test',
     'Should fire the onChange handler correctly when prompted.'
   );
 
-  t.end();
+  t.equals(
+    props.onChange.args[0][1],
+    5,
+    'Should fire the onChange handler correctly when prompted.'
+  );
 });

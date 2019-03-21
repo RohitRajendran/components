@@ -357,6 +357,7 @@ test('CardShell - validates different input constraints', (t) => {
       />,
       <DropDown
         name="dropdownExample"
+        label="dropdown"
         options={[
           {
             value: 'uk',

@@ -26,7 +26,7 @@ const Slider = ({
     'tooltip-sticky-hint': true,
     [`tooltip-position-${tooltipStickyPosition}`]: true,
   });
-  const wrapperClasses = classNames(
+  const containerClasses = classNames(
     {
       [`highlighted-${tooltipStickyVariant}`]:
         tooltipStickyVariant &&
@@ -43,7 +43,7 @@ const Slider = ({
   };
 
   return (
-    <div className={wrapperClasses}>
+    <div className={containerClasses}>
       {tooltipStickyVariant && (
         <style>
           {`
@@ -56,6 +56,13 @@ const Slider = ({
               : colors.royal
           } !important;
         }
+        `}
+        </style>
+      )}
+
+      {tooltipStickyPosition && (
+        <style>
+          {`
         .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
           height: 20px !important;
           width: 20px !important;
@@ -72,9 +79,10 @@ const Slider = ({
       {rightAnnotate && <div className="right-annotate">{rightAnnotate}</div>}
       <div className={tooltipStickyClasses} />
       <ReactSlider
+        className="react-slider"
         name={name}
         value={value}
-        onChange={onChange && handleChange}
+        onChange={handleChange}
         min={1}
         max={10}
         step={1}
@@ -100,3 +108,4 @@ Slider.propTypes = {
 };
 
 export default memo(Slider);
+export {Slider as PureSlider};
