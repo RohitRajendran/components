@@ -55,7 +55,13 @@ const Slider = ({
               ? colors.orange
               : colors.royal
           } !important;
-      }`}
+        }
+        .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
+          height: 20px !important;
+          width: 20px !important;
+          margin-left: -10px !important;
+        }
+        `}
         </style>
       )}
       {tooltip && (
