@@ -1,21 +1,26 @@
 @import '~rc-slider/assets/index.css';
 
-.slider-marker-highlighted-green {
+.star-marker {
   background-image: url(../../../assets/icons/star.svg);
-  background-color: $green !important;
-  border-color: $green !important;
   background-size: 80%;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
+// Creates the background for the sliders ghost position.
+.slider-marker-highlighted-green {
+  background-color: $green;
+  border-color: $green;
+}
+
 .slider-marker-highlighted-orange {
-  background-image: url(../../../assets/icons/star.svg);
-  background-color: $orange !important;
-  border-color: $orange !important;
-  background-size: 80%;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-color: $orange;
+  border-color: $orange;
+}
+
+.slider-marker-highlighted-purple {
+  background-color: $violet-blue;
+  border-color: $violet-blue;
 }
 
 .slider-wrapper {
@@ -32,6 +37,7 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
+        @extend .star-marker;
         @extend .slider-marker-highlighted-green;
       }
     }
@@ -47,7 +53,24 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
+        @extend .star-marker;
         @extend .slider-marker-highlighted-orange;
+      }
+    }
+  }
+
+  &.highlighted-purple {
+    .tooltip {
+      background-color: $violet-blue;
+
+      &::before {
+        border-color: $violet-blue transparent transparent transparent;
+      }
+    }
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @extend .star-marker;
+        @extend .slider-marker-highlighted-purple;
       }
     }
   }
@@ -119,17 +142,26 @@
       }
     }
 
-    &.green::after {
+    &.show.green::after {
       @extend .slider-marker-highlighted-green;
+      @extend .star-marker;
       background-size: 60%;
     }
 
-    &.orange::after {
+    &.show.orange::after {
       @extend .slider-marker-highlighted-orange;
+      @extend .star-marker;
+      background-size: 60%;
+    }
+
+    &.show.purple::after {
+      @extend .slider-marker-highlighted-purple;
+      @extend .star-marker;
       background-size: 60%;
     }
   }
 
+  // Creates a CSS class for each tooltip position, 1 - 10
   @for $i from 1 through 10 {
     .tooltip-position-#{$i} {
       @if $i < 1 {
@@ -156,10 +188,11 @@
     }
 
     .rc-slider-handle {
-      height: 20px !important;
-      width: 20px !important;
-      margin-left: -10px !important;
-      margin-top: -9px !important;
+      // Overrides the react slider handler.
+      height: 20px;
+      width: 20px;
+      margin-left: -10px;
+      margin-top: -9px;
       background-color: $violet-blue;
       border-color: $violet-blue;
     }

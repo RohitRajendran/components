@@ -16,6 +16,7 @@ const Slider = ({
   rightAnnotate,
   tooltipStickyPosition,
   tooltipStickyVariant,
+  className,
 }) => {
   const tooltipClasses = classNames(`tooltip tooltip-position-${value}`);
   const tooltipStickyClasses = classNames(
@@ -32,7 +33,7 @@ const Slider = ({
         tooltipStickyPosition &&
         tooltipStickyPosition === value,
     },
-    'slider-wrapper'
+    `slider-wrapper ${className}`
   );
   const markers = _.fromPairs(_.range(1, 11).map((x) => [x, x]));
 
@@ -43,7 +44,11 @@ const Slider = ({
           {`
         .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition}) {
           color: ${
-            tooltipStickyVariant === 'green' ? '#008422' : '#d16b08'
+            tooltipStickyVariant === 'green'
+              ? '#008422'
+              : tooltipStickyVariant === 'orange'
+              ? '#d16b08'
+              : '#4d00ba'
           } !important;
       }`}
         </style>
@@ -71,11 +76,12 @@ Slider.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.number,
-  tooltip: PropTypes.node,
-  leftAnnotate: PropTypes.node,
-  rightAnnotate: PropTypes.node,
+  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  leftAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  rightAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   tooltipStickyPosition: PropTypes.number,
-  tooltipStickyVariant: PropTypes.oneOf(['green', 'orange']),
+  tooltipStickyVariant: PropTypes.oneOf(['green', 'orange', 'purple']),
+  className: PropTypes.string,
 };
 
 export default Slider;
