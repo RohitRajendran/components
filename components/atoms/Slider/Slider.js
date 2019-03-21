@@ -1,9 +1,10 @@
 /** @module Slider */
-import React from 'react';
+import React, {memo} from 'react';
 import ReactSlider from 'rc-slider';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import {dsmColors as colors} from '~constants/js/colors';
 
 import './Slider.scss';
 
@@ -17,23 +18,23 @@ const Slider = ({
   tooltipStickyPosition,
   tooltipStickyVariant,
   className,
+  required,
 }) => {
-  const tooltipClasses = classNames(`tooltip tooltip-position-${value}`);
-  const tooltipStickyClasses = classNames(
-    {
-      show: tooltipStickyPosition && tooltipStickyPosition !== value,
-      [`${tooltipStickyVariant}`]: tooltipStickyVariant,
-    },
-    `tooltip-sticky-hint tooltip-position-${tooltipStickyPosition}`
-  );
+  const tooltipStickyClasses = classNames({
+    show: tooltipStickyPosition && tooltipStickyPosition !== value,
+    [`${tooltipStickyVariant}`]: tooltipStickyVariant,
+    'tooltip-sticky-hint': true,
+    [`tooltip-position-${tooltipStickyPosition}`]: true,
+  });
   const wrapperClasses = classNames(
     {
       [`highlighted-${tooltipStickyVariant}`]:
         tooltipStickyVariant &&
         tooltipStickyPosition &&
         tooltipStickyPosition === value,
+      'slider-wrapper': true,
     },
-    `slider-wrapper ${className}`
+    className
   );
   const markers = _.fromPairs(_.range(1, 11).map((x) => [x, x]));
 
@@ -45,15 +46,17 @@ const Slider = ({
         .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition}) {
           color: ${
             tooltipStickyVariant === 'green'
-              ? '#008422'
+              ? colors.green
               : tooltipStickyVariant === 'orange'
-              ? '#d16b08'
-              : '#4d00ba'
+              ? colors.orange
+              : colors.royal
           } !important;
       }`}
         </style>
       )}
-      {tooltip && <div className={tooltipClasses}>{tooltip}</div>}
+      {tooltip && (
+        <div className={`tooltip tooltip-position-${value}`}>{tooltip}</div>
+      )}
 
       {leftAnnotate && <div className="left-annotate">{leftAnnotate}</div>}
       {rightAnnotate && <div className="right-annotate">{rightAnnotate}</div>}
@@ -67,6 +70,7 @@ const Slider = ({
         step={1}
         marks={markers}
         included={false}
+        required={required}
       />
     </div>
   );
@@ -82,6 +86,7 @@ Slider.propTypes = {
   tooltipStickyPosition: PropTypes.number,
   tooltipStickyVariant: PropTypes.oneOf(['green', 'orange', 'purple']),
   className: PropTypes.string,
+  required: PropTypes.bool,
 };
 
-export default Slider;
+export default memo(Slider);

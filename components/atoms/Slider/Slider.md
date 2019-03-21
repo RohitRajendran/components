@@ -6,7 +6,7 @@ The Slider component creates an interactive range slider between 1 and 10.
 
 ```javascript
 <Slider
-  value={store.get('slider')}
+  value={this.state.slider}
   leftAnnotate="Lower Risk"
   rightAnnotate="Higher Risk"
   name="slider"
@@ -17,7 +17,7 @@ The Slider component creates an interactive range slider between 1 and 10.
     </h3>
   }
   tooltipStickyVariant="green"
-  onChange={(name, value) => store.set({[name]: value})}
+  onChange={(name, value) => this.setState({[name]: value})}
 />
 ```
 
@@ -35,4 +35,5 @@ The following component props are valid.
 | **rightAnnotate**         | String/JSX |         | Text to display to the right of the slider.                                                | No       |
 | **tooltipStickyPosition** | Integer    |         | Shows a ghost dot on the slider, sets the position between 1 and 10.                       | No       |
 | **tooltipStickyVariant**  | String     |         | Determines which variant to set the slider to, can either be set to null, green or orange. | No       |
+| **required**              | Boolean    |         | Determines if the input is required or not.                                                | No       |
 | **className**             | String     |         | Optional classes to apply to the slider container.                                         | No       |

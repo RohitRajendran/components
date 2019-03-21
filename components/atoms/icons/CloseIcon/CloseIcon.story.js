@@ -14,6 +14,5 @@ stories.add('default', () => (
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}
-    className={text('className')}
   />
 ));

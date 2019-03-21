@@ -1,26 +1,15 @@
 @import '~rc-slider/assets/index.css';
 
-.star-marker {
+@mixin star-marker {
   background-image: url(../../../assets/icons/star.svg);
   background-size: 80%;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
-// Creates the background for the sliders ghost position.
-.slider-marker-highlighted-green {
-  background-color: $green;
-  border-color: $green;
-}
-
-.slider-marker-highlighted-orange {
-  background-color: $orange;
-  border-color: $orange;
-}
-
-.slider-marker-highlighted-purple {
-  background-color: $violet-blue;
-  border-color: $violet-blue;
+@mixin highlighted($color) {
+  background-color: $color;
+  border-color: $color;
 }
 
 .slider-wrapper {
@@ -37,8 +26,8 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
-        @extend .star-marker;
-        @extend .slider-marker-highlighted-green;
+        @include star-marker;
+        @include highlighted($green);
       }
     }
   }
@@ -53,8 +42,8 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
-        @extend .star-marker;
-        @extend .slider-marker-highlighted-orange;
+        @include star-marker;
+        @include highlighted($orange);
       }
     }
   }
@@ -69,8 +58,8 @@
     }
     .rc-slider-with-marks {
       .rc-slider-handle {
-        @extend .star-marker;
-        @extend .slider-marker-highlighted-purple;
+        @include star-marker;
+        @include highlighted($violet-blue);
       }
     }
   }
@@ -78,18 +67,18 @@
   // Markers which appear to the left and right of the slider.
   .left-annotate,
   .right-annotate {
-    @include source-sans-pro(1.6rem);
+    @include source-sans-pro(1.2rem);
     position: absolute;
     color: $slate;
   }
 
   .left-annotate {
-    left: -4rem;
+    left: -3rem;
     bottom: -8rem;
   }
 
   .right-annotate {
-    right: -4rem;
+    right: -3rem;
     bottom: -8rem;
   }
 
@@ -143,20 +132,20 @@
     }
 
     &.show.green::after {
-      @extend .slider-marker-highlighted-green;
-      @extend .star-marker;
+      @include star-marker;
+      @include highlighted($green);
       background-size: 60%;
     }
 
     &.show.orange::after {
-      @extend .slider-marker-highlighted-orange;
-      @extend .star-marker;
+      @include star-marker;
+      @include highlighted($orange);
       background-size: 60%;
     }
 
     &.show.purple::after {
-      @extend .slider-marker-highlighted-purple;
-      @extend .star-marker;
+      @include star-marker;
+      @include highlighted($violet-blue);
       background-size: 60%;
     }
   }
@@ -202,9 +191,8 @@
     }
 
     .rc-slider-mark .rc-slider-mark-text {
-      @include source-sans-pro(1.8rem);
+      @include source-sans-pro(1.6rem);
       color: $slate;
-      color: $dark-blue;
       top: 6rem;
     }
   }
