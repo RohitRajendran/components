@@ -19,7 +19,7 @@ This component renders a summary for form questions and can also display groups 
           ],
         },
       ]}
-      cardUrl="/"
+      editCard={() => true}
     />
   }
 />
@@ -43,7 +43,7 @@ This component renders a summary for form questions and can also display groups 
           ],
         },
       ]}
-      cardUrl="/"
+      to="/"
     />
   }
 />

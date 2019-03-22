@@ -18,12 +18,12 @@ import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/Sim
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 
-// Organisms
-import QuestionCard from '~components/organisms/QuestionCard/QuestionCard';
-import MessageCard from '~components/organisms/MessageCard/MessageCard';
+// Organisms - Simple
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 
-// Templates
-import RadioButtonCard from '~components/templates/RadioButtonCard/RadioButtonCard';
+// Organisms - Complex
+import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';

@@ -19,7 +19,7 @@ test('FormSummary - Renders one answer', (t) => {
             ],
           },
         ]}
-        cardUrl={'/'}
+        editCard={() => true}
       />
     </MemoryRouter>
   );
@@ -63,7 +63,7 @@ test('FormSummary - Renders one answer', (t) => {
             ],
           },
         ]}
-        cardUrl={'/'}
+        editCard={() => true}
       />
     </MemoryRouter>
   );

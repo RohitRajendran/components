@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import QuestionCard from '~components/organisms/QuestionCard/QuestionCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
 /**
  * Gets the label of a given value
@@ -27,7 +27,7 @@ const getSelectedAnswerLabel = (options, currValue) => {
  */
 const RadioButtonCard = ({
   answers,
-  cardUrl,
+  editCard,
   className,
   onChange,
   options,
@@ -48,7 +48,7 @@ const RadioButtonCard = ({
   return (
     <QuestionCard
       {...props}
-      cardUrl={cardUrl}
+      editCard={editCard}
       className={cardClass}
       onChange={onChange}
       shortTitle={shortTitle}
@@ -56,7 +56,7 @@ const RadioButtonCard = ({
       summary={
         <SimpleSummary
           answers={answers || [getSelectedAnswerLabel(options, value)]}
-          cardUrl={cardUrl}
+          editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
@@ -102,9 +102,9 @@ RadioButtonCard.propTypes = {
   beforeButton: PropTypes.node,
   /** Changes the text in the Submit button/ */
   buttonText: PropTypes.string,
-  /** The url for the current step, used for the edit link in the summary. */
-  cardUrl: PropTypes.string.isRequired,
-  /** Applies additional class names to the button. */
+  /** Handler to cancel the changes. */
+  cancelChanges: PropTypes.func.isRequired,
+  /** Additional class names to apply to the button. */
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
   clearFuture: PropTypes.bool,
@@ -112,6 +112,8 @@ RadioButtonCard.propTypes = {
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Forces the disabled state of the button. */
   disabled: PropTypes.bool,
+  /** Handler called to edit the card, only necessary for McGonagall. */
+  editCard: PropTypes.func,
   /** Displays the error state of the card. */
   hasError: PropTypes.bool,
   /** Shows the collapsed state of the card which switches the content to the summary. */

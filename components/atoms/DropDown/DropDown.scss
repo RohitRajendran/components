@@ -5,7 +5,6 @@ $transition-duration: 0.25s;
   text-align: left;
   transition-property: color, border-color, box-shadow;
   transition-duration: $transition-duration;
-  position: relative;
 
   .mcgonagall-dropdown-wrapper {
     background-color: $white-four;
@@ -30,7 +29,6 @@ $transition-duration: 0.25s;
 
   label {
     @include source-sans-pro(1.2rem);
-    position: absolute;
     padding: 1.2rem;
     color: $slate;
     font-weight: normal;
@@ -129,14 +127,14 @@ $transition-duration: 0.25s;
 
   // Dropdown Indicators
   .mcgonagall-dropdown__indicator {
-    padding: 0 8px;
+    padding: 0 6px;
   }
 
   .mcgonagall-dropdown__indicators {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 1rem;
+    right: 2rem;
   }
 
   .mcgonagall-dropdown__indicator-separator {

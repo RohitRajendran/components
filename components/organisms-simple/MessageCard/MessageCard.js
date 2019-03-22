@@ -1,3 +1,4 @@
+/** @module MessageCard */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
@@ -11,12 +12,12 @@ const MessageCard = ({
   beforeButton,
   className,
   description,
+  editCard,
+  featureImage,
   hasError,
   isCollapsed,
   isLatestCard,
   title,
-  featureImage,
-  cardUrl,
   ...props
 }) => {
   const cardClass = classNames(
@@ -36,7 +37,7 @@ const MessageCard = ({
       {isIncompleteCollapsedCard ? (
         <Fragment>
           <p>Pick up where you left off</p>
-          <Button variant="link" to={cardUrl}>
+          <Button variant="link" onClick={editCard}>
             Resume
           </Button>
         </Fragment>
@@ -49,18 +50,16 @@ const MessageCard = ({
   return (
     <CardShell
       {...props}
+      beforeButton={beforeButton}
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
       summary={<div className="card-message-summary">{content}</div>}
-      beforeButton={beforeButton}
     >
       {content}
     </CardShell>
   );
 };
-
-export default MessageCard;
 
 MessageCard.propTypes = {
   /** To display something after the Submit button. */
@@ -69,14 +68,14 @@ MessageCard.propTypes = {
   beforeButton: PropTypes.node,
   /** Changes the text in the Submit button. */
   buttonText: PropTypes.string,
-  /** The url for the current step, used for the edit link in the summary. */
-  cardUrl: PropTypes.string.isRequired,
-  /** Additional classes to apply to the container. */
+  /** Additional class names to apply to the button. */
   className: PropTypes.string,
   /** The cards description. */
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Forces the button to be disabled. */
   disabled: PropTypes.bool,
+  /** Applies additional class names to the button. */
+  editCard: PropTypes.func,
   /** Use to display a feature image or other content at the top of the card. */
   featureImage: PropTypes.node,
   /** Displays the error state of the card. */
@@ -98,3 +97,5 @@ MessageCard.propTypes = {
 MessageCard.defaultProps = {
   buttonText: 'Continue',
 };
+
+export default MessageCard;

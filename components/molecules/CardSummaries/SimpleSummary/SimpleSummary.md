@@ -10,7 +10,7 @@ This component renders a simple summary to be used with a card component when it
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
-      cardUrl="/"
+      editCard={() => true}
     />
   }
 />
@@ -25,7 +25,7 @@ This component renders a simple summary to be used with a card component when it
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
-      cardUrl="/"
+      to="/"
     />
   }
 />

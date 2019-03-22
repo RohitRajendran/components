@@ -10,7 +10,6 @@ test('MessageCard - renders', (t) => {
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
-    cardUrl: '/',
   };
 
   const comp = mount(<MessageCard {...props}>Content</MessageCard>);
@@ -42,7 +41,6 @@ test('MessageCard - shows description and feature image', (t) => {
     title: 'Title',
     description: 'Description',
     shortTitle: 'Q',
-    cardUrl: '/',
     featureImage: (
       <img
         alt="example"
@@ -65,7 +63,6 @@ test('MessageCard - collapsed', (t) => {
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
-    cardUrl: '/',
     description: 'Description',
     isCollapsed: true,
   };
@@ -96,7 +93,6 @@ test('MessageCard - latest collapsed', (t) => {
     onSubmit: () => true,
     name: 'test',
     title: 'Title',
-    cardUrl: '/',
     description: 'Description',
     isCollapsed: true,
     isLatestCard: true,

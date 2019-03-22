@@ -8,9 +8,8 @@ test('SimpleSummary - Renders', (t) => {
   const component = mount(
     <MemoryRouter>
       <SimpleSummary
-        shortTitle={'This is a simpler question'}
+        shortTitle="This is a simpler question"
         answers={['This is the first answer', 'This is the second answer']}
-        cardUrl={'/'}
       />
     </MemoryRouter>
   );

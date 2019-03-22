@@ -7,7 +7,10 @@ This component renders an incomplete summary that tells the user this step still
 ```javascript
 <QuestionCard
   summary={
-    <IncompleteSummary shortTitle="This is a simpler question" cardUrl="/" />
+    <IncompleteSummary
+      shortTitle="This is a simpler question"
+      editCard={() => true}
+    />
   }
 />
 ```
@@ -17,8 +20,6 @@ This component renders an incomplete summary that tells the user this step still
 ```javascript
 <Hogwarts.Screen
   container={QuestionCard}
-  summary={
-    <IncompleteSummary shortTitle="This is a simpler question" cardUrl="/" />
-  }
+  summary={<IncompleteSummary shortTitle="This is a simpler question" to="/" />}
 />
 ```

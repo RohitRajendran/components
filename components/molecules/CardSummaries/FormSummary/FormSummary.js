@@ -1,12 +1,14 @@
 /** @module FormSummary */
+import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
+import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 import './FormSummary.scss';
 
-const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
+const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
   return (
     <Fragment>
       <div className="card-summary uic--container-fluid">
@@ -16,7 +18,7 @@ const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
           </div>
           <div className="uic--col-6 uic--col-sm-1">
             <div className="uic--d-flex uic--justify-content-end">
-              <Button to={cardUrl} variant={'link'}>
+              <Button variant="link" onClick={editCard} to={to}>
                 Edit
               </Button>
             </div>
@@ -59,10 +61,14 @@ FormSummary.propTypes = {
   /** An array of objects containing the groups of answers to display. The object is broken down below. */
   answerGroups: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The name of the group of data. This won't be shown if there is only one answer group. */
       groupName: PropTypes.string,
+      /** An array of objects containing the answers for the group. The object is broken down below. */
       answers: PropTypes.arrayOf(
         PropTypes.shape({
+          /** The label for the answer to display. */
           label: PropTypes.string.isRequired,
+          /** The value of the answer to display. */
           value: PropTypes.string.isRequired,
         })
       ).isRequired,
@@ -70,8 +76,12 @@ FormSummary.propTypes = {
   ).isRequired,
   /** The url for this current step which is used for the edit button. */
   cardUrl: PropTypes.string.isRequired,
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
+  editCard: and([PropTypes.func, exclusive(['to'])]),
   /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
+  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
+  to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 
 export default FormSummary;

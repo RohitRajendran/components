@@ -1,19 +1,22 @@
+/** @module QuestionCard */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
-import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
-import CardShell from '~components/molecules/CardShell/CardShell';
-
+import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
+import CardShell from '~components/molecules/CardShell/CardShell';
+import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
+  afterButton,
   beforeButton,
-  cardUrl,
+  cancelChanges,
   children,
   className,
   clearFuture,
   description,
+  editCard,
   hasError,
   isCollapsed,
   isLatestCard,
@@ -42,7 +45,7 @@ const QuestionCard = ({
       isLatestCard={isLatestCard}
       summary={
         isIncompleteCollapsedCard ? (
-          <IncompleteSummary shortTitle={shortTitle} cardUrl={cardUrl} />
+          <IncompleteSummary shortTitle={shortTitle} editCard={editCard} />
         ) : (
           summary
         )
@@ -56,6 +59,20 @@ const QuestionCard = ({
               questions. If you change this answer, all further progress will be
               lost.
             </p>
+          )}
+        </Fragment>
+      }
+      afterButton={
+        <Fragment>
+          {afterButton}
+          {!isLatestCard && (
+            <Button
+              variant="link"
+              onClick={cancelChanges}
+              className="card-cancel"
+            >
+              Cancel
+            </Button>
           )}
         </Fragment>
       }
@@ -83,7 +100,9 @@ QuestionCard.propTypes = {
   beforeButton: PropTypes.node,
   /** Changes the text in the submit button/ */
   buttonText: PropTypes.string,
-  /** TML element that should appear within the card when not collapsed. */
+  /** Handler to cancel the changes. */
+  cancelChanges: PropTypes.func.isRequired,
+  /** HTML element that should appear within the card when not collapsed */
   children: PropTypes.node.isRequired,
   /** Applies additional class names to the button. */
   className: PropTypes.string,
@@ -93,6 +112,8 @@ QuestionCard.propTypes = {
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Forces the button to be disabled. */
   disabled: PropTypes.bool,
+  /** Handler called to edit the card, only necessary for McGonagall. */
+  editCard: PropTypes.func,
   /** Displays the error state of the card. */
   hasError: PropTypes.bool,
   /** Hides the button. */
@@ -103,8 +124,6 @@ QuestionCard.propTypes = {
   isLatestCard: PropTypes.bool,
   /** Shows a loading indicator in the button. */
   loading: PropTypes.bool,
-  /** The url for the current step, used for the edit link in the summary. */
-  cardUrl: PropTypes.string.isRequired,
   /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwart cabinet. */
   moreDetail: PropTypes.node,
   /** The handler to fire when a change happens. */

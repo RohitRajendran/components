@@ -7,7 +7,7 @@ import {withReadme} from 'storybook-readme';
 import RadioButtonCard from './RadioButtonCard';
 import RadioButtonCardReadme from './RadioButtonCard.md';
 
-const stories = storiesOf('Templates/RadioButtonCard', module);
+const stories = storiesOf('Complex Organisms/RadioButtonCard', module);
 
 const store = new Store({
   radioBtnQuestion: '',
@@ -43,7 +43,7 @@ const defaultProps = (
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
-  cardUrl: '/',
+  editCard: () => true,
   options: object('options', [
     {
       label: 'Yes',

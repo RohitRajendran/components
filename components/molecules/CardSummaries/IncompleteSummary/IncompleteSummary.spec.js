@@ -7,7 +7,7 @@ import IncompleteSummary from './IncompleteSummary';
 test('IncompleteSummary - Renders', (t) => {
   const component = mount(
     <MemoryRouter>
-      <IncompleteSummary shortTitle="This is a simpler question" cardUrl="/" />
+      <IncompleteSummary shortTitle="This is a simpler question" />
     </MemoryRouter>
   );
 

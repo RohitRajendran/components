@@ -1,10 +1,12 @@
 /** @module SimpleSummary */
+import {and} from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '~components/atoms/Button/Button';
+import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 
-const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
+const SimpleSummary = ({shortTitle, editCard, answers, to}) => {
   return (
     <div className="card-summary uic--container-fluid">
       <div className="uic--row">
@@ -13,7 +15,7 @@ const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
         </div>
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
-            <Button to={cardUrl} variant={'link'}>
+            <Button variant="link" onClick={editCard} to={to}>
               Edit
             </Button>
           </div>
@@ -35,8 +37,10 @@ const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
 SimpleSummary.propTypes = {
   /** The card answer(s). */
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
-  /** The url for this current step which is used for the edit button. */
-  cardUrl: PropTypes.string.isRequired,
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
+  editCard: and([PropTypes.func, exclusive(['to'])]),
+  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
+  to: and([PropTypes.string, exclusive(['editCard'])]),
   /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
 };
