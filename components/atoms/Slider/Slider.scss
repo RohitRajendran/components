@@ -14,7 +14,6 @@
 
 .slider-wrapper {
   margin: 16rem 11rem 0rem 11rem;
-  position: relative;
 
   &.highlighted-green {
     .tooltip {
@@ -48,26 +47,32 @@
     }
   }
 
+  // Annotation containers.
+  .left-annotate-container,
+  .right-annotate-container {
+    height: 8rem;
+    width: 8rem;
+    bottom: -13rem;
+  }
+
+  .left-annotate-container {
+    left: -4rem;
+  }
+
+  .right-annotate-container {
+    right: -4rem;
+  }
+
   // Markers which appear to the left and right of the slider.
   .left-annotate,
   .right-annotate {
     @include source-sans-pro(1.2rem);
-    position: absolute;
     color: $slate;
-  }
-
-  .left-annotate {
-    left: -2.5rem;
-    bottom: -8rem;
-  }
-
-  .right-annotate {
-    right: -2.5rem;
-    bottom: -8rem;
+    word-break: break-word;
+    text-align: center;
   }
 
   .tooltip {
-    position: absolute;
     top: -13rem;
     width: 20rem;
     height: 10rem;
@@ -94,7 +99,6 @@
   }
 
   .tooltip-sticky-hint {
-    position: absolute;
     text-align: center;
     top: 3rem;
     width: 18rem;
