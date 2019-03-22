@@ -28,9 +28,13 @@ const StarIcon = ({width, height, fill, className}) => {
 };
 
 StarIcon.propTypes = {
+  /** The width of the icon. */
   width: PropTypes.string,
+  /** The height of the icon. */
   height: PropTypes.string,
+  /** The color of the icon. */
   fill: PropTypes.string,
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
 };
 

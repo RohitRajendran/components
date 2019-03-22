@@ -51,15 +51,6 @@ This component renders a summary for form questions and can also display groups 
 
 ## Props 🔧
 
-The following component props are valid.
-
-| Prop             | Type     | Default | Description                                                                                                       | Required |
-| ---------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------- | -------- |
-| **answerGroups** | Array    |         | An array of objects containing the groups of answers to display. The object is broken down below                  | Yes      |
-| **editCard**     | Function |         | Handler called to edit the card, used instead of `to` for McGonagall                                              | No       |
-| **shortTitle**   | String   |         | A shorter version of the card title                                                                               | Yes      |
-| **to**           | String   |         | The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express | No       |
-
 ### props.answerGroups
 
 `props.answerGroups` should be an array containing objects with the following structure.

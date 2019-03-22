@@ -152,22 +152,36 @@ class CardShell extends Component {
 }
 
 CardShell.propTypes = {
+  /** To display something after the Submit button. */
   afterButton: PropTypes.node,
+  /** To display something before the Submit button. */
   beforeButton: PropTypes.node,
+  /** Changes the text in the Submit button. */
   buttonText: PropTypes.string,
+  /** HTML element that should appear within the card when not collapsed. */
   children: PropTypes.node.isRequired,
+  /** Additional class names to apply to the button. */
   className: PropTypes.string,
+  /** Force disables the button. */
   disabled: PropTypes.bool,
+  /** Displays the error state of the card. */
   hasError: PropTypes.bool,
+  /** Hides the button on the card. */
   hideButton: PropTypes.bool,
+  /** Shows the collapsed state of the card which switches the content to the summary. */
   isCollapsed: PropTypes.bool,
+  /** Shows a loading indicator on the button. */
   loading: PropTypes.bool,
+  /** The handler to fire when a change happens. */
   onChange: PropTypes.func,
+  /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** The summary view that should display when the card is collapsed. */
   summary: PropTypes.node,
 };
 
 CardShell.defaultProps = {
   buttonText: 'Continue',
 };
+
 export default CardShell;

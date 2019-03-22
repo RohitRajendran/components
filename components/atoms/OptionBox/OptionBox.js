@@ -20,9 +20,13 @@ const OptionBox = ({variant, checked, disabled, className}) => {
 };
 
 OptionBox.propTypes = {
+  /** The type of option box to display. This can be either `check` or `radio`. */
   variant: PropTypes.oneOf(['check', 'radio']).isRequired,
+  /** Determines if the option box should be checked or not. */
   checked: PropTypes.bool,
+  /** Determines if the option box should be disabled or not. */
   disabled: PropTypes.bool,
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
 };
 

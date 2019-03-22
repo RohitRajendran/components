@@ -35,9 +35,13 @@ const SimpleSummary = ({shortTitle, editCard, answers, to}) => {
 };
 
 SimpleSummary.propTypes = {
+  /** The card answer(s). */
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),
+  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
   to: and([PropTypes.string, exclusive(['editCard'])]),
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
 };
 

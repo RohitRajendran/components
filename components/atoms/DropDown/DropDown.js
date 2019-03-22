@@ -1,7 +1,8 @@
+/** @module DropDown */
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
-import PropTypes from 'prop-types';
-import React, {Component} from 'react';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
@@ -259,28 +260,48 @@ class DropDown extends Component {
 }
 
 DropDown.propTypes = {
+  /** The label which appears above the form label. */
   label: PropTypes.string.isRequired,
+  /** An array of options such as label and value. */
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The option label. */
       label: PropTypes.string.isRequired,
+      /** The value of the option. */
       value: PropTypes.string.isRequired,
     })
   ),
+  /** The currently selected option in the dropdown.  */
   value: PropTypes.string,
+  /** The name of the input field. */
   name: PropTypes.string.isRequired,
+  /** Determines if the dropdown input should be disabled or not. */
   disabled: PropTypes.bool,
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Displays an input field description beneath the dropdown. */
   description: PropTypes.string,
+  /** The placeholder to display when there's no input. */
   placeholder: PropTypes.string,
+  /** Determines if the input is required or not. */
   required: PropTypes.bool,
+  /** Validates the input based on the provided logic. Must return an object with the `isValid` key set to true or false. */
   validate: PropTypes.arrayOf(PropTypes.func),
+  /** Function that fetches a series of options. Useful when lazy loading content from an API. */
   getOptions: PropTypes.func,
+  /** Handler which is run whenever there's a change to the input. */
   onChange: PropTypes.func,
+  /** Handler which overrides the default onFocus behavior. */
   onFocus: PropTypes.func,
+  /** Handler which is run whenever the input fired a blur event. */
   onBlur: PropTypes.func,
+  /** Toggles type ahead functionality on/off. */
   searchable: PropTypes.bool,
+  /** Toggles the ability to clear the search field on/off. */
   clearable: PropTypes.bool,
+  /** Toggles the loading state of the input on/off. */
   loading: PropTypes.bool,
+  /** Determines if this field has been submitted or not. */
   isSubmitted: PropTypes.bool,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
-import Slider from '~components/atoms/Slider/Slider';
+import {PureSlider as Slider} from '~components/atoms/Slider/Slider';
 import {withReadme} from 'storybook-readme';
 import SliderReadme from '~components/atoms/Slider/Slider.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';

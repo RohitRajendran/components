@@ -85,21 +85,21 @@ export const commaSeparatedMask = {
   regex: /[A-Za-z]+[A-Za-z, ]*/,
 };
 
-/** @constant {Object} - A currency mask */
+/** @constant {object} - A currency mask */
 export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
 };
 
-/** @constant {Object} A currency mask */
+/** @constant {object} A currency mask */
 export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
 };
 
-/** @constant {Object} - A currency mask that accepts decimals */
+/** @constant {object} - A currency mask that accepts decimals */
 export const currencyDecimalMask = {
   mask: createNumberMask({
     prefix: '',
@@ -109,7 +109,7 @@ export const currencyDecimalMask = {
   type: MaskTypes.currency,
 };
 
-/** @constant {Object} - A number mask */
+/** @constant {object} - A number mask */
 export const numberMask = {
   mask: createNumberMask({
     prefix: '',
@@ -119,7 +119,7 @@ export const numberMask = {
   regex: /[0-9]+/,
 };
 
-/** @constant {Object} - A percentage mask that allows decimals */
+/** @constant {object} - A percentage mask that allows decimals */
 export const percentageWithDecimalMask = {
   mask: createNumberMask({
     prefix: '',
@@ -130,7 +130,7 @@ export const percentageWithDecimalMask = {
   regex: /[0-9]+/,
 };
 
-/** @constant {Object} - A percentage mask that allows decimals */
+/** @constant {object} - A percentage mask that allows decimals */
 export const percentageWithDecimalMaskAllowNegative = {
   mask: createNumberMask({
     prefix: '',
@@ -143,7 +143,7 @@ export const percentageWithDecimalMaskAllowNegative = {
 };
 
 /**
- * @constant {Object} - A percentage mask for percentages < 100% and up
+ * @constant {object} - A percentage mask for percentages < 100% and up
  * to three digits after the decimal place.
  */
 export const smallPercentageWithDecimalMask = {
@@ -158,7 +158,7 @@ export const smallPercentageWithDecimalMask = {
   regex: /\d{0,2}(\.\d{0,3})?/,
 };
 
-/** @constant {Object} - A mask to loosely match Apex account numbers */
+/** @constant {object} - A mask to loosely match Apex account numbers */
 export const apexAccount = {
   mask: [/\d/, /[A-Z]/, /[A-Z]/, /\d/, /\d/, /\d/, /\d/, /\d/],
   regex: /\d[A-Z]{2}\d{5}/,
@@ -364,11 +364,17 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  /** A string or symbol to append to the end of the input. For example `%`. */
   append: PropTypes.string,
+  /** A string or symbol to pre-pend to the start of the input. For example `$`. */
   prepend: PropTypes.string,
+  /** The label representing the input field. */
   label: PropTypes.string.isRequired,
+  /** The name of the input field. */
   name: PropTypes.string.isRequired,
+  /** The description of the input field. Displayed separately to the label. */
   description: PropTypes.string,
+  /** The type of input field. */
   type: PropTypes.oneOf([
     'button',
     'checkbox',
@@ -394,11 +400,17 @@ Input.propTypes = {
     'url',
     'week',
   ]),
+  /** The placeholder text of the input field. This is displayed if there's no value. */
   placeholder: PropTypes.string,
+  /** The current value of the input field.  */
   value: PropTypes.string.isRequired,
+  /** Boolean representing if the input value is required in a form. */
   required: PropTypes.bool,
+  /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
   pattern: PropTypes.string,
+  /** The max length of the input field value. */
   maxLength: PropTypes.number,
+  /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf([
     'PhoneNumber',
     'SsnNumber',
@@ -413,18 +425,31 @@ Input.propTypes = {
     'PercentageWithDecimal',
     'SmallPercentageWithDecimal',
   ]),
+  /** Handler which is run whenever there's a change to the input. */
   onChange: PropTypes.func,
+  /** The minimum number value. Only applicable if the type is set to number. */
   min: PropTypes.number,
+  /** The maximum number value. Only applicable if the type is set to number. */
   max: PropTypes.number,
+  /** The value step increment. Only applicable if the type is set to number. */
   step: PropTypes.number,
+  /** The error message to display when the input fails validation. */
   validationErrorMsg: PropTypes.string,
+  /** Runs the validation logic on every blur event if toggled as true. */
   validateOnBlur: PropTypes.bool,
+  /** Determines if the input field should prevent the user interacting with it. */
   disabled: PropTypes.bool,
+  /** Adds class names to the input field. */
   inputClasses: PropTypes.string,
+  /** Sets the ref to the input. */
   setRef: PropTypes.func,
+  /** Hides the validation message under the defined conditions. */
   hideValidity: PropTypes.func,
+  /** Validates the input based on the provided logic. */
   isValid: PropTypes.func,
+  /** Forces the input into an error state. */
   error: PropTypes.bool,
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
 };
 

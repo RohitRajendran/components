@@ -58,19 +58,29 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
 };
 
 FormSummary.propTypes = {
+  /** An array of objects containing the groups of answers to display. The object is broken down below. */
   answerGroups: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The name of the group of data. This won't be shown if there is only one answer group. */
       groupName: PropTypes.string,
+      /** An array of objects containing the answers for the group. The object is broken down below. */
       answers: PropTypes.arrayOf(
         PropTypes.shape({
+          /** The label for the answer to display. */
           label: PropTypes.string.isRequired,
+          /** The value of the answer to display. */
           value: PropTypes.string.isRequired,
         })
       ).isRequired,
     })
   ).isRequired,
+  /** The url for this current step which is used for the edit button. */
+  cardUrl: PropTypes.string.isRequired,
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
+  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
   to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 

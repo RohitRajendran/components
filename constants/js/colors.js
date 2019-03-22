@@ -98,4 +98,4 @@ export const dsmColors = {
 'slate-30': '#cdcfd6',
 'slate-20': '#dee0e4',
 'slate-10': '#eeeff1',
-}
+};

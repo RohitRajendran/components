@@ -29,9 +29,13 @@ const IncompleteSummary = ({shortTitle, editCard, text, to}) => {
 };
 
 IncompleteSummary.propTypes = {
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
+  /** Text that tells the user they need to finish this step. */
   text: PropTypes.string,
+  /** The URL that the user should be directed to when resume is clicked, used instead of `editCard` for Hogwarts Express. */
   to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 

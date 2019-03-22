@@ -300,22 +300,31 @@ const ChanceOfSuccess = (props) => {
 };
 
 ChanceOfSuccess.propTypes = {
+  /** The chance of success that you'd like to show, this can be either the draft or current plan. */
   currentPlanChanceOfSuccess: disallowedIf(
     PropTypes.number,
     'isDraftPlan',
     PropTypes.bool
   ),
+  /** The updated plan chance of success. This will cause the component to show the difference between the current and the refreshed chance. */
   refreshedPlanChanceOfSuccess: disallowedIf(
     PropTypes.number,
     'isDraftPlan',
     PropTypes.bool
   ),
+  /** Unique string identifier. Used when there's multiple of the same component on the page. */
   identifier: PropTypes.string,
+  /** The percent value to display. */
   percent: PropTypes.number,
+  /** Plays an animation if the user is currently running a financial plan. */
   isRunningPlan: PropTypes.bool,
+  /** Additional class names to apply to the component. */
   className: PropTypes.string,
+  /** Changes the appearance of the component if the user is currently viewing a draft plan. */
   isDraftPlan: PropTypes.bool,
+  /** Changes the appearance of the component so it's more compact. */
   compact: PropTypes.bool,
+  /** Adjusts the appearance of the component if the user is using Internet Explorer. */
   isIe: PropTypes.bool,
 };
 
