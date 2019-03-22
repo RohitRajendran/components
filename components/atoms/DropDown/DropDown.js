@@ -1,7 +1,8 @@
+/** @module DropDown */
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
-import PropTypes from 'prop-types';
-import React, {Component} from 'react';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
