@@ -10,7 +10,7 @@ test('QuestionCard - renders', (t) => {
     name: 'test',
     title: 'Question',
     shortTitle: 'Q',
-    cardUrl: '/',
+    cancelChanges: () => true,
   };
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
@@ -43,7 +43,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
     description: 'Description',
     moreDetail: <span>Test detail</span>,
     shortTitle: 'Q',
-    cardUrl: '/',
+    cancelChanges: () => true,
   };
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
@@ -64,7 +64,7 @@ test('QuestionCard - collapsed', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    cardUrl: '/',
+    cancelChanges: () => true,
   };
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
@@ -99,7 +99,7 @@ test('QuestionCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    cardUrl: '/',
+    cancelChanges: () => true,
   };
 
   const comp = mount(

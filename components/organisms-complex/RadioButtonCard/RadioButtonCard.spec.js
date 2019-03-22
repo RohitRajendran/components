@@ -10,7 +10,6 @@ test('RadioButtonCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    cardUrl: '/',
     radioButtonName: 'yesNo',
     options: [
       {
@@ -24,6 +23,7 @@ test('RadioButtonCard - renders', (t) => {
     ],
     value: 'no',
     onChange: stub(),
+    cancelChanges: () => true,
   };
 
   const comp = mount(<RadioButtonCard {...props}>Content</RadioButtonCard>);
@@ -60,7 +60,6 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    cardUrl: '/',
     radioButtonName: 'yesNo',
     options: [
       {
@@ -75,6 +74,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     value: 'no',
     onChange: stub(),
     answers: ['Yup'],
+    cancelChanges: () => true,
   };
 
   const comp = mount(
@@ -112,7 +112,6 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    cardUrl: '/',
     radioButtonName: 'yesNo',
     options: [
       {
@@ -126,6 +125,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     ],
     value: 'no',
     onChange: stub(),
+    cancelChanges: () => true,
   };
 
   const comp = mount(
@@ -157,7 +157,6 @@ test('RadioButtonCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    cardUrl: '/',
     radioButtonName: 'yesNo',
     options: [
       {
@@ -171,6 +170,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
     ],
     onChange: stub(),
     value: '',
+    cancelChanges: () => true,
   };
 
   const comp = mount(

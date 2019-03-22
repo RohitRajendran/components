@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import QuestionCard from '~components/organisms/QuestionCard/QuestionCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
 /**
  * Gets the label of a given value
@@ -27,7 +27,7 @@ const getSelectedAnswerLabel = (options, currValue) => {
  */
 const RadioButtonCard = ({
   answers,
-  cardUrl,
+  editCard,
   className,
   onChange,
   options,
@@ -48,7 +48,7 @@ const RadioButtonCard = ({
   return (
     <QuestionCard
       {...props}
-      cardUrl={cardUrl}
+      editCard={editCard}
       className={cardClass}
       onChange={onChange}
       shortTitle={shortTitle}
@@ -56,7 +56,7 @@ const RadioButtonCard = ({
       summary={
         <SimpleSummary
           answers={answers || [getSelectedAnswerLabel(options, value)]}
-          cardUrl={cardUrl}
+          editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
@@ -91,11 +91,12 @@ RadioButtonCard.propTypes = {
   afterButton: PropTypes.node,
   beforeButton: PropTypes.node,
   buttonText: PropTypes.string,
-  cardUrl: PropTypes.string.isRequired,
+  cancelChanges: PropTypes.func.isRequired,
   className: PropTypes.string,
   clearFuture: PropTypes.bool,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   disabled: PropTypes.bool,
+  editCard: PropTypes.func,
   hasError: PropTypes.bool,
   isCollapsed: PropTypes.bool,
   isLatestCard: PropTypes.bool,

@@ -1,10 +1,12 @@
 /** @module SimpleSummary */
+import {and} from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '~components/atoms/Button/Button';
+import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 
-const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
+const SimpleSummary = ({shortTitle, editCard, answers, to}) => {
   return (
     <div className="card-summary uic--container-fluid">
       <div className="uic--row">
@@ -13,7 +15,7 @@ const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
         </div>
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
-            <Button to={cardUrl} variant={'link'}>
+            <Button variant="link" onClick={editCard} to={to}>
               Edit
             </Button>
           </div>
@@ -34,7 +36,8 @@ const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
 
 SimpleSummary.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
-  cardUrl: PropTypes.string.isRequired,
+  editCard: and([PropTypes.func, exclusive(['to'])]),
+  to: and([PropTypes.string, exclusive(['editCard'])]),
   shortTitle: PropTypes.string.isRequired,
 };
 

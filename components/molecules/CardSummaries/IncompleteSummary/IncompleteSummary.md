@@ -7,7 +7,10 @@ This component renders an incomplete summary that tells the user this step still
 ```javascript
 <QuestionCard
   summary={
-    <IncompleteSummary shortTitle="This is a simpler question" cardUrl="/" />
+    <IncompleteSummary
+      shortTitle="This is a simpler question"
+      editCard={() => true}
+    />
   }
 />
 ```
@@ -17,9 +20,7 @@ This component renders an incomplete summary that tells the user this step still
 ```javascript
 <Hogwarts.Screen
   container={QuestionCard}
-  summary={
-    <IncompleteSummary shortTitle="This is a simpler question" cardUrl="/" />
-  }
+  summary={<IncompleteSummary shortTitle="This is a simpler question" to="/" />}
 />
 ```
 
@@ -27,8 +28,9 @@ This component renders an incomplete summary that tells the user this step still
 
 The following component props are valid.
 
-| Prop           | Type   | Default                                   | Description                                                     | Required |
-| -------------- | ------ | ----------------------------------------- | --------------------------------------------------------------- | -------- |
-| **cardUrl**    | String |                                           | The url for this current step which is used for the edit button | Yes      |
-| **shortTitle** | String |                                           | A shorter version of the card title                             | Yes      |
-| **text**       | String | 'You still have to answer this question.' | Text that tells the user they need to finish this step          | No       |
+| Prop           | Type     | Default                                   | Description                                                                                                         | Required |
+| -------------- | -------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------- |
+| **editCard**   | Function |                                           | Handler called to edit the card, used instead of `to` for McGonagall                                                | No       |
+| **shortTitle** | String   |                                           | A shorter version of the card title                                                                                 | Yes      |
+| **text**       | String   | 'You still have to answer this question.' | Text that tells the user they need to finish this step                                                              | No       |
+| **to**         | String   |                                           | The URL that the user should be directed to when resume is clicked, used instead of `editCard` for Hogwarts Express | No       |

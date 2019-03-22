@@ -10,7 +10,7 @@ This component renders a simple summary to be used with a card component when it
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
-      cardUrl="/"
+      editCard={() => true}
     />
   }
 />
@@ -25,7 +25,7 @@ This component renders a simple summary to be used with a card component when it
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
-      cardUrl="/"
+      to="/"
     />
   }
 />
@@ -35,8 +35,9 @@ This component renders a simple summary to be used with a card component when it
 
 The following component props are valid.
 
-| Prop           | Type          | Default | Description                                                     | Required |
-| -------------- | ------------- | ------- | --------------------------------------------------------------- | -------- |
-| **answers**    | Array<String> |         | The card answer(s)                                              | Yes      |
-| **cardUrl**    | String        |         | The url for this current step which is used for the edit button | Yes      |
-| **shortTitle** | String        |         | A shorter version of the card title                             | Yes      |
+| Prop           | Type          | Default | Description                                                                                                       | Required |
+| -------------- | ------------- | ------- | ----------------------------------------------------------------------------------------------------------------- | -------- |
+| **answers**    | Array<String> |         | The card answer(s)                                                                                                | Yes      |
+| **editCard**   | Function      |         | Handler called to edit the card, used instead of `to` for McGonagall                                              | No       |
+| **shortTitle** | String        |         | A shorter version of the card title                                                                               | Yes      |
+| **to**         | String        |         | The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express | No       |

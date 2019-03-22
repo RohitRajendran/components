@@ -1,10 +1,12 @@
 /** @module IncompleteSummary */
+import {and} from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '~components/atoms/Button/Button';
+import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 
-const IncompleteSummary = ({shortTitle, cardUrl, text}) => {
+const IncompleteSummary = ({shortTitle, editCard, text, to}) => {
   return (
     <div className="card-summary incomplete-card uic--container-fluid">
       <div className="uic--row">
@@ -13,7 +15,7 @@ const IncompleteSummary = ({shortTitle, cardUrl, text}) => {
         </div>
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
-            <Button to={cardUrl} variant="link">
+            <Button variant="link" onClick={editCard} to={to}>
               Resume
             </Button>
           </div>
@@ -27,9 +29,10 @@ const IncompleteSummary = ({shortTitle, cardUrl, text}) => {
 };
 
 IncompleteSummary.propTypes = {
-  cardUrl: PropTypes.string.isRequired,
+  editCard: and([PropTypes.func, exclusive(['to'])]),
   shortTitle: PropTypes.string.isRequired,
   text: PropTypes.string,
+  to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 
 IncompleteSummary.defaultProps = {

@@ -1,12 +1,14 @@
 /** @module FormSummary */
+import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
+import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 import './FormSummary.scss';
 
-const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
+const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
   return (
     <Fragment>
       <div className="card-summary uic--container-fluid">
@@ -16,7 +18,7 @@ const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
           </div>
           <div className="uic--col-6 uic--col-sm-1">
             <div className="uic--d-flex uic--justify-content-end">
-              <Button to={cardUrl} variant={'link'}>
+              <Button variant="link" onClick={editCard} to={to}>
                 Edit
               </Button>
             </div>
@@ -67,8 +69,9 @@ FormSummary.propTypes = {
       ).isRequired,
     })
   ).isRequired,
-  cardUrl: PropTypes.string.isRequired,
+  editCard: and([PropTypes.func, exclusive(['to'])]),
   shortTitle: PropTypes.string.isRequired,
+  to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 
 export default FormSummary;

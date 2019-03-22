@@ -1,3 +1,4 @@
+/** @module MessageCard */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
@@ -11,12 +12,12 @@ const MessageCard = ({
   beforeButton,
   className,
   description,
+  editCard,
+  featureImage,
   hasError,
   isCollapsed,
   isLatestCard,
   title,
-  featureImage,
-  cardUrl,
   ...props
 }) => {
   const cardClass = classNames(
@@ -36,7 +37,7 @@ const MessageCard = ({
       {isIncompleteCollapsedCard ? (
         <Fragment>
           <p>Pick up where you left off</p>
-          <Button variant="link" to={cardUrl}>
+          <Button variant="link" onClick={editCard}>
             Resume
           </Button>
         </Fragment>
@@ -49,27 +50,25 @@ const MessageCard = ({
   return (
     <CardShell
       {...props}
+      beforeButton={beforeButton}
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
       summary={<div className="card-message-summary">{content}</div>}
-      beforeButton={beforeButton}
     >
       {content}
     </CardShell>
   );
 };
 
-export default MessageCard;
-
 MessageCard.propTypes = {
   afterButton: PropTypes.node,
   beforeButton: PropTypes.node,
   buttonText: PropTypes.string,
-  cardUrl: PropTypes.string.isRequired,
   className: PropTypes.string,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   disabled: PropTypes.bool,
+  editCard: PropTypes.func,
   featureImage: PropTypes.node,
   hasError: PropTypes.bool,
   hideButton: PropTypes.bool,
@@ -83,3 +82,5 @@ MessageCard.propTypes = {
 MessageCard.defaultProps = {
   buttonText: 'Continue',
 };
+
+export default MessageCard;

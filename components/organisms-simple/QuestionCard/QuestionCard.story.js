@@ -9,7 +9,7 @@ import RadioButtons from '../../molecules/RadioButtons/RadioButtons';
 import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCardReadme from './QuestionCard.md';
 
-const stories = storiesOf('Organisims/QuestionCard', module);
+const stories = storiesOf('Simple Organisms/QuestionCard', module);
 
 const store = new Store({
   yesNo: '',
@@ -48,11 +48,11 @@ const defaultProps = (
     <SimpleSummary
       shortTitle="Question"
       answers={['This is the answer']}
-      cardUrl={'/'}
+      editCard={() => true}
     />
   ),
   title: text('title', 'This is where the question goes.'),
-  cardUrl: '/',
+  editCard: () => true,
   onChange: (name, value) => store.set({[name]: value}),
 });
 

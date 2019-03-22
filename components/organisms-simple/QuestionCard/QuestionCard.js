@@ -1,19 +1,22 @@
+/** @module QuestionCard */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
-import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
-import CardShell from '~components/molecules/CardShell/CardShell';
-
+import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
+import CardShell from '~components/molecules/CardShell/CardShell';
+import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
+  afterButton,
   beforeButton,
-  cardUrl,
+  cancelChanges,
   children,
   className,
   clearFuture,
   description,
+  editCard,
   hasError,
   isCollapsed,
   isLatestCard,
@@ -42,7 +45,7 @@ const QuestionCard = ({
       isLatestCard={isLatestCard}
       summary={
         isIncompleteCollapsedCard ? (
-          <IncompleteSummary shortTitle={shortTitle} cardUrl={cardUrl} />
+          <IncompleteSummary shortTitle={shortTitle} editCard={editCard} />
         ) : (
           summary
         )
@@ -56,6 +59,20 @@ const QuestionCard = ({
               questions. If you change this answer, all further progress will be
               lost.
             </p>
+          )}
+        </Fragment>
+      }
+      afterButton={
+        <Fragment>
+          {afterButton}
+          {!isLatestCard && (
+            <Button
+              variant="link"
+              onClick={cancelChanges}
+              className="card-cancel"
+            >
+              Cancel
+            </Button>
           )}
         </Fragment>
       }
@@ -80,17 +97,18 @@ QuestionCard.propTypes = {
   afterButton: PropTypes.node,
   beforeButton: PropTypes.node,
   buttonText: PropTypes.string,
+  cancelChanges: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   clearFuture: PropTypes.bool,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   disabled: PropTypes.bool,
+  editCard: PropTypes.func,
   hasError: PropTypes.bool,
   hideButton: PropTypes.bool,
   isCollapsed: PropTypes.bool,
   isLatestCard: PropTypes.bool,
   loading: PropTypes.bool,
-  cardUrl: PropTypes.string.isRequired,
   moreDetail: PropTypes.node,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,

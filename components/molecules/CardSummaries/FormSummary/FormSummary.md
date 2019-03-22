@@ -19,7 +19,7 @@ This component renders a summary for form questions and can also display groups 
           ],
         },
       ]}
-      cardUrl="/"
+      editCard={() => true}
     />
   }
 />
@@ -43,7 +43,7 @@ This component renders a summary for form questions and can also display groups 
           ],
         },
       ]}
-      cardUrl="/"
+      to="/"
     />
   }
 />
@@ -53,11 +53,12 @@ This component renders a summary for form questions and can also display groups 
 
 The following component props are valid.
 
-| Prop             | Type   | Default | Description                                                                                      | Required |
-| ---------------- | ------ | ------- | ------------------------------------------------------------------------------------------------ | -------- |
-| **answerGroups** | Array  |         | An array of objects containing the groups of answers to display. The object is broken down below | Yes      |
-| **cardUrl**      | String |         | The url for this current step which is used for the edit button                                  | Yes      |
-| **shortTitle**   | String |         | A shorter version of the card title                                                              | Yes      |
+| Prop             | Type     | Default | Description                                                                                                       | Required |
+| ---------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------- | -------- |
+| **answerGroups** | Array    |         | An array of objects containing the groups of answers to display. The object is broken down below                  | Yes      |
+| **editCard**     | Function |         | Handler called to edit the card, used instead of `to` for McGonagall                                              | No       |
+| **shortTitle**   | String   |         | A shorter version of the card title                                                                               | Yes      |
+| **to**           | String   |         | The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express | No       |
 
 ### props.answerGroups
 

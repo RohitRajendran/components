@@ -6,7 +6,7 @@ import {withReadme} from 'storybook-readme';
 import MessageCard from './MessageCard';
 import MessageCardReadme from './MessageCard.md';
 
-const stories = storiesOf('Organisims/MessageCard', module);
+const stories = storiesOf('Simple Organisms/MessageCard', module);
 
 stories.addDecorator(withReadme(MessageCardReadme));
 
@@ -26,7 +26,7 @@ const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   loading: boolean('loading', false),
   shortTitle: 'Title',
   title: text('title', 'This is where the title goes.'),
-  cardUrl: '/',
+  editCard: () => true,
 });
 
 stories.add('active', () => (
