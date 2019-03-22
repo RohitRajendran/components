@@ -1,5 +1,4 @@
 .mcgonagall-input {
-  position: relative;
   line-height: normal;
   text-align: left;
 
@@ -72,7 +71,6 @@
 
   label {
     @include source-sans-pro(1.2rem);
-    position: absolute;
     padding: 1.2rem;
     color: $slate;
     font-weight: normal;

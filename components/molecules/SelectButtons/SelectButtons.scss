@@ -32,8 +32,6 @@ $button-padding: 1.6rem;
 
 .mcgonagall-checkbox-button {
   @include source-sans-pro(1.6rem);
-  display: flex;
-  justify-content: space-between;
 
   &:not(:last-child) {
     margin-bottom: 2.8rem;
@@ -50,13 +48,13 @@ $button-padding: 1.6rem;
   }
 
   .checkbox-label {
-    display: block;
     color: $slate;
     user-select: none;
     position: relative;
     padding-left: $button-size + $button-padding;
     width: 100%;
     cursor: pointer;
+    font-weight: normal;
 
     &.disabled {
       opacity: 0.5;

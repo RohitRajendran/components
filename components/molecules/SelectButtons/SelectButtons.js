@@ -45,14 +45,23 @@ const SelectButtons = ({
   };
 
   return (
-    <fieldset role="group" className={containerClasses}>
+    <fieldset role="group" className={containerClasses} required={required}>
       <legend className={legendClasses}>
-        {options.map((option) => (
-          <div className="mcgonagall-checkbox-button" key={option.value}>
+        {options.map((option) => {
+
+          const labelClasses = classNames({
+            'disabled': disabled || option.disabled,
+            'checkbox-label': true,
+            'uic--d-flex': true,
+            'uic--align-items-center': true,
+            'uic--flex-direction-row': true,
+            'uic--flex-wrap-wrap': true,
+          });
+
+          return (
+            <div className="mcgonagall-checkbox-button uic--d-flex uic--justify-content-between" key={option.value}>
             <label
-              className={`${
-                disabled || option.disabled ? 'disabled' : ''
-              } checkbox-label`}
+              className={labelClasses}
             >
               <input
                 name={name}
@@ -62,8 +71,7 @@ const SelectButtons = ({
                 disabled={disabled || option.disabled}
                 checked={values.has(option.value)}
                 onChange={handleChange}
-                required={required}
-                aria-label=""
+                aria-label={option.label}
               />
               <OptionBox
                 variant="check"
@@ -73,7 +81,7 @@ const SelectButtons = ({
               <span className="label-value">{option.label}</span>
 
               {option.followup && values.has(option.value) && (
-                <div className="followup">{option.followup}</div>
+                <div className="followup uic--w-100">{option.followup}</div>
               )}
             </label>
 
@@ -83,7 +91,8 @@ const SelectButtons = ({
               </span>
             )}
           </div>
-        ))}
+          );
+        })}
       </legend>
     </fieldset>
   );

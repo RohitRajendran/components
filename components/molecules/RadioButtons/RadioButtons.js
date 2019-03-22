@@ -29,35 +29,41 @@ const RadioButtons = ({
   });
 
   return (
-    <fieldset role="group" className={containerClasses}>
+    <fieldset role="group" className={containerClasses} required={required}>
       <legend className={legendClasses}>
-        {options.map((option) => (
-          <div className="mcgonagall-radio-button" key={option.value}>
-            <label
-              className={`${
-                disabled || option.disabled ? 'disabled' : ''
-              } radio-label`}
-              key={option.value}
-            >
-              <input
-                name={name}
-                className="radio-input"
-                type="radio"
-                disabled={disabled || option.disabled}
-                required={required}
-                value={option.value}
-                checked={option.value === value}
-                onChange={() => onChange && onChange(name, option.value)}
-              />
-              <OptionBox
-                variant="radio"
-                checked={option.value === value}
-                disabled={disabled || option.disabled}
-              />
-              <span className="label-value">{option.label}</span>
+        {options.map((option) => {
 
+          const labelClasses = classNames({
+            'disabled': disabled || option.disabled,
+            'radio-label': true,
+            'uic--d-flex': true,
+            'uic--align-items-center': true,
+            'uic--flex-direction-row': true,
+            'uic--flex-wrap': true,
+          });
+
+          return (
+            <div className="mcgonagall-radio-button uic--d-flex uic--justify-content-between" key={option.value}>
+            <label
+              className={labelClasses}
+            >
+                <input
+                  name={name}
+                  className="radio-input"
+                  type="radio"
+                  disabled={disabled || option.disabled}
+                  value={option.value}
+                  checked={option.value === value}
+                  onChange={() => onChange && onChange(name, option.value)}
+                />
+                <OptionBox
+                  variant="radio"
+                  checked={option.value === value}
+                  disabled={disabled || option.disabled}
+                />
+                <span className="label-value">{option.label}</span>
               {option.followup && option.value === value && (
-                <div className="followup">{option.followup}</div>
+                <div className="followup uic--w-100 ">{option.followup}</div>
               )}
             </label>
 
@@ -67,7 +73,8 @@ const RadioButtons = ({
               </span>
             )}
           </div>
-        ))}
+          );
+        })}
       </legend>
     </fieldset>
   );

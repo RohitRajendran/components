@@ -308,7 +308,7 @@ class Input extends Component {
         error: showInvalidity || error,
         disabled,
       },
-      `mcgonagall-input ${className}`
+      `mcgonagall-input uic--position-relative ${className}`
     );
 
     return (
@@ -344,7 +344,7 @@ class Input extends Component {
           }}
           {...attrs}
         />
-        <label>{label}</label>
+        <label className="uic--position-absolute">{label}</label>
         {description && (!showInvalidity || !error) ? (
           <div className="description">{description}</div>
         ) : description && (showInvalidity || error) ? (

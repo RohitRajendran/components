@@ -196,7 +196,7 @@ class DropDown extends Component {
         focused: this.state.isFocused,
         disabled,
       },
-      'mcgonagall-dropdown'
+      'mcgonagall-dropdown, uic--position-relative'
     );
 
     const selectedValue =
@@ -225,7 +225,7 @@ class DropDown extends Component {
     return (
       <div className={containerClasses}>
         <div className={dropDownClasses}>
-          <label>{label}</label>
+          <label className="uic--position-absolute">{label}</label>
           <div className="mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}
