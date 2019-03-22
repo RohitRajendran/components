@@ -126,6 +126,8 @@ SelectButtons.propTypes = {
       followup: PropTypes.node,
       /** Displays a secondary label to the far right of the radio button.  */
       secondaryLabel: PropTypes.string,
+      /** Disables the option. */
+      disabled: PropTypes.bool,
     })
   ),
   /** Determines if an input from the group is required or not for form validation. */

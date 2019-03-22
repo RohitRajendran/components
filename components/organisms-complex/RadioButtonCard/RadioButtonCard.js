@@ -92,6 +92,8 @@ RadioButtonCard.propTypes = {
       followup: PropTypes.node,
       /** Label to appear to the right of the selection. */
       secondaryLabel: PropTypes.string,
+      /** Disables the option. */
+      disabled: PropTypes.bool,
     })
   ),
   /** Label of the selected value | The card answer(s) to show in the collapsed summary. */
