@@ -1,18 +1,19 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CloseIcon from './CloseIcon';
+import StarIcon from './StarIcon';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import CloseIconReadme from './CloseIcon.md';
+import StarIconReadme from './StarIcon.md';
 
-const stories = storiesOf('Atoms/Icons/CloseIcon', module);
+const stories = storiesOf('Atoms/Icons/StarIcon', module);
 
-stories.addDecorator(withReadme(CloseIconReadme));
+stories.addDecorator(withReadme(StarIconReadme));
 
 stories.add('default', () => (
-  <CloseIcon
+  <StarIcon
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}
+    className={text('className')}
   />
 ));

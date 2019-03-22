@@ -2,9 +2,11 @@ import {mount} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import Input from '../../atoms/Input/Input';
-import RadioButtons from '../RadioButtons/RadioButtons';
-import SelectButtons from '../SelectButtons/SelectButtons';
+import Input from '~components/atoms/Input/Input';
+import DropDown from '~components/atoms/DropDown/DropDown';
+import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import SelectButtons from '~components/molecules/SelectButtons/SelectButtons';
+import Slider from '~components/atoms/Slider/Slider';
 import CardShell from './CardShell';
 
 const defaultProps = {
@@ -117,22 +119,24 @@ test('CardShell - validates different input constraints', (t) => {
     date: 'nope',
     selectedNormal: '',
     selectedFollowup: '',
+    slider: null,
   };
   const goodValues = {
     textValue: 'abcdef',
     numericValue: 5,
     allAs: 'aaa',
     tooLong: '',
-    dropdown: 'A',
+    dropdown: 'uk',
     floating: 'some value',
     checkbox: true,
     multiselect: ['A'],
     date: '05/01/1980',
     selectedNormal: '2',
     selectedFollowup: '3',
+    slider: 5,
   };
 
-  const numInputs = 10;
+  const numInputs = 12;
 
   const getInput = (values, index) => {
     const inputs = [
@@ -343,6 +347,31 @@ test('CardShell - validates different input constraints', (t) => {
         value={values.selectedFollowup}
         key="bank"
         required
+      />,
+      <Slider
+        name="slider"
+        value={values.slider}
+        onChange={stub()}
+        key="slider"
+        required
+      />,
+      <DropDown
+        name="dropdownExample"
+        label="dropdown"
+        options={[
+          {
+            value: 'uk',
+            label: 'United Kingdom',
+          },
+          {
+            value: 'usa',
+            label: 'United States',
+          },
+        ]}
+        value={values.dropdown}
+        onChange={stub()}
+        required
+        key="dropdown"
       />,
     ];
     return inputs[index];

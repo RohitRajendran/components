@@ -55,7 +55,7 @@ const SelectButtons = ({
             'uic--d-flex': true,
             'uic--align-items-center': true,
             'uic--flex-direction-row': true,
-            'uic--flex-wrap-wrap': true,
+            'uic--flex-wrap': true,
           });
 
           return (

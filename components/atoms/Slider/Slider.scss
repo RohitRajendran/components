@@ -1,0 +1,199 @@
+@import '~rc-slider/assets/index.css';
+
+@mixin star-marker {
+  background-image: url(../../../assets/icons/star.svg);
+  background-size: 75%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@mixin highlighted($color) {
+  background-color: $color;
+  border-color: $color;
+}
+
+.slider-wrapper {
+  margin: 16rem 11rem 0rem 11rem;
+  position: relative;
+
+  &.highlighted-green {
+    .tooltip {
+      background-color: $green;
+
+      &::before {
+        border-color: $green transparent transparent transparent;
+      }
+    }
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @include star-marker;
+        @include highlighted($green);
+      }
+    }
+  }
+
+  &.highlighted-orange {
+    .tooltip {
+      background-color: $orange;
+
+      &::before {
+        border-color: $orange transparent transparent transparent;
+      }
+    }
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @include star-marker;
+        @include highlighted($orange);
+      }
+    }
+  }
+
+  &.highlighted-purple {
+    .tooltip {
+      background-color: $violet-blue;
+
+      &::before {
+        border-color: $violet-blue transparent transparent transparent;
+      }
+    }
+    .rc-slider-with-marks {
+      .rc-slider-handle {
+        @include star-marker;
+        @include highlighted($violet-blue);
+      }
+    }
+  }
+
+  // Markers which appear to the left and right of the slider.
+  .left-annotate,
+  .right-annotate {
+    @include source-sans-pro(1.2rem);
+    position: absolute;
+    color: $slate;
+  }
+
+  .left-annotate {
+    left: -3rem;
+    bottom: -8rem;
+  }
+
+  .right-annotate {
+    right: -3rem;
+    bottom: -8rem;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -13rem;
+    width: 20rem;
+    height: 10rem;
+    margin-left: -10.1rem;
+    background-color: $violet-blue;
+    text-align: left;
+    color: white;
+    padding: 1.5rem 2rem;
+    transition-duration: 200ms;
+    transition-property: left;
+    transition-timing-function: ease-in-out;
+
+    &::before {
+      border-color: $violet-blue transparent transparent transparent;
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 1.04rem 0.8rem 0 0.8rem;
+      left: 46.5%;
+      bottom: -1rem;
+    }
+  }
+
+  .tooltip-sticky-hint {
+    position: absolute;
+    text-align: center;
+    top: 3rem;
+    width: 18rem;
+    height: 10rem;
+    margin-left: -9rem;
+
+    &.show {
+      &::after {
+        content: ' ';
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: $grey;
+        border-radius: 50%;
+        left: 44.5%;
+        top: -3.4rem;
+        z-index: -5;
+      }
+    }
+
+    &.show.green::after {
+      @include star-marker;
+      @include highlighted($green);
+      background-size: 60%;
+    }
+
+    &.show.orange::after {
+      @include star-marker;
+      @include highlighted($orange);
+      background-size: 60%;
+    }
+
+    &.show.purple::after {
+      @include star-marker;
+      @include highlighted($violet-blue);
+      background-size: 60%;
+    }
+  }
+
+  // Creates a CSS class for each tooltip position, 1 - 10
+  @for $i from 1 through 10 {
+    .tooltip-position-#{$i} {
+      @if $i < 1 {
+        left: 0;
+      } @else {
+        $position: percentage(($i - 1) * 1/9);
+        left: $position;
+      }
+    }
+  }
+
+  // Overrides for React Slider
+  .rc-slider-with-marks {
+    margin: 5rem 0rem 7rem 0rem;
+
+    .rc-slider-rail {
+      height: 2px;
+      color: $grey;
+      z-index: -10;
+    }
+
+    .rc-slider-dot {
+      display: none;
+    }
+
+    .rc-slider-handle {
+      // Overrides the react slider handler.
+      height: 16px;
+      width: 16px;
+      margin-left: -8px;
+      margin-top: -9px;
+      background-color: $violet-blue;
+      border-color: $violet-blue;
+    }
+
+    .rc-slider-mark {
+      top: -30px;
+    }
+
+    .rc-slider-mark .rc-slider-mark-text {
+      @include source-sans-pro(1.6rem);
+      color: $slate;
+      top: 6rem;
+    }
+  }
+}
