@@ -74,7 +74,11 @@ const Slider = ({
         </style>
       )}
       {tooltip && (
-        <div className={`tooltip tooltip-position-${value} uic--position-absolute`}>{tooltip}</div>
+        <div
+          className={`tooltip tooltip-position-${value} uic--position-absolute`}
+        >
+          {tooltip}
+        </div>
       )}
 
       {leftAnnotate && (
