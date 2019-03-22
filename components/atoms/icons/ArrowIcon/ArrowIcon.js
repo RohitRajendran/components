@@ -24,9 +24,13 @@ const ArrowIcon = ({width, height, fill, className}) => {
 };
 
 ArrowIcon.propTypes = {
+  /** The width of the arrow. */
   width: PropTypes.string,
+  /** The height of the arrow. */
   height: PropTypes.string,
+  /** The color of the arrow. */
   fill: PropTypes.string,
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
 };
 

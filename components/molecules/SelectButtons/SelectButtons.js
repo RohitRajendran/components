@@ -107,21 +107,32 @@ const SelectButtons = ({
 };
 
 SelectButtons.propTypes = {
+  /** A string representing the name of the select button group. For example `yesNo` or something similar. */
   name: PropTypes.string.isRequired,
+  /** Additional classes to apply to the container. */
   className: PropTypes.string,
+  /** Determines if the entire group of radio buttons should be disabled or not. */
   disabled: PropTypes.bool,
+  /** Renders the select button group in a table. */
   table: PropTypes.bool,
+  /** An array of objects containing options that should be rendered. These options are explained below. */
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The value of the select button, for example `yes` or `no`. */
       value: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
+      /** The text that should appear next to the select button. */
       label: PropTypes.string.isRequired,
+      /** Renders a followup input or message if the radio button is selected. */
       followup: PropTypes.node,
+      /** Displays a secondary label to the far right of the radio button.  */
       secondaryLabel: PropTypes.string,
     })
   ),
+  /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,
+  /** The current selected option in the select button group. */
   value: PropTypes.string,
+  /** Change handler which passes back the `value` of the option which is currently selected. */
   onChange: PropTypes.func.isRequired,
 };
 

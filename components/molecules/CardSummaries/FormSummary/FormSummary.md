@@ -51,14 +51,6 @@ This component renders a summary for form questions and can also display groups 
 
 ## Props 🔧
 
-The following component props are valid.
-
-| Prop             | Type   | Default | Description                                                                                      | Required |
-| ---------------- | ------ | ------- | ------------------------------------------------------------------------------------------------ | -------- |
-| **answerGroups** | Array  |         | An array of objects containing the groups of answers to display. The object is broken down below | Yes      |
-| **cardUrl**      | String |         | The url for this current step which is used for the edit button                                  | Yes      |
-| **shortTitle**   | String |         | A shorter version of the card title                                                              | Yes      |
-
 ### props.answerGroups
 
 `props.answerGroups` should be an array containing objects with the following structure.

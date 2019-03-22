@@ -27,8 +27,11 @@ const IncompleteSummary = ({shortTitle, cardUrl, text}) => {
 };
 
 IncompleteSummary.propTypes = {
+  /** The url for this current step which is used for the edit button. */
   cardUrl: PropTypes.string.isRequired,
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
+  /** Text that tells the user they need to finish this step. */
   text: PropTypes.string,
 };
 

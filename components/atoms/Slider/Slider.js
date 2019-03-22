@@ -95,15 +95,25 @@ const Slider = ({
 };
 
 Slider.propTypes = {
+  /** The name of the component. */
   name: PropTypes.string.isRequired,
+  /** Passes back the current value and the name of the slider on change. */
   onChange: PropTypes.func,
+  /** The current value of the slider. */
   value: PropTypes.number,
+  /** Data to display inside of the tooltip. */
   tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Text to display to the left of the slider. */
   leftAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Text to display to the right of the slider. */
   rightAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Shows a ghost dot on the slider, set the position between 1 and 10. */
   tooltipStickyPosition: PropTypes.number,
+  /** Determines which variant to set the slider to, can either be set to null, green or orange. */
   tooltipStickyVariant: PropTypes.oneOf(['green', 'orange', 'purple']),
+  /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Determines if the input is required or not. */
   required: PropTypes.bool,
 };
 

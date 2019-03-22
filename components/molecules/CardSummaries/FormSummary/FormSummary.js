@@ -56,6 +56,7 @@ const FormSummary = ({shortTitle, cardUrl, answerGroups}) => {
 };
 
 FormSummary.propTypes = {
+  /** An array of objects containing the groups of answers to display. The object is broken down below. */
   answerGroups: PropTypes.arrayOf(
     PropTypes.shape({
       groupName: PropTypes.string,
@@ -67,7 +68,9 @@ FormSummary.propTypes = {
       ).isRequired,
     })
   ).isRequired,
+  /** The url for this current step which is used for the edit button. */
   cardUrl: PropTypes.string.isRequired,
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
 };
 

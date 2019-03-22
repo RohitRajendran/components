@@ -33,8 +33,11 @@ const SimpleSummary = ({shortTitle, cardUrl, answers}) => {
 };
 
 SimpleSummary.propTypes = {
+  /** The card answer(s). */
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  /** The url for this current step which is used for the edit button. */
   cardUrl: PropTypes.string.isRequired,
+  /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
 };
 

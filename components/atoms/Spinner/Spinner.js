@@ -287,11 +287,17 @@ const Spinner = (props) => {
 };
 
 Spinner.propTypes = {
+  /** The width of the spinner. */
   width: PropTypes.string,
+  /** The height of the spinner. */
   height: PropTypes.string,
+  /** The color of the spinner. */
   fill: PropTypes.string,
+  /** Additional style properties to apply to the container. */
   style: PropTypes.objectOf(PropTypes.string),
+  /** Prevents animation playback, applicable for users on Internet Explorer. */
   isIe: PropTypes.bool,
+  /* Additional class names to apply to the container. */
   className: PropTypes.string,
 };
 

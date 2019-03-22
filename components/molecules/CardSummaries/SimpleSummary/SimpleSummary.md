@@ -30,13 +30,3 @@ This component renders a simple summary to be used with a card component when it
   }
 />
 ```
-
-## Props 🔧
-
-The following component props are valid.
-
-| Prop           | Type          | Default | Description                                                     | Required |
-| -------------- | ------------- | ------- | --------------------------------------------------------------- | -------- |
-| **answers**    | Array<String> |         | The card answer(s)                                              | Yes      |
-| **cardUrl**    | String        |         | The url for this current step which is used for the edit button | Yes      |
-| **shortTitle** | String        |         | A shorter version of the card title                             | Yes      |

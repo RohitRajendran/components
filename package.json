@@ -43,6 +43,7 @@
     "@storybook/addon-knobs": "*",
     "@storybook/addon-viewport": "*",
     "@storybook/react": "*",
+    "@storybook/addon-info": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
