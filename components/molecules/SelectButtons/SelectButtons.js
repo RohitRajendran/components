@@ -52,8 +52,11 @@ const SelectButtons = ({
           const labelClasses = classNames({
             disabled: disabled || option.disabled,
             'checkbox-label': true,
-            'uic--w-100': true,
             'uic--position-relative': true,
+          });
+
+          const labelWrapper = classNames({
+            'uic--w-100': true,
             'uic--d-flex': true,
             'uic--align-items-center': true,
             'uic--flex-direction-row': true,
@@ -66,26 +69,28 @@ const SelectButtons = ({
               key={option.value}
             >
               <label className={labelClasses}>
-                <input
-                  name={name}
-                  className="checkbox-input uic--position-absolute"
-                  type="checkbox"
-                  defaultValue={option.value}
-                  disabled={disabled || option.disabled}
-                  checked={values.has(option.value)}
-                  onChange={handleChange}
-                  aria-label={option.label}
-                />
-                <OptionBox
-                  variant="check"
-                  checked={values.has(option.value)}
-                  disabled={disabled || option.disabled}
-                />
-                <span className="label-value">{option.label}</span>
+                <span className={labelWrapper}>
+                  <input
+                    name={name}
+                    className="checkbox-input uic--position-absolute"
+                    type="checkbox"
+                    defaultValue={option.value}
+                    disabled={disabled || option.disabled}
+                    checked={values.has(option.value)}
+                    onChange={handleChange}
+                    aria-label={option.label}
+                  />
+                  <OptionBox
+                    variant="check"
+                    checked={values.has(option.value)}
+                    disabled={disabled || option.disabled}
+                  />
+                  <span className="label-value">{option.label}</span>
 
-                {option.followup && values.has(option.value) && (
-                  <div className="followup uic--w-100">{option.followup}</div>
-                )}
+                  {option.followup && values.has(option.value) && (
+                    <div className="followup uic--w-100">{option.followup}</div>
+                  )}
+                </span>
               </label>
 
               {option.secondaryLabel && (

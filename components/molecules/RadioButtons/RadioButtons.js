@@ -36,8 +36,11 @@ const RadioButtons = ({
           const labelClasses = classNames({
             disabled: disabled || option.disabled,
             'radio-label': true,
-            'uic--w-100': true,
             'uic--position-relative': true,
+          });
+
+          const labelWrapper = classNames({
+            'uic--w-100': true,
             'uic--d-flex': true,
             'uic--align-items-center': true,
             'uic--flex-direction-row': true,
@@ -49,21 +52,24 @@ const RadioButtons = ({
               key={option.value}
             >
               <label className={labelClasses}>
-                <input
-                  name={name}
-                  className="radio-input uic--position-absolute"
-                  type="radio"
-                  disabled={disabled || option.disabled}
-                  value={option.value}
-                  checked={option.value === value}
-                  onChange={() => onChange && onChange(name, option.value)}
-                />
-                <OptionBox
-                  variant="radio"
-                  checked={option.value === value}
-                  disabled={disabled || option.disabled}
-                />
-                <span className="label-value">{option.label}</span>
+                <span className={labelWrapper}>
+                  <input
+                    name={name}
+                    className="radio-input uic--position-absolute"
+                    type="radio"
+                    disabled={disabled || option.disabled}
+                    value={option.value}
+                    checked={option.value === value}
+                    onChange={() => onChange && onChange(name, option.value)}
+                  />
+                  <OptionBox
+                    variant="radio"
+                    checked={option.value === value}
+                    disabled={disabled || option.disabled}
+                  />
+
+                  <span className="label-value">{option.label}</span>
+                </span>
                 {option.followup && option.value === value && (
                   <div className="followup uic--w-100 ">{option.followup}</div>
                 )}
