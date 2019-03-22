@@ -66,6 +66,7 @@ const RadioButtonCard = ({
         options={options}
         table={table}
         value={value}
+        required
       />
     </QuestionCard>
   );
