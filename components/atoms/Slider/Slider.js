@@ -102,7 +102,7 @@ Slider.propTypes = {
   leftAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   rightAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   tooltipStickyPosition: PropTypes.number,
-  tooltipStickyVariant: PropTypes.oneOf(['green', 'orange', 'purple']),
+  tooltipStickyVariant: PropTypes.oneOf(['green', 'purple']),
   className: PropTypes.string,
   required: PropTypes.bool,
 };

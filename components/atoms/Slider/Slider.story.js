@@ -12,7 +12,6 @@ const store = new Store({
   slider1: 5,
   slider2: 5,
   slider3: 5,
-  slider4: 5,
 });
 
 stories
@@ -24,11 +23,7 @@ store.subscribe(() => {
 });
 
 const optionDefaults = (variant, name) => ({
-  tooltipStickyVariant: select(
-    'Variant',
-    ['green', 'orange', 'purple', null],
-    variant
-  ),
+  tooltipStickyVariant: select('Variant', ['green', 'purple', null], variant),
   name: text('name', name),
   leftAnnotate: text('leftAnnotate', 'Less Cats'),
   rightAnnotate: text('rightAnnotate', 'More Cats'),
@@ -52,18 +47,10 @@ stories.add('green', () => (
   />
 ));
 
-stories.add('orange', () => (
+stories.add('purple', () => (
   <Slider
     value={store.get('slider3')}
     onChange={(name, value) => store.set({[name]: value})}
-    {...optionDefaults('orange', 'slider3')}
-  />
-));
-
-stories.add('purple', () => (
-  <Slider
-    value={store.get('slider4')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...optionDefaults('purple', 'slider4')}
+    {...optionDefaults('purple', 'slider3')}
   />
 ));

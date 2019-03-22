@@ -32,22 +32,6 @@
     }
   }
 
-  &.highlighted-orange {
-    .tooltip {
-      background-color: $orange;
-
-      &::before {
-        border-color: $orange transparent transparent transparent;
-      }
-    }
-    .rc-slider-with-marks {
-      .rc-slider-handle {
-        @include star-marker;
-        @include highlighted($orange);
-      }
-    }
-  }
-
   &.highlighted-purple {
     .tooltip {
       background-color: $violet-blue;
@@ -73,12 +57,12 @@
   }
 
   .left-annotate {
-    left: -3rem;
+    left: -2.5rem;
     bottom: -8rem;
   }
 
   .right-annotate {
-    right: -3rem;
+    right: -2.5rem;
     bottom: -8rem;
   }
 
@@ -134,12 +118,6 @@
     &.show.green::after {
       @include star-marker;
       @include highlighted($green);
-      background-size: 60%;
-    }
-
-    &.show.orange::after {
-      @include star-marker;
-      @include highlighted($orange);
       background-size: 60%;
     }
 
