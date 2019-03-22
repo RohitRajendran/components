@@ -25,6 +25,7 @@ const Slider = ({
     [`${tooltipStickyVariant}`]: tooltipStickyVariant,
     'tooltip-sticky-hint': true,
     [`tooltip-position-${tooltipStickyPosition}`]: true,
+    'uic--position-absolute': true,
   });
   const containerClasses = classNames(
     {
@@ -33,6 +34,7 @@ const Slider = ({
         tooltipStickyPosition &&
         tooltipStickyPosition === value,
       'slider-wrapper': true,
+      'uic--position-relative': true,
     },
     className
   );
@@ -72,11 +74,23 @@ const Slider = ({
         </style>
       )}
       {tooltip && (
-        <div className={`tooltip tooltip-position-${value}`}>{tooltip}</div>
+        <div
+          className={`tooltip tooltip-position-${value} uic--position-absolute`}
+        >
+          {tooltip}
+        </div>
       )}
 
-      {leftAnnotate && <div className="left-annotate">{leftAnnotate}</div>}
-      {rightAnnotate && <div className="right-annotate">{rightAnnotate}</div>}
+      {leftAnnotate && (
+        <div className="left-annotate-container uic--position-absolute">
+          <div className="left-annotate">{leftAnnotate}</div>
+        </div>
+      )}
+      {rightAnnotate && (
+        <div className="right-annotate-container uic--position-absolute">
+          <div className="right-annotate">{rightAnnotate}</div>
+        </div>
+      )}
       <div className={tooltipStickyClasses} />
       <ReactSlider
         className="react-slider"
@@ -102,7 +116,7 @@ Slider.propTypes = {
   leftAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   rightAnnotate: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   tooltipStickyPosition: PropTypes.number,
-  tooltipStickyVariant: PropTypes.oneOf(['green', 'orange', 'purple']),
+  tooltipStickyVariant: PropTypes.oneOf(['green', 'purple']),
   className: PropTypes.string,
   required: PropTypes.bool,
 };
