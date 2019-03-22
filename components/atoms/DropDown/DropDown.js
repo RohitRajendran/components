@@ -190,14 +190,13 @@ class DropDown extends Component {
     }
 
     const containerClasses = classNames(className);
-    const dropDownClasses = classNames(
-      {
-        error: !this.state.isValid,
-        focused: this.state.isFocused,
-        disabled,
-      },
-      'mcgonagall-dropdown uic--position-relative'
-    );
+    const dropDownClasses = classNames({
+      'mcgonagall-dropdown': true,
+      'uic--position-relative': true,
+      error: !this.state.isValid,
+      focused: this.state.isFocused,
+      disabled,
+    });
 
     const selectedValue =
       (optionProps && optionProps.options) || this.state.options
