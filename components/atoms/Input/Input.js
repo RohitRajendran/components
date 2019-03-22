@@ -368,7 +368,7 @@ Input.propTypes = {
   append: PropTypes.string,
   /** A string or symbol to pre-pend to the start of the input. For example `$`. */
   prepend: PropTypes.string,
-  /** The label representing the input field.  */
+  /** The label representing the input field. */
   label: PropTypes.string.isRequired,
   /** The name of the input field. */
   name: PropTypes.string.isRequired,
@@ -410,7 +410,7 @@ Input.propTypes = {
   pattern: PropTypes.string,
   /** The max length of the input field value. */
   maxLength: PropTypes.number,
-  /** Allows you select which input type is allowed in the field. */
+  /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf([
     'PhoneNumber',
     'SsnNumber',
