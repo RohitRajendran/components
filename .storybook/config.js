@@ -9,7 +9,6 @@ import createPercyAddon from '@percy-io/percy-storybook';
 import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
-import {jsxDecorator} from 'storybook-addon-jsx';
 import {withInfo} from '@storybook/addon-info';
 import {dsmColors as colors} from '~constants/js/colors';
 import {State} from '@sambego/storybook-state';
@@ -30,7 +29,6 @@ addDecorator(
 );
 addDecorator(withA11y);
 addDecorator(withKnobs);
-addDecorator(jsxDecorator);
 
 // Configures global parameters.
 addParameters({
