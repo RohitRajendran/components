@@ -3,7 +3,6 @@
   border: solid 1px $white-seven;
   margin: 0 auto;
   max-width: 76.4rem;
-  width: 100%;
 
   &.active {
     border-top: solid 4px $violet-blue;
@@ -38,9 +37,6 @@
   }
 
   .card-after-content {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
     margin-top: 3rem;
   }
 

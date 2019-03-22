@@ -106,6 +106,7 @@ class CardShell extends Component {
     const cardClass = classNames(
       {
         'mcgonagall-card': true,
+        'uic--w-100': true,
         active: !isCollapsed,
         collapsed: isCollapsed,
         error: hasError,
@@ -121,7 +122,7 @@ class CardShell extends Component {
           <form onChange={this.onChange} onSubmit={this.onSubmit}>
             {children}
 
-            <div className="card-after-content">
+            <div className="card-after-content uic--d-flex uic--align-items-center uic--flex-column">
               {beforeButton && (
                 <div className="card-before-button">{beforeButton}</div>
               )}

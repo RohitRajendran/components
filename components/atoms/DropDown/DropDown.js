@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
-import './DropDown.scss';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+
+import './DropDown.scss';
 
 /** Renders the DropDown field component which wraps react-select. */
 class DropDown extends Component {
@@ -189,14 +190,13 @@ class DropDown extends Component {
     }
 
     const containerClasses = classNames(className);
-    const dropDownClasses = classNames(
-      {
-        error: !this.state.isValid,
-        focused: this.state.isFocused,
-        disabled,
-      },
-      'mcgonagall-dropdown'
-    );
+    const dropDownClasses = classNames({
+      'mcgonagall-dropdown': true,
+      'uic--position-relative': true,
+      error: !this.state.isValid,
+      focused: this.state.isFocused,
+      disabled,
+    });
 
     const selectedValue =
       (optionProps && optionProps.options) || this.state.options
@@ -224,7 +224,7 @@ class DropDown extends Component {
     return (
       <div className={containerClasses}>
         <div className={dropDownClasses}>
-          <label>{label}</label>
+          <label className="uic--position-absolute">{label}</label>
           <div className="mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}
