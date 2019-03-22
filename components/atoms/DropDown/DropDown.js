@@ -196,7 +196,7 @@ class DropDown extends Component {
         focused: this.state.isFocused,
         disabled,
       },
-      'mcgonagall-dropdown, uic--position-relative'
+      'mcgonagall-dropdown uic--position-relative'
     );
 
     const selectedValue =

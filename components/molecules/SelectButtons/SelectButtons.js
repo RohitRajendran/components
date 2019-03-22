@@ -25,6 +25,7 @@ const SelectButtons = ({
 
   const legendClasses = classNames({
     table,
+    'uic--w-100': true,
   });
 
   // Stores the values of all of the selected items.
@@ -48,10 +49,11 @@ const SelectButtons = ({
     <fieldset role="group" className={containerClasses} required={required}>
       <legend className={legendClasses}>
         {options.map((option) => {
-
           const labelClasses = classNames({
-            'disabled': disabled || option.disabled,
+            disabled: disabled || option.disabled,
             'checkbox-label': true,
+            'uic--w-100': true,
+            'uic--position-relative': true,
             'uic--d-flex': true,
             'uic--align-items-center': true,
             'uic--flex-direction-row': true,
@@ -59,38 +61,39 @@ const SelectButtons = ({
           });
 
           return (
-            <div className="mcgonagall-checkbox-button uic--d-flex uic--justify-content-between" key={option.value}>
-            <label
-              className={labelClasses}
+            <div
+              className="mcgonagall-checkbox-button uic--d-flex uic--justify-content-between"
+              key={option.value}
             >
-              <input
-                name={name}
-                className="checkbox-input"
-                type="checkbox"
-                defaultValue={option.value}
-                disabled={disabled || option.disabled}
-                checked={values.has(option.value)}
-                onChange={handleChange}
-                aria-label={option.label}
-              />
-              <OptionBox
-                variant="check"
-                checked={values.has(option.value)}
-                disabled={disabled || option.disabled}
-              />
-              <span className="label-value">{option.label}</span>
+              <label className={labelClasses}>
+                <input
+                  name={name}
+                  className="checkbox-input uic--position-absolute"
+                  type="checkbox"
+                  defaultValue={option.value}
+                  disabled={disabled || option.disabled}
+                  checked={values.has(option.value)}
+                  onChange={handleChange}
+                  aria-label={option.label}
+                />
+                <OptionBox
+                  variant="check"
+                  checked={values.has(option.value)}
+                  disabled={disabled || option.disabled}
+                />
+                <span className="label-value">{option.label}</span>
 
-              {option.followup && values.has(option.value) && (
-                <div className="followup uic--w-100">{option.followup}</div>
+                {option.followup && values.has(option.value) && (
+                  <div className="followup uic--w-100">{option.followup}</div>
+                )}
+              </label>
+
+              {option.secondaryLabel && (
+                <span className="label-value-secondary">
+                  {option.secondaryLabel}
+                </span>
               )}
-            </label>
-
-            {option.secondaryLabel && (
-              <span className="label-value-secondary">
-                {option.secondaryLabel}
-              </span>
-            )}
-          </div>
+            </div>
           );
         })}
       </legend>

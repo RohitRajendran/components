@@ -26,30 +26,32 @@ const RadioButtons = ({
 
   const legendClasses = classNames({
     table,
+    'uic--w-100': true,
   });
 
   return (
     <fieldset role="group" className={containerClasses} required={required}>
       <legend className={legendClasses}>
         {options.map((option) => {
-
           const labelClasses = classNames({
-            'disabled': disabled || option.disabled,
+            disabled: disabled || option.disabled,
             'radio-label': true,
+            'uic--w-100': true,
+            'uic--position-relative': true,
             'uic--d-flex': true,
             'uic--align-items-center': true,
             'uic--flex-direction-row': true,
             'uic--flex-wrap': true,
           });
-
           return (
-            <div className="mcgonagall-radio-button uic--d-flex uic--justify-content-between" key={option.value}>
-            <label
-              className={labelClasses}
+            <div
+              className="mcgonagall-radio-button uic--d-flex uic--justify-content-between"
+              key={option.value}
             >
+              <label className={labelClasses}>
                 <input
                   name={name}
-                  className="radio-input"
+                  className="radio-input uic--position-absolute"
                   type="radio"
                   disabled={disabled || option.disabled}
                   value={option.value}
@@ -62,17 +64,17 @@ const RadioButtons = ({
                   disabled={disabled || option.disabled}
                 />
                 <span className="label-value">{option.label}</span>
-              {option.followup && option.value === value && (
-                <div className="followup uic--w-100 ">{option.followup}</div>
-              )}
-            </label>
+                {option.followup && option.value === value && (
+                  <div className="followup uic--w-100 ">{option.followup}</div>
+                )}
+              </label>
 
-            {option.secondaryLabel && (
-              <span className="label-value-secondary">
-                {option.secondaryLabel}
-              </span>
-            )}
-          </div>
+              {option.secondaryLabel && (
+                <span className="label-value-secondary">
+                  {option.secondaryLabel}
+                </span>
+              )}
+            </div>
           );
         })}
       </legend>
