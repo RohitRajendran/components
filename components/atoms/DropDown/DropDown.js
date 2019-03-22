@@ -190,14 +190,13 @@ class DropDown extends Component {
     }
 
     const containerClasses = classNames(className);
-    const dropDownClasses = classNames(
-      {
-        error: !this.state.isValid,
-        focused: this.state.isFocused,
-        disabled,
-      },
-      'mcgonagall-dropdown'
-    );
+    const dropDownClasses = classNames({
+      'mcgonagall-dropdown': true,
+      'uic--position-relative': true,
+      error: !this.state.isValid,
+      focused: this.state.isFocused,
+      disabled,
+    });
 
     const selectedValue =
       (optionProps && optionProps.options) || this.state.options
@@ -225,7 +224,7 @@ class DropDown extends Component {
     return (
       <div className={containerClasses}>
         <div className={dropDownClasses}>
-          <label>{label}</label>
+          <label className="uic--position-absolute">{label}</label>
           <div className="mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}

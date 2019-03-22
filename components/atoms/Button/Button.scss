@@ -43,7 +43,6 @@ a {
   // Main Button Reset
   //------------------------
   outline: none;
-  position: relative;
   transition: background-color 500ms, color 500ms;
   border: none;
 
@@ -58,28 +57,6 @@ a {
   &:focus,
   &:active:focus {
     outline: 0 !important;
-  }
-  .spinner-wrapper {
-    position: absolute;
-  }
-  &.show-spinner {
-    .spinner-wrapper {
-      display: initial;
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-    }
-    .btn-text {
-      visibility: hidden;
-    }
-  }
-  &.hide-spinner {
-    .spinner-wrapper {
-      display: none;
-    }
-  }
-  &.max-30 {
-    max-width: 30rem;
   }
 
   //------------------------
@@ -108,9 +85,6 @@ a {
       @include disabledStyle {
         color: rgba($dark-blue, 0.3) !important;
       }
-    }
-    .spinner-wrapper {
-      top: 35%;
     }
   }
 
@@ -141,9 +115,6 @@ a {
       &.white {
         background-color: $stratos;
       }
-    }
-    .spinner-wrapper {
-      top: 18%;
     }
   }
 

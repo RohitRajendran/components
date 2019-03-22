@@ -301,6 +301,8 @@ class Input extends Component {
 
     const containerClasses = classNames(
       {
+        'mcgonagall-input': true,
+        'uic--position-relative': true,
         [`input-append input-append-${identifier}`]: append && value.length > 0,
         [`input-prepend input-prepend-${identifier}`]: prepend,
         empty: (value && value.length < 1) || !value,
@@ -308,7 +310,7 @@ class Input extends Component {
         error: showInvalidity || error,
         disabled,
       },
-      `mcgonagall-input ${className}`
+      className
     );
 
     return (
@@ -344,7 +346,7 @@ class Input extends Component {
           }}
           {...attrs}
         />
-        <label>{label}</label>
+        <label className="uic--position-absolute">{label}</label>
         {description && (!showInvalidity || !error) ? (
           <div className="description">{description}</div>
         ) : description && (showInvalidity || error) ? (
