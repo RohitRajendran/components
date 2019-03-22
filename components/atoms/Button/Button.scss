@@ -175,9 +175,30 @@ a {
     }
   }
 
+  &.show-spinner {
+    .spinner-wrapper {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+
+    .button-text {
+      visibility: hidden;
+      height: 0px;
+    }
+  }
+
+  &.hide-spinner {
+    .spinner-wrapper {
+      display: none;
+    }
+  }
+
   &.btn-tertiary,
   &.btn-secondary {
-    &.has-spinner {
+    &.show-spinner {
       svg {
         margin-bottom: -0.5rem;
         min-width: 8rem;

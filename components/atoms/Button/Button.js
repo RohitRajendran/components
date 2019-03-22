@@ -29,7 +29,8 @@ const Button = ({
       [`btn-${variant}`]: variant,
       'on-light': light,
       'on-dark': dark,
-      'has-spinner': isLoading,
+      'show-spinner': isLoading,
+      'hide-spinner': !isLoading,
     },
     className
   );
@@ -53,6 +54,8 @@ const Button = ({
       ? colors['violet-blue']
       : colors.white;
 
+  const spinnerSize = variant === 'primary' ? '23' : '19';
+
   return (
     <button
       type={type}
@@ -61,11 +64,10 @@ const Button = ({
       disabled={disabled}
       {...props}
     >
-      {isLoading ? (
-        <Spinner height={'19'} width={'19'} fill={spinnerColor} />
-      ) : (
-        children
-      )}
+      <div className="spinner-wrapper">
+        <Spinner height={spinnerSize} width={spinnerSize} fill={spinnerColor} />
+      </div>
+      <div className="button-text">{children}</div>
     </button>
   );
 };
