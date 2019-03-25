@@ -163,6 +163,9 @@ $transition-duration: 0.25s;
       color: $bluey-grey;
       font-style: italic;
       font-weight: normal;
+      text-overflow: ellipsis;
+      word-wrap: nowrap;
+      max-width: 80%;
     }
 
     &.mcgonagall-dropdown__control--is-focused {
