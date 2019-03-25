@@ -1236,15 +1236,15 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-viewport@*":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.0.3.tgz#9291a19fa19675efd68fc57fc201f433b0eb222d"
-  integrity sha512-/YYqmnqK2iEK5OgfsGfnmpSn+4jO6YT22EobLXH0N+0amyFXWE8YJKAVUfK+oUmocY1jsjLagtZ5KZFd3PT3nA==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.0.5.tgz#212240f9955e7dc2f0ca2481e73effbeac95135d"
+  integrity sha512-47NU7wRwKBfnwGCBbslDPLsFIGvStYq1AUqvdtoV/WskLa+Zhi4dwaSyj0XhF3eSeUa23SiDGejUDHsEyVBtiw==
   dependencies:
-    "@storybook/addons" "5.0.3"
-    "@storybook/client-logger" "5.0.3"
-    "@storybook/components" "5.0.3"
-    "@storybook/core-events" "5.0.3"
-    "@storybook/theming" "5.0.3"
+    "@storybook/addons" "5.0.5"
+    "@storybook/client-logger" "5.0.5"
+    "@storybook/components" "5.0.5"
+    "@storybook/core-events" "5.0.5"
+    "@storybook/theming" "5.0.5"
     core-js "^2.6.5"
     global "^4.3.2"
     memoizerific "^1.11.3"
