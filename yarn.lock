@@ -1193,14 +1193,14 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-info@*":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.0.3.tgz#d50ae8b145cac318adf060fbb12fd1a0af27a142"
-  integrity sha512-N6wNk6P+7NMgOzPfjDH4CLYqAvGGmM0aB+90Mo45mHgIx58ZCSW6mAPd58CgBCB8D4Q2fqneZANLDo+7KtZYFQ==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.0.5.tgz#6b2e4ed0d92481a0e8c21c64d4124e354fd75cfd"
+  integrity sha512-myWiFGgHXBeIt5K1Znq7UyjPjhxfjT/33g3Jrwp9EBT6rCY0evYuQiUjAxKzXCDMfU+d5IvqobzvdaiqETpDxQ==
   dependencies:
-    "@storybook/addons" "5.0.3"
-    "@storybook/client-logger" "5.0.3"
-    "@storybook/components" "5.0.3"
-    "@storybook/theming" "5.0.3"
+    "@storybook/addons" "5.0.5"
+    "@storybook/client-logger" "5.0.5"
+    "@storybook/components" "5.0.5"
+    "@storybook/theming" "5.0.5"
     core-js "^2.6.5"
     global "^4.3.2"
     marksy "^6.1.0"
