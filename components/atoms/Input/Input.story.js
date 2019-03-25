@@ -107,127 +107,108 @@ stories.add('currency', () => (
 ));
 
 stories.add('percent', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        label={text('label', 'Increase')}
-        append={text('append', '%')}
-        prepend={text('prepend')}
-        name={text('name', 'percent input')}
-        description={text('description')}
-        type={text('type', 'text')}
-        placeholder={text('placeholder', '0%')}
-        value={store.get('percent')}
-        required={boolean('required')}
-        pattern={text('pattern')}
-        maxLength={number('maxLength')}
-        min={number('min')}
-        max={number('max')}
-        step={number('step')}
-        validationErrorMsg={text('validationErrorMsg')}
-        validateOnBlur={boolean('validateOnBlur')}
-        error={boolean('error', false)}
-        disabled={boolean('disabled')}
-        inputClasses={text('inputClasses')}
-        onChange={(event) => store.set({percent: event.target.value})}
-        mask={inputMask('PercentageWithDecimal')}
-        key="increase"
-      />
-    </div>
-  </div>
+  <Input
+    label={text('label', 'Increase')}
+    append={text('append', '%')}
+    prepend={text('prepend')}
+    name={text('name', 'percent input')}
+    description={text('description')}
+    type={text('type', 'text')}
+    placeholder={text('placeholder', '0%')}
+    value={store.get('percent')}
+    required={boolean('required')}
+    pattern={text('pattern')}
+    maxLength={number('maxLength')}
+    min={number('min')}
+    max={number('max')}
+    step={number('step')}
+    validationErrorMsg={text('validationErrorMsg')}
+    validateOnBlur={boolean('validateOnBlur')}
+    error={boolean('error', false)}
+    disabled={boolean('disabled')}
+    inputClasses={text('inputClasses')}
+    onChange={(event) => store.set({percent: event.target.value})}
+    mask={inputMask('PercentageWithDecimal')}
+    key="increase"
+  />
 ));
 
 stories.add('date', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        label={text('label', 'Date')}
-        append={text('append')}
-        prepend={text('prepend')}
-        name={text('name', 'date input')}
-        description={text('description')}
-        type={text('type', 'text')}
-        placeholder={text('placeholder', 'MM/DD/YYYY')}
-        value={store.get('date')}
-        required={boolean('required')}
-        pattern={text('pattern')}
-        maxLength={number('maxLength')}
-        min={number('min')}
-        max={number('max')}
-        step={number('step')}
-        validationErrorMsg={text(
-          'validationErrorMsg',
-          'Not a valid date range'
-        )}
-        validateOnBlur={boolean('validateOnBlur', true)}
-        error={boolean('error', false)}
-        disabled={boolean('disabled')}
-        inputClasses={text('inputClasses')}
-        onChange={(event) => store.set({date: event.target.value})}
-        mask={inputMask('Date')}
-        isValid={() => store.get('date').length === 10}
-        key="date"
-      />
-    </div>
-  </div>
+  <Input
+    label={text('label', 'Date')}
+    append={text('append')}
+    prepend={text('prepend')}
+    name={text('name', 'date input')}
+    description={text('description')}
+    type={text('type', 'text')}
+    placeholder={text('placeholder', 'MM/DD/YYYY')}
+    value={store.get('date')}
+    required={boolean('required')}
+    pattern={text('pattern')}
+    maxLength={number('maxLength')}
+    min={number('min')}
+    max={number('max')}
+    step={number('step')}
+    validationErrorMsg={text('validationErrorMsg', 'Not a valid date range')}
+    validateOnBlur={boolean('validateOnBlur', true)}
+    error={boolean('error', false)}
+    disabled={boolean('disabled')}
+    inputClasses={text('inputClasses')}
+    onChange={(event) => store.set({date: event.target.value})}
+    mask={inputMask('Date')}
+    isValid={() => store.get('date').length === 10}
+    key="date"
+  />
 ));
 
 stories.add('error', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        label={text('label', 'Address')}
-        append={text('append')}
-        prepend={text('prepend')}
-        name={text('name', 'disabled input')}
-        description={text('description')}
-        type={text('type')}
-        placeholder={text('placeholder', '1660 L Street')}
-        value={store.get('error') || '1660 L Street'}
-        required={boolean('required')}
-        pattern={text('pattern')}
-        maxLength={number('maxLength')}
-        min={number('min')}
-        max={number('max')}
-        step={number('step')}
-        validationErrorMsg={text('validationErrorMsg', 'Not a valid input')}
-        validateOnBlur={boolean('validateOnBlur')}
-        error={boolean('error', true)}
-        disabled={boolean('disabled', false)}
-        inputClasses={text('inputClasses')}
-        onChange={(event) => store.set({error: event.target.value})}
-        mask={inputMask()}
-        key="address"
-      />
-    </div>
-  </div>
+  <Input
+    label={text('label', 'Address')}
+    append={text('append')}
+    prepend={text('prepend')}
+    name={text('name', 'disabled input')}
+    description={text('description')}
+    type={text('type')}
+    placeholder={text('placeholder', '1660 L Street')}
+    value={store.get('error') || '1660 L Street'}
+    required={boolean('required')}
+    pattern={text('pattern')}
+    maxLength={number('maxLength')}
+    min={number('min')}
+    max={number('max')}
+    step={number('step')}
+    validationErrorMsg={text('validationErrorMsg', 'Not a valid input')}
+    validateOnBlur={boolean('validateOnBlur')}
+    error={boolean('error', true)}
+    disabled={boolean('disabled', false)}
+    inputClasses={text('inputClasses')}
+    onChange={(event) => store.set({error: event.target.value})}
+    mask={inputMask()}
+    key="address"
+  />
 ));
 
 stories.add('disabled', () => (
-  <div className="row">
-    <div className="col-xs-12">
-      <Input
-        label={text('label', 'Address')}
-        append={text('append')}
-        prepend={text('prepend')}
-        name={text('name', 'disabled input')}
-        description={text('description')}
-        type={text('type')}
-        placeholder={text('placeholder', '0%')}
-        value="1660 L Street"
-        required={boolean('required')}
-        pattern={text('pattern')}
-        maxLength={number('maxLength')}
-        min={number('min')}
-        max={number('max')}
-        step={number('step')}
-        validationErrorMsg={text('validationErrorMsg')}
-        validateOnBlur={boolean('validateOnBlur')}
-        error={boolean('error', false)}
-        disabled={boolean('disabled', true)}
-        inputClasses={text('inputClasses')}
-        mask={inputMask()}
-      />
-    </div>
-  </div>
+  <Input
+    label={text('label', 'Address')}
+    append={text('append')}
+    prepend={text('prepend')}
+    name={text('name', 'disabled input')}
+    description={text('description')}
+    type={text('type')}
+    placeholder={text('placeholder', '0%')}
+    value="1660 L Street"
+    required={boolean('required')}
+    pattern={text('pattern')}
+    maxLength={number('maxLength')}
+    min={number('min')}
+    max={number('max')}
+    step={number('step')}
+    validationErrorMsg={text('validationErrorMsg')}
+    validateOnBlur={boolean('validateOnBlur')}
+    error={boolean('error', false)}
+    disabled={boolean('disabled', true)}
+    inputClasses={text('inputClasses')}
+    mask={inputMask()}
+  />
 ));

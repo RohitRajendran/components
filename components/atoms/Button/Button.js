@@ -26,6 +26,7 @@ const Button = ({
   const btnClass = classNames(
     {
       btn: true,
+      'uic--position-relative': true,
       [`btn-${variant}`]: variant,
       'on-light': light,
       'on-dark': dark,
@@ -71,15 +72,25 @@ const Button = ({
 };
 
 Button.propTypes = {
+  /** HTML element that should appear within the button.  */
   children: PropTypes.node.isRequired,
+  /** Optional class names to appear on the container. */
   className: PropTypes.string,
+  /** Changes the color scheme to dark.  */
   dark: PropTypes.bool,
+  /** Determines if the button is disabled or not. */
   disabled: PropTypes.bool,
+  /** Show loading spinner instead of content. */
   isLoading: PropTypes.bool,
+  /** Changes the color scheme to light. */
   light: PropTypes.bool,
+  /** The handler to fire when the button is clicked. */
   onClick: and([PropTypes.func, exclusive(['to'])]),
+  /** The URL that the user should be directed to when the button is clicked. Used primarily for link buttons. */
   to: and([PropTypes.string, exclusive(['onClick'])]),
+  /** The type of button, for example `button`, `submit` or `reset`. */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  /** The style of button to be shown, for example `primary`, `secondary`, `tertiary` or `link`. */
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'link']),
 };
 

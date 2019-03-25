@@ -23,14 +23,3 @@ This component renders an incomplete summary that tells the user this step still
   summary={<IncompleteSummary shortTitle="This is a simpler question" to="/" />}
 />
 ```
-
-## Props 🔧
-
-The following component props are valid.
-
-| Prop           | Type     | Default                                   | Description                                                                                                         | Required |
-| -------------- | -------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------- |
-| **editCard**   | Function |                                           | Handler called to edit the card, used instead of `to` for McGonagall                                                | No       |
-| **shortTitle** | String   |                                           | A shorter version of the card title                                                                                 | Yes      |
-| **text**       | String   | 'You still have to answer this question.' | Text that tells the user they need to finish this step                                                              | No       |
-| **to**         | String   |                                           | The URL that the user should be directed to when resume is clicked, used instead of `editCard` for Hogwarts Express | No       |
