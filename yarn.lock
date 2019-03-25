@@ -1157,15 +1157,15 @@
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
 "@storybook/addon-a11y@*":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.3.tgz#d062207a704423e337752af605390adca7f51128"
-  integrity sha512-yQM6K1oLBTB/CqbZhnW6B7Us4fDi2qM04cn/Z7vlZO2jhKPtrqOPEk3jYO0efamwvmBehFDmZ0vkVXc47Bz7Eg==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.5.tgz#82dbe8c8927af9fb6f00135d036684bef84ee57a"
+  integrity sha512-gW2ZwC7rl8PnERjxGqx0LxgRpJxqxrOM0Wo/moJ0qZs9szCJ0FgIa8BuoBduFvAS9eFDSF44uUJfOxsrLuNHcw==
   dependencies:
-    "@storybook/addons" "5.0.3"
-    "@storybook/client-logger" "5.0.3"
-    "@storybook/components" "5.0.3"
-    "@storybook/core-events" "5.0.3"
-    "@storybook/theming" "5.0.3"
+    "@storybook/addons" "5.0.5"
+    "@storybook/client-logger" "5.0.5"
+    "@storybook/components" "5.0.5"
+    "@storybook/core-events" "5.0.5"
+    "@storybook/theming" "5.0.5"
     axe-core "^3.1.2"
     common-tags "^1.8.0"
     core-js "^2.6.5"
@@ -1394,14 +1394,14 @@
     recompose "^0.30.0"
     render-fragment "^0.1.1"
 
-"@storybook/core-events@5.0.3", "@storybook/core-events@^5.0.3":
+"@storybook/core-events@5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.3.tgz#1b9d6265f7a2b16a0ddee274975e104d7a02c9f6"
   integrity sha512-a+GbuuhGcfL6ovFlzfYi1oEu2gVa5m2tY5sHEYA03lWdKR2aa4R5Q8haVujox6yxQ6L8gNh1RZff0s1kx64Drw==
   dependencies:
     core-js "^2.6.5"
 
-"@storybook/core-events@5.0.5":
+"@storybook/core-events@5.0.5", "@storybook/core-events@^5.0.3":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.5.tgz#831fa76523194a79f23c986ab57393cbbf49d091"
   integrity sha512-N6E1uhvCHpqixCkLjPEwN7aIMaWt2RZvnW0TW46BnX4W3OOwpSB6xWKM1k8TDDntGAsFwaqB7AuiATBy9VHXOg==
