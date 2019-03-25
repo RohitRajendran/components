@@ -1177,15 +1177,15 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-backgrounds@*":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.3.tgz#e62d7728f48b22cf58f6ecf6f67dd99406c697e1"
-  integrity sha512-sJrege0ZQL0EgH/HAxTI5f8uIP8I7UfXruNx4Z89aNPS8QvDx1qExvzkiSSBH+oueCIEPLgLPTV0or2lm4ab9w==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.5.tgz#832fc85d5ad43f4538b0f73dd0688030056f192d"
+  integrity sha512-AyClt11V8cAjX1Mfsm/87zvxqhLJj5rOTvHWIqR5kahqJv7puB9UfWB5hpZ40X1OHWzBuwvDRQVO0EGPE0N7Mg==
   dependencies:
-    "@storybook/addons" "5.0.3"
-    "@storybook/client-logger" "5.0.3"
-    "@storybook/components" "5.0.3"
-    "@storybook/core-events" "5.0.3"
-    "@storybook/theming" "5.0.3"
+    "@storybook/addons" "5.0.5"
+    "@storybook/client-logger" "5.0.5"
+    "@storybook/components" "5.0.5"
+    "@storybook/core-events" "5.0.5"
+    "@storybook/theming" "5.0.5"
     core-js "^2.6.5"
     global "^4.3.2"
     memoizerific "^1.11.3"
