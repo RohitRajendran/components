@@ -1,16 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CloseIcon from './CloseIcon';
+import ArrowEllipsisIcon from './ArrowEllipsisIcon';
 import {text} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import CloseIconReadme from './CloseIcon.md';
+import ArrowEllipsisIconReadme from './ArrowEllipsisIcon.md';
 
-const stories = storiesOf('Atoms/Icons/CloseIcon', module);
+const stories = storiesOf('Atoms/Icons/ArrowEllipsisIcon', module);
 
-stories.addDecorator(withReadme(CloseIconReadme));
+stories.addDecorator(withReadme(ArrowEllipsisIconReadme));
 
 stories.add('default', () => (
-  <CloseIcon
+  <ArrowEllipsisIcon
     fill={text('fill', '#000')}
     height={text('height', '20')}
     width={text('width', '20')}

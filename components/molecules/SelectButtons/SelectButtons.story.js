@@ -10,7 +10,7 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 const stories = storiesOf('Molecules/SelectButtons', module);
 
 const store = new Store({
-  yesNo: null,
+  yesNo: 'thing',
   followup: null,
   bank: null,
   input: '',
