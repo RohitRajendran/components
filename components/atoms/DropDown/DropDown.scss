@@ -146,6 +146,10 @@ $transition-duration: 0.25s;
     visibility: hidden;
   }
 
+  .mcgonagall-dropdown__single-value {
+    color: $dark-blue;
+  }
+
   // Main input field
   .mcgonagall-dropdown__control {
     @include source-sans-pro(2rem);
