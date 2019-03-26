@@ -50,6 +50,7 @@
     "babel-plugin-module-resolver": "*",
     "bootstrap": "*",
     "classnames": "*",
+    "core-js": "*",
     "css-loader": "*",
     "d3-interpolate": "*",
     "d3-scale": "*",

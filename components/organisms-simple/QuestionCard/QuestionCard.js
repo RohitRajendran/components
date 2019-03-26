@@ -33,6 +33,11 @@ const QuestionCard = ({
     className
   );
 
+  const cancelButtonClass = classNames({
+    'card-cancel': afterButton,
+    'uic--d-block': true,
+  });
+
   const showEditWarning = clearFuture && !isLatestCard && !isCollapsed;
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
 
@@ -69,7 +74,7 @@ const QuestionCard = ({
             <Button
               variant="link"
               onClick={cancelChanges}
-              className="card-cancel"
+              className={cancelButtonClass}
             >
               Cancel
             </Button>

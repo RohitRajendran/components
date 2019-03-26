@@ -1,5 +1,5 @@
 /** @module Button */
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
@@ -9,6 +9,36 @@ import {Link} from 'react-router-dom';
 import './Button.scss';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
+
+const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
+  const spinnerClassNames = classNames({
+    'spinner-wrapper': true,
+    'uic--d-none': !showSpinner,
+    'uic--d-block': showSpinner,
+    'uic--position-relative': showSpinner,
+  });
+
+  const textClassNames = classNames({
+    'hide-button-text': showSpinner,
+    'uic--invisible': showSpinner,
+  });
+
+  return (
+    <Fragment>
+      <div className={spinnerClassNames}>
+        <Spinner height={spinnerSize} width={spinnerSize} fill={spinnerColor} />
+      </div>
+      <div className={textClassNames}>{children}</div>
+    </Fragment>
+  );
+};
+
+ButtonInterior.propTypes = {
+  showSpinner: PropTypes.boolean,
+  spinnerSize: PropTypes.string.isRequired,
+  spinnerColor: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const Button = ({
   children,
@@ -30,10 +60,20 @@ const Button = ({
       [`btn-${variant}`]: variant,
       'on-light': light,
       'on-dark': dark,
-      'has-spinner': isLoading,
+      'show-spinner': isLoading,
+      'hide-spinner': !isLoading,
     },
     className
   );
+
+  const spinnerColor =
+    variant === 'secondary' && dark
+      ? colors.stratos
+      : variant === 'tertiary' && light
+      ? colors['violet-blue']
+      : colors.white;
+
+  const spinnerSize = variant === 'primary' ? '23' : '19';
 
   if (to) {
     const linkClass = classNames(btnClass, {
@@ -42,17 +82,16 @@ const Button = ({
 
     return (
       <Link role="button" to={to} className={linkClass} {...props}>
-        {children}
+        <ButtonInterior
+          showSpinner={isLoading}
+          spinnerSize={spinnerSize}
+          spinnerColor={spinnerColor}
+        >
+          {children}
+        </ButtonInterior>
       </Link>
     );
   }
-
-  const spinnerColor =
-    variant === 'secondary' && dark
-      ? colors.stratos
-      : variant === 'tertiary' && light
-      ? colors['violet-blue']
-      : colors.white;
 
   return (
     <button
@@ -62,11 +101,13 @@ const Button = ({
       disabled={disabled}
       {...props}
     >
-      {isLoading ? (
-        <Spinner height={'19'} width={'19'} fill={spinnerColor} />
-      ) : (
-        children
-      )}
+      <ButtonInterior
+        showSpinner={isLoading}
+        spinnerSize={spinnerSize}
+        spinnerColor={spinnerColor}
+      >
+        {children}
+      </ButtonInterior>
     </button>
   );
 };

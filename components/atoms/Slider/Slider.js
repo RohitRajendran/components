@@ -69,6 +69,7 @@ const Slider = ({
           height: 20px !important;
           width: 20px !important;
           margin-left: -10px !important;
+          margin-top: -9px !important;
         }
         `}
         </style>

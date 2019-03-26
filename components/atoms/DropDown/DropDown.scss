@@ -119,6 +119,11 @@ $transition-duration: 0.25s;
   .mcgonagall-dropdown__value-container {
     padding: 0;
     min-height: 2.9rem;
+    max-width: 80%;
+    height: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     * {
       margin: 0;
@@ -139,6 +144,10 @@ $transition-duration: 0.25s;
 
   .mcgonagall-dropdown__indicator-separator {
     visibility: hidden;
+  }
+
+  .mcgonagall-dropdown__single-value {
+    color: $dark-blue;
   }
 
   // Main input field
@@ -162,6 +171,10 @@ $transition-duration: 0.25s;
       color: $bluey-grey;
       font-style: italic;
       font-weight: normal;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &.mcgonagall-dropdown__control--is-focused {

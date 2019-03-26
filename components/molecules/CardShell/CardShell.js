@@ -141,7 +141,9 @@ class CardShell extends Component {
               )}
 
               {afterButton && (
-                <div className="card-after-button">{afterButton}</div>
+                <div className="card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                  {afterButton}
+                </div>
               )}
             </div>
           </form>

@@ -132,8 +132,8 @@ SelectButtons.propTypes = {
   ),
   /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,
-  /** The current selected option in the select button group. */
-  value: PropTypes.string,
+  /** The current selected option(s) in the select button group. Represented as an array of strings. */
+  value: PropTypes.arrayOf(PropTypes.string),
   /** Change handler which passes back the `value` of the option which is currently selected. */
   onChange: PropTypes.func.isRequired,
 };
