@@ -13,7 +13,7 @@ import OptionBox from '~components/atoms/OptionBox/OptionBox';
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import SelectButtons from '~components/molecules/SelectButtons/SelectButtons';
+import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
@@ -23,6 +23,7 @@ import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 
 // Organisms - Complex
+import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCard';
 import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 
 // Utilities
@@ -33,7 +34,7 @@ export {
   CloseIcon,
   TrashIcon,
   OptionBox,
-  SelectButtons,
+  Checkboxes,
   detectBrowser,
   Button,
   Loader,
@@ -49,4 +50,5 @@ export {
   IncompleteSummary,
   MessageCard,
   RadioButtonCard,
+  CheckboxCard,
 };

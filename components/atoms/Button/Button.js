@@ -34,7 +34,7 @@ const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
 };
 
 ButtonInterior.propTypes = {
-  showSpinner: PropTypes.boolean,
+  showSpinner: PropTypes.bool,
   spinnerSize: PropTypes.string.isRequired,
   spinnerColor: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,

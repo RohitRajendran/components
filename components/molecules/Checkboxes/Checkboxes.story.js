@@ -1,13 +1,13 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
-import SelectButtons from './SelectButtons';
+import Checkboxes from './Checkboxes';
 import Input from '~components/atoms/Input/Input';
 import {boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import SelectButtonReadme from './SelectButtons.md';
+import SelectButtonReadme from './Checkboxes.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 
-const stories = storiesOf('Molecules/SelectButtons', module);
+const stories = storiesOf('Molecules/Checkboxes', module);
 
 const store = new Store({
   yesNo: [],
@@ -25,7 +25,7 @@ store.subscribe(() => {
 });
 
 stories.add('default', () => (
-  <SelectButtons
+  <Checkboxes
     name="yesNo"
     table={boolean('table', false)}
     options={[
@@ -50,7 +50,7 @@ stories.add('default', () => (
 ));
 
 stories.add('followup', () => (
-  <SelectButtons
+  <Checkboxes
     name="followup"
     table={boolean('table', false)}
     options={[
@@ -81,7 +81,7 @@ stories.add('followup', () => (
 ));
 
 stories.add('table', () => (
-  <SelectButtons
+  <Checkboxes
     name="bank"
     table={boolean('table', true)}
     options={[

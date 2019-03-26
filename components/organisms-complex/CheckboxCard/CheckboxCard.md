@@ -1,24 +1,24 @@
-# Radio Button Card Component
+# Checkbox Card Component
 
-This component makes it easier to render a basic radio button card for the Hogwarts/McGonagall flow.
+This component makes it easier to render a basic checkbox card for the Hogwarts/McGonagall flow.
 
 The collapsed state of this card uses the Simple Summary component.
 
 ## Example 🚀
 
 ```javascript
-<RadioButtonCard
-  name="radioQuestion"
+<CheckboxCard
+  name="selectQuestion"
   title="This is the title"
   description="This is the description"
-  shortTitle="title"
+  shortTitle="Title"
   editCard={() => true}
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
-    value: this.state.yesNo,
-    name: 'yesNo',
-    options:[
+  checkboxOptions={{
+    name: 'selectBtn',
+    value: this.state.selectBtn,
+    options: [
       {
         label: 'Yes',
         value: 'yes',
@@ -32,29 +32,29 @@ The collapsed state of this card uses the Simple Summary component.
         value: 'idk',
         disabled: true,
       },
-    ]
-  }
+    ],
+  }}
 />
 ```
 
 ### To Use With Hogwarts 1.0
 
-This will work similar to the existing Hogwarts Screen components, just set container to RadioButtonCard
+This will work similar to the existing Hogwarts Screen components, just set container to CheckboxCard
 
 ```javascript
 <Hogwarts.Screen
-  name="radioQuestion"
+  name="selectQuestion"
   transitions="gender"
-  container={RadioButtonCard}
+  container={CheckboxCard}
   title="This is the title"
   description="This is the description"
   shortTitle="title"
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
-    value: this.state.yesNo,
-    name: 'yesNo',
-    options:[
+  checkboxOptions={{
+    name: 'selectBtn',
+    value: this.state.selectBtn,
+    options: [
       {
         label: 'Yes',
         value: 'yes',
@@ -68,7 +68,7 @@ This will work similar to the existing Hogwarts Screen components, just set cont
         value: 'idk',
         disabled: true,
       },
-    ]
-  }
+    ],
+  }}
 />
 ```

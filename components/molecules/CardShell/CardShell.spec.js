@@ -5,7 +5,7 @@ import test from 'tape';
 import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import SelectButtons from '~components/molecules/SelectButtons/SelectButtons';
+import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import Slider from '~components/atoms/Slider/Slider';
 import CardShell from './CardShell';
 
@@ -117,8 +117,10 @@ test('CardShell - validates different input constraints', (t) => {
     checkbox: false,
     multiselect: [],
     date: 'nope',
-    selectedNormal: '',
-    selectedFollowup: '',
+    radioNormal: '',
+    radioFollowup: '',
+    selectedNormal: [],
+    selectedFollowup: [],
     slider: null,
   };
   const goodValues = {
@@ -131,8 +133,10 @@ test('CardShell - validates different input constraints', (t) => {
     checkbox: true,
     multiselect: ['A'],
     date: '05/01/1980',
-    selectedNormal: '2',
-    selectedFollowup: '3',
+    radioNormal: '2',
+    radioFollowup: '3',
+    selectedNormal: ['2'],
+    selectedFollowup: ['3'],
     slider: 5,
   };
 
@@ -224,7 +228,7 @@ test('CardShell - validates different input constraints', (t) => {
           },
         ]}
         onChange={stub()}
-        value={values.selectedNormal}
+        value={values.radioNormal}
         key="bank"
         required
       />,
@@ -269,11 +273,11 @@ test('CardShell - validates different input constraints', (t) => {
           },
         ]}
         onChange={stub()}
-        value={values.selectedFollowup}
+        value={values.radioFollowup}
         key="bank"
         required
       />,
-      <SelectButtons
+      <Checkboxes
         name="bank"
         table
         options={[
@@ -303,7 +307,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
-      <SelectButtons
+      <Checkboxes
         name="bank"
         table
         options={[

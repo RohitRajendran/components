@@ -4,13 +4,13 @@ import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
-import RadioButtonCard from './RadioButtonCard';
-import RadioButtonCardReadme from './RadioButtonCard.md';
+import CheckboxCard from './CheckboxCard';
+import CheckboxCardReadme from './CheckboxCard.md';
 
-const stories = storiesOf('Complex Organisms/RadioButtonCard', module);
+const stories = storiesOf('Complex Organisms/CheckboxCard', module);
 
 const store = new Store({
-  radioBtnQuestion: '',
+  selectBtnOption: [],
 });
 
 store.subscribe(() => {
@@ -18,7 +18,7 @@ store.subscribe(() => {
 });
 
 stories
-  .addDecorator(withReadme(RadioButtonCardReadme))
+  .addDecorator(withReadme(CheckboxCardReadme))
   .addDecorator(StateDecorator(store));
 
 const defaultProps = (
@@ -43,10 +43,11 @@ const defaultProps = (
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
-  radioButtonOptions: {
-    name: 'radioBtnQuestion',
-    value: store.get('radioBtnQuestion'),
-    options: object('radioButtonOptions.options', [
+  onChange: (name, value) => store.set({[name]: value}),
+  checkboxOptions: {
+    name: 'selectBtnOption',
+    value: store.get('selectBtnOption'),
+    options: object('checkboxOptions.options', [
       {
         label: 'Yes',
         value: 'yes',
@@ -62,29 +63,28 @@ const defaultProps = (
       },
     ]),
   },
-  onChange: (name, value) => store.set({[name]: value}),
 });
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(false)} />
+    <CheckboxCard {...defaultProps(false)} />
   </MemoryRouter>
 ));
 
 stories.add('active and clears future', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(false, true)} />
+    <CheckboxCard {...defaultProps(false, true)} />
   </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(true)} answers={['Yup']} />
+    <CheckboxCard {...defaultProps(true)} answers={['Yup']} />
   </MemoryRouter>
 ));
 
 stories.add('incomplete collapsed', () => (
   <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(true, false, true)} />
+    <CheckboxCard {...defaultProps(true, false, true)} />
   </MemoryRouter>
 ));
