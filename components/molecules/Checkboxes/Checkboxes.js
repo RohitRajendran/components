@@ -53,15 +53,11 @@ const Checkboxes = ({
             disabled: disabled || option.disabled,
             'checkbox-label': true,
             'uic--position-relative': true,
+            'uic--w-100': true,
           });
 
-          const labelWrapper = classNames({
-            'uic--w-100': true,
-            'uic--d-flex': true,
-            'uic--align-items-center': true,
-            'uic--flex-direction-row': true,
-            'uic--flex-wrap': true,
-          });
+          const labelWrapper =
+            'uic--w-100 uic--d-flex uic--align-items-center uic--flex-direction-row uic--flex-wrap';
 
           return (
             <div
