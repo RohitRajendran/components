@@ -33,7 +33,7 @@ class Ranking extends Component {
     clonedArray.splice(fromIndex, 1);
     clonedArray.splice(toIndex, 0, element);
 
-    // Binds the cloned array to state with the updated indexes.
+    // Sets the cloned array to state with the updated indexes.
     this.setState({
       items: clonedArray,
     });
@@ -48,7 +48,6 @@ class Ranking extends Component {
    * @returns {undefined}
    */
   onDragEnd(result) {
-    // dropped outside the list
     if (!result.destination) {
       return;
     }
