@@ -13,14 +13,14 @@ import {colors} from '~constants/js/colors';
 const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
   const spinnerClassNames = classNames({
     'spinner-wrapper': true,
-    'd-none': !showSpinner,
-    'd-block': showSpinner,
-    'p-relative': showSpinner,
+    'uic--d-none': !showSpinner,
+    'uic--d-block': showSpinner,
+    'uic--position-relative': showSpinner,
   });
 
   const textClassNames = classNames({
     'hide-button-text': showSpinner,
-    invisible: showSpinner,
+    'uic--invisible': showSpinner,
   });
 
   return (
