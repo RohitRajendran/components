@@ -136,10 +136,10 @@ workflows:
       - test
   deploy:
     jobs:
-      # - visual:
-      #     filters:
-      #       branches:
-      #         only: develop
+      - visual:
+          filters:
+            branches:
+              only: master
       - deploy:
           filters:
             branches:
