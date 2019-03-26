@@ -2,9 +2,31 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ArrowEllipsisIcon from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import {dsmColors as colors} from '~constants/js/colors';
 
 import './Ranking.scss';
+
+const grid = 8;
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: "none",
+  padding: grid * 2,
+  margin: `0 0 ${grid}px 0`,
+
+  // change background colour if dragging
+  background: isDragging ? "lightgreen" : "grey",
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+});
+
+const getListStyle = isDraggingOver => ({
+  background: isDraggingOver ? "lightblue" : "lightgrey",
+  padding: grid,
+  width: 250
+});
+
 
 /** Renders a list which allows  */
 class Ranking extends Component {
@@ -17,6 +39,7 @@ class Ranking extends Component {
     };
 
     this.changeOrder = this.changeOrder.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   /** Adjusts the order of the array.
@@ -41,63 +64,91 @@ class Ranking extends Component {
     }
   }
 
+  onDragEnd(result) {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    this.changeOrder(
+      result.source.index,
+      result.destination.index
+    );
+
+  }
+
   /** @inheritdoc */
   render() {
     const {items} = this.props;
 
     return (
       <div className="ranking-list">
-        <ol>
-          {items.map((item, index) => (
-            <li
-              className="uic--position-relative"
-              key={index}
-              tabIndex={index + 1}
-            >
-              <div className="ranking-controls">
-                <div
-                  className="up uic--position-absolute uic--w-100"
-                  onClick={() => this.changeOrder(index, index - 1)}
-                  onKeyUp={() => this.changeOrder(index, index - 1)}
-                  role="button"
-                  tabIndex={index + 1}
-                >
-                  <ArrowEllipsisIcon
-                    height="24"
-                    width="24"
-                    fill={colors.royal}
-                  />
+        <DragDropContext onDragEnd={this.onDragEnd}>
+        <Droppable droppableId="droppable">
+          {(provided, snapshot) => (
+          <ol
+          {...provided.droppableProps}
+          ref={provided.innerRef}>
+            {items.map((item, index) => (
+              <Draggable key={item.id} draggableId={item.id} index={index}>
+                {(provided, snapshot) => (
+              <li
+                className="uic--position-relative"
+                key={index}
+                tabIndex={index + 1}
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+              >
+                <div className="ranking-controls">
+                  <div
+                    className="up uic--position-absolute uic--w-100"
+                    onClick={() => this.changeOrder(index, index - 1)}
+                    onKeyUp={() => this.changeOrder(index, index - 1)}
+                    role="button"
+                    tabIndex={index + 1}
+                  >
+                    <ArrowEllipsisIcon
+                      height="24"
+                      width="24"
+                      fill={colors.royal}
+                    />
+                  </div>
+                  <div
+                    className="down uic--position-absolute uic--w-100"
+                    onClick={() => this.changeOrder(index, index + 1)}
+                    onKeyDown={() => this.changeOrder(index, index + 1)}
+                    role="button"
+                    tabIndex={index + 1}
+                  >
+                    <ArrowEllipsisIcon
+                      height="24"
+                      width="24"
+                      fill={colors.royal}
+                    />
+                  </div>
                 </div>
-                <div
-                  className="down uic--position-absolute uic--w-100"
-                  onClick={() => this.changeOrder(index, index + 1)}
-                  onKeyDown={() => this.changeOrder(index, index + 1)}
-                  role="button"
-                  tabIndex={index + 1}
-                >
-                  <ArrowEllipsisIcon
-                    height="24"
-                    width="24"
-                    fill={colors.royal}
-                  />
-                </div>
-              </div>
 
-              <span className="uic--d-flex uic--justify-content-between">
-                <span className="index uic--position-absolute">
-                  {index + 1}
-                </span>
-                <label>{item.label}</label>
-
-                {item.secondaryLabel && (
-                  <span className="label-value-secondary">
-                    {item.secondaryLabel}
+                <span className="uic--d-flex uic--justify-content-between">
+                  <span className="index uic--position-absolute">
+                    {index + 1}
                   </span>
+                  <label>{item.label}</label>
+
+                  {item.secondaryLabel && (
+                    <span className="label-value-secondary">
+                      {item.secondaryLabel}
+                    </span>
+                  )}
+                </span>
+              </li>
                 )}
-              </span>
-            </li>
-          ))}
-        </ol>
+              </Draggable>
+            ))}
+          </ol>
+          )}
+          </Droppable>
+        </DragDropContext>
       </div>
     );
   }

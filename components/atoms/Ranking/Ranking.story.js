@@ -15,14 +15,17 @@ stories.add('default', () => (
       {
         label: 'Essential Spending',
         secondaryLabel: '$8,345',
+        id: 'aa',
       },
       {
         label: 'Healthcare Spending',
         secondaryLabel: '$1,000',
+        id: 'bb',
       },
       {
         label: 'Lifestyle Spending',
         secondaryLabel: '$13,000',
+        id: 'cc',
       },
     ]}
   />

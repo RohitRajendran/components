@@ -40,10 +40,10 @@
     "@sambego/storybook-state": "*",
     "@storybook/addon-a11y": "*",
     "@storybook/addon-backgrounds": "*",
+    "@storybook/addon-info": "*",
     "@storybook/addon-knobs": "*",
     "@storybook/addon-viewport": "*",
     "@storybook/react": "*",
-    "@storybook/addon-info": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
@@ -101,5 +101,8 @@
     "react-router": "*",
     "react-router-dom": "*",
     "react-text-mask": "*"
+  },
+  "dependencies": {
+    "react-beautiful-dnd": "^10.1.0"
   }
 }
