@@ -2,7 +2,6 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
 
 .ranking-list {
   margin: 0;
-  border: 1px solid $white-seven;
 
   .ranking-controls {
     display: none;
@@ -42,26 +41,49 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
     margin: 0;
     list-style-type: none;
 
+    &.idle {
+      li:last-child {
+        border-top: 0;
+      }
+
+      li:first-child {
+        border-bottom: 0;
+      }
+    }
+
+    &.dragging {
+      li {
+        border: 1px solid $white-seven;
+      }
+    }
+
     li {
-      padding: 1.4rem;
-      margin-bottom: 0;
-      background-color: $white-four;
-      border: 1px solid transparent;
+      border: 1px solid $white-seven;
+
+      &.dragging {
+        border: 1px solid $violet-blue;
+        box-shadow: 0 0 4px 0 $hover-shadow;
+      }
+
+      .inner {
+        padding: 1.4rem;
+        margin-bottom: 0;
+        background-color: $white-four;
+        border: 1px solid transparent;
+      }
 
       label {
         padding-left: 2.7rem;
       }
 
-      &:not(:last-child) {
-        border-bottom: 1px solid $white-seven;
-      }
-
       &:hover,
       &:focus {
-        z-index: 30;
-        border: 1px solid $violet-blue;
-        box-shadow: 0 0 4px 0 $hover-shadow;
-        outline: none;
+        .inner {
+          z-index: 30;
+          border: 1px solid $violet-blue;
+          box-shadow: 0 0 4px 0 $hover-shadow;
+          outline: none;
+        }
 
         &:last-child {
           .down {

@@ -1,32 +1,49 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf, forceReRender} from '@storybook/react';
 import Ranking from './Ranking';
 import RankingReadme from './Ranking.md';
 import {withReadme} from 'storybook-readme';
+import {text} from '@storybook/addon-knobs';
+import {StateDecorator, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Atoms/Ranking', module);
 
-stories.addDecorator(withReadme(RankingReadme));
+const store = new Store({
+  default: [
+    {
+      label: 'Montezuma',
+      secondaryLabel: '$8,345',
+      value: 'montezuma',
+    },
+    {
+      label: 'Pica',
+      secondaryLabel: '$1,000',
+      value: 'pica',
+    },
+    {
+      label: 'Pixie',
+      secondaryLabel: '$13,000',
+      value: 'pixie',
+    },
+  ],
+});
+
+store.subscribe(() => {
+  forceReRender();
+});
+
+stories
+  .addDecorator(withReadme(RankingReadme))
+  .addDecorator(StateDecorator(store));
+
+const defaultProps = (name) => ({
+  name: text('name', name),
+});
 
 stories.add('default', () => (
   <Ranking
-    name="order"
-    items={[
-      {
-        label: 'Essential Spending',
-        secondaryLabel: '$8,345',
-        id: 'aa',
-      },
-      {
-        label: 'Healthcare Spending',
-        secondaryLabel: '$1,000',
-        id: 'bb',
-      },
-      {
-        label: 'Lifestyle Spending',
-        secondaryLabel: '$13,000',
-        id: 'cc',
-      },
-    ]}
+    items={store.get('default')}
+    onChange={(name, value) => store.set({[name]: value})}
+    {...defaultProps('default')}
   />
 ));
