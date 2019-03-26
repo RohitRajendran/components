@@ -74,8 +74,6 @@ FormSummary.propTypes = {
       ).isRequired,
     })
   ).isRequired,
-  /** The url for this current step which is used for the edit button. */
-  cardUrl: PropTypes.string.isRequired,
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),
   /** A shorter version of the card title. */

@@ -1,12 +1,12 @@
-/** @module SelectButtons */
+/** @module Checkboxes */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 
-import './SelectButtons.scss';
+import './Checkboxes.scss';
 
-const SelectButtons = ({
+const Checkboxes = ({
   name,
   disabled,
   table,
@@ -106,7 +106,7 @@ const SelectButtons = ({
   );
 };
 
-SelectButtons.propTypes = {
+Checkboxes.propTypes = {
   /** A string representing the name of the select button group. For example `yesNo` or something similar. */
   name: PropTypes.string.isRequired,
   /** Additional classes to apply to the container. */
@@ -138,4 +138,4 @@ SelectButtons.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default SelectButtons;
+export default Checkboxes;

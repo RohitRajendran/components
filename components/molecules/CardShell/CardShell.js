@@ -23,6 +23,8 @@ export const validateChildren = (children) => {
           );
         } else if (child.props.mask) {
           return maskEnum[child.props.mask].regex.test(child.props.value);
+        } else if (Array.isArray(child.props.value)) {
+          return Boolean(child.props.value.length > 0);
         }
         return Boolean(child.props.value);
       } else if (
@@ -99,6 +101,7 @@ class CardShell extends Component {
       isCollapsed,
       loading,
       summary,
+      onChange,
     } = this.props;
 
     const isInvalid = !validateChildren(children);
@@ -119,7 +122,7 @@ class CardShell extends Component {
         {isCollapsed ? (
           summary
         ) : (
-          <form onChange={this.onChange} onSubmit={this.onSubmit}>
+          <form onChange={onChange && this.onChange} onSubmit={this.onSubmit}>
             {children}
 
             <div className="card-after-content uic--d-flex uic--align-items-center uic--flex-column">

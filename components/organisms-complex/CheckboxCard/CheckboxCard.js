@@ -1,31 +1,35 @@
-/** @module RadioButtonCard */
+/** @module CheckboxCard */
 import PropTypes from 'prop-types';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
 /**
  * Gets the label of a given value
  * @param {array<object>} options Array of options available
- * @param {any} currValue The value to look for
- * @returns {string} answer label
+ * @param {Array<any>} currValue The value to look for
+ * @returns {Array<string>} answer labels
  */
 const getSelectedAnswerLabel = (options, currValue) => {
-  const option = options.find((opt) => opt.value === currValue);
-  if (option) {
-    return option.label;
-  }
+  return currValue.map((val) => {
+    const option = options.find((opt) => opt.value === val);
+
+    if (option) {
+      return option.label;
+    }
+  });
 };
 
-/** Displays the RadioButtonCard component.
+/** Displays the CheckboxCard component.
  * @param {object} props - Component props.
- * @returns {JSX} - JSX representation of the RadioButtonCard component.
+ * @returns {JSX} - JSX representation of the CheckboxCard component.
  */
-const RadioButtonCard = ({
+const CheckboxCard = ({
   answers,
   editCard,
-  radioButtonOptions,
+  onChange,
+  checkboxOptions,
   shortTitle,
   title,
   ...props
@@ -39,49 +43,48 @@ const RadioButtonCard = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [
-              getSelectedAnswerLabel(
-                radioButtonOptions.options,
-                radioButtonOptions.value
-              ),
-            ]
+            answers ||
+            getSelectedAnswerLabel(
+              checkboxOptions.options,
+              checkboxOptions.value
+            )
           }
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <RadioButtons {...radioButtonOptions} required />
+      <Checkboxes {...checkboxOptions} onChange={onChange} required />
     </QuestionCard>
   );
 };
 
-export default RadioButtonCard;
+export default CheckboxCard;
 
-RadioButtonCard.propTypes = {
-  /** Values to pass into radio button */
-  radioButtonOptions: PropTypes.shape({
-    /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
+CheckboxCard.propTypes = {
+  /** Values to pass into checkbox group */
+  checkboxOptions: PropTypes.shape({
+    /** A string representing the name of the checkbox group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
-    /** Renders the radio button group in a table. */
+    /** Renders the checkbox group in a table. */
     table: PropTypes.bool,
-    /** The current selected option in the radio button group. */
-    value: PropTypes.string.isRequired,
-    /** An array of objects containing options that should be rendered. */
+    /** The current selected option in the checkbox group. */
+    value: PropTypes.array.isRequired,
+    /** An array of objects containing options that should be rendered. These options are explained below. */
     options: PropTypes.arrayOf(
       PropTypes.shape({
-        /** The value of the button. */
+        /** The value of the checkbox, for example `yes` or `no`. */
         value: PropTypes.string.isRequired,
-        /** The label of the button. */
+        /** The text that should appear next to the checkbox. */
         label: PropTypes.string.isRequired,
-        /** Optional followup input JSX. */
+        /** Renders a followup input or message if the checkbox is selected. */
         followup: PropTypes.node,
-        /** Label to appear to the right of the selection. */
+        /** Displays a secondary label to the far right of the checkbox.  */
         secondaryLabel: PropTypes.string,
         /** Disables the option. */
         disabled: PropTypes.bool,
       })
-    ).isRequired,
+    ),
   }),
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers: PropTypes.arrayOf(PropTypes.string),
@@ -124,6 +127,6 @@ RadioButtonCard.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
-RadioButtonCard.defaultProps = {
+CheckboxCard.defaultProps = {
   buttonText: 'Continue',
 };

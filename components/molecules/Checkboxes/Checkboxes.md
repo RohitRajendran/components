@@ -1,11 +1,11 @@
-# SelectButtons Component
+# Checkboxes Component
 
-The SelectButtons component renders a group of HTML select buttons with a number of customization options.
+The Checkboxes component renders a group of HTML select buttons with a number of customization options.
 
 ## Example 🚀
 
 ```javascript
-<SelectButtons
+<Checkboxes
   name="bestCat"
   table={false}
   options={[

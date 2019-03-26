@@ -2,13 +2,13 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import {stub} from 'sinon';
-import SelectButtons from './SelectButtons';
+import Checkboxes from './Checkboxes';
 
-test('SelectButtons - Should be able to render a basic question.', (t) => {
+test('Checkboxes - Should be able to render a basic question.', (t) => {
   t.plan(2);
 
   const component = mount(
-    <SelectButtons
+    <Checkboxes
       name="yesNo"
       options={[
         {
@@ -44,9 +44,9 @@ test('SelectButtons - Should be able to render a basic question.', (t) => {
   );
 });
 
-test('SelectButtons - Should be able to display a secondaryLabel', (t) => {
+test('Checkboxes - Should be able to display a secondaryLabel', (t) => {
   const component = mount(
-    <SelectButtons
+    <Checkboxes
       name="yesNo"
       options={[
         {
@@ -69,9 +69,9 @@ test('SelectButtons - Should be able to display a secondaryLabel', (t) => {
   t.end();
 });
 
-test('SelectButtons - Should be able to display a followup question', (t) => {
+test('Checkboxes - Should be able to display a followup question', (t) => {
   const component = mount(
-    <SelectButtons
+    <Checkboxes
       name="yesNo"
       options={[
         {
@@ -97,9 +97,9 @@ test('SelectButtons - Should be able to display a followup question', (t) => {
   t.end();
 });
 
-test('SelectButtons - Followup question should be hidden if the parent question is not selected', (t) => {
+test('Checkboxes - Followup question should be hidden if the parent question is not selected', (t) => {
   const component = mount(
-    <SelectButtons
+    <Checkboxes
       name="yesNo"
       options={[
         {
@@ -125,7 +125,7 @@ test('SelectButtons - Followup question should be hidden if the parent question 
   t.end();
 });
 
-test('SelectButtons - onChange should pass back the correct values.', (t) => {
+test('Checkboxes - onChange should pass back the correct values.', (t) => {
   const props = {
     name: 'yesNo',
     options: [
@@ -142,7 +142,7 @@ test('SelectButtons - onChange should pass back the correct values.', (t) => {
     onChange: stub(),
   };
 
-  const component = mount(<SelectButtons {...props} />);
+  const component = mount(<Checkboxes {...props} />);
 
   component
     .find('input')

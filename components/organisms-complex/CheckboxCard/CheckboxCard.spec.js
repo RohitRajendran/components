@@ -3,14 +3,14 @@ import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
-import RadioButtonCard from './RadioButtonCard';
+import CheckboxCard from './CheckboxCard';
 
-test('RadioButtonCard - renders', (t) => {
+test('CheckboxCard - renders', (t) => {
   const props = {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    radioButtonOptions: {
+    checkboxOptions: {
       name: 'yesNo',
       options: [
         {
@@ -22,13 +22,13 @@ test('RadioButtonCard - renders', (t) => {
           value: 'no',
         },
       ],
-      value: 'no',
+      value: ['no'],
     },
     onChange: stub(),
     cancelChanges: () => true,
   };
 
-  const comp = mount(<RadioButtonCard {...props}>Content</RadioButtonCard>);
+  const comp = mount(<CheckboxCard {...props}>Content</CheckboxCard>);
 
   t.equals(
     comp
@@ -52,7 +52,7 @@ test('RadioButtonCard - renders', (t) => {
   t.end();
 });
 
-test('RadioButtonCard - collapsed with answer override', (t) => {
+test('CheckboxCard - collapsed with answer override', (t) => {
   const props = {
     onSubmit: () => true,
     name: 'test',
@@ -62,7 +62,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    checkboxOptions: {
       name: 'yesNo',
       options: [
         {
@@ -74,7 +74,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
           value: 'no',
         },
       ],
-      value: 'no',
+      value: ['no'],
     },
     onChange: stub(),
     answers: ['Yup'],
@@ -83,7 +83,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
 
   const comp = mount(
     <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
+      <CheckboxCard {...props}>Content</CheckboxCard>
     </MemoryRouter>
   );
 
@@ -106,7 +106,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
   t.end();
 });
 
-test('RadioButtonCard - collapsed with answer override', (t) => {
+test('CheckboxCard - collapsed without answer override', (t) => {
   const props = {
     onSubmit: () => true,
     name: 'test',
@@ -116,7 +116,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    checkboxOptions: {
       name: 'yesNo',
       options: [
         {
@@ -128,7 +128,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
           value: 'no',
         },
       ],
-      value: 'no',
+      value: ['no', 'yes'],
     },
     onChange: stub(),
     cancelChanges: () => true,
@@ -136,23 +136,16 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
 
   const comp = mount(
     <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
+      <CheckboxCard {...props}>Content</CheckboxCard>
     </MemoryRouter>
   );
 
-  t.equals(
-    comp
-      .find('p')
-      .first()
-      .text(),
-    'No',
-    'Shows answer'
-  );
+  t.equals(comp.find('p').length, 2, 'Shows both answers');
 
   t.end();
 });
 
-test('RadioButtonCard - latest collapsed', (t) => {
+test('CheckboxCard - latest collapsed', (t) => {
   const props = {
     onSubmit: () => true,
     name: 'test',
@@ -163,7 +156,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    checkboxOptions: {
       name: 'yesNo',
       options: [
         {
@@ -175,7 +168,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
           value: 'no',
         },
       ],
-      value: 'no',
+      value: [],
     },
     onChange: stub(),
     cancelChanges: () => true,
@@ -183,7 +176,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
 
   const comp = mount(
     <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
+      <CheckboxCard {...props}>Content</CheckboxCard>
     </MemoryRouter>
   );
 

@@ -103,7 +103,7 @@ QuestionCard.propTypes = {
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */
   beforeButton: PropTypes.node,
-  /** Changes the text in the submit button/ */
+  /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
   cancelChanges: PropTypes.func.isRequired,
