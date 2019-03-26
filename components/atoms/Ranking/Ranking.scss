@@ -59,6 +59,7 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
 
     li {
       border: 1px solid $white-seven;
+      color: $slate;
 
       &.dragging {
         border: 1px solid $violet-blue;

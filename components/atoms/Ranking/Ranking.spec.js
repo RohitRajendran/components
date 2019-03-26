@@ -142,3 +142,171 @@ test('Ranking - onDragEnd', (t) => {
     'State return early and not modify the order.'
   );
 });
+
+test('Ranking - changeOrder button press simulation', (t) => {
+  t.plan(2);
+
+  const props = {
+    items: [
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+    ],
+    name: 'theBestCat',
+    onChange: stub(),
+  };
+
+  const component = mount(<Ranking {...props} />);
+
+  component
+    .find('li')
+    .at(1)
+    .find('.up')
+    .prop('onClick')();
+
+  t.deepEquals(
+    component.state().items,
+    [
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+    ],
+    'Should modify the order.'
+  );
+
+  component
+    .find('li')
+    .at(1)
+    .find('.down')
+    .prop('onClick')();
+
+  t.deepEquals(
+    component.state().items,
+    [
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+    ],
+    'Should modify the order again.'
+  );
+});
+
+test('Ranking - changeOrder key down simulation', (t) => {
+  t.plan(2);
+
+  const props = {
+    items: [
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+    ],
+    name: 'theBestCat',
+    onChange: stub(),
+  };
+
+  const component = mount(<Ranking {...props} />);
+
+  component
+    .find('li')
+    .at(1)
+    .find('.up')
+    .prop('onKeyDown')();
+
+  t.deepEquals(
+    component.state().items,
+    [
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+    ],
+    'Should modify the order.'
+  );
+
+  component
+    .find('li')
+    .at(1)
+    .find('.down')
+    .prop('onKeyDown')();
+
+  t.deepEquals(
+    component.state().items,
+    [
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        value: 'pica',
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        value: 'pixie',
+      },
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        value: 'montezuma',
+      },
+    ],
+    'Should modify the order again.'
+  );
+});

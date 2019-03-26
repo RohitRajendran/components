@@ -95,7 +95,9 @@ class Ranking extends Component {
                             <div
                               className="up uic--position-absolute uic--w-100"
                               onClick={() => this.changeOrder(index, index - 1)}
-                              onKeyUp={() => this.changeOrder(index, index - 1)}
+                              onKeyDown={() =>
+                                this.changeOrder(index, index - 1)
+                              }
                               role="button"
                               tabIndex={index + 1}
                             >
