@@ -21,7 +21,7 @@ class Ranking extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  /** Adjusts the order of the array.
+  /** Adjusts the order of the items array on button press or drag event.
    * @param {integer} fromIndex - The original index of the item.
    * @param {integer} toIndex - The new placement of the item.
    * @returns {undefined}
