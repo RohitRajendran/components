@@ -1,6 +1,7 @@
 /** @module Ranking */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import ArrowEllipsisIcon from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import {dsmColors as colors} from '~constants/js/colors';
@@ -76,68 +77,84 @@ class Ranking extends Component {
                     key={item.value}
                     draggableId={item.value}
                     index={index}
+                    isDragDisabled={!item.movable}
                   >
-                    {(draggableProvided, draggableSnapshot) => (
-                      <li
-                        key={index}
-                        tabIndex={index + 1}
-                        ref={draggableProvided.innerRef}
-                        {...draggableProvided.draggableProps}
-                        {...draggableProvided.dragHandleProps}
-                        className={
-                          draggableSnapshot.isDragging ? 'dragging' : 'idle'
-                        }
-                      >
-                        {draggableProvided.placeholder}
-                        <div className="uic--position-relative inner uic--h-100">
-                          <div className="ranking-controls">
-                            <div
-                              className="up uic--position-absolute uic--w-100"
-                              onClick={() => this.changeOrder(index, index - 1)}
-                              onKeyDown={() =>
-                                this.changeOrder(index, index - 1)
-                              }
-                              role="button"
-                              tabIndex={index + 1}
-                            >
-                              <ArrowEllipsisIcon
-                                height="24"
-                                width="24"
-                                fill={colors.royal}
-                              />
-                            </div>
-                            <div
-                              className="down uic--position-absolute uic--w-100"
-                              onClick={() => this.changeOrder(index, index + 1)}
-                              onKeyDown={() =>
-                                this.changeOrder(index, index + 1)
-                              }
-                              role="button"
-                              tabIndex={index + 1}
-                            >
-                              <ArrowEllipsisIcon
-                                height="24"
-                                width="24"
-                                fill={colors.royal}
-                              />
-                            </div>
-                          </div>
+                    {(draggableProvided, draggableSnapshot) => {
+                      const innerClasses = classNames({
+                        movable: item.movable,
+                        'uic--position-relative': true,
+                        'uic--h-100': true,
+                        inner: true,
+                      });
 
-                          <span className="uic--d-flex uic--justify-content-between">
-                            <span className="index uic--position-absolute">
-                              {index + 1}
-                            </span>
-                            <label>{item.label}</label>
-
-                            {item.secondaryLabel && (
-                              <span className="label-value-secondary">
-                                {item.secondaryLabel}
-                              </span>
+                      return (
+                        <li
+                          key={index}
+                          tabIndex={index + 1}
+                          ref={draggableProvided.innerRef}
+                          {...draggableProvided.draggableProps}
+                          {...draggableProvided.dragHandleProps}
+                          className={
+                            draggableSnapshot.isDragging ? 'dragging' : 'idle'
+                          }
+                        >
+                          {draggableProvided.placeholder}
+                          <div className={innerClasses}>
+                            {item.movable && (
+                              <div className="ranking-controls">
+                                <div
+                                  className="up uic--position-absolute uic--w-100"
+                                  onClick={() =>
+                                    this.changeOrder(index, index - 1)
+                                  }
+                                  onKeyDown={() =>
+                                    this.changeOrder(index, index - 1)
+                                  }
+                                  role="button"
+                                  tabIndex={index + 1}
+                                >
+                                  <ArrowEllipsisIcon
+                                    height="24"
+                                    width="24"
+                                    fill={colors.royal}
+                                  />
+                                </div>
+                                <div
+                                  className="down uic--position-absolute uic--w-100"
+                                  onClick={() =>
+                                    this.changeOrder(index, index + 1)
+                                  }
+                                  onKeyDown={() =>
+                                    this.changeOrder(index, index + 1)
+                                  }
+                                  role="button"
+                                  tabIndex={index + 1}
+                                >
+                                  <ArrowEllipsisIcon
+                                    height="24"
+                                    width="24"
+                                    fill={colors.royal}
+                                  />
+                                </div>
+                              </div>
                             )}
-                          </span>
-                        </div>
-                      </li>
-                    )}
+
+                            <span className="uic--d-flex uic--justify-content-between">
+                              <span className="index uic--position-absolute">
+                                {index + 1}
+                              </span>
+                              <label>{item.label}</label>
+
+                              {item.secondaryLabel && (
+                                <span className="label-value-secondary">
+                                  {item.secondaryLabel}
+                                </span>
+                              )}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    }}
                   </Draggable>
                 ))}
                 {droppableProvided.placeholder}
@@ -162,6 +179,8 @@ Ranking.propTypes = {
       value: PropTypes.string.isRequired,
       /** The secondary label to appear to the right of the item. *I*/
       secondaryLabel: PropTypes.string,
+      /** Determines if the item in the list should be movable or not. */
+      movable: PropTypes.bool,
     })
   ).isRequired,
   /** Handler which passes back the name, and the re-ordered array on change. */

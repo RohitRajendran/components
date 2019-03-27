@@ -77,9 +77,14 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
         padding-left: 2.7rem;
       }
 
-      &:hover,
       &:focus {
-        .inner {
+        outline: none;
+      }
+
+      &:hover {
+        outline: none;
+
+        .inner.movable {
           z-index: 30;
           border: 1px solid $violet-blue;
           box-shadow: 0 0 4px 0 $hover-shadow;

@@ -14,16 +14,19 @@ const store = new Store({
       label: 'Montezuma',
       secondaryLabel: '$8,345',
       value: 'montezuma',
+      movable: false,
     },
     {
       label: 'Pica',
       secondaryLabel: '$1,000',
       value: 'pica',
+      movable: true,
     },
     {
       label: 'Pixie',
       secondaryLabel: '$13,000',
       value: 'pixie',
+      movable: true,
     },
   ],
 });
