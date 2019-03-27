@@ -9,11 +9,10 @@ const stories = storiesOf('Atoms/Icons/CloseIcon', module);
 
 stories.addDecorator(withReadme(CloseIconReadme));
 
-stories.add('default', () => (
-  <CloseIcon
-    fill={text('fill', '#000')}
-    height={text('height', '20')}
-    width={text('width', '20')}
-    className={text('className')}
-  />
-));
+const defaultProps = () => ({
+  fill: text('fill', '#000'),
+  height: text('height', '20'),
+  width: text('width', '20'),
+});
+
+stories.add('default', () => <CloseIcon {...defaultProps()} />);

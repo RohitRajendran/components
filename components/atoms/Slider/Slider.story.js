@@ -22,35 +22,19 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const optionDefaults = (variant, name) => ({
+const defaultProps = (variant, formName) => ({
   tooltipStickyVariant: select('Variant', ['green', 'purple', null], variant),
-  name: text('name', name),
   leftAnnotate: text('leftAnnotate', 'Less Cats'),
   rightAnnotate: text('rightAnnotate', 'More Cats'),
   tooltip: text('tooltip', 'How many cats would you like?'),
   tooltipStickyPosition: number('tooltipStickyPosition', 5),
+  value: store.get(formName),
+  name: formName,
+  onChange: (name, value) => store.set({[name]: value}),
 });
 
-stories.add('default', () => (
-  <Slider
-    value={store.get('slider1')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...optionDefaults(null, 'slider1')}
-  />
-));
+stories.add('default', () => <Slider {...defaultProps(null, 'slider1')} />);
 
-stories.add('green', () => (
-  <Slider
-    value={store.get('slider2')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...optionDefaults('green', 'slider2')}
-  />
-));
+stories.add('green', () => <Slider {...defaultProps('green', 'slider2')} />);
 
-stories.add('purple', () => (
-  <Slider
-    value={store.get('slider3')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...optionDefaults('purple', 'slider3')}
-  />
-));
+stories.add('purple', () => <Slider {...defaultProps('purple', 'slider3')} />);

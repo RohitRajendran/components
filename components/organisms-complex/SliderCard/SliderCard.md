@@ -21,11 +21,12 @@ The collapsed state of this card uses the Simple Summary component.
     leftAnnotate: 'Lower Risk',
     rightAnnotate: 'Higher Risk',
     name: 'slider',
-    tooltip:
+    tooltip: (
       <h3>
         You can pass any arbitrary node into the tooltip to style it how you'd
         like
-      </h3>,
+      </h3>
+    ),
     tooltipStickyVariant: 'green',
   }}
 />
@@ -51,11 +52,12 @@ This will work similar to the existing Hogwarts Screen components, just set cont
     leftAnnotate: 'Lower Risk',
     rightAnnotate: 'Higher Risk',
     name: 'slider',
-    tooltip:
+    tooltip: (
       <h3>
         You can pass any arbitrary node into the tooltip to style it how you'd
         like
-      </h3>,
+      </h3>
+    ),
     tooltipStickyVariant: 'green',
   }}
 />

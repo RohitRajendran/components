@@ -9,11 +9,10 @@ const stories = storiesOf('Atoms/Icons/StarIcon', module);
 
 stories.addDecorator(withReadme(StarIconReadme));
 
-stories.add('default', () => (
-  <StarIcon
-    fill={text('fill', '#000')}
-    height={text('height', '20')}
-    width={text('width', '20')}
-    className={text('className')}
-  />
-));
+const defaultProps = () => ({
+  fill: text('fill', '#000'),
+  height: text('height', '20'),
+  width: text('width', '20'),
+});
+
+stories.add('default', () => <StarIcon {...defaultProps()} />);
