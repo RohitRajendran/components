@@ -260,7 +260,6 @@ class Input extends Component {
       placeholder,
       value,
       required,
-      onChange,
       maxLength,
       min,
       max,
@@ -297,6 +296,9 @@ class Input extends Component {
         this.forceUpdate();
         this.toggleFocus();
       };
+    }
+    if (onChange) {
+      attrs.onChange = (e) => onChange(name, e.target.value);
     }
 
     const containerClasses = classNames(
@@ -376,24 +378,15 @@ Input.propTypes = {
   description: PropTypes.string,
   /** The type of input field. */
   type: PropTypes.oneOf([
-    'button',
-    'checkbox',
-    'color',
     'date',
     'datetime-local',
     'email',
     'file',
     'hidden',
-    'image',
     'month',
     'number',
     'password',
-    'radio',
-    'range',
-    'reset',
     'search',
-    'search',
-    'submit',
     'tel',
     'text',
     'time',

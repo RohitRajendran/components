@@ -202,6 +202,19 @@ test('CardShell - validates different input constraints', (t) => {
         label="test"
         required
       />,
+      // 7
+      <Input
+        key={5}
+        name="date"
+        type="text"
+        value={values.date}
+        float
+        onChange={stub()}
+        label="test"
+        isValid={() => values.date !== 'nope'}
+        required
+      />,
+      // 8
       <RadioButtons
         name="bank"
         table
@@ -232,6 +245,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
+      // 8
       <RadioButtons
         name="bank"
         table
@@ -277,6 +291,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
+      // 9
       <Checkboxes
         name="bank"
         table
@@ -307,6 +322,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
+      // 10
       <Checkboxes
         name="bank"
         table
@@ -352,6 +368,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
+      // 11
       <Slider
         name="slider"
         value={values.slider}
@@ -359,6 +376,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="slider"
         required
       />,
+      // 12
       <DropDown
         name="dropdownExample"
         label="dropdown"

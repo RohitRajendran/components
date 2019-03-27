@@ -6,9 +6,12 @@ import Input, {
   commaSeparatedMask,
   tickerMask,
 } from './Input';
+import {spy} from 'sinon';
 
 test('Input - Renders props as attributes on the input', (t) => {
-  t.plan(8);
+  t.plan(9);
+  const onChangeSpy = spy();
+
   const component = shallow(
     <Input
       name="fancy_input"
@@ -18,6 +21,7 @@ test('Input - Renders props as attributes on the input', (t) => {
       label="Value"
       pattern="^\d{5}$"
       maxLength={5}
+      onChange={onChangeSpy}
     />
   );
   const componentInputProps = component.find('input').props();
@@ -30,6 +34,9 @@ test('Input - Renders props as attributes on the input', (t) => {
   t.equal(componentInputProps.required, undefined); // eslint-disable-line no-undefined
   t.equal(componentInputProps.pattern, '^\\d{5}$');
   t.equal(componentInputProps.maxLength, 5);
+
+  componentInputProps.onChange({target: {value: 5}});
+  t.deepEquals(onChangeSpy.args[0], ['fancy_input', 5]);
 });
 
 test('Input - Renders a masked input if mask is provided', (t) => {

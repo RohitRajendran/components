@@ -24,7 +24,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const inputMask = (defaultMask) =>
+export const inputMask = (defaultMask) =>
   select(
     'mask',
     [

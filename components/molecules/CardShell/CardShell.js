@@ -23,6 +23,8 @@ export const validateChildren = (children) => {
           );
         } else if (child.props.mask) {
           return maskEnum[child.props.mask].regex.test(child.props.value);
+        } else if (child.props.isValid) {
+          return child.props.isValid();
         } else if (Array.isArray(child.props.value)) {
           return Boolean(child.props.value.length > 0);
         }
