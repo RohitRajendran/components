@@ -113,7 +113,7 @@ Slider.propTypes = {
   /** The name of the component. */
   name: PropTypes.string.isRequired,
   /** Passes back the current value and the name of the slider on change. */
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   /** The current value of the slider. */
   value: PropTypes.number,
   /** Data to display inside of the tooltip. */

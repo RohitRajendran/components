@@ -26,6 +26,7 @@ import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCard';
 import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 import InputCard from '~components/organisms-complex/InputCard/InputCard';
+import SliderCard from '~components/organisms-complex/SliderCard/SliderCard';
 
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
@@ -53,4 +54,5 @@ export {
   RadioButtonCard,
   CheckboxCard,
   InputCard,
+  SliderCard,
 };

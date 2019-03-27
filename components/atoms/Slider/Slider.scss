@@ -13,7 +13,12 @@
 }
 
 .slider-wrapper {
-  margin: 16rem 11rem 0rem 11rem;
+  margin: 16rem 9rem 9rem;
+
+  @include media-breakpoint-down(xs) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
   &.highlighted-green {
     .tooltip {
@@ -95,6 +100,9 @@
       border-width: 1.04rem 0.8rem 0 0.8rem;
       left: 46.5%;
       bottom: -1rem;
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
     }
   }
 
@@ -115,7 +123,7 @@
         border-radius: 50%;
         left: 44.5%;
         top: -3.4rem;
-        z-index: -5;
+        z-index: 1;
       }
     }
 
@@ -141,6 +149,11 @@
         $position: percentage(($i - 1) * 1/9);
         left: $position;
       }
+      @include media-breakpoint-down(xs) {
+        &.tooltip {
+          left: 50%;
+        }
+      }
     }
   }
 
@@ -151,7 +164,7 @@
     .rc-slider-rail {
       height: 2px;
       color: $grey;
-      z-index: -10;
+      z-index: 0;
     }
 
     .rc-slider-dot {
