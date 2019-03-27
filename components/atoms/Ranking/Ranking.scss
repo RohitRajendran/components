@@ -81,7 +81,8 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
         outline: none;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         outline: none;
 
         .inner.movable {

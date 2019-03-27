@@ -73,7 +73,7 @@ stories.add('default', () => (
 
 stories.add('movable disabled', () => (
   <Ranking
-    items={store.get('default')}
+    items={store.get('disabled')}
     onChange={(name, value) => store.set({[name]: value})}
     {...defaultProps('disabled')}
   />
