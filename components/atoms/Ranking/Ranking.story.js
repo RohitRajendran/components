@@ -49,6 +49,27 @@ const store = new Store({
       movable: true,
     },
   ],
+  focus: [
+    {
+      label: 'Montezuma',
+      secondaryLabel: '$8,345',
+      value: 'montezuma',
+      movable: true,
+      focus: true,
+    },
+    {
+      label: 'Pica',
+      secondaryLabel: '$1,000',
+      value: 'pica',
+      movable: false,
+    },
+    {
+      label: 'Pixie',
+      secondaryLabel: '$13,000',
+      value: 'pixie',
+      movable: false,
+    },
+  ],
 });
 
 store.subscribe(() => {
@@ -76,5 +97,13 @@ stories.add('movable disabled', () => (
     items={store.get('disabled')}
     onChange={(name, value) => store.set({[name]: value})}
     {...defaultProps('disabled')}
+  />
+));
+
+stories.add('focus', () => (
+  <Ranking
+    items={store.get('focus')}
+    onChange={(name, value) => store.set({[name]: value})}
+    {...defaultProps('focus')}
   />
 ));

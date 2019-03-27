@@ -4,8 +4,12 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
   margin: 0;
 
   .ranking-controls {
-    display: none;
     cursor: pointer;
+
+    &.default-control {
+      // Required as focus controlled ranking requires a :hover pseudo.
+      display: none;
+    }
 
     .up,
     .down {
@@ -61,6 +65,12 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       border: 1px solid $white-seven;
       color: $slate;
 
+      &.focus-control {
+        &:focus {
+          box-shadow: 0 0 4px 0 $hover-shadow;
+        }
+      }
+
       &.dragging {
         border: 1px solid $violet-blue;
         box-shadow: 0 0 4px 0 $hover-shadow;
@@ -71,6 +81,24 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
         margin-bottom: 0;
         background-color: $white-four;
         border: 1px solid transparent;
+
+        &.focus-control {
+          z-index: 30;
+          border: 1px solid $violet-blue;
+          box-shadow: 0 0 4px 0 $hover-shadow;
+        }
+      }
+
+      &:last-child {
+        .down {
+          display: none;
+        }
+      }
+
+      &:first-child {
+        .up {
+          display: none;
+        }
       }
 
       label {
@@ -90,18 +118,6 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
           border: 1px solid $violet-blue;
           box-shadow: 0 0 4px 0 $hover-shadow;
           outline: none;
-        }
-
-        &:last-child {
-          .down {
-            display: none;
-          }
-        }
-
-        &:first-child {
-          .up {
-            display: none;
-          }
         }
 
         .ranking-controls {

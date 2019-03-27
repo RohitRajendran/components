@@ -85,6 +85,18 @@ class Ranking extends Component {
                         'uic--position-relative': true,
                         'uic--h-100': true,
                         inner: true,
+                        'focus-control': item.focus,
+                      });
+
+                      const rankingControlClasses = classNames({
+                        'ranking-controls': true,
+                        'default-control': !item.focus,
+                      });
+
+                      const liClasses = classNames({
+                        dragging: draggableSnapshot.isDragging,
+                        idle: !draggableSnapshot.isDragging,
+                        'focus-control': item.focus,
                       });
 
                       return (
@@ -94,14 +106,12 @@ class Ranking extends Component {
                           ref={draggableProvided.innerRef}
                           {...draggableProvided.draggableProps}
                           {...draggableProvided.dragHandleProps}
-                          className={
-                            draggableSnapshot.isDragging ? 'dragging' : 'idle'
-                          }
+                          className={liClasses}
                         >
                           {draggableProvided.placeholder}
                           <div className={innerClasses}>
                             {item.movable && (
-                              <div className="ranking-controls uic--d-none">
+                              <div className={rankingControlClasses}>
                                 <div
                                   className="up uic--position-absolute uic--w-100"
                                   onClick={() =>
@@ -181,6 +191,8 @@ Ranking.propTypes = {
       secondaryLabel: PropTypes.string,
       /** Determines if the item in the list should be movable or not. */
       movable: PropTypes.bool,
+      /** Set to true if this is the only item in the list which is movable, and you'd like to always display the controls. */
+      focus: PropTypes.bool,
     })
   ).isRequired,
   /** Handler which passes back the name, and the re-ordered array on change. */
