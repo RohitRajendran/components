@@ -54,14 +54,14 @@ const store = new Store({
       label: 'Montezuma',
       secondaryLabel: '$8,345',
       value: 'montezuma',
-      movable: true,
-      focus: true,
+      movable: false,
     },
     {
       label: 'Pica',
       secondaryLabel: '$1,000',
       value: 'pica',
-      movable: false,
+      movable: true,
+      focus: true,
     },
     {
       label: 'Pixie',
