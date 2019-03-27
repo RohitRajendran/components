@@ -6,8 +6,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PostcssPrefixer = require('postcss-prefixer');
 
 const entries = glob
-  .sync('./components/**/*.js', {
-    ignore: './components/**/*.spec.js',
+  .sync('./components/**/**/*.js', {
+    ignore: ['./components/**/**/*.spec.js', './components/**/**/*.story.js'],
   })
   .reduce((allEntries, entry) => {
     const splitPath = entry.split('/');

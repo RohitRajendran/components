@@ -1,0 +1,135 @@
+$hover-shadow: rgba(77, 0, 186, 0.5);
+
+.ranking-list {
+  margin: 0;
+
+  .ranking-controls {
+    cursor: pointer;
+
+    &.default-control {
+      // Required as focus controlled ranking requires a :hover pseudo.
+      display: none;
+    }
+
+    .up,
+    .down {
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      &:focus {
+        outline: none;
+      }
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    .up {
+      top: -1rem;
+    }
+
+    .down {
+      bottom: -2rem;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  ol {
+    @include source-sans-pro(1.6rem);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    &.idle {
+      li:last-child {
+        border-top: 0;
+      }
+
+      li:first-child {
+        border-bottom: 0;
+      }
+    }
+
+    &.dragging {
+      li {
+        border: 1px solid $white-seven;
+      }
+    }
+
+    li {
+      border: 1px solid $white-seven;
+      color: $slate;
+
+      &.focus-control {
+        &:focus {
+          box-shadow: 0 0 4px 0 $hover-shadow;
+        }
+      }
+
+      &.dragging {
+        border: 1px solid $violet-blue;
+        box-shadow: 0 0 4px 0 $hover-shadow;
+      }
+
+      .inner {
+        padding: 1.4rem;
+        margin-bottom: 0;
+        background-color: $white-four;
+        border: 1px solid transparent;
+
+        &.focus-control {
+          z-index: 30;
+          border: 1px solid $violet-blue;
+          box-shadow: 0 0 4px 0 $hover-shadow;
+        }
+      }
+
+      &:last-child {
+        .down {
+          display: none;
+        }
+      }
+
+      &:first-child {
+        .up {
+          display: none;
+        }
+      }
+
+      label {
+        padding-left: 2.7rem;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover,
+      &:focus {
+        outline: none;
+
+        .inner.movable {
+          z-index: 30;
+          border: 1px solid $violet-blue;
+          box-shadow: 0 0 4px 0 $hover-shadow;
+          outline: none;
+        }
+
+        .ranking-controls {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .label-value-secondary {
+    color: $dark-blue;
+    font-weight: 800;
+    margin-left: 1rem;
+  }
+}

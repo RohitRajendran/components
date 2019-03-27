@@ -1,0 +1,25 @@
+.mcgonagall-question-card {
+  hr {
+    margin: 4rem 0;
+    border: 0;
+    border-top: 1px solid $grey;
+  }
+
+  .card-more-detail {
+    margin-top: 2.6rem;
+  }
+
+  .warning-message {
+    @include source-sans-pro(1.2rem);
+    color: $red-magenta;
+    font-weight: 600;
+    line-height: 1.6rem;
+    max-width: 38.5rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  .card-cancel {
+    margin-top: 1.2rem;
+  }
+}

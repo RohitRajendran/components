@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DOCS_BUCKET=docs.unitedincome.team
+DOCS_BUCKET=ui.unitedincome.com
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 #Parse any options passed in
@@ -25,4 +25,4 @@ echo "Bucket: ${BUCKET}"
 
 PROFILE=${AWS_PROFILE:-$PROFILENAME}
 STORYBOOK_DIR=.build/
-aws s3 sync $STORYBOOK_DIR s3://$DOCS_BUCKET/components/$BRANCH --delete
+aws s3 sync $STORYBOOK_DIR s3://$DOCS_BUCKET/$BRANCH --delete

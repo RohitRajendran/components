@@ -1,0 +1,45 @@
+.card-summary {
+  padding: 1.5rem 2rem;
+  margin: -0.3rem -0.3rem; // accounts for card border padding fix
+
+  .card-summary-label {
+    @include source-sans-pro(1.6rem);
+    color: $slate;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    word-break: break-word;
+  }
+
+  .card-summary-answer {
+    @include source-sans-pro(1.6rem);
+    color: $dark-blue;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 10px 0;
+    word-break: break-word;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(sm) {
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &.incomplete-card {
+    .card-summary-answer,
+    .btn-link {
+      color: $red-magenta;
+      font-weight: 600;
+    }
+  }
+}
+
+.mcgonagall-card.error {
+  .card-summary {
+    padding: -0.2rem -0.2rem; // accounts for card border padding fix
+  }
+}
