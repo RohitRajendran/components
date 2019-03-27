@@ -8,7 +8,7 @@ import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
-import ArrowIconEllipsis from '~components/atoms/icons/ArrowIconEllipsis/ArrowIconEllipsis';
+import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
 
