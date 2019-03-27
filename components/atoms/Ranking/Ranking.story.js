@@ -14,6 +14,26 @@ const store = new Store({
       label: 'Montezuma',
       secondaryLabel: '$8,345',
       value: 'montezuma',
+      movable: true,
+    },
+    {
+      label: 'Pica',
+      secondaryLabel: '$1,000',
+      value: 'pica',
+      movable: true,
+    },
+    {
+      label: 'Pixie',
+      secondaryLabel: '$13,000',
+      value: 'pixie',
+      movable: true,
+    },
+  ],
+  disabled: [
+    {
+      label: 'Montezuma',
+      secondaryLabel: '$8,345',
+      value: 'montezuma',
       movable: false,
     },
     {
@@ -48,5 +68,13 @@ stories.add('default', () => (
     items={store.get('default')}
     onChange={(name, value) => store.set({[name]: value})}
     {...defaultProps('default')}
+  />
+));
+
+stories.add('movable disabled', () => (
+  <Ranking
+    items={store.get('default')}
+    onChange={(name, value) => store.set({[name]: value})}
+    {...defaultProps('disabled')}
   />
 ));
