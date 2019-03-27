@@ -10,7 +10,6 @@ $button-padding: 1.6rem;
     border: 0;
     padding: 0;
     margin: 0;
-    width: 100%;
 
     &.table {
       border: 1px solid $white-seven;
@@ -38,7 +37,6 @@ $button-padding: 1.6rem;
   }
 
   .radio-input {
-    position: absolute;
     opacity: 0;
     left: 0;
 
@@ -50,9 +48,7 @@ $button-padding: 1.6rem;
   .radio-label {
     color: $slate;
     user-select: none;
-    position: relative;
     padding-left: $button-size + $button-padding;
-    width: 100%;
     cursor: pointer;
     font-weight: normal;
 
