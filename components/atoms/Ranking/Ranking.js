@@ -101,7 +101,7 @@ class Ranking extends Component {
                           {draggableProvided.placeholder}
                           <div className={innerClasses}>
                             {item.movable && (
-                              <div className="ranking-controls">
+                              <div className="ranking-controls uic--d-none">
                                 <div
                                   className="up uic--position-absolute uic--w-100"
                                   onClick={() =>
@@ -184,7 +184,7 @@ Ranking.propTypes = {
     })
   ).isRequired,
   /** Handler which passes back the name, and the re-ordered array on change. */
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Ranking;
