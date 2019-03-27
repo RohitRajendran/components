@@ -13,7 +13,7 @@ const store = new Store({
   currency: '',
   percent: '',
   date: '',
-  error: '1660 L Street',
+  errorVal: '1660 L Street',
 });
 
 stories
@@ -55,6 +55,7 @@ const defaultProps = ({
   disabled,
   mask,
   validationErrorMsg,
+  validateOnBlur,
 }) => ({
   name: formName,
   label: text('label', label),
@@ -70,7 +71,7 @@ const defaultProps = ({
   max: number('max'),
   step: number('step'),
   validationErrorMsg: text('validationErrorMsg', validationErrorMsg),
-  validateOnBlur: boolean('validateOnBlur'),
+  validateOnBlur: boolean('validateOnBlur', validateOnBlur),
   disabled: boolean('disabled', disabled),
   error: boolean('error', error),
   onChange: (name, value) => store.set({[name]: value}),
@@ -98,11 +99,12 @@ stories.add('currency', () => (
     <div className="col-xs-12">
       <Input
         {...defaultProps({
-          formName: 'amount',
+          formName: 'currency',
           label: 'Amount',
           placeholder: '0',
           mask: 'Currency',
           prepend: '$',
+          error: false,
         })}
       />
     </div>
@@ -129,6 +131,7 @@ stories.add('date', () => (
       placeholder: 'MM/DD/YYYY',
       mask: 'Date',
       validationErrorMsg: 'Not a valid date range',
+      validateOnBlur: true,
     })}
     isValid={() => store.get('date').length === 10}
   />
@@ -137,11 +140,12 @@ stories.add('date', () => (
 stories.add('error', () => (
   <Input
     {...defaultProps({
-      formName: 'error',
+      formName: 'errorVal',
       label: 'Address',
       placeholder: '1660 L Street',
       validationErrorMsg: 'Not a valid input!',
       error: true,
+      mask: null,
     })}
   />
 ));
@@ -154,6 +158,7 @@ stories.add('disabled', () => (
       description: 'This is where you live.',
       placeholder: '1660 L Street',
       disabled: true,
+      mask: null,
     })}
   />
 ));
