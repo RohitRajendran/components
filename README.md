@@ -82,7 +82,7 @@ While there are always going to be special cases, the following guidelines shoul
 2. Do not include margins on the individual components by default.
 3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
 4. Comment each PropType, this will allow for React doc gen to properly document what each one does.
-5. Components should have **100%**test coverage.
+5. Components should have **100%** test coverage.
 6. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
 7. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 8. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
