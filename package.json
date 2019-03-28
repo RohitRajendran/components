@@ -68,7 +68,6 @@
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
     "nyc": "*",
-    "optimize-css-assets-webpack-plugin": "*",
     "postcss-loader": "*",
     "postcss-prefixer": "*",
     "prettier": "*",
@@ -89,7 +88,6 @@
     "style-loader": "*",
     "tap-xunit": "*",
     "tape": "*",
-    "terser-webpack-plugin": "*",
     "text-mask-addons": "*",
     "webpack": "*",
     "webpack-cli": "*"
