@@ -71,7 +71,7 @@ stories.add('followup', () => (
           followup: (
             <div>
               <Input
-                name="followup"
+                name="input"
                 label="Alternative Name"
                 placeholder="Enter a name..."
                 value={store.get('input')}
