@@ -13,7 +13,7 @@
 }
 
 .slider-wrapper {
-  margin: 16rem 9rem 9rem;
+  margin: 16rem 5rem 9rem;
 
   @include media-breakpoint-down(xs) {
     margin-left: 1rem;
@@ -144,7 +144,18 @@
   @for $i from 1 through 10 {
     .tooltip-position-#{$i} {
       @if $i < 1 {
-        left: 0;
+        left: 0%;
+      } @else if $i == 1 {
+        left: 36px;
+        &::before {
+          left: 28.5%;
+        }
+      } @else if $i == 10 {
+        left: auto;
+        right: -63px;
+        &::before {
+          left: 64.5%;
+        }
       } @else {
         $position: percentage(($i - 1) * 1/9);
         left: $position;
