@@ -196,7 +196,7 @@ stories.add('default', () => (
 
 When learning about this library, the following resources may come in handy.
 
-* [United Income Stackoverflow](https://stackoverflow.com/c/unitedincome/questions/130)
+* [United Income Stack Overflow](https://stackoverflow.com/c/unitedincome/questions/130)
 * [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
 * [Atomic Design Principles](http://bradfrost.com/blog/post/atomic-web-design/)
 * [Percy Documentation](https://percy.io/)
