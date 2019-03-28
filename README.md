@@ -70,7 +70,7 @@ You can build a story by creating a folder within the `components` directory. Ea
     └── molecules
 ```
 
-To make utilizing other components within your component, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
+To make utilizing other components within your component easier, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
 
 ---
 
