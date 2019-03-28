@@ -192,11 +192,11 @@ class DropDown extends Component {
 
     const containerClasses = classNames(className);
     const dropDownClasses = classNames({
-      'mcgonagall-dropdown': true,
+      'uic--mcgonagall-dropdown': true,
       'uic--position-relative': true,
-      error: !this.state.isValid,
-      focused: this.state.isFocused,
-      disabled,
+      'uic--error': !this.state.isValid,
+      'uic--focused': this.state.isFocused,
+      'uic--disabled': disabled,
     });
 
     const selectedValue =
@@ -226,11 +226,11 @@ class DropDown extends Component {
       <div className={containerClasses}>
         <div className={dropDownClasses}>
           <label className="uic--position-absolute">{label}</label>
-          <div className="mcgonagall-dropdown-wrapper">
+          <div className="uic--mcgonagall-dropdown-wrapper">
             <ComponentType
               {...this.props}
               components={{DropdownIndicator, ClearIndicator}}
-              classNamePrefix="mcgonagall-dropdown"
+              classNamePrefix="uic--mcgonagall-dropdown"
               value={selectedValue}
               placeholder={placeholder}
               onChange={this.onChange}
@@ -247,9 +247,9 @@ class DropDown extends Component {
             />
           </div>
           {description && this.state.isValid ? (
-            <div className="description">{description}</div>
+            <div className="uic--description">{description}</div>
           ) : !this.state.isValid ? (
-            <div className="validation-error">
+            <div className="uic--validation-error">
               {this.state.validationMessage || 'Invalid'}
             </div>
           ) : null}

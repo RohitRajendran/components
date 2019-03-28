@@ -22,7 +22,7 @@ const MessageCard = ({
 }) => {
   const cardClass = classNames(
     {
-      'mcgonagall-message-card': true,
+      'uic--mcgonagall-message-card': true,
     },
     className
   );
@@ -30,8 +30,10 @@ const MessageCard = ({
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
 
   const content = (
-    <div className="card-titleset uic--text-center">
-      {featureImage && <div className="card-feature-image">{featureImage}</div>}
+    <div className="uic--card-titleset uic--text-center">
+      {featureImage && (
+        <div className="uic--card-feature-image">{featureImage}</div>
+      )}
 
       <h2>{title}</h2>
       {isIncompleteCollapsedCard ? (
@@ -54,7 +56,7 @@ const MessageCard = ({
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
-      summary={<div className="card-message-summary">{content}</div>}
+      summary={<div className="uic--card-message-summary">{content}</div>}
     >
       {content}
     </CardShell>

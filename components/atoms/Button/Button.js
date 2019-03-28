@@ -12,14 +12,14 @@ import {colors} from '~constants/js/colors';
 
 const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
   const spinnerClassNames = classNames({
-    'spinner-wrapper': true,
+    'uic--spinner-wrapper': true,
     'uic--d-none': !showSpinner,
     'uic--d-block': showSpinner,
     'uic--position-relative': showSpinner,
   });
 
   const textClassNames = classNames({
-    'hide-button-text': showSpinner,
+    'uic--hide-button-text': showSpinner,
     'uic--invisible': showSpinner,
   });
 
@@ -55,13 +55,13 @@ const Button = ({
 }) => {
   const btnClass = classNames(
     {
-      btn: true,
+      btn: true, // Not prefixed because of client bootstrap class dependencies
       'uic--position-relative': true,
-      [`btn-${variant}`]: variant,
-      'on-light': light,
-      'on-dark': dark,
-      'show-spinner': isLoading,
-      'hide-spinner': !isLoading,
+      [`uic--btn-${variant}`]: variant,
+      'uic--on-light': light,
+      'uic--on-dark': dark,
+      'uic--show-spinner': isLoading,
+      'uic--hide-spinner': !isLoading,
     },
     className
   );
@@ -77,7 +77,7 @@ const Button = ({
 
   if (to) {
     const linkClass = classNames(btnClass, {
-      disabled,
+      'uic--disabled': disabled,
     });
 
     return (

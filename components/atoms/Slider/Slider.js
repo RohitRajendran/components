@@ -21,19 +21,19 @@ const Slider = ({
   required,
 }) => {
   const tooltipStickyClasses = classNames({
-    show: tooltipStickyPosition && tooltipStickyPosition !== value,
-    [`${tooltipStickyVariant}`]: tooltipStickyVariant,
-    'tooltip-sticky-hint': true,
-    [`tooltip-position-${tooltipStickyPosition}`]: true,
+    'uic--show': tooltipStickyPosition && tooltipStickyPosition !== value,
+    [`uic--${tooltipStickyVariant}`]: tooltipStickyVariant,
+    'uic--tooltip-sticky-hint': true,
+    [`uic--tooltip-position-${tooltipStickyPosition}`]: true,
     'uic--position-absolute': true,
   });
   const containerClasses = classNames(
     {
-      [`highlighted-${tooltipStickyVariant}`]:
+      [`uic--highlighted-${tooltipStickyVariant}`]:
         tooltipStickyVariant &&
         tooltipStickyPosition &&
         tooltipStickyPosition === value,
-      'slider-wrapper': true,
+      'uic--slider-wrapper': true,
       'uic--position-relative': true,
     },
     className
@@ -76,25 +76,25 @@ const Slider = ({
       )}
       {tooltip && (
         <div
-          className={`tooltip tooltip-position-${value} uic--position-absolute`}
+          className={`uic--tooltip uic--tooltip-position-${value} uic--position-absolute`}
         >
           {tooltip}
         </div>
       )}
 
       {leftAnnotate && (
-        <div className="left-annotate-container uic--position-absolute">
-          <div className="left-annotate">{leftAnnotate}</div>
+        <div className="uic--left-annotate-container uic--position-absolute">
+          <div className="uic--left-annotate">{leftAnnotate}</div>
         </div>
       )}
       {rightAnnotate && (
-        <div className="right-annotate-container uic--position-absolute">
-          <div className="right-annotate">{rightAnnotate}</div>
+        <div className="uic--right-annotate-container uic--position-absolute">
+          <div className="uic--right-annotate">{rightAnnotate}</div>
         </div>
       )}
       <div className={tooltipStickyClasses} />
       <ReactSlider
-        className="react-slider"
+        className="uic--react-slider"
         name={name}
         value={value}
         onChange={handleChange}

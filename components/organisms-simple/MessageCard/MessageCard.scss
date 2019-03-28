@@ -1,16 +1,16 @@
-.mcgonagall-message-card {
-  .card-feature-image {
+.uic--mcgonagall-message-card {
+  .uic--card-feature-image {
     margin-bottom: 2rem;
   }
 
-  .card-message-summary {
+  .uic--card-message-summary {
     padding: 4rem 3.5rem;
   }
 }
 
-.mcgonagall-card.error .card-message-summary {
+.uic--mcgonagall-card.error .uic--card-message-summary {
   p,
-  .btn-link {
+  .uic--btn-link {
     color: $red-magenta;
     font-weight: 600;
   }

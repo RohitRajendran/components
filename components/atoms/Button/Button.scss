@@ -31,9 +31,9 @@
 // Required for anchor tags which look the same as actual buttons.
 //------------------------
 a {
-  &.btn-primary,
-  &.btn-secondary,
-  &.btn-tertiary {
+  &.uic--btn-primary,
+  &.uic--btn-secondary,
+  &.uic--btn-tertiary {
     display: inline-block;
   }
 }
@@ -62,7 +62,7 @@ a {
   //------------------------
   // Primary buttons
   //------------------------
-  &.btn-primary {
+  &.uic--btn-primary {
     text-transform: uppercase;
     background-color: $dark-blue;
     border: none;
@@ -78,7 +78,7 @@ a {
     @include disabledStyle {
       color: rgba(white, 0.3);
     }
-    &.on-dark {
+    &.uic--on-dark {
       background-color: $easter-purple;
       color: $dark-blue;
       @include hoverColor($lilac, $easter-purple);
@@ -91,13 +91,13 @@ a {
   //------------------------
   // Secondary buttons
   //------------------------
-  &.btn-secondary {
+  &.uic--btn-secondary {
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
     padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
-    &.on-light {
+    &.uic--on-light {
       background-color: $violet-blue;
       color: $white-four;
       @include hoverColor($eggplant, $violet-blue);
@@ -105,14 +105,14 @@ a {
         color: rgba(white, 0.3) !important;
       }
     }
-    &.on-dark {
+    &.uic--on-dark {
       background-color: $white-four;
       color: $stratos;
       @include hoverColor($midnight-20, $easter-purple);
       @include disabledStyle {
         color: rgba($dark-blue, 0.3) !important;
       }
-      &.white {
+      &.uic--white {
         background-color: $stratos;
       }
     }
@@ -121,13 +121,13 @@ a {
   //------------------------
   // Tertiary buttons
   //------------------------
-  &.btn-tertiary {
+  &.uic--btn-tertiary {
     text-transform: none;
     font-weight: 600;
     @include source-sans-pro(1.4rem);
     padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
-    &.on-dark {
+    &.uic--on-dark {
       background-color: transparent;
       border: 1px solid $white-four;
       color: $white-four;
@@ -136,7 +136,7 @@ a {
         color: rgba($stratos, 0.3) !important;
       }
     }
-    &.on-light {
+    &.uic--on-light {
       border: 1px solid $violet-blue;
       color: $violet-blue;
       @include hoverColor($midnight-10, transparent);
@@ -149,7 +149,7 @@ a {
   //------------------------
   // Link buttons
   //------------------------
-  &.btn-link {
+  &.uic--btn-link {
     outline: none;
     color: $violet-blue;
     background: none !important;
@@ -161,7 +161,7 @@ a {
     font-weight: 600;
     text-align: center;
 
-    &.on-dark {
+    &.uic--on-dark {
       color: $white-four;
 
       &:hover {
@@ -175,21 +175,21 @@ a {
     }
   }
 
-  &.show-spinner {
-    .spinner-wrapper {
+  &.uic--show-spinner {
+    .uic--spinner-wrapper {
       margin: 0 auto;
       left: 0;
       right: 0;
     }
 
-    .hide-button-text {
+    .uic--hide-button-text {
       height: 0px;
     }
   }
 
-  &.btn-tertiary,
-  &.btn-secondary {
-    &.show-spinner {
+  &.uic--btn-tertiary,
+  &.uic--btn-secondary {
+    &.uic--show-spinner {
       svg {
         margin-bottom: -0.5rem;
         min-width: 8rem;

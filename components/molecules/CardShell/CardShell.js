@@ -110,11 +110,11 @@ class CardShell extends Component {
 
     const cardClass = classNames(
       {
-        'mcgonagall-card': true,
+        'uic--mcgonagall-card': true,
         'uic--w-100': true,
-        active: !isCollapsed,
-        collapsed: isCollapsed,
-        error: hasError,
+        'uic--active': !isCollapsed,
+        'uic--collapsed': isCollapsed,
+        'uic--error': hasError,
       },
       className
     );
@@ -127,14 +127,14 @@ class CardShell extends Component {
           <form onChange={onChange && this.onChange} onSubmit={this.onSubmit}>
             {children}
 
-            <div className="card-after-content uic--d-flex uic--align-items-center uic--flex-column">
+            <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
               {beforeButton && (
-                <div className="card-before-button">{beforeButton}</div>
+                <div className="uic--card-before-button">{beforeButton}</div>
               )}
 
               {!hideButton && (
                 <Button
-                  className="card-submit"
+                  className="uic--card-submit"
                   disabled={isInvalid || disabled}
                   isLoading={loading}
                   light
@@ -146,7 +146,7 @@ class CardShell extends Component {
               )}
 
               {afterButton && (
-                <div className="card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
                   {afterButton}
                 </div>
               )}

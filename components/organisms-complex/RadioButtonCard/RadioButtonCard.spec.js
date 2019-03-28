@@ -47,7 +47,7 @@ test('RadioButtonCard - renders', (t) => {
       .prop('hasError'),
     'Should not show error state'
   );
-  t.equals(comp.find('.label-value').length, 2, 'Displays 2 values');
+  t.equals(comp.find('.uic--label-value').length, 2, 'Displays 2 values');
 
   t.end();
 });

@@ -1,7 +1,7 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
 
-.mcgonagall-checkbox-button-container {
+.uic--mcgonagall-checkbox-button-container {
   border: 0;
   padding: 0;
   margin: 0;
@@ -11,11 +11,11 @@ $button-padding: 1.6rem;
     padding: 0;
     margin: 0;
 
-    &.table {
+    &.uic--table {
       border: 1px solid $white-seven;
       margin: 1.4rem 0;
 
-      .mcgonagall-checkbox-button {
+      .uic--mcgonagall-checkbox-button {
         padding: 1.4rem;
         border-bottom: 1px solid $white-seven;
         margin: 0;
@@ -29,45 +29,45 @@ $button-padding: 1.6rem;
   }
 }
 
-.mcgonagall-checkbox-button {
+.uic--mcgonagall-checkbox-button {
   @include source-sans-pro(1.6rem);
 
   &:not(:last-child) {
     margin-bottom: 2.8rem;
   }
 
-  .checkbox-input {
+  .uic--checkbox-input {
     opacity: 0;
     left: 0;
 
-    &:focus + .option-box-check {
+    &:focus + .uic--option-box-check {
       border: 1px solid $violet-blue;
     }
   }
 
-  .checkbox-label {
+  .uic--checkbox-label {
     color: $slate;
     user-select: none;
     padding-left: $button-size + $button-padding;
     cursor: pointer;
     font-weight: normal;
 
-    &.disabled {
+    &.uic--disabled {
       opacity: 0.5;
       cursor: default;
 
-      .checkbox {
+      .uic--checkbox {
         opacity: 0.5;
         cursor: default;
       }
     }
   }
 
-  .followup {
+  .uic--followup {
     margin-top: 0.6rem;
   }
 
-  .label-value-secondary {
+  .uic--label-value-secondary {
     color: $dark-blue;
     font-weight: 800;
     margin-left: 1rem;

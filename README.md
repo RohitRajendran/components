@@ -13,8 +13,7 @@ This library aims to standardize the implementation and appearance of [React](ht
 
 # Getting Started 🚀
 
-This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
-
+This component library can be installed and initialized by running `yarn install`followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
 ## Using a Component 📚
 
@@ -61,13 +60,13 @@ You can build a component story by creating a folder within the `components` dir
 ```markdown
 •
 └── components
-    ├── atoms
-    │   └── Input
-    │       ├── Input.js 
-    │       ├── Input.md
-    │       ├── Input.spec.js
-    │       └── Input.story.js
-    └── molecules
+├── atoms
+│ └── Input
+│ ├── Input.js
+│ ├── Input.md
+│ ├── Input.spec.js
+│ └── Input.story.js
+└── molecules
 ```
 
 To make utilizing other components within your component easier, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
@@ -76,7 +75,7 @@ To make utilizing other components within your component easier, the library inc
 
 ### Testing Changes 💊
 
-As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing  package linking.
+As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
 
 You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
 
@@ -87,7 +86,6 @@ At this point, whenever you make changes to the component library and run yarn b
 ### Best Practices 🏁
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
-
 
 2. Do not include margins on the individual components by default.
 3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
@@ -100,6 +98,7 @@ While there are always going to be special cases, the following guidelines shoul
 ---
 
 ### Creating a `.story.js` file 📒
+
 The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called [Percy](https://percy.io/), so capturing different visual variations of your component in a story is preferred.
 
 This component library utilizes a number of Storybook addons, such as knobs and storybook-readme to allow users to play around with the relevant PropTypes, and to see inline documentation. To simplify your story creation, adding a `defaultProps` helper function that configures the component props is preferred.
@@ -131,8 +130,8 @@ stories.add('default', () => <TrashIcon {...defaultProps()} />);
 ---
 
 ### State Wrapper 🗽
-If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
+If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
 ```javascript
 import React from 'react';
@@ -196,7 +195,7 @@ stories.add('default', () => (
 
 When learning about this library, the following resources may come in handy.
 
-* [United Income Stack Overflow](https://stackoverflow.com/c/unitedincome/questions/130)
-* [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
-* [Atomic Design Principles](http://bradfrost.com/blog/post/atomic-web-design/)
-* [Percy Documentation](https://percy.io/)
+- [United Income Stack Overflow](https://stackoverflow.com/c/unitedincome/questions/130)
+- [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
+- [Atomic Design Principles](http://bradfrost.com/blog/post/atomic-web-design/)
+- [Percy Documentation](https://percy.io/)

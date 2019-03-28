@@ -33,7 +33,7 @@ test('CardShell - active', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('active'),
+      .hasClass('uic--active'),
     'Shows active state'
   );
 
@@ -71,7 +71,7 @@ test('CardShell - collapsed', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('collapsed'),
+      .hasClass('uic--collapsed'),
     'Shows collapsed state'
   );
 
@@ -97,7 +97,7 @@ test('CardShell - error', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('error'),
+      .hasClass('uic--error'),
     'Shows error state'
   );
 

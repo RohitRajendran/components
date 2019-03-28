@@ -61,7 +61,7 @@ class Ranking extends Component {
     const {items} = this.props;
 
     return (
-      <div className="ranking-list">
+      <div className="uic--ranking-list">
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
             {(droppableProvided, droppableSnapshot) => (
@@ -69,7 +69,9 @@ class Ranking extends Component {
                 {...droppableProvided.droppableProps}
                 ref={droppableProvided.innerRef}
                 className={
-                  droppableSnapshot.isDraggingOver ? 'dragging' : 'idle'
+                  droppableSnapshot.isDraggingOver
+                    ? 'uic--dragging'
+                    : 'uic--idle'
                 }
               >
                 {items.map((item, index) => (
@@ -84,19 +86,22 @@ class Ranking extends Component {
                         movable: item.movable,
                         'uic--position-relative': true,
                         'uic--h-100': true,
-                        inner: true,
-                        'focus-control': item.focus,
+                        'uic--inner': true,
+                        'uic--focus-control':
+                          item.focus && !draggableSnapshot.isDragging,
                       });
 
                       const rankingControlClasses = classNames({
-                        'ranking-controls': true,
-                        'default-control': !item.focus,
+                        'uic--ranking-controls': true,
+                        'uic--default-control':
+                          !item.focus || draggableSnapshot.isDragging,
                       });
 
                       const liClasses = classNames({
-                        dragging: draggableSnapshot.isDragging,
-                        idle: !draggableSnapshot.isDragging,
-                        'focus-control': item.focus,
+                        'uic--dragging': draggableSnapshot.isDragging,
+                        'uic--idle': !draggableSnapshot.isDragging,
+                        'uic--focus-control':
+                          item.focus && !draggableSnapshot.isDragging,
                       });
 
                       return (
@@ -113,7 +118,7 @@ class Ranking extends Component {
                             {item.movable && (
                               <div className={rankingControlClasses}>
                                 <div
-                                  className="up uic--position-absolute uic--w-100"
+                                  className="uic--up uic--position-absolute uic--w-100"
                                   onClick={() =>
                                     this.changeOrder(index, index - 1)
                                   }
@@ -130,7 +135,7 @@ class Ranking extends Component {
                                   />
                                 </div>
                                 <div
-                                  className="down uic--position-absolute uic--w-100"
+                                  className="uic--down uic--position-absolute uic--w-100"
                                   onClick={() =>
                                     this.changeOrder(index, index + 1)
                                   }
@@ -150,13 +155,13 @@ class Ranking extends Component {
                             )}
 
                             <span className="uic--d-flex uic--justify-content-between">
-                              <span className="index uic--position-absolute">
+                              <span className="uic--position-absolute">
                                 {index + 1}
                               </span>
                               <label>{item.label}</label>
 
                               {item.secondaryLabel && (
-                                <span className="label-value-secondary">
+                                <span className="uic--label-value-secondary">
                                   {item.secondaryLabel}
                                 </span>
                               )}

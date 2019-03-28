@@ -16,7 +16,7 @@ test('Slider - renders', (t) => {
   t.pass('the component rendered!');
 
   t.equal(
-    component.find('.tooltip-sticky-hint.show').length,
+    component.find('.uic--tooltip-sticky-hint.uic--show').length,
     0,
     'The sticky dot should not be present.'
   );
@@ -32,7 +32,7 @@ test('Slider - renders', (t) => {
     />
   );
   t.equal(
-    component2.find('.tooltip-sticky-hint.show').length,
+    component2.find('.uic--tooltip-sticky-hint.uic--show').length,
     1,
     'The sticky hint should be present.'
   );
@@ -53,7 +53,7 @@ test('Slider - onChange', (t) => {
   const component = mount(<PureSlider {...props} />);
 
   component
-    .find('.react-slider')
+    .find('.uic--react-slider')
     .at(0)
     .prop('onChange')(5);
 

@@ -85,7 +85,7 @@ test('Input - Renders an error message when the form is invalid', (t) => {
   );
 
   t.equals(
-    component.find('.validation-error').text(),
+    component.find('.uic--validation-error').text(),
     'This is not valid!',
     'Should render the invalid message.'
   );
@@ -107,7 +107,7 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
   );
 
   t.equals(
-    component.find('.description').text(),
+    component.find('.uic--description').text(),
     'This is the description',
     'Should render the description.'
   );

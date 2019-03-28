@@ -8,10 +8,10 @@ import '../CardSummaries.scss';
 
 const IncompleteSummary = ({shortTitle, editCard, text, to}) => {
   return (
-    <div className="card-summary incomplete-card uic--container-fluid">
+    <div className="uic--card-summary uic--incomplete-card uic--container-fluid">
       <div className="uic--row">
         <div className="uic--col-6">
-          <h2 className="card-summary-label">{shortTitle}</h2>
+          <h2 className="uic--card-summary-label">{shortTitle}</h2>
         </div>
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
@@ -21,7 +21,7 @@ const IncompleteSummary = ({shortTitle, editCard, text, to}) => {
           </div>
         </div>
         <div className="uic--col-12 uic--col-sm-5">
-          <p className="card-summary-answer error">{text}</p>
+          <p className="uic--card-summary-answer uic--error">{text}</p>
         </div>
       </div>
     </div>

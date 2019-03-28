@@ -1,15 +1,15 @@
-.mcgonagall-question-card {
+.uic--mcgonagall-question-card {
   hr {
     margin: 4rem 0;
     border: 0;
     border-top: 1px solid $grey;
   }
 
-  .card-more-detail {
+  .uic--card-more-detail {
     margin-top: 2.6rem;
   }
 
-  .warning-message {
+  .uic--warning-message {
     @include source-sans-pro(1.2rem);
     color: $red-magenta;
     font-weight: 600;
@@ -19,7 +19,7 @@
     margin: 0;
   }
 
-  .card-cancel {
+  .uic--card-cancel {
     margin-top: 1.2rem;
   }
 }

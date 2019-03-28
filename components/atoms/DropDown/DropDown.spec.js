@@ -16,7 +16,7 @@ test('DropDown - renders', (t) => {
   );
 
   t.equal(
-    component.find('.mcgonagall-dropdown').length,
+    component.find('.uic--mcgonagall-dropdown').length,
     1,
     'Dropdown block renders'
   );

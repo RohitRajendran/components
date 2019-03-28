@@ -42,7 +42,7 @@ test('InputCard - renders', (t) => {
 
   t.true(
     comp
-      .find('.card-submit')
+      .find('.uic--card-submit')
       .first()
       .prop('disabled'),
     'Continue should be disabled since no value'

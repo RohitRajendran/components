@@ -1,4 +1,4 @@
-# Input Component
+# Ranking Component
 
 The Ranking component renders an ordered list with clickable buttons and drag and drop support.
 

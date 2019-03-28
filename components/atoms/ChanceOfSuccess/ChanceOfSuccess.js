@@ -122,7 +122,7 @@ const ChanceOfSuccess = (props) => {
     <Fragment>
       <style>
         {`
-        @keyframes chance-of-success_static-${identifier} {
+        @keyframes uic--chance-of-success_static-${identifier} {
         0% {
           transform: rotate(-${circleRange}deg);
           fill: #B30052
@@ -162,14 +162,14 @@ const ChanceOfSuccess = (props) => {
         } 
       }
 
-      .chance-of-success_static-${identifier} circle {
-        animation: chance-of-success_static-${identifier} 1s cubic-bezier(0.45, 0.05, 0.55, 0.95)
+      .uic--chance-of-success_static-${identifier} circle {
+        animation: uic--chance-of-success_static-${identifier} 1s cubic-bezier(0.45, 0.05, 0.55, 0.95)
           alternate;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
       }
 
-      .chance-of-success_static_draft-${identifier} circle {
+      .uic--chance-of-success_static_draft-${identifier} circle {
         animation: chance-of-success_static_draft-${identifier} 1s
           cubic-bezier(0.45, 0.05, 0.55, 0.95) alternate;
         animation-iteration-count: 1;
@@ -179,12 +179,12 @@ const ChanceOfSuccess = (props) => {
 
       <svg
         viewBox={`${-shadowOffset} 0 ${svgSize + 2 * shadowOffset} ${svgSize}`}
-        className={`chance-of-success ${
+        className={`uic--chance-of-success ${
           isRunningPlan
-            ? 'chance-of-success__in-progress'
+            ? 'uic--chance-of-success__in-progress'
             : !isDraftPlan
-            ? `chance-of-success_static-${identifier}`
-            : `chance-of-success_static_draft-${identifier}`
+            ? `uic--chance-of-success_static-${identifier}`
+            : `uic--chance-of-success_static_draft-${identifier}`
         } ${className || ''}`}
       >
         <defs>

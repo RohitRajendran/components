@@ -250,7 +250,6 @@ class Input extends Component {
       validationErrorMsg,
       validateOnBlur,
       disabled,
-      inputClasses,
       className,
     } = this.props;
 
@@ -303,14 +302,15 @@ class Input extends Component {
 
     const containerClasses = classNames(
       {
-        'mcgonagall-input': true,
+        'uic--mcgonagall-input': true,
         'uic--position-relative': true,
-        [`input-append input-append-${identifier}`]: append && value.length > 0,
-        [`input-prepend input-prepend-${identifier}`]: prepend,
-        empty: (value && value.length < 1) || !value,
-        focus: this.state.isActive,
-        error: showInvalidity || error,
-        disabled,
+        [`uic--input-append uic--input-append-${identifier}`]:
+          append && value.length > 0,
+        [`uic--input-prepend uic--input-prepend-${identifier}`]: prepend,
+        'uic--empty': (value && value.length < 1) || !value,
+        'uic--focus': this.state.isActive,
+        'uic--error': showInvalidity || error,
+        'uic--disabled': disabled,
       },
       className
     );
@@ -320,7 +320,7 @@ class Input extends Component {
         {append && (
           <style>
             {`
-              .input-append-${identifier}[data-value]:after {
+              .uic--input-append-${identifier}[data-value]:after {
                 content: attr(data-value) '${append}';
               }
             `}
@@ -330,7 +330,7 @@ class Input extends Component {
         {prepend && (
           <style>
             {`
-              .input-prepend-${identifier}:before {
+              .uic--input-prepend-${identifier}:before {
                 content: '${prepend}';
               }
             `}
@@ -338,7 +338,6 @@ class Input extends Component {
         )}
         <InputType
           type="text"
-          className={inputClasses}
           aria-label={this.props.label}
           onFocus={this.toggleFocus}
           onBlur={this.toggleFocus}
@@ -350,13 +349,13 @@ class Input extends Component {
         />
         <label className="uic--position-absolute">{label}</label>
         {description && (!showInvalidity || !error) ? (
-          <div className="description">{description}</div>
+          <div className="uic--description">{description}</div>
         ) : description && (showInvalidity || error) ? (
-          <div className="validation-error">
+          <div className="uic--alidation-error">
             {validationErrorMsg || 'Invalid'}
           </div>
         ) : (
-          <div className="validation-error">
+          <div className="uic--validation-error">
             {validationErrorMsg || 'Invalid'}
           </div>
         )}
@@ -432,8 +431,6 @@ Input.propTypes = {
   validateOnBlur: PropTypes.bool,
   /** Determines if the input field should prevent the user interacting with it. */
   disabled: PropTypes.bool,
-  /** Adds class names to the input field. */
-  inputClasses: PropTypes.string,
   /** Sets the ref to the input. */
   setRef: PropTypes.func,
   /** Hides the validation message under the defined conditions. */

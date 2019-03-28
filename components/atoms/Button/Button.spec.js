@@ -54,7 +54,7 @@ test('Button - disabling', (t) => {
     linkComponent
       .find(Link)
       .first()
-      .hasClass('disabled'),
+      .hasClass('uic--disabled'),
     'should include "disabled" class'
   );
 });
@@ -68,7 +68,7 @@ test('Button - variant', (t) => {
     variantPrimary
       .find('button')
       .first()
-      .hasClass('btn-primary'),
+      .hasClass('uic--btn-primary'),
     'should render a primary button'
   );
 
@@ -78,7 +78,7 @@ test('Button - variant', (t) => {
     noVariant
       .find('button')
       .first()
-      .hasClass('btn-primary'),
+      .hasClass('uic--btn-primary'),
     'should not have a variant class'
   );
 });

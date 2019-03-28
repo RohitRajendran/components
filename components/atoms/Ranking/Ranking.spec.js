@@ -191,7 +191,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
   component
     .find('li')
     .at(1)
-    .find('.up')
+    .find('.uic--up')
     .prop('onClick')();
 
   t.deepEquals(
@@ -222,7 +222,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
   component
     .find('li')
     .at(1)
-    .find('.down')
+    .find('.uic--down')
     .prop('onClick')();
 
   t.deepEquals(
@@ -284,7 +284,7 @@ test('Ranking - changeOrder key down simulation', (t) => {
   component
     .find('li')
     .at(1)
-    .find('.up')
+    .find('.uic--up')
     .prop('onKeyDown')();
 
   t.deepEquals(
@@ -315,7 +315,7 @@ test('Ranking - changeOrder key down simulation', (t) => {
   component
     .find('li')
     .at(1)
-    .find('.down')
+    .find('.uic--down')
     .prop('onKeyDown')();
 
   t.deepEquals(

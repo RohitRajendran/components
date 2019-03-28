@@ -9,9 +9,9 @@ const OptionBox = ({variant, checked, disabled, className}) => {
   const containerClasses = classNames(
     {
       'uic--position-absolute': true,
-      [`option-box-${variant}`]: variant,
-      checked,
-      disabled,
+      [`uic--option-box-${variant}`]: variant,
+      'uic--checked': checked,
+      'uic--disabled': disabled,
     },
     className
   );

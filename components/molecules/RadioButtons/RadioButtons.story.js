@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
 import RadioButtons from './RadioButtons';
-import {boolean} from '@storybook/addon-knobs';
+import {boolean, object} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
 import RadioButtonReadme from './RadioButtons.md';
 import Input from '~components/atoms/Input/Input';
@@ -24,11 +24,12 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = ({formName, table}) => ({
+const defaultProps = ({formName, table, options}) => ({
   name: formName,
   table: boolean('table', table),
   onChange: (name, value) => store.set({[name]: value}),
   value: store.get(formName),
+  options: object('options', options),
   key: formName,
 });
 
@@ -110,6 +111,7 @@ stories.add('table', () => (
           secondaryLabel: '$1,234,567.89',
         },
       ],
+      table: true,
     })}
   />
 ));

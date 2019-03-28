@@ -28,13 +28,13 @@ const QuestionCard = ({
 }) => {
   const cardClass = classNames(
     {
-      'mcgonagall-question-card': true,
+      'uic--mcgonagall-question-card': true,
     },
     className
   );
 
   const cancelButtonClass = classNames({
-    'card-cancel': afterButton,
+    'uic--card-cancel': afterButton,
     'uic--d-block': true,
   });
 
@@ -59,7 +59,7 @@ const QuestionCard = ({
         <Fragment>
           {beforeButton}
           {showEditWarning && (
-            <p className="warning-message">
+            <p className="uic--warning-message">
               Note: The answer to this question has an impact on subsequent
               questions. If you change this answer, all further progress will be
               lost.
@@ -82,13 +82,15 @@ const QuestionCard = ({
         </Fragment>
       }
     >
-      <div className="card-titleset">
+      <div className="uic--card-titleset">
         <h2>{title}</h2>
         {description && <p>{description}</p>}
 
-        {moreDetail && <div className="card-more-detail">{moreDetail}</div>}
+        {moreDetail && (
+          <div className="uic--card-more-detail">{moreDetail}</div>
+        )}
 
-        <hr className="margin-top-4" />
+        <hr />
       </div>
 
       {children}
