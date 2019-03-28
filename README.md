@@ -74,6 +74,16 @@ To make utilizing other components within your component easier, the library inc
 
 ---
 
+### Testing Changes 💊
+
+As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing  package linking.
+
+You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
+
+At this point, whenever you make changes to the component library and run yarn build, the code running in the other repository will automatically change.
+
+---
+
 ### Best Practices 🏁
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
