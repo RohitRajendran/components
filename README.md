@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/UnitedIncome/components/blob/docs/.storybook/unitedincome.png?raw=true" alt="United Income logo" width="500" />
 </p>
-<h1 align="center">Component Library</h1>
+<h1 align="center"><b>Component Library</b></h1>
 
 <div align="center">
 
@@ -9,11 +9,11 @@
 
 </div>
 
-This library aims to standardize the implementation and appearance of React components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
-## Getting Started 🚀
+# Getting Started 🚀
 
-This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories  that represent each component.
+This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
 
 ## Using a Component 📚
@@ -92,7 +92,7 @@ While there are always going to be special cases, the following guidelines shoul
 2. Do not include margins on the individual components by default.
 3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
 4. Comment each PropType, this will allow for React doc gen to properly document what each one does.
-5. Components should have **100%**test coverage.
+5. Components should have **100%** test coverage.
 6. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
 7. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 8. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
