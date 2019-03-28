@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://github.com/UnitedIncome/components/blob/docs/.storybook/unitedincome.png?raw=true" alt="United Income logo" width="500" />
+  <img src="https://raw.githubusercontent.com/UnitedIncome/components/develop/.storybook/unitedincome.png" alt="United Income logo" width="500" />
 </p>
 <h1 align="center"><b>Component Library</b></h1>
 
 <div align="center">
 
-[![Master Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](http://ui.unitedincome.com/master/) [![Develop Storybook](https://img.shields.io/badge/view-develop-blue.svg)](http://ui.unitedincome.com/develop/) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components)
 
 </div>
 
