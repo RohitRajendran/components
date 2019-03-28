@@ -9,7 +9,7 @@
 
 </div>
 
-This library aims to standardize the implementation and appearance of React components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
 # Getting Started 🚀
 
