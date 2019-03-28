@@ -9,12 +9,12 @@ const stories = storiesOf('Atoms/OptionBox', module);
 
 stories.addDecorator(withReadme(OptionBoxReadme));
 
-const optionDefaults = (defaultVariant, checked) => ({
+const defaultProps = (defaultVariant, checked) => ({
   variant: select('Variant', ['check', 'radio'], defaultVariant),
   checked: boolean('checked', checked),
   disabled: boolean('disabled', false),
 });
 
-stories.add('check', () => <OptionBox {...optionDefaults('check', true)} />);
+stories.add('check', () => <OptionBox {...defaultProps('check', true)} />);
 
-stories.add('radio', () => <OptionBox {...optionDefaults('radio', true)} />);
+stories.add('radio', () => <OptionBox {...defaultProps('radio', true)} />);

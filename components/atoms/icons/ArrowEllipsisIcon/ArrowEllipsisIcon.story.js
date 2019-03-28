@@ -9,11 +9,10 @@ const stories = storiesOf('Atoms/Icons/ArrowEllipsisIcon', module);
 
 stories.addDecorator(withReadme(ArrowEllipsisIconReadme));
 
-stories.add('default', () => (
-  <ArrowEllipsisIcon
-    fill={text('fill', '#000')}
-    height={text('height', '20')}
-    width={text('width', '20')}
-    className={text('className')}
-  />
-));
+const defaultProps = () => ({
+  fill: text('fill', '#000'),
+  height: text('height', '20'),
+  width: text('width', '20'),
+});
+
+stories.add('default', () => <ArrowEllipsisIcon {...defaultProps} />);

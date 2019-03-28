@@ -3,7 +3,6 @@ import {storiesOf, forceReRender} from '@storybook/react';
 import Ranking from './Ranking';
 import RankingReadme from './Ranking.md';
 import {withReadme} from 'storybook-readme';
-import {text} from '@storybook/addon-knobs';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Atoms/Ranking', module);
@@ -80,30 +79,15 @@ stories
   .addDecorator(withReadme(RankingReadme))
   .addDecorator(StateDecorator(store));
 
-const defaultProps = (name) => ({
-  name: text('name', name),
+const defaultProps = (formName) => ({
+  items: store.get(formName),
+  onChange: (name, value) => store.set({[name]: value}),
 });
 
-stories.add('default', () => (
-  <Ranking
-    items={store.get('default')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...defaultProps('default')}
-  />
-));
+stories.add('default', () => <Ranking {...defaultProps('default')} />);
 
 stories.add('movable disabled', () => (
-  <Ranking
-    items={store.get('disabled')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...defaultProps('disabled')}
-  />
+  <Ranking {...defaultProps('disabled')} />
 ));
 
-stories.add('focus', () => (
-  <Ranking
-    items={store.get('focus')}
-    onChange={(name, value) => store.set({[name]: value})}
-    {...defaultProps('focus')}
-  />
-));
+stories.add('focus', () => <Ranking {...defaultProps('focus')} />);
