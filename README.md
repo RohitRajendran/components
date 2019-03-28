@@ -11,7 +11,7 @@
 
 This library aims to standardize the implementation and appearance of React components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
-## Getting Started 🚀
+# Getting Started 🚀
 
 This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories  that represent each component.
 
