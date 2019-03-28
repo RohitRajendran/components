@@ -180,6 +180,8 @@ stories.add('default', () => (
 ));
 ```
 
+---
+
 ## Additional Resources 🍕
 
 When learning more about this library, the following resources may come in handy.
