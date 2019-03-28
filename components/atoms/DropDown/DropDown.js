@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 
 import './DropDown.scss';
 
@@ -217,7 +217,7 @@ class DropDown extends Component {
     const ClearIndicator = (props) => {
       return (
         <components.ClearIndicator {...props}>
-          <CloseIcon fill={this.props.disabled ? '#9fa6bb' : '#5b6279'} />
+          <ClearIcon fill={this.props.disabled ? '#9fa6bb' : '#5b6279'} />
         </components.ClearIndicator>
       );
     };

@@ -1,13 +1,13 @@
-/** @module CloseIcon */
+/** @module ClearIcon */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-/** Displays the CloseIcon component.
+/** Displays the ClearIcon component.
  * @param {object} props - Component props.
- * @returns {*} - JSX representation of the CloseIcon component.
+ * @returns {*} - JSX representation of the ClearIcon component.
  */
-const CloseIcon = ({width, height, fill, className}) => {
+const ClearIcon = ({width, height, fill, className}) => {
   const containerClasses = classNames(className);
 
   return (
@@ -31,7 +31,7 @@ const CloseIcon = ({width, height, fill, className}) => {
   );
 };
 
-CloseIcon.propTypes = {
+ClearIcon.propTypes = {
   /** The width of the icon. */
   width: PropTypes.string,
   /** The height of the icon. */
@@ -42,10 +42,10 @@ CloseIcon.propTypes = {
   className: PropTypes.string,
 };
 
-CloseIcon.defaultProps = {
+ClearIcon.defaultProps = {
   width: '13',
   height: '13',
   fill: '#5B6279',
 };
 
-export default CloseIcon;
+export default ClearIcon;
