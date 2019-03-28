@@ -120,7 +120,7 @@ stories.add('default', () => <TrashIcon {...defaultProps()} />);
 
 ---
 
-#### State Wrapper 🗽
+### State Wrapper 🗽
 If your component is controlled by state, you'll need to add a state wrapper to your Story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
 
