@@ -88,7 +88,7 @@ At this point, whenever you make changes to the component library and run yarn b
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
 
-1. Carefully scope CSS to the component to prevent side effects.
+
 2. Do not include margins on the individual components by default.
 3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
 4. Comment each PropType, this will allow for React doc gen to properly document what each one does.
@@ -131,7 +131,7 @@ stories.add('default', () => <TrashIcon {...defaultProps()} />);
 ---
 
 ### State Wrapper 🗽
-If your component is controlled by state, you'll need to add a state wrapper to your Story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
+If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
 
 ```javascript
@@ -194,7 +194,7 @@ stories.add('default', () => (
 
 ## Additional Resources 🍕
 
-When learning more about this library, the following resources may come in handy.
+When learning about this library, the following resources may come in handy.
 
 * [United Income Stackoverflow](https://stackoverflow.com/c/unitedincome/questions)
 * [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
