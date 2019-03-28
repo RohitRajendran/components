@@ -9,7 +9,7 @@
 
 </div>
 
-This library aims to standardize the implementation and appearance of React components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes Storybook to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+This library aims to standardize the implementation and appearance of React components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
 ## Getting Started 🚀
 
@@ -21,11 +21,7 @@ This component library can be installed and initialized by running `yarn install
 You can install the component library into your project by running the following command.
 
 ```bash
-## Yarn
 yarn add @unitedincome/components
-
-## NPM
-npm install @unitedincome/components
 ```
 
 You can then decide if you want to use this library by importing components individually or by importing them all together which will result in a larger bundle size.
@@ -42,7 +38,7 @@ To import all components together, you can import more simply:
 import {Button, CardShell, Slider} from '@unitedincome/components';
 ```
 
-You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes a prefixed grid layout and utility classes from Bootstrap.
+You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes a prefixed grid layout and utility classes from [Bootstrap](https://getbootstrap.com/).
 
 For individual imports you can use the following:
 
@@ -76,6 +72,8 @@ You can build a story by creating a folder within the `components` directory. Ea
 
 To make utilizing other components within your component, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
 
+---
+
 ### Best Practices 🏁
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
@@ -89,8 +87,10 @@ While there are always going to be special cases, the following guidelines shoul
 7. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 8. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
 
+---
+
 ### Creating a `.story.js` file 📒
-The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called Percy, so capturing different visual variations of your component in a story is preferred.
+The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called [Percy](https://percy.io/), so capturing different visual variations of your component in a story is preferred.
 
 This component library utilizes a number of Storybook addons, such as knobs and storybook-readme to allow users to play around with the relevant PropTypes, and to see inline documentation. To simplify your story creation, adding a `defaultProps` helper function that configures the component props is preferred.
 
@@ -117,6 +117,8 @@ const defaultProps = () => ({
 
 stories.add('default', () => <TrashIcon {...defaultProps()} />);
 ```
+
+---
 
 #### State Wrapper 🗽
 If your component is controlled by state, you'll need to add a state wrapper to your Story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
@@ -177,3 +179,12 @@ stories.add('default', () => (
   />
 ));
 ```
+
+## Additional Resources 🍕
+
+When learning more about this library, the following resources may come in handy.
+
+* [United Income Stackoverflow](https://stackoverflow.com/c/unitedincome/questions)
+* [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
+* [Atomic Design Principles](http://bradfrost.com/blog/post/atomic-web-design/)
+* [Percy Documentation](https://percy.io/)
