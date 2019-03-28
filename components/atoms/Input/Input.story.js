@@ -160,5 +160,6 @@ stories.add('disabled', () => (
       disabled: true,
       mask: null,
     })}
+    value="1660 L Street"
   />
 ));

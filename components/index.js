@@ -6,7 +6,7 @@ import DropDown from '~components/atoms/DropDown/DropDown';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
@@ -35,7 +35,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 export {
   ArrowIcon,
-  CloseIcon,
+  ClearIcon,
   TrashIcon,
   ArrowIconEllipsis,
   Ranking,
