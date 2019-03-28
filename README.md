@@ -13,7 +13,7 @@ This library aims to standardize the implementation and appearance of React comp
 
 # Getting Started 🚀
 
-This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories  that represent each component.
+This component library can be installed and initialized by running `yarn install `followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
 
 ## Using a Component 📚
