@@ -9,14 +9,16 @@ const ModalInterior = ({
   show,
 }) => (
   <aside
-    className={`cabinet ${show ? 'show-cabinet' : 'hide-cabinet'}`}
+    className={`${show ? 'uic--d-block' : 'uic--d-none'}`}
     role="complementary"
   >
+    <div className="uic--modal-interior">
     <div className="cabinet-header">
       <div className="cabinet-close" onClick={handleClick} />
-      <div className="cabinet-title">modal title</div>
+      <div className="cabinet-title">a thing</div>
     </div>
     <div className="cabinet-body">{children}</div>
+    </div>
   </aside>
 );
 
@@ -54,7 +56,9 @@ class Modal extends Component {
    */
   handleDocumentClick(event) {
     const {show} = this.state;
-
+    console.log(this.node);
+    console.log(event.target);
+    console.log(this.linkNode)
     if (
       this.node &&
       !this.node.contains(event.target) &&
@@ -81,10 +85,20 @@ class Modal extends Component {
     const {label, children, header, labelStyle} = this.props;
 
     return (
-      <div className="cabinet-container text-left">
-        <span onClick={this.handleClick} ref={(node) => (this.linkNode = node)}>{label}</span>
-        <div ref={(node) => (this.node = node)}>
-          <ModalInterior show={show} handleClick={this.handleClick}>
+      <div className="uic--modal-container">
+        <div className="cabinet-link">
+          <span
+            className={`ui-link ${
+              labelStyle && labelStyle === 'light' ? 'on-dark' : ''
+            }`}
+            onClick={this.handleClick}
+            ref={(node) => (this.linkNode = node)}
+          >
+            {label}
+          </span>
+        </div>
+        <div className={`uic--modal ${show ? 'uic--d-block' : 'uic--d-none'}`} ref={(node) => (this.node = node)} >
+          <ModalInterior header={header} show={show} handleClick={this.handleClick}>
             {children}
           </ModalInterior>
         </div>

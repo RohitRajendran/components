@@ -1,98 +1,39 @@
-.admin-nav-present .cabinet {
-  top: 3rem !important;
-  padding-bottom: 9rem;
+.uic--modal-container {
+  z-index: 9999999;
+  position: relative;
 }
 
-.cabinet {
-  position: fixed;
+.uic--modal {
+  position: fixed; /* Stay in place */
+  left: 0;
   top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: $zindex-navbar-fixed + 1;
-  background-color: $white-four;
-  min-height: 100vh;
-  width: 500px;
-  transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
-  box-shadow: 0 2px 20px 15px rgba(91, 98, 121, 0.2);
-  font-family: 'Source Sans Pro', sans-serif;
-  padding-bottom: 6rem;
+  z-index: 1;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
-  @media (max-width: $screen-xs-max) {
-    width: 100%;
-  }
-
-  &.hide-cabinet {
+  &.uic--hide-modal {
     transform: translate3d(500px, 0, 0);
     box-shadow: none;
-
-    @media (max-width: $screen-xs-max) {
-      transform: translate3d(100vw, 0, 0);
-    }
   }
 
-  &.show-cabinet {
+  &.uic--show-modal {
     transform: translate3d(0vw, 0, 0);
   }
+}
 
-  .visible-in-print {
-    @media print {
-      display: block !important;
-      transform: translate3d(0vw, 0, 0);
-      position: relative;
-      width: 100%;
-      min-height: auto;
-      top: auto;
-      right: auto;
-      bottom: auto;
-    }
-  }
+.uic--modal-interior {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  z-index: 9999999;
+  position: relative;
+}
 
-  .cabinet-header {
-    width: 100%;
-    padding: 20px 25px;
-    border-bottom: 1px solid $white-seven;
-    display: flex;
-
-    .cabinet-title {
-      font-size: 14px;
-      color: $slate;
-      line-height: 1;
-    }
-
-    .cabinet-close {
-      margin-right: 21px;
-      cursor: pointer;
-      width: 11px;
-      height: 11px;
-      margin-top: 2px;
-      background-image: url(/assets/images/icons/x_subnav.svg) !important;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-  }
-
-  .cabinet-body {
-    width: 100%;
-    padding: 30px 60px;
-    color: $slate;
-    overflow-y: scroll;
-    height: 100%;
-    position: relative;
-
-    h1,
-    h2 {
-      font-size: 2.4rem;
-      font-family: 'Source Sans Pro', sans-serif;
-      color: $dark-blue;
-      font-weight: normal;
-    }
-
-    h1 {
-      margin-bottom: 3rem;
-    }
-
-    h2 {
-      margin: 3rem 0;
-    }
-  }
+span {
+  color: blue;
 }
