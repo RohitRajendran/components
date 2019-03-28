@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/UnitedIncome/components/blob/docs/.storybook/unitedincome.png?raw=true" alt="United Income logo" width="500" />
 </p>
-<h1 align="center">Component Library</h1>
+<h1 align="center">COMPONENT LIBRARY</h1>
 
 <div align="center">
 
