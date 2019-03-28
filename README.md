@@ -54,9 +54,9 @@ To import all styles you can use:
 @import "@unitedincome/components/dist/index.css";
 ```
 
-## Building a Story 🔩
+## Building a Component 🔩
 
-You can build a story by creating a folder within the `components` directory. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
+You can build a component story by creating a folder within the `components` directory. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
 ```markdown
 •
