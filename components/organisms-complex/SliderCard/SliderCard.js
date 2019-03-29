@@ -6,8 +6,6 @@ import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/Sim
 import Slider from '~components/atoms/Slider/Slider';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
-import './SliderCard.scss';
-
 /** Displays the SliderCard component.
  * @param {object} props - Component props.
  * @returns {JSX} - JSX representation of the SliderCard component.
