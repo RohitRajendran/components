@@ -90,6 +90,7 @@ export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[^a-zA-Z0-9 ]/g,
 };
 
 /** @constant {object} A currency mask */
@@ -97,6 +98,7 @@ export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[^a-zA-Z0-9 ]/g,
 };
 
 /** @constant {object} - A currency mask that accepts decimals */
@@ -107,6 +109,7 @@ export const currencyDecimalMask = {
   }),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[^a-zA-Z0-9 ]/g,
 };
 
 /** @constant {object} - A number mask */
@@ -177,6 +180,7 @@ export const getDeepestInputElement = (startObject) => {
 
 /** @constant {Object} - Maps prop names prop mask types. */
 export const maskEnum = {
+  ApexAccount: apexAccount,
   PhoneNumber: phoneNumberMask,
   SsnNumber: ssnNumberMask,
   Date: dateMask,
@@ -189,6 +193,7 @@ export const maskEnum = {
   CurrencyAllowNegative: currencyMaskAllowNegative,
   Number: numberMask,
   PercentageWithDecimal: percentageWithDecimalMask,
+  PercentageWithDecimalAllowNegative: percentageWithDecimalMaskAllowNegative,
   SmallPercentageWithDecimal: smallPercentageWithDecimalMask,
 };
 
@@ -277,6 +282,7 @@ class Input extends Component {
     if (
       !prependCharacter &&
       (this.props.mask === 'Currency' ||
+        this.props.mask === 'CurrencyDecimal' ||
         this.props.mask === 'CurrencyAllowNegative')
     ) {
       prependCharacter = '$';
@@ -285,7 +291,8 @@ class Input extends Component {
     if (
       !appendCharacter &&
       (this.props.mask === 'SmallPercentageWithDecimal' ||
-        this.props.mask === 'PercentageWithDecimal')
+        this.props.mask === 'PercentageWithDecimal' ||
+        this.props.mask === 'PercentageWithDecimalAllowNegative')
     ) {
       appendCharacter = '%';
     }
@@ -316,11 +323,13 @@ class Input extends Component {
       };
     }
     if (onChange) {
+      const mask = maskEnum[this.props.mask];
+
       attrs.onChange = (e) =>
         onChange(
           name,
-          sanitize
-            ? e.target.value.replace(/[^a-zA-Z0-9 ]/g, '')
+          sanitize && mask && mask.sanitize
+            ? e.target.value.replace(mask.sanitize, '')
             : e.target.value
         );
     }
@@ -376,7 +385,7 @@ class Input extends Component {
         {description && (!showInvalidity || !error) ? (
           <div className="uic--description">{description}</div>
         ) : description && (showInvalidity || error) ? (
-          <div className="uic--alidation-error">
+          <div className="uic--validation-error">
             {validationErrorMsg || 'Invalid'}
           </div>
         ) : (
@@ -390,9 +399,9 @@ class Input extends Component {
 }
 
 Input.propTypes = {
-  /** A string or symbol to append to the end of the input. For example `%`. */
+  /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
   append: PropTypes.string,
-  /** A string or symbol to pre-pend to the start of the input. For example `$`. */
+  /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
   prepend: PropTypes.string,
   /** The label representing the input field. */
   label: PropTypes.string.isRequired,
@@ -429,6 +438,8 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf([
+    'ApexAccount',
+    'PercentageWithDecimalAllowNegative',
     'PhoneNumber',
     'SsnNumber',
     'Date',
