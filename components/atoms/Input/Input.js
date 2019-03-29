@@ -90,7 +90,7 @@ export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
-  sanitize: /[^a-zA-Z0-9 ]/g,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} A currency mask */
@@ -109,7 +109,7 @@ export const currencyDecimalMask = {
   }),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
-  sanitize: /[^a-zA-Z0-9 ]/g,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} - A number mask */
