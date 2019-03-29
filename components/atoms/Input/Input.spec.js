@@ -144,7 +144,6 @@ test('Input - Correctly toggles focus', (t) => {
   const component = mount(
     <Input
       name="input_name"
-      append="%"
       label="Amount"
       type="text"
       value="20"
