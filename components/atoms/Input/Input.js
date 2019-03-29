@@ -251,6 +251,7 @@ class Input extends Component {
       validateOnBlur,
       disabled,
       className,
+      sanitize,
     } = this.props;
 
     const attrs = {
@@ -297,7 +298,7 @@ class Input extends Component {
       };
     }
     if (onChange) {
-      attrs.onChange = (e) => onChange(name, e.target.value);
+      attrs.onChange = (e) => onChange(name, sanitize ? e.target.value.replace(/[^a-zA-Z0-9 ]/g, '') : e.target.value);
     }
 
     const containerClasses = classNames(
@@ -441,6 +442,8 @@ Input.propTypes = {
   error: PropTypes.bool,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Sanitizes the input when passed back by the onChange handler. */
+  sanitize: PropTypes.bool,
 };
 
 Input.defaultProps = {
