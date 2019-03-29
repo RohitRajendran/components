@@ -144,12 +144,11 @@ test('Input - Correctly toggles focus', (t) => {
   const component = mount(
     <Input
       name="input_name"
-      append="%"
       label="Amount"
       type="text"
-      value="05/01/1980"
+      value="20"
       placeholder="some placeholder"
-      mask="Date"
+      mask="PercentageWithDecimal"
       description="This is the description"
     />
   );

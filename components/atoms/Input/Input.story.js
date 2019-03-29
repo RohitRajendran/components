@@ -28,6 +28,7 @@ export const inputMask = (defaultMask) =>
   select(
     'mask',
     [
+      'ApexAccount',
       'PhoneNumber',
       'SsnNumber',
       'Date',
@@ -40,6 +41,7 @@ export const inputMask = (defaultMask) =>
       'Number',
       'PercentageWithDecimal',
       'SmallPercentageWithDecimal',
+      'PercentageWithDecimalAllowNegative',
     ],
     defaultMask
   );
@@ -75,6 +77,7 @@ const defaultProps = ({
   disabled: boolean('disabled', disabled),
   error: boolean('error', error),
   onChange: (name, value) => store.set({[name]: value}),
+  sanitize: boolean('sanitize'),
   type: text('type', 'text'),
   key: formName,
 });

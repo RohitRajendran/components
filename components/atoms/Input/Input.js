@@ -90,6 +90,7 @@ export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} A currency mask */
@@ -97,6 +98,7 @@ export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} - A currency mask that accepts decimals */
@@ -107,6 +109,7 @@ export const currencyDecimalMask = {
   }),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} - A number mask */
@@ -177,6 +180,7 @@ export const getDeepestInputElement = (startObject) => {
 
 /** @constant {Object} - Maps prop names prop mask types. */
 export const maskEnum = {
+  ApexAccount: apexAccount,
   PhoneNumber: phoneNumberMask,
   SsnNumber: ssnNumberMask,
   Date: dateMask,
@@ -189,6 +193,7 @@ export const maskEnum = {
   CurrencyAllowNegative: currencyMaskAllowNegative,
   Number: numberMask,
   PercentageWithDecimal: percentageWithDecimalMask,
+  PercentageWithDecimalAllowNegative: percentageWithDecimalMaskAllowNegative,
   SmallPercentageWithDecimal: smallPercentageWithDecimalMask,
 };
 
@@ -251,6 +256,7 @@ class Input extends Component {
       validateOnBlur,
       disabled,
       className,
+      sanitize,
     } = this.props;
 
     const attrs = {
@@ -270,6 +276,26 @@ class Input extends Component {
     const showInvalidity = !this.isValid();
 
     let InputType = 'input';
+    let prependCharacter = prepend;
+    let appendCharacter = append;
+
+    if (
+      !prependCharacter &&
+      (this.props.mask === 'Currency' ||
+        this.props.mask === 'CurrencyDecimal' ||
+        this.props.mask === 'CurrencyAllowNegative')
+    ) {
+      prependCharacter = '$';
+    }
+
+    if (
+      !appendCharacter &&
+      (this.props.mask === 'SmallPercentageWithDecimal' ||
+        this.props.mask === 'PercentageWithDecimal' ||
+        this.props.mask === 'PercentageWithDecimalAllowNegative')
+    ) {
+      appendCharacter = '%';
+    }
 
     if (this.props.mask) {
       InputType = MaskedInput;
@@ -297,7 +323,15 @@ class Input extends Component {
       };
     }
     if (onChange) {
-      attrs.onChange = (e) => onChange(name, e.target.value);
+      const mask = maskEnum[this.props.mask];
+
+      attrs.onChange = (e) =>
+        onChange(
+          name,
+          sanitize && mask && mask.sanitize
+            ? e.target.value.replace(mask.sanitize, '')
+            : e.target.value
+        );
     }
 
     const containerClasses = classNames(
@@ -305,8 +339,8 @@ class Input extends Component {
         'uic--mcgonagall-input': true,
         'uic--position-relative': true,
         [`uic--input-append uic--input-append-${identifier}`]:
-          append && value.length > 0,
-        [`uic--input-prepend uic--input-prepend-${identifier}`]: prepend,
+          appendCharacter && value.length > 0,
+        [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
         'uic--empty': (value && value.length < 1) || !value,
         'uic--focus': this.state.isActive,
         'uic--error': showInvalidity || error,
@@ -317,21 +351,21 @@ class Input extends Component {
 
     return (
       <div className={containerClasses} data-value={value}>
-        {append && (
+        {appendCharacter && (
           <style>
             {`
               .uic--input-append-${identifier}[data-value]:after {
-                content: attr(data-value) '${append}';
+                content: attr(data-value) '${appendCharacter}';
               }
             `}
           </style>
         )}
 
-        {prepend && (
+        {prependCharacter && (
           <style>
             {`
               .uic--input-prepend-${identifier}:before {
-                content: '${prepend}';
+                content: '${prependCharacter}';
               }
             `}
           </style>
@@ -351,7 +385,7 @@ class Input extends Component {
         {description && (!showInvalidity || !error) ? (
           <div className="uic--description">{description}</div>
         ) : description && (showInvalidity || error) ? (
-          <div className="uic--alidation-error">
+          <div className="uic--validation-error">
             {validationErrorMsg || 'Invalid'}
           </div>
         ) : (
@@ -365,9 +399,9 @@ class Input extends Component {
 }
 
 Input.propTypes = {
-  /** A string or symbol to append to the end of the input. For example `%`. */
+  /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
   append: PropTypes.string,
-  /** A string or symbol to pre-pend to the start of the input. For example `$`. */
+  /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
   prepend: PropTypes.string,
   /** The label representing the input field. */
   label: PropTypes.string.isRequired,
@@ -404,6 +438,8 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf([
+    'ApexAccount',
+    'PercentageWithDecimalAllowNegative',
     'PhoneNumber',
     'SsnNumber',
     'Date',
@@ -441,6 +477,8 @@ Input.propTypes = {
   error: PropTypes.bool,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Sanitizes the input when passed back by the onChange handler. */
+  sanitize: PropTypes.bool,
 };
 
 Input.defaultProps = {
