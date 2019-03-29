@@ -112,6 +112,7 @@
     width: 18rem;
     height: 10rem;
     margin-left: -9rem;
+    pointer-events: none;
 
     &.uic--show {
       &::after {
@@ -121,7 +122,7 @@
         width: 20px;
         background-color: $grey;
         border-radius: 50%;
-        left: 44.5%;
+        left: 44.44%;
         top: -3.4rem;
         z-index: 1;
       }
