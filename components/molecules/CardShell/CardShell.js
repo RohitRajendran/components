@@ -127,30 +127,32 @@ class CardShell extends Component {
           <form onChange={onChange && this.onChange} onSubmit={this.onSubmit}>
             {children}
 
-            <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
-              {beforeButton && (
-                <div className="uic--card-before-button">{beforeButton}</div>
-              )}
+            {(beforeButton || afterButton || !hideButton) && (
+              <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
+                {beforeButton && (
+                  <div className="uic--card-before-button">{beforeButton}</div>
+                )}
 
-              {!hideButton && (
-                <Button
-                  className="uic--card-submit"
-                  disabled={isInvalid || disabled}
-                  isLoading={loading}
-                  light
-                  type="submit"
-                  variant="secondary"
-                >
-                  {buttonText}
-                </Button>
-              )}
+                {!hideButton && (
+                  <Button
+                    className="uic--card-submit"
+                    disabled={isInvalid || disabled}
+                    isLoading={loading}
+                    light
+                    type="submit"
+                    variant="secondary"
+                  >
+                    {buttonText}
+                  </Button>
+                )}
 
-              {afterButton && (
-                <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
-                  {afterButton}
-                </div>
-              )}
-            </div>
+                {afterButton && (
+                  <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                    {afterButton}
+                  </div>
+                )}
+              </div>
+            )}
           </form>
         )}
       </div>
