@@ -1,0 +1,9 @@
+.uic--mcgonagall-card {
+  // Overrides the slider padding for mobile devices while in a card.
+  .uic--slider-wrapper {
+    @include media-breakpoint-down(xs) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+}
