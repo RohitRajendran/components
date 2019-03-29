@@ -147,9 +147,9 @@ test('Input - Correctly toggles focus', (t) => {
       append="%"
       label="Amount"
       type="text"
-      value="05/01/1980"
+      value="20"
       placeholder="some placeholder"
-      mask="Date"
+      mask="PercentageWithDecimal"
       description="This is the description"
     />
   );
