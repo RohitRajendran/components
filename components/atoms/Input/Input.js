@@ -98,7 +98,7 @@ export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
   type: MaskTypes.currency,
-  sanitize: /[^a-zA-Z0-9 ]/g,
+  sanitize: /[,]/g,
 };
 
 /** @constant {object} - A currency mask that accepts decimals */
