@@ -28,6 +28,7 @@ export const inputMask = (defaultMask) =>
   select(
     'mask',
     [
+      'ApexAccount',
       'PhoneNumber',
       'SsnNumber',
       'Date',
@@ -40,6 +41,7 @@ export const inputMask = (defaultMask) =>
       'Number',
       'PercentageWithDecimal',
       'SmallPercentageWithDecimal',
+      'PercentageWithDecimalAllowNegative',
     ],
     defaultMask
   );
