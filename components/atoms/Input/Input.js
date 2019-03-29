@@ -271,6 +271,24 @@ class Input extends Component {
     const showInvalidity = !this.isValid();
 
     let InputType = 'input';
+    let prependCharacter = prepend;
+    let appendCharacter = append;
+
+    if (
+      !prependCharacter &&
+      (this.props.mask === 'Currency' ||
+        this.props.mask === 'CurrencyAllowNegative')
+    ) {
+      prependCharacter = '$';
+    }
+
+    if (
+      !appendCharacter &&
+      (this.props.mask === 'SmallPercentageWithDecimal' ||
+        this.props.mask === 'PercentageWithDecimal')
+    ) {
+      appendCharacter = '%';
+    }
 
     if (this.props.mask) {
       InputType = MaskedInput;
@@ -298,7 +316,13 @@ class Input extends Component {
       };
     }
     if (onChange) {
-      attrs.onChange = (e) => onChange(name, sanitize ? e.target.value.replace(/[^a-zA-Z0-9 ]/g, '') : e.target.value);
+      attrs.onChange = (e) =>
+        onChange(
+          name,
+          sanitize
+            ? e.target.value.replace(/[^a-zA-Z0-9 ]/g, '')
+            : e.target.value
+        );
     }
 
     const containerClasses = classNames(
@@ -306,8 +330,8 @@ class Input extends Component {
         'uic--mcgonagall-input': true,
         'uic--position-relative': true,
         [`uic--input-append uic--input-append-${identifier}`]:
-          append && value.length > 0,
-        [`uic--input-prepend uic--input-prepend-${identifier}`]: prepend,
+          appendCharacter && value.length > 0,
+        [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
         'uic--empty': (value && value.length < 1) || !value,
         'uic--focus': this.state.isActive,
         'uic--error': showInvalidity || error,
@@ -318,21 +342,21 @@ class Input extends Component {
 
     return (
       <div className={containerClasses} data-value={value}>
-        {append && (
+        {appendCharacter && (
           <style>
             {`
               .uic--input-append-${identifier}[data-value]:after {
-                content: attr(data-value) '${append}';
+                content: attr(data-value) '${appendCharacter}';
               }
             `}
           </style>
         )}
 
-        {prepend && (
+        {prependCharacter && (
           <style>
             {`
               .uic--input-prepend-${identifier}:before {
-                content: '${prepend}';
+                content: '${prependCharacter}';
               }
             `}
           </style>
