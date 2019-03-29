@@ -1,5 +1,6 @@
 /** @module Modal */
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import './Modal.scss';
 
@@ -9,10 +10,10 @@ const ModalInterior = ({
   show,
 }) => (
   <aside
-    className={`${show ? 'uic--d-block' : 'uic--d-none'}`}
+    className={`uic--modal-interior ${show ? 'uic--d-block' : 'uic--d-none'}`}
     role="complementary"
   >
-    <div className="uic--modal-interior">
+    <div className="ss">
     <div className="cabinet-header">
       <div className="cabinet-close" onClick={handleClick} />
       <div className="cabinet-title">a thing</div>
@@ -29,7 +30,7 @@ class Modal extends Component {
     super(props);
 
     this.state = {
-      show: false,
+      show: props.defaultOpen || false,
     };
 
     this.node = null;
@@ -37,10 +38,7 @@ class Modal extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
-  }
 
-  /** @inheritdoc **/
-  componentWillMount() {
     document.addEventListener('mousedown', this.handleDocumentClick, false);
   }
 
@@ -56,15 +54,16 @@ class Modal extends Component {
    */
   handleDocumentClick(event) {
     const {show} = this.state;
-    console.log(this.node);
-    console.log(event.target);
-    console.log(this.linkNode)
+
     if (
       this.node &&
       !this.node.contains(event.target) &&
+      this.linkNode &&
       !this.linkNode.contains(event.target) &&
-      show
+      show &&
+      !this.props.preventClose
     ) {
+      
       this.handleClick();
     }
   }
@@ -82,22 +81,17 @@ class Modal extends Component {
   /** @inheritdoc **/
   render() {
     const {show} = this.state;
-    const {label, children, header, labelStyle} = this.props;
+    const {label, children, header} = this.props;
 
+    console.log('shoudld i show', show)
     return (
-      <div className="uic--modal-container">
-        <div className="cabinet-link">
-          <span
-            className={`ui-link ${
-              labelStyle && labelStyle === 'light' ? 'on-dark' : ''
-            }`}
-            onClick={this.handleClick}
-            ref={(node) => (this.linkNode = node)}
-          >
+      <div className="uic--modal-wrapper" ref={(node) => this.linkNode = node}>
+        {label && (
+          <div className="uic--modal-label" onClick={this.handleClick}>
             {label}
-          </span>
-        </div>
-        <div className={`uic--modal ${show ? 'uic--d-block' : 'uic--d-none'}`} ref={(node) => (this.node = node)} >
+          </div>
+        )}
+        <div className={`uic--modal-container ${show ? 'uic--d-block' : 'uic--d-none'}`} ref={(node) => (this.node = node)} >
           <ModalInterior header={header} show={show} handleClick={this.handleClick}>
             {children}
           </ModalInterior>
@@ -105,6 +99,11 @@ class Modal extends Component {
       </div>
     );
   }
+}
+
+Modal.propTypes = {
+  defaultOpen: PropTypes.bool,
+  preventClose: PropTypes.bool,
 }
 
 export default Modal;
