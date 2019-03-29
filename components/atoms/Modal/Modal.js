@@ -1,29 +1,45 @@
 /** @module Modal */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import {dsmColors as colors} from '~constants/js/colors';
 
 import './Modal.scss';
 
-const ModalInterior = ({
-  children,
-  handleClick,
-  show,
-}) => (
-  <aside
-    className={`uic--modal-interior ${show ? 'uic--d-block' : 'uic--d-none'}`}
-    role="complementary"
-  >
-    <div className="ss">
-    <div className="cabinet-header">
-      <div className="cabinet-close" onClick={handleClick} />
-      <div className="cabinet-title">a thing</div>
+const ModalInterior = ({children, handleClick, show, preventClose}) => (
+  <div className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
+    <div
+      className={`uic--modal-interior uic--position-relative ${
+        show ? 'uic--d-block' : 'uic--d-none'
+      }`}
+      role="complementary"
+    >
+      {!preventClose && (
+        <span
+          className="uic--modal-close uic--position-absolute uic--d-flex uic--align-items-center uic--justify-content-center"
+          onClick={handleClick}
+          onKeyPress={handleClick}
+          role="button"
+          tabIndex="0"
+        >
+          <CloseIcon fill={colors.white} height="16" width="16" />
+        </span>
+      )}
+      <div className="uic--modal-body">
+        <div>{children}</div>
+      </div>
     </div>
-    <div className="cabinet-body">{children}</div>
-    </div>
-  </aside>
+  </div>
 );
 
+ModalInterior.propTypes = {
+  children: PropTypes.node.isRequired,
+  handleClick: PropTypes.func,
+  show: PropTypes.bool.isRequired,
+  preventClose: PropTypes.bool,
+};
 
+/** Renders the Modal component. */
 class Modal extends Component {
   /** @inheritdoc **/
   constructor(props) {
@@ -39,6 +55,7 @@ class Modal extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
+    // Binds the event listener.
     document.addEventListener('mousedown', this.handleDocumentClick, false);
   }
 
@@ -48,13 +65,12 @@ class Modal extends Component {
   }
 
   /**
-   * Handles document clicks
-   * @param {object} event - the click event
+   * Handles document clicks and checks to see if the modal should be closed or not.
+   * @param {object} event - The click event.
    * @returns {undefined}
    */
   handleDocumentClick(event) {
     const {show} = this.state;
-
     if (
       this.node &&
       !this.node.contains(event.target) &&
@@ -63,13 +79,12 @@ class Modal extends Component {
       show &&
       !this.props.preventClose
     ) {
-      
       this.handleClick();
     }
   }
 
   /**
-   * Handles click for visibility
+   * Handles click for visibility.
    * @returns {undefined}
    */
   handleClick() {
@@ -81,18 +96,35 @@ class Modal extends Component {
   /** @inheritdoc **/
   render() {
     const {show} = this.state;
-    const {label, children, header} = this.props;
+    const {label, children, preventClose} = this.props;
 
-    console.log('shoudld i show', show)
     return (
-      <div className="uic--modal-wrapper" ref={(node) => this.linkNode = node}>
+      <div
+        className="uic--modal-wrapper"
+        ref={(node) => (this.linkNode = node)}
+      >
         {label && (
-          <div className="uic--modal-label" onClick={this.handleClick}>
+          <div
+            className="uic--modal-label"
+            role="button"
+            onClick={this.handleClick}
+            onKeyDown={this.handleClick}
+            tabIndex="0"
+          >
             {label}
           </div>
         )}
-        <div className={`uic--modal-container ${show ? 'uic--d-block' : 'uic--d-none'}`} ref={(node) => (this.node = node)} >
-          <ModalInterior header={header} show={show} handleClick={this.handleClick}>
+        <div
+          className={`uic--modal-container uic--position-fixed ${
+            show ? 'uic--d-block' : 'uic--d-none'
+          }`}
+          ref={(node) => (this.node = node)}
+        >
+          <ModalInterior
+            show={show}
+            handleClick={this.handleClick}
+            preventClose={preventClose}
+          >
             {children}
           </ModalInterior>
         </div>
@@ -102,8 +134,10 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
+  label: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  children: PropTypes.node.isRequired,
   defaultOpen: PropTypes.bool,
   preventClose: PropTypes.bool,
-}
+};
 
 export default Modal;

@@ -1,9 +1,4 @@
 .uic--modal-container {
-  z-index: 9999999;
-  position: relative;
-}
-
-.uic--modal-container {
   position: fixed; /* Stay in place */
   left: 0;
   top: 0;
@@ -11,18 +6,44 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.85); /* Black w/ opacity */
   pointer-events: none;
 }
 
 .uic--modal-interior {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  z-index: 9999999;
-  position: relative;
   pointer-events: auto;
+
+  .uic--modal-close {
+    background-color: $royal;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    top: -2rem;
+    margin: 0 auto;
+    cursor: pointer;
+    z-index: 99999;
+  }
+
+  .uic--modal-body {
+    @include source-sans-pro(1.4rem);
+    background-color: $white;
+    border-top: 4px solid $royal;
+    padding: 2rem 4rem 4rem;
+    z-index: 99998;
+    position: relative;
+    width: 564px;
+    text-align: center;
+
+    .uic--modal-bottom {
+      margin-top: 3.1rem;
+    }
+    h1 {
+      @include source-sans-pro(2rem);
+      padding-bottom: 1.2rem;
+      font-weight: normal;
+    }
+  }
 }
