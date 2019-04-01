@@ -1185,15 +1185,15 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-backgrounds@*":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.5.tgz#832fc85d5ad43f4538b0f73dd0688030056f192d"
-  integrity sha512-AyClt11V8cAjX1Mfsm/87zvxqhLJj5rOTvHWIqR5kahqJv7puB9UfWB5hpZ40X1OHWzBuwvDRQVO0EGPE0N7Mg==
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.6.tgz#34c41c2d85de43b96c7b92d935a1321ba91f57e8"
+  integrity sha512-O0E4GXalGNtN/phIVAaVybW/tQMoS1JCWg8pt9Vks6rqGulUrf1+9Cnhc8d16a62RLvIpn2M04LnuCZMR8JZ2Q==
   dependencies:
-    "@storybook/addons" "5.0.5"
-    "@storybook/client-logger" "5.0.5"
-    "@storybook/components" "5.0.5"
-    "@storybook/core-events" "5.0.5"
-    "@storybook/theming" "5.0.5"
+    "@storybook/addons" "5.0.6"
+    "@storybook/client-logger" "5.0.6"
+    "@storybook/components" "5.0.6"
+    "@storybook/core-events" "5.0.6"
+    "@storybook/theming" "5.0.6"
     core-js "^2.6.5"
     global "^4.3.2"
     memoizerific "^1.11.3"
@@ -1402,14 +1402,14 @@
     recompose "^0.30.0"
     render-fragment "^0.1.1"
 
-"@storybook/core-events@5.0.5", "@storybook/core-events@^5.0.3":
+"@storybook/core-events@5.0.5":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.5.tgz#831fa76523194a79f23c986ab57393cbbf49d091"
   integrity sha512-N6E1uhvCHpqixCkLjPEwN7aIMaWt2RZvnW0TW46BnX4W3OOwpSB6xWKM1k8TDDntGAsFwaqB7AuiATBy9VHXOg==
   dependencies:
     core-js "^2.6.5"
 
-"@storybook/core-events@5.0.6":
+"@storybook/core-events@5.0.6", "@storybook/core-events@^5.0.3":
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.6.tgz#ead92a1e463d53fa57151b62192e74f8e3f45b3b"
   integrity sha512-OpNHSAxgaok1JYbF5AOML23rIyIyTxir7Ou/s4McN2k0Z2huLaIBA3aeu7vSMygOvN+q6VGMc4uC7f6WQ6kwUg==
