@@ -1,41 +1,56 @@
 /** @module Modal */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import {dsmColors as colors} from '~constants/js/colors';
 
 import './Modal.scss';
 
-const ModalInterior = ({children, handleClick, show, preventClose}) => (
-  <div className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
-    <div
-      className={`uic--modal-interior uic--position-relative ${
-        show ? 'uic--d-block' : 'uic--d-none'
-      }`}
-      role="complementary"
-    >
-      {!preventClose && (
-        <span
-          className="uic--modal-close uic--position-absolute uic--d-flex uic--align-items-center uic--justify-content-center"
-          onClick={handleClick}
-          onKeyPress={handleClick}
-          role="button"
-          tabIndex="0"
-        >
-          <CloseIcon fill={colors.white} height="16" width="16" />
-        </span>
-      )}
-      <div className="uic--modal-body">
-        <div>{children}</div>
+const ModalInterior = ({
+  children,
+  handleClick,
+  handleKeyPress,
+  show,
+  preventClose,
+}) => {
+  const interiorClasses = classNames({
+    'uic--d-block': show,
+    'uic--d-none': !show,
+    'uic--modal-interior': true,
+    'uic--position-relative': true,
+  });
+
+  return (
+    <div className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
+      <div className={interiorClasses} role="complementary">
+        {!preventClose && (
+          <span
+            className="uic--modal-close uic--position-absolute uic--d-flex uic--align-items-center uic--justify-content-center"
+            onClick={handleClick}
+            onKeyPress={handleKeyPress}
+            role="button"
+            tabIndex="0"
+          >
+            <CloseIcon fill={colors.white} height="16" width="16" />
+          </span>
+        )}
+        <div className="uic--modal-body">{children}</div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 ModalInterior.propTypes = {
+  /** The contents of the modal interior. */
   children: PropTypes.node.isRequired,
+  /** The function to handle the close of the modal. */
   handleClick: PropTypes.func,
+  /** The key press function to handle the close of the modal. */
+  handleKeyPress: PropTypes.func,
+  /** The prop to determine if the modal is visible or not. */
   show: PropTypes.bool.isRequired,
+  /** Removes the close icon from the modal if preventClose is true. */
   preventClose: PropTypes.bool,
 };
 
@@ -54,6 +69,7 @@ class Modal extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 
     // Binds the event listener.
     document.addEventListener('mousedown', this.handleDocumentClick, false);
@@ -93,36 +109,59 @@ class Modal extends Component {
     });
   }
 
+  /**
+   * Handles the key press for visibility.
+   * @param {object} event - The event object.
+   * @returns {undefined}
+   */
+  handleKeyPress(event) {
+    const code = event.keyCode || event.which;
+
+    // Only responds to return presses.
+    if (code === 13) {
+      this.setState({
+        show: !this.state.show,
+      });
+    }
+  }
+
   /** @inheritdoc **/
   render() {
     const {show} = this.state;
-    const {label, children, preventClose} = this.props;
+    const {label, children, preventClose, className} = this.props;
+
+    const containerClasses = classNames({
+      'uic--d-block': show,
+      'uic--d-none': !show,
+      'uic--modal-container': true,
+      'uic--position-fixed': true,
+    });
+
+    const wrapperClasses = classNames(
+      {
+        'uic--modal-wrapper': true,
+      },
+      className
+    );
 
     return (
-      <div
-        className="uic--modal-wrapper"
-        ref={(node) => (this.linkNode = node)}
-      >
+      <div className={wrapperClasses} ref={(node) => (this.linkNode = node)}>
         {label && (
           <div
             className="uic--modal-label"
             role="button"
             onClick={this.handleClick}
-            onKeyDown={this.handleClick}
+            onKeyPress={this.handleKeyPress}
             tabIndex="0"
           >
             {label}
           </div>
         )}
-        <div
-          className={`uic--modal-container uic--position-fixed ${
-            show ? 'uic--d-block' : 'uic--d-none'
-          }`}
-          ref={(node) => (this.node = node)}
-        >
+        <div className={containerClasses} ref={(node) => (this.node = node)}>
           <ModalInterior
             show={show}
             handleClick={this.handleClick}
+            handleKeyPress={this.handleKeyPress}
             preventClose={preventClose}
           >
             {children}
@@ -134,10 +173,16 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  label: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  /** The button or text to display which will reveal the modal. */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** The contents of the modal which is presented when it's active. */
   children: PropTypes.node.isRequired,
+  /** Defaults the modal state to open when it mounts. */
   defaultOpen: PropTypes.bool,
+  /** Prevents the user from closing the modal, useful if the screen requires a user choice. */
   preventClose: PropTypes.bool,
+  /** Additional class names to apply to the modal container. */
+  className: PropTypes.string,
 };
 
 export default Modal;
