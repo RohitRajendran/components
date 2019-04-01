@@ -7,7 +7,7 @@ import {withReadme} from 'storybook-readme';
 import ModalReadme from './Modal.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 
-const stories = storiesOf('Atoms/Modal', module);
+const stories = storiesOf('Molecules/Modal', module);
 
 const store = new Store({
   modal1: true,

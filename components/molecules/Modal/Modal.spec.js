@@ -11,7 +11,7 @@ test('Modal - handleKeyPress', (t) => {
     name: 'modal1',
     show: false,
     preventClose: false,
-    label: 'Open Modal',
+    label: <div>Open Modal</div>,
     toggle: stub(),
   };
 
@@ -49,7 +49,7 @@ test('Modal - handleClick', (t) => {
     name: 'modal2',
     show: false,
     preventClose: false,
-    label: 'Open Modal',
+    label: <div>Open Modal</div>,
     toggle: stub(),
   };
 
@@ -76,7 +76,7 @@ test('Modal - handleDocumentClick', (t) => {
     name: 'modal3',
     show: true,
     preventClose: false,
-    label: 'Open Modal',
+    label: <div>Open Modal</div>,
     toggle: stub(),
   };
 
@@ -110,7 +110,7 @@ test('Modal - componentWillUnmount', (t) => {
     name: 'modal4',
     show: true,
     preventClose: false,
-    label: 'Open Modal',
+    label: <div>Open Modal</div>,
     toggle: stub(),
   };
 

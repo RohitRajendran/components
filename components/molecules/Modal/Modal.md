@@ -5,7 +5,12 @@ The Modal component generates a full screen prompt to the user.
 ## Example 🚀
 
 ```javascript
-<Modal name="modalName" show={false} preventClose={false} label="Open Modal">
+<Modal
+  name="modalName"
+  show={false}
+  preventClose={false}
+  label={<div>Open Modal</div>}
+>
   <h1>Montezuma is the best cat</h1>
   <p>You can place a paragraph about how good of a cat he is here</p>
   <div className="uic--modal-bottom">
@@ -26,7 +31,7 @@ If you have a prompt inside of the modal with a button, you can simply toggle th
   show={this.state.prompt}
   toggle={(name, value) => this.setState({[name]: value})}
   preventClose={false}
-  label="Open Modal"
+  label={<div>Open Modal</div>}
 >
   <h1>Montezuma is the best cat</h1>
   <p>You can place a paragraph about how good of a cat he is here</p>
