@@ -169,7 +169,7 @@ CardShell.propTypes = {
   buttonText: PropTypes.string,
   /** HTML element that should appear within the card when not collapsed. */
   children: PropTypes.node.isRequired,
-  /** Additional class names to apply to the button. */
+  /** Additional class names to apply */
   className: PropTypes.string,
   /** Force disables the button. */
   disabled: PropTypes.bool,
