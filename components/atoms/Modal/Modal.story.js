@@ -10,8 +10,8 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 const stories = storiesOf('Atoms/Modal', module);
 
 const store = new Store({
-  displayModal2: true,
-  displayModal3: true,
+  modal1: true,
+  modal2: true,
 });
 
 stories
@@ -22,24 +22,32 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = ({defaultOpen, preventClose, label}) => ({
+const defaultProps = ({modalName, defaultOpen, preventClose, label}) => ({
+  name: modalName,
   defaultOpen: boolean('defaultOpen', defaultOpen),
   preventClose: boolean('preventClose', preventClose),
   label: text('label', label),
+  show: store.get(modalName),
+  toggle: (name, value) => store.set({[name]: value}),
 });
 
 stories.add('default', () => (
   <Modal
     {...defaultProps({
+      modalName: 'modal1',
       defaultOpen: true,
       preventClose: false,
       label: 'Reveal Modal',
     })}
   >
-    <h1>Is Montezuma the best cat?</h1>
+    <h2>Is Montezuma the best cat?</h2>
     <p>He is really ginger, and very nice. He has a soft purr.</p>
     <div className="uic--modal-bottom">
-      <Button variant="secondary" light={true}>
+      <Button
+        variant="secondary"
+        light={true}
+        onClick={() => store.set({modal1: !store.get('modal1')})}
+      >
         You are correct he is the best cat.
       </Button>
     </div>
@@ -49,12 +57,13 @@ stories.add('default', () => (
 stories.add('prevent close', () => (
   <Modal
     {...defaultProps({
+      modalName: 'modal2',
       defaultOpen: true,
       preventClose: true,
       label: 'Reveal Modal',
     })}
   >
-    <h1>Montezuma is the best cat</h1>
+    <h2>Montezuma is the best cat</h2>
     <p>Close this modal if you disagree.</p>
     <div className="uic--modal-bottom">
       <Button variant="secondary" light={true}>

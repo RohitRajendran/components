@@ -17,26 +17,32 @@ export const ModalInterior = ({
   const interiorClasses = classNames({
     'uic--d-block': show,
     'uic--d-none': !show,
-    'uic--w-100': true,
-    'uic--modal-interior': true,
     'uic--position-relative': true,
+    'uic--modal-dialog': true,
   });
 
   return (
-    <aside className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
-      <div className={interiorClasses} role="complementary">
-        {!preventClose && (
-          <span
-            className="uic--modal-close uic--position-absolute uic--d-flex uic--align-items-center uic--justify-content-center"
-            onClick={handleClick}
-            onKeyPress={handleKeyPress}
-            role="button"
-            tabIndex="0"
-          >
-            <CloseIcon fill={colors.white} height="16" width="16" />
-          </span>
-        )}
-        <div className="uic--modal-body uic--position-relative">{children}</div>
+    <aside
+      className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center"
+      role="dialog"
+    >
+      <div className={interiorClasses}>
+        <div className="uic--modal-interior">
+          {!preventClose && (
+            <span
+              className="uic--modal-close uic--position-absolute uic--d-flex uic--align-items-center uic--justify-content-center"
+              onClick={handleClick}
+              onKeyPress={handleKeyPress}
+              role="button"
+              tabIndex="0"
+            >
+              <CloseIcon fill={colors.white} height="16" width="16" />
+            </span>
+          )}
+          <div className="uic--modal-body uic--position-relative">
+            {children}
+          </div>
+        </div>
       </div>
     </aside>
   );
@@ -61,15 +67,9 @@ class Modal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      show: props.defaultOpen || false,
-    };
-
     this.modalNode = createRef();
-
-    this.handleClick = this.handleClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     // Binds the event listener.
     document.addEventListener('mousedown', this.handleDocumentClick, false);
@@ -89,7 +89,7 @@ class Modal extends Component {
     if (
       this.modalNode.current &&
       !this.modalNode.current.contains(event.target) &&
-      this.state.show &&
+      this.props.show &&
       !this.props.preventClose
     ) {
       this.handleClick();
@@ -101,13 +101,10 @@ class Modal extends Component {
    * @returns {undefined}
    */
   handleClick() {
-    this.setState({
-      show: !this.state.show,
-    });
+    this.props.toggle(this.props.name, !this.props.show);
   }
 
-  /**
-   * Handles the key press for visibility.
+  /** Handles key press click for visibility.
    * @param {object} event - The event object.
    * @returns {undefined}
    */
@@ -116,16 +113,20 @@ class Modal extends Component {
 
     // Only responds to return presses.
     if (code === 13) {
-      this.setState({
-        show: !this.state.show,
-      });
+      this.handleClick();
     }
   }
 
   /** @inheritdoc **/
   render() {
-    const {show} = this.state;
-    const {label, children, preventClose, className} = this.props;
+    const {label, children, preventClose, className, show} = this.props;
+
+    const wrapperClasses = classNames(
+      {
+        'uic--modal-wrapper': true,
+      },
+      className
+    );
 
     const containerClasses = classNames({
       'uic--d-block': show,
@@ -137,7 +138,7 @@ class Modal extends Component {
     });
 
     return (
-      <div className={className} ref={this.modalNode}>
+      <div className={wrapperClasses} ref={this.modalNode}>
         {label && (
           <div
             className="uic--modal-label"
@@ -165,16 +166,24 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
+  /** The name of the modal. */
+  name: PropTypes.string.isRequired,
   /** The button or text to display which will reveal the modal. */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** The contents of the modal which is presented when it's active. */
   children: PropTypes.node.isRequired,
-  /** Defaults the modal state to open when it mounts. */
-  defaultOpen: PropTypes.bool,
   /** Prevents the user from closing the modal, useful if the screen requires a user choice. */
   preventClose: PropTypes.bool,
+  /** Handles the change event of the modal. */
+  toggle: PropTypes.func.isRequired,
+  /** Determines if the modal should be displayed or not. */
+  show: PropTypes.bool,
   /** Additional class names to apply to the modal container. */
   className: PropTypes.string,
+};
+
+Modal.defaultProps = {
+  show: false,
 };
 
 export default Modal;

@@ -1,15 +1,18 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
+import {stub} from 'sinon';
 import Modal from './Modal';
 
 test('Modal - handleKeyPress', (t) => {
   t.plan(2);
 
   const props = {
-    defaultOpen: false,
+    name: 'modal1',
+    show: false,
     preventClose: false,
     label: 'Open Modal',
+    toggle: stub(),
   };
 
   const component = mount(
@@ -25,17 +28,17 @@ test('Modal - handleKeyPress', (t) => {
   component.instance().handleKeyPress({keyCode: 12});
 
   t.deepEquals(
-    component.state().show,
-    false,
-    'Should not toggle the state has key code 12 is not enter.'
+    props.toggle.callCount,
+    0,
+    'Should not toggle the modal as key code 12 is not enter.'
   );
 
   component.instance().handleKeyPress({keyCode: 13});
 
   t.deepEquals(
-    component.state().show,
-    true,
-    'Should toggle the show state as enter/return has been pressed.'
+    props.toggle.callCount,
+    1,
+    'Should toggle the modal as enter/return has been pressed.'
   );
 
   t.end();
@@ -43,9 +46,11 @@ test('Modal - handleKeyPress', (t) => {
 
 test('Modal - handleClick', (t) => {
   const props = {
-    defaultOpen: false,
+    name: 'modal2',
+    show: false,
     preventClose: false,
     label: 'Open Modal',
+    toggle: stub(),
   };
 
   const component = mount(
@@ -60,7 +65,7 @@ test('Modal - handleClick', (t) => {
 
   component.instance().handleClick();
 
-  t.deepEquals(component.state().show, true, 'Should toggle the show state.');
+  t.deepEquals(props.toggle.callCount, 1, 'Should toggle the modal.');
 
   t.end();
 });
@@ -68,9 +73,11 @@ test('Modal - handleClick', (t) => {
 test('Modal - handleDocumentClick', (t) => {
   const div = global.document.createElement('div');
   const props = {
-    defaultOpen: true,
+    name: 'modal3',
+    show: true,
     preventClose: false,
     label: 'Open Modal',
+    toggle: stub(),
   };
 
   const component = mount(
@@ -89,9 +96,9 @@ test('Modal - handleDocumentClick', (t) => {
   });
 
   t.deepEquals(
-    component.state().show,
-    false,
-    'Should toggle the show state to false as the click is outside of the modal.'
+    props.toggle.callCount,
+    1,
+    'Should fire the toggle handler as the click is outside of the modal.'
   );
 
   t.end();
@@ -100,9 +107,11 @@ test('Modal - handleDocumentClick', (t) => {
 test('Modal - componentWillUnmount', (t) => {
   const div = global.document.createElement('div');
   const props = {
-    defaultOpen: true,
+    name: 'modal4',
+    show: true,
     preventClose: false,
     label: 'Open Modal',
+    toggle: stub(),
   };
 
   const component = mount(
