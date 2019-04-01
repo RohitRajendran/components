@@ -1,5 +1,5 @@
 /** @module Modal */
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
@@ -22,7 +22,7 @@ export const ModalInterior = ({
   });
 
   return (
-    <div className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
+    <aside className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
       <div className={interiorClasses} role="complementary">
         {!preventClose && (
           <span
@@ -37,7 +37,7 @@ export const ModalInterior = ({
         )}
         <div className="uic--modal-body uic--position-relative">{children}</div>
       </div>
-    </div>
+    </aside>
   );
 };
 
@@ -64,8 +64,7 @@ class Modal extends Component {
       show: props.defaultOpen || false,
     };
 
-    this.node = null;
-    this.linkNode = null;
+    this.modalNode = createRef();
 
     this.handleClick = this.handleClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
@@ -88,10 +87,8 @@ class Modal extends Component {
   handleDocumentClick(event) {
     const {show} = this.state;
     if (
-      this.node &&
-      !this.node.contains(event.target) &&
-      this.linkNode &&
-      !this.linkNode.contains(event.target) &&
+      this.modalNode.current &&
+      !this.modalNode.current.contains(event.target) &&
       show &&
       !this.props.preventClose
     ) {
@@ -145,7 +142,7 @@ class Modal extends Component {
     );
 
     return (
-      <div className={wrapperClasses} ref={(node) => (this.linkNode = node)}>
+      <div className={wrapperClasses} ref={this.modalNode}>
         {label && (
           <div
             className="uic--modal-label"
@@ -157,7 +154,7 @@ class Modal extends Component {
             {label}
           </div>
         )}
-        <div className={containerClasses} ref={(node) => (this.node = node)}>
+        <div className={containerClasses}>
           <ModalInterior
             show={show}
             handleClick={this.handleClick}

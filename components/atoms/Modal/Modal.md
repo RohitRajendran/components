@@ -1,6 +1,6 @@
 # Modal Component
 
-The Modal component generes a full screen prompt to the user.
+The Modal component generates a full screen prompt to the user.
 
 ## Example 🚀
 
