@@ -130,6 +130,8 @@ class Modal extends Component {
       'uic--d-block': show,
       'uic--d-none': !show,
       'uic--modal-container': true,
+      'uic--h-100': true,
+      'uic--w-100': true,
       'uic--position-fixed': true,
     });
 
