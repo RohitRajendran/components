@@ -17,6 +17,7 @@ export const ModalInterior = ({
   const interiorClasses = classNames({
     'uic--d-block': show,
     'uic--d-none': !show,
+    'uic--w-100': true,
     'uic--modal-interior': true,
     'uic--position-relative': true,
   });
@@ -135,15 +136,8 @@ class Modal extends Component {
       'uic--position-fixed': true,
     });
 
-    const wrapperClasses = classNames(
-      {
-        'uic--modal-wrapper': true,
-      },
-      className
-    );
-
     return (
-      <div className={wrapperClasses} ref={this.modalNode}>
+      <div className={className} ref={this.modalNode}>
         {label && (
           <div
             className="uic--modal-label"
