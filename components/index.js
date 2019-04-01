@@ -11,6 +11,7 @@ import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
+import Modal from '~components/atoms/Modal/Modal';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -45,6 +46,7 @@ export {
   Button,
   Loader,
   Input,
+  Modal,
   DropDown,
   ChanceOfSuccess,
   Spinner,
