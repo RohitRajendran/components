@@ -168,8 +168,8 @@ class Modal extends Component {
 Modal.propTypes = {
   /** The name of the modal. */
   name: PropTypes.string.isRequired,
-  /** The button or text to display which will reveal the modal. */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** The button to display which will reveal the modal. */
+  label: PropTypes.node,
   /** The contents of the modal which is presented when it's active. */
   children: PropTypes.node.isRequired,
   /** Prevents the user from closing the modal, useful if the screen requires a user choice. */
