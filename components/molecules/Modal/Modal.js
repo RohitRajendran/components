@@ -70,6 +70,7 @@ class Modal extends Component {
     this.modalNode = createRef();
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 
     // Binds the event listener.
     document.addEventListener('mousedown', this.handleDocumentClick, false);
