@@ -96,3 +96,29 @@ test('Modal - handleDocumentClick', (t) => {
 
   t.end();
 });
+
+test('Modal - componentWillUnmount', (t) => {
+  const div = global.document.createElement('div');
+  const props = {
+    defaultOpen: true,
+    preventClose: false,
+    label: 'Open Modal',
+  };
+
+  const component = mount(
+    <Modal {...props}>
+      <h1>Montezuma is the best cat</h1>
+      <p>You can place a paragraph about how good of a cat he is here</p>
+      <div className="uic--modal-bottom">
+        <p>Additional content to place at the bottom of the modal.</p>
+      </div>
+    </Modal>,
+    {attachTo: div}
+  );
+
+  component.unmount();
+
+  t.deepEquals(component.find('uic--modal-wrapper'), {}, 'Should be empty.');
+
+  t.end();
+});
