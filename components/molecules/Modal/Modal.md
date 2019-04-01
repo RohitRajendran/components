@@ -7,7 +7,7 @@ The Modal component generates a full screen prompt to the user.
 ```javascript
 <Modal
   name="modalName"
-  show={false}
+  show={this.state.show}
   preventClose={false}
   label={<div>Open Modal</div>}
   toggle={() => this.setState({show: !this.state.show})}
