@@ -1,7 +1,6 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
-import {stub} from 'sinon';
 import Modal from './Modal';
 
 test('Modal - handleKeyPress', (t) => {
@@ -66,22 +65,34 @@ test('Modal - handleClick', (t) => {
   t.end();
 });
 
-test('HogwartsCabinet - handleDocumentClick', (t) => {
+test('Modal - handleDocumentClick', (t) => {
+  const div = global.document.createElement('div');
   const props = {
     defaultOpen: true,
     preventClose: false,
     label: 'Open Modal',
   };
 
-  const component = new Modal(props);
+  const component = mount(
+    <Modal {...props}>
+      <h1>Montezuma is the best cat</h1>
+      <p>You can place a paragraph about how good of a cat he is here</p>
+      <div className="uic--modal-bottom">
+        <p>Additional content to place at the bottom of the modal.</p>
+      </div>
+    </Modal>,
+    {attachTo: div}
+  );
 
-  const handleClickStub = stub(component, 'handleDocumentClick');
+  component.instance().handleDocumentClick({
+    target: global.document.createElement('div'),
+  });
 
-  component.modalNode.current = {contains: () => false};
-
-  component.handleDocumentClick({});
-
-  t.true(handleClickStub.called, 'handleClick called');
+  t.deepEquals(
+    component.state().show,
+    false,
+    'Should toggle the show state to false as the click is outside of the modal.'
+  );
 
   t.end();
 });

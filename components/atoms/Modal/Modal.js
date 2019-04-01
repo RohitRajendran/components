@@ -85,11 +85,10 @@ class Modal extends Component {
    * @returns {undefined}
    */
   handleDocumentClick(event) {
-    const {show} = this.state;
     if (
       this.modalNode.current &&
       !this.modalNode.current.contains(event.target) &&
-      show &&
+      this.state.show &&
       !this.props.preventClose
     ) {
       this.handleClick();

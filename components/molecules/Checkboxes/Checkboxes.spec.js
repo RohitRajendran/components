@@ -20,7 +20,7 @@ test('Checkboxes - Should be able to render a basic question.', (t) => {
           value: 'no',
         },
       ]}
-      value="no"
+      value={['no']}
       onChange={stub()}
     />
   );
@@ -59,7 +59,7 @@ test('Checkboxes - Should be able to display a secondaryLabel', (t) => {
           value: 'no',
         },
       ]}
-      value="no"
+      value={['no']}
       onChange={stub()}
     />
   );
@@ -87,7 +87,7 @@ test('Checkboxes - Should be able to display a followup question', (t) => {
           value: 'no',
         },
       ]}
-      value="yes"
+      value={['yes']}
       onChange={stub()}
     />
   );
@@ -115,7 +115,7 @@ test('Checkboxes - Followup question should be hidden if the parent question is 
           value: 'no',
         },
       ]}
-      value="no"
+      value={['no']}
       onChange={stub()}
     />
   );
@@ -138,7 +138,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
         value: 'no',
       },
     ],
-    value: '',
+    value: [],
     onChange: stub(),
   };
 
@@ -157,7 +157,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
 
   t.deepEquals(
     props.onChange.args[0],
-    ['yesNo', ['', 'yes']],
+    ['yesNo', ['yes']],
     'Should add yes to the array.'
   );
 
@@ -173,7 +173,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
 
   t.deepEquals(
     props.onChange.args[1],
-    ['yesNo', ['']],
+    ['yesNo', []],
     'Should remove yes from the array.'
   );
 
