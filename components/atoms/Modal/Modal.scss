@@ -1,5 +1,4 @@
 .uic--modal-container {
-  position: fixed; /* Stay in place */
   left: 0;
   top: 0;
   z-index: 1;
@@ -33,7 +32,6 @@
     border-top: 4px solid $royal;
     padding: 2rem 4rem 4rem;
     z-index: 99998;
-    position: relative;
     width: 564px;
     text-align: center;
 

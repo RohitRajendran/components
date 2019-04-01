@@ -7,7 +7,7 @@ import {dsmColors as colors} from '~constants/js/colors';
 
 import './Modal.scss';
 
-const ModalInterior = ({
+export const ModalInterior = ({
   children,
   handleClick,
   handleKeyPress,
@@ -35,7 +35,7 @@ const ModalInterior = ({
             <CloseIcon fill={colors.white} height="16" width="16" />
           </span>
         )}
-        <div className="uic--modal-body">{children}</div>
+        <div className="uic--modal-body uic--position-relative">{children}</div>
       </div>
     </div>
   );
