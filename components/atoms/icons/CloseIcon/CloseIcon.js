@@ -1,28 +1,32 @@
-/** @module StarIcon */
+/** @module CloseIcon */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/** Displays the StarIcon component.
+/** Displays the CloseIcon component.
  * @param {object} props - Component props.
- * @returns {*} - JSX representation of the StarIcon component.
+ * @returns {*} - JSX representation of the CloseIcon component.
  */
-const StarIcon = ({width, height, fill, className}) => (
+const CloseIcon = ({width, height, fill, className}) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
-    viewBox="0 0 14 13"
+    viewBox="0 0 13 13"
   >
-    <path
-      fill={fill}
+    <g
+      fill="none"
       fillRule="evenodd"
-      d="M7 9.8l-4.114 2.863 1.451-4.798L.343 4.837l5.011-.102L7 0l1.646 4.735 5.011.102-3.994 3.028 1.451 4.798z"
-    />
+      stroke={fill}
+      strokeWidth="1"
+      strokeLinecap="round"
+    >
+      <path d="M9.682 3.318L3.318 9.682M3.318 3.318l6.364 6.364" />
+    </g>
   </svg>
 );
 
-StarIcon.propTypes = {
+CloseIcon.propTypes = {
   /** The width of the icon. */
   width: PropTypes.string,
   /** The height of the icon. */
@@ -33,10 +37,10 @@ StarIcon.propTypes = {
   className: PropTypes.string,
 };
 
-StarIcon.defaultProps = {
+CloseIcon.defaultProps = {
   width: '13',
   height: '13',
   fill: '#5B6279',
 };
 
-export default StarIcon;
+export default CloseIcon;

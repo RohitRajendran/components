@@ -19,6 +19,7 @@ import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+import Modal from '~components/molecules/Modal/Modal';
 
 // Organisms - Simple
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
@@ -45,6 +46,7 @@ export {
   Button,
   Loader,
   Input,
+  Modal,
   DropDown,
   ChanceOfSuccess,
   Spinner,
