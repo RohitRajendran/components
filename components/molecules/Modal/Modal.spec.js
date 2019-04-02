@@ -17,7 +17,7 @@ test('Modal - handleKeyPress', (t) => {
 
   const component = mount(
     <Modal {...props}>
-      <h1>Montezuma is the best cat</h1>
+      <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
@@ -55,7 +55,7 @@ test('Modal - handleClick', (t) => {
 
   const component = mount(
     <Modal {...props}>
-      <h1>Montezuma is the best cat</h1>
+      <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
@@ -81,7 +81,7 @@ test('Modal - handleEscapePress', (t) => {
 
   const component = mount(
     <Modal {...props}>
-      <h1>Montezuma is the best cat</h1>
+      <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
@@ -108,7 +108,7 @@ test('Modal - handleDocumentClick', (t) => {
 
   const component = mount(
     <Modal {...props}>
-      <h1>Montezuma is the best cat</h1>
+      <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
@@ -142,7 +142,7 @@ test('Modal - componentWillUnmount', (t) => {
 
   const component = mount(
     <Modal {...props}>
-      <h1>Montezuma is the best cat</h1>
+      <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
