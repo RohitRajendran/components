@@ -50,7 +50,7 @@ By default the user can click off the modal and click the button near the top to
 
 ## Helper Classes
 
-The modal comes with a number of helper styles to make sure you're adhering to the style guide. For modal headers you should use `h2` tags for accessability purposes, and any additional paragraphs should use `p` tags. If you'd like to add a button to the bottom of the modal you can wrap it in the `uic--modal-bottom` class.
+The modal comes with a number of helper styles to make sure you're adhering to the style guide. For modal headers you should use `h2` tags for [accessability purposes](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines#Defining_sections), and any additional paragraphs should use `p` tags. If you'd like to add a button to the bottom of the modal you can wrap it in the `uic--modal-bottom` class.
 
 ```javascript
 <h2>The header!</h2>
