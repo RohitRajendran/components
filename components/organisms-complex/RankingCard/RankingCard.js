@@ -11,6 +11,7 @@ import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard
  * @returns {JSX} - JSX representation of the RankingCard component.
  */
 const RankingCard = ({
+  answers,
   className,
   editCard,
   onChange,
@@ -19,13 +20,6 @@ const RankingCard = ({
   title,
   ...props
 }) => {
-  const cardClass = classNames(
-    {
-      'mcg-radio-button-card': true,
-    },
-    className
-  );
-
   const determineAnswers = () => {
     const focus = config.items.some((item) => item.focus);
 
@@ -40,12 +34,12 @@ const RankingCard = ({
     <QuestionCard
       {...props}
       editCard={editCard}
-      className={cardClass}
+      className={className}
       shortTitle={shortTitle}
       title={title}
       summary={
         <SimpleSummary
-          answers={determineAnswers()}
+          answers={answers || determineAnswers()}
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
@@ -59,6 +53,8 @@ const RankingCard = ({
 export default RankingCard;
 
 RankingCard.propTypes = {
+  /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
+  answers: PropTypes.arrayOf(PropTypes.string),
   /** Values to pass into Ranking component. */
   config: PropTypes.shape({
     /** A string representing the name of the select button group. For example `yesNo` or something similar. */
