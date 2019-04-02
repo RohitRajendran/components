@@ -72,8 +72,10 @@ class Modal extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleEscapePress = this.handleEscapePress.bind(this);
+  }
 
-    // Binds the event listener.
+  /** @inheritdoc */
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleDocumentClick, false);
     document.addEventListener('keydown', this.handleEscapePress, false);
   }
