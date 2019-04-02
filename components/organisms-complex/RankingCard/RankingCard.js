@@ -1,5 +1,4 @@
 /** @module RankingCard */
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
