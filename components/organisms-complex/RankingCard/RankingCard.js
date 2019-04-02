@@ -11,7 +11,6 @@ import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard
  */
 const RankingCard = ({
   answers,
-  className,
   editCard,
   onChange,
   config,
@@ -33,7 +32,6 @@ const RankingCard = ({
     <QuestionCard
       {...props}
       editCard={editCard}
-      className={className}
       shortTitle={shortTitle}
       title={title}
       summary={
@@ -82,8 +80,6 @@ RankingCard.propTypes = {
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
   cancelChanges: PropTypes.func.isRequired,
-  /** Additional class names to apply to the button. */
-  className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
   clearFuture: PropTypes.bool,
   /** The card description. */
