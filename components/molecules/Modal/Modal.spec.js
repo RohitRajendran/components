@@ -70,6 +70,32 @@ test('Modal - handleClick', (t) => {
   t.end();
 });
 
+test('Modal - handleEscapePress', (t) => {
+  const props = {
+    name: 'modal2',
+    show: true,
+    preventClose: false,
+    label: <div>Open Modal</div>,
+    toggle: stub(),
+  };
+
+  const component = mount(
+    <Modal {...props}>
+      <h1>Montezuma is the best cat</h1>
+      <p>You can place a paragraph about how good of a cat he is here</p>
+      <div className="uic--modal-bottom">
+        <p>Additional content to place at the bottom of the modal.</p>
+      </div>
+    </Modal>
+  );
+
+  component.instance().handleEscapePress({keyCode: 27});
+
+  t.deepEquals(props.toggle.callCount, 1, 'Should toggle the modal.');
+
+  t.end();
+});
+
 test('Modal - handleDocumentClick', (t) => {
   const div = global.document.createElement('div');
   const props = {

@@ -71,14 +71,17 @@ class Modal extends Component {
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleEscapePress = this.handleEscapePress.bind(this);
 
     // Binds the event listener.
     document.addEventListener('mousedown', this.handleDocumentClick, false);
+    document.addEventListener('keydown', this.handleEscapePress, false);
   }
 
   /** @inheritdoc **/
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleDocumentClick, false);
+    document.removeEventListener('keydown', this.handleEscapePress, false);
   }
 
   /**
@@ -103,6 +106,19 @@ class Modal extends Component {
    */
   handleClick() {
     this.props.toggle(this.props.name, !this.props.show);
+  }
+
+  /**
+   * Handles the case where a user hits the escape key.
+   * @param {object} event - The event object.
+   * @returns {undefined}
+   */
+  handleEscapePress(event) {
+    const code = event.keyCode || event.which;
+
+    if (code === 27 && !this.props.preventClose) {
+      this.props.toggle(this.props.name, false);
+    }
   }
 
   /** Handles key press click for visibility.
