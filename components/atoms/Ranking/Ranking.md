@@ -11,17 +11,17 @@ The Ranking component renders an ordered list with clickable buttons and drag an
   {
     label: 'Montezuma',
     secondaryLabel: '$8,345',
-    value: 'montezuma',
+    id: 'montezuma',
   },
   {
     label: 'Pica',
     secondaryLabel: '$1,000',
-    value: 'pica',
+    id: 'pica',
   },
   {
     label: 'Pixie',
     secondaryLabel: '$13,000',
-    value: 'pixie',
+    id: 'pixie',
   },
   ]}
   onChange={(name, value) => this.setState([name]: value)}

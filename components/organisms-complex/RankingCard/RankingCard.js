@@ -61,8 +61,8 @@ RankingCard.propTypes = {
       PropTypes.shape({
         /** The option label. */
         label: PropTypes.string.isRequired,
-        /** The value of the option. */
-        value: PropTypes.string.isRequired,
+        /** The unique id of the option. */
+        id: PropTypes.string.isRequired,
         /** The secondary label to appear to the right of the item. *I*/
         secondaryLabel: PropTypes.string,
         /** Determines if the item in the list should be movable or not. */

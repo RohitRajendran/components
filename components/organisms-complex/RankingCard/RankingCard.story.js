@@ -14,20 +14,20 @@ const store = new Store({
     {
       label: 'Montezuma',
       secondaryLabel: '$8,345',
-      value: 'montezuma',
+      id: 'montezuma',
       movable: false,
     },
     {
       label: 'Pica',
       secondaryLabel: '$1,000',
-      value: 'pica',
+      id: 'pica',
       movable: true,
       focus: true,
     },
     {
       label: 'Pixie',
       secondaryLabel: '$13,000',
-      value: 'pixie',
+      id: 'pixie',
       movable: false,
     },
   ],
