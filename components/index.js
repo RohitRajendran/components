@@ -29,7 +29,7 @@ import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCar
 import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 import InputCard from '~components/organisms-complex/InputCard/InputCard';
 import SliderCard from '~components/organisms-complex/SliderCard/SliderCard';
-import RankingCard from '~component/organisms-complex/RankingCard/RankingCard';
+import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
 
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
