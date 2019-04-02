@@ -4,6 +4,7 @@ import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Input from '~components/atoms/Input/Input';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import {currencyMasks, percentageMasks} from '../../atoms/Input/Input';
 
 /** Displays the InputCard component.
  * @param {object} props - Component props.
@@ -18,6 +19,15 @@ const InputCard = ({
   title,
   ...props
 }) => {
+  // Automatically prepend/append depending on type of mask if answers is not passed through
+  const answer = answers
+    ? answers
+    : currencyMasks.includes(config.mask)
+    ? [`$${config.value}`]
+    : percentageMasks.includes(config.mask)
+    ? [`${config.value}%`]
+    : [config.value];
+
   return (
     <QuestionCard
       {...props}
@@ -26,7 +36,7 @@ const InputCard = ({
       title={title}
       summary={
         <SimpleSummary
-          answers={answers || [config.value]}
+          answers={answer}
           editCard={editCard}
           shortTitle={shortTitle || title}
         />

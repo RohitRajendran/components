@@ -128,6 +128,70 @@ test('InputCard - collapsed without answer override', (t) => {
   t.end();
 });
 
+test('InputCard - collapsed with currency answer', (t) => {
+  const props = {
+    onSubmit: () => true,
+    name: 'test',
+    title: 'Question',
+    description: 'Description',
+    summary: <h2>Summary</h2>,
+    moreDetail: <span>Test detail</span>,
+    isCollapsed: true,
+    shortTitle: 'Q',
+    config: {
+      name: 'yesNo',
+      type: 'text',
+      value: '123',
+      label: 'value',
+      mask: 'Currency',
+    },
+    onChange: stub(),
+    cancelChanges: () => true,
+  };
+
+  const comp = mount(
+    <MemoryRouter>
+      <InputCard {...props}>Content</InputCard>
+    </MemoryRouter>
+  );
+
+  t.equals(comp.find('p').text(), '$123', 'Shows answer with $ prepended');
+
+  t.end();
+});
+
+test('InputCard - collapsed with percentage answer', (t) => {
+  const props = {
+    onSubmit: () => true,
+    name: 'test',
+    title: 'Question',
+    description: 'Description',
+    summary: <h2>Summary</h2>,
+    moreDetail: <span>Test detail</span>,
+    isCollapsed: true,
+    shortTitle: 'Q',
+    config: {
+      name: 'yesNo',
+      type: 'text',
+      value: '50',
+      label: 'value',
+      mask: 'PercentageWithDecimal',
+    },
+    onChange: stub(),
+    cancelChanges: () => true,
+  };
+
+  const comp = mount(
+    <MemoryRouter>
+      <InputCard {...props}>Content</InputCard>
+    </MemoryRouter>
+  );
+
+  t.equals(comp.find('p').text(), '50%', 'Shows answer with % appended');
+
+  t.end();
+});
+
 test('InputCard - latest collapsed', (t) => {
   const props = {
     onSubmit: () => true,

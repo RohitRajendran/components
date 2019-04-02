@@ -197,6 +197,20 @@ export const maskEnum = {
   SmallPercentageWithDecimal: smallPercentageWithDecimalMask,
 };
 
+/** @constant {Array} - Masks that should have '%' appended to it */
+export const percentageMasks = [
+  'SmallPercentageWithDecimal',
+  'PercentageWithDecimal',
+  'PercentageWithDecimalAllowNegative',
+];
+
+/** @constant {Array} - Masks that should have '$' prepended to it */
+export const currencyMasks = [
+  'Currency',
+  'CurrencyDecimal',
+  'CurrencyAllowNegative',
+];
+
 /** Renders the Input field component. */
 class Input extends Component {
   /** @inheritdoc */
@@ -279,21 +293,11 @@ class Input extends Component {
     let prependCharacter = prepend;
     let appendCharacter = append;
 
-    if (
-      !prependCharacter &&
-      (this.props.mask === 'Currency' ||
-        this.props.mask === 'CurrencyDecimal' ||
-        this.props.mask === 'CurrencyAllowNegative')
-    ) {
+    if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
       prependCharacter = '$';
     }
 
-    if (
-      !appendCharacter &&
-      (this.props.mask === 'SmallPercentageWithDecimal' ||
-        this.props.mask === 'PercentageWithDecimal' ||
-        this.props.mask === 'PercentageWithDecimalAllowNegative')
-    ) {
+    if (!appendCharacter && percentageMasks.includes(this.props.mask)) {
       appendCharacter = '%';
     }
 
