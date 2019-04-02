@@ -12,7 +12,7 @@ The Modal component generates a full screen prompt to the user.
   label={<div>Open Modal</div>}
   toggle={() => this.setState({show: !this.state.show})}
 >
-  <h1>Montezuma is the best cat</h1>
+  <h2>Montezuma is the best cat</h2>
   <p>You can place a paragraph about how good of a cat he is here</p>
   <div className="uic--modal-bottom">
     <p>Additional content to place at the bottom of the modal.</p>
@@ -22,7 +22,7 @@ The Modal component generates a full screen prompt to the user.
 
 ## Displaying the Modal
 
-The modal can displayed using the `label` prop which will create a button to open/close the modal. You can also simply pass in a boolean to the `show` prop to default the state to open.
+The modal can be displayed using the `label` prop which will create a button to open/close the modal. You can also simply pass in a boolean to the `show` prop to default the state to open.
 
 If you have a prompt inside of the modal with a button, you can simply toggle the state which opens the modal to hide it.
 
@@ -50,7 +50,7 @@ By default the user can click off the modal and click the button near the top to
 
 ## Helper Classes
 
-The modal comes with a number of helper styles to make sure you're adhering to the style guide. For modal headers you should use `h2` tags, and any additional paragraphs should use `p` tags. If you'd like to add a button to the bottom of the modal you can wrap it in the `uic--modal-bottom` class.
+The modal comes with a number of helper styles to make sure you're adhering to the style guide. For modal headers you should use `h2` tags for accessability purposes, and any additional paragraphs should use `p` tags. If you'd like to add a button to the bottom of the modal you can wrap it in the `uic--modal-bottom` class.
 
 ```javascript
 <h2>The header!</h2>
