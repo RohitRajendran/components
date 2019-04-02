@@ -15,7 +15,7 @@ The collapsed state of this card uses the Simple Summary component.
   editCard={() => true}
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
+  config={
     value: this.state.yesNo,
     name: 'yesNo',
     options:[
@@ -51,7 +51,7 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   shortTitle="title"
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
+  config={
     value: this.state.yesNo,
     name: 'yesNo',
     options:[

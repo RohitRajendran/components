@@ -12,7 +12,7 @@ import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard
 const InputCard = ({
   answers,
   editCard,
-  inputOptions,
+  config,
   onChange,
   shortTitle,
   title,
@@ -26,13 +26,13 @@ const InputCard = ({
       title={title}
       summary={
         <SimpleSummary
-          answers={answers || [inputOptions.value]}
+          answers={answers || [config.value]}
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <Input {...inputOptions} onChange={onChange} required />
+      <Input {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -41,7 +41,7 @@ export default InputCard;
 
 InputCard.propTypes = {
   /** Values to pass into input group */
-  inputOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string or symbol to append to the end of the input. For example `%`. */
     append: PropTypes.string,
     /** A string or symbol to pre-pend to the start of the input. For example `$`. */

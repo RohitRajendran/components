@@ -10,7 +10,7 @@ test('RadioButtonCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -62,7 +62,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -116,7 +116,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -163,7 +163,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {

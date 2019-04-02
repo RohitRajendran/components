@@ -25,7 +25,7 @@ const getSelectedAnswerLabel = (options, currValue) => {
 const RadioButtonCard = ({
   answers,
   editCard,
-  radioButtonOptions,
+  config,
   shortTitle,
   title,
   ...props
@@ -39,19 +39,14 @@ const RadioButtonCard = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [
-              getSelectedAnswerLabel(
-                radioButtonOptions.options,
-                radioButtonOptions.value
-              ),
-            ]
+            answers || [getSelectedAnswerLabel(config.options, config.value)]
           }
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <RadioButtons {...radioButtonOptions} required />
+      <RadioButtons {...config} required />
     </QuestionCard>
   );
 };
@@ -60,7 +55,7 @@ export default RadioButtonCard;
 
 RadioButtonCard.propTypes = {
   /** Values to pass into radio button */
-  radioButtonOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** Renders the radio button group in a table. */

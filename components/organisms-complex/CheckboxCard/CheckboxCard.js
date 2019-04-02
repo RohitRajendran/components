@@ -29,7 +29,7 @@ const CheckboxCard = ({
   answers,
   editCard,
   onChange,
-  checkboxOptions,
+  config,
   shortTitle,
   title,
   ...props
@@ -43,18 +43,14 @@ const CheckboxCard = ({
       summary={
         <SimpleSummary
           answers={
-            answers ||
-            getSelectedAnswerLabel(
-              checkboxOptions.options,
-              checkboxOptions.value
-            )
+            answers || getSelectedAnswerLabel(config.options, config.value)
           }
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <Checkboxes {...checkboxOptions} onChange={onChange} required />
+      <Checkboxes {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -63,7 +59,7 @@ export default CheckboxCard;
 
 CheckboxCard.propTypes = {
   /** Values to pass into checkbox group */
-  checkboxOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string representing the name of the checkbox group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** Renders the checkbox group in a table. */

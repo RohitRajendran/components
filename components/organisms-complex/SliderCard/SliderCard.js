@@ -15,7 +15,7 @@ const SliderCard = ({
   className,
   editCard,
   onChange,
-  sliderOptions,
+  config,
   shortTitle,
   title,
   ...props
@@ -36,13 +36,13 @@ const SliderCard = ({
       title={title}
       summary={
         <SimpleSummary
-          answers={answers || [sliderOptions.value.toString()]}
+          answers={answers || [config.value.toString()]}
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <Slider {...sliderOptions} onChange={onChange} required />
+      <Slider {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -51,7 +51,7 @@ export default SliderCard;
 
 SliderCard.propTypes = {
   /** Values to pass into select button */
-  sliderOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string representing the name of the select button group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** The current selected option in the select button group. */

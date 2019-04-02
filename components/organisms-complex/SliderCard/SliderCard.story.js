@@ -44,7 +44,7 @@ const defaultProps = (
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
   onChange: (name, value) => store.set({[name]: value}),
-  sliderOptions: {
+  config: {
     name: 'slider',
     value: store.get('slider'),
     leftAnnotate: text('leftAnnotate', 'Less Cats'),

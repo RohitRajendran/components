@@ -15,7 +15,7 @@ The collapsed state of this card uses the Simple Summary component.
   editCard={() => true}
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  sliderOptions={{
+  config={{
     name: 'slider',
     value: this.state.slider,
     leftAnnotate: 'Lower Risk',
@@ -46,7 +46,7 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   shortTitle="title"
   onSubmit={() => console.log('Submit')}
   onChange={(name, value) => this.setState({[name]: value})}
-  sliderOptions={{
+  config={{
     name: 'slider',
     value: this.state.slider,
     leftAnnotate: 'Lower Risk',

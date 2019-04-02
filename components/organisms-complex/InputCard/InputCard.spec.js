@@ -10,7 +10,7 @@ test('InputCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    inputOptions: {
+    config: {
       name: 'yesNo',
       type: 'text',
       label: 'value',
@@ -61,7 +61,7 @@ test('InputCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    inputOptions: {
+    config: {
       name: 'yesNo',
       type: 'text',
       value: 'no',
@@ -107,7 +107,7 @@ test('InputCard - collapsed without answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    inputOptions: {
+    config: {
       name: 'yesNo',
       type: 'text',
       value: 'no',
@@ -139,7 +139,7 @@ test('InputCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    inputOptions: {
+    config: {
       name: 'yesNo',
       type: 'text',
       value: 'no',

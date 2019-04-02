@@ -10,7 +10,7 @@ test('SliderCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    sliderOptions: {
+    config: {
       name: 'yesNo',
       value: 1,
     },
@@ -52,7 +52,7 @@ test('SliderCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    sliderOptions: {
+    config: {
       name: 'yesNo',
       value: 1,
     },
@@ -96,7 +96,7 @@ test('SliderCard - collapsed without answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    sliderOptions: {
+    config: {
       name: 'yesNo',
       value: 1,
     },
@@ -126,7 +126,7 @@ test('SliderCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    sliderOptions: {
+    config: {
       name: 'yesNo',
       value: 1,
     },
