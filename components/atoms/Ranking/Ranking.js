@@ -76,8 +76,8 @@ class Ranking extends Component {
               >
                 {items.map((item, index) => (
                   <Draggable
-                    key={item.value}
-                    draggableId={item.value}
+                    key={item.id}
+                    draggableId={item.id}
                     index={index}
                     isDragDisabled={!item.movable}
                   >
@@ -190,8 +190,8 @@ Ranking.propTypes = {
     PropTypes.shape({
       /** The option label. */
       label: PropTypes.string.isRequired,
-      /** The value of the option. */
-      value: PropTypes.string.isRequired,
+      /** Unique id of the option. Used for the Drag and Drop library. */
+      id: PropTypes.string.isRequired,
       /** The secondary label to appear to the right of the item. *I*/
       secondaryLabel: PropTypes.string,
       /** Determines if the item in the list should be movable or not. */

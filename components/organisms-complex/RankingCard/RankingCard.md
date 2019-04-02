@@ -21,20 +21,20 @@ The collapsed state of this card uses the Simple Summary component.
       {
         label: 'Montezuma',
         secondaryLabel: '$8,345',
-        value: 'montezuma',
+        id: 'montezuma',
         movable: false,
       },
       {
         label: 'Pica',
         secondaryLabel: '$1,000',
-        value: 'pica',
+        id: 'pica',
         movable: true,
         focus: true,
       },
       {
         label: 'Pixie',
         secondaryLabel: '$13,000',
-        value: 'pixie',
+        id: 'pixie',
         movable: false,
       },
     ]
@@ -62,20 +62,20 @@ This will work similar to the existing Hogwarts Screen components, just set cont
       {
         label: 'Montezuma',
         secondaryLabel: '$8,345',
-        value: 'montezuma',
+        id: 'montezuma',
         movable: false,
       },
       {
         label: 'Pica',
         secondaryLabel: '$1,000',
-        value: 'pica',
+        id: 'pica',
         movable: true,
         focus: true,
       },
       {
         label: 'Pixie',
         secondaryLabel: '$13,000',
-        value: 'pixie',
+        id: 'pixie',
         movable: false,
       },
     ]
