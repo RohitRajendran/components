@@ -73,7 +73,7 @@ class CardShell extends Component {
    */
   onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit();
+    this.props.onSubmit(e);
   }
 
   /**
