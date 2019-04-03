@@ -108,7 +108,7 @@ QuestionCard.propTypes = {
   /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
-  cancelChanges: PropTypes.func.isRequired,
+  cancelChanges: PropTypes.func,
   /** HTML element that should appear within the card when not collapsed */
   children: PropTypes.node.isRequired,
   /** Applies additional class names to the button. */

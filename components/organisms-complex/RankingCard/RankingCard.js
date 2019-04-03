@@ -79,7 +79,7 @@ RankingCard.propTypes = {
   /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
-  cancelChanges: PropTypes.func.isRequired,
+  cancelChanges: PropTypes.func,
   /** Additional class names to apply to the button. */
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */

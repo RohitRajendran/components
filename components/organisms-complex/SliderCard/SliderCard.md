@@ -8,16 +8,10 @@ The collapsed state of this card uses the Simple Summary component.
 
 ```javascript
 <SliderCard
-  name="selectQuestion"
-  title="This is the title"
-  description="This is the description"
-  shortTitle="Title"
-  editCard={() => true}
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
+  {...props}
   config={{
     name: 'slider',
-    value: this.state.slider,
+    value: state.slider,
     leftAnnotate: 'Lower Risk',
     rightAnnotate: 'Higher Risk',
     name: 'slider',
@@ -44,8 +38,6 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   title="This is the title"
   description="This is the description"
   shortTitle="title"
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
   config={{
     name: 'slider',
     value: this.state.slider,
