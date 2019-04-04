@@ -120,6 +120,8 @@ InputCard.propTypes = {
     isValid: PropTypes.func,
     /** Forces the input into an error state. */
     error: PropTypes.bool,
+    /** Sanitizes the input when passed back by the onChange handler. */
+    sanitize: PropTypes.bool,
   }),
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers: PropTypes.arrayOf(PropTypes.string),
