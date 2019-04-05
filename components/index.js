@@ -11,6 +11,7 @@ import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
+import LampIllustration from '~components/atoms/LampIllustration/LampIllustration';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -63,4 +64,5 @@ export {
   InputCard,
   SliderCard,
   RankingCard,
+  LampIllustration,
 };
