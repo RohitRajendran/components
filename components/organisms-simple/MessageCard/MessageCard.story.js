@@ -5,7 +5,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import MessageCard from './MessageCard';
 import MessageCardReadme from './MessageCard.md';
-import LampIlluminator from '~components/atoms/illuminators/LampIlluminator/LampIlluminator';
+import LampIllustration from '~components/atoms/illustrations/LampIllustration/LampIllustration';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Simple Organisms/MessageCard', module);
@@ -52,7 +52,7 @@ stories.add('active with feature image', () => (
     <MessageCard
       {...defaultProps(false)}
       featureImage={
-        <LampIlluminator
+        <LampIllustration
           height="100"
           width="100"
           on={store.get('on')}
