@@ -54,6 +54,33 @@ test('CardShell - active', (t) => {
   t.end();
 });
 
+test('CardShell - active and isFetching', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isFetching: true,
+  };
+
+  const comp = mount(
+    <CardShell {...props}>
+      <h1>Test</h1>
+    </CardShell>
+  );
+
+  t.true(
+    comp
+      .find('div')
+      .first()
+      .hasClass('uic--active'),
+    'Shows active state'
+  );
+
+  t.equals(comp.find('Spinner').length, 1, 'Shows spinner');
+
+  t.end();
+});
+
 test('CardShell - collapsed', (t) => {
   const props = {
     ...defaultProps,

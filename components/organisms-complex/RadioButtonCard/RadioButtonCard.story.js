@@ -38,6 +38,7 @@ const defaultProps = (
   hasError: boolean('hasError', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',

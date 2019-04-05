@@ -104,7 +104,9 @@ RadioButtonCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary. */
   isLatestCard: PropTypes.bool,
-  /** Shows a loading indicator in the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
   /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwarts cabinet. */
   moreDetail: PropTypes.node,

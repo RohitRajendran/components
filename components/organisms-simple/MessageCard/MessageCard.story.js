@@ -35,6 +35,7 @@ const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   shortTitle: 'Title',
   title: text('title', 'This is where the title goes.'),

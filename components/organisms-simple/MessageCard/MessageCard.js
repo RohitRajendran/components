@@ -88,7 +88,9 @@ MessageCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary. */
   isLatestCard: PropTypes.bool,
-  /** Shows a loading indicator in the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
