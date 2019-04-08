@@ -3,7 +3,7 @@ import {storiesOf, forceReRender} from '@storybook/react';
 import {withReadme} from 'storybook-readme';
 import DropDown from './DropDown';
 import DropDownReadme from './DropDown.md';
-import {text, boolean, object} from '@storybook/addon-knobs';
+import {text, boolean} from '@storybook/addon-knobs';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 
 /** Creates a timeout for async functions.
@@ -50,8 +50,12 @@ async function getOptions(input) {
         value: 'pica',
       },
       {
-        label: 'Pixie',
-        value: 'pixie',
+        label: 'Hector',
+        value: 'hector',
+      },
+      {
+        label: 'Peterson',
+        value: 'peterson',
       },
     ].filter((data) => input.toLowerCase() === data.value);
     return {options};
@@ -77,125 +81,138 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = ({
-  formName,
-  label,
-  description,
-  placeholder,
-  options,
-  disabled,
-}) => ({
-  name: formName,
-  validate: [validate],
-  options: object('options', options),
-  value: store.get(formName),
-  onChange: (name, value) => store.set({[name]: value}),
-  placeholder: text('placeholder', placeholder),
-  description: text('description', description),
-  label: text('label', label),
-  searchable: boolean('searchable', true),
-  clearable: boolean('clearable', true),
-  loading: boolean('loading', false),
-  disabled: boolean('disabled', disabled),
-  required: boolean('required', false),
-  isSubmitted: boolean('isSubmitted', false),
-  key: formName,
-});
-
 stories.add('default', () => (
   <DropDown
-    {...defaultProps({
-      formName: 'selectedExample',
-      options: [
-        {
-          value: 'uk',
-          label: 'United Kingdom',
-        },
-        {
-          value: 'usa',
-          label: 'United States',
-        },
-      ],
-      placeholder: 'Choose a country',
-      description: 'Pick your country',
-      label: 'Country',
-    })}
+    name="selectedExample"
+    validate={[validate]}
+    options={[
+      {
+        value: 'uk',
+        label: 'United Kingdom',
+      },
+      {
+        value: 'usa',
+        label: 'United States',
+      },
+    ]}
+    value={store.get('selectedExample')}
+    onChange={(name, value) => store.set({[name]: value})}
+    placeholder={text('placeholder', 'Choose a country')}
+    description={text('description', 'Pick your country')}
+    label={text('label', 'Country')}
+    searchable={boolean('searchable', false)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
+    required={boolean('required', false)}
+    isSubmitted={boolean('isSubmitted', false)}
+    key="selectedExample"
   />
 ));
 
 stories.add('open', () => (
   <DropDown
+    name="selectedExample2"
+    validate={[validate]}
+    options={[
+      {
+        value: 'uk',
+        label: 'United Kingdom',
+      },
+      {
+        value: 'usa',
+        label: 'United States',
+      },
+    ]}
+    value={store.get('selectedExample2')}
+    onChange={(name, value) => store.set({[name]: value})}
+    placeholder={text('placeholder', 'Choose a country')}
+    description={text('description', 'Pick your country')}
+    label={text('label', 'Country')}
+    searchable={boolean('searchable', true)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
+    required={boolean('required', false)}
+    key="selectedExample2"
     menuIsOpen={true}
-    {...defaultProps({
-      formName: 'selectedExample2',
-      options: [
-        {
-          value: 'uk',
-          label: 'United Kingdom',
-        },
-        {
-          value: 'usa',
-          label: 'United States',
-        },
-      ],
-      label: 'Country',
-      description: 'Pick your country',
-      placeholder: 'Choose a country',
-    })}
+    isSubmitted={boolean('isSubmitted', false)}
   />
 ));
 
 stories.add('api', () => (
   <DropDown
+    name="apiExample"
     getOptions={getOptions}
-    {...defaultProps({
-      formName: 'apiExample',
-      label: 'Pet Name',
-      description: 'Pick your country',
-      placeholder: 'Choose a country',
-    })}
+    value={store.get('apiExample')}
+    onChange={(name, value) => store.set({[name]: value})}
+    placeholder={text('placeholder', 'Choose a pet name')}
+    description={text(
+      'description',
+      'Type a common office pet name in the box above'
+    )}
+    label={text('label', 'Pet Name')}
+    searchable={boolean('searchable', true)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
+    required={boolean('required', false)}
+    isSubmitted={boolean('isSubmitted', false)}
+    key="apiExample"
   />
 ));
 
 stories.add('invalid', () => (
   <DropDown
-    {...defaultProps({
-      formName: 'validExample',
-      label: 'Best Cat',
-      description: 'Who is the best cat?',
-      placeholder: 'Is Montezuma the best cat?',
-      options: [
-        {
-          value: 'valid',
-          label: 'Montezuma is the best cat',
-        },
-        {
-          value: 'invalid',
-          label: 'Montezuma is not the best cat',
-        },
-      ],
-    })}
+    name="validExample"
+    validate={[validate]}
+    options={[
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ]}
+    value={store.get('validExample')}
+    onChange={(name, value) => store.set({[name]: value})}
+    placeholder={text('placeholder', 'Is Montezuma the best cat?')}
+    description={text('description', 'Who is the best cat?')}
+    label={text('label', 'Best Cat')}
+    searchable={boolean('searchable', true)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
+    required={boolean('required', false)}
+    isSubmitted={boolean('isSubmitted', false)}
+    key="validExample"
   />
 ));
 
 stories.add('disabled', () => (
   <DropDown
-    {...defaultProps({
-      formName: 'disabledExample',
-      label: 'Best Cat',
-      description: 'Who is the best cat?',
-      placeholder: 'Is Montezuma the best cat?',
-      options: [
-        {
-          value: 'disabled',
-          label: 'Montezuma is the best cat',
-        },
-        {
-          value: 'disabledAlso',
-          label: 'Montezuma is not the best cat',
-        },
-      ],
-      disabled: true,
-    })}
+    name="disabledExample"
+    options={[
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ]}
+    placeholder={text('placeholder', 'Is Montezuma the best cat?')}
+    description={text('description', 'Who is the best cat?')}
+    label={text('label', 'Best Cat')}
+    searchable={boolean('searchable', true)}
+    clearable={boolean('clearable', true)}
+    loading={boolean('loading', false)}
+    disabled={boolean('disabled', true)}
+    required={boolean('required', false)}
+    isSubmitted={boolean('isSubmitted', false)}
+    key="disabledExample"
   />
 ));

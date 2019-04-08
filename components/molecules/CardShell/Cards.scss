@@ -1,7 +1,5 @@
-.uic--mcgonagall-card {
-  .uic--card-titleset {
-    word-break: break-word;
-
+.mcgonagall-card {
+  .card-titleset {
     h2 {
       @include source-sans-pro(2rem);
       color: $dark-blue;
@@ -14,14 +12,6 @@
       font-style: italic;
       color: $dark-blue;
       margin: 1rem 0 0 0;
-    }
-  }
-
-  // Overrides the slider padding for mobile devices while in a card.
-  .uic--slider-wrapper {
-    @include media-breakpoint-down(xs) {
-      margin-left: 1rem;
-      margin-right: 1rem;
     }
   }
 }

@@ -9,10 +9,11 @@ const stories = storiesOf('Atoms/Icons/TrashIcon', module);
 
 stories.addDecorator(withReadme(TrashIconReadme));
 
-const defaultProps = () => ({
-  fill: text('fill', '#000'),
-  height: text('height', '20'),
-  width: text('width', '20'),
-});
-
-stories.add('default', () => <TrashIcon {...defaultProps()} />);
+stories.add('default', () => (
+  <TrashIcon
+    fill={text('fill', '#000')}
+    height={text('height', '20')}
+    width={text('width', '20')}
+    className={text('className')}
+  />
+));
