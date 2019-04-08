@@ -25,6 +25,7 @@ import Modal from '~components/molecules/Modal/Modal';
 // Organisms - Simple
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
+import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
 // Organisms - Complex
 import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCard';
@@ -65,4 +66,5 @@ export {
   SliderCard,
   RankingCard,
   LampIllustration,
+  CompletionScreen,
 };
