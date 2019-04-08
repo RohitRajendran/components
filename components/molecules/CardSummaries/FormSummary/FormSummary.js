@@ -11,10 +11,10 @@ import './FormSummary.scss';
 const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
   return (
     <Fragment>
-      <div className="uic--card-summary uic--container-fluid">
+      <div className="card-summary uic--container-fluid">
         <div className="uic--row">
           <div className="uic--col-6 uic--col-sm-11">
-            <h2 className="uic--card-summary-label">{shortTitle}</h2>
+            <h2 className="card-summary-label">{shortTitle}</h2>
           </div>
           <div className="uic--col-6 uic--col-sm-1">
             <div className="uic--d-flex uic--justify-content-end">
@@ -29,28 +29,24 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
         const key = group.groupName || `${shortTitle}-${index}`;
 
         const groupClass = classNames({
-          'uic--card-summary': true,
-          'uic--card-summary-group': true,
-          'uic--striped': answerGroups.length > 1,
+          'card-summary': true,
+          'card-summary-group': true,
+          striped: answerGroups.length > 1,
         });
 
         return (
           <div key={key} className={groupClass}>
             {answerGroups.length > 1 && group.groupName && (
-              <h3 className="uic--card-summary-label">{group.groupName}</h3>
+              <h3 className="card-summary-label">{group.groupName}</h3>
             )}
 
             {group.answers.map((answer) => (
               <div key={`${key}-${answer.label}`} className="uic--row">
                 <div className="uic--col-6">
-                  <span className="uic--card-summary-label">
-                    {answer.label}
-                  </span>
+                  <span className="card-summary-label">{answer.label}</span>
                 </div>
                 <div className="uic--col-6">
-                  <span className="uic--card-summary-answer">
-                    {answer.value}
-                  </span>
+                  <span className="card-summary-answer">{answer.value}</span>
                 </div>
               </div>
             ))}

@@ -22,7 +22,7 @@ const MessageCard = ({
 }) => {
   const cardClass = classNames(
     {
-      'uic--mcgonagall-message-card': true,
+      'mcgonagall-message-card': true,
     },
     className
   );
@@ -30,10 +30,8 @@ const MessageCard = ({
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
 
   const content = (
-    <div className="uic--card-titleset uic--text-center">
-      {featureImage && (
-        <div className="uic--card-feature-image">{featureImage}</div>
-      )}
+    <div className="card-titleset uic--text-center">
+      {featureImage && <div className="card-feature-image">{featureImage}</div>}
 
       <h2>{title}</h2>
       {isIncompleteCollapsedCard ? (
@@ -56,7 +54,7 @@ const MessageCard = ({
       className={cardClass}
       hasError={isIncompleteCollapsedCard || hasError}
       isCollapsed={isCollapsed}
-      summary={<div className="uic--card-message-summary">{content}</div>}
+      summary={<div className="card-message-summary">{content}</div>}
     >
       {content}
     </CardShell>
@@ -88,9 +86,7 @@ MessageCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary. */
   isLatestCard: PropTypes.bool,
-  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
-  isFetching: PropTypes.bool,
-  /** Shows a loading indicator on the button for actions after the button is clicked. */
+  /** Shows a loading indicator in the button. */
   loading: PropTypes.bool,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,

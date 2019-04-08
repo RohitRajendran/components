@@ -8,10 +8,10 @@ import '../CardSummaries.scss';
 
 const SimpleSummary = ({shortTitle, editCard, answers, to}) => {
   return (
-    <div className="uic--card-summary uic--container-fluid">
+    <div className="card-summary uic--container-fluid">
       <div className="uic--row">
         <div className="uic--col-6">
-          <h2 className="uic--card-summary-label">{shortTitle}</h2>
+          <h2 className="card-summary-label">{shortTitle}</h2>
         </div>
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
@@ -23,7 +23,7 @@ const SimpleSummary = ({shortTitle, editCard, answers, to}) => {
         <div className="uic--col-12 uic--col-sm-5">
           {answers.map((answer) => {
             return (
-              <p key={answer} className="uic--card-summary-answer">
+              <p key={answer} className="card-summary-answer">
                 {answer}
               </p>
             );
