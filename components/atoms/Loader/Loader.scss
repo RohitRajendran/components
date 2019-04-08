@@ -7,21 +7,21 @@
   }
 }
 
-.ui-loader {
+.uic--ui-loader {
   width: 75px;
   height: 200px;
   margin: 0 auto;
-}
 
-.ui-loader svg {
-  width: 75px;
-  height: 200px;
-}
+  svg {
+    width: 75px;
+    height: 200px;
 
-.ui-loader svg#loader-icon-top {
-  -webkit-animation: bouncing 0.5s infinite alternate;
-  -moz-animation: bouncing 0.5s infinite alternate;
-  -ms-animation: bouncing 0.5s infinite alternate;
-  -o-animation: bouncing 0.5s infinite alternate;
-  animation: bouncing 0.5s infinite alternate;
+    &#loader-icon-top {
+      -webkit-animation: bouncing 0.5s infinite alternate;
+      -moz-animation: bouncing 0.5s infinite alternate;
+      -ms-animation: bouncing 0.5s infinite alternate;
+      -o-animation: bouncing 0.5s infinite alternate;
+      animation: bouncing 0.5s infinite alternate;
+    }
+  }
 }
