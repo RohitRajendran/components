@@ -21,6 +21,7 @@ import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/Sim
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import Modal from '~components/molecules/Modal/Modal';
+import Cabinet from '~components/molecules/Cabinet/Cabinet';
 
 // Organisms - Simple
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
@@ -50,6 +51,7 @@ export {
   Loader,
   Input,
   Modal,
+  Cabinet,
   DropDown,
   ChanceOfSuccess,
   Spinner,

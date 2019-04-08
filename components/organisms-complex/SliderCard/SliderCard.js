@@ -97,8 +97,17 @@ SliderCard.propTypes = {
   isFetching: PropTypes.bool,
   /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
-  /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwarts cabinet. */
-  moreDetail: PropTypes.node,
+  /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
+  moreDetails: PropTypes.shape({
+    /** The contents of the cabinet. */
+    cabinetContent: PropTypes.node.isRequired,
+    /** The header to display at the top of the cabinet. */
+    header: PropTypes.string.isRequired,
+    /** Determines if the cabinet is visible when the page is printed or not. */
+    visibleInPrint: PropTypes.bool,
+    /** Adds a label to open the cabinet. */
+    label: PropTypes.string.isRequired,
+  }),
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */

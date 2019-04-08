@@ -6,6 +6,7 @@ import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+import Cabinet from '~components/molecules/Cabinet/Cabinet';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
@@ -20,7 +21,7 @@ const QuestionCard = ({
   hasError,
   isCollapsed,
   isLatestCard,
-  moreDetail,
+  moreDetails,
   shortTitle,
   summary,
   title,
@@ -86,10 +87,22 @@ const QuestionCard = ({
         <h2>{title}</h2>
         {description && <p>{description}</p>}
 
-        {moreDetail && (
-          <div className="uic--card-more-detail">{moreDetail}</div>
+        {moreDetails && (
+          <div className="uic--card-more-detail">
+            <Cabinet
+              label={
+                <Button variant="link" light>
+                  {moreDetails.label}
+                </Button>
+              }
+              visibleInPrint={moreDetails.visibleInPrint}
+              header={moreDetails.header}
+              handleWithState
+            >
+              {moreDetails.cabinetContent}
+            </Cabinet>
+          </div>
         )}
-
         <hr />
       </div>
 
@@ -133,8 +146,17 @@ QuestionCard.propTypes = {
   isFetching: PropTypes.bool,
   /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
-  /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwart cabinet. */
-  moreDetail: PropTypes.node,
+  /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
+  moreDetails: PropTypes.shape({
+    /** The contents of the cabinet. */
+    cabinetContent: PropTypes.node.isRequired,
+    /** The header to display at the top of the cabinet. */
+    header: PropTypes.string.isRequired,
+    /** Determines if the cabinet is visible when the page is printed or not. */
+    visibleInPrint: PropTypes.bool,
+    /** Adds a label to open the cabinet. */
+    label: PropTypes.string.isRequired,
+  }),
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func,
   /** The handler to fire when the Submit button is clicked. */
