@@ -66,7 +66,6 @@ test('Cabinet - handleClick', (t) => {
 
 test('Cabinet - handleClick (handleWithState)', (t) => {
   const props = {
-    name: 'Cabinet2',
     preventClose: false,
     label: <div>Open Cabinet</div>,
     handleWithState: true,
@@ -115,7 +114,6 @@ test('Cabinet - handleEscapePress', (t) => {
 
 test('Cabinet - handleEscapePress (handleWithState)', (t) => {
   const props = {
-    name: 'Cabinet2',
     preventClose: false,
     label: <div>Open Cabinet</div>,
     handleWithState: true,
