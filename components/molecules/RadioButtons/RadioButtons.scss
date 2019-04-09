@@ -1,7 +1,7 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
 
-.mcgonagall-radio-button-container {
+.uic--mcgonagall-radio-button-container {
   border: 0;
   padding: 0;
   margin: 0;
@@ -11,41 +11,41 @@ $button-padding: 1.6rem;
     padding: 0;
     margin: 0;
 
-    &.table {
+    &.uic--table {
       border: 1px solid $white-seven;
       margin: 1.4rem 0;
 
-      .mcgonagall-radio-button {
+      .uic--mcgonagall-radio-button {
         padding: 1.4rem;
         border-bottom: 1px solid $white-seven;
         margin: 0;
         background-color: $white-four;
 
         &:nth-of-type(2n) {
-          background-color: $white-three;
+          background-color: $table-alternate;
         }
       }
     }
   }
 }
 
-.mcgonagall-radio-button {
+.uic--mcgonagall-radio-button {
   @include source-sans-pro(1.6rem);
 
   &:not(:last-child) {
     margin-bottom: 2.8rem;
   }
 
-  .radio-input {
+  .uic--radio-input {
     opacity: 0;
     left: 0;
 
-    &:focus + .option-box-radio {
+    &:focus + .uic--option-box-radio {
       border: 1px solid $violet-blue;
     }
   }
 
-  .radio-label {
+  .uic--radio-label {
     color: $slate;
     user-select: none;
     padding-left: $button-size + $button-padding;
@@ -53,24 +53,24 @@ $button-padding: 1.6rem;
     font-weight: normal;
 
     // Radio Button disabled state.
-    &.disabled {
+    &.uic--disabled {
       opacity: 0.5;
       cursor: default;
 
-      .radio {
+      .uic--radio {
         opacity: 0.5;
         cursor: default;
       }
     }
   }
 
-  .followup {
+  .uic--followup {
     margin-top: 0.6rem;
   }
 
-  .label-value-secondary {
+  .uic--label-value-secondary {
     color: $dark-blue;
-    font-weight: 800;
+    font-weight: 600;
     margin-left: 1rem;
   }
 }

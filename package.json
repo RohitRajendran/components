@@ -2,7 +2,7 @@
   "name": "@unitedincome/components",
   "description": "React library for all United Income Front-End projects.",
   "author": "United Income",
-  "version": "0.1.7",
+  "version": "0.1.6",
   "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -12,7 +12,6 @@
     "test": "yarn testSingle './components/**/*.spec.js' './proptypes/**/*.spec.js' | faucet",
     "testCI": "NODE_ENV=test nyc tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles './components/**/*.spec.js' './proptypes/**/*.spec.js'  | tap-xunit > ./reports/tape/results.xml",
     "coverage": "nyc report",
-    "testVr": "jest vr-tests",
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
@@ -69,7 +68,6 @@
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
     "nyc": "*",
-    "optimize-css-assets-webpack-plugin": "*",
     "postcss-loader": "*",
     "postcss-prefixer": "*",
     "prettier": "*",
@@ -90,7 +88,6 @@
     "style-loader": "*",
     "tap-xunit": "*",
     "tape": "*",
-    "terser-webpack-plugin": "*",
     "text-mask-addons": "*",
     "webpack": "*",
     "webpack-cli": "*"

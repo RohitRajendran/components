@@ -10,7 +10,7 @@ test('CheckboxCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    checkboxOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -47,7 +47,7 @@ test('CheckboxCard - renders', (t) => {
       .prop('hasError'),
     'Should not show error state'
   );
-  t.equals(comp.find('.label-value').length, 2, 'Displays 2 values');
+  t.equals(comp.find('.uic--label-value').length, 2, 'Displays 2 values');
 
   t.end();
 });
@@ -62,7 +62,7 @@ test('CheckboxCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    checkboxOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -116,7 +116,7 @@ test('CheckboxCard - collapsed without answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    checkboxOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -156,7 +156,7 @@ test('CheckboxCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    checkboxOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {

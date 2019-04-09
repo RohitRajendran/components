@@ -6,6 +6,7 @@ import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
+import Cabinet from '~components/molecules/Cabinet/Cabinet';
 import './QuestionCard.scss';
 
 const QuestionCard = ({
@@ -20,7 +21,7 @@ const QuestionCard = ({
   hasError,
   isCollapsed,
   isLatestCard,
-  moreDetail,
+  moreDetails,
   shortTitle,
   summary,
   title,
@@ -28,13 +29,13 @@ const QuestionCard = ({
 }) => {
   const cardClass = classNames(
     {
-      'mcgonagall-question-card': true,
+      'uic--mcgonagall-question-card': true,
     },
     className
   );
 
   const cancelButtonClass = classNames({
-    'card-cancel': afterButton,
+    'uic--card-cancel': afterButton,
     'uic--d-block': true,
   });
 
@@ -59,7 +60,7 @@ const QuestionCard = ({
         <Fragment>
           {beforeButton}
           {showEditWarning && (
-            <p className="warning-message">
+            <p className="uic--warning-message">
               Note: The answer to this question has an impact on subsequent
               questions. If you change this answer, all further progress will be
               lost.
@@ -82,13 +83,27 @@ const QuestionCard = ({
         </Fragment>
       }
     >
-      <div className="card-titleset">
+      <div className="uic--card-titleset">
         <h2>{title}</h2>
         {description && <p>{description}</p>}
 
-        {moreDetail && <div className="card-more-detail">{moreDetail}</div>}
-
-        <hr className="margin-top-4" />
+        {moreDetails && (
+          <div className="uic--card-more-detail">
+            <Cabinet
+              label={
+                <Button variant="link" light>
+                  {moreDetails.label}
+                </Button>
+              }
+              visibleInPrint={moreDetails.visibleInPrint}
+              header={moreDetails.header}
+              handleWithState
+            >
+              {moreDetails.cabinetContent}
+            </Cabinet>
+          </div>
+        )}
+        <hr />
       </div>
 
       {children}
@@ -106,7 +121,7 @@ QuestionCard.propTypes = {
   /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
-  cancelChanges: PropTypes.func.isRequired,
+  cancelChanges: PropTypes.func,
   /** HTML element that should appear within the card when not collapsed */
   children: PropTypes.node.isRequired,
   /** Applies additional class names to the button. */
@@ -127,10 +142,21 @@ QuestionCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary/ */
   isLatestCard: PropTypes.bool,
-  /** Shows a loading indicator in the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
-  /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwart cabinet. */
-  moreDetail: PropTypes.node,
+  /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
+  moreDetails: PropTypes.shape({
+    /** The contents of the cabinet. */
+    cabinetContent: PropTypes.node.isRequired,
+    /** The header to display at the top of the cabinet. */
+    header: PropTypes.string.isRequired,
+    /** Determines if the cabinet is visible when the page is printed or not. */
+    visibleInPrint: PropTypes.bool,
+    /** Adds a label to open the cabinet. */
+    label: PropTypes.string.isRequired,
+  }),
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func,
   /** The handler to fire when the Submit button is clicked. */

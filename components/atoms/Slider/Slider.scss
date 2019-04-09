@@ -12,16 +12,16 @@
   border-color: $color;
 }
 
-.slider-wrapper {
-  margin: 16rem 9rem 9rem;
+.uic--slider-wrapper {
+  margin: 16rem 5rem 9rem;
 
   @include media-breakpoint-down(xs) {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 
-  &.highlighted-green {
-    .tooltip {
+  &.uic--highlighted-green {
+    .uic--tooltip {
       background-color: $green;
 
       &::before {
@@ -36,8 +36,8 @@
     }
   }
 
-  &.highlighted-purple {
-    .tooltip {
+  &.uic--highlighted-purple {
+    .uic--tooltip {
       background-color: $violet-blue;
 
       &::before {
@@ -53,31 +53,31 @@
   }
 
   // Annotation containers.
-  .left-annotate-container,
-  .right-annotate-container {
+  .uic--left-annotate-container,
+  .uic--right-annotate-container {
     height: 8rem;
     width: 8rem;
     bottom: -13rem;
   }
 
-  .left-annotate-container {
+  .uic--left-annotate-container {
     left: -4rem;
   }
 
-  .right-annotate-container {
+  .uic--right-annotate-container {
     right: -4rem;
   }
 
   // Markers which appear to the left and right of the slider.
-  .left-annotate,
-  .right-annotate {
+  .uic--left-annotate,
+  .uic--right-annotate {
     @include source-sans-pro(1.2rem);
     color: $slate;
     word-break: break-word;
     text-align: center;
   }
 
-  .tooltip {
+  .uic--tooltip {
     top: -13rem;
     width: 20rem;
     height: 10rem;
@@ -106,14 +106,15 @@
     }
   }
 
-  .tooltip-sticky-hint {
+  .uic--tooltip-sticky-hint {
     text-align: center;
     top: 3rem;
     width: 18rem;
     height: 10rem;
     margin-left: -9rem;
+    pointer-events: none;
 
-    &.show {
+    &.uic--show {
       &::after {
         content: ' ';
         position: absolute;
@@ -121,19 +122,19 @@
         width: 20px;
         background-color: $grey;
         border-radius: 50%;
-        left: 44.5%;
+        left: 44.44%;
         top: -3.4rem;
         z-index: 1;
       }
     }
 
-    &.show.green::after {
+    &.uic--show.uic--green::after {
       @include star-marker;
       @include highlighted($green);
       background-size: 60%;
     }
 
-    &.show.purple::after {
+    &.uic--show.uic--purple::after {
       @include star-marker;
       @include highlighted($violet-blue);
       background-size: 60%;
@@ -142,15 +143,26 @@
 
   // Creates a CSS class for each tooltip position, 1 - 10
   @for $i from 1 through 10 {
-    .tooltip-position-#{$i} {
+    .uic--tooltip-position-#{$i} {
       @if $i < 1 {
-        left: 0;
+        left: 0%;
+      } @else if $i == 1 {
+        left: 36px;
+        &::before {
+          left: 28.5%;
+        }
+      } @else if $i == 10 {
+        left: auto;
+        right: -63px;
+        &::before {
+          left: 64.5%;
+        }
       } @else {
         $position: percentage(($i - 1) * 1/9);
         left: $position;
       }
       @include media-breakpoint-down(xs) {
-        &.tooltip {
+        &.uic--tooltip {
           left: 50%;
         }
       }

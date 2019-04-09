@@ -1,0 +1,57 @@
+$modal-backdrop: rgba(0, 0, 0, 0.85);
+
+.uic--modal-wrapper {
+  .uic--modal-container {
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: $black; /* Fallback color */
+    background-color: $modal-backdrop; /* Black with opacity */
+    pointer-events: none;
+
+    .uic--modal-dialog {
+      max-width: 100%;
+    }
+
+    .uic--modal-interior {
+      pointer-events: auto;
+      max-width: 100%;
+      margin: 0 1rem;
+
+      .uic--modal-close {
+        background-color: $royal;
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        left: 0;
+        right: 0;
+        top: -1.5rem;
+        margin: 0 auto;
+        cursor: pointer;
+        z-index: 99999;
+      }
+
+      .uic--modal-body {
+        @include source-sans-pro(1.4rem);
+        background-color: $white;
+        border-top: 4px solid $royal;
+        padding: 2rem 4rem 4rem;
+        z-index: 99998;
+        width: 56.4rem;
+        max-width: 100%;
+        text-align: center;
+        margin: 0 auto;
+
+        .uic--modal-bottom {
+          margin-top: 3.1rem;
+        }
+
+        h2 {
+          @include source-sans-pro(2rem);
+          padding-bottom: 1.2rem;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

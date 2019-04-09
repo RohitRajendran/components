@@ -27,7 +27,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
 
   t.equals(
     component
-      .find('.label-value')
+      .find('.uic--label-value')
       .at(0)
       .text(),
     'Yes',
@@ -36,7 +36,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
 
   t.equals(
     component
-      .find('.label-value')
+      .find('.uic--label-value')
       .at(1)
       .text(),
     'No',
@@ -64,7 +64,7 @@ test('RadioButtons - Should be able to display a secondaryLabel', (t) => {
     />
   );
 
-  t.true(component.find('.label-value-secondary').length);
+  t.true(component.find('.uic--label-value-secondary').length);
 
   t.end();
 });

@@ -8,15 +8,9 @@ The collapsed state of this card uses the Simple Summary component.
 
 ```javascript
 <RadioButtonCard
-  name="radioQuestion"
-  title="This is the title"
-  description="This is the description"
-  shortTitle="title"
-  editCard={() => true}
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
-    value: this.state.yesNo,
+  {...props}
+  config={
+    value: state.yesNo,
     name: 'yesNo',
     options:[
       {
@@ -49,9 +43,7 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   title="This is the title"
   description="This is the description"
   shortTitle="title"
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
-  radioButtonOptions={
+  config={
     value: this.state.yesNo,
     name: 'yesNo',
     options:[

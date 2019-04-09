@@ -5,7 +5,7 @@ import './Loader.scss';
 
 const Loader = () => (
   <div className="container ui-app-container ui-footer-spacing">
-    <div className="ui-loader">
+    <div className="uic--ui-loader">
       <svg
         className="uic--position-absolute"
         id="loader-icon-top"

@@ -41,7 +41,10 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
     name: 'test',
     title: 'Question',
     description: 'Description',
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      children: <div>Montezuma</div>,
+      label: 'Learn more about Montezuma',
+    },
     shortTitle: 'Q',
     cancelChanges: () => true,
   };
@@ -49,7 +52,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
   t.equals(comp.find('p').length, 1, 'Should show a description');
-  t.equals(comp.find('span').length, 1, 'Should show more detail');
+  t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
 
   t.end();
 });

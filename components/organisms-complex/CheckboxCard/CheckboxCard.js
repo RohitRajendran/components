@@ -29,7 +29,7 @@ const CheckboxCard = ({
   answers,
   editCard,
   onChange,
-  checkboxOptions,
+  config,
   shortTitle,
   title,
   ...props
@@ -43,18 +43,14 @@ const CheckboxCard = ({
       summary={
         <SimpleSummary
           answers={
-            answers ||
-            getSelectedAnswerLabel(
-              checkboxOptions.options,
-              checkboxOptions.value
-            )
+            answers || getSelectedAnswerLabel(config.options, config.value)
           }
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <Checkboxes {...checkboxOptions} onChange={onChange} required />
+      <Checkboxes {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -63,7 +59,7 @@ export default CheckboxCard;
 
 CheckboxCard.propTypes = {
   /** Values to pass into checkbox group */
-  checkboxOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string representing the name of the checkbox group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** Renders the checkbox group in a table. */
@@ -95,7 +91,7 @@ CheckboxCard.propTypes = {
   /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
-  cancelChanges: PropTypes.func.isRequired,
+  cancelChanges: PropTypes.func,
   /** Additional class names to apply to the card. */
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
@@ -112,10 +108,21 @@ CheckboxCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary. */
   isLatestCard: PropTypes.bool,
-  /** Shows a loading indicator in the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
-  /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwarts cabinet. */
-  moreDetail: PropTypes.node,
+  /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
+  moreDetails: PropTypes.shape({
+    /** The contents of the cabinet. */
+    cabinetContent: PropTypes.node.isRequired,
+    /** The header to display at the top of the cabinet. */
+    header: PropTypes.string.isRequired,
+    /** Determines if the cabinet is visible when the page is printed or not. */
+    visibleInPrint: PropTypes.bool,
+    /** Adds a label to open the cabinet. */
+    label: PropTypes.string.isRequired,
+  }),
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */

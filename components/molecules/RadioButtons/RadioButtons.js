@@ -18,14 +18,14 @@ const RadioButtons = ({
 }) => {
   const containerClasses = classNames(
     {
-      'mcgonagall-radio-button-container': true,
-      table,
+      'uic--mcgonagall-radio-button-container': true,
+      'uic--table': table,
     },
     className
   );
 
   const legendClasses = classNames({
-    table,
+    'uic--table': table,
     'uic--w-100': true,
   });
 
@@ -34,8 +34,8 @@ const RadioButtons = ({
       <legend className={legendClasses}>
         {options.map((option) => {
           const labelClasses = classNames({
-            disabled: disabled || option.disabled,
-            'radio-label': true,
+            'uic--disabled': disabled || option.disabled,
+            'uic--radio-label': true,
             'uic--position-relative': true,
             'uic--w-100': true,
           });
@@ -45,14 +45,14 @@ const RadioButtons = ({
 
           return (
             <div
-              className="mcgonagall-radio-button uic--d-flex uic--justify-content-between"
+              className="uic--mcgonagall-radio-button uic--d-flex uic--justify-content-between"
               key={option.value}
             >
               <label className={labelClasses}>
                 <span className={labelWrapper}>
                   <input
                     name={name}
-                    className="radio-input uic--position-absolute"
+                    className="uic--radio-input uic--position-absolute"
                     type="radio"
                     disabled={disabled || option.disabled}
                     value={option.value}
@@ -65,15 +65,17 @@ const RadioButtons = ({
                     disabled={disabled || option.disabled}
                   />
 
-                  <span className="label-value">{option.label}</span>
+                  <span className="uic--label-value">{option.label}</span>
                 </span>
                 {option.followup && option.value === value && (
-                  <div className="followup uic--w-100 ">{option.followup}</div>
+                  <div className="uic--followup uic--w-100 ">
+                    {option.followup}
+                  </div>
                 )}
               </label>
 
               {option.secondaryLabel && (
-                <span className="label-value-secondary">
+                <span className="uic--label-value-secondary">
                   {option.secondaryLabel}
                 </span>
               )}

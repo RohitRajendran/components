@@ -38,16 +38,17 @@ const defaultProps = (
   hasError: boolean('hasError', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
   onChange: (name, value) => store.set({[name]: value}),
-  checkboxOptions: {
+  config: {
     name: 'selectBtnOption',
     value: store.get('selectBtnOption'),
-    options: object('checkboxOptions.options', [
+    options: object('config.options', [
       {
         label: 'Yes',
         value: 'yes',

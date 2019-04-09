@@ -38,15 +38,16 @@ const defaultProps = (
   hasError: boolean('hasError', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
-  radioButtonOptions: {
+  config: {
     name: 'radioBtnQuestion',
     value: store.get('radioBtnQuestion'),
-    options: object('radioButtonOptions.options', [
+    options: object('config.options', [
       {
         label: 'Yes',
         value: 'yes',

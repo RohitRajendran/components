@@ -10,7 +10,7 @@ test('RadioButtonCard - renders', (t) => {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -47,7 +47,7 @@ test('RadioButtonCard - renders', (t) => {
       .prop('hasError'),
     'Should not show error state'
   );
-  t.equals(comp.find('.label-value').length, 2, 'Displays 2 values');
+  t.equals(comp.find('.uic--label-value').length, 2, 'Displays 2 values');
 
   t.end();
 });
@@ -62,7 +62,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -116,7 +116,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     moreDetail: <span>Test detail</span>,
     isCollapsed: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {
@@ -163,7 +163,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    radioButtonOptions: {
+    config: {
       name: 'yesNo',
       options: [
         {

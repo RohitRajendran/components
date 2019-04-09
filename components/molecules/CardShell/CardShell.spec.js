@@ -33,7 +33,7 @@ test('CardShell - active', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('active'),
+      .hasClass('uic--active'),
     'Shows active state'
   );
 
@@ -50,6 +50,33 @@ test('CardShell - active', (t) => {
   });
 
   t.deepEquals(props.onChange.args[0], ['name', 'val'], 'Called on change');
+
+  t.end();
+});
+
+test('CardShell - active and isFetching', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isFetching: true,
+  };
+
+  const comp = mount(
+    <CardShell {...props}>
+      <h1>Test</h1>
+    </CardShell>
+  );
+
+  t.true(
+    comp
+      .find('div')
+      .first()
+      .hasClass('uic--active'),
+    'Shows active state'
+  );
+
+  t.equals(comp.find('Spinner').length, 1, 'Shows spinner');
 
   t.end();
 });
@@ -71,7 +98,7 @@ test('CardShell - collapsed', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('collapsed'),
+      .hasClass('uic--collapsed'),
     'Shows collapsed state'
   );
 
@@ -97,7 +124,7 @@ test('CardShell - error', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('error'),
+      .hasClass('uic--error'),
     'Shows error state'
   );
 

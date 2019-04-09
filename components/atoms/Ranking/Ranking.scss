@@ -1,18 +1,18 @@
 $hover-shadow: rgba(77, 0, 186, 0.5);
 
-.ranking-list {
+.uic--ranking-list {
   margin: 0;
 
-  .ranking-controls {
+  .uic--ranking-controls {
     cursor: pointer;
 
-    &.default-control {
+    &.uic--default-control {
       // Required as focus controlled ranking requires a :hover pseudo.
       display: none;
     }
 
-    .up,
-    .down {
+    .uic--up,
+    .uic--down {
       left: 0;
       right: 0;
       margin: auto;
@@ -26,11 +26,11 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
     }
 
-    .up {
+    .uic--up {
       top: -1rem;
     }
 
-    .down {
+    .uic--down {
       bottom: -2rem;
 
       svg {
@@ -45,7 +45,7 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
     margin: 0;
     list-style-type: none;
 
-    &.idle {
+    &.uic--idle {
       li:last-child {
         border-top: 0;
       }
@@ -55,7 +55,7 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
     }
 
-    &.dragging {
+    &.uic--dragging {
       li {
         border: 1px solid $white-seven;
       }
@@ -65,24 +65,24 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       border: 1px solid $white-seven;
       color: $slate;
 
-      &.focus-control {
+      &.uic--focus-control {
         &:focus {
           box-shadow: 0 0 4px 0 $hover-shadow;
         }
       }
 
-      &.dragging {
+      &.uic--dragging {
         border: 1px solid $violet-blue;
         box-shadow: 0 0 4px 0 $hover-shadow;
       }
 
-      .inner {
+      .uic--inner {
         padding: 1.4rem;
         margin-bottom: 0;
         background-color: $white-four;
         border: 1px solid transparent;
 
-        &.focus-control {
+        &.uic--focus-control {
           z-index: 30;
           border: 1px solid $violet-blue;
           box-shadow: 0 0 4px 0 $hover-shadow;
@@ -90,19 +90,21 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
 
       &:last-child {
-        .down {
+        .uic--down {
           display: none;
         }
       }
 
       &:first-child {
-        .up {
+        .uic--up {
           display: none;
         }
       }
 
       label {
         padding-left: 2.7rem;
+        margin: 0;
+        font-weight: normal;
       }
 
       &:focus {
@@ -113,23 +115,23 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       &:focus {
         outline: none;
 
-        .inner.movable {
+        .uic--inner.movable {
           z-index: 30;
           border: 1px solid $violet-blue;
           box-shadow: 0 0 4px 0 $hover-shadow;
           outline: none;
         }
 
-        .ranking-controls {
+        .uic--ranking-controls {
           display: block;
         }
       }
     }
   }
 
-  .label-value-secondary {
+  .uic--label-value-secondary {
     color: $dark-blue;
-    font-weight: 800;
+    font-weight: 600;
     margin-left: 1rem;
   }
 }

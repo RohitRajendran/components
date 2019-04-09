@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import Button from '~components/atoms/Button/Button';
 import {maskEnum} from '~components/atoms/Input/Input';
+import {colors} from '~constants/js/colors';
 
 import './CardShell.scss';
+import Spinner from '../../atoms/Spinner/Spinner';
 
 /**
  * Validates children to see if it is valid
@@ -73,7 +75,7 @@ class CardShell extends Component {
    */
   onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit();
+    this.props.onSubmit(e);
   }
 
   /**
@@ -101,6 +103,7 @@ class CardShell extends Component {
       hasError,
       hideButton,
       isCollapsed,
+      isFetching,
       loading,
       summary,
       onChange,
@@ -110,11 +113,11 @@ class CardShell extends Component {
 
     const cardClass = classNames(
       {
-        'mcgonagall-card': true,
+        'uic--mcgonagall-card': true,
         'uic--w-100': true,
-        active: !isCollapsed,
-        collapsed: isCollapsed,
-        error: hasError,
+        'uic--active': !isCollapsed,
+        'uic--collapsed': isCollapsed,
+        'uic--error': hasError,
       },
       className
     );
@@ -127,30 +130,39 @@ class CardShell extends Component {
           <form onChange={onChange && this.onChange} onSubmit={this.onSubmit}>
             {children}
 
-            <div className="card-after-content uic--d-flex uic--align-items-center uic--flex-column">
-              {beforeButton && (
-                <div className="card-before-button">{beforeButton}</div>
-              )}
+            {(beforeButton || afterButton || !hideButton) && (
+              <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
+                {beforeButton && (
+                  <div className="uic--card-before-button">{beforeButton}</div>
+                )}
 
-              {!hideButton && (
-                <Button
-                  className="card-submit"
-                  disabled={isInvalid || disabled}
-                  isLoading={loading}
-                  light
-                  type="submit"
-                  variant="secondary"
-                >
-                  {buttonText}
-                </Button>
-              )}
+                {!hideButton &&
+                  (isFetching ? (
+                    <Spinner
+                      fill={colors['violet-blue']}
+                      height="25"
+                      width="25"
+                    />
+                  ) : (
+                    <Button
+                      className="uic--card-submit"
+                      disabled={isInvalid || disabled}
+                      isLoading={loading}
+                      light
+                      type="submit"
+                      variant="secondary"
+                    >
+                      {buttonText}
+                    </Button>
+                  ))}
 
-              {afterButton && (
-                <div className="card-after-button uic--d-flex uic--align-items-center uic--flex-column">
-                  {afterButton}
-                </div>
-              )}
-            </div>
+                {afterButton && (
+                  <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                    {afterButton}
+                  </div>
+                )}
+              </div>
+            )}
           </form>
         )}
       </div>
@@ -167,7 +179,7 @@ CardShell.propTypes = {
   buttonText: PropTypes.string,
   /** HTML element that should appear within the card when not collapsed. */
   children: PropTypes.node.isRequired,
-  /** Additional class names to apply to the button. */
+  /** Additional class names to apply */
   className: PropTypes.string,
   /** Force disables the button. */
   disabled: PropTypes.bool,
@@ -177,7 +189,9 @@ CardShell.propTypes = {
   hideButton: PropTypes.bool,
   /** Shows the collapsed state of the card which switches the content to the summary. */
   isCollapsed: PropTypes.bool,
-  /** Shows a loading indicator on the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func,

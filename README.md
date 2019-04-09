@@ -1,22 +1,31 @@
-# United Income Component Library 💰📘
+<p align="center">
+  <img src="https://raw.githubusercontent.com/UnitedIncome/components/develop/.storybook/unitedincome.png?token=AKYk-dGESBigag1E-Z1bdzCbEo1wavz_ks5cpkdHwA%3D%3D" alt="United Income logo" width="500" />
+</p>
+<h1 align="center"><b>Component Library</b></h1>
 
-[![Master Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](http://ui.unitedincome.com/master/) [![Develop Storybook](https://img.shields.io/badge/view-develop-blue.svg)](http://ui.unitedincome.com/develop/) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components)
+<div align="center">
 
-This library aims to standardize the implementation and appearance of React components throughout United Income's properties. This has a series of exportable components that can be reused. It also utilizes Storybook to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components)
 
-## Getting Started 🚀
+</div>
 
-### Within an application
+This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
-First, make sure you install this library.
+# Getting Started 🚀
+
+This component library can be installed and initialized by running `yarn install`followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
+
+## Using a Component 📚
+
+You can install the component library into your project by running the following command.
 
 ```bash
 yarn add @unitedincome/components
 ```
 
-Then, you'll need to decide if you want to use this library by importing components individually or by importing them all together.
+You can then decide if you want to use this library by importing components individually or by importing them all together which will result in a larger bundle size.
 
-For individual importing, you can pull in files from the `dist` folder:
+For individual importing, you can pull in separate files from the `dist` folder.
 
 ```javascript
 import Button from '@unitedincome/components/dist/Button';
@@ -25,45 +34,104 @@ import Button from '@unitedincome/components/dist/Button';
 To import all components together, you can import more simply:
 
 ```javascript
-import {Button} from '@unitedincome/components';
+import {Button, CardShell, Slider} from '@unitedincome/components';
 ```
 
-If you plan to use only a few components from this library, importing components individually will result in a smaller bundle. If, however, you plan to use all or a majority of these components, you should import them all. The size of the individually bundled components is greater than the whole. Additionally, it won't necessitate individual imports to import multiple files.
+You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes a prefixed grid layout and utility classes from [Bootstrap](https://getbootstrap.com/).
 
-You will also need to import the relevant css files. Again, you have the choice between importing them individually into your manifest or in bulk.
+For individual imports you can use the following:
 
-Individually, you will find those at `@unitedincome/components/dist/Button.css`. In bulk, you can find those at `@unitedincome/components/dist/index.css`.
+```sass
+@import "@unitedincome/components/dist/util.css";
+@import "@unitedincome/components/dist/Button.css";
+```
 
-You will also need to import the css for the 'uic--' prefixed bootstrap grid and util classes separately. You can find that at `@unitedincome/components/dist/util.css`.
+To import all styles you can use:
 
-### Running Storybook
+```sass
+@import "@unitedincome/components/dist/util.css";
+@import "@unitedincome/components/dist/index.css";
+```
 
-To begin Storybook, just run `yarn start`. This will open a new window to Storybook.
+## Building a Component 🔩
 
-## Development 🔧
+You can build a component story by creating a folder within the `components` directory. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
-### Best Practices
+```markdown
+•
+└── components
+├── atoms
+│ └── Input
+│ ├── Input.js
+│ ├── Input.md
+│ ├── Input.spec.js
+│ └── Input.story.js
+└── molecules
+```
 
-Because this library is so foundational to the rest of the codebase, it's vitally important to create a solid foundation for these components. The following are some best practices to keep these building blocks sane and straightforward.
+To make utilizing other components within your component easier, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
 
-1. Carefully scope CSS to the component to prevent side effects.
-2. Do not include margins on the individual components by default.
-3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
-4. Components should have 100% test coverage.
-5. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
-6. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
+---
 
-### Testing Changes
+### Testing Changes 💊
 
-As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the lifecycle of publishing new versions, the easier way of handling this is utilizing "linking" in yarn or npm.
+As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
 
 You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
 
-At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
+At this point, whenever you make changes to the component library and run yarn build, the code running in the other repository will automatically change.
 
-### State Wrapper
+---
 
-If your component requires state you'll need to utilize a State wrapper in order to correctly preview it in Storybook. This can be achieved using the following pattern. You can find more information about the State wrapper we utilize [here](https://github.com/Sambego/storybook-state).
+### Best Practices 🏁
+
+While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
+
+2. Do not include margins on the individual components by default.
+3. Create strong PropTypes for all props on all components, even if that necessitates custom PropTypes.
+4. Comment each PropType, this will allow for React doc gen to properly document what each one does.
+5. Components should have **100%** test coverage.
+6. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
+7. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
+8. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
+
+---
+
+### Creating a `.story.js` file 📒
+
+The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called [Percy](https://percy.io/), so capturing different visual variations of your component in a story is preferred.
+
+This component library utilizes a number of Storybook addons, such as knobs and storybook-readme to allow users to play around with the relevant PropTypes, and to see inline documentation. To simplify your story creation, adding a `defaultProps` helper function that configures the component props is preferred.
+
+You can find a basic example of a Story below.
+
+```javascript
+import React from 'react';
+import {storiesOf} from '@storybook/react';
+import TrashIcon from './TrashIcon';
+import {text} from '@storybook/addon-knobs';
+import {withReadme} from 'storybook-readme';
+import TrashIconReadme from './TrashIcon.md';
+
+const stories = storiesOf('Atoms/Icons/TrashIcon', module);
+
+stories.addDecorator(withReadme(TrashIconReadme));
+
+// Sets up the default props for multiple different story variations.
+const defaultProps = () => ({
+  fill: text('fill', '#000'),
+  height: text('height', '20'),
+  width: text('width', '20'),
+});
+
+stories.add('default', () => <TrashIcon {...defaultProps()} />);
+```
+
+---
+
+### State Wrapper 🗽
+
+If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
 ```javascript
 import React from 'react';
@@ -88,29 +156,46 @@ store.subscribe(() => {
   forceReRender();
 });
 
+const defaultProps = ({formName, table}) => ({
+  name: formName,
+  table: boolean('table', table),
+  onChange: (name, value) => store.set({[name]: value}),
+  value: store.get(formName),
+  key: formName,
+});
+
 // You can set/get state using state.set() and state.get().
 stories.add('default', () => (
   <RadioButtons
-    name="yesNo"
-    table={boolean('table', false)}
-    options={[
-      {
-        label: 'Yes',
-        value: 'yes',
-      },
-      {
-        label: 'No',
-        value: 'no',
-      },
-      {
-        label: "I don't know",
-        value: 'idk',
-        disabled: true,
-      },
-    ]}
-    onChange={(name, value) => store.set({[name]: value})}
-    value={store.get('yesNo')}
-    key="yesNo"
+    {...defaultProps({
+      formName: 'yesNo',
+      options: [
+        {
+          label: 'Yes',
+          value: 'yes',
+        },
+        {
+          label: 'No',
+          value: 'no',
+        },
+        {
+          label: "I don't know",
+          value: 'idk',
+          disabled: true,
+        },
+      ],
+    })}
   />
 ));
 ```
+
+---
+
+## Additional Resources 🍕
+
+When learning about this library, the following resources may come in handy.
+
+- [United Income Stack Overflow](https://stackoverflow.com/c/unitedincome/questions/130)
+- [Storybook official documentation](https://storybook.js.org/docs/basics/introduction/)
+- [Atomic Design Principles](http://bradfrost.com/blog/post/atomic-web-design/)
+- [Percy Documentation](https://percy.io/)

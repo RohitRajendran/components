@@ -5,14 +5,7 @@ This component renders a question card for the Hogwarts/McGonagall flow.
 ## Example 🚀
 
 ```javascript
-<QuestionCard
-  title="This is the title"
-  description="This is the description"
-  shortTitle="title"
-  buttonText="Submit"
-  onSubmit={() => console.log('Submit')}
-  editCard={() => true}
->
+<QuestionCard {...props} buttonText="Submit">
   Some card content
 </QuestionCard>
 ```

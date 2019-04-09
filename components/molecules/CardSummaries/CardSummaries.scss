@@ -1,8 +1,8 @@
-.card-summary {
+.uic--card-summary {
   padding: 1.5rem 2rem;
   margin: -0.3rem -0.3rem; // accounts for card border padding fix
 
-  .card-summary-label {
+  .uic--card-summary-label {
     @include source-sans-pro(1.6rem);
     color: $slate;
     font-weight: 400;
@@ -11,7 +11,7 @@
     word-break: break-word;
   }
 
-  .card-summary-answer {
+  .uic--card-summary-answer {
     @include source-sans-pro(1.6rem);
     color: $dark-blue;
     font-weight: 600;
@@ -29,17 +29,17 @@
     }
   }
 
-  &.incomplete-card {
-    .card-summary-answer,
-    .btn-link {
+  &.uic--incomplete-card {
+    .uic--card-summary-answer,
+    .uic--btn-link {
       color: $red-magenta;
       font-weight: 600;
     }
   }
 }
 
-.mcgonagall-card.error {
-  .card-summary {
+.uic--mcgonagall-card.error {
+  .uic--card-summary {
     padding: -0.2rem -0.2rem; // accounts for card border padding fix
   }
 }

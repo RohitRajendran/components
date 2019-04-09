@@ -17,6 +17,7 @@ const defaultProps = (isCollapsed = false) => ({
   hasError: boolean('hasError', false),
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
+  isFetching: boolean('isFetching', true),
   loading: boolean('loading', false),
   summary: <h1>Collapsed summary content</h1>,
 });

@@ -1,7 +1,7 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
-import React from 'react';
+import React, {Fragment} from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
@@ -41,8 +41,18 @@ const defaultProps = (
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
-  moreDetail: text('moreDetail'),
+  moreDetails: {
+    label: 'Show more details',
+    cabinetContent: (
+      <Fragment>
+        <h1>Montezuma is the best</h1>
+        <p>Hello this is the cabinet and yes, Montezuma is the best.</p>
+      </Fragment>
+    ),
+    header: 'Montezuma is the best cat',
+  },
   shortTitle: 'Question',
   summary: (
     <SimpleSummary

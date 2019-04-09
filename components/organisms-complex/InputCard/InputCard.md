@@ -8,16 +8,10 @@ The collapsed state of this card uses the Simple Summary component.
 
 ```javascript
 <InputCard
-  name="inputQuestion"
-  title="This is the title"
-  description="This is the description"
-  shortTitle="Title"
-  editCard={() => true}
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
-  inputOptions={{
+  {...props}
+  config={{
     name: 'input',
-    value: this.state.input,
+    value: state.input,
     label: 'value',
     type: 'text',
   }}
@@ -36,9 +30,7 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   title="This is the title"
   description="This is the description"
   shortTitle="title"
-  onSubmit={() => console.log('Submit')}
-  onChange={(name, value) => this.setState({[name]: value})}
-  inputOptions={{
+  config={{
     name: 'input',
     value: this.state.input,
     label: 'value',

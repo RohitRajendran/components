@@ -38,13 +38,14 @@ const defaultProps = (
   hasError: boolean('hasError', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   moreDetail: text('moreDetail'),
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
   onChange: (name, value) => store.set({[name]: value}),
-  sliderOptions: {
+  config: {
     name: 'slider',
     value: store.get('slider'),
     leftAnnotate: text('leftAnnotate', 'Less Cats'),

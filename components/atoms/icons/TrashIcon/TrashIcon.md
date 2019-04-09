@@ -1,6 +1,6 @@
 # TrashIcon Component
 
-The TrashIcon component creates a close icon using inline SVG.
+The TrashIcon component creates a trash icon using inline SVG.
 
 ## Example 🚀
 

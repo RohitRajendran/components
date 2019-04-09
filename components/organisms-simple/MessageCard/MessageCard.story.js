@@ -1,14 +1,26 @@
 import {boolean, text} from '@storybook/addon-knobs';
-import {storiesOf} from '@storybook/react';
+import {storiesOf, forceReRender} from '@storybook/react';
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import MessageCard from './MessageCard';
 import MessageCardReadme from './MessageCard.md';
+import LampIllustration from '~components/atoms/illustrations/LampIllustration/LampIllustration';
+import {StateDecorator, Store} from '@sambego/storybook-state';
 
 const stories = storiesOf('Simple Organisms/MessageCard', module);
 
-stories.addDecorator(withReadme(MessageCardReadme));
+const store = new Store({
+  on: false,
+});
+
+store.subscribe(() => {
+  forceReRender();
+});
+
+stories
+  .addDecorator(withReadme(MessageCardReadme))
+  .addDecorator(StateDecorator(store));
 
 const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   afterButton: text('afterButton'),
@@ -23,6 +35,7 @@ const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
+  isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   shortTitle: 'Title',
   title: text('title', 'This is where the title goes.'),
@@ -40,10 +53,11 @@ stories.add('active with feature image', () => (
     <MessageCard
       {...defaultProps(false)}
       featureImage={
-        <img
-          alt="example"
-          src="https://app.unitedincome.com/assets/images/pencil.svg"
-          style={{height: 100, width: 100}}
+        <LampIllustration
+          height="100"
+          width="100"
+          on={store.get('on')}
+          onClick={() => store.set({on: !store.get('on')})}
         />
       }
     />

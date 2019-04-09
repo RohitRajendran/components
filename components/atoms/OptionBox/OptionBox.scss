@@ -1,5 +1,5 @@
 // Check Styling
-.option-box-check {
+.uic--option-box-check {
   left: 0;
   top: 0.2rem;
   height: 16px;
@@ -13,7 +13,7 @@
     box-sizing: initial;
   }
 
-  &.checked {
+  &.uic--checked {
     background: $violet-blue;
     border-color: transparent;
 
@@ -29,14 +29,14 @@
     }
   }
 
-  &.disabled {
+  &.uic--disabled {
     opacity: 0.6;
     cursor: default;
   }
 }
 
 // Radio Styling
-.option-box-radio {
+.uic--option-box-radio {
   left: 0;
   height: 16px;
   width: 16px;
@@ -50,7 +50,7 @@
     box-sizing: initial;
   }
 
-  &.checked {
+  &.uic--checked {
     background-color: $white-four;
 
     &:after {
@@ -64,7 +64,7 @@
     }
   }
 
-  &.disabled {
+  &.uic-disabled {
     opacity: 0.6;
     cursor: default;
   }

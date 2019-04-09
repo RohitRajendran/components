@@ -15,7 +15,7 @@ const SliderCard = ({
   className,
   editCard,
   onChange,
-  sliderOptions,
+  config,
   shortTitle,
   title,
   ...props
@@ -36,13 +36,13 @@ const SliderCard = ({
       title={title}
       summary={
         <SimpleSummary
-          answers={answers || [sliderOptions.value.toString()]}
+          answers={answers || [config.value.toString()]}
           editCard={editCard}
           shortTitle={shortTitle || title}
         />
       }
     >
-      <Slider {...sliderOptions} onChange={onChange} required />
+      <Slider {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -51,7 +51,7 @@ export default SliderCard;
 
 SliderCard.propTypes = {
   /** Values to pass into select button */
-  sliderOptions: PropTypes.shape({
+  config: PropTypes.shape({
     /** A string representing the name of the select button group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** The current selected option in the select button group. */
@@ -76,7 +76,7 @@ SliderCard.propTypes = {
   /** Changes the text in the Submit button */
   buttonText: PropTypes.string,
   /** Handler to cancel the changes. */
-  cancelChanges: PropTypes.func.isRequired,
+  cancelChanges: PropTypes.func,
   /** Additional class names to apply to the button. */
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
@@ -93,10 +93,21 @@ SliderCard.propTypes = {
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary. */
   isLatestCard: PropTypes.bool,
-  /** Shows a loading indicator in the button. */
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching: PropTypes.bool,
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading: PropTypes.bool,
-  /** Support passing in JSX for the more detail area under the description. Typically, this should be link that opens up a Hogwarts cabinet. */
-  moreDetail: PropTypes.node,
+  /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
+  moreDetails: PropTypes.shape({
+    /** The contents of the cabinet. */
+    cabinetContent: PropTypes.node.isRequired,
+    /** The header to display at the top of the cabinet. */
+    header: PropTypes.string.isRequired,
+    /** Determines if the cabinet is visible when the page is printed or not. */
+    visibleInPrint: PropTypes.bool,
+    /** Adds a label to open the cabinet. */
+    label: PropTypes.string.isRequired,
+  }),
   /** The handler to fire when a change happens. */
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */
