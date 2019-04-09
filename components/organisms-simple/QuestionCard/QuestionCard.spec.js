@@ -42,7 +42,8 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
     title: 'Question',
     description: 'Description',
     moreDetails: {
-      children: <div>Montezuma</div>,
+      cabinetContent: <div>Montezuma</div>,
+      header: 'Test',
       label: 'Learn more about Montezuma',
     },
     shortTitle: 'Q',

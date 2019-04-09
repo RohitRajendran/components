@@ -170,7 +170,3 @@ QuestionCard.propTypes = {
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
-
-QuestionCard.defaultProps = {
-  buttonText: 'Continue',
-};
