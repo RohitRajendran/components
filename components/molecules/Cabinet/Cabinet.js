@@ -219,7 +219,6 @@ Cabinet.propTypes = {
   labelClassName: PropTypes.string,
   /** The label style. */
   labelStyle: PropTypes.oneOf(['light', 'dark']),
-
 };
 
 Cabinet.defaultProps = {
