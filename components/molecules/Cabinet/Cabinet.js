@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
+import Button from '~components/atoms/Button/Button';
 
 import './Cabinet.scss';
 
@@ -155,7 +156,7 @@ class Cabinet extends Component {
 
   /** @inheritdoc **/
   render() {
-    const {label, children, className} = this.props;
+    const {label, children, className, labelClassName, labelStyle} = this.props;
 
     const containerClasses = classNames(
       {
@@ -168,15 +169,18 @@ class Cabinet extends Component {
     return (
       <div className={containerClasses} ref={this.cabinetNode}>
         {label && (
-          <div
-            className="uic--cabinet-label"
+          <Button
+            className={labelClassName}
             role="button"
             onClick={this.handleClick}
             onKeyPress={this.handleKeyPress}
             tabIndex="0"
+            light={labelStyle === 'light'}
+            dark={labelStyle === 'dark'}
+            variant="link"
           >
             {label}
-          </div>
+          </Button>
         )}
         <CabinetInterior
           {...this.props}
@@ -209,8 +213,17 @@ Cabinet.propTypes = {
   visibleInPrint: PropTypes.bool,
   /** Additional class names to apply to the cabinet container. */
   className: PropTypes.string,
-  /** Optional abel to attach to the cabinet to open/close it. */
-  label: PropTypes.node,
+  /** Optional label to attach to the cabinet to open/close it. */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Optional classes to apply to the label */
+  labelClassName: PropTypes.string,
+  /** The label style. */
+  labelStyle: PropTypes.oneOf(['light', 'dark']),
+
+};
+
+Cabinet.defaultProps = {
+  labelStyle: 'light',
 };
 
 export default Cabinet;
