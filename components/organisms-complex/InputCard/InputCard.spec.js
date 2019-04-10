@@ -58,7 +58,12 @@ test('InputCard - collapsed with answer override', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -104,7 +109,12 @@ test('InputCard - collapsed without answer override', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -135,7 +145,12 @@ test('InputCard - collapsed with currency answer', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -167,7 +182,12 @@ test('InputCard - collapsed with percentage answer', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -199,7 +219,12 @@ test('InputCard - latest collapsed', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',

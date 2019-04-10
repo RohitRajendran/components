@@ -40,7 +40,16 @@ const defaultProps = (
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
-  moreDetail: text('moreDetail'),
+  moreDetails: object('moreDetails', {
+    label: 'Show more details',
+    cabinetContent: (
+      <div>
+        <h1>Montezuma is the best</h1>
+        <p>Hello this is the cabinet and yes, Montezuma is the best.</p>
+      </div>
+    ),
+    header: 'Montezuma is the best cat',
+  }),
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,
