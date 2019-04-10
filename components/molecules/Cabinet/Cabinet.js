@@ -196,7 +196,7 @@ Cabinet.propTypes = {
    * will disable the use of the show prop. */
   handleWithState: and([PropTypes.bool, exclusive(['name', 'show'])]),
   /** The name of the cabinet. */
-  name: and([PropTypes.func, exclusive(['handleWithState'])]),
+  name: and([PropTypes.string, exclusive(['handleWithState'])]),
   /** The contents of the cabinet. */
   children: PropTypes.node,
   /** Handler to toggle the visibility of the cabinet. */

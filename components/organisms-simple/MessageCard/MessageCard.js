@@ -98,8 +98,4 @@ MessageCard.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
-MessageCard.defaultProps = {
-  buttonText: 'Continue',
-};
-
 export default MessageCard;

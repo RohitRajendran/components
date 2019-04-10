@@ -174,7 +174,3 @@ InputCard.propTypes = {
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
-
-InputCard.defaultProps = {
-  buttonText: 'Continue',
-};

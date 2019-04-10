@@ -42,7 +42,8 @@ const RankingCard = ({
         />
       }
     >
-      <Ranking {...config} onChange={onChange} />
+      {/** Creating copy of config.items to prevent pass by reference causing issues */}
+      <Ranking {...config} items={[...config.items]} onChange={onChange} />
     </QuestionCard>
   );
 };
@@ -120,8 +121,4 @@ RankingCard.propTypes = {
     .isRequired,
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-};
-
-RankingCard.defaultProps = {
-  buttonText: 'Continue',
 };

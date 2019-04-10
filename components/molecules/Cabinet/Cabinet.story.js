@@ -39,9 +39,30 @@ stories.add('default', () => (
   >
     <h1>These are all the reasons why Montezuma is the best cat.</h1>
     <h2>He has really nice fur</h2>
-    <p>He really does have nice fur, it is so soft.</p>
+    <p>
+      He really does have nice fur, it is so soft. He really does have nice fur,
+      it is so soft. He really does have nice fur, it is so soft. He really does
+      have nice fur, it is so soft. He really does have nice fur, it is so soft.
+      He really does have nice fur, it is so soft. He really does have nice fur,
+      it is so soft. He really does have nice fur, it is so soft. He really does
+      have nice fur, it is so soft. He really does have nice fur, it is so soft.
+      He really does have nice fur, it is so soft. He really does have nice fur,
+      it is so soft.
+    </p>
     <h2>He meows</h2>
-    <p>All cats meow, but his is the nicest.</p>
+    <p>
+      All cats meow, but his is the nicest. All cats meow, but his is the
+      nicest. All cats meow, but his is the nicest. All cats meow, but his is
+      the nicest. All cats meow, but his is the nicest. All cats meow, but his
+      is the nicest. All cats meow, but his is the nicest. All cats meow, but
+      his is the nicest. All cats meow, but his is the nicest. All cats meow,
+      but his is the nicest. All cats meow, but his is the nicest. All cats
+      meow, but his is the nicest. All cats meow, but his is the nicest. All
+      cats meow, but his is the nicest. All cats meow, but his is the nicest.
+      All cats meow, but his is the nicest. All cats meow, but his is the
+      nicest. All cats meow, but his is the nicest. All cats meow, but his is
+      the nicest.
+    </p>
     <h2>He enjoys naps</h2>
     <p>He enjoys napping on people.</p>
     <h2>He is the cutest</h2>

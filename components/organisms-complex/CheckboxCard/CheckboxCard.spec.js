@@ -59,7 +59,12 @@ test('CheckboxCard - collapsed with answer override', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -113,7 +118,12 @@ test('CheckboxCard - collapsed without answer override', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     shortTitle: 'Q',
     config: {
@@ -152,7 +162,12 @@ test('CheckboxCard - latest collapsed', (t) => {
     title: 'Question',
     description: 'Description',
     summary: <h2>Summary</h2>,
-    moreDetail: <span>Test detail</span>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',

@@ -133,7 +133,3 @@ CheckboxCard.propTypes = {
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
-
-CheckboxCard.defaultProps = {
-  buttonText: 'Continue',
-};
