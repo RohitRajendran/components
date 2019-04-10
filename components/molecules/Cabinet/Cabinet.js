@@ -156,7 +156,14 @@ class Cabinet extends Component {
 
   /** @inheritdoc **/
   render() {
-    const {label, children, className, labelClassName, labelStyle} = this.props;
+    const {
+      label,
+      children,
+      className,
+      labelClassName,
+      labelOnLight,
+      labelOnDark,
+    } = this.props;
 
     const containerClasses = classNames(
       {
@@ -171,12 +178,9 @@ class Cabinet extends Component {
         {label && (
           <Button
             className={labelClassName}
-            role="button"
             onClick={this.handleClick}
-            onKeyPress={this.handleKeyPress}
-            tabIndex="0"
-            light={labelStyle === 'light'}
-            dark={labelStyle === 'dark'}
+            light={labelOnLight}
+            dark={labelOnDark}
             variant="link"
           >
             {label}
@@ -217,8 +221,10 @@ Cabinet.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Optional classes to apply to the label */
   labelClassName: PropTypes.string,
-  /** The label style. */
-  labelStyle: PropTypes.oneOf(['light', 'dark']),
+  /** Informs the component if the label is on a dark background. */
+  labelOnDark: PropTypes.bool,
+  /** Informs the component if the label is on a light background. */
+  labelOnLight: PropTypes.bool,
 };
 
 Cabinet.defaultProps = {
