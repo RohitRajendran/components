@@ -42,7 +42,8 @@ const RankingCard = ({
         />
       }
     >
-      <Ranking {...config} onChange={onChange} />
+      {/** Creating copy of config.items to prevent pass by reference causing issues */}
+      <Ranking {...config} items={[...config.items]} onChange={onChange} />
     </QuestionCard>
   );
 };
