@@ -161,7 +161,6 @@ class Cabinet extends Component {
       children,
       className,
       labelClassName,
-      labelOnLight,
       labelOnDark,
     } = this.props;
 

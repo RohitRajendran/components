@@ -23,10 +23,7 @@ The Cabinet component generates a cabinet pullout which appears on the right sid
 If you're including the Cabinet once on the page you can use the `handleWithState` prop to disable the `show` and `toggle` props, allowing the Cabinet component to manage its own state. This will make it so the Cabinet can _only_ be activated through the label, which may not be appropriate for all use cases.
 
 ```javascript
-<Cabinet 
-  name="cabinet" 
-  label="Open Cabinet"
-  handleWithState={true}>
+<Cabinet name="cabinet" label="Open Cabinet" handleWithState={true}>
   <h2>Montezuma is the best cat</h2>
   <p>You can place a paragraph about how good of a cat he is here</p>
   <h2>This is why</h2>
