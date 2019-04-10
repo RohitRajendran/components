@@ -179,7 +179,7 @@ class Cabinet extends Component {
           <Button
             className={labelClassName}
             onClick={this.handleClick}
-            light={labelOnLight}
+            light={!labelOnDark}
             dark={labelOnDark}
             variant="link"
           >
@@ -223,12 +223,6 @@ Cabinet.propTypes = {
   labelClassName: PropTypes.string,
   /** Informs the component if the label is on a dark background. */
   labelOnDark: PropTypes.bool,
-  /** Informs the component if the label is on a light background. */
-  labelOnLight: PropTypes.bool,
-};
-
-Cabinet.defaultProps = {
-  labelStyle: 'light',
 };
 
 export default Cabinet;
