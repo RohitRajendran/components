@@ -181,6 +181,7 @@ class Cabinet extends Component {
             light={!labelOnDark}
             dark={labelOnDark}
             variant="link"
+            tabIndex="0"
           >
             {label}
           </Button>

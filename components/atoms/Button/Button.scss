@@ -164,12 +164,14 @@ a {
     &.on-dark {
       color: $white-four;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $white-four;
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       text-decoration: none;
       color: $eggplant;
     }
