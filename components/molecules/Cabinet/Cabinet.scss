@@ -87,13 +87,15 @@ $z-index-navbar-fixed: 1030;
 
     h1 {
       margin-bottom: 3rem;
+      margin-top: 0;
     }
 
     h2 {
-      margin: 3rem 0;
+      margin: 3rem 0 0;
     }
 
     p {
+      margin-top: 0.8rem;
       font-style: normal !important; // Enforces paragraph styles on the cabinet.
     }
   }
