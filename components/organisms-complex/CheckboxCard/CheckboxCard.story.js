@@ -36,6 +36,7 @@ const defaultProps = (
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
+  hasMadeChanges: boolean('hasMadeChanges', true),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
@@ -67,7 +68,7 @@ const defaultProps = (
         value: 'no',
       },
       {
-        label: "I don't know",
+        label: 'I do not know',
         value: 'idk',
         disabled: true,
       },
@@ -77,19 +78,19 @@ const defaultProps = (
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(false)} />
+    <CheckboxCard {...defaultProps(false, false, true)} />
   </MemoryRouter>
 ));
 
-stories.add('active and clears future', () => (
+stories.add('editing and clears future', () => (
   <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(false, true)} />
+    <CheckboxCard {...defaultProps(false, true, false)} />
   </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(true)} answers={['Yup']} />
+    <CheckboxCard {...defaultProps(true, false, false)} answers={['Yup']} />
   </MemoryRouter>
 ));
 

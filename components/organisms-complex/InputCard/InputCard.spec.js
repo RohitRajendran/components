@@ -16,6 +16,7 @@ test('InputCard - renders', (t) => {
       label: 'value',
       value: '',
     },
+    isLatestCard: true,
     onChange: stub(),
     cancelChanges: () => true,
   };

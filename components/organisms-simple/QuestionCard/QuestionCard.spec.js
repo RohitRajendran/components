@@ -48,11 +48,26 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
     },
     shortTitle: 'Q',
     cancelChanges: () => true,
+    hasMadeChanges: true,
+    clearFuture: true,
+    isLatestCard: false,
   };
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
-  t.equals(comp.find('p').length, 1, 'Should show a description');
+  t.equals(
+    comp.find('.uic--warning-message').length,
+    1,
+    'Should show warning text'
+  );
+  t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
+  t.equals(
+    comp
+      .find('.uic--card-submit')
+      .first()
+      .text(),
+    'Save Changes'
+  );
   t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
 
   t.end();

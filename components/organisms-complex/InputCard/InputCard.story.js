@@ -25,7 +25,7 @@ stories
 const defaultProps = (
   isCollapsed = false,
   clearFuture = false,
-  isLatestCard = false
+  isLatestCard = true
 ) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),
@@ -37,6 +37,7 @@ const defaultProps = (
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
+  hasMadeChanges: boolean('hasMadeChanges', true),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
@@ -78,19 +79,19 @@ const defaultProps = (
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <InputCard {...defaultProps(false)} />
+    <InputCard {...defaultProps(false, false, true)} />
   </MemoryRouter>
 ));
 
-stories.add('active and clears future', () => (
+stories.add('editing and clears future', () => (
   <MemoryRouter key="question">
-    <InputCard {...defaultProps(false, true)} />
+    <InputCard {...defaultProps(false, true, false)} />
   </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <InputCard {...defaultProps(true)} answers={['Yup']} />
+    <InputCard {...defaultProps(true, false, false)} answers={['Yup']} />
   </MemoryRouter>
 ));
 
