@@ -1,13 +1,14 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, text, object} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
-import React from 'react';
+import React, {Fragment} from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
 import RadioButtons from '../../molecules/RadioButtons/RadioButtons';
 import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import ExpandCollapse from '../../atoms/ExpandCollapse/ExpandCollapse';
+import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import QuestionCardReadme from './QuestionCard.md';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
@@ -67,7 +68,6 @@ const defaultProps = (
   onChange: (name, value) => store.set({[name]: value}),
 });
 
-
 stories.add('active', () => (
   <MemoryRouter key="question">
     <QuestionCard {...defaultProps(false)}>
@@ -98,7 +98,20 @@ stories.add('active', () => (
 stories.add('active with expand/collapse', () => (
   <MemoryRouter key="question">
     <QuestionCard {...defaultProps(false)}>
-      <ExpandCollapse label="Current Apartment/Rent">
+      <ExpandCollapse
+        label="Current Apartment/Rent"
+        aside={
+          <Fragment>
+            <div>Remove</div>
+            <div
+              style={{height: '16px', width: '16px', margin: '0 0 .3rem 1rem'}}
+              className="uic--position-relative"
+            >
+              <OptionBox variant="check" />
+            </div>
+          </Fragment>
+        }
+      >
         <RadioButtons
           name="yesNo"
           options={[
@@ -123,7 +136,6 @@ stories.add('active with expand/collapse', () => (
     </QuestionCard>
   </MemoryRouter>
 ));
-
 
 stories.add('active and clears future', () => (
   <MemoryRouter key="question">

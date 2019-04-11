@@ -25,13 +25,13 @@
     }
   }
 
-  /* Configures the margins of the ExpandyCollapse when placed in a card
+  /* Configures the margins of the ExpandyCollapse component when placed in a card
     so the arrows float off the left side. */
   .uic--ec {
     margin-left: -5rem;
 
     .uic--ec-controls {
-      left: .5rem;
+      left: 0.5rem;
     }
   }
 }

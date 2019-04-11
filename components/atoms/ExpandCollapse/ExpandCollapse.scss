@@ -1,35 +1,57 @@
 .uic--ec {
-  cursor: pointer;
   margin-bottom: 3.3rem;
+  color: $dark-blue;
+
+  &.uic--ec-disabled {
+    .uic--ec-label {
+      color: $slate;
+      font-weight: normal;
+      cursor: initial;
+    }
+  }
 
   .uic--ec-label {
     @include source-sans-pro(1.6rem);
     font-weight: 600;
     padding-left: 5rem;
+    outline: none; // Removes the default focus state.
+
+    &:focus { 
+      color: $eggplant; // TODO: Chat with Monique about this as it's a bit difficult to see right now.
+    }
+
+    .uic--ec-label-description {
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  }
+
+  //* Applies the transition animation for the rotation prop.
+  .uic--rotate {
+    transition: transform 0.2s ease-in-out;
   }
 
   .uic--ec-controls {
     left: 0;
-
-    &.uic--ec-controls-expanded {
-      transform: rotate(90deg);
-    }
   }
 
-  .open,
-  .closed {
-    transition: max-height 300ms ease-in-out;
-    max-height: 0rem;
+  .uic--ec-controls,
+  .uic--ec-label {
+    cursor: pointer;
   }
 
-  .open {
-    max-height: 100%;
-    overflow: visible;
-  }
-
-  .closed {
+  .uic--ec-open {
     overflow: hidden;
-    display: none;
+    transition: transform 0.3s ease-out;
+    height: auto;
+    transform: scaleY(1);
+    transform-origin: top;
+    margin-bottom: 2.1rem;
+  }
+
+  .uic--ec-closed {
+    transform: scaleY(0);
+    max-height: 0;
   }
 
   .uic--ec-content {
@@ -37,8 +59,11 @@
     margin-bottom: 1.7rem;
     padding-left: 5rem;
 
-    .uic--ec-content-inner {
-      margin-bottom: 1.7rem;
+    h1,
+    h2,
+    h3 {
+      // Resets the margin for headers within the ExpandCollapse component.
+      margin-top: 0;
     }
 
     &:after {
@@ -47,5 +72,10 @@
       border-bottom: 1px solid $light-gray;
       display: block;
     }
+  }
+
+  .uic--ec-aside {
+    font-size: 1.4rem;
+    color: $slate;
   }
 }

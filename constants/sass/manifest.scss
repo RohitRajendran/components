@@ -10,3 +10,23 @@
 * {
   box-sizing: border-box;
 }
+
+//* Rotation utility classes for things such as arrows.
+//* These utility classes make the assumption that your element starts in the downwards position.
+.uic--rotate {
+  &.uic--rotate-down {
+    transform: rotate(0);
+  }
+
+  &.uic--rotate-right {
+    transform: rotate(-90deg);
+  }
+
+  &.uic--rotate-left {
+    transform: rotate(90deg);
+  }
+
+  &.uic--rotate-up {
+    transform: rotate(180deg);
+  }
+}
