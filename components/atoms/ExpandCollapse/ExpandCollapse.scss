@@ -1,0 +1,51 @@
+.uic--ec {
+  cursor: pointer;
+  margin-bottom: 3.3rem;
+
+  .uic--ec-label {
+    @include source-sans-pro(1.6rem);
+    font-weight: 600;
+    padding-left: 5rem;
+  }
+
+  .uic--ec-controls {
+    left: 0;
+
+    &.uic--ec-controls-expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  .open,
+  .closed {
+    transition: max-height 300ms ease-in-out;
+    max-height: 0rem;
+  }
+
+  .open {
+    max-height: 100%;
+    overflow: visible;
+  }
+
+  .closed {
+    overflow: hidden;
+    display: none;
+  }
+
+  .uic--ec-content {
+    margin-top: 3rem;
+    margin-bottom: 1.7rem;
+    padding-left: 5rem;
+
+    .uic--ec-content-inner {
+      margin-bottom: 1.7rem;
+    }
+
+    &:after {
+      content: '';
+      height: 1px;
+      border-bottom: 1px solid $light-gray;
+      display: block;
+    }
+  }
+}

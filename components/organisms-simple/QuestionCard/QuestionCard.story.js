@@ -7,6 +7,7 @@ import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
 import RadioButtons from '../../molecules/RadioButtons/RadioButtons';
 import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import ExpandCollapse from '../../atoms/ExpandCollapse/ExpandCollapse';
 import QuestionCardReadme from './QuestionCard.md';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
@@ -66,6 +67,7 @@ const defaultProps = (
   onChange: (name, value) => store.set({[name]: value}),
 });
 
+
 stories.add('active', () => (
   <MemoryRouter key="question">
     <QuestionCard {...defaultProps(false)}>
@@ -92,6 +94,36 @@ stories.add('active', () => (
     </QuestionCard>
   </MemoryRouter>
 ));
+
+stories.add('active with expand/collapse', () => (
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(false)}>
+      <ExpandCollapse label="Current Apartment/Rent">
+        <RadioButtons
+          name="yesNo"
+          options={[
+            {
+              label: 'Yes',
+              value: 'yes',
+            },
+            {
+              label: 'No',
+              value: 'no',
+            },
+            {
+              label: "I don't know",
+              value: 'idk',
+              disabled: true,
+            },
+          ]}
+          value={store.get('yesNo')}
+          key="yesNo"
+        />
+      </ExpandCollapse>
+    </QuestionCard>
+  </MemoryRouter>
+));
+
 
 stories.add('active and clears future', () => (
   <MemoryRouter key="question">

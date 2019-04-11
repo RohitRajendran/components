@@ -24,4 +24,14 @@
       margin-right: 1rem;
     }
   }
+
+  /* Configures the margins of the ExpandyCollapse when placed in a card
+    so the arrows float off the left side. */
+  .uic--ec {
+    margin-left: -5rem;
+
+    .uic--ec-controls {
+      left: .5rem;
+    }
+  }
 }
