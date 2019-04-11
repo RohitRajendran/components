@@ -26,8 +26,9 @@ const defaultProps = ({CabinetName, header}) => ({
   header: text('header', header),
   toggle: (name, value) => store.set({[name]: value}),
   name: CabinetName,
-  label: <div>Open the Cabinet</div>,
+  label: text('label', 'Open the cabinet'),
   handleWithState: true,
+  labelOnDark: boolean('labelOnDark', false),
 });
 
 stories.add('default', () => (

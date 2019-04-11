@@ -90,11 +90,8 @@ const QuestionCard = ({
         {moreDetails && (
           <div className="uic--card-more-detail">
             <Cabinet
-              label={
-                <Button variant="link" light>
-                  {moreDetails.label}
-                </Button>
-              }
+              labelStyle="light"
+              label={moreDetails.label}
               visibleInPrint={moreDetails.visibleInPrint}
               header={moreDetails.header}
               handleWithState
