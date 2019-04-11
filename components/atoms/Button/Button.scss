@@ -168,6 +168,10 @@ a {
       &:focus {
         color: $white-four;
       }
+
+      &:focus {
+        opacity: 0.8;
+      }
     }
 
     &:hover,
