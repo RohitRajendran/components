@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
@@ -15,14 +15,26 @@ class ExpandCollapse extends Component {
       open: false,
     };
 
+    this.id = Math.round(Math.random() * 10000000);
+    this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
   }
 
-  /** Toggles the item visibility.
+  /** Toggles the item visibility and sets inner focus.
    * @returns {undefined}
    **/
   openExpandItem() {
-    this.setState({open: !this.state.open});
+    let height = 0;
+    const element = document.querySelector(`.uic--ec-content-inner-${this.id}`);
+
+    if (!element.clientHeight) {
+      const content = document.querySelector(`.uic--ec-content-${this.id}`);
+      height = content.clientHeight;
+    }
+
+    this.setState({open: !this.state.open, height});
+
+    return this.contentNode.current.focus();
   }
 
   /** @inheritdoc */
@@ -45,14 +57,9 @@ class ExpandCollapse extends Component {
       className
     );
 
-    const contentClasses = classNames({
-      'uic--ec-open': this.state.open,
-      'uic--ec-closed': !this.state.open,
-    });
-
     const contentContainerClasses = classNames({
-      'uic--ec-content': true,
-      'uic--ec-content-closed': !this.state.open,
+      'uic--ec-content-container': true,
+      'uic--ec-content-container-closed': !this.state.open,
     });
 
     const iconClasses = classNames({
@@ -91,11 +98,11 @@ class ExpandCollapse extends Component {
             </div>
           )}
         </div>
-
         <div className={contentContainerClasses}>
-          <div className={contentClasses}>
-            {children}
-            <hr />
+          <div className={`uic--ec-content-inner uic--ec-content-inner-${this.id}`} style={{height: this.state.height}}>
+            <div className={`uic--ec-content uic--ec-content-${this.id}`} ref={this.contentNode} role="menuitem" tabIndex="0">
+              {children}
+            </div>
           </div>
         </div>
       </div>

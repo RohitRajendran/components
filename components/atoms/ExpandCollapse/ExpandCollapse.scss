@@ -43,36 +43,24 @@
 
   .uic--ec-open {
     overflow: hidden;
-    transition: transform 0.3s ease-out;
-    height: auto;
-    transform: scaleY(1);
-    transform-origin: top;
     margin-bottom: 2.1rem;
   }
 
-  .uic--ec-closed {
-    transform: scaleY(0);
-    max-height: 0;
+  .uic--ec-content-container {
+    padding-left: 5rem;
 
-    hr {
-      height: 0;
-      margin: 0;
-    }
-  }
-
-  .uic--ec-content-container-closed {
     &:after {
+      margin-top: 3rem;
       content: '';
       height: 1px;
       border-bottom: 1px solid $light-gray;
       display: block;
     }
-  }
 
-  .uic--ec-content {
-    margin-top: 3rem;
-    margin-bottom: 1.7rem;
-    padding-left: 5rem;
+    .uic--ec-content {
+      padding-top: 3rem;
+      outline: none;
+    }
 
     h1,
     h2,
@@ -87,6 +75,16 @@
       border: 0;
       height: 1px;
       background-color: $light-gray;
+    }
+
+    .uic--ec-content-inner {
+      -moz-transition: height .5s;
+      -ms-transition: height .5s;
+      -o-transition: height .5s;
+      -webkit-transition: height .5s;
+      transition: height .5s;
+      height: 0;
+      overflow: hidden;
     }
   }
 
