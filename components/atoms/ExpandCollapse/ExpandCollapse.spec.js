@@ -28,6 +28,30 @@ test('ExpandCollapse - openExpandItem', (t) => {
   t.end();
 });
 
+test('ExpandCollapse - componentDidMount', (t) => {
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    defaultOpen: true,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      Just some contnet to appear in the expandy thing
+    </ExpandCollapse>
+  );
+
+  t.deepEquals(
+    component.state(),
+    {open: true, valid: true, height: 0},
+    'Should render with open as true.'
+  );
+
+  t.end();
+});
+
+
 test('ExpandCollapse - validate', (t) => {
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
