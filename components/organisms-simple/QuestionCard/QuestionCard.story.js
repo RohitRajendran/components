@@ -1,7 +1,7 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, text, object, number, select} from '@storybook/addon-knobs';
+import {boolean, text, object} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
-import React, {Fragment} from 'react';
+import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
