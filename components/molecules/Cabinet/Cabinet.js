@@ -26,7 +26,7 @@ export const CabinetInterior = ({
 
   return (
     <aside className={containerClasses}>
-      <div className="uic--cabinet-header uic--w-100 uic--d-flex">
+      <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
         <div
           className="uic--cabinet-close"
           onClick={handleClick}
