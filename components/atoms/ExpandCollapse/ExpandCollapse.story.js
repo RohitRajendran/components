@@ -10,13 +10,14 @@ const stories = storiesOf('Atoms/ExpandCollapse', module);
 
 stories.addDecorator(withReadme(ExpandCollapseReadme));
 
-const defaultProps = (startDisabled) => ({
+const defaultProps = (startDisabled, startOpen) => ({
   label: text(
     'label',
     'There is a picture of a cat behind this expandy collapse menu'
   ),
   description: text('description', 'It is a very cute cat.'),
   disabled: boolean('disabled', startDisabled),
+  defaultOpen: startOpen,
   aside: (
     <Fragment>
       <div>Remove</div>
@@ -46,6 +47,15 @@ stories.add('disabled', () => (
       <h1>What did I tell you?</h1>
       <p>Not Montezuma but still pretty cute.</p>
       <img src="https://placekitten.com/616/616" alt="" />
+    </div>
+  </ExpandCollapse>
+));
+
+stories.add('open', () => (
+  <ExpandCollapse {...defaultProps(false, true)}>
+    <div>
+      <h1>Montezuma is an amazing cat.</h1>
+      <p>He really is!</p>
     </div>
   </ExpandCollapse>
 ));

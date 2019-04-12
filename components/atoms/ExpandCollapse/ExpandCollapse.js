@@ -15,7 +15,7 @@ class ExpandCollapse extends Component {
     super(props);
 
     this.state = {
-      open: false,
+      open: props.defaultOpen || false,
       valid: true,
       height: 0,
     };
@@ -23,6 +23,19 @@ class ExpandCollapse extends Component {
     this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
     this.checkValidation = this.checkValidation.bind(this);
+  }
+
+  /** @inheritdoc */
+  componentDidMount() {
+    // If the component is set to default open the height gets calculated here so the content displays.
+    if (this.state.open && !this.props.disabled) {
+      const content = this.contentNode.current;
+      const height = content.clientHeight;
+
+      this.setState({
+        height,
+      });
+    }
   }
 
   /** Toggles the item visibility and sets inner focus.
@@ -152,6 +165,8 @@ ExpandCollapse.propTypes = {
   className: PropTypes.string,
   /** Toggles child validation on/off. */
   validate: PropTypes.bool,
+  /** Defaults the state to expanded. */
+  defaultOpen: PropTypes.bool,
 };
 
 ExpandCollapse.defaultProps = {
