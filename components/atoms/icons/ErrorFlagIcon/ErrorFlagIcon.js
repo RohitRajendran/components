@@ -1,0 +1,45 @@
+/** @module ErrorFlagIcon */
+import React from 'react';
+import PropTypes from 'prop-types';
+
+/** Displays the ErrorFlagIcon component.
+ * @param {object} props - Component props.
+ * @returns {*} - JSX representation of the ErrorFlagIcon component.
+ */
+const ErrorFlagIcon = ({width, height, fill, className}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+  >
+    <g fill="none" fillRule="evenodd">
+      <circle cx="12" cy="12" r="12" fill={fill} />
+      <path
+        fill="#FFF"
+        fillRule="nonzero"
+        d="M11.34 7.938L11.289 6h1.972l-.068 1.938-.272 5.797h-1.309l-.272-5.797zm-.34 8.33c0-.385.122-.703.366-.952a1.22 1.22 0 0 1 .909-.374c.363 0 .663.125.901.374.238.25.357.567.357.952s-.119.703-.357.952c-.238.25-.538.374-.901.374a1.22 1.22 0 0 1-.91-.374c-.243-.25-.365-.567-.365-.952z"
+      />
+    </g>
+  </svg>
+);
+
+ErrorFlagIcon.propTypes = {
+  /** The width of the arrow. */
+  width: PropTypes.string,
+  /** The height of the arrow. */
+  height: PropTypes.string,
+  /** The color of the arrow. */
+  fill: PropTypes.string,
+  /** Additional class names to apply to the container. */
+  className: PropTypes.string,
+};
+
+ErrorFlagIcon.defaultProps = {
+  width: '24',
+  height: '24',
+  fill: '#B30052',
+};
+
+export default ErrorFlagIcon;

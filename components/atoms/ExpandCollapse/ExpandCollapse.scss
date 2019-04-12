@@ -18,7 +18,7 @@
 
     &:focus {
       //color: $eggplant; // TODO: Chat with Monique about this as it's a bit difficult to see right now.
-      opacity: .8;
+      opacity: 0.8;
     }
 
     .uic--ec-label-description {
@@ -78,11 +78,11 @@
     }
 
     .uic--ec-content-inner {
-      -moz-transition: height .5s;
-      -ms-transition: height .5s;
-      -o-transition: height .5s;
-      -webkit-transition: height .5s;
-      transition: height .5s;
+      -moz-transition: height 0.5s;
+      -ms-transition: height 0.5s;
+      -o-transition: height 0.5s;
+      -webkit-transition: height 0.5s;
+      transition: height 0.5s;
       height: 0;
       overflow: hidden;
     }

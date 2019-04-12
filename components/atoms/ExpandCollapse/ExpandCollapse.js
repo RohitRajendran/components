@@ -1,7 +1,10 @@
+/** @module ExpandCollapse */
 import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
+import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon';
+import {validateChildren} from '~components/molecules/CardShell/CardShell';
 
 import './ExpandCollapse.scss';
 
@@ -13,28 +16,36 @@ class ExpandCollapse extends Component {
 
     this.state = {
       open: false,
+      valid: true,
+      height: 0,
     };
 
-    this.id = Math.round(Math.random() * 10000000);
     this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
+    this.checkValidation = this.checkValidation.bind(this);
   }
 
   /** Toggles the item visibility and sets inner focus.
    * @returns {undefined}
    **/
   openExpandItem() {
-    let height = 0;
-    const element = document.querySelector(`.uic--ec-content-inner-${this.id}`);
+    const content = this.contentNode.current;
+    const height = content.clientHeight;
 
-    if (!element.clientHeight) {
-      const content = document.querySelector(`.uic--ec-content-${this.id}`);
-      height = content.clientHeight;
-    }
-
-    this.setState({open: !this.state.open, height});
+    this.setState({
+      open: !this.state.open,
+      height: !this.state.open ? height : 0,
+    });
 
     return this.contentNode.current.focus();
+  }
+
+  /** Checks child components for validation errors.
+   * @return {undefined}
+   **/
+  checkValidation() {
+    const isValid = validateChildren(this.props.children);
+    this.setState({valid: isValid});
   }
 
   /** @inheritdoc */
@@ -46,13 +57,14 @@ class ExpandCollapse extends Component {
       disabled,
       children,
       className,
+      validate,
     } = this.props;
 
     const containerClasses = classNames(
       {
         'uic--ec': true,
-        'uic--position-relative': true,
         'uic--ec-disabled': disabled,
+        'uic--position-relative': true,
       },
       className
     );
@@ -63,10 +75,13 @@ class ExpandCollapse extends Component {
     });
 
     const iconClasses = classNames({
-      'uic--ec-controls-expanded': this.state.open,
-      'uic--position-absolute': true,
+      'uic--ec-controls-expanded': this.state.open && this.state.valid,
       'uic--ec-controls': true,
+      'uic--position-absolute': true,
     });
+
+    // Toggles the icon component based on validity.
+    const IconComponent = this.state.valid ? ExpandyCircleIcon : ErrorFlagIcon;
 
     return (
       <div className={containerClasses}>
@@ -79,7 +94,7 @@ class ExpandCollapse extends Component {
             tabIndex={!disabled ? '0' : ''}
           >
             {!disabled && (
-              <ExpandyCircleIcon
+              <IconComponent
                 className={iconClasses}
                 width="2.4rem"
                 height="2.4rem"
@@ -99,11 +114,23 @@ class ExpandCollapse extends Component {
           )}
         </div>
         <div className={contentContainerClasses}>
-          <div className={`uic--ec-content-inner uic--ec-content-inner-${this.id}`} style={{height: this.state.height}}>
-            <div className={`uic--ec-content uic--ec-content-${this.id}`} ref={this.contentNode} role="menuitem" tabIndex="0">
-              {children}
+          {!disabled && (
+            <div
+              className="uic--ec-content-inner"
+              style={{height: this.state.height}}
+            >
+              <div
+                className="uic--ec-content"
+                ref={this.contentNode}
+                onKeyPress={validate && this.checkValidation}
+                onClick={validate && this.checkValidation}
+                role="menuitem"
+                tabIndex="0"
+              >
+                {children}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -123,6 +150,12 @@ ExpandCollapse.propTypes = {
   disabled: PropTypes.bool,
   /** Optional classnames to apply to the container. */
   className: PropTypes.string,
+  /** Toggles child validation on/off. */
+  validate: PropTypes.bool,
+};
+
+ExpandCollapse.defaultProps = {
+  validate: true,
 };
 
 export default ExpandCollapse;

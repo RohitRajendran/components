@@ -1,5 +1,5 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, text, object} from '@storybook/addon-knobs';
+import {boolean, text, object, number, select} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
 import React, {Fragment} from 'react';
 import {MemoryRouter} from 'react-router-dom';
@@ -10,11 +10,14 @@ import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSum
 import ExpandCollapse from '../../atoms/ExpandCollapse/ExpandCollapse';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import QuestionCardReadme from './QuestionCard.md';
+import Input from '~components/atoms/Input/Input';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
 
 const store = new Store({
   yesNo: '',
+  input: '',
+  disabled: false,
 });
 
 stories
@@ -100,16 +103,23 @@ stories.add('active with expand/collapse', () => (
     <QuestionCard {...defaultProps(false)}>
       <ExpandCollapse
         label="Current Apartment/Rent"
+        disabled={store.get('disabled')}
         aside={
-          <Fragment>
+          <div
+            className="uic--d-flex"
+            role="button"
+            tabIndex="0"
+            onKeyPress={() => store.set({disabled: !store.get('disabled')})}
+            onClick={() => store.set({disabled: !store.get('disabled')})}
+          >
             <div>Remove</div>
             <div
               style={{height: '16px', width: '16px', margin: '0 0 .3rem 1rem'}}
               className="uic--position-relative"
             >
-              <OptionBox variant="check" />
+              <OptionBox variant="check" checked={store.get('disabled')} />
             </div>
-          </Fragment>
+          </div>
         }
       >
         <RadioButtons
@@ -131,6 +141,21 @@ stories.add('active with expand/collapse', () => (
           ]}
           value={store.get('yesNo')}
           key="yesNo"
+          required
+        />
+
+        <Input
+          name="input"
+          value={store.get('input')}
+          label="Date"
+          placeholder="MM/DD/YYYY"
+          validateOnBlur={true}
+          validationErrorMsg="Not a valid date range"
+          mask="Date"
+          required
+          onChange={(name, value) => store.set({[name]: value})}
+          isValid={() => store.get('input').length === 10}
+          style={{marginTop: '2rem'}}
         />
       </ExpandCollapse>
     </QuestionCard>
