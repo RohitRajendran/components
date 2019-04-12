@@ -12,6 +12,7 @@ import './QuestionCard.scss';
 const QuestionCard = ({
   afterButton,
   beforeButton,
+  buttonText,
   cancelChanges,
   children,
   className,
@@ -19,6 +20,7 @@ const QuestionCard = ({
   description,
   editCard,
   hasError,
+  hasMadeChanges,
   isCollapsed,
   isLatestCard,
   moreDetails,
@@ -39,7 +41,8 @@ const QuestionCard = ({
     'uic--d-block': true,
   });
 
-  const showEditWarning = clearFuture && !isLatestCard && !isCollapsed;
+  const isEditing = !isLatestCard && !isCollapsed;
+  const showEditWarning = clearFuture && isEditing;
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
 
   return (
@@ -59,7 +62,7 @@ const QuestionCard = ({
       beforeButton={
         <Fragment>
           {beforeButton}
-          {showEditWarning && (
+          {hasMadeChanges && showEditWarning && (
             <p className="uic--warning-message">
               Note: The answer to this question has an impact on subsequent
               questions. If you change this answer, all further progress will be
@@ -82,6 +85,8 @@ const QuestionCard = ({
           )}
         </Fragment>
       }
+      buttonText={hasMadeChanges && isEditing ? 'Save Changes' : buttonText}
+      hideButton={!hasMadeChanges && isEditing}
     >
       <div className="uic--card-titleset">
         <h2>{title}</h2>
@@ -133,6 +138,8 @@ QuestionCard.propTypes = {
   editCard: PropTypes.func,
   /** Displays the error state of the card. */
   hasError: PropTypes.bool,
+  /** If changes have been made */
+  hasMadeChanges: PropTypes.bool,
   /** Hides the button. */
   hideButton: PropTypes.bool,
   /** Shows the collapsed state of the card which switches the content to the summary. */

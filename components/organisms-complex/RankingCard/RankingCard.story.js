@@ -56,6 +56,7 @@ const defaultProps = (
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
+  hasMadeChanges: boolean('hasMadeChanges', true),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
@@ -82,19 +83,19 @@ const defaultProps = (
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <RankingCard {...defaultProps(false)} />
+    <RankingCard {...defaultProps(false, false, true)} />
   </MemoryRouter>
 ));
 
-stories.add('active and clears future', () => (
+stories.add('editing and clears future', () => (
   <MemoryRouter key="question">
-    <RankingCard {...defaultProps(false, true)} />
+    <RankingCard {...defaultProps(false, true, false)} />
   </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <RankingCard {...defaultProps(true)} />
+    <RankingCard {...defaultProps(true, false, false)} />
   </MemoryRouter>
 ));
 

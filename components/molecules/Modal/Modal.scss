@@ -4,7 +4,7 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
   .uic--modal-container {
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 1500;
     background-color: $black; /* Fallback color */
     background-color: $modal-backdrop; /* Black with opacity */
     pointer-events: none;
@@ -50,6 +50,11 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
           @include source-sans-pro(2rem);
           padding-bottom: 1.2rem;
           font-weight: normal;
+          color: $midnight;
+        }
+
+        p {
+          color: $midnight;
         }
       }
     }

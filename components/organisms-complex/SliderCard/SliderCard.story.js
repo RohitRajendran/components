@@ -36,6 +36,7 @@ const defaultProps = (
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
+  hasMadeChanges: boolean('hasMadeChanges', true),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
@@ -67,19 +68,19 @@ const defaultProps = (
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <SliderCard {...defaultProps(false)} />
+    <SliderCard {...defaultProps(false, false, true)} />
   </MemoryRouter>
 ));
 
-stories.add('active and clears future', () => (
+stories.add('editing and clears future', () => (
   <MemoryRouter key="question">
-    <SliderCard {...defaultProps(false, true)} />
+    <SliderCard {...defaultProps(false, true, false)} />
   </MemoryRouter>
 ));
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <SliderCard {...defaultProps(true)} answers={['Yup']} />
+    <SliderCard {...defaultProps(true, false, false)} answers={['Yup']} />
   </MemoryRouter>
 ));
 
