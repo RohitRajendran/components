@@ -50,6 +50,11 @@ class ExpandCollapse extends Component {
       'uic--ec-closed': !this.state.open,
     });
 
+    const contentContainerClasses = classNames({
+      'uic--ec-content': true,
+      'uic--ec-content-closed': !this.state.open,
+    });
+
     const iconClasses = classNames({
       'uic--ec-controls-expanded': this.state.open,
       'uic--position-absolute': true,
@@ -87,8 +92,11 @@ class ExpandCollapse extends Component {
           )}
         </div>
 
-        <div className="uic--ec-content">
-          <div className={contentClasses}> {children} </div>
+        <div className={contentContainerClasses}>
+          <div className={contentClasses}>
+            {children}
+            <hr />
+          </div>
         </div>
       </div>
     );
