@@ -51,7 +51,6 @@ test('ExpandCollapse - componentDidMount', (t) => {
   t.end();
 });
 
-
 test('ExpandCollapse - validate', (t) => {
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
