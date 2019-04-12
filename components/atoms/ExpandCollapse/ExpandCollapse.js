@@ -15,7 +15,7 @@ class ExpandCollapse extends Component {
     super(props);
 
     this.state = {
-      open: props.defaultOpen || false,
+      open: props.defaultOpen,
       valid: true,
       height: 0,
     };
@@ -171,6 +171,7 @@ ExpandCollapse.propTypes = {
 
 ExpandCollapse.defaultProps = {
   validate: true,
+  defaultOpen: false,
 };
 
 export default ExpandCollapse;
