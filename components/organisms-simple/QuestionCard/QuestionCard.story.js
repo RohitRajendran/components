@@ -43,6 +43,7 @@ const defaultProps = (
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
+  hasMadeChanges: boolean('hasMadeChanges', true),
   hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
@@ -73,7 +74,7 @@ const defaultProps = (
 
 stories.add('active', () => (
   <MemoryRouter key="question">
-    <QuestionCard {...defaultProps(false)}>
+    <QuestionCard {...defaultProps(false, false, true)}>
       <RadioButtons
         name="yesNo"
         options={[
@@ -162,9 +163,9 @@ stories.add('active with expand/collapse', () => (
   </MemoryRouter>
 ));
 
-stories.add('active and clears future', () => (
+stories.add('editing and clears future', () => (
   <MemoryRouter key="question">
-    <QuestionCard {...defaultProps(false, true)}>
+    <QuestionCard {...defaultProps(false, true, false)}>
       <RadioButtons
         name="yesNo"
         options={[
@@ -191,7 +192,7 @@ stories.add('active and clears future', () => (
 
 stories.add('collapsed', () => (
   <MemoryRouter key="question">
-    <QuestionCard {...defaultProps(true)}>
+    <QuestionCard {...defaultProps(true, false, false)}>
       <RadioButtons
         name="yesNo"
         options={[
