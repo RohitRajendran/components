@@ -4,6 +4,7 @@ import {Link, MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import Button from './Button';
 import {colors} from '~constants/js/colors';
+import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 
 test('Button - rendering', (t) => {
   t.plan(2);
@@ -60,7 +61,7 @@ test('Button - disabling', (t) => {
 });
 
 test('Button - variant', (t) => {
-  t.plan(2);
+  t.plan(3);
 
   const variantPrimary = mount(<Button variant="primary">Hello</Button>);
 
@@ -70,6 +71,20 @@ test('Button - variant', (t) => {
       .first()
       .hasClass('btn-primary'),
     'should render a primary button'
+  );
+
+  const variantIcon = mount(
+    <Button variant="icon" title="Delete Me">
+      <TrashIcon />
+    </Button>
+  );
+
+  t.true(
+    variantIcon
+      .find('button')
+      .first()
+      .hasClass('btn-icon'),
+    'should render an icon button'
   );
 
   const noVariant = mount(<Button>Hello</Button>);

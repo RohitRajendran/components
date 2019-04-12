@@ -33,7 +33,8 @@
 a {
   &.btn-primary,
   &.btn-secondary,
-  &.btn-tertiary {
+  &.btn-tertiary,
+  &.btn-image {
     display: inline-block;
   }
 }
@@ -178,6 +179,66 @@ a {
     &:focus {
       text-decoration: none;
       color: $midnight;
+    }
+  }
+
+  //------------------------
+  // Icon buttons
+  //------------------------
+  &.btn-icon {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+
+    & > .text-wrapper svg {
+      display: block;
+      height: 2.5rem;
+      width: 2.5rem;
+      transition: stroke 500ms;
+    }
+
+    &.on-dark {
+      & > .text-wrapper svg {
+        stroke: $white-four;
+      }
+    }
+
+    // Remove default bootstrap styling on active buttons
+    &.active,
+    &:active {
+      box-shadow: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+      // Override .btn
+      background-color: transparent;
+
+      & > .text-wrapper svg {
+        stroke: $eggplant;
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &.disabled {
+      &:hover,
+      &:active,
+      &:focus,
+      &:active:focus {
+        // Override .btn
+        background-color: transparent;
+      }
+    }
+
+    &[disabled],
+    &:disabled,
+    &.disabled {
+      opacity: 0.3 !important;
     }
   }
 
