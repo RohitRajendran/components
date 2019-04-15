@@ -91,6 +91,7 @@ class ExpandCollapse extends Component {
       'uic--ec-controls-expanded': this.state.open && this.state.valid,
       'uic--ec-controls': true,
       'uic--position-absolute': true,
+      'uic--rotate': true,
     });
 
     // Toggles the icon component based on validity.
