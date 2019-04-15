@@ -7,14 +7,13 @@ import classNames from 'classnames';
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the ExpandyCircleIcon component.
  */
-const ExpandyCircleIcon = ({width, height, fill, className, rotation}) => {
+const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
   const containerClasses = classNames(
     {
-      'uic--rotate': true,
-      'uic--rotate-right': rotation === 'right',
-      'uic--rotate-down': rotation === 'down',
-      'uic--rotate-left': rotation === 'left',
-      'uic--rotate-up': rotation === 'up',
+      'uic--rotate-right': direction === 'right',
+      'uic--rotate-down': direction === 'down',
+      'uic--rotate-left': direction === 'left',
+      'uic--rotate-up': direction === 'up',
     },
     className
   );
@@ -50,8 +49,8 @@ ExpandyCircleIcon.propTypes = {
   fill: PropTypes.string,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
-  /** Changes the rotation of the arrow. */
-  rotation: PropTypes.oneOf(['up', 'right', 'down', 'left']),
+  /** Changes the direction of the arrow. */
+  direction: PropTypes.oneOf(['up', 'right', 'down', 'left']),
 };
 
 ExpandyCircleIcon.defaultProps = {

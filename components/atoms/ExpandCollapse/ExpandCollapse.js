@@ -111,7 +111,7 @@ class ExpandCollapse extends Component {
                 className={iconClasses}
                 width="2.4rem"
                 height="2.4rem"
-                rotation={this.state.open ? 'down' : 'right'}
+                direction={this.state.open ? 'down' : 'right'}
               />
             )}
             {label}

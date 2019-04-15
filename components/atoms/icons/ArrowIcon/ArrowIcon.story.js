@@ -13,7 +13,7 @@ const defaultProps = () => ({
   fill: text('fill', '#000'),
   height: text('height', '20'),
   width: text('width', '20'),
-  rotation: select('Background', ['down', 'up', 'right', 'left'], 'down'),
+  direction: select('Background', ['down', 'up', 'right', 'left'], 'down'),
 });
 
 stories.add('default', () => <ArrowIcon {...defaultProps()} />);
