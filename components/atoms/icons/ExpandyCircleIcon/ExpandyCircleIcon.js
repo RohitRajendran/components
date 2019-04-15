@@ -29,7 +29,7 @@ const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
       <g fill="none" fillRule="evenodd">
         <circle cx="12" cy="12" r="12" fill={fill} />
         <path
-          stroke="#FFF"
+          stroke="#fff"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.5"
