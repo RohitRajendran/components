@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon';
-import {validateChildren} from '~components/molecules/CardShell/CardShell';
 
 import './ExpandCollapse.scss';
 
@@ -22,7 +21,6 @@ class ExpandCollapse extends Component {
 
     this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
-    this.checkValidation = this.checkValidation.bind(this);
   }
 
   /** @inheritdoc */
@@ -53,14 +51,6 @@ class ExpandCollapse extends Component {
     return this.contentNode.current.focus();
   }
 
-  /** Checks child components for validation errors.
-   * @return {undefined}
-   **/
-  checkValidation() {
-    const isValid = validateChildren(this.props.children);
-    this.setState({valid: isValid});
-  }
-
   /** @inheritdoc */
   render() {
     const {
@@ -70,7 +60,7 @@ class ExpandCollapse extends Component {
       disabled,
       children,
       className,
-      validate,
+      isInvalid,
     } = this.props;
 
     const containerClasses = classNames(
@@ -88,13 +78,13 @@ class ExpandCollapse extends Component {
     });
 
     const iconClasses = classNames({
-      'uic--ec-controls-expanded': this.state.open && this.state.valid,
+      'uic--ec-controls-expanded': this.state.open && !isInvalid,
       'uic--ec-controls': true,
       'uic--position-absolute': true,
     });
 
     // Toggles the icon component based on validity.
-    const IconComponent = this.state.valid ? ExpandyCircleIcon : ErrorFlagIcon;
+    const IconComponent = !isInvalid ? ExpandyCircleIcon : ErrorFlagIcon;
 
     return (
       <div className={containerClasses}>
@@ -135,8 +125,6 @@ class ExpandCollapse extends Component {
               <div
                 className="uic--ec-content"
                 ref={this.contentNode}
-                onKeyPress={validate && this.checkValidation}
-                onClick={validate && this.checkValidation}
                 role="menuitem"
                 tabIndex="0"
               >
@@ -163,14 +151,14 @@ ExpandCollapse.propTypes = {
   disabled: PropTypes.bool,
   /** Optional classnames to apply to the container. */
   className: PropTypes.string,
-  /** Toggles child validation on/off. */
-  validate: PropTypes.bool,
+  /** Toggles to the invalid state. */
+  isInvalid: PropTypes.bool,
   /** Defaults the state to expanded. */
   defaultOpen: PropTypes.bool,
 };
 
 ExpandCollapse.defaultProps = {
-  validate: true,
+  isInvalid: false,
   defaultOpen: false,
 };
 

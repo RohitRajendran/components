@@ -18,6 +18,7 @@ const defaultProps = (startDisabled, startOpen) => ({
   description: text('description', 'It is a very cute cat.'),
   disabled: boolean('disabled', startDisabled),
   defaultOpen: startOpen,
+  isInvalid: boolean('isInvalid', false),
   aside: (
     <Fragment>
       <div>Remove</div>
