@@ -26,13 +26,9 @@
     }
   }
 
-  //* Applies the transition animation for the rotation prop.
-  .uic--ec-rotate {
-    transition: transform 0.2s ease-in-out;
-  }
-
   .uic--ec-controls {
     left: 0;
+    transition: transform 0.2s ease-in-out;
   }
 
   .uic--ec-controls,
