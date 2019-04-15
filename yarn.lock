@@ -1228,15 +1228,15 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-backgrounds@*":
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.6.tgz#34c41c2d85de43b96c7b92d935a1321ba91f57e8"
-  integrity sha512-O0E4GXalGNtN/phIVAaVybW/tQMoS1JCWg8pt9Vks6rqGulUrf1+9Cnhc8d16a62RLvIpn2M04LnuCZMR8JZ2Q==
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.8.tgz#ca473cddac3bfc671676a520c0a3e70ada2799b9"
+  integrity sha512-Q5odJW1OMpoUseWb3Ng93cmokeYkLPgeJI+GxTWwvwidwRoNcU9YAmHcQfx11OYZBlH6xG/70NonjotYCgGzxQ==
   dependencies:
-    "@storybook/addons" "5.0.6"
-    "@storybook/client-logger" "5.0.6"
-    "@storybook/components" "5.0.6"
-    "@storybook/core-events" "5.0.6"
-    "@storybook/theming" "5.0.6"
+    "@storybook/addons" "5.0.8"
+    "@storybook/client-logger" "5.0.8"
+    "@storybook/components" "5.0.8"
+    "@storybook/core-events" "5.0.8"
+    "@storybook/theming" "5.0.8"
     core-js "^2.6.5"
     global "^4.3.2"
     memoizerific "^1.11.3"
@@ -1383,7 +1383,7 @@
   dependencies:
     core-js "^2.6.5"
 
-"@storybook/components@5.0.6", "@storybook/components@^5.0.6":
+"@storybook/components@5.0.6":
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.0.6.tgz#de77af3443f771d94a692edb719bc0d8c0149daf"
   integrity sha512-C++A39n9O09PU2e4Y8x/zbZ+Tf0t/mfPw83Mkh8d8OHS4rHdVKEhq6QC8oDuqT9YBNhJOohtg5d9n+7s8sqZyQ==
@@ -1414,7 +1414,7 @@
     recompose "^0.30.0"
     render-fragment "^0.1.1"
 
-"@storybook/components@5.0.8":
+"@storybook/components@5.0.8", "@storybook/components@^5.0.6":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.0.8.tgz#9dc83b2cd13bd37ab17ebf804ec13c922018195e"
   integrity sha512-aIU/lySNIei4YljCd6uYcMgg1pRuQ08hPzk3aJ8OHODAOXUxWCN8STyPwB6h2q01HFZ0rhlEDeoybszFr7bORQ==
@@ -1445,14 +1445,14 @@
     recompose "^0.30.0"
     render-fragment "^0.1.1"
 
-"@storybook/core-events@5.0.6", "@storybook/core-events@^5.0.6":
+"@storybook/core-events@5.0.6":
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.6.tgz#ead92a1e463d53fa57151b62192e74f8e3f45b3b"
   integrity sha512-OpNHSAxgaok1JYbF5AOML23rIyIyTxir7Ou/s4McN2k0Z2huLaIBA3aeu7vSMygOvN+q6VGMc4uC7f6WQ6kwUg==
   dependencies:
     core-js "^2.6.5"
 
-"@storybook/core-events@5.0.8":
+"@storybook/core-events@5.0.8", "@storybook/core-events@^5.0.6":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.8.tgz#9d941dd748590185d3a2e0a4aeb1365be1778c62"
   integrity sha512-3sTAtkebvQOuu5OxHHPK3xGP1RBp65Nls3t3l3KAZEqQ5vQ0w30lbe0gEWMqLz4MMCy84E+Xz297G3a74eQ/xA==
