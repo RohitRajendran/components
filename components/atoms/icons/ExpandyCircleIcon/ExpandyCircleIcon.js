@@ -1,13 +1,13 @@
-/** @module ArrowIcon */
+/** @module ExpandyCircleIcon */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-/** Displays the ArrowIcon component.
+/** Displays the ExpandyCircleIcon component.
  * @param {object} props - Component props.
- * @returns {*} - JSX representation of the ArrowIcon component.
+ * @returns {*} - JSX representation of the ExpandyCircleIcon component.
  */
-const ArrowIcon = ({width, height, fill, className, direction}) => {
+const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
   const containerClasses = classNames(
     {
       'uic--rotate-right': direction === 'right',
@@ -20,18 +20,27 @@ const ArrowIcon = ({width, height, fill, className, direction}) => {
 
   return (
     <svg
-      className={containerClasses}
       xmlns="http://www.w3.org/2000/svg"
+      className={containerClasses}
       width={width}
       height={height}
-      viewBox="0 0 12 8"
+      viewBox="0 0 24 24"
     >
-      <path fill={fill} fillRule="evenodd" d="M6 8L11.196.5H.804z" />
+      <g fill="none" fillRule="evenodd">
+        <circle cx="12" cy="12" r="12" fill={fill} />
+        <path
+          stroke="#fff"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          d="M16.243 11L12 15.243 7.757 11"
+        />
+      </g>
     </svg>
   );
 };
 
-ArrowIcon.propTypes = {
+ExpandyCircleIcon.propTypes = {
   /** The width of the arrow. */
   width: PropTypes.string,
   /** The height of the arrow. */
@@ -44,10 +53,10 @@ ArrowIcon.propTypes = {
   direction: PropTypes.oneOf(['up', 'right', 'down', 'left']),
 };
 
-ArrowIcon.defaultProps = {
-  width: '13',
-  height: '13',
-  fill: '#5B6279',
+ExpandyCircleIcon.defaultProps = {
+  width: '24',
+  height: '24',
+  fill: '#4d00ba',
 };
 
-export default ArrowIcon;
+export default ExpandyCircleIcon;

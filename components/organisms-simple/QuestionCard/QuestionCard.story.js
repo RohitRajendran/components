@@ -7,12 +7,17 @@ import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
 import RadioButtons from '../../molecules/RadioButtons/RadioButtons';
 import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import ExpandCollapse from '../../atoms/ExpandCollapse/ExpandCollapse';
+import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import QuestionCardReadme from './QuestionCard.md';
+import Input from '~components/atoms/Input/Input';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
 
 const store = new Store({
   yesNo: '',
+  input: '',
+  disabled: false,
 });
 
 stories
@@ -90,6 +95,70 @@ stories.add('active', () => (
         value={store.get('yesNo')}
         key="yesNo"
       />
+    </QuestionCard>
+  </MemoryRouter>
+));
+
+stories.add('active with expand/collapse', () => (
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(false)}>
+      <ExpandCollapse
+        label="Current Apartment/Rent"
+        disabled={store.get('disabled')}
+        aside={
+          <div
+            className="uic--d-flex"
+            role="button"
+            tabIndex="0"
+            onKeyPress={() => store.set({disabled: !store.get('disabled')})}
+            onClick={() => store.set({disabled: !store.get('disabled')})}
+          >
+            <div>Remove</div>
+            <div
+              style={{height: '16px', width: '16px', margin: '0 0 .3rem 1rem'}}
+              className="uic--position-relative"
+            >
+              <OptionBox variant="check" checked={store.get('disabled')} />
+            </div>
+          </div>
+        }
+      >
+        <RadioButtons
+          name="yesNo"
+          options={[
+            {
+              label: 'Yes',
+              value: 'yes',
+            },
+            {
+              label: 'No',
+              value: 'no',
+            },
+            {
+              label: "I don't know",
+              value: 'idk',
+              disabled: true,
+            },
+          ]}
+          value={store.get('yesNo')}
+          key="yesNo"
+          required
+        />
+
+        <Input
+          name="input"
+          value={store.get('input')}
+          label="Date"
+          placeholder="MM/DD/YYYY"
+          validateOnBlur={true}
+          validationErrorMsg="Not a valid date range"
+          mask="Date"
+          required
+          onChange={(name, value) => store.set({[name]: value})}
+          isValid={() => store.get('input').length === 10}
+          style={{marginTop: '2rem'}}
+        />
+      </ExpandCollapse>
     </QuestionCard>
   </MemoryRouter>
 ));
