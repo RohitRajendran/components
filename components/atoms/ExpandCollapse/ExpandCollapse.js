@@ -27,11 +27,23 @@ class ExpandCollapse extends Component {
   componentDidMount() {
     // If the component is set to default open the height gets calculated here so the content displays.
     if (this.state.open && !this.props.disabled) {
-      const content = this.contentNode.current;
-      const height = content.clientHeight;
+      const height = this.contentNode.clientHeight;
 
       this.setState({
         height,
+      });
+    }
+  }
+
+  /** @inheritdoc */
+  componentDidUpdate() {
+    // If the component height updates while the drawer is open the height gets adjusted accordingly.
+    if (
+      this.state.open &&
+      this.state.height !== this.contentNode.current.clientHeight
+    ) {
+      this.setState({
+        height: this.contentNode.current.clientHeight,
       });
     }
   }
@@ -40,8 +52,7 @@ class ExpandCollapse extends Component {
    * @returns {undefined}
    **/
   openExpandItem() {
-    const content = this.contentNode.current;
-    const height = content.clientHeight;
+    const height = this.contentNode.current.clientHeight;
 
     this.setState({
       open: !this.state.open,

@@ -11,7 +11,8 @@ The ExpandCollapse component displays content within a drawer which can be used 
   defaultOpen={false}
   disabled={false}
   isInvalid={false}
-  aside={(<div>aside content</div>)}>
+  aside={<div>aside content</div>}
+>
   Expanded content can be placed here.
 </ExpandCollapse>
 ```
