@@ -271,6 +271,7 @@ class Input extends Component {
       disabled,
       className,
       sanitize,
+      style,
     } = this.props;
 
     const attrs = {
@@ -354,7 +355,7 @@ class Input extends Component {
     );
 
     return (
-      <div className={containerClasses} data-value={value}>
+      <div className={containerClasses} style={style} data-value={value}>
         {appendCharacter && (
           <style>
             {`
@@ -483,6 +484,8 @@ Input.propTypes = {
   className: PropTypes.string,
   /** Sanitizes the input when passed back by the onChange handler. */
   sanitize: PropTypes.bool,
+  /** Optional inline styles. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 Input.defaultProps = {

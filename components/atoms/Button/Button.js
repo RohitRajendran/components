@@ -2,7 +2,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {exclusive} from '~proptypes';
-import {and} from 'airbnb-prop-types';
+import {and, or} from 'airbnb-prop-types';
+import requiredIf from 'react-required-if';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 
@@ -19,6 +20,7 @@ const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
   });
 
   const textClassNames = classNames({
+    'text-wrapper': true,
     'hide-button-text': showSpinner,
     'uic--invisible': showSpinner,
   });
@@ -66,14 +68,19 @@ const Button = ({
     className
   );
 
-  const spinnerColor =
-    variant === 'secondary' && dark
-      ? colors.stratos
-      : variant === 'tertiary' && light
-      ? colors['violet-blue']
-      : colors.white;
+  let spinnerColor;
 
-  const spinnerSize = variant === 'primary' ? '23' : '19';
+  if (variant === 'icon') {
+    spinnerColor = dark ? colors.white : colors['violet-blue'];
+  } else if (variant === 'secondary' && dark) {
+    spinnerColor = colors.stratos;
+  } else if (variant === 'tertiary' && light) {
+    spinnerColor = colors['violet-blue'];
+  } else {
+    spinnerColor = colors.white;
+  }
+
+  const spinnerSize = variant === 'primary' || variant === 'icon' ? '23' : '19';
 
   if (to) {
     const linkClass = classNames(btnClass, {
@@ -132,7 +139,18 @@ Button.propTypes = {
   /** The type of button, for example `button`, `submit` or `reset`. */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   /** The style of button to be shown, for example `primary`, `secondary`, `tertiary` or `link`. */
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'link']),
+  variant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'link',
+    'icon',
+  ]),
+  /** Title attribute required for icon buttons */
+  title: or([
+    PropTypes.string,
+    requiredIf(PropTypes.string, (props) => props.variant === 'icon'),
+  ]),
 };
 
 Button.defaultProps = {

@@ -65,8 +65,8 @@ const QuestionCard = ({
           {hasMadeChanges && showEditWarning && (
             <p className="uic--warning-message">
               Note: The answer to this question has an impact on subsequent
-              questions. If you change this answer, all further progress will be
-              lost.
+              questions. If you change this answer, you will have to revisit the
+              remaining questions.
             </p>
           )}
         </Fragment>

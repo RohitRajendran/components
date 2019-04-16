@@ -1,0 +1,90 @@
+.uic--ec {
+  margin-bottom: 3.3rem;
+  color: $dark-blue;
+
+  &.uic--ec-disabled {
+    .uic--ec-label {
+      color: $slate;
+      font-weight: normal;
+      cursor: initial;
+    }
+  }
+
+  .uic--ec-label {
+    @include source-sans-pro(1.6rem);
+    font-weight: 600;
+    padding-left: 5rem;
+    outline: none; // Removes the default focus state.
+
+    &:focus {
+      opacity: 0.8;
+    }
+
+    .uic--ec-label-description {
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  }
+
+  .uic--ec-controls {
+    left: 0;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .uic--ec-controls,
+  .uic--ec-label {
+    cursor: pointer;
+  }
+
+  .uic--ec-open {
+    overflow: hidden;
+    margin-bottom: 2.1rem;
+  }
+
+  .uic--ec-content-container {
+    padding-left: 5rem;
+
+    &:after {
+      margin-top: 3rem;
+      content: '';
+      height: 1px;
+      border-bottom: 1px solid $light-gray;
+      display: block;
+    }
+
+    .uic--ec-content {
+      padding-top: 3rem;
+      outline: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      // Resets the margin for headers within the ExpandCollapse component.
+      margin-top: 0;
+    }
+
+    hr {
+      color: $light-gray;
+      margin-top: 3rem;
+      border: 0;
+      height: 1px;
+      background-color: $light-gray;
+    }
+
+    .uic--ec-content-inner {
+      -moz-transition: height 0.5s;
+      -ms-transition: height 0.5s;
+      -o-transition: height 0.5s;
+      -webkit-transition: height 0.5s;
+      transition: height 0.5s;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+
+  .uic--ec-aside {
+    font-size: 1.4rem;
+    color: $slate;
+  }
+}

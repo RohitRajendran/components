@@ -13,6 +13,7 @@ const ArrowEllipsisIcon = ({width, height, fill, className}) => (
     width={width}
     height={height}
     viewBox="0 0 24 24"
+    transform="rotate(0)"
   >
     <g fill="none" fillRule="evenodd">
       <rect width="24" height="24" fill={fill} rx="12" />

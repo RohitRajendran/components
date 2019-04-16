@@ -12,6 +12,8 @@ import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEl
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
 import LampIllustration from '~components/atoms/illustrations/LampIllustration/LampIllustration';
+import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
+import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -69,4 +71,6 @@ export {
   RankingCard,
   LampIllustration,
   CompletionScreen,
+  ExpandCollapse,
+  ExpandyCircleIcon,
 };

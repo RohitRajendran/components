@@ -4,6 +4,7 @@ import {withReadme} from 'storybook-readme';
 import {select, text, boolean} from '@storybook/addon-knobs';
 import ButtonReadme from './Button.md';
 import Button from './Button';
+import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 
 const stories = storiesOf('Atoms/Button', module);
 
@@ -16,11 +17,7 @@ const permutations = [
   },
   {
     variant: 'primary',
-    background: 'light',
-  },
-  {
-    variant: 'secondary',
-    background: 'light',
+    background: 'dark',
   },
   {
     variant: 'secondary',
@@ -31,20 +28,8 @@ const permutations = [
     background: 'dark',
   },
   {
-    variant: 'secondary',
-    background: 'dark',
-  },
-  {
     variant: 'tertiary',
     background: 'light',
-  },
-  {
-    variant: 'tertiary',
-    background: 'light',
-  },
-  {
-    variant: 'tertiary',
-    background: 'dark',
   },
   {
     variant: 'tertiary',
@@ -57,12 +42,26 @@ const permutations = [
   {
     variant: 'link',
     background: 'dark',
+  },
+  {
+    variant: 'icon',
+    background: 'light',
+    text: <TrashIcon />,
+    title: 'Delete',
+  },
+  {
+    variant: 'icon',
+    background: 'dark',
+    text: <TrashIcon />,
+    title: 'Delete',
   },
 ];
 
 const defaultProps = (
   defaultVariant = 'primary',
-  defaultBackground = 'light'
+  defaultBackground = 'light',
+  defaultText = 'Become A Member',
+  defaultTitle = ''
 ) => ({
   variant: select(
     'Variant',
@@ -71,6 +70,7 @@ const defaultProps = (
       Secondary: 'secondary',
       Tertiary: 'tertiary',
       Link: 'link',
+      Icon: 'icon',
     },
     defaultVariant
   ),
@@ -82,14 +82,23 @@ const defaultProps = (
     },
     defaultBackground
   ),
-  text: text('Button Text', 'Become A Member'),
+  text:
+    // Icon buttons are meant to display components,
+    // but the text field is not applicable for components.
+    defaultVariant === 'icon' ? defaultText : text('Button Text', defaultText),
   disabled: boolean('Disabled', false),
   isLoading: boolean('isLoading', false),
+  title: text('Title Text', defaultTitle),
 });
 
 for (const permutation of permutations) {
   stories.add(`${permutation.variant} ${permutation.background}`, () => {
-    const props = defaultProps(permutation.variant, permutation.background);
+    const props = defaultProps(
+      permutation.variant,
+      permutation.background,
+      permutation.text,
+      permutation.title
+    );
 
     return (
       <Button
@@ -98,6 +107,7 @@ for (const permutation of permutations) {
         dark={props.background === 'dark'}
         disabled={props.disabled}
         isLoading={props.isLoading}
+        title={props.title}
       >
         {props.text}
       </Button>
