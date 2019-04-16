@@ -17,7 +17,7 @@ import Spinner from '../../atoms/Spinner/Spinner';
 export const validateChildren = (children) => {
   const childValidity = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      if (child.props.required) {
+      if (!child.props.disabled && child.props.required) {
         if (child.props.mask && child.props.isValid) {
           return (
             maskEnum[child.props.mask].regex.test(child.props.value) &&
