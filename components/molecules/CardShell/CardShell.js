@@ -118,12 +118,15 @@ class CardShell extends Component {
         'uic--active': !isCollapsed,
         'uic--collapsed': isCollapsed,
         'uic--error': hasError,
+        'uic--position-relative': true,
       },
       className
     );
 
     return (
       <div className={cardClass}>
+        {!isCollapsed && <div className="uic--active-border" />}
+
         {isCollapsed ? (
           summary
         ) : (

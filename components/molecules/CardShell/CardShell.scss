@@ -1,11 +1,14 @@
 .uic--mcgonagall-card {
+  $inactive-border-size: 1px;
+  $active-border-size: 4px;
+
   background-color: $white-four;
-  border: solid 1px $white-seven;
+  border: solid $inactive-border-size $white-seven;
   margin: 0 auto;
   max-width: 76.4rem;
 
   &.uic--active {
-    border-top: solid 4px $violet-blue;
+    border-top: solid $active-border-size transparent;
     margin-bottom: 3.6rem;
     margin-top: 3.6rem;
     padding: 4rem 3.5rem;
@@ -15,6 +18,15 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    .uic--active-border {
+      position: absolute;
+      top: -$active-border-size;
+      height: $active-border-size;
+      background: $violet-blue;
+      left: -$inactive-border-size;
+      right: -$inactive-border-size;
     }
   }
 
