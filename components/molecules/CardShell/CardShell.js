@@ -16,21 +16,25 @@ import Spinner from '../../atoms/Spinner/Spinner';
  */
 export const validateChildren = (children) => {
   const childValidity = React.Children.map(children, (child) => {
+    let isChildValid = false;
+
     if (React.isValidElement(child)) {
       if (!child.props.disabled && child.props.required) {
         if (child.props.mask && child.props.isValid) {
-          return (
+          isChildValid =
             maskEnum[child.props.mask].regex.test(child.props.value) &&
-            child.props.isValid()
-          );
+            child.props.isValid();
         } else if (child.props.mask) {
-          return maskEnum[child.props.mask].regex.test(child.props.value);
+          isChildValid = maskEnum[child.props.mask].regex.test(
+            child.props.value
+          );
         } else if (child.props.isValid) {
-          return child.props.isValid();
+          isChildValid = child.props.isValid();
         } else if (Array.isArray(child.props.value)) {
-          return Boolean(child.props.value.length > 0);
+          isChildValid = Boolean(child.props.value.length > 0);
+        } else {
+          isChildValid = Boolean(child.props.value);
         }
-        return Boolean(child.props.value);
       } else if (
         (child.props.pattern &&
           !new RegExp(child.props.pattern).test(child.props.value)) ||
@@ -41,11 +45,28 @@ export const validateChildren = (children) => {
           child.props.value.length > child.props.maxLength) ||
         (child.props.isValid && !child.props.isValid())
       ) {
-        return false;
+        isChildValid = false;
+      } else {
+        isChildValid = true;
       }
-      return validateChildren(child.props.children);
+
+      // Check if element uses follow ups and if so validate those followups
+      if (child.props.options) {
+        const option = child.props.options.find(
+          (opt) => opt.value === child.props.value
+        );
+
+        if (option && option.followup) {
+          isChildValid = isChildValid && validateChildren([option.followup]);
+        }
+      }
+
+      isChildValid = isChildValid && validateChildren(child.props.children);
+    } else {
+      isChildValid = true;
     }
-    return true;
+
+    return isChildValid;
   });
 
   if (childValidity) {
@@ -66,6 +87,18 @@ class CardShell extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+
+    this.state = {
+      isInvalid: !validateChildren(props.children),
+    };
+  }
+
+  /** @inheritdoc */
+  componentDidUpdate() {
+    const isInvalid = !validateChildren(this.props.children);
+    if (this.state.isInvalid !== isInvalid) {
+      this.setState({isInvalid});
+    }
   }
 
   /**
@@ -108,8 +141,7 @@ class CardShell extends Component {
       summary,
       onChange,
     } = this.props;
-
-    const isInvalid = !validateChildren(children);
+    const {isInvalid} = this.state;
 
     const cardClass = classNames(
       {

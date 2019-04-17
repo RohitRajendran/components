@@ -79,7 +79,7 @@ test('Input - Renders an error message when the form is invalid', (t) => {
       value="05/01/1980"
       placeholder="some placeholder"
       mask="Date"
-      isInvalid={() => true}
+      isValid={() => true}
       validationErrorMsg="This is not valid!"
     />
   );

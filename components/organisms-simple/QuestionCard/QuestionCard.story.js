@@ -77,6 +77,7 @@ stories.add('active', () => (
     <QuestionCard {...defaultProps(false, false, true)}>
       <RadioButtons
         name="yesNo"
+        required
         options={[
           {
             label: 'Yes',
@@ -85,6 +86,23 @@ stories.add('active', () => (
           {
             label: 'No',
             value: 'no',
+            followup: (
+              <div>
+                <Input
+                  required
+                  name="input"
+                  {...{
+                    label: 'Date',
+                    placeholder: 'MM/DD/YYYY',
+                    mask: 'Date',
+                    validationErrorMsg: 'Not a valid date range',
+                    validateOnBlur: true,
+                  }}
+                  value={store.get('input')}
+                  isValid={() => store.get('input').length === 10}
+                />
+              </div>
+            ),
           },
           {
             label: "I don't know",
