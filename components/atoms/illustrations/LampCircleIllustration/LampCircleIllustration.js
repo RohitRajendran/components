@@ -1,10 +1,10 @@
 /** @module LampCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a lamp illustration. */
-class LampCircleIllustration extends Component {
+class LampCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);

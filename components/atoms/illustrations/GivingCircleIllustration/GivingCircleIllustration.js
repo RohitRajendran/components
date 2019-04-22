@@ -1,10 +1,10 @@
 /** @module GivingCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a giving illustration. */
-class GivingCircleIllustration extends Component {
+class GivingCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);

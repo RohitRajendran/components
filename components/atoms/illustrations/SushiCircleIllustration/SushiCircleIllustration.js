@@ -1,10 +1,10 @@
 /** @module SushiCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a sushi illustration. */
-class SushiCircleIllustration extends Component {
+class SushiCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);

@@ -1,10 +1,10 @@
 /** @module MedicareCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a medicare illustration. */
-class MedicareCircleIllustration extends Component {
+class MedicareCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);

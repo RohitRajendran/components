@@ -1,10 +1,10 @@
 /** @module AccountCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders an account illustration. */
-class AccountCircleIllustration extends Component {
+class AccountCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);

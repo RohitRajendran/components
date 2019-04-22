@@ -1,10 +1,10 @@
 /** @module ShoppingCircleIllustration */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a shopping illustration. */
-class ShoppingCircleIllustration extends Component {
+class ShoppingCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);
