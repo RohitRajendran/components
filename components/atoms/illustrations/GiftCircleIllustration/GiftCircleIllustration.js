@@ -1,10 +1,10 @@
-/** @module AccountCircleIllustration */
+/** @module GiftCircleIllustration */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a gift illustration. */
-class AccountCircleIllustration extends Component {
+class GiftCircleIllustration extends Component {
   /** @inheritdoc */
   constructor(props) {
     super(props);
@@ -236,7 +236,7 @@ class AccountCircleIllustration extends Component {
   }
 }
 
-AccountCircleIllustration.propTypes = {
+GiftCircleIllustration.propTypes = {
   /** The width of the illustration. */
   width: PropTypes.string,
   /** The height of the illustration. */
@@ -249,10 +249,10 @@ AccountCircleIllustration.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
 };
 
-AccountCircleIllustration.defaultProps = {
+GiftCircleIllustration.defaultProps = {
   height: '140',
   width: '144',
   fill: '#ffffff',
 };
 
-export default AccountCircleIllustration;
+export default GiftCircleIllustration;
