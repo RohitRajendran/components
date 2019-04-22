@@ -11,9 +11,19 @@ import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
-import LampIllustration from '~components/atoms/illustrations/LampIllustration/LampIllustration';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
+import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
+import AccountCircleIllustration from '~components/atoms/illustrations/AccountCircleIllustration/AccountCircleIllustration';
+import GiftCircleIllustration from '~components/atoms/illustrations/GiftCircleIllustration/GiftCircleIllustration';
+import GivingCircleIllustration from '~components/atoms/illustrations/GivingCircleIllustration/GivingCircleIllustration';
+import HealthCircleIllustration from '~components/atoms/illustrations/HealthCircleIllustration/HealthCircleIllustration';
+import HomeCircleIllustration from '~components/atoms/illustrations/HomeCircleIllustration/HomeCircleIllustration';
+import IncomeCircleIllustration from '~components/atoms/illustrations/IncomeCircleIllustration/IncomeCircleIllustration';
+import MedicareCircleIllustration from '~components/atoms/illustrations/MedicareCircleIllustration/MedicareCircleIllustration';
+import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
+import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
+import SushiCircleIllustration from '~components/atoms/illustrations/SushiCircleIllustration/SushiCircleIllustration';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -69,8 +79,18 @@ export {
   InputCard,
   SliderCard,
   RankingCard,
-  LampIllustration,
   CompletionScreen,
   ExpandCollapse,
   ExpandyCircleIcon,
+  LampCircleIllustration,
+  AccountCircleIllustration,
+  GiftCircleIllustration,
+  GivingCircleIllustration,
+  HealthCircleIllustration,
+  HomeCircleIllustration,
+  IncomeCircleIllustration,
+  MedicareCircleIllustration,
+  ProfileCircleIllustration,
+  ShoppingCircleIllustration,
+  SushiCircleIllustration,
 };

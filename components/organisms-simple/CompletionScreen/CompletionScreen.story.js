@@ -3,7 +3,8 @@ import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
-import {Button, LampIllustration} from '../..';
+import {Button} from '../..';
+import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
 import CompletionScreen from './CompletionScreen';
 import CompletionScreenReadme from './CompletionScreen.md';
 
@@ -24,7 +25,7 @@ stories.addDecorator(withKnobs).add(
             Finish
           </Button>
         }
-        feature={<LampIllustration />}
+        feature={<LampCircleIllustration />}
       />
     </MemoryRouter>
   ))
