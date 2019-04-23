@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import _ from 'lodash';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
@@ -16,13 +15,11 @@ class DropDown extends Component {
   constructor(props) {
     super(props);
 
-    _.bindAll(this, [
-      'validate',
-      'onFocus',
-      'onBlur',
-      'onChange',
-      'getOptions',
-    ]);
+    this.validate = this.validate.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.getOptions = this.getOptions.bind(this);
 
     this.state = {
       options: {},
