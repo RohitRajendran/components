@@ -5,9 +5,9 @@ import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import QuestionCard from './QuestionCard';
-import RadioButtons from '../../molecules/RadioButtons/RadioButtons';
-import SimpleSummary from '../../molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import ExpandCollapse from '../../atoms/ExpandCollapse/ExpandCollapse';
+import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import QuestionCardReadme from './QuestionCard.md';
 import Input from '~components/atoms/Input/Input';
@@ -77,6 +77,7 @@ stories.add('active', () => (
     <QuestionCard {...defaultProps(false, false, true)}>
       <RadioButtons
         name="yesNo"
+        required
         options={[
           {
             label: 'Yes',
@@ -85,6 +86,23 @@ stories.add('active', () => (
           {
             label: 'No',
             value: 'no',
+            followup: (
+              <div>
+                <Input
+                  required
+                  name="input"
+                  {...{
+                    label: 'Date',
+                    placeholder: 'MM/DD/YYYY',
+                    mask: 'Date',
+                    validationErrorMsg: 'Not a valid date range',
+                    validateOnBlur: true,
+                  }}
+                  value={store.get('input')}
+                  isValid={() => store.get('input').length === 10}
+                />
+              </div>
+            ),
           },
           {
             label: "I don't know",

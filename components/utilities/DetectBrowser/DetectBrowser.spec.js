@@ -1,5 +1,10 @@
 import test from 'tape';
-import {detectInternetExplorer, detectIOS} from './DetectBrowser';
+import {
+  detectInternetExplorer,
+  detectIOS,
+  detectTablet,
+  detectMobile,
+} from './DetectBrowser';
 
 test('detectInternetExplorer - Should return a string if the userAgent matches the param', (t) => {
   t.plan(8);
@@ -57,6 +62,18 @@ test('detectInternetExplorer - Should return a string if the userAgent matches t
 
 test('detectIOS - Should return true or false if the user is on iOS', (t) => {
   t.false(detectIOS());
+
+  t.end();
+});
+
+test('detectTablet - Should return true or false if the user is on a tablet', (t) => {
+  t.true(detectTablet());
+
+  t.end();
+});
+
+test('detectMobile - Should return true or false if the user is on mobile', (t) => {
+  t.true(detectMobile());
 
   t.end();
 });

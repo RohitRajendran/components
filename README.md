@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/UnitedIncome/components/develop/.storybook/unitedincome.png?token=AKYk-dGESBigag1E-Z1bdzCbEo1wavz_ks5cpkdHwA%3D%3D" alt="United Income logo" width="500" />
+  <img src="https://cdn-images-1.medium.com/max/720/1*hBtuTy4J0_4izKjTknDrTg@2x.png" alt="United Income logo" width="300" />
 </p>
 <h1 align="center"><b>Component Library</b></h1>
 

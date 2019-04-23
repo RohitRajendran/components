@@ -133,6 +133,35 @@ test('CardShell - error', (t) => {
   t.end();
 });
 
+test('CardShell - componentDidUpdate', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+  };
+
+  const comp = mount(
+    <CardShell {...props}>
+      <Input
+        name="fancy_input"
+        label="Amount"
+        type="text"
+        value="05/01/1980"
+        placeholder="some placeholder"
+        mask="Date"
+        isValid={() => true}
+        validationErrorMsg="This is not valid!"
+      />
+    </CardShell>
+  );
+  comp.setState({isInvalid: true});
+  comp.instance().componentDidUpdate();
+
+  t.false(comp.state.isInvalid, 'Sets validity on update');
+
+  t.end();
+});
+
 test('CardShell - validates different input constraints', (t) => {
   const badValues = {
     textValue: '',
@@ -303,7 +332,7 @@ test('CardShell - validates different input constraints', (t) => {
                   mask="Date"
                   label="test"
                   required
-                />{' '}
+                />
               </span>
             ),
           },
