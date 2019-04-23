@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {disallowedIf} from 'airbnb-prop-types';
 import {colors} from '~constants/js/colors';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
-import _ from 'lodash';
 import * as d3Shape from 'd3-shape';
 import * as d3Scale from 'd3-scale';
 import * as d3Interpolate from 'd3-interpolate';
@@ -92,7 +91,7 @@ const ChanceOfSuccess = (props) => {
     .domain([min, max]);
 
   const step = (max - min) / numPaths;
-  const percentageRange = _.range(min, max, step);
+  const percentageRange = Array.from({length: numPaths}, (v, i) => i * step);
 
   const circleTheta = angleScale(50);
   const arcRadiusForCircle = radius - thickness / 2;
@@ -127,23 +126,23 @@ const ChanceOfSuccess = (props) => {
           transform: rotate(-${circleRange}deg);
           fill: #B30052
         }
-        
+
         20% {
           fill: #b34d00;
         }
-      
+
         40% {
           fill: #c76501;
         }
-      
+
         60% {
           fill: #ed9403;
         }
-      
+
         80% {
           fill: #6bb508;
         }
-      
+
         100% {
           transform: rotate(${circleEndFrame}deg);
           fill: $safe-green;
@@ -159,7 +158,7 @@ const ChanceOfSuccess = (props) => {
 
         100% {
           transform: rotate(${circleEndFrame}deg);
-        } 
+        }
       }
 
       .uic--chance-of-success_static-${identifier} circle {

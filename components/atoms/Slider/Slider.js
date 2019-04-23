@@ -3,7 +3,7 @@ import React, {memo} from 'react';
 import ReactSlider from 'rc-slider';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import fromPairs from 'lodash/fromPairs';
 import {dsmColors as colors} from '~constants/js/colors';
 
 import './Slider.scss';
@@ -38,7 +38,9 @@ const Slider = ({
     },
     className
   );
-  const markers = _.fromPairs(_.range(1, 11).map((x) => [x, x]));
+
+  const range = Array.from({length: 10}, (v, i) => i + 1);
+  const markers = fromPairs(range.map((x) => [x, x]));
 
   const handleChange = (newValue) => {
     return onChange(name, newValue);

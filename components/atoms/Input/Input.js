@@ -5,7 +5,6 @@ import MaskedInput from 'react-text-mask';
 import classNames from 'classnames';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
-import _ from 'lodash';
 
 import './Input.scss';
 
@@ -67,7 +66,7 @@ export const zipMask = {
 export const tickerMask = {
   /* istanbul ignore next */
   mask(input) {
-    return _.fill(Array(input.length), /[a-zA-Z]/);
+    return Array(input.length).fill(/[a-zA-Z]/);
   },
   regex: /[a-zA-Z]+/,
 };
@@ -80,7 +79,7 @@ export const tickerMask = {
 export const commaSeparatedMask = {
   /* istanbul ignore next */
   mask(input) {
-    return _.fill(Array(input.length + 1), /[A-Za-z, ]/);
+    return Array(input.length + 1).fill(/[A-Za-z, ]/);
   },
   regex: /[A-Za-z]+[A-Za-z, ]*/,
 };

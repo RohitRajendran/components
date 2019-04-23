@@ -100,6 +100,18 @@ module.exports = {
     }),
   ],
   externals: {
+    classnames: {
+      commonjs: 'classnames',
+      commonjs2: 'classnames',
+      amd: 'ClassNames',
+      root: 'ClassNames',
+    },
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      amd: 'Lodash',
+      root: 'Lodash',
+    },
     react: {
       commonjs: 'react',
       commonjs2: 'react',
@@ -117,12 +129,6 @@ module.exports = {
       commonjs2: 'react-router',
       amd: 'ReactRouter',
       root: 'ReactRouter',
-    },
-    classnames: {
-      commonjs: 'classnames',
-      commonjs2: 'classnames',
-      amd: 'ClassNames',
-      root: 'ClassNames',
     },
     'prop-types': {
       commonjs: 'prop-types',

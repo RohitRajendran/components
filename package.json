@@ -65,6 +65,7 @@
     "ignore-styles": "*",
     "jsdom": "*",
     "jsdom-global": "*",
+    "lodash": "*",
     "mini-css-extract-plugin": "*",
     "node-sass": "*",
     "nyc": "*",
@@ -95,6 +96,7 @@
   },
   "peerDependencies": {
     "classnames": "*",
+    "lodash": "*",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
