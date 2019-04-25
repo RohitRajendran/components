@@ -5,5 +5,5 @@ The HealthCircleIllustration component creates a health illuminator using inline
 ## Example 🚀
 
 ```javascript
-<HealthCircleIllustration fill="#fff" height="20" width="20" />
+<HealthCircleIllustration color={false} draft={false} height="20" width="20" />
 ```

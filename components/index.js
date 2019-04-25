@@ -23,7 +23,7 @@ import IncomeCircleIllustration from '~components/atoms/illustrations/IncomeCirc
 import MedicareCircleIllustration from '~components/atoms/illustrations/MedicareCircleIllustration/MedicareCircleIllustration';
 import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
-import SushiCircleIllustration from '~components/atoms/illustrations/SushiCircleIllustration/SushiCircleIllustration';
+import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -92,5 +92,5 @@ export {
   MedicareCircleIllustration,
   ProfileCircleIllustration,
   ShoppingCircleIllustration,
-  SushiCircleIllustration,
+  RamenCircleIllustration,
 };
