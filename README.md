@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="300" />
+  <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="650" />
 </p>
-<h1 align="center"><b>Component Library</b></h1>
 
 <div align="center">
 
