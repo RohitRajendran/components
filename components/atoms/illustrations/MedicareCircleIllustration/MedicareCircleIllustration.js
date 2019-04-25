@@ -12,6 +12,8 @@ class MedicareCircleIllustration extends PureComponent {
     this.state = {
       illuminated: false,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   /** Click handler which toggles the illustration easter egg.

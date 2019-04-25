@@ -4,19 +4,43 @@ import {shallow, mount} from 'enzyme';
 import GivingCircleIllustration from './GivingCircleIllustration';
 
 test('GivingCircleIllustration - renders', (t) => {
-  const component = shallow(<GivingCircleIllustration fill="white" />);
+  const component = shallow(<GivingCircleIllustration />);
 
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LampIllustration component.'
+    'Should load the GivingCircleIllustration component.'
+  );
+
+  t.end();
+});
+
+test('GivingCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<GivingCircleIllustration draft={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the GivingCircleIllustration component.'
+  );
+
+  t.end();
+});
+
+test('GivingCircleIllustration - renders the color illustration', (t) => {
+  const component = shallow(<GivingCircleIllustration color={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the GivingCircleIllustration component.'
   );
 
   t.end();
 });
 
 test('GivingCircleIllustration - handleClick', (t) => {
-  const component = mount(<GivingCircleIllustration fill="white" />);
+  const component = mount(<GivingCircleIllustration />);
 
   component.instance().handleClick();
 
