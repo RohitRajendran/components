@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="500" />
+  <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="650" />
 </p>
 
 <div align="center">
