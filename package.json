@@ -16,7 +16,8 @@
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
-    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
+    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css",
+    "generate": "yarn hygen component new"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
@@ -51,8 +52,9 @@
     "classnames": "*",
     "core-js": "*",
     "css-loader": "*",
+    "d3-array": "=1.2.4",
     "d3-interpolate": "*",
-    "d3-scale": "*",
+    "d3-scale": "=2.2.2",
     "d3-shape": "*",
     "enzyme": "*",
     "enzyme-adapter-react-16": "*",
@@ -62,6 +64,7 @@
     "eslint-plugin-react": "*",
     "faucet": "*",
     "file-loader": "*",
+    "hygen": "*",
     "ignore-styles": "*",
     "jsdom": "*",
     "jsdom-global": "*",
@@ -73,6 +76,7 @@
     "postcss-prefixer": "*",
     "prettier": "*",
     "prop-types": "*",
+    "query-string": "<6.0.0",
     "rc-slider": "*",
     "react": "*",
     "react-beautiful-dnd": "*",
@@ -92,16 +96,19 @@
     "tape": "*",
     "text-mask-addons": "*",
     "webpack": "*",
-    "webpack-cli": "*"
+    "webpack-cli": "*",
+    "xstate": "*"
   },
   "peerDependencies": {
     "classnames": "*",
     "lodash": "*",
     "prop-types": "*",
+    "query-string": "<6.0.0",
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
-    "react-text-mask": "*"
+    "react-text-mask": "*",
+    "xstate": "*"
   }
 }

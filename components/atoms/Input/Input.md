@@ -12,5 +12,7 @@ The Input component renders a [HTML input element](https://developer.mozilla.org
   type="text"
   placeholder="Bank Account"
   description="Not the right account? Visit the Manage Linked Accounts page."
+  onChange={(name, value) => this.setState({[name]: value})}
+  value={this.state.institutionName}
 />
 ```

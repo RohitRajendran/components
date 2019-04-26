@@ -142,6 +142,18 @@ module.exports = {
       amd: 'ReactTextMask',
       root: 'ReactTextMask',
     },
+    xstate: {
+      commonjs: 'xstate',
+      commonjs2: 'xstate',
+      amd: 'Xstate',
+      root: 'Xstate',
+    },
+    'query-string': {
+      commonjs: 'query-string',
+      commonjs2: 'query-string',
+      amd: 'QueryString',
+      root: 'QueryString,',
+    },
   },
   optimization: {
     minimizer: [],

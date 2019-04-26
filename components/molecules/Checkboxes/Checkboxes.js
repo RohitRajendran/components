@@ -132,7 +132,7 @@ Checkboxes.propTypes = {
   required: PropTypes.bool,
   /** The current selected option(s) in the select button group. Represented as an array of strings. */
   value: PropTypes.arrayOf(PropTypes.string),
-  /** Change handler which passes back the `value` of the option which is currently selected. */
+  /** Change handler which passes back the name and value of the option which is currently selected. */
   onChange: PropTypes.func.isRequired,
 };
 

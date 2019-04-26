@@ -23,7 +23,7 @@ import IncomeCircleIllustration from '~components/atoms/illustrations/IncomeCirc
 import MedicareCircleIllustration from '~components/atoms/illustrations/MedicareCircleIllustration/MedicareCircleIllustration';
 import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
-import SushiCircleIllustration from '~components/atoms/illustrations/SushiCircleIllustration/SushiCircleIllustration';
+import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 
 // Molecules
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -35,17 +35,20 @@ import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSum
 import Modal from '~components/molecules/Modal/Modal';
 import Cabinet from '~components/molecules/Cabinet/Cabinet';
 
-// Organisms - Simple
+// Simple Organisms
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
-// Organisms - Complex
+// Complex Organisms
 import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCard';
 import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 import InputCard from '~components/organisms-complex/InputCard/InputCard';
 import SliderCard from '~components/organisms-complex/SliderCard/SliderCard';
 import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
+
+// Templates
+import McGonagall from '~components/templates/McGonagall/McGonagall';
 
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
@@ -78,6 +81,7 @@ export {
   CheckboxCard,
   InputCard,
   SliderCard,
+  McGonagall,
   RankingCard,
   CompletionScreen,
   ExpandCollapse,
@@ -92,5 +96,5 @@ export {
   MedicareCircleIllustration,
   ProfileCircleIllustration,
   ShoppingCircleIllustration,
-  SushiCircleIllustration,
+  RamenCircleIllustration,
 };

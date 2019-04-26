@@ -5,5 +5,11 @@ The ShoppingCircleIllustration component creates a shopping illuminator using in
 ## Example 🚀
 
 ```javascript
-<ShoppingCircleIllustration fill="#fff" height="20" width="20" />
+<ShoppingCircleIllustration
+  color={false}
+  draft={false}
+  illuminate={false}
+  height="20"
+  width="20"
+/>
 ```

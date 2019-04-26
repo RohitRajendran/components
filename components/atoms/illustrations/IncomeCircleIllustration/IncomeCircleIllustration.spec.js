@@ -9,7 +9,7 @@ test('IncomeCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LampIllustration component.'
+    'Should load the IncomeCircleIllustration component.'
   );
 
   t.end();

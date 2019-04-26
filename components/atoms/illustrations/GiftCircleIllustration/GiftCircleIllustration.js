@@ -1,7 +1,6 @@
 /** @module GiftCircleIllustration */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {dsmColors as colors} from '~constants/js/colors';
 
 /** Renders a gift illustration. */
 class GiftCircleIllustration extends PureComponent {
@@ -12,6 +11,8 @@ class GiftCircleIllustration extends PureComponent {
     this.state = {
       illuminated: false,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   /** Click handler which toggles the illustration easter egg.
@@ -23,216 +24,622 @@ class GiftCircleIllustration extends PureComponent {
 
   /** @inheritdoc */
   render() {
-    const {fill, width, height, className, style} = this.props;
+    const {
+      illuminate,
+      color,
+      draft,
+      width,
+      height,
+      className,
+      style,
+    } = this.props;
 
-    return (
-      <svg
-        width={width}
-        height={height}
-        className={className}
-        style={style}
-        viewBox="0 0 232 232"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
-        <defs>
-          <circle id="path-1" cx="116" cy="116" r="116" />
-          <path
-            d="M26.7671468,36 C26.73904,35.4259294 26.6218765,34.8408147 26.408179,34.2467532 C25.2358704,30.987831 21.1747622,32.7968555 16.6728474,36 L0,36 L0,0 L115.625,0 L115.625,36 L26.7671468,36 Z"
-            id="path-3"
-          />
-          <path
-            d="M46.25,29.5714286 C21.4163628,29.5714286 -4.58329671,17.3491908 1.28472222,3.85714286 C7.15274116,-9.63490513 41.8076882,28.2857143 46.25,28.2857143 C50.6923118,28.2857143 86.0747161,-10.4067355 91.2152778,3.85714286 C96.3558395,18.1210212 71.0836372,29.5714286 46.25,29.5714286 Z M46.25,29.2667625 C58.8173853,28.9957587 83.9069273,20.286096 83.9069273,11.4053713 C83.9069273,-1.47591797 50.2241351,29.5377662 46.25,29.5377662 C42.2758649,29.5377662 8.59307273,-1.15337612 8.59307273,11.4053713 C8.59307273,18.6853125 33.6826147,29.5377662 46.25,29.2667625 Z"
-            id="path-5"
-          />
-          <path
-            d="M-4.55468996e-14,12.2680484 C12.2771394,12.0895675 24.531875,6.82536357 24.1977023,1.11022302e-16 L110.486111,0 L110.486111,61.7142857 L29.4344136,61.7142857 L29.4344136,31.9090909 L30.8333333,31.9090909 L30.8333333,12.2727273 L0,12.2727273 L0,12.2680484 Z M0,11.3365299 L0,0 L14.1034029,0 C8.52893415,3.9662743 2.27859956,10.0700805 3.33066907e-16,11.3365299 Z"
-            id="path-7"
-          />
-          <polygon
-            id="path-9"
-            points="60.2677469 1.05194805 60.2677469 34.7142857 0.114197531 34.7142857 0.114197531 1.05194805"
-          />
-          <polygon
-            id="path-11"
-            points="0 0.701298701 62.9513889 0.701298701 62.9513889 20.3376623 0 20.3376623"
-          />
-          <path
-            d="M25.0520833,16.1298701 C11.5315475,16.1298701 -2.62382265,9.46319501 0.570987654,2.1038961 C3.76579796,-5.2554028 22.6334913,15.4285714 25.0520833,15.4285714 C27.4706753,15.4285714 46.7344288,-5.67640118 49.533179,2.1038961 C52.3319293,9.88419338 38.5726191,16.1298701 25.0520833,16.1298701 Z M25.0520833,15.9636886 C31.8943264,15.8158684 45.5541882,11.0651433 45.5541882,6.22111163 C45.5541882,-0.805046165 27.2157791,16.1115089 25.0520833,16.1115089 C22.8883876,16.1115089 4.54997849,-0.629114245 4.54997849,6.22111163 C4.54997849,10.1919886 18.2098402,16.1115089 25.0520833,15.9636886 Z"
-            id="path-13"
-          />
-        </defs>
-        <g
-          id="First-Plan-Info-Collection"
-          stroke="none"
-          strokeWidth="1"
-          fill="none"
-          fillRule="evenodd"
+    const elementProps = {
+      width,
+      height,
+      className,
+      style,
+      onClick: this.handleClick,
+    };
+
+    if (illuminate || this.state.illuminated) {
+      return (
+        <svg
+          {...elementProps}
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 150 150"
         >
-          <g
-            id="Intro-Page---Gift"
-            transform="translate(-604.000000, -140.000000)"
-          >
-            <g id="Image" transform="translate(604.000000, 140.000000)">
-              <mask id="mask-2" fill="white">
-                <use xlinkHref="#path-1" />
-              </mask>
-              <use id="Mask" fill={colors.midnight} xlinkHref="#path-1" />
-              <g id="Illustration-/-Source-/-Gift-Purple" mask="url(#mask-2)">
-                <g transform="translate(22.000000, 18.000000)" id="Gift">
-                  <g transform="translate(48.819444, 27.000000)">
-                    <g
-                      id="Rectangle"
-                      transform="translate(0.000000, 29.571429)"
-                    >
-                      <mask id="mask-4" fill="white">
-                        <use xlinkHref="#path-3" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.349999994"
-                        xlinkHref="#path-3"
-                      />
-                      <rect
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-4)"
-                        x="-3.85416667"
-                        y="-41.1428571"
-                        width="61.6666667"
-                        height="142.714286"
-                      />
-                    </g>
-                    <rect
-                      id="Rectangle-40"
-                      fill={fill}
-                      opacity="0.3"
-                      x="52.6736111"
-                      y="29.5714286"
-                      width="10.2777778"
-                      height="97.7142857"
-                    />
-                    <g
-                      id="Rectangle"
-                      transform="translate(11.562500, 0.000000)"
-                    >
-                      <mask id="mask-6" fill="white">
-                        <use xlinkHref="#path-5" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.3"
-                        xlinkHref="#path-5"
-                      />
-                      <rect
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-6)"
-                        x="-15.4166667"
-                        y="-11.5714286"
-                        width="61.6666667"
-                        height="142.714286"
-                      />
-                    </g>
-                    <g
-                      id="Rectangle"
-                      transform="translate(2.569444, 65.571429)"
-                    >
-                      <mask id="mask-8" fill="white">
-                        <use xlinkHref="#path-7" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.25"
-                        xlinkHref="#path-7"
-                      />
-                      <rect
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-8)"
-                        x="-6.42361111"
-                        y="-77.1428571"
-                        width="61.6666667"
-                        height="142.714286"
-                      />
-                    </g>
-                  </g>
-                  <g transform="translate(19.270833, 88.714286)">
-                    <g
-                      id="Rectangle"
-                      transform="translate(1.284722, 34.714286)"
-                    >
-                      <mask id="mask-10" fill="white">
-                        <use xlinkHref="#path-9" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.200000003"
-                        xlinkHref="#path-9"
-                      />
-                      <polygon
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-10)"
-                        points="-10.2777778 -41.1428571 30.1909722 -41.1428571 30.1909722 41.1428571 -10.2777778 41.1428571"
-                      />
-                    </g>
-                    <g
-                      id="Rectangle"
-                      transform="translate(0.000000, 15.428571)"
-                    >
-                      <mask id="mask-12" fill="white">
-                        <use xlinkHref="#path-11" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.5"
-                        xlinkHref="#path-11"
-                      />
-                      <polygon
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-12)"
-                        points="-8.99305556 -21.8571429 31.4756944 -21.8571429 31.4756944 60.4285714 -8.99305556 60.4285714"
-                      />
-                    </g>
-                    <polygon
-                      id="Rectangle-40"
-                      fill={fill}
-                      opacity="0.3"
-                      points="28.6778549 16.1298701 34.273534 16.1298701 34.273534 69.4285714 28.6778549 69.4285714"
-                    />
-                    <g id="Rectangle" transform="translate(6.423611, 0.000000)">
-                      <mask id="mask-14" fill="white">
-                        <use xlinkHref="#path-13" />
-                      </mask>
-                      <use
-                        id="Mask"
-                        fill={fill}
-                        opacity="0.5"
-                        xlinkHref="#path-13"
-                      />
-                      <polygon
-                        fill={fill}
-                        opacity="0.100000001"
-                        mask="url(#mask-14)"
-                        points="-15.4166667 -6.42857143 25.0520833 -6.42857143 25.0520833 75.8571429 -15.4166667 75.8571429"
-                      />
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
+          <defs>
+            <style>{`.cls-1{fill:none;}.cls-2{fill:#fde5cb;}.cls-3{fill:#f17732;}.cls-4{fill:#99052e;}.cls-5{fill:#10004c;}.cls-6{fill:#2870b5;}.cls-7{fill:#5fcbeb;}.cls-8{fill:#f8f7f4;}.cls-9{fill:url(#_2-dot);}.cls-10{fill:#feca1e;}.cls-11{fill:url(#_4-dot);}.cls-12{fill:url(#_5-dot);}`}</style>
+            <pattern
+              id="_2-dot"
+              data-name="2-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-2" cx="3" cy="4" r="0.35" />
+              <circle className="cls-2" cx="1" cy="4" r="0.35" />
+              <circle className="cls-2" cx="4" cy="2" r="0.35" />
+              <circle className="cls-2" cx="2" cy="2" r="0.35" />
+              <circle className="cls-2" cy="2" r="0.35" />
+              <circle className="cls-2" cx="3" r="0.35" />
+              <circle className="cls-2" cx="1" r="0.35" />
+            </pattern>
+            <pattern
+              id="_4-dot"
+              data-name="4-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-3" cx="3" cy="4" r="0.35" />
+              <circle className="cls-3" cx="1" cy="4" r="0.35" />
+              <circle className="cls-3" cx="4" cy="2" r="0.35" />
+              <circle className="cls-3" cx="2" cy="2" r="0.35" />
+              <circle className="cls-3" cy="2" r="0.35" />
+              <circle className="cls-3" cx="3" r="0.35" />
+              <circle className="cls-3" cx="1" r="0.35" />
+            </pattern>
+            <pattern
+              id="_5-dot"
+              data-name="5-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-4" cx="3" cy="4" r="0.35" />
+              <circle className="cls-4" cx="1" cy="4" r="0.35" />
+              <circle className="cls-4" cx="4" cy="2" r="0.35" />
+              <circle className="cls-4" cx="2" cy="2" r="0.35" />
+              <circle className="cls-4" cy="2" r="0.35" />
+              <circle className="cls-4" cx="3" r="0.35" />
+              <circle className="cls-4" cx="1" r="0.35" />
+            </pattern>
+          </defs>
+          <title>circle</title>
+          <g id="Backgrounds">
+            <circle className="cls-5" cx="75" cy="75" r="70" />
           </g>
-        </g>
-      </svg>
-    );
+          <g id="gift-color-2">
+            <path
+              className="cls-3"
+              d="M50.42,57.06c0-1.79-2.39-10.53-8.69-16.51,20.63,0,25.36,12.71,39.48,16.73Z"
+            />
+            <path
+              className="cls-4"
+              d="M104.75,57.09l-30.88.29c14.13-4,18.85-16.73,39.48-16.73-6.29,6-8.68,14.72-8.68,16.51"
+            />
+            <path
+              className="cls-6"
+              d="M94.78,57.32l-35.51,0c0-1.8,5.65-4,4.12-16.7C81.21,57.38,90,49.42,94.78,57.32"
+            />
+            <path
+              className="cls-7"
+              d="M97.27,111.66c-17.64,0-21.12-8.76-21.27-9.17a1.15,1.15,0,0,1,2.15-.81c.06.15,4.09,9.59,25.46,7.33,12.49-1.32,13.35-3.1,13.38-3.17-.19-.6-3-2-5.93-2.56-2.11-.43-3.35-1.55-3.14-2.88.28-1.83,2.93-2.49,7.88-2a20.52,20.52,0,0,1,8.25,2.76c2.09,1.13,3.14,1.69,5.07.6a1.16,1.16,0,0,1,1.57.44,1.15,1.15,0,0,1-.44,1.56c-3,1.72-5,.65-7.29-.58a18.45,18.45,0,0,0-7.41-2.49,14.61,14.61,0,0,0-4.89,0,2,2,0,0,0,.85.25c.33.07,7.92,1.63,7.77,5-.09,1.83-2,3.89-15.42,5.31A63.67,63.67,0,0,1,97.27,111.66Z"
+            />
+            <path
+              className="cls-6"
+              d="M97.27,111.66c-17.64,0-21.12-8.76-21.27-9.17-.22-.6,1.85-.78,2.44-1,4.3,14.46,41.52,9,40.78,3.9a2.33,2.33,0,0,1,0,1.31c-.61,1.5-2.94,3.29-15.36,4.6A63.67,63.67,0,0,1,97.27,111.66Z"
+            />
+            <rect
+              className="cls-8"
+              x="50.42"
+              y="57.09"
+              width="54.33"
+              height="45.93"
+            />
+            <rect
+              className="cls-9"
+              x="50.42"
+              y="57.09"
+              width="54.33"
+              height="45.93"
+            />
+            <path
+              className="cls-2"
+              d="M104.75,103H50.42V62.33C50.42,82,95.85,103,104.75,103Z"
+            />
+            <path
+              className="cls-3"
+              d="M66,74.66c-1.88-3-9.28,6.35-13.61,8.23,5.18-1.59,10-7.6,11.41-6.23C65,77.79,63,81,52.42,82.89,63.86,82.69,67.89,77.66,66,74.66Z"
+            />
+            <path
+              className="cls-3"
+              d="M41,76.66c1.45-1.37,6.23,4.64,11.42,6.23C48.09,81,40.68,71.64,38.8,74.66s2.17,8,13.62,8.23C41.87,81,39.81,77.79,41,76.66Z"
+            />
+            <rect
+              className="cls-10"
+              x="37.81"
+              y="82.89"
+              width="29.21"
+              height="23.75"
+            />
+            <rect
+              className="cls-11"
+              x="37.81"
+              y="82.89"
+              width="29.21"
+              height="23.75"
+            />
+            <path
+              className="cls-3"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <path
+              className="cls-12"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <ellipse
+              className="cls-4"
+              cx="52.42"
+              cy="82.77"
+              rx="2.57"
+              ry="1.97"
+            />
+            <rect
+              className="cls-10"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <rect
+              className="cls-10"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <path
+              className="cls-3"
+              d="M51,92.67H36.54v-9.9C36.54,90.58,51,92.67,51,92.67Z"
+            />
+            <rect
+              className="cls-3"
+              x="51.04"
+              y="82.77"
+              width="2.76"
+              height="23.87"
+            />
+            <path
+              className="cls-4"
+              d="M51,100.75v5.89H53.8v-4.5C52.88,101.7,52,101.24,51,100.75Z"
+            />
+            <path
+              className="cls-6"
+              d="M110.66,100.77a15.24,15.24,0,0,1,4.89,0,18.45,18.45,0,0,1,7.41,2.49c2.28,1.23,4.25,2.3,7.29.58a1.15,1.15,0,0,0,.44-1.56c-.26.79-2.39,1.64-4,1.46-2-.23-4.91-3.47-11.3-4S110.49,100.67,110.66,100.77Z"
+            />
+          </g>
+        </svg>
+      );
+    } else if (color) {
+      return (
+        <svg
+          {...elementProps}
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 150 150"
+        >
+          <defs>
+            <style>{`.cls-1{fill:none;}.cls-2{fill:#fde5cb;}.cls-3{fill:#f17732;}.cls-4{fill:#99052e;}.cls-5{fill:#10004c;}.cls-6{fill:#5fcbeb;}.cls-7{fill:#f8f7f4;}.cls-8{fill:url(#_2-dot);}.cls-9{fill:#2870b5;}.cls-10{fill:#feca1e;}.cls-11{fill:url(#_4-dot);}.cls-12{fill:url(#_5-dot);}`}</style>
+            <pattern
+              id="_2-dot"
+              data-name="2-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-2" cx="3" cy="4" r="0.35" />
+              <circle className="cls-2" cx="1" cy="4" r="0.35" />
+              <circle className="cls-2" cx="4" cy="2" r="0.35" />
+              <circle className="cls-2" cx="2" cy="2" r="0.35" />
+              <circle className="cls-2" cy="2" r="0.35" />
+              <circle className="cls-2" cx="3" r="0.35" />
+              <circle className="cls-2" cx="1" r="0.35" />
+            </pattern>
+            <pattern
+              id="_4-dot"
+              data-name="4-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-3" cx="3" cy="4" r="0.35" />
+              <circle className="cls-3" cx="1" cy="4" r="0.35" />
+              <circle className="cls-3" cx="4" cy="2" r="0.35" />
+              <circle className="cls-3" cx="2" cy="2" r="0.35" />
+              <circle className="cls-3" cy="2" r="0.35" />
+              <circle className="cls-3" cx="3" r="0.35" />
+              <circle className="cls-3" cx="1" r="0.35" />
+            </pattern>
+            <pattern
+              id="_5-dot"
+              data-name="5-dot"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+              viewBox="0 0 4 4"
+            >
+              <rect className="cls-1" width="4" height="4" />
+              <circle className="cls-4" cx="3" cy="4" r="0.35" />
+              <circle className="cls-4" cx="1" cy="4" r="0.35" />
+              <circle className="cls-4" cx="4" cy="2" r="0.35" />
+              <circle className="cls-4" cx="2" cy="2" r="0.35" />
+              <circle className="cls-4" cy="2" r="0.35" />
+              <circle className="cls-4" cx="3" r="0.35" />
+              <circle className="cls-4" cx="1" r="0.35" />
+            </pattern>
+          </defs>
+          <title>circle</title>
+          <g id="Backgrounds">
+            <circle className="cls-5" cx="75" cy="75" r="70" />
+          </g>
+          <g id="gift-color">
+            <path
+              className="cls-6"
+              d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"
+            />
+            <path
+              className="cls-6"
+              d="M58.51,43.22c2.42-2.29,10.4,7.76,19.07,10.41C70.35,50.5,58,34.83,54.82,39.88S58.45,53.3,77.58,53.63C60,50.5,56.52,45.1,58.51,43.22Z"
+            />
+            <rect
+              className="cls-7"
+              x="50.42"
+              y="53.55"
+              width="54.33"
+              height="49.47"
+            />
+            <rect
+              className="cls-8"
+              x="50.42"
+              y="53.55"
+              width="54.33"
+              height="49.47"
+            />
+            <path
+              className="cls-2"
+              d="M104.75,103H50.42V62.33C50.42,82,95.85,103,104.75,103Z"
+            />
+            <ellipse
+              className="cls-9"
+              cx="77.58"
+              cy="53.55"
+              rx="4.27"
+              ry="2.59"
+            />
+            <rect
+              className="cls-7"
+              x="48.41"
+              y="53.55"
+              width="58.35"
+              height="14.78"
+            />
+            <path
+              className="cls-2"
+              d="M76.21,68.33H48.41V53.55C48.41,65.27,76.21,68.33,76.21,68.33Z"
+            />
+            <path
+              className="cls-3"
+              d="M66,74.66c-1.88-3-9.28,6.35-13.61,8.23,5.18-1.59,10-7.6,11.41-6.23C65,77.79,63,81,52.42,82.89,63.86,82.69,67.89,77.66,66,74.66Z"
+            />
+            <path
+              className="cls-3"
+              d="M41,76.66c1.45-1.37,6.23,4.64,11.42,6.23C48.09,81,40.68,71.64,38.8,74.66s2.17,8,13.62,8.23C41.87,81,39.81,77.79,41,76.66Z"
+            />
+            <rect
+              className="cls-10"
+              x="37.81"
+              y="82.89"
+              width="29.21"
+              height="23.75"
+            />
+            <rect
+              className="cls-11"
+              x="37.81"
+              y="82.89"
+              width="29.21"
+              height="23.75"
+            />
+            <path
+              className="cls-3"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <path
+              className="cls-12"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <ellipse
+              className="cls-4"
+              cx="52.42"
+              cy="82.77"
+              rx="2.57"
+              ry="1.97"
+            />
+            <rect
+              className="cls-10"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <rect
+              className="cls-10"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <path
+              className="cls-3"
+              d="M51,92.67H36.54v-9.9C36.54,90.58,51,92.67,51,92.67Z"
+            />
+            <rect
+              className="cls-6"
+              x="76.21"
+              y="53.55"
+              width="2.76"
+              height="49.47"
+            />
+            <path
+              className="cls-9"
+              d="M76.21,103H79V92.83c-.92-.51-1.84-1-2.75-1.59Z"
+            />
+            <rect
+              className="cls-3"
+              x="51.04"
+              y="82.77"
+              width="2.76"
+              height="23.87"
+            />
+            <path
+              className="cls-4"
+              d="M51,100.75v5.89H53.8v-4.5C52.88,101.7,52,101.24,51,100.75Z"
+            />
+          </g>
+        </svg>
+      );
+    } else if (draft) {
+      return (
+        <svg
+          {...elementProps}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 150 150"
+        >
+          <defs>
+            <style>{`.cls-1{fill:#5b6279;}.cls-2{fill:#bdc0c9;}.cls-3{fill:#8c91a1;}.cls-4{fill:#dee0e4;}.cls-5{fill:#cdcfd6;}.cls-6{fill:#fff;}.cls-7{fill:#eeeff1;}.cls-8{fill:#6b7186;}.cls-9{fill:#9da1af;}.cls-10{fill:#adb0bc;}`}</style>
+          </defs>
+          <title>circle</title>
+          <g id="Backgrounds">
+            <circle className="cls-1" cx="75" cy="75" r="70" />
+          </g>
+          <g id="gift-gray">
+            <path
+              className="cls-2"
+              d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"
+            />
+            <path
+              className="cls-2"
+              d="M58.51,43.22c2.42-2.29,10.4,7.76,19.07,10.41C70.35,50.5,58,34.83,54.82,39.88S58.45,53.3,77.58,53.63C60,50.5,56.52,45.1,58.51,43.22Z"
+            />
+            <ellipse
+              className="cls-3"
+              cx="77.58"
+              cy="53.55"
+              rx="4.27"
+              ry="2.59"
+            />
+            <rect
+              className="cls-4"
+              x="50.42"
+              y="53.55"
+              width="54.33"
+              height="49.47"
+            />
+            <path
+              className="cls-5"
+              d="M104.75,103H50.42V62.33C50.42,82,95.85,103,104.75,103Z"
+            />
+            <rect
+              className="cls-6"
+              x="48.41"
+              y="53.55"
+              width="58.35"
+              height="14.78"
+            />
+            <path
+              className="cls-7"
+              d="M76.21,68.33H48.41V53.55C48.41,65.27,76.21,68.33,76.21,68.33Z"
+            />
+            <path
+              className="cls-3"
+              d="M66,74.66c-1.88-3-9.28,6.35-13.61,8.23,5.18-1.59,10-7.6,11.41-6.23C65,77.79,63,81,52.42,82.89,63.86,82.69,67.89,77.66,66,74.66Z"
+            />
+            <path
+              className="cls-3"
+              d="M41,76.66c1.45-1.37,6.23,4.64,11.42,6.23C48.09,81,40.68,71.64,38.8,74.66s2.17,8,13.62,8.23C41.87,81,39.81,77.79,41,76.66Z"
+            />
+            <ellipse
+              className="cls-8"
+              cx="52.42"
+              cy="82.77"
+              rx="2.57"
+              ry="1.97"
+            />
+            <rect
+              className="cls-9"
+              x="37.81"
+              y="82.75"
+              width="29.21"
+              height="23.89"
+            />
+            <path
+              className="cls-3"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <rect
+              className="cls-2"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <path
+              className="cls-10"
+              d="M51,92.62H36.54V82.77C36.54,90.58,51,92.62,51,92.62Z"
+            />
+            <rect
+              className="cls-2"
+              x="76.21"
+              y="53.43"
+              width="2.76"
+              height="49.59"
+            />
+            <path
+              className="cls-3"
+              d="M76.21,103H79V92.83c-.92-.51-1.84-1-2.75-1.59Z"
+            />
+            <rect
+              className="cls-3"
+              x="51.04"
+              y="82.62"
+              width="2.76"
+              height="24.02"
+            />
+            <path
+              className="cls-8"
+              d="M51,100.75v5.89H53.8v-4.5C52.88,101.7,52,101.24,51,100.75Z"
+            />
+          </g>
+        </svg>
+      );
+    } else {
+      return (
+        <svg
+          {...elementProps}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 150 150"
+        >
+          <defs>
+            <style>{`.cls-1{fill:#10004c;}.cls-2{fill:#9f99b7;}.cls-3{fill:#584d82;}.cls-4{fill:#cfccdb;}.cls-5{fill:#b7b3c9;}.cls-6{fill:#fff;}.cls-7{fill:#e7e6ed;}.cls-8{fill:#281a5e;}.cls-9{fill:#6f6693;}.cls-10{fill:#8780a5;}`}</style>
+          </defs>
+          <title>circle</title>
+          <g id="Backgrounds">
+            <circle className="cls-1" cx="75" cy="75" r="70" />
+          </g>
+          <g id="gift-purple">
+            <path
+              className="cls-2"
+              d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"
+            />
+            <path
+              className="cls-2"
+              d="M58.51,43.22c2.42-2.29,10.4,7.76,19.07,10.41C70.35,50.5,58,34.83,54.82,39.88S58.45,53.3,77.58,53.63C60,50.5,56.52,45.1,58.51,43.22Z"
+            />
+            <ellipse
+              className="cls-3"
+              cx="77.58"
+              cy="53.55"
+              rx="4.27"
+              ry="2.59"
+            />
+            <rect
+              className="cls-4"
+              x="50.42"
+              y="53.55"
+              width="54.33"
+              height="49.47"
+            />
+            <path
+              className="cls-5"
+              d="M104.75,103H50.42V62.33C50.42,82,95.85,103,104.75,103Z"
+            />
+            <rect
+              className="cls-6"
+              x="48.41"
+              y="53.55"
+              width="58.35"
+              height="14.78"
+            />
+            <path
+              className="cls-7"
+              d="M76.21,68.33H48.41V53.55C48.41,65.27,76.21,68.33,76.21,68.33Z"
+            />
+            <path
+              className="cls-3"
+              d="M66,74.66c-1.88-3-9.28,6.35-13.61,8.23,5.18-1.59,10-7.6,11.41-6.23C65,77.79,63,81,52.42,82.89,63.86,82.69,67.89,77.66,66,74.66Z"
+            />
+            <path
+              className="cls-3"
+              d="M41,76.66c1.45-1.37,6.23,4.64,11.42,6.23C48.09,81,40.68,71.64,38.8,74.66s2.17,8,13.62,8.23C41.87,81,39.81,77.79,41,76.66Z"
+            />
+            <ellipse
+              className="cls-8"
+              cx="52.42"
+              cy="82.77"
+              rx="2.57"
+              ry="1.97"
+            />
+            <rect
+              className="cls-9"
+              x="37.81"
+              y="82.75"
+              width="29.21"
+              height="23.89"
+            />
+            <path
+              className="cls-3"
+              d="M67,106.64H37.81V87.45C37.81,96.73,62.24,106.64,67,106.64Z"
+            />
+            <rect
+              className="cls-2"
+              x="36.54"
+              y="82.77"
+              width="31.76"
+              height="9.9"
+            />
+            <path
+              className="cls-10"
+              d="M51,92.62H36.54V82.77C36.54,90.58,51,92.62,51,92.62Z"
+            />
+            <rect
+              className="cls-2"
+              x="76.21"
+              y="53.43"
+              width="2.76"
+              height="49.59"
+            />
+            <path
+              className="cls-3"
+              d="M76.21,103H79V92.83c-.92-.51-1.84-1-2.75-1.59Z"
+            />
+            <rect
+              className="cls-3"
+              x="51.04"
+              y="82.62"
+              width="2.76"
+              height="24.02"
+            />
+            <path
+              className="cls-8"
+              d="M51,100.75v5.89H53.8v-4.5C52.88,101.7,52,101.24,51,100.75Z"
+            />
+          </g>
+        </svg>
+      );
+    }
   }
 }
 
@@ -241,8 +648,12 @@ GiftCircleIllustration.propTypes = {
   width: PropTypes.string,
   /** The height of the illustration. */
   height: PropTypes.string,
-  /** The color of the illustration. */
-  fill: PropTypes.string,
+  /** Determines if the illustration should default to the illuminated state. */
+  illuminate: PropTypes.bool,
+  /** Determines if the color variant should be shown or not. */
+  color: PropTypes.bool,
+  /** Determines if the draft variant should be shown or not. */
+  draft: PropTypes.bool,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
   /** Additional inline styles to apply to the container. */
@@ -252,7 +663,6 @@ GiftCircleIllustration.propTypes = {
 GiftCircleIllustration.defaultProps = {
   height: '140',
   width: '144',
-  fill: '#ffffff',
 };
 
 export default GiftCircleIllustration;

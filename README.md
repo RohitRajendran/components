@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="https://cdn-images-1.medium.com/max/720/1*hBtuTy4J0_4izKjTknDrTg@2x.png" alt="United Income logo" width="300" />
+  <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="650" />
 </p>
-<h1 align="center"><b>Component Library</b></h1>
 
 <div align="center">
 
@@ -55,7 +54,7 @@ To import all styles you can use:
 
 ## Building a Component 🔩
 
-You can build a component story by creating a folder within the `components` directory. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
+Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
 ```markdown
 •

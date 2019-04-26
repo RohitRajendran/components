@@ -5,5 +5,11 @@ The GivingCircleIllustration component creates a giving hand illuminator using i
 ## Example 🚀
 
 ```javascript
-<GivingCircleIllustration fill="#fff" height="20" width="20" />
+<GivingCircleIllustration
+  illuminate={false}
+  draft={false}
+  color={false}
+  height="20"
+  width="20"
+/>
 ```

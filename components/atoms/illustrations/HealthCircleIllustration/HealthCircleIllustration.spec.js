@@ -4,19 +4,43 @@ import {shallow, mount} from 'enzyme';
 import HealthCircleIllustration from './HealthCircleIllustration';
 
 test('HealthCircleIllustration - renders', (t) => {
-  const component = shallow(<HealthCircleIllustration fill="white" />);
+  const component = shallow(<HealthCircleIllustration />);
 
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LampIllustration component.'
+    'Should load the HealthIllustration component.'
+  );
+
+  t.end();
+});
+
+test('HealthCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<HealthCircleIllustration draft={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the HealthIllustration component.'
+  );
+
+  t.end();
+});
+
+test('HealthCircleIllustration - renders the color illustration', (t) => {
+  const component = shallow(<HealthCircleIllustration color={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the HealthIllustration component.'
   );
 
   t.end();
 });
 
 test('HealthCircleIllustration - handleClick', (t) => {
-  const component = mount(<HealthCircleIllustration fill="white" />);
+  const component = mount(<HealthCircleIllustration />);
 
   component.instance().handleClick();
 

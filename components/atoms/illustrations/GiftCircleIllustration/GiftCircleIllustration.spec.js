@@ -9,7 +9,31 @@ test('GiftCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LampIllustration component.'
+    'Should load the GiftIllustration component.'
+  );
+
+  t.end();
+});
+
+test('GiftCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<GiftCircleIllustration draft={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the GiftIllustration component.'
+  );
+
+  t.end();
+});
+
+test('GiftCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<GiftCircleIllustration color={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the GiftIllustration component.'
   );
 
   t.end();

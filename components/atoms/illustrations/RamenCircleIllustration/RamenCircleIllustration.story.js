@@ -2,15 +2,15 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {text, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import ShoppingCircleIllustration from './ShoppingCircleIllustration';
-import ShoppingCircleIllustrationReadMe from './ShoppingCircleIllustration.md';
+import RamenCircleIllustration from './RamenCircleIllustration';
+import RamenCircleIllustrationReadMe from './RamenCircleIllustration.md';
 
 const stories = storiesOf(
-  'Atoms/Illustrations/ShoppingCircleIllustration',
+  'Atoms/Illustrations/RamenCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(ShoppingCircleIllustrationReadMe));
+stories.addDecorator(withReadme(RamenCircleIllustrationReadMe));
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '265'),
@@ -21,17 +21,14 @@ const defaultProps = (color, draft, illuminate) => ({
 });
 
 stories.add('default', () => (
-  <ShoppingCircleIllustration {...defaultProps(false, false, false)} />
+  <RamenCircleIllustration {...defaultProps(false, false, false)} />
 ));
-
 stories.add('color', () => (
-  <ShoppingCircleIllustration {...defaultProps(true, false, false)} />
+  <RamenCircleIllustration {...defaultProps(true, false, false)} />
 ));
-
 stories.add('draft', () => (
-  <ShoppingCircleIllustration {...defaultProps(false, true, false)} />
+  <RamenCircleIllustration {...defaultProps(false, true, false)} />
 ));
-
 stories.add('illuminated', () => (
-  <ShoppingCircleIllustration {...defaultProps(false, false, true)} />
+  <RamenCircleIllustration {...defaultProps(false, false, true)} />
 ));

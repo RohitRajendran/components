@@ -4,7 +4,31 @@ import {shallow, mount} from 'enzyme';
 import LampCircleIllustration from './LampCircleIllustration';
 
 test('LampCircleIllustration - renders', (t) => {
-  const component = shallow(<LampCircleIllustration fill="white" />);
+  const component = shallow(<LampCircleIllustration />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the LampIllustration component.'
+  );
+
+  t.end();
+});
+
+test('LampCircleIllustration - renders the color illustration', (t) => {
+  const component = shallow(<LampCircleIllustration color={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the LampIllustration component.'
+  );
+
+  t.end();
+});
+
+test('LampCircleIllustration - renders the color illustration', (t) => {
+  const component = shallow(<LampCircleIllustration draft={true} />);
 
   t.equals(
     component.find('svg').length,
@@ -16,7 +40,7 @@ test('LampCircleIllustration - renders', (t) => {
 });
 
 test('LampCircleIllustration - handleClick', (t) => {
-  const component = mount(<LampCircleIllustration fill="white" />);
+  const component = mount(<LampCircleIllustration />);
 
   component.instance().handleClick();
 

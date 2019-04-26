@@ -9,7 +9,7 @@ test('ProfileCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LampIllustration component.'
+    'Should load the ProfileCircleIllustration component.'
   );
 
   t.end();
