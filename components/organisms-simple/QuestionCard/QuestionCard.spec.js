@@ -68,7 +68,6 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
       .text(),
     'Save Changes'
   );
-  t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
 
   t.end();
 });

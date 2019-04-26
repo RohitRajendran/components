@@ -76,6 +76,7 @@
     "postcss-prefixer": "*",
     "prettier": "*",
     "prop-types": "*",
+    "query-string": "<6.0.0",
     "rc-slider": "*",
     "react": "*",
     "react-beautiful-dnd": "*",
@@ -95,16 +96,19 @@
     "tape": "*",
     "text-mask-addons": "*",
     "webpack": "*",
-    "webpack-cli": "*"
+    "webpack-cli": "*",
+    "xstate": "*"
   },
   "peerDependencies": {
     "classnames": "*",
     "lodash": "*",
     "prop-types": "*",
+    "query-string": "<6.0.0",
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
-    "react-text-mask": "*"
+    "react-text-mask": "*",
+    "xstate": "*"
   }
 }

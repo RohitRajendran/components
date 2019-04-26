@@ -1,0 +1,51 @@
+.uic--mcg-framework {
+  .uic--mcg-subnav {
+    $button-spacing: 1rem;
+
+    background-color: $white;
+    border-bottom: 1px solid $light-gray;
+    height: 5rem;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1031;
+
+    h1 {
+      @include source-sans-pro(1.4rem);
+      color: $slate;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    button {
+      background-color: transparent;
+      cursor: pointer;
+      border: 0;
+      margin-right: $button-spacing;
+      margin-top: 5px;
+      padding: 0;
+    }
+
+    // To help with flex positioning of navbar items
+    span {
+      margin-left: $button-spacing;
+      width: 1.6rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+      $button-spacing: 1.7rem;
+
+      button {
+        margin-right: $button-spacing;
+      }
+
+      span {
+        margin-left: $button-spacing;
+      }
+    }
+  }
+
+  .uic--mcg-card-container {
+    padding: 3.6rem 1rem;
+  }
+}

@@ -47,6 +47,9 @@ import InputCard from '~components/organisms-complex/InputCard/InputCard';
 import SliderCard from '~components/organisms-complex/SliderCard/SliderCard';
 import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
 
+// Templates
+import McGonagall from '~components/templates/McGonagall/McGonagall';
+
 // Utilities
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
@@ -78,6 +81,7 @@ export {
   CheckboxCard,
   InputCard,
   SliderCard,
+  McGonagall,
   RankingCard,
   CompletionScreen,
   ExpandCollapse,
