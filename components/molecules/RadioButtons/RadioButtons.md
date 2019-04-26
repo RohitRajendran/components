@@ -31,8 +31,8 @@ The RadioButton component renders a group of HTML radio buttons with a number of
       disabled: false,
     },
   ]}
-  onChange={(value) => store.set({selected: value})}
-  value={state.selected}
+  onChange={(name, value) => this.setState({[name]: value})}
+  value={this.state.bestCat}
 />
 ```
 

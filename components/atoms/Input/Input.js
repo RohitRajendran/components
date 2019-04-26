@@ -457,7 +457,7 @@ Input.propTypes = {
     'PercentageWithDecimal',
     'SmallPercentageWithDecimal',
   ]),
-  /** Handler which is run whenever there's a change to the input. */
+  /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
   onChange: PropTypes.func,
   /** The minimum number value. Only applicable if the type is set to number. */
   min: PropTypes.number,
