@@ -35,12 +35,12 @@ import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSum
 import Modal from '~components/molecules/Modal/Modal';
 import Cabinet from '~components/molecules/Cabinet/Cabinet';
 
-// Organisms - Simple
+// Simple Organisms
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
-// Organisms - Complex
+// Complex Organisms
 import CheckboxCard from '~components/organisms-complex/CheckboxCard/CheckboxCard';
 import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
 import InputCard from '~components/organisms-complex/InputCard/InputCard';

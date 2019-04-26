@@ -54,7 +54,7 @@ To import all styles you can use:
 
 ## Building a Component 🔩
 
-You can build a component story by creating a folder within the `components` directory. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
+Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
 ```markdown
 •

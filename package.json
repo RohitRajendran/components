@@ -16,7 +16,8 @@
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
-    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css"
+    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css",
+    "generate": "yarn hygen component new"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
@@ -62,6 +63,7 @@
     "eslint-plugin-react": "*",
     "faucet": "*",
     "file-loader": "*",
+    "hygen": "*",
     "ignore-styles": "*",
     "jsdom": "*",
     "jsdom-global": "*",
