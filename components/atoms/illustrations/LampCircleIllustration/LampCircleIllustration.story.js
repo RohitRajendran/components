@@ -9,19 +9,23 @@ const stories = storiesOf('Atoms/Illustrations/LampCircleIllustration', module);
 
 stories.addDecorator(withReadme(LampCircleIllustrationReadMe));
 
-const defaultProps = (color, draft) => ({
+const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '265'),
   width: text('width', '160'),
   color: boolean('color', color),
   draft: boolean('draft', draft),
+  illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
-  <LampCircleIllustration {...defaultProps(false, false)} />
+  <LampCircleIllustration {...defaultProps(false, false, false)} />
 ));
 stories.add('color', () => (
-  <LampCircleIllustration {...defaultProps(true, false)} />
+  <LampCircleIllustration {...defaultProps(true, false, false)} />
 ));
 stories.add('draft', () => (
-  <LampCircleIllustration {...defaultProps(false, true)} />
+  <LampCircleIllustration {...defaultProps(false, true, false)} />
+));
+stories.add('illuminated', () => (
+  <LampCircleIllustration {...defaultProps(false, false, true)} />
 ));

@@ -5,5 +5,11 @@ The RamenCircleIllustration component creates a Ramen illuminator using inline S
 ## Example 🚀
 
 ```javascript
-<RamenCircleIllustration color={false} draft={false} height="20" width="20" />
+<RamenCircleIllustration
+  illuminate={false}
+  color={false}
+  draft={false}
+  height="20"
+  width="20"
+/>
 ```

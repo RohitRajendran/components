@@ -12,21 +12,26 @@ const stories = storiesOf(
 
 stories.addDecorator(withReadme(ShoppingCircleIllustrationReadMe));
 
-const defaultProps = (color, draft) => ({
+const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '265'),
   width: text('width', '160'),
   color: boolean('color', color),
   draft: boolean('draft', draft),
+  illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
-  <ShoppingCircleIllustration {...defaultProps(false, false)} />
+  <ShoppingCircleIllustration {...defaultProps(false, false, false)} />
 ));
 
 stories.add('color', () => (
-  <ShoppingCircleIllustration {...defaultProps(true, false)} />
+  <ShoppingCircleIllustration {...defaultProps(true, false, false)} />
 ));
 
 stories.add('draft', () => (
-  <ShoppingCircleIllustration {...defaultProps(false, true)} />
+  <ShoppingCircleIllustration {...defaultProps(false, true, false)} />
+));
+
+stories.add('illuminated', () => (
+  <ShoppingCircleIllustration {...defaultProps(false, false, true)} />
 ));

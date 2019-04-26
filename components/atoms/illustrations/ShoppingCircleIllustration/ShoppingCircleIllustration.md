@@ -8,6 +8,7 @@ The ShoppingCircleIllustration component creates a shopping illuminator using in
 <ShoppingCircleIllustration
   color={false}
   draft={false}
+  illuminate={false}
   height="20"
   width="20"
 />

@@ -24,7 +24,15 @@ class GivingCircleIllustration extends PureComponent {
 
   /** @inheritdoc */
   render() {
-    const {color, draft, width, height, className, style} = this.props;
+    const {
+      illuminate,
+      color,
+      draft,
+      width,
+      height,
+      className,
+      style,
+    } = this.props;
 
     const elementProps = {
       width,
@@ -34,7 +42,7 @@ class GivingCircleIllustration extends PureComponent {
       onClick: this.handleClick,
     };
 
-    if (this.state.illuminated) {
+    if (illuminate || this.state.illuminated) {
       return (
         <svg
           {...elementProps}
@@ -466,6 +474,8 @@ GivingCircleIllustration.propTypes = {
   width: PropTypes.string,
   /** The height of the illustration. */
   height: PropTypes.string,
+  /** Determines if the illustration should default to the illuminated state. */
+  illuminate: PropTypes.bool,
   /** Determines if the color variant should be shown or not. */
   color: PropTypes.bool,
   /** Determines if the draft variant should be shown or not. */

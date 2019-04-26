@@ -12,11 +12,12 @@ const stories = storiesOf(
 
 stories.addDecorator(withReadme(HealthCircleIllustrationReadMe));
 
-const defaultProps = (color, draft) => ({
+const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '265'),
   width: text('width', '160'),
   color: boolean('color', color),
   draft: boolean('draft', draft),
+  illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
@@ -27,4 +28,7 @@ stories.add('color', () => (
 ));
 stories.add('draft', () => (
   <HealthCircleIllustration {...defaultProps(false, true)} />
+));
+stories.add('illuminated', () => (
+  <HealthCircleIllustration {...defaultProps(false, false, true)} />
 ));
