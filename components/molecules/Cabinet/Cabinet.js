@@ -18,6 +18,7 @@ export const CabinetInterior = ({
 }) => {
   const containerClasses = classNames({
     'uic--cabinet': true,
+    'uic--text-left': true,
     'uic--position-fixed': true,
     'uic--show-cabinet': show,
     'uic--hide-cabinet': !show,
@@ -166,7 +167,6 @@ class Cabinet extends Component {
 
     const containerClasses = classNames(
       {
-        'uic--text-left': true,
         'uic--cabinet-container': true,
       },
       className
