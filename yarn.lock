@@ -1208,15 +1208,15 @@
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
 "@storybook/addon-a11y@*":
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.10.tgz#406fb5d806ced78f1ed129cfd56af1c7fc9b5485"
-  integrity sha512-/fOnoaOy5lWxvnJHsgfeTE4ZMDrO+0v9ymfoo+L4fmVLR5h1/4JTq1FCMqNm0SrIyhtuMAF/Y2+gA5jUlDlqTw==
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.11.tgz#b045a99c2582722db8b34e2edee11aa5521eba26"
+  integrity sha512-vMBjgKE5Ia4w7QOi4apZLsLvJtc5OoeDOSvGp01sQBMfZYsjaQmy4cDVtB0baek3D7syYtoduj/b0KX3NR09/A==
   dependencies:
-    "@storybook/addons" "5.0.10"
-    "@storybook/client-logger" "5.0.10"
-    "@storybook/components" "5.0.10"
-    "@storybook/core-events" "5.0.10"
-    "@storybook/theming" "5.0.10"
+    "@storybook/addons" "5.0.11"
+    "@storybook/client-logger" "5.0.11"
+    "@storybook/components" "5.0.11"
+    "@storybook/core-events" "5.0.11"
+    "@storybook/theming" "5.0.11"
     axe-core "^3.1.2"
     common-tags "^1.8.0"
     core-js "^2.6.5"
