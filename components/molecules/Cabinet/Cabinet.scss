@@ -99,5 +99,12 @@ $z-index-navbar-fixed: 1030;
       font-style: normal !important; // Enforces paragraph styles on the cabinet.
       color: $slate;
     }
+
+    ul,
+    ol {
+      li {
+        margin-top: 0.8rem;
+      }
+    }
   }
 }
