@@ -1,0 +1,56 @@
+.uic--stackable-expand-collapse {
+  $border: 1px solid $white-seven;
+  $animation-duration: 0.3s;
+
+  border-left: $border;
+  border-right: $border;
+
+  &:first-of-type {
+    border-top: $border;
+  }
+
+  &:last-of-type {
+    border-bottom: $border;
+
+    .uic--stackable-expand-collapse-divider {
+      border: none;
+    }
+  }
+
+  .uic--stackable-expand-collapse-divider {
+    margin: 0 2rem;
+    border: 0.5px solid $white-seven;
+  }
+
+  .uic--stackable-expand-collapse-clickable {
+    @include source-sans-pro(1.6rem);
+    align-items: baseline;
+    padding: 1.5rem 2rem;
+    color: $slate;
+    background: $white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .uic--stackable-expand-collapse-icon {
+    transition: transform $animation-duration;
+  }
+
+  .uic--stackable-expand-collapse-contents {
+    @include source-sans-pro(1.4rem);
+    max-height: 0;
+    overflow: hidden;
+    color: $slate;
+    background-color: $white;
+    transition: max-height $animation-duration;
+
+    &.uic--stackable-expand-collapse-expanded {
+      max-height: 100rem; // Fallback
+      max-height: var(--content-height);
+    }
+  }
+
+  .uic--stackable-expand-collapse-contents-inner {
+    padding: 1rem 5rem 2rem 2rem;
+  }
+}
