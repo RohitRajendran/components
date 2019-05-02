@@ -65,7 +65,7 @@ test('Slider - onChange', (t) => {
 
   t.equals(
     props.onChange.args[0][1],
-    5,
+    '5',
     'Should fire the onChange handler correctly when prompted.'
   );
 });

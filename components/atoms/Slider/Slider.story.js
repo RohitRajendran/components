@@ -27,7 +27,7 @@ const defaultProps = (variant, formName) => ({
   leftAnnotate: text('leftAnnotate', 'Less Cats'),
   rightAnnotate: text('rightAnnotate', 'More Cats'),
   tooltip: text('tooltip', 'How many cats would you like?'),
-  tooltipStickyPosition: number('tooltipStickyPosition', 5),
+  tooltipStickyPosition: number('tooltipStickyPosition', 4),
   value: store.get(formName),
   name: formName,
   onChange: (name, value) => store.set({[name]: value}),
