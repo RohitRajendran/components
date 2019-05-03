@@ -15,4 +15,4 @@ const defaultProps = () => ({
   width: text('width', '20'),
 });
 
-stories.add('default', () => <ArrowEllipsisIcon {...defaultProps} />);
+stories.add('default', () => <ArrowEllipsisIcon {...defaultProps()} />);

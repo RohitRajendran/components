@@ -6,6 +6,7 @@ import DropDown from '~components/atoms/DropDown/DropDown';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
+import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
@@ -26,6 +27,7 @@ import ShoppingCircleIllustration from '~components/atoms/illustrations/Shopping
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 
 // Molecules
+import StackableExpandCollapse from '~components/molecules/StackableExpandCollapse/StackableExpandCollapse';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
@@ -54,7 +56,9 @@ import McGonagall from '~components/templates/McGonagall/McGonagall';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 export {
+  StackableExpandCollapse,
   ArrowIcon,
+  CaretIcon,
   ClearIcon,
   TrashIcon,
   ArrowIconEllipsis,

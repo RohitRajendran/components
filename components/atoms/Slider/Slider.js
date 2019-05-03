@@ -20,8 +20,11 @@ const Slider = ({
   className,
   required,
 }) => {
+  const tooltipStickyPositionStr =
+    tooltipStickyPosition && tooltipStickyPosition.toString();
+  const valueStr = value && value.toString();
   const tooltipStickyClasses = classNames({
-    'uic--show': tooltipStickyPosition && tooltipStickyPosition !== value,
+    'uic--show': tooltipStickyPosition && tooltipStickyPositionStr !== valueStr,
     [`uic--${tooltipStickyVariant}`]: tooltipStickyVariant,
     'uic--tooltip-sticky-hint': true,
     [`uic--tooltip-position-${tooltipStickyPosition}`]: true,
@@ -32,18 +35,18 @@ const Slider = ({
       [`uic--highlighted-${tooltipStickyVariant}`]:
         tooltipStickyVariant &&
         tooltipStickyPosition &&
-        tooltipStickyPosition === value,
+        tooltipStickyPositionStr === valueStr,
       'uic--slider-wrapper': true,
       'uic--position-relative': true,
     },
     className
   );
 
-  const range = Array.from({length: 10}, (v, i) => i + 1);
+  const range = Array.from({length: 11}, (v, i) => i);
   const markers = fromPairs(range.map((x) => [x, x]));
 
   const handleChange = (newValue) => {
-    return onChange(name, newValue);
+    return onChange(name, newValue.toString());
   };
 
   return (
@@ -51,7 +54,7 @@ const Slider = ({
       {tooltipStickyVariant && (
         <style>
           {`
-        .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition}) {
+        .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition + 1}) {
           color: ${
             tooltipStickyVariant === 'green'
               ? colors.green
@@ -67,7 +70,7 @@ const Slider = ({
       {tooltipStickyPosition && (
         <style>
           {`
-        .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
+        .rc-slider-handle[aria-valuenow="${tooltipStickyPosition + 1}"] {
           height: 20px !important;
           width: 20px !important;
           margin-left: -10px !important;
@@ -98,9 +101,9 @@ const Slider = ({
       <ReactSlider
         className="uic--react-slider"
         name={name}
-        value={value}
+        value={value && valueStr}
         onChange={handleChange}
-        min={1}
+        min={0}
         max={10}
         step={1}
         marks={markers}
