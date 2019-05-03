@@ -68,13 +68,13 @@ class StackableExpandCollapse extends Component {
     return (
       <div className={containerClasses}>
         <button
-          className="uic--stackable-expand-collapse-clickable uic--d-flex uic--justify-content-between uic--w-100"
+          className="uic--stackable-expand-collapse-clickable uic--d-flex uic--justify-content-between uic--w-100 uic--text-left"
           onClick={this.toggleDrawer}
           type="button"
         >
           {label}
           <CaretIcon
-            className="uic--stackable-expand-collapse-icon"
+            className="uic--stackable-expand-collapse-icon uic--flex-shrink-0"
             direction={this.state.isExpanded ? 'down' : 'right'}
             fill={iconColor}
           />
