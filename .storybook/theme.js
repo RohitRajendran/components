@@ -1,5 +1,5 @@
 import {create} from '@storybook/theming';
-import {dsmColors as colors} from '~constants/js/colors';
+import {dsmColors as colors} from '../constants/js/colors';
 
 // Configures Storybook theme.
 // More info: https://storybook.js.org/docs/configurations/theming/
