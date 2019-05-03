@@ -1,17 +1,17 @@
-//* Rotation utility classes for things such as arrows.
-//* These utility classes make the assumption that your element starts in the downwards position.
-.uic--rotate-down {
+// Rotation utility classes for things such as arrows.
+// These utility classes make the assumption that your element starts in the downwards position.
+.rotate-down {
   transform: rotate(0);
 }
 
-.uic--rotate-right {
+.rotate-right {
   transform: rotate(-90deg);
 }
 
-.uic--rotate-left {
+.rotate-left {
   transform: rotate(90deg);
 }
 
-.uic--rotate-up {
+.rotate-up {
   transform: rotate(180deg);
 }

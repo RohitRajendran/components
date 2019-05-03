@@ -1,6 +1,4 @@
-/**
-  All css classes imported here will get prefixed with 'uic--' and be built in util.css
-*/
+// All css classes imported here will get prefixed with 'uic--' and be built in util.css
 
 @import "~bootstrap/scss/bootstrap-grid.scss"; // Includes display and flex utilities
 
@@ -11,6 +9,12 @@
 @import "~bootstrap/scss/mixins/_text-truncate.scss";
 @import "~bootstrap/scss/utilities/_text.scss";
 @import "~bootstrap/scss/utilities/_sizing.scss";
-@import "~bootstrap/scss/utilities/_text.scss";
 @import "~bootstrap/scss/utilities/_position.scss";
 @import "~bootstrap/scss/utilities/_visibility.scss";
+
+@import './transforms.scss';
+
+// Globals
+* {
+  box-sizing: border-box;
+}

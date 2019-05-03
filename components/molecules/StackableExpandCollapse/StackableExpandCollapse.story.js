@@ -19,12 +19,25 @@ const defaultProps = (
   children: text('children', defaultChildren),
 });
 
-stories.add('single', () => <StackableExpandCollapse {...defaultProps()} />);
+stories.add('single', () => (
+  <div style={{width: 250}}>
+    <StackableExpandCollapse {...defaultProps()} />
+  </div>
+));
+
+stories.add('single wrap', () => (
+  <div style={{width: 250}}>
+    <StackableExpandCollapse
+      {...defaultProps()}
+      label="This label is very long and should wrap its text"
+    />
+  </div>
+));
 
 stories.add('multiple', () => (
-  <React.Fragment>
+  <div style={{width: 250}}>
     <StackableExpandCollapse {...defaultProps()} />
     <StackableExpandCollapse {...defaultProps()} />
     <StackableExpandCollapse {...defaultProps()} />
-  </React.Fragment>
+  </div>
 ));
