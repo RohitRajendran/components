@@ -1,15 +1,13 @@
-version: 2
+version: 2.1
+
 jobs:
-  test:
+  build:
     docker:
-      - image: unitedincome/std:latest
-        auth:
-          username: unitedincome
-          password: $DOCKERHUB_PASSWORD
+      - image: circleci/node:10.12
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
+          key: dependency-cache-v2-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install Node dependencies
@@ -19,7 +17,7 @@ jobs:
             yarn install
 
       - save_cache:
-          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
+          key: dependency-cache-v2-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
@@ -36,7 +34,7 @@ jobs:
 
       - run:
           name: Verifying build
-          command: yarn build
+          command: NODE_ENV=production yarn build
 
       - run:
           name: Push coverage report to CodeCov
@@ -50,65 +48,50 @@ jobs:
           path: ./reports
           destination: tests/
 
+      # Persist everything for StoryBook
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
   visual:
     docker:
       - image: circleci/node:10-browsers
     steps:
-      - checkout
-
-      - restore_cache:
-          key: v1-dependency-cache-node-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: Install Node dependencies
-          command: |
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-            npm rebuild
-            yarn install
-
-      - save_cache:
-          key: v1-dependency-cache-node-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
-
-      - run:
-          name: Build package
-          command: yarn build
+      - attach_workspace:
+          at: .
 
       - run:
           name: Run Visual Regression Tests
           command: yarn snapshot
   
-  deploy:
+  publish_storybook:
     docker:
-      - image: unitedincome/std:latest
-        auth:
-          username: unitedincome
-          password: $DOCKERHUB_PASSWORD
+      - image: circleci/node:10.12
+    environment:
+      NODE_ENV: production
     steps:
-      - checkout
-
-      - restore_cache:
-          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: .
 
       - run:
-          name: Install Node dependencies
+          name: Install dev deployment dependencies
           command: |
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-            yarn install
-
-      - save_cache:
-          key: dependency-cache-ui-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
+            sudo apt install python-dev python-pip
+            sudo pip install awscli
 
       - run:
-          name: Build package
-          command: yarn build
+          name: Publish Storybook
+          command: yarn publishStorybook
+
+  publish_package:
+    docker:
+      - image: circleci/node:10.12
+    environment:
+      NODE_ENV: production
+    steps:
+      - attach_workspace:
+          at: .
 
       - run:
           name: Configure Git
@@ -119,33 +102,34 @@ jobs:
       - deploy:
           name: Publish to NPM
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm version patch -m "Bumping up version to %s [skip ci]"
-              yarn build
-              npm publish
-              git push --set-upstream origin $CIRCLE_BRANCH
-            fi
-
-      - run:
-          name: Publish Storybook
-          command: yarn publishStorybook
+            npm version patch -m "Bumping up version to %s [skip ci]"
+            npm publish
+            git push --set-upstream origin $CIRCLE_BRANCH
 
 workflows:
-  version: 2
-  test:
+  components:
     jobs:
-      - test
-  deploy:
-    jobs:
+      - build
       - visual:
+          requires:
+            - build
           filters:
             branches:
-              only: master
-      - deploy:
+              only:
+                - master
+      - publish_storybook:
+          requires:
+            - build
+            - visual
           filters:
             branches:
-              # The deploy job runs on both develop and master, except only the develop branch
-              # runs the visual tests prior to deploying.
               only: 
                 - master
                 - develop
+      - publish_package:
+          requires:
+            - visual
+          filters:
+            branches:
+              only: 
+                - master
