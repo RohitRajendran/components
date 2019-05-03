@@ -52,7 +52,7 @@ jobs:
 
   visual:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
 
@@ -116,15 +116,15 @@ jobs:
             git config user.email "engineering@unitedincome.com"
             git config user.name "United Income Engineering"
 
-      # - deploy:
-      #     name: Publish to NPM
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         npm version patch -m "Bumping up version to %s [skip ci]"
-      #         yarn build
-      #         npm publish
-      #         git push --set-upstream origin $CIRCLE_BRANCH
-      #       fi
+      - deploy:
+          name: Publish to NPM
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm version patch -m "Bumping up version to %s [skip ci]"
+              yarn build
+              npm publish
+              git push --set-upstream origin $CIRCLE_BRANCH
+            fi
 
       - run:
           name: Publish Storybook
