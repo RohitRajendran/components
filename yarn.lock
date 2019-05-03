@@ -10603,9 +10603,9 @@ storybook-addon-jsx@*:
     react-element-to-jsx-string "^14.0.2"
 
 storybook-readme@*:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.2.tgz#c341f61078372976851fe93c1c4698191cff8960"
-  integrity sha512-Ud3/bdFMQepeU+apIiS2fngakVdKFMi+AxbmA0lawcaigQKIS8fZUJKJ80vXDWy4R2Qkfxz33efhNITrLi68CA==
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.3.tgz#c3944b7dc6d6e334e7e4ed3d138211b0c0c88c8b"
+  integrity sha512-O1y1Njl/gOMjHJ6y0L9g1HAOjuRvtjscIM4EaE7VJHrCk+35+NgOnLIKRVR6gEAaTsPZlC+h8xlnVVh3IyrC7Q==
   dependencies:
     "@storybook/components" "^5.0.6"
     "@storybook/core-events" "^5.0.6"
