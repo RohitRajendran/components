@@ -52,7 +52,7 @@ jobs:
 
   visual:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
 
