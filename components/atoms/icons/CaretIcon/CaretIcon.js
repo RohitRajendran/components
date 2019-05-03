@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {colors} from '~constants/js/colors';
 
 /** Displays the CaretIcon component.
  * @param {object} props - Component props.
@@ -55,7 +56,7 @@ CaretIcon.propTypes = {
 CaretIcon.defaultProps = {
   width: '14',
   height: '14',
-  fill: '#5B6279',
+  fill: colors.slate,
 };
 
 export default CaretIcon;

@@ -2,6 +2,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
+import {colors} from '~constants/js/colors';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 
 import './StackableExpandCollapse.scss';
@@ -108,6 +109,10 @@ StackableExpandCollapse.propTypes = {
   iconColor: PropTypes.string,
   /** The contents to display when expanded. */
   children: PropTypes.node.isRequired,
+};
+
+StackableExpandCollapse.defaultProps = {
+  fill: colors.slate,
 };
 
 export default StackableExpandCollapse;
