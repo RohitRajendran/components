@@ -2,6 +2,7 @@
   $border: 1px solid $white-seven;
   $animation-duration: 0.3s;
 
+  background-color: $white;
   border-left: $border;
   border-right: $border;
 
@@ -42,7 +43,6 @@
     max-height: 0;
     overflow: hidden;
     color: $slate;
-    background-color: $white;
     transition: max-height $animation-duration;
 
     &.uic--stackable-expand-collapse-expanded {
