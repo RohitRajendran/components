@@ -101,7 +101,7 @@ const Slider = ({
       <ReactSlider
         className="uic--react-slider"
         name={name}
-        value={value && valueStr}
+        value={value}
         onChange={handleChange}
         min={0}
         max={10}
