@@ -5,5 +5,5 @@ The IncomeCircleIllustration component creates an income illuminator using inlin
 ## Example 🚀
 
 ```javascript
-<IncomeCircleIllustration fill="#fff" height="20" width="20" />
+<IncomeCircleIllustration fill="#fff" height="2rem" width="2rem" />
 ```

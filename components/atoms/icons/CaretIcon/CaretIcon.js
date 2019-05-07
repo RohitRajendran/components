@@ -8,7 +8,7 @@ import {colors} from '~constants/js/colors';
  * @param {object} props - Component props.
  * @returns {JSX.Element} - JSX representation of the CaretIcon component.
  */
-const CaretIcon = ({width, height, fill, className, direction}) => {
+const CaretIcon = ({width, height, fill, className, direction, style}) => {
   const containerClasses = classNames(
     {
       'uic--rotate-right': direction === 'right',
@@ -23,8 +23,17 @@ const CaretIcon = ({width, height, fill, className, direction}) => {
     <svg
       className={containerClasses}
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
+      style={
+        /**
+         * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+         * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+         * */
+        {
+          width,
+          height,
+          ...style,
+        }
+      }
       viewBox="0 0 14 8"
     >
       <polyline
@@ -41,9 +50,9 @@ const CaretIcon = ({width, height, fill, className, direction}) => {
 };
 
 CaretIcon.propTypes = {
-  /** The width of the arrow. */
+  /** The width of the arrow with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the arrow. */
+  /** The height of the arrow with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the arrow. */
   fill: PropTypes.string,
@@ -51,11 +60,13 @@ CaretIcon.propTypes = {
   className: PropTypes.string,
   /** Changes the direction of the arrow. */
   direction: PropTypes.oneOf(['up', 'right', 'down', 'left']),
+  /** Additional inline styles to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 CaretIcon.defaultProps = {
-  width: '14',
-  height: '14',
+  width: '1.4rem',
+  height: '1.4rem',
   fill: colors.slate,
 };
 

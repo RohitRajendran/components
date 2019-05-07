@@ -5,5 +5,5 @@ The ProfileCircleIllustration component creates a profile illuminator using inli
 ## Example 🚀
 
 ```javascript
-<ProfileCircleIllustration fill="#fff" height="20" width="20" />
+<ProfileCircleIllustration fill="#fff" height="2rem" width="2rem" />
 ```

@@ -5,5 +5,5 @@ The AccountCircleIllustration component creates an account illuminator using inl
 ## Example 🚀
 
 ```javascript
-<AccountCircleIllustration fill="#fff" height="20" width="20" />
+<AccountCircleIllustration fill="#fff" height="2rem" width="2rem" />
 ```

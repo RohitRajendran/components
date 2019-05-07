@@ -7,7 +7,14 @@ import classNames from 'classnames';
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the ExpandyCircleIcon component.
  */
-const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
+const ExpandyCircleIcon = ({
+  width,
+  height,
+  fill,
+  className,
+  direction,
+  style,
+}) => {
   const containerClasses = classNames(
     {
       'uic--rotate-right': direction === 'right',
@@ -22,8 +29,17 @@ const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={containerClasses}
-      width={width}
-      height={height}
+      style={
+        /**
+         * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+         * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+         * */
+        {
+          width,
+          height,
+          ...style,
+        }
+      }
       viewBox="0 0 24 24"
     >
       <g fill="none" fillRule="evenodd">
@@ -41,9 +57,9 @@ const ExpandyCircleIcon = ({width, height, fill, className, direction}) => {
 };
 
 ExpandyCircleIcon.propTypes = {
-  /** The width of the arrow. */
+  /** The width of the arrow with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the arrow. */
+  /** The height of the arrow with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the arrow. */
   fill: PropTypes.string,
@@ -51,11 +67,13 @@ ExpandyCircleIcon.propTypes = {
   className: PropTypes.string,
   /** Changes the direction of the arrow. */
   direction: PropTypes.oneOf(['up', 'right', 'down', 'left']),
+  /** Additional inline styles to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 ExpandyCircleIcon.defaultProps = {
-  width: '24',
-  height: '24',
+  width: '2.4rem',
+  height: '2.4rem',
   fill: '#4d00ba',
 };
 

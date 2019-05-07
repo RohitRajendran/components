@@ -129,8 +129,9 @@ class Ranking extends Component {
                                   tabIndex={index + 1}
                                 >
                                   <ArrowEllipsisIcon
-                                    height="24"
-                                    width="24"
+                                    className="uic--position-absolute"
+                                    height="2.4rem"
+                                    width="2.4rem"
                                     fill={colors.royal}
                                   />
                                 </div>
@@ -146,8 +147,9 @@ class Ranking extends Component {
                                   tabIndex={index + 1}
                                 >
                                   <ArrowEllipsisIcon
-                                    height="24"
-                                    width="24"
+                                    className="uic--position-absolute"
+                                    height="2.4rem"
+                                    width="2.4rem"
                                     fill={colors.royal}
                                   />
                                 </div>

@@ -110,8 +110,8 @@ class ExpandCollapse extends Component {
             {!disabled && (
               <IconComponent
                 className={iconClasses}
-                width="24"
-                height="24"
+                width="2.4rem"
+                height="2.4rem"
                 direction={this.state.open ? 'down' : 'right'}
               />
             )}

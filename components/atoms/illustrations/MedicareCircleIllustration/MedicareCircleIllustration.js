@@ -29,10 +29,18 @@ class MedicareCircleIllustration extends PureComponent {
 
     return (
       <svg
-        width={width}
-        height={height}
         className={className}
-        style={style}
+        style={
+          /**
+           * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+           * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+           * */
+          {
+            width,
+            height,
+            ...style,
+          }
+        }
         viewBox="0 0 232 232"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -199,9 +207,9 @@ class MedicareCircleIllustration extends PureComponent {
 }
 
 MedicareCircleIllustration.propTypes = {
-  /** The width of the illustration. */
+  /** The width of the illustration with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the illustration. */
+  /** The height of the illustration with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the illustration. */
   fill: PropTypes.string,
@@ -212,8 +220,8 @@ MedicareCircleIllustration.propTypes = {
 };
 
 MedicareCircleIllustration.defaultProps = {
-  height: '140',
-  width: '144',
+  height: '14rem',
+  width: '14.4rem',
   fill: '#ffffff',
 };
 

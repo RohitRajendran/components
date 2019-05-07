@@ -22,19 +22,24 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
 
       svg {
-        width: 100%;
+        left: 50%;
       }
     }
 
     .uic--up {
       top: -1rem;
+
+      svg {
+        transform: translateX(-50%);
+      }
     }
 
     .uic--down {
       bottom: -2rem;
 
       svg {
-        transform: rotate(180deg);
+        transform: rotate(180deg) translateX(50%);
+        bottom: 0;
       }
     }
   }

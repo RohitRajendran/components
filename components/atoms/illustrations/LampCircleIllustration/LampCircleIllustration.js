@@ -35,10 +35,16 @@ class LampCircleIllustration extends PureComponent {
     } = this.props;
 
     const elementProps = {
-      height,
-      width,
       className,
-      style,
+      style: {
+        /**
+         * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+         * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+         * */
+        width,
+        height,
+        ...style,
+      },
       onClick: this.handleClick,
     };
 
@@ -576,9 +582,9 @@ class LampCircleIllustration extends PureComponent {
 }
 
 LampCircleIllustration.propTypes = {
-  /** The width of the illustration. */
+  /** The width of the illustration with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the illustration. */
+  /** The height of the illustration with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** Determines if the illustration should default to the illuminated state. */
   illuminate: PropTypes.bool,
@@ -593,8 +599,8 @@ LampCircleIllustration.propTypes = {
 };
 
 LampCircleIllustration.defaultProps = {
-  height: '265',
-  width: '160',
+  height: '26.5rem',
+  width: '16rem',
 };
 
 export default LampCircleIllustration;

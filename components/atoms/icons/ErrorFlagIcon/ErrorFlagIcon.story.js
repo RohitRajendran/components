@@ -11,8 +11,8 @@ stories.addDecorator(withReadme(ErrorFlagIconReadme));
 
 const defaultProps = () => ({
   fill: text('fill', '#B30052'),
-  height: text('height', '20'),
-  width: text('width', '20'),
+  height: text('height', '2rem'),
+  width: text('width', '2rem'),
 });
 
 stories.add('default', () => <ErrorFlagIcon {...defaultProps()} />);

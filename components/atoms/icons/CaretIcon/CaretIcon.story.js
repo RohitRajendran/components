@@ -11,8 +11,8 @@ stories.addDecorator(withReadme(CaretIconReadme));
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),
-  height: text('height', '20'),
-  width: text('width', '20'),
+  height: text('height', '2rem'),
+  width: text('width', '2rem'),
   direction: select('direction', ['down', 'up', 'right', 'left'], 'down'),
 });
 

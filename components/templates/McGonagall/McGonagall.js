@@ -366,7 +366,7 @@ class McGonagall extends React.Component {
           <span /> {/** To help with flex positioning */}
           <h1>{name}</h1>
           <button type="button" onClick={this.close}>
-            <CloseIcon height="20" width="20" />
+            <CloseIcon height="2rem" width="2rem" />
           </button>
         </div>
 

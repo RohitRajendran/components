@@ -35,10 +35,16 @@ class GiftCircleIllustration extends PureComponent {
     } = this.props;
 
     const elementProps = {
-      width,
-      height,
       className,
-      style,
+      style: {
+        /**
+         * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+         * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+         * */
+        width,
+        height,
+        ...style,
+      },
       onClick: this.handleClick,
     };
 
@@ -644,9 +650,9 @@ class GiftCircleIllustration extends PureComponent {
 }
 
 GiftCircleIllustration.propTypes = {
-  /** The width of the illustration. */
+  /** The width of the illustration with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the illustration. */
+  /** The height of the illustration with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** Determines if the illustration should default to the illuminated state. */
   illuminate: PropTypes.bool,
@@ -661,8 +667,8 @@ GiftCircleIllustration.propTypes = {
 };
 
 GiftCircleIllustration.defaultProps = {
-  height: '140',
-  width: '144',
+  height: '14rem',
+  width: '14.4rem',
 };
 
 export default GiftCircleIllustration;
