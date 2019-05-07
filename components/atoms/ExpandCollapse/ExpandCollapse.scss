@@ -26,8 +26,12 @@
     }
   }
 
-  .uic--ec-controls {
+  .uic--ec-controls-wrapper {
     left: 0;
+    top: -0.2rem;
+  }
+
+  .uic--ec-controls {
     transition: transform 0.2s ease-in-out;
   }
 
@@ -86,5 +90,18 @@
   .uic--ec-aside {
     font-size: 1.4rem;
     color: $slate;
+  }
+}
+
+.uic--mcgonagall-card {
+  .uic--ec-controls-wrapper {
+    transform: scale(0);
+  }
+
+  &.uic--animation-ended {
+    .uic--ec-controls-wrapper {
+      transform: scale(1);
+      transition: 0.5s cubic-bezier(0.18, 0.89, 0.35, 2.05) transform;
+    }
   }
 }

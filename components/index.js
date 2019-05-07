@@ -25,9 +25,9 @@ import MedicareCircleIllustration from '~components/atoms/illustrations/Medicare
 import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
+import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 
 // Molecules
-import StackableExpandCollapse from '~components/molecules/StackableExpandCollapse/StackableExpandCollapse';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';

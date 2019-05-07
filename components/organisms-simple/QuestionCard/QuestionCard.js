@@ -116,6 +116,8 @@ const QuestionCard = ({
 export default QuestionCard;
 
 QuestionCard.propTypes = {
+  /** Whether it should animate on mount */
+  animate: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */
@@ -171,6 +173,8 @@ QuestionCard.propTypes = {
   /** The summary view that should display when the card is collapsed.
    * If it is the latest step and the card is collapsed, the incomplete summary component will be displayed instead */
   summary: PropTypes.node,
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex: PropTypes.number,
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };

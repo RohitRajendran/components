@@ -85,6 +85,7 @@
     "react-router": "=4.3.1",
     "react-router-dom": "=4.3.1",
     "react-select": "*",
+    "react-spring": "*",
     "react-text-mask": "*",
     "sass-lint": "*",
     "sass-loader": "*",

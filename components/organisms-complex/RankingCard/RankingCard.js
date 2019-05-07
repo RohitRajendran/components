@@ -73,6 +73,8 @@ RankingCard.propTypes = {
       })
     ),
   }),
+  /** Whether it should animate on mount */
+  animate: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */
@@ -119,6 +121,8 @@ RankingCard.propTypes = {
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex: PropTypes.number,
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };

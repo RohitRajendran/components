@@ -15,6 +15,9 @@ const defaultProps = {
 };
 
 test('CardShell - active', (t) => {
+  const reqAnimFrame = window.requestAnimationFrame;
+  window.requestAnimationFrame = stub();
+
   const props = {
     ...defaultProps,
     onSubmit: stub(),
@@ -51,6 +54,7 @@ test('CardShell - active', (t) => {
 
   t.deepEquals(props.onChange.args[0], ['name', 'val'], 'Called on change');
 
+  window.requestAnimationFrame = reqAnimFrame;
   t.end();
 });
 
@@ -138,6 +142,7 @@ test('CardShell - componentDidUpdate', (t) => {
     ...defaultProps,
     onSubmit: stub(),
     onChange: stub(),
+    isCollapsed: false,
   };
 
   const comp = mount(
@@ -155,9 +160,46 @@ test('CardShell - componentDidUpdate', (t) => {
     </CardShell>
   );
   comp.setState({isInvalid: true});
-  comp.instance().componentDidUpdate();
+  comp.instance().componentDidUpdate({prevProps: false});
 
   t.false(comp.state.isInvalid, 'Sets validity on update');
+
+  t.end();
+});
+
+test('CardShell - onAnimationStart', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isCollapsed: false,
+  };
+
+  const comp = new CardShell(props);
+  comp.setState = stub();
+  comp.onAnimationStart();
+
+  t.deepEquals(comp.setState.args[0][0], {animationEnded: false});
+
+  t.end();
+});
+
+test('CardShell - onAnimationEnd', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isCollapsed: false,
+  };
+
+  const comp = new CardShell(props);
+  comp.setState = stub();
+  comp.onAnimationEnd();
+
+  t.deepEquals(comp.setState.args[0][0], {
+    animationEnded: true,
+    hasAnimationRun: true,
+  });
 
   t.end();
 });

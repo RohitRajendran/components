@@ -67,6 +67,8 @@ SliderCard.propTypes = {
     /** Determines which variant to set the slider to, can either be set to null, green or orange. */
     tooltipStickyVariant: PropTypes.oneOf(['green', 'purple']),
   }),
+  /** Whether it should animate on mount */
+  animate: PropTypes.bool,
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers: PropTypes.arrayOf(PropTypes.string),
   /** To display something after the Submit button. */
@@ -115,6 +117,8 @@ SliderCard.propTypes = {
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex: PropTypes.number,
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
