@@ -1,0 +1,58 @@
+.uic--itemization-widget {
+  @include source-sans-pro(2.4rem);
+  background-color: $dark-blue;
+  width: 16.4rem;
+  color: $white;
+  outline: none;
+
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+    cursor: pointer;
+
+    &.uic--itemization-widget-threshold {
+      background-color: $orange;
+    }
+  }
+
+  .uic--itemization-widget__threshold-warning {
+    @include source-sans-pro(1.4rem);
+    font-weight: 600;
+    margin-top: 0.7rem;
+  }
+
+  .uic--itemization-widget__item {
+    border-bottom: 1px solid $parchment;
+    padding: 1.6rem;
+
+    .uic--itemization-widget__label {
+      font-size: 1.2rem;
+    }
+
+    .uic--itemization-widget__suffix {
+      font-size: 1.8rem;
+    }
+
+    &.uic--itemization-widget__item-calc {
+      background-color: $eggplant;
+    }
+
+    &.uic--itemization-widget__item-threshold {
+      background-color: $orange;
+    }
+
+    &:last-of-type {
+      border: 0;
+    }
+
+    .uic--itemization-widget__itemized {
+      padding-left: 1.5rem;
+      opacity: 0.8;
+      margin: 0.5rem 0;
+      font-style: italic;
+
+      .uic--itemization-widget__itemized-value {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

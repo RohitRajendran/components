@@ -44,6 +44,7 @@
     "@storybook/addon-knobs": "*",
     "@storybook/addon-viewport": "*",
     "@storybook/react": "*",
+    "accounting": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
@@ -101,6 +102,7 @@
     "xstate": "*"
   },
   "peerDependencies": {
+    "accounting": "*",
     "classnames": "*",
     "lodash": "*",
     "prop-types": "*",
