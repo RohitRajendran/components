@@ -54,7 +54,7 @@ import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
 import McGonagall from '~components/templates/McGonagall/McGonagall';
 
 // Utilities
-import FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
+import * as FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 export {
