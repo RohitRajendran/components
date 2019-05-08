@@ -31,12 +31,12 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
         const groupClass = classNames({
           'uic--card-summary': true,
           'uic--card-summary-group': true,
-          'uic--striped': answerGroups.length > 1,
+          'uic--striped': group.groupName || answerGroups.length > 1,
         });
 
         return (
           <div key={key} className={groupClass}>
-            {answerGroups.length > 1 && group.groupName && (
+            {(answerGroups.length > 1 || group.groupName) && (
               <h3 className="uic--card-summary-label">{group.groupName}</h3>
             )}
 
@@ -65,7 +65,7 @@ FormSummary.propTypes = {
   /** An array of objects containing the groups of answers to display. The object is broken down below. */
   answerGroups: PropTypes.arrayOf(
     PropTypes.shape({
-      /** The name of the group of data. This won't be shown if there is only one answer group. */
+      /** The name of the group of data */
       groupName: PropTypes.string,
       /** An array of objects containing the answers for the group. The object is broken down below. */
       answers: PropTypes.arrayOf(
