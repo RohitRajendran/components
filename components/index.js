@@ -14,6 +14,7 @@ import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
+import ItemizationWidget from '~components/atoms/ItemizationWidget/ItemizationWidget';
 import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
 import AccountCircleIllustration from '~components/atoms/illustrations/AccountCircleIllustration/AccountCircleIllustration';
 import GiftCircleIllustration from '~components/atoms/illustrations/GiftCircleIllustration/GiftCircleIllustration';
@@ -25,9 +26,9 @@ import MedicareCircleIllustration from '~components/atoms/illustrations/Medicare
 import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
+import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 
 // Molecules
-import StackableExpandCollapse from '~components/molecules/StackableExpandCollapse/StackableExpandCollapse';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
@@ -53,9 +54,11 @@ import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
 import McGonagall from '~components/templates/McGonagall/McGonagall';
 
 // Utilities
+import * as FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 export {
+  FormatUtils,
   StackableExpandCollapse,
   ArrowIcon,
   CaretIcon,
@@ -88,6 +91,7 @@ export {
   McGonagall,
   RankingCard,
   CompletionScreen,
+  ItemizationWidget,
   ExpandCollapse,
   ExpandyCircleIcon,
   LampCircleIllustration,

@@ -6,12 +6,18 @@ import PropTypes from 'prop-types';
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the ErrorFlagIcon component.
  */
-const ErrorFlagIcon = ({width, height, fill, className}) => (
+const ErrorFlagIcon = ({width, height, fill, className, style}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    width={width}
-    height={height}
+    style={
+      /** Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style */
+      {
+        width,
+        height,
+        ...style,
+      }
+    }
     viewBox="0 0 24 24"
   >
     <g fill="none" fillRule="evenodd">
@@ -26,19 +32,21 @@ const ErrorFlagIcon = ({width, height, fill, className}) => (
 );
 
 ErrorFlagIcon.propTypes = {
-  /** The width of the arrow. */
+  /** The width of the arrow with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the arrow. */
+  /** The height of the arrow with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the arrow. */
   fill: PropTypes.string,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Additional inline styles to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 ErrorFlagIcon.defaultProps = {
-  width: '24',
-  height: '24',
+  width: '2.4rem',
+  height: '2.4rem',
   fill: '#B30052',
 };
 

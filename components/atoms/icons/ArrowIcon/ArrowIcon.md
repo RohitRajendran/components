@@ -5,7 +5,7 @@ The ArrowIcon component creates an arrow icon using inline SVG.
 ## Example 🚀
 
 ```javascript
-<ArrowIcon fill="#000" height="20" width="20" />
+<ArrowIcon fill="#000" height="2rem" width="2rem" />
 ```
 
 ## Animating
@@ -19,5 +19,5 @@ If you'd like to apply an animation to the arrow icon you can do so with CSS by 
 ```
 
 ```javascript
-<ArrowIcon className="arrow-icon" fill="#000" height="20" width="20" />
+<ArrowIcon className="arrow-icon" fill="#000" height="2rem" width="2rem" />
 ```

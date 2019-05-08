@@ -5,7 +5,7 @@ The ExpandyCircleIcon component creates an arrow icon using inline SVG.
 ## Example 🚀
 
 ```javascript
-<ExpandyCircleIcon fill="#000" height="20" width="20" />
+<ExpandyCircleIcon fill="#000" height="2rem" width="2rem" />
 ```
 
 ## Animating
@@ -19,5 +19,10 @@ If you'd like to apply an animation to the arrow icon you can do so with CSS by 
 ```
 
 ```javascript
-<ExpandyCircleIcon className="arrow-icon" fill="#000" height="20" width="20" />
+<ExpandyCircleIcon
+  className="arrow-icon"
+  fill="#000"
+  height="2rem"
+  width="2rem"
+/>
 ```

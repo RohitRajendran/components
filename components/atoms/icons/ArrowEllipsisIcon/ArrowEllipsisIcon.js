@@ -6,12 +6,21 @@ import PropTypes from 'prop-types';
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the ArrowEllipsisIcon component.
  */
-const ArrowEllipsisIcon = ({width, height, fill, className}) => (
+const ArrowEllipsisIcon = ({width, height, fill, className, style}) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
+    style={
+      /**
+       * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style
+       * https://www.w3.org/TR/SVG11/types.html#DataTypeLength
+       * */
+      {
+        width,
+        height,
+        ...style,
+      }
+    }
     viewBox="0 0 24 24"
     transform="rotate(0)"
   >
@@ -26,19 +35,21 @@ const ArrowEllipsisIcon = ({width, height, fill, className}) => (
 );
 
 ArrowEllipsisIcon.propTypes = {
-  /** The width of the arrow. */
+  /** The width of the arrow with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the arrow. */
+  /** The height of the arrow with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the arrow. */
   fill: PropTypes.string,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Additional inline styles to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 ArrowEllipsisIcon.defaultProps = {
-  width: '13',
-  height: '13',
+  width: '1.3rem',
+  height: '1.3rem',
   fill: '#5B6279',
 };
 

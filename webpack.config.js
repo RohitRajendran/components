@@ -106,6 +106,12 @@ module.exports = {
       amd: 'ClassNames',
       root: 'ClassNames',
     },
+    accounting: {
+      commonjs: 'accounting',
+      commonjs2: 'accounting',
+      amd: 'Accounting',
+      root: 'Accounting',
+    },
     lodash: {
       commonjs: 'lodash',
       commonjs2: 'lodash',

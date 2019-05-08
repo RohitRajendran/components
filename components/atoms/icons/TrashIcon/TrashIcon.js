@@ -6,12 +6,18 @@ import PropTypes from 'prop-types';
  * @param {object} props - Component props.
  * @returns {*} - JSX representation of the TrashIcon component.
  */
-const TrashIcon = ({width, height, fill, className}) => (
+const TrashIcon = ({width, height, fill, className, style}) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
+    style={
+      /** Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style */
+      {
+        width,
+        height,
+        ...style,
+      }
+    }
     viewBox="0 0 22 25"
   >
     <g fill="none" fillRule="nonzero" stroke={fill} strokeWidth="1.5">
@@ -27,19 +33,21 @@ const TrashIcon = ({width, height, fill, className}) => (
 );
 
 TrashIcon.propTypes = {
-  /** The width of the icon. */
+  /** The width of the icon with unit sizing (px, rem, etc). */
   width: PropTypes.string,
-  /** The height of the icon. */
+  /** The height of the icon with unit sizing (px, rem, etc). */
   height: PropTypes.string,
   /** The color of the icon. */
   fill: PropTypes.string,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** Additional inline styles to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
 };
 
 TrashIcon.defaultProps = {
-  width: '22',
-  height: '25',
+  width: '2.2rem',
+  height: '2.5rem',
   fill: '#4D00BA',
 };
 

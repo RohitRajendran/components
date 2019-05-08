@@ -5,7 +5,7 @@ import {withReadme} from 'storybook-readme';
 import StackableExpandCollapse from './StackableExpandCollapse';
 import StackableExpandCollapseReadMe from './StackableExpandCollapse.md';
 
-const stories = storiesOf('Molecules/StackableExpandCollapse', module);
+const stories = storiesOf('Atoms/StackableExpandCollapse', module);
 
 stories.addDecorator(withReadme(StackableExpandCollapseReadMe));
 

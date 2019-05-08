@@ -5,5 +5,5 @@ The MedicareCircleIllustration component creates a Medicare illuminator using in
 ## Example 🚀
 
 ```javascript
-<MedicareCircleIllustration fill="#fff" height="20" width="20" />
+<MedicareCircleIllustration fill="#fff" height="2rem" width="2rem" />
 ```

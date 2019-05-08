@@ -88,12 +88,6 @@ class ExpandCollapse extends Component {
       'uic--ec-content-container-closed': !this.state.open,
     });
 
-    const iconClasses = classNames({
-      'uic--ec-controls-expanded': this.state.open && !isInvalid,
-      'uic--ec-controls': true,
-      'uic--position-absolute': true,
-    });
-
     // Toggles the icon component based on validity.
     const IconComponent = !isInvalid ? ExpandyCircleIcon : ErrorFlagIcon;
 
@@ -108,12 +102,14 @@ class ExpandCollapse extends Component {
             tabIndex={!disabled ? '0' : ''}
           >
             {!disabled && (
-              <IconComponent
-                className={iconClasses}
-                width="24"
-                height="24"
-                direction={this.state.open ? 'down' : 'right'}
-              />
+              <div className="uic--ec-controls-wrapper uic--position-absolute">
+                <IconComponent
+                  className="uic--ec-controls"
+                  width="2.4rem"
+                  height="2.4rem"
+                  direction={this.state.open ? 'down' : 'right'}
+                />
+              </div>
             )}
             {label}
             {description && (

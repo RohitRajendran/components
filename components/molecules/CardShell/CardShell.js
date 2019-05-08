@@ -1,13 +1,13 @@
 /** @module CardShell */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
+import {animated, Spring, config} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
 import {maskEnum} from '~components/atoms/Input/Input';
-import {colors} from '~constants/js/colors';
-
+import Spinner from '~components/atoms/Spinner/Spinner';
+import {dsmColors} from '~constants/js/colors';
 import './CardShell.scss';
-import Spinner from '../../atoms/Spinner/Spinner';
 
 /**
  * Validates children to see if it is valid
@@ -87,17 +87,37 @@ class CardShell extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onAnimationStart = this.onAnimationStart.bind(this);
+    this.onAnimationEnd = this.onAnimationEnd.bind(this);
+
+    this.contentNode = createRef();
 
     this.state = {
       isInvalid: !validateChildren(props.children),
+      height: props.animate ? 0 : 'auto',
+      animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
+      hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations
     };
   }
 
   /** @inheritdoc */
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    const updatedState = {};
+
     const isInvalid = !validateChildren(this.props.children);
     if (this.state.isInvalid !== isInvalid) {
-      this.setState({isInvalid});
+      updatedState.isInvalid = isInvalid;
+    }
+
+    if (
+      prevProps.isCollapsed !== this.props.isCollapsed &&
+      this.state.height !== this.contentNode.current.clientHeight
+    ) {
+      updatedState.height = this.contentNode.current.clientHeight;
+    }
+
+    if (Object.keys(updatedState).length > 0) {
+      this.setState(updatedState);
     }
   }
 
@@ -122,6 +142,22 @@ class CardShell extends Component {
   }
 
   /**
+   * Runs on start of animation to remove animation ended class
+   * @returns {undefined}
+   */
+  onAnimationStart() {
+    this.setState({animationEnded: false});
+  }
+
+  /**
+   * Run on end of animation to add animation ended class and specify animations have been run
+   * @returns {undefined}
+   */
+  onAnimationEnd() {
+    this.setState({animationEnded: true, hasAnimationRun: true});
+  }
+
+  /**
    * Standard render method
    * @returns {JSX} - react JSX
    */
@@ -138,10 +174,11 @@ class CardShell extends Component {
       isCollapsed,
       isFetching,
       loading,
-      summary,
       onChange,
+      summary,
+      stepIndex,
     } = this.props;
-    const {isInvalid} = this.state;
+    const {animationEnded, hasAnimationRun, height, isInvalid} = this.state;
 
     const cardClass = classNames(
       {
@@ -151,61 +188,92 @@ class CardShell extends Component {
         'uic--collapsed': isCollapsed,
         'uic--error': hasError,
         'uic--position-relative': true,
+        'uic--animation-ended': animationEnded,
       },
       className
     );
 
     return (
-      <div className={cardClass}>
-        {!isCollapsed && <div className="uic--active-border" />}
+      <Spring
+        native
+        config={{...config.default, precision: 1}}
+        from={{
+          height,
+          border: 'none',
+          padding: 0,
+        }}
+        to={{
+          height: 'auto',
+          border: '',
+          padding: '',
+        }}
+        delay={hasAnimationRun ? 0 : 150 * stepIndex}
+        onStart={this.onAnimationStart}
+        onRest={this.onAnimationEnd}
+      >
+        {(style) => (
+          <animated.div
+            className={cardClass}
+            style={style}
+            ref={this.contentNode}
+          >
+            {!isCollapsed && <div className="uic--active-border" />}
+            {isCollapsed ? (
+              summary
+            ) : (
+              <form
+                onChange={onChange && this.onChange}
+                onSubmit={this.onSubmit}
+              >
+                {children}
 
-        {isCollapsed ? (
-          summary
-        ) : (
-          <form onChange={onChange && this.onChange} onSubmit={this.onSubmit}>
-            {children}
+                {(beforeButton || afterButton || !hideButton) && (
+                  <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
+                    {beforeButton && (
+                      <div className="uic--card-before-button">
+                        {beforeButton}
+                      </div>
+                    )}
 
-            {(beforeButton || afterButton || !hideButton) && (
-              <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
-                {beforeButton && (
-                  <div className="uic--card-before-button">{beforeButton}</div>
-                )}
+                    {!hideButton &&
+                      (isFetching ? (
+                        <Spinner
+                          fill={dsmColors['royal']}
+                          height="25"
+                          width="25"
+                        />
+                      ) : (
+                        <Button
+                          className="uic--card-submit"
+                          disabled={isInvalid || disabled}
+                          isLoading={loading}
+                          light
+                          type="submit"
+                          variant="secondary"
+                        >
+                          {buttonText}
+                        </Button>
+                      ))}
 
-                {!hideButton &&
-                  (isFetching ? (
-                    <Spinner
-                      fill={colors['violet-blue']}
-                      height="25"
-                      width="25"
-                    />
-                  ) : (
-                    <Button
-                      className="uic--card-submit"
-                      disabled={isInvalid || disabled}
-                      isLoading={loading}
-                      light
-                      type="submit"
-                      variant="secondary"
-                    >
-                      {buttonText}
-                    </Button>
-                  ))}
-
-                {afterButton && (
-                  <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
-                    {afterButton}
+                    {afterButton && (
+                      <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                        {afterButton}
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
+              </form>
             )}
-          </form>
+          </animated.div>
         )}
-      </div>
+      </Spring>
     );
   }
 }
 
 CardShell.propTypes = {
+  /** Whether it should animate on mount */
+  animate: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */
@@ -234,10 +302,14 @@ CardShell.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   /** The summary view that should display when the card is collapsed. */
   summary: PropTypes.node,
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex: PropTypes.number,
 };
 
 CardShell.defaultProps = {
+  animate: false,
   buttonText: 'Continue',
+  stepIndex: 0,
 };
 
 export default CardShell;

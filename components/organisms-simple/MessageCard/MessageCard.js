@@ -64,6 +64,8 @@ const MessageCard = ({
 };
 
 MessageCard.propTypes = {
+  /** Whether it should animate on mount */
+  animate: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */
@@ -94,6 +96,8 @@ MessageCard.propTypes = {
   loading: PropTypes.bool,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex: PropTypes.number,
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };

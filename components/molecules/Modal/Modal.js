@@ -36,7 +36,7 @@ export const ModalInterior = ({
               role="button"
               tabIndex="0"
             >
-              <CloseIcon fill={colors.white} height="16" width="16" />
+              <CloseIcon fill={colors.white} height="16px" width="16px" />
             </span>
           )}
           <div className="uic--modal-body uic--position-relative">

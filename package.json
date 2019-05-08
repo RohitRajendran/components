@@ -44,6 +44,7 @@
     "@storybook/addon-knobs": "*",
     "@storybook/addon-viewport": "*",
     "@storybook/react": "*",
+    "accounting": "*",
     "airbnb-prop-types": "*",
     "babel-loader": "*",
     "babel-plugin-istanbul": "*",
@@ -85,6 +86,7 @@
     "react-router": "=4.3.1",
     "react-router-dom": "=4.3.1",
     "react-select": "*",
+    "react-spring": "*",
     "react-text-mask": "*",
     "sass-lint": "*",
     "sass-loader": "*",
@@ -100,6 +102,7 @@
     "xstate": "*"
   },
   "peerDependencies": {
+    "accounting": "*",
     "classnames": "*",
     "lodash": "*",
     "prop-types": "*",

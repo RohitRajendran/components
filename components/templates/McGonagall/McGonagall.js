@@ -33,8 +33,8 @@ class McGonagall extends React.Component {
 
     this.state = {
       ...this.stateMachine.initialState.context,
-      currXState: this.stateMachine.initialState,
-      cardHistory: [firstStep],
+      ...this.navigateToLatestCard([firstStep], this.stateMachine.initialState),
+      hasMounted: false, // Used to switch animation styles
     };
 
     this.close = this.close.bind(this);
@@ -46,7 +46,7 @@ class McGonagall extends React.Component {
 
   /** @inheritdoc */
   componentDidMount() {
-    this.navigateToLatestCard();
+    this.setState({hasMounted: true});
   }
 
   /** @inheritdoc */
@@ -85,19 +85,21 @@ class McGonagall extends React.Component {
 
   /**
    * Recursively transitions until it reaches the last card it can navigate to
-   * @returns {undefined}
+   * @param {array} cardHistory current card history
+   * @param {object} currXState current xstate object
+   * @returns {object} updated currXstate, activeCard, and cardHistory
    */
-  navigateToLatestCard() {
-    const newCardHistory = this.state.cardHistory;
-    let latest = this.stateMachine.transition(this.state.currXState.value, {
+  navigateToLatestCard(cardHistory, currXState) {
+    const newCardHistory = cardHistory;
+    let latest = this.stateMachine.transition(currXState.value, {
       type: 'NEXT',
-      ...this.state.currXState.context,
+      ...currXState.context,
     });
     let finalReached = false;
 
     do {
       if (
-        latest.value !== this.state.currXState.value &&
+        latest.value !== currXState.value &&
         latest.value !== newCardHistory[0].name
       ) {
         newCardHistory.unshift(this.getMatchingStep(this.props.steps, latest));
@@ -105,7 +107,7 @@ class McGonagall extends React.Component {
 
       const next = this.stateMachine.transition(latest.value, {
         type: 'NEXT',
-        ...this.state.currXState.context,
+        ...currXState.context,
       });
 
       // Stop right before final step
@@ -116,12 +118,13 @@ class McGonagall extends React.Component {
       }
     } while (latest.value !== newCardHistory[0].name && !finalReached);
 
-    this.setState({
+    this.navigateToStep(latest.value);
+
+    return {
       currXState: latest,
       activeCard: latest.value,
       cardHistory: newCardHistory,
-    });
-    this.navigateToStep(latest.value);
+    };
   }
 
   /**
@@ -218,10 +221,13 @@ class McGonagall extends React.Component {
     }
     this.props.browserHistory.push({
       pathname: this.props.location.pathname,
-      query: {...queryString.parse(this.props.location.search), step: stepName},
+      query: {
+        ...queryString.parse(this.props.location.search),
+        step: stepName,
+      },
     });
     if (shouldScrollToTop) {
-      window.scrollTo({top: 0});
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   }
 
@@ -286,9 +292,10 @@ class McGonagall extends React.Component {
   /**
    * Renders a step
    * @param {object} step McG step
+   * @param {number} stepIndex step index
    * @returns {JSX} step
    */
-  renderStep(step) {
+  renderStep(step, stepIndex) {
     const statePayload = pick(this.state, step.outputs);
     const contextPayload = pick(this.state.currXState.context, step.outputs);
 
@@ -303,9 +310,9 @@ class McGonagall extends React.Component {
     const cancelChanges = () => {
       // Dont display confirmation dialog if no changes
       !hasMadeChanges
-        ? this.navigateToStep(this.state.currXState.value, false, true)
+        ? this.navigateToStep(this.state.currXState.value, true, true)
         : this.confirmChangeCancallation(() => {
-            this.navigateToStep(this.state.currXState.value, false, true);
+            this.navigateToStep(this.state.currXState.value, true, true);
             this.forceUpdate(); // Won't rerender otherwise
           });
     };
@@ -335,6 +342,7 @@ class McGonagall extends React.Component {
     // Pass props and state into cards
     return step.card(
       {
+        animate: stepIndex !== 0 || (stepIndex === 0 && this.state.hasMounted),
         cancelChanges,
         clearFuture: step.clearFuture,
         context: this.state.currXState.context,
@@ -344,11 +352,12 @@ class McGonagall extends React.Component {
         isCollapsed: this.activeCard !== step.name,
         isFetching: this.props.isFetching,
         isLatestCard: this.state.currXState.matches(step.name),
-        key: `mcg-card-${step.name}`,
+        key: step.name,
         name: step.name,
         onChange: this.setStateField,
         onSubmit,
         shortTitle: step.shortTitle,
+        stepIndex,
         title: step.title,
       },
       this.state
@@ -366,12 +375,12 @@ class McGonagall extends React.Component {
           <span /> {/** To help with flex positioning */}
           <h1>{name}</h1>
           <button type="button" onClick={this.close}>
-            <CloseIcon height="20" width="20" />
+            <CloseIcon height="2rem" width="2rem" />
           </button>
         </div>
 
         {this.isFinalStep(stateConfig.states, cardHistory[0].name) ? (
-          this.renderStep(cardHistory[0])
+          this.renderStep(cardHistory[0], 0)
         ) : (
           <div className="uic--mcg-card-container">
             {cardHistory.map(this.renderStep)}
