@@ -26,11 +26,13 @@
   .uic--stackable-expand-collapse-clickable {
     @include source-sans-pro(1.6rem);
     align-items: baseline;
+    margin: 0;
     padding: 1.4rem 2rem;
     color: $slate;
     background: $white;
     border: none;
     cursor: pointer;
+    outline: none;
   }
 
   .uic--stackable-expand-collapse-icon {
