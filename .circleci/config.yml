@@ -33,6 +33,10 @@ jobs:
             yarn testCI
 
       - run:
+          name: Run IE11 Smoke Test
+          command: yarn browserstack
+
+      - run:
           name: Verifying build
           command: NODE_ENV=production yarn build
 
