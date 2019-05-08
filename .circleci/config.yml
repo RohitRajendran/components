@@ -33,10 +33,6 @@ jobs:
             yarn testCI
 
       - run:
-          name: Run IE11 Smoke Test
-          command: yarn browserstack
-
-      - run:
           name: Verifying build
           command: NODE_ENV=production yarn build
 
@@ -87,6 +83,13 @@ jobs:
       - run:
           name: Publish Storybook
           command: yarn publishStorybook
+
+      - run:
+          name: Run IE11 Smoke Test
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "develop" ]; then
+              yarn browserstack
+            fi
 
   publish_package:
     docker:
