@@ -135,7 +135,18 @@ Button.propTypes = {
   /** The handler to fire when the button is clicked. */
   onClick: and([PropTypes.func, exclusive(['to'])]),
   /** The URL that the user should be directed to when the button is clicked. Used primarily for link buttons. */
-  to: and([PropTypes.string, exclusive(['onClick'])]),
+  to: and([
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        query: PropTypes.object,
+        hash: PropTypes.string,
+        state: PropTypes.object,
+      }),
+    ]),
+    exclusive(['onClick'])
+  ]),
   /** The type of button, for example `button`, `submit` or `reset`. */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   /** The style of button to be shown, for example `primary`, `secondary`, `tertiary` or `link`. */
