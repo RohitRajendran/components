@@ -1,3 +1,22 @@
+$item-color: rgba(248, 247, 244, 0.3);
+$background-color: rgba(0, 0, 0, 0.85);
+
+.uic--itemization-widget__wrapper {
+  outline: none;
+  @include media-breakpoint-down(sm) {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    // Overrides background color on unapplicable screen sizes.
+    background: none !important;
+  }
+}
+
 .uic--itemization-widget {
   @include source-sans-pro(2.4rem);
   background-color: $dark-blue;
@@ -5,7 +24,7 @@
   color: $white;
   outline: none;
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     width: 100%;
     cursor: pointer;
 
@@ -14,15 +33,37 @@
     }
   }
 
-  .uic--itemization-widget__threshold-warning {
+  .uic--itemization-widget__threshold-warning,
+  .uic--itemization-widget__description {
     @include source-sans-pro(1.4rem);
-    font-weight: 600;
-    margin-top: 0.7rem;
+    margin-top: 1.3rem;
+  }
+
+  .uic--itemization-widget__description {
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .uic--itemization-widget__item-container {
+    height: inherit;
+
+    @include media-breakpoint-up(md) {
+      // Prevents the animations from toggling on larger displays.
+      height: auto !important;
+    }
+
+    @include media-breakpoint-down(sm) {
+      overflow: hidden;
+    }
   }
 
   .uic--itemization-widget__item {
-    border-bottom: 1px solid $parchment;
+    border-bottom: 1px solid $item-color;
     padding: 1.6rem;
+
+    &.uic--itemization-widget__total {
+      border-top: 1px solid $item-color;
+    }
 
     .uic--itemization-widget__label {
       font-size: 1.2rem;
@@ -41,17 +82,20 @@
     }
 
     &:last-of-type {
-      border: 0;
+      border-bottom: 0;
     }
 
-    .uic--itemization-widget__itemized {
-      padding-left: 1.5rem;
-      opacity: 0.8;
-      margin: 0.5rem 0;
-      font-style: italic;
+    .uic--itemization-widget__itemized-container {
+      padding-top: 0.5rem;
+      .uic--itemization-widget__itemized {
+        padding-left: 1.5rem;
+        opacity: 0.8;
+        margin: 0.5rem 0;
+        font-style: italic;
 
-      .uic--itemization-widget__itemized-value {
-        font-size: 1.8rem;
+        .uic--itemization-widget__itemized-value {
+          font-size: 1.8rem;
+        }
       }
     }
   }

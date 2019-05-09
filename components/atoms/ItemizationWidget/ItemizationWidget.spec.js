@@ -1,9 +1,12 @@
 import React from 'react';
 import test from 'tape';
 import {shallow, mount} from 'enzyme';
+import {stub} from 'sinon';
 import ItemizationWidget from './ItemizationWidget';
 
 test('ItemizationWidget - renders', (t) => {
+  window.requestAnimationFrame = stub();
+
   const props = {
     values: [
       {
@@ -39,6 +42,8 @@ test('ItemizationWidget - renders', (t) => {
 
 test('ItemizationWidget - determineError', (t) => {
   t.plan(3);
+
+  window.requestAnimationFrame = stub();
 
   const props = {
     values: [
@@ -107,6 +112,8 @@ test('ItemizationWidget - determineError', (t) => {
 test('ItemizationWidget - sumTotal', (t) => {
   t.plan(2);
 
+  window.requestAnimationFrame = stub();
+
   const props = {
     values: [
       {
@@ -154,6 +161,8 @@ test('ItemizationWidget - sumTotal', (t) => {
 
 test('ItemizationWidget - handleClick', (t) => {
   t.plan(2);
+
+  window.requestAnimationFrame = stub();
 
   const props = {
     values: [
