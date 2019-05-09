@@ -112,6 +112,26 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
     'Should render the description.'
   );
 
+  const component2 = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value="05/01/1980"
+      placeholder="some placeholder"
+      mask="Date"
+      description={
+        <div className="test--desc">Node description</div>
+      }
+    />
+  );
+
+  t.equals(
+    component2.find('.test--desc').text(),
+    'Node description',
+    'Should render the description node.'
+  );
+
   t.end();
 });
 

@@ -8,6 +8,7 @@ test('DropDown - renders', (t) => {
   const component = shallow(
     <DropDown
       name="dropdown"
+      description="string description"
       options={[{label: 'some label', value: 'some_value'}]}
       label="My Options"
       placeholder="Find your option"
@@ -25,6 +26,59 @@ test('DropDown - renders', (t) => {
     component.find('label').text(),
     'My Options',
     'Field label is correct'
+  );
+
+  t.equal(
+    component.find('.uic--description').length,
+    1,
+    'Dropdown block renders with string'
+  );
+
+  t.equal(
+    component.find('.uic--description').text(),
+    'string description',
+    'Description node is correct'
+  );
+
+  const component2 = shallow(
+    <DropDown
+      name="dropdown"
+      description={
+        <div className="test--desc">node description</div>
+      }
+      options={[{label: 'some label', value: 'some_value'}]}
+      label="My Options"
+      placeholder="Find your option"
+      value="some_value"
+    />
+  );
+
+  t.equal(
+    component2.find('.uic--description').length,
+    1,
+    'Dropdown block renders with node'
+  );
+
+  t.equal(
+    component2.find('.test--desc').text(),
+    'node description',
+    'Description node is correct'
+  );
+
+  const component3 = shallow(
+    <DropDown
+      name="dropdown"
+      options={[{label: 'some label', value: 'some_value'}]}
+      label="My Options"
+      placeholder="Find your option"
+      value="some_value"
+    />
+  );
+
+  t.equal(
+    component3.find('.uic--description').length,
+    1,
+    'Dropdown block renders, without given description'
   );
 
   t.end();
