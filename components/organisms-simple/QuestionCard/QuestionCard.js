@@ -47,9 +47,7 @@ const QuestionCard = ({
   const descriptionNode =
     typeof description === 'string' ? (
       <p>{description}</p>
-    ) : (
-      description || false
-    );
+    ) : description;
 
   return (
     <CardShell
@@ -138,7 +136,7 @@ QuestionCard.propTypes = {
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
   clearFuture: PropTypes.bool,
-  /** The card description. */
+  /** The card description. If given a raw string, the string is wrapped with a p tag. */
   description: PropTypes.node,
   /** Forces the button to be disabled. */
   disabled: PropTypes.bool,
