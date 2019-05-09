@@ -441,22 +441,7 @@ Input.propTypes = {
   /** The max length of the input field value. */
   maxLength: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
-  mask: PropTypes.oneOf([
-    'ApexAccount',
-    'PercentageWithDecimalAllowNegative',
-    'PhoneNumber',
-    'SsnNumber',
-    'Date',
-    'Month',
-    'Zip',
-    'Ticker',
-    'CommaSeparated',
-    'Currency',
-    'CurrencyAllowNegative',
-    'Number',
-    'PercentageWithDecimal',
-    'SmallPercentageWithDecimal',
-  ]),
+  mask: PropTypes.oneOf(Object.keys(maskEnum)),
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
   onChange: PropTypes.func,
   /** The minimum number value. Only applicable if the type is set to number. */
