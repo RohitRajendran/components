@@ -70,7 +70,7 @@ const Slider = ({
       {tooltipStickyPosition && (
         <style>
           {`
-        .rc-slider-handle[aria-valuenow="${tooltipStickyPosition + 1}"] {
+        .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
           height: 20px !important;
           width: 20px !important;
           margin-left: -10px !important;
