@@ -56,6 +56,7 @@ import McGonagall from '~components/templates/McGonagall/McGonagall';
 // Utilities
 import * as FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
+import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
   FormatUtils,
@@ -69,6 +70,7 @@ export {
   OptionBox,
   Checkboxes,
   detectBrowser,
+  Confirm,
   Button,
   Loader,
   Input,
