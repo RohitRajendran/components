@@ -145,7 +145,7 @@ Button.propTypes = {
         state: PropTypes.object,
       }),
     ]),
-    exclusive(['onClick'])
+    exclusive(['onClick']),
   ]),
   /** The type of button, for example `button`, `submit` or `reset`. */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),

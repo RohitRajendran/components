@@ -43,9 +43,7 @@ test('DropDown - renders', (t) => {
   const component2 = shallow(
     <DropDown
       name="dropdown"
-      description={
-        <div className="test--desc">node description</div>
-      }
+      description={<div className="test--desc">node description</div>}
       options={[{label: 'some label', value: 'some_value'}]}
       label="My Options"
       placeholder="Find your option"

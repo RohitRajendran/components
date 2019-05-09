@@ -44,9 +44,12 @@ const QuestionCard = ({
   const isEditing = !isLatestCard && !isCollapsed;
   const showEditWarning = clearFuture && isEditing;
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
-  const descriptionNode = typeof description === 'string'
-    ? <p>{description}</p>
-    : description || false;
+  const descriptionNode =
+    typeof description === 'string' ? (
+      <p>{description}</p>
+    ) : (
+      description || false
+    );
 
   return (
     <CardShell

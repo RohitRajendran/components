@@ -120,9 +120,7 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
       value="05/01/1980"
       placeholder="some placeholder"
       mask="Date"
-      description={
-        <div className="test--desc">Node description</div>
-      }
+      description={<div className="test--desc">Node description</div>}
     />
   );
 
