@@ -70,6 +70,7 @@ export {
   OptionBox,
   Checkboxes,
   detectBrowser,
+  Confirm,
   Button,
   Loader,
   Input,
