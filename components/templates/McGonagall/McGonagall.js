@@ -8,7 +8,6 @@ import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import Confirm from '~components/utilities/Confirm/Confirm';
 import './McGonagall.scss';
 
-/* istanbul ignore next */
 /** McGonagall Component */
 class McGonagall extends React.Component {
   /**
@@ -31,9 +30,16 @@ class McGonagall extends React.Component {
       this.stateMachine.initialState
     );
 
+    const {currXState, activeCard, cardHistory} = this.navigateToLatestCard(
+      [firstStep],
+      this.stateMachine.initialState
+    );
+
     this.state = {
       ...this.stateMachine.initialState.context,
-      ...this.navigateToLatestCard([firstStep], this.stateMachine.initialState),
+      activeCard,
+      cardHistory,
+      currXState,
       hasMounted: false, // Used to switch animation styles
     };
 
@@ -251,6 +257,8 @@ class McGonagall extends React.Component {
     if (this.props.onClose) {
       this.props.onClose();
     }
+    // Ignoring this if since window.location can't be set in unit test
+    /* istanbul ignore if  */
     if (this.props.exitLocation.startsWith('http')) {
       window.location = this.props.exitLocation;
     } else {
