@@ -79,7 +79,6 @@ const Slider = ({
 
         @media screen and (max-width: 992px) {
           .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
-            margin-left: -8px !important;
             margin-top: -8px !important;
           }
         }

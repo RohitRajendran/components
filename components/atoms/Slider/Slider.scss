@@ -125,6 +125,10 @@
         left: 44.44%;
         top: -3.4rem;
         z-index: 1;
+
+        @include media-breakpoint-down(md) {
+          left: 43%;
+        }
       }
     }
 
