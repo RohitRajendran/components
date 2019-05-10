@@ -23,6 +23,7 @@ $background-color: rgba(0, 0, 0, 0.85);
   width: 16.4rem;
   color: $white;
   outline: none;
+  word-wrap: break-word;
 
   @include media-breakpoint-down(sm) {
     width: 100%;
