@@ -23,7 +23,6 @@ $background-color: rgba(0, 0, 0, 0.85);
   width: 16.4rem;
   color: $white;
   outline: none;
-  word-wrap: break-word;
 
   @include media-breakpoint-down(sm) {
     width: 100%;
@@ -64,6 +63,7 @@ $background-color: rgba(0, 0, 0, 0.85);
 
     &.uic--itemization-widget__total {
       border-top: 1px solid $item-color;
+      word-wrap: break-word;
     }
 
     .uic--itemization-widget__label {
@@ -76,6 +76,7 @@ $background-color: rgba(0, 0, 0, 0.85);
 
     &.uic--itemization-widget__item-calc {
       background-color: $eggplant;
+      word-wrap: break-word;
     }
 
     &.uic--itemization-widget__item-threshold {
