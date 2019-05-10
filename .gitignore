@@ -72,3 +72,6 @@ dist-old
 
 # Node-lambda build directory
 /.lambda/*
+
+# Ignore test-outputs folder
+tests_output
