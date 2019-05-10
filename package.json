@@ -115,6 +115,5 @@
     "react-router-dom": "*",
     "react-text-mask": "*",
     "xstate": "*"
-  },
-  "dependencies": {}
+  }
 }
