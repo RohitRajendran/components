@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon';
+import {validateChildren} from '~components/molecules/CardShell/CardShell';
 
 import './ExpandCollapse.scss';
 
@@ -15,12 +16,14 @@ class ExpandCollapse extends Component {
 
     this.state = {
       open: props.defaultOpen,
-      valid: true,
       height: 0,
+      isValid: true,
+      isRequired: false,
     };
 
     this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
+    this.checkValidation = this.checkValidation.bind(this);
   }
 
   /** @inheritdoc */
@@ -33,17 +36,41 @@ class ExpandCollapse extends Component {
         height,
       });
     }
+
+    this.checkValidation();
   }
 
   /** @inheritdoc */
   componentDidUpdate() {
     // If the component height updates while the drawer is open the height gets adjusted accordingly.
     if (
+      this.contentNode.current &&
       this.state.open &&
       this.state.height !== this.contentNode.current.clientHeight
     ) {
       this.setState({
         height: this.contentNode.current.clientHeight,
+      });
+    }
+
+    this.checkValidation();
+  }
+
+  /** Checks the validation state of the component.
+   * @returns {undefined}
+   */
+  checkValidation() {
+    const {hasIncompleteRequiredFields, isChildValid} = validateChildren(
+      this.props.children,
+      true
+    );
+    if (
+      hasIncompleteRequiredFields !== this.state.isRequired ||
+      isChildValid !== this.state.isValid
+    ) {
+      this.setState({
+        isRequired: hasIncompleteRequiredFields,
+        isValid: isChildValid,
       });
     }
   }
@@ -52,7 +79,9 @@ class ExpandCollapse extends Component {
    * @returns {undefined}
    **/
   openExpandItem() {
-    const height = this.contentNode.current.clientHeight;
+    const height = this.contentNode.current
+      ? this.contentNode.current.clientHeight
+      : 0;
 
     this.setState({
       open: !this.state.open,
@@ -74,6 +103,8 @@ class ExpandCollapse extends Component {
       isInvalid,
     } = this.props;
 
+    const {isValid, isRequired} = this.state;
+
     const containerClasses = classNames(
       {
         'uic--ec': true,
@@ -89,7 +120,8 @@ class ExpandCollapse extends Component {
     });
 
     // Toggles the icon component based on validity.
-    const IconComponent = !isInvalid ? ExpandyCircleIcon : ErrorFlagIcon;
+    const IconComponent =
+      !isInvalid && isValid ? ExpandyCircleIcon : ErrorFlagIcon;
 
     return (
       <div className={containerClasses}>
@@ -112,6 +144,9 @@ class ExpandCollapse extends Component {
               </div>
             )}
             {label}
+            <span className="uic--ec-required-fields">
+              {isRequired && !disabled ? 'Required field(s)' : ''}
+            </span>
             {description && (
               <div className="uic--ec-label-description">{description}</div>
             )}

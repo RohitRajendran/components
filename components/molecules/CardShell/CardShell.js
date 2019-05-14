@@ -11,29 +11,37 @@ import './CardShell.scss';
 
 /**
  * Validates children to see if it is valid
- * @param {array<Node>} children component
- * @returns {boolean} validity
+ * @param {array<Node>} children - Component
+ * @param {boolean} startValidated - Determines if the validation should start as validated or not.
+ * @returns {object} - An object containing information about the validation.
  */
-export const validateChildren = (children) => {
+export const validateChildren = (children, startValidated = false) => {
   const childValidity = React.Children.map(children, (child) => {
-    let isChildValid = false;
-
+    let isChildValid = startValidated;
+    let hasIncompleteRequiredFields = false;
     if (React.isValidElement(child)) {
       if (!child.props.disabled && child.props.required) {
-        if (child.props.mask && child.props.isValid) {
-          isChildValid =
-            maskEnum[child.props.mask].regex.test(child.props.value) &&
-            child.props.isValid();
-        } else if (child.props.mask) {
-          isChildValid = maskEnum[child.props.mask].regex.test(
-            child.props.value
-          );
-        } else if (child.props.isValid) {
-          isChildValid = child.props.isValid();
-        } else if (Array.isArray(child.props.value)) {
-          isChildValid = Boolean(child.props.value.length > 0);
-        } else {
-          isChildValid = Boolean(child.props.value);
+        hasIncompleteRequiredFields = true;
+        if (
+          (child.props.value && child.props.value.length > 0) ||
+          !startValidated
+        ) {
+          hasIncompleteRequiredFields = false;
+          if (child.props.mask && child.props.isValid) {
+            isChildValid =
+              maskEnum[child.props.mask].regex.test(child.props.value) &&
+              child.props.isValid();
+          } else if (child.props.mask) {
+            isChildValid = maskEnum[child.props.mask].regex.test(
+              child.props.value
+            );
+          } else if (child.props.isValid) {
+            isChildValid = child.props.isValid();
+          } else if (Array.isArray(child.props.value)) {
+            isChildValid = Boolean(child.props.value.length > 0);
+          } else {
+            isChildValid = Boolean(child.props.value);
+          }
         }
       } else if (
         (child.props.pattern &&
@@ -49,7 +57,6 @@ export const validateChildren = (children) => {
       } else {
         isChildValid = true;
       }
-
       // Check if element uses follow ups and if so validate those followups
       if (child.props.options) {
         const option = child.props.options.find(
@@ -57,22 +64,50 @@ export const validateChildren = (children) => {
         );
 
         if (option && option.followup) {
-          isChildValid = isChildValid && validateChildren([option.followup]);
+          const revalidated = validateChildren(
+            [option.followup],
+            startValidated
+          );
+          isChildValid = isChildValid && revalidated.isChildValid;
+          hasIncompleteRequiredFields =
+            hasIncompleteRequiredFields ||
+            revalidated.hasIncompleteRequiredFields;
         }
       }
-
-      isChildValid = isChildValid && validateChildren(child.props.children);
+      const revalidated = validateChildren(
+        child.props.children,
+        startValidated
+      );
+      isChildValid = isChildValid && revalidated.isChildValid;
+      hasIncompleteRequiredFields =
+        hasIncompleteRequiredFields || revalidated.hasIncompleteRequiredFields;
+      return {
+        isChildValid,
+        hasIncompleteRequiredFields,
+      };
     } else {
       isChildValid = true;
     }
-
-    return isChildValid;
+    return {
+      isChildValid,
+      hasIncompleteRequiredFields,
+    };
   });
-
   if (childValidity) {
-    return childValidity.reduce((a, b) => a && b, true);
+    return childValidity.reduce(
+      (accumulator, object) => {
+        accumulator['isChildValid'] =
+          object.isChildValid && accumulator.isChildValid;
+        accumulator['hasIncompleteRequiredFields'] =
+          object.hasIncompleteRequiredFields ||
+          accumulator.hasIncompleteRequiredFields;
+
+        return accumulator;
+      },
+      {isChildValid: true, hasIncompleteRequiredFields: false}
+    );
   }
-  return true;
+  return {isChildValid: true, hasIncompleteRequiredFields: false};
 };
 
 /** CardShell Component */
@@ -91,9 +126,8 @@ class CardShell extends Component {
     this.onAnimationEnd = this.onAnimationEnd.bind(this);
 
     this.contentNode = createRef();
-
     this.state = {
-      isInvalid: !validateChildren(props.children),
+      isInvalid: !validateChildren(props.children).isChildValid,
       height: props.animate ? 0 : 'auto',
       animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
       hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations
@@ -104,9 +138,9 @@ class CardShell extends Component {
   componentDidUpdate(prevProps) {
     const updatedState = {};
 
-    const isInvalid = !validateChildren(this.props.children);
-    if (this.state.isInvalid !== isInvalid) {
-      updatedState.isInvalid = isInvalid;
+    const {isChildValid} = validateChildren(this.props.children);
+    if (this.state.isInvalid !== !isChildValid) {
+      updatedState.isInvalid = !isChildValid;
     }
 
     if (

@@ -151,6 +151,21 @@ stories.add('active with expand/collapse', () => (
             {
               label: 'No',
               value: 'no',
+              followup: (
+                <Input
+                  name="input"
+                  value={store.get('input')}
+                  label="Date"
+                  placeholder="MM/DD/YYYY"
+                  validateOnBlur={true}
+                  validationErrorMsg="Not a valid date range"
+                  mask="Date"
+                  required
+                  onChange={(name, value) => store.set({[name]: value})}
+                  isValid={() => store.get('input').length === 10}
+                  style={{marginTop: '2rem'}}
+                />
+              ),
             },
             {
               label: "I don't know",
@@ -161,20 +176,6 @@ stories.add('active with expand/collapse', () => (
           value={store.get('yesNo')}
           key="yesNo"
           required
-        />
-
-        <Input
-          name="input"
-          value={store.get('input')}
-          label="Date"
-          placeholder="MM/DD/YYYY"
-          validateOnBlur={true}
-          validationErrorMsg="Not a valid date range"
-          mask="Date"
-          required
-          onChange={(name, value) => store.set({[name]: value})}
-          isValid={() => store.get('input').length === 10}
-          style={{marginTop: '2rem'}}
         />
       </ExpandCollapse>
     </QuestionCard>

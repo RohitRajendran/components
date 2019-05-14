@@ -67,4 +67,9 @@
     margin-top: 1rem;
     text-align: center;
   }
+
+  .uic--ec {
+    // Override for the ExpandCollapse as it should appear higher than other content in the card.
+    top: -1rem;
+  }
 }

@@ -20,7 +20,12 @@ test('ExpandCollapse - openExpandItem', (t) => {
 
   t.deepEquals(
     component.state(),
-    {open: true, valid: true, height: 0},
+    {
+      open: true,
+      height: 0,
+      isValid: true,
+      isRequired: false,
+    },
     'Should toggle the drawer open.'
   );
 
@@ -44,8 +49,44 @@ test('ExpandCollapse - componentDidMount', (t) => {
 
   t.deepEquals(
     component.state(),
-    {open: true, valid: true, height: 0},
+    {
+      open: true,
+      height: 0,
+      isValid: true,
+      isRequired: false,
+    },
     'Should render with open as true.'
+  );
+
+  t.end();
+});
+
+test('ExpandCollapse - checkValidation', (t) => {
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    defaultOpen: true,
+    isInvalid: false,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      <input value="" required />
+    </ExpandCollapse>
+  );
+
+  component.instance().checkValidation();
+
+  t.deepEquals(
+    component.state(),
+    {
+      open: true,
+      height: 0,
+      isValid: true,
+      isRequired: true,
+    },
+    'Should validate the items within the menu.'
   );
 
   t.end();
