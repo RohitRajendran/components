@@ -197,6 +197,7 @@ class CardShell extends Component {
    */
   render() {
     const {
+      autoComplete,
       afterButton,
       beforeButton,
       buttonText,
@@ -256,6 +257,7 @@ class CardShell extends Component {
               summary
             ) : (
               <form
+                autoComplete={autoComplete ? '' : 'off'}
                 onChange={onChange && this.onChange}
                 onSubmit={this.onSubmit}
               >
@@ -310,6 +312,8 @@ CardShell.propTypes = {
   animate: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** To display something before the Submit button. */
   beforeButton: PropTypes.node,
   /** Changes the text in the Submit button. */
@@ -341,6 +345,7 @@ CardShell.propTypes = {
 };
 
 CardShell.defaultProps = {
+  autoComplete: false,
   animate: false,
   buttonText: 'Continue',
   stepIndex: 0,

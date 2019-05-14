@@ -249,6 +249,7 @@ class Input extends Component {
   render() {
     const identifier = Math.round(Math.random() * 10000000);
     const {
+      autoComplete,
       append,
       prepend,
       description,
@@ -377,6 +378,9 @@ class Input extends Component {
         <InputType
           type="text"
           aria-label={this.props.label}
+          autoComplete={
+            appendCharacter ? 'off' : autoComplete ? autoComplete : null
+          }
           onFocus={this.toggleFocus}
           onBlur={this.toggleFocus}
           ref={(input) => {
@@ -405,6 +409,8 @@ class Input extends Component {
 Input.propTypes = {
   /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
   append: PropTypes.string,
+  /** Determines the autoComplete type on the input. */
+  autoComplete: PropTypes.string,
   /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
   prepend: PropTypes.string,
   /** The label representing the input field. */

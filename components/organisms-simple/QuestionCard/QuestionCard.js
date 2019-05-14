@@ -118,6 +118,8 @@ const QuestionCard = ({
 export default QuestionCard;
 
 QuestionCard.propTypes = {
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** Whether it should animate on mount */
   animate: PropTypes.bool,
   /** To display something after the Submit button. */

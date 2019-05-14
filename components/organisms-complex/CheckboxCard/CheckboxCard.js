@@ -88,6 +88,8 @@ CheckboxCard.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string),
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** To display something before the Submit button. */
   beforeButton: PropTypes.node,
   /** Changes the text in the Submit button */
