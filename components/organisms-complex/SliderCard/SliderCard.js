@@ -71,6 +71,8 @@ SliderCard.propTypes = {
   animate: PropTypes.bool,
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers: PropTypes.arrayOf(PropTypes.string),
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */

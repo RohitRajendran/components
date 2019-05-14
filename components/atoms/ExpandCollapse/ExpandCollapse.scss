@@ -26,6 +26,13 @@
     }
   }
 
+  .uic--ec-required-fields {
+    font-weight: 800;
+    color: $red-magenta;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+  }
+
   .uic--ec-controls-wrapper {
     left: 0;
     top: -0.2rem;

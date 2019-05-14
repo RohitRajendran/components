@@ -599,8 +599,8 @@ LampCircleIllustration.propTypes = {
 };
 
 LampCircleIllustration.defaultProps = {
-  height: '26.5rem',
-  width: '16rem',
+  height: '14rem',
+  width: '14.4rem',
 };
 
 export default LampCircleIllustration;

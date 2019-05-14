@@ -41,7 +41,7 @@ stories.add('active with feature image', () => (
   <MemoryRouter key="question">
     <MessageCard
       {...defaultProps(false)}
-      featureImage={<LampCircleIllustration height="100" width="100" />}
+      featureImage={<LampCircleIllustration height="10rem" width="10rem" />}
     />
   </MemoryRouter>
 ));

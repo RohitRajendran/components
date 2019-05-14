@@ -44,6 +44,8 @@ const QuestionCard = ({
   const isEditing = !isLatestCard && !isCollapsed;
   const showEditWarning = clearFuture && isEditing;
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
+  const descriptionNode =
+    typeof description === 'string' ? <p>{description}</p> : description;
 
   return (
     <CardShell
@@ -90,7 +92,7 @@ const QuestionCard = ({
     >
       <div className="uic--card-titleset">
         <h2>{title}</h2>
-        {description && <p>{description}</p>}
+        {descriptionNode}
 
         {moreDetails && (
           <div className="uic--card-more-detail">
@@ -116,6 +118,8 @@ const QuestionCard = ({
 export default QuestionCard;
 
 QuestionCard.propTypes = {
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** Whether it should animate on mount */
   animate: PropTypes.bool,
   /** To display something after the Submit button. */
@@ -132,8 +136,8 @@ QuestionCard.propTypes = {
   className: PropTypes.string,
   /** Whether making changes should clear out any changes made in steps after this. */
   clearFuture: PropTypes.bool,
-  /** The card description. */
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** The card description. If given a raw string, the string is wrapped with a p tag. */
+  description: PropTypes.node,
   /** Forces the button to be disabled. */
   disabled: PropTypes.bool,
   /** Handler called to edit the card, only necessary for McGonagall. */
@@ -168,13 +172,12 @@ QuestionCard.propTypes = {
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
   /** Shorter title to be used with the card summary. */
-  shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-    .isRequired,
+  shortTitle: PropTypes.node.isRequired,
   /** The summary view that should display when the card is collapsed.
    * If it is the latest step and the card is collapsed, the incomplete summary component will be displayed instead */
   summary: PropTypes.node,
   /** The index of this card in the flow, used for animation purposes */
   stepIndex: PropTypes.number,
   /** The title of the card. */
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  title: PropTypes.node.isRequired,
 };

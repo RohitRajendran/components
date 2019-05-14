@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
 import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
+import {animated, Spring} from 'react-spring/renderprops.cjs';
 
 import './ItemizationWidget.scss';
 
@@ -99,118 +100,153 @@ class ItemizationWidget extends PureComponent {
 
     const containerThresholdWarningClasses = classNames({
       'uic--itemization-widget__threshold-warning': true,
-      'uic--d-sm-none': true,
-      'uic--d-none': this.state.open,
-    });
-
-    const itemContainerClasses = classNames({
-      'uic--d-sm-block': true,
-      'uic--d-none': !this.state.open,
+      'uic--d-md-none': true,
+      'uic--d-none': this.state.thresholdWarning && this.state.open,
     });
 
     return (
-      <div
-        className={containerClasses}
-        style={style}
-        role="button"
-        tabIndex="0"
-        onClick={this.handleClick}
-        onKeyPress={this.handleClick}
-      >
-        <div className="uic--itemization-widget__item uic--itemization-widget__title">
-          <div className="uic--row uic--align-items-center">
-            <div className="uic--col-6">{title}</div>
+      <Spring to={{start: this.state.open ? 0.85 : 0}}>
+        {({start}) => (
+          <div
+            className="uic--itemization-widget__wrapper"
+            style={{
+              background: `rgba(0, 0, 0, ${start})`,
+            }}
+            role="button"
+            tabIndex="0"
+            onClick={this.state.open ? this.handleClick : null}
+            onKeyPress={this.state.open ? this.handleClick : null}
+          >
+            <div
+              className={containerClasses}
+              style={style}
+              role="button"
+              tabIndex="0"
+              onClick={this.handleClick}
+              onKeyPress={this.handleClick}
+            >
+              <div className="uic--itemization-widget__item uic--itemization-widget__title">
+                <div className="uic--row">
+                  <div className="uic--col-6">{title}</div>
 
-            <div className="uic--col-6 uic--text-right uic--d-sm-none">
-              {completeTotal}
-              {totalSuffix && (
-                <span className="uic--itemization-widget__suffix">
-                  {' '}
-                  /{totalSuffix}
-                </span>
-              )}
-              <div className="uic--itemization-widget__label">Total</div>
+                  <div className="uic--col-6 uic--text-right uic--d-md-none">
+                    {completeTotal}
+                    {totalSuffix && (
+                      <span className="uic--itemization-widget__suffix">
+                        {' '}
+                        /{totalSuffix}
+                      </span>
+                    )}
+                    <div className="uic--itemization-widget__label">Total</div>
+                  </div>
+                </div>
+                <div className={containerThresholdWarningClasses}>
+                  {this.state.thresholdWarning}
+                </div>
+              </div>
+
+              <Spring
+                native
+                force
+                config={{tension: 2000, friction: 100, precision: 1}}
+                from={{height: this.state.open ? 0 : 'auto'}}
+                to={{height: this.state.open ? 'auto' : 0}}
+              >
+                {(animationStyle) => (
+                  <animated.div
+                    className="uic--itemization-widget__item-container"
+                    style={animationStyle}
+                    onClick={this.handleClick}
+                  >
+                    {values.map(
+                      (
+                        {
+                          value,
+                          label,
+                          items,
+                          description,
+                          threshold,
+                          thresholdWarning,
+                          suffix: itemSuffix,
+                        },
+                        index
+                      ) => {
+                        const itemClasses = classNames({
+                          'uic--itemization-widget__item': true,
+                          'uic--itemization-widget__item-calc': true,
+                          'uic--itemization-widget__item-threshold':
+                            threshold &&
+                            (items ? this.sumTotal(items) : value) >= threshold,
+                        });
+                        return (
+                          <div key={index} className={itemClasses}>
+                            {formatCurrencyNoDecimal(
+                              items ? this.sumTotal(items) : value || 0
+                            )}
+                            {itemSuffix && (
+                              <span className="uic--itemization-widget__suffix">
+                                {' '}
+                                /{itemSuffix}
+                              </span>
+                            )}
+                            <div className="uic--itemization-widget__label">
+                              {label}
+                            </div>
+                            {items && (
+                              <div className="uic--itemization-widget__itemized-container">
+                                {items.map((item, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="uic--itemization-widget__itemized"
+                                  >
+                                    {item.value && (
+                                      <div className="uic--itemization-widget__itemized-value">
+                                        {formatCurrencyNoDecimal(item.value)}
+                                      </div>
+                                    )}
+
+                                    {item.label && (
+                                      <div className="uic--itemization-widget__label">
+                                        {item.label}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            {thresholdWarning &&
+                            threshold &&
+                            (items ? this.sumTotal(items) : value) >=
+                              threshold ? (
+                              <div className="uic--itemization-widget__threshold-warning">
+                                {thresholdWarning}
+                              </div>
+                            ) : description ? (
+                              <div className="uic--itemization-widget__description">
+                                {description}
+                              </div>
+                            ) : null}
+                          </div>
+                        );
+                      }
+                    )}
+                  </animated.div>
+                )}
+              </Spring>
+              <div className="uic--itemization-widget__item uic--itemization-widget__total uic--itemization-widget__title uic--d-none uic--d-md-block">
+                {completeTotal}
+                {totalSuffix && (
+                  <span className="uic--itemization-widget__suffix">
+                    {' '}
+                    /{totalSuffix}
+                  </span>
+                )}
+                <div className="uic--itemization-widget__label">Total</div>
+              </div>
             </div>
           </div>
-          <div className={containerThresholdWarningClasses}>
-            {this.state.thresholdWarning}
-          </div>
-        </div>
-
-        <div className={itemContainerClasses}>
-          {values.map(
-            (
-              {
-                value,
-                label,
-                items,
-                threshold,
-                thresholdWarning,
-                suffix: itemSuffix,
-              },
-              index
-            ) => {
-              const itemClasses = classNames({
-                'uic--itemization-widget__item': true,
-                'uic--itemization-widget__item-calc': true,
-                'uic--itemization-widget__item-threshold':
-                  threshold &&
-                  (items ? this.sumTotal(items) : value) >= threshold,
-              });
-              return (
-                <div key={index} className={itemClasses}>
-                  {formatCurrencyNoDecimal(
-                    items ? this.sumTotal(items) : value || 0
-                  )}
-                  {itemSuffix && (
-                    <span className="uic--itemization-widget__suffix">
-                      {' '}
-                      /{itemSuffix}
-                    </span>
-                  )}
-                  <div className="uic--itemization-widget__label">{label}</div>
-                  {items &&
-                    items.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="uic--itemization-widget__itemized"
-                      >
-                        {item.value && (
-                          <div className="uic--itemization-widget__itemized-value">
-                            {formatCurrencyNoDecimal(item.value)}
-                          </div>
-                        )}
-
-                        {item.label && (
-                          <div className="uic--itemization-widget__label">
-                            {item.label}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  {thresholdWarning &&
-                    threshold &&
-                    (items ? this.sumTotal(items) : value) >= threshold && (
-                      <div className="uic--itemization-widget__threshold-warning">
-                        {thresholdWarning}
-                      </div>
-                    )}
-                </div>
-              );
-            }
-          )}
-        </div>
-        <div className="uic--itemization-widget__item uic--itemization-widget__title uic--d-none uic--d-sm-block">
-          {completeTotal}
-          {totalSuffix && (
-            <span className="uic--itemization-widget__suffix">
-              {' '}
-              /{totalSuffix}
-            </span>
-          )}
-          <div className="uic--itemization-widget__label">Total</div>
-        </div>
-      </div>
+        )}
+      </Spring>
     );
   }
 }
@@ -229,6 +265,8 @@ ItemizationWidget.propTypes = {
     PropTypes.shape({
       /** The label to appear above the item. */
       label: PropTypes.string.isRequired,
+      /** Optional description label to display beneath the item.. */
+      description: PropTypes.string,
       /** The value of the item. */
       value: and([PropTypes.number, exclusive(['items'])]),
       /** The suffix to append to the end of the item. For example 'mo' or 'yr'. */

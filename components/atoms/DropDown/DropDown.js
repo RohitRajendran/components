@@ -243,13 +243,13 @@ class DropDown extends Component {
               {...optionProps}
             />
           </div>
-          {description && this.state.isValid ? (
+          {this.state.isValid ? (
             <div className="uic--description">{description}</div>
-          ) : !this.state.isValid ? (
+          ) : (
             <div className="uic--validation-error">
               {this.state.validationMessage || 'Invalid'}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     );
@@ -277,7 +277,7 @@ DropDown.propTypes = {
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
   /** Displays an input field description beneath the dropdown. */
-  description: PropTypes.string,
+  description: PropTypes.node,
   /** The placeholder to display when there's no input. */
   placeholder: PropTypes.string,
   /** Determines if the input is required or not. */

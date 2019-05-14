@@ -16,6 +16,8 @@ const defaultValues = [
   },
   {
     label: 'Other Cats',
+    description:
+      'Cats are really important. And if you do not include cats in your budget they will be included for you.',
     suffix: 'mo',
     thresholdWarning: 'You have budgeted far too much for cats.',
     items: [
@@ -40,6 +42,8 @@ const thresholdValues = [
     label: 'Other Cats',
     threshold: 500,
     suffix: 'mo',
+    description:
+      'Cats are really important. And if you do not include cats in your budget they will be included for you.',
     thresholdWarning: 'You have budgeted far too much for cats.',
     items: [
       {

@@ -1,4 +1,4 @@
-$z-index-navbar-fixed: 1030;
+$cabinet-z-index: 99999;
 
 .admin-nav-present .uic--cabinet {
   top: 3rem;
@@ -10,7 +10,7 @@ $z-index-navbar-fixed: 1030;
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: $z-index-navbar-fixed + 1;
+  z-index: $cabinet-z-index;
   background-color: $white;
   min-height: 100vh;
   width: 50rem;

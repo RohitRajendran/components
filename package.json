@@ -17,7 +17,8 @@
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
     "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint 'component/**/*.sass' -qv && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=css",
-    "generate": "yarn hygen component new"
+    "generate": "yarn hygen component new",
+    "browserstack": "yarn nightwatch -c nightwatch/config.js"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
@@ -71,6 +72,7 @@
     "jsdom-global": "*",
     "lodash": "*",
     "mini-css-extract-plugin": "*",
+    "nightwatch": "*",
     "node-sass": "*",
     "nyc": "*",
     "postcss-loader": "*",

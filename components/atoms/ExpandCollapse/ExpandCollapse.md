@@ -16,3 +16,7 @@ The ExpandCollapse component displays content within a drawer which can be used 
   Expanded content can be placed here.
 </ExpandCollapse>
 ```
+
+## Nested Validation
+
+The ExpandCollapse component will validate any child inputs to display a `Required Field(s)` flag if there's a field that is required, or a red icon if one of the child inputs does not validate. If the child input validates, the `Required Field(s)` flag will no longer appear.

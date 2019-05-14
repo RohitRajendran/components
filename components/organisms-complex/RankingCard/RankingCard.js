@@ -75,6 +75,8 @@ RankingCard.propTypes = {
   }),
   /** Whether it should animate on mount */
   animate: PropTypes.bool,
+  /** Enables browser auto complete. */
+  autoComplete: PropTypes.bool,
   /** To display something after the Submit button. */
   afterButton: PropTypes.node,
   /** To display something before the Submit button. */

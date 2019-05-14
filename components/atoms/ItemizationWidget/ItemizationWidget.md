@@ -1,6 +1,6 @@
 # ItemizationWidget Component
 
-Displays a widget which itemizes and sums totals.
+Displays a widget which itemizes and sums totals. Turns into collapsible menu on smaller screen sizes.
 
 ## Example 🚀
 

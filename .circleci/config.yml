@@ -84,6 +84,13 @@ jobs:
           name: Publish Storybook
           command: yarn publishStorybook
 
+      - run:
+          name: Run IE11 Smoke Test
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "develop" ]; then
+              yarn browserstack
+            fi
+
   publish_package:
     docker:
       - image: circleci/node:10.12
