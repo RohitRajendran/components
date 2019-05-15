@@ -163,7 +163,6 @@ stories.add('active with expand/collapse', () => (
                   required
                   onChange={(name, value) => store.set({[name]: value})}
                   isValid={() => store.get('input').length === 10}
-                  style={{marginTop: '2rem'}}
                 />
               ),
             },

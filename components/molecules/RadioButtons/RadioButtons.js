@@ -43,6 +43,14 @@ const RadioButtons = ({
           const labelWrapper =
             'uic--w-100 uic--d-flex uic--align-items-center uic--flex-direction-row uic--flex-wrap';
 
+          const radioButtonClasses = classNames({
+            'uic--mcgonagall-radio-button': true,
+            'uic--d-flex': true,
+            'uic--justify-content-between': true,
+            'uic--mcgonagall-radio-button-followup':
+              option.followup && option.value === value,
+          });
+
           let optionValue = option.value;
           if (typeof option.value === 'boolean') {
             optionValue = option.value.toString().toLowerCase();
@@ -53,10 +61,7 @@ const RadioButtons = ({
           }
 
           return (
-            <div
-              className="uic--mcgonagall-radio-button uic--d-flex uic--justify-content-between"
-              key={option.value}
-            >
+            <div className={radioButtonClasses} key={option.value}>
               <label className={labelClasses}>
                 <span className={labelWrapper}>
                   <input

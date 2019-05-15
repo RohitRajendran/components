@@ -59,11 +59,16 @@ const Checkboxes = ({
           const labelWrapper =
             'uic--w-100 uic--d-flex uic--align-items-center uic--flex-direction-row uic--flex-wrap';
 
+          const checkboxClasses = classNames({
+            'uic--mcgonagall-checkbox-button': true,
+            'uic--d-flex': true,
+            'uic--justify-content-between': true,
+            'uic--mcgonagall-checkbox-button-followup':
+              option.followup && values.has(option.value),
+          });
+
           return (
-            <div
-              className="uic--mcgonagall-checkbox-button uic--d-flex uic--justify-content-between"
-              key={option.value}
-            >
+            <div className={checkboxClasses} key={option.value}>
               <label className={labelClasses}>
                 <span className={labelWrapper}>
                   <input
