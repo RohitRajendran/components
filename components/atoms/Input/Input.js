@@ -151,14 +151,12 @@ export const percentageWithDecimalMaskAllowNegative = {
 export const smallPercentageWithDecimalMask = {
   mask: createNumberMask({
     prefix: '',
-    suffix: '%',
     allowDecimal: true,
     includeThousandsSeparator: false,
     decimalLimit: 3,
     integerLimit: 2,
   }),
   regex: /\d{0,2}(\.\d{0,3})?/,
-  sanitize: /%/,
 };
 
 /** @constant {object} - A mask to loosely match Apex account numbers */
