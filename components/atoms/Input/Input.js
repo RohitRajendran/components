@@ -151,7 +151,6 @@ export const percentageWithDecimalMaskAllowNegative = {
 export const smallPercentageWithDecimalMask = {
   mask: createNumberMask({
     prefix: '',
-    suffix: '%',
     allowDecimal: true,
     includeThousandsSeparator: false,
     decimalLimit: 3,
