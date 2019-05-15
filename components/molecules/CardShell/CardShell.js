@@ -24,6 +24,7 @@ export const validateChildren = (children, startValidated = false) => {
         hasIncompleteRequiredFields = true;
         if (
           (child.props.value && child.props.value.length > 0) ||
+          typeof child.props.value === 'boolean' ||
           !startValidated
         ) {
           hasIncompleteRequiredFields = false;
@@ -39,6 +40,8 @@ export const validateChildren = (children, startValidated = false) => {
             isChildValid = child.props.isValid();
           } else if (Array.isArray(child.props.value)) {
             isChildValid = Boolean(child.props.value.length > 0);
+          } else if (typeof child.props.value === 'boolean') {
+            isChildValid = true;
           } else {
             isChildValid = Boolean(child.props.value);
           }

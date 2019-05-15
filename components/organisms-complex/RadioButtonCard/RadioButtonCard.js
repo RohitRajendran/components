@@ -24,8 +24,9 @@ const getSelectedAnswerLabel = (options, currValue) => {
  */
 const RadioButtonCard = ({
   answers,
-  editCard,
   config,
+  editCard,
+  onChange,
   shortTitle,
   title,
   ...props
@@ -46,7 +47,7 @@ const RadioButtonCard = ({
         />
       }
     >
-      <RadioButtons {...config} required />
+      <RadioButtons {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -61,12 +62,13 @@ RadioButtonCard.propTypes = {
     /** Renders the radio button group in a table. */
     table: PropTypes.bool,
     /** The current selected option in the radio button group. */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
     /** An array of objects containing options that should be rendered. */
     options: PropTypes.arrayOf(
       PropTypes.shape({
         /** The value of the button. */
-        value: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+          .isRequired,
         /** The label of the button. */
         label: PropTypes.string.isRequired,
         /** Optional followup input JSX. */
