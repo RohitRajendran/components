@@ -32,6 +32,30 @@ test('ExpandCollapse - openExpandItem', (t) => {
   t.end();
 });
 
+test('ExpandCollapse - render as uncollapsible', (t) => {
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    collapsible: false,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      <p>Just some contnet to appear in the expandy thing</p>
+    </ExpandCollapse>
+  );
+
+  t.equals(
+    component.find('.uic--ec-controls').length,
+    0,
+    'Hides collapse icon'
+  );
+  t.equals(component.find('p').length, 1, 'Should drawer content');
+
+  t.end();
+});
+
 test('ExpandCollapse - componentDidMount', (t) => {
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
