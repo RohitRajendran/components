@@ -265,16 +265,22 @@ test('McGonagall - updateStateMachine', (t) => {
   };
   const comp = new McGonagall(props);
   comp.state.val = 'test';
+  comp.state.incompleteVal = null;
   comp.setState = spy();
   props.browserHistory.push.reset();
 
-  comp.updateStateMachine(['val']);
+  comp.updateStateMachine(['val', 'incompleteVal'], {incompleteVal: true});
 
   t.true(props.stateOptions.actions.test.called, 'Executed action');
   t.deepEquals(
     comp.setState.args[0][0].currXState.value,
     'second',
     'Updated xstate'
+  );
+  t.deepEquals(
+    comp.setState.args[0][0].currXState.context.incompleteVal,
+    true,
+    'Uses default value for incompleteVal'
   );
   t.deepEquals(
     comp.setState.args[0][0].cardHistory[0].name,
@@ -327,7 +333,7 @@ test('McGonagall - updateStateMachine', (t) => {
     'Added another card to history'
   );
 
-  comp.updateStateMachine(['val'], true);
+  comp.updateStateMachine(['val'], null, true);
 
   t.deepEquals(
     comp.setState.args[3][0].currXState.value,
@@ -526,7 +532,8 @@ test('McGonagall - renderStep (no changes)', (t) => {
   cardArgs.onSubmit();
   t.deepEquals(
     comp.updateStateMachine.args[0],
-    [['val'], true],
+    // eslint-disable-next-line no-undefined
+    [['val'], undefined, true],
     'Submits sends proper info'
   );
 
@@ -579,7 +586,8 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   cardArgs.onSubmit();
   t.deepEquals(
     comp.updateStateMachine.args[0],
-    [['val'], false],
+    // eslint-disable-next-line no-undefined
+    [['val'], undefined, false],
     'Submits sends proper info'
   );
 

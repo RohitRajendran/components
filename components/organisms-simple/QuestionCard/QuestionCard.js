@@ -171,6 +171,8 @@ QuestionCard.propTypes = {
   onChange: PropTypes.func,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.node.isRequired,
   /** The summary view that should display when the card is collapsed.

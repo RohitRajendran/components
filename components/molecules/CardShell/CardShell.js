@@ -133,7 +133,8 @@ class CardShell extends Component {
       isInvalid: !validateChildren(props.children).isChildValid,
       height: props.animate ? 0 : 'auto',
       animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
-      hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations
+      hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations,
+      isSubmitting: false,
     };
   }
 
@@ -163,9 +164,16 @@ class CardShell extends Component {
    * @param {object} e event
    * @returns {undefined}
    */
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(e);
+    this.setState({isSubmitting: true});
+
+    await this.props.onSubmit(
+      e, // Gets passed through because of Hogwarts
+      this.props.outputDefaults
+    );
+
+    this.setState({isSubmitting: false});
   }
 
   /**
@@ -216,7 +224,13 @@ class CardShell extends Component {
       summary,
       stepIndex,
     } = this.props;
-    const {animationEnded, hasAnimationRun, height, isInvalid} = this.state;
+    const {
+      animationEnded,
+      hasAnimationRun,
+      height,
+      isInvalid,
+      isSubmitting,
+    } = this.state;
 
     const cardClass = classNames(
       {
@@ -285,7 +299,7 @@ class CardShell extends Component {
                         <Button
                           className="uic--card-submit"
                           disabled={isInvalid || disabled}
-                          isLoading={loading}
+                          isLoading={loading || isSubmitting}
                           light
                           type="submit"
                           variant="secondary"
@@ -341,6 +355,8 @@ CardShell.propTypes = {
   onChange: PropTypes.func,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** The summary view that should display when the card is collapsed. */
   summary: PropTypes.node,
   /** The index of this card in the flow, used for animation purposes */

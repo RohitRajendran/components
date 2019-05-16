@@ -136,14 +136,30 @@ class McGonagall extends React.Component {
   /**
    * Update state machine and transition
    * @param {array<string>} outputs the expected outputs for the step
+   * @param {object} outputDefaults default values for outputs to fallback to
    * @param {boolean} clearFuture whether it should clear values from future steps
    * @returns {undefined}
    */
-  updateStateMachine(outputs, clearFuture) {
+  updateStateMachine(outputs, outputDefaults, clearFuture) {
     let prevHistory = this.state.cardHistory;
 
     // Get values from state based on expected step outputs
     const payload = pick(this.state, outputs);
+
+    // If output defaults are provided, check if any values should use them
+    let updatedPayloadValues = {};
+    if (outputDefaults) {
+      updatedPayloadValues = Object.keys(payload).reduce((accum, key) => {
+        const outputHasNoValue = !payload[key] || payload.key === '';
+        const hasDefaultValue = Boolean(outputDefaults[key]);
+
+        if (outputHasNoValue && hasDefaultValue) {
+          accum[key] = outputDefaults[key];
+        }
+
+        return accum;
+      }, {});
+    }
 
     if (clearFuture) {
       // Find current position in card history
@@ -161,6 +177,7 @@ class McGonagall extends React.Component {
       {
         type: 'NEXT',
         ...payload,
+        ...updatedPayloadValues,
       },
       {...this.state.currXState.context}
     );
@@ -186,6 +203,7 @@ class McGonagall extends React.Component {
 
     const updatedData = {
       currXState: updatedCurrState,
+      ...updatedPayloadValues,
     };
 
     // If not returning to latest, need to update the card history
@@ -311,8 +329,11 @@ class McGonagall extends React.Component {
       JSON.stringify(statePayload) !== JSON.stringify(contextPayload);
 
     // On submit will send data to state machine and update
-    const onSubmit = () =>
-      this.updateStateMachine(step.outputs, step.clearFuture);
+    const onSubmit = (
+      e, // Have to include because cards have to support Hogwarts passing through event
+      outputDefaults
+    ) =>
+      this.updateStateMachine(step.outputs, outputDefaults, step.clearFuture);
 
     // Reverts any component state changes and goes to latest card
     const cancelChanges = () => {
@@ -355,6 +376,7 @@ class McGonagall extends React.Component {
         clearFuture: step.clearFuture,
         context: this.state.currXState.context,
         description: step.description,
+        defaultValues: step.defaultValues,
         editCard,
         hasMadeChanges,
         isCollapsed: this.activeCard !== step.name,
