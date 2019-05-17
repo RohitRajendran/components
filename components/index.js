@@ -1,4 +1,5 @@
 // Atoms
+import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import Button from '~components/atoms/Button/Button';
 import Loader from '~components/atoms/Loader/Loader';
 import Input from '~components/atoms/Input/Input';
@@ -29,6 +30,7 @@ import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircle
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 
 // Molecules
+import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
@@ -59,6 +61,8 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  TooltipInput,
+  Tooltip,
   FormatUtils,
   StackableExpandCollapse,
   ArrowIcon,

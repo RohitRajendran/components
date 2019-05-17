@@ -240,8 +240,8 @@ class Input extends Component {
     const deepest = getDeepestInputElement(this);
     const isActive = deepest === document.activeElement;
     const isEmpty =
-      deepest.value === '' || typeof deepest.value === 'undefined';
-    return isValid() || (hideValidity() && isActive) || isEmpty;
+      this.props.value === '' || typeof this.props.value === 'undefined';
+    return isValid(this.props.value) || (hideValidity() && isActive) || isEmpty;
   }
 
   /** @inheritdoc */

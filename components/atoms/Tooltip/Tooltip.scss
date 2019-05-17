@@ -1,0 +1,36 @@
+$tooltip-color: $white !important;
+
+.uic--tooltip {
+  // Overrides for react-tooltip.
+  .place-right:after {
+    border-right-color: $tooltip-color;
+  }
+
+  .place-bottom:after {
+    border-bottom-color: $tooltip-color;
+  }
+
+  .place-left:after {
+    border-left-color: $tooltip-color;
+  }
+
+  .place-top:after {
+    border-top-color: $tooltip-color;
+  }
+}
+
+.uic--tooltip-wrapper {
+  // Additional react-tooltip overrides are marked with !important.
+  @include source-sans-pro(1.4rem);
+  background-color: $tooltip-color;
+  color: $slate !important;
+  padding: 2.1rem;
+  box-shadow: 3px 3px 6px 0 rgba(91, 98, 121, 0.5);
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+  border-radius: 4px;
+  border: 0;
+
+  &.show {
+    opacity: 1 !important;
+  }
+}

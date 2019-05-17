@@ -90,6 +90,7 @@
     "react-select": "*",
     "react-spring": "*",
     "react-text-mask": "*",
+    "react-tooltip": "*",
     "sass-lint": "*",
     "sass-loader": "*",
     "sinon": "*",
@@ -114,6 +115,7 @@
     "react-router": "*",
     "react-router-dom": "*",
     "react-text-mask": "*",
+    "react-tooltip": "*",
     "xstate": "*"
   }
 }

@@ -160,6 +160,12 @@ module.exports = {
       amd: 'QueryString',
       root: 'QueryString,',
     },
+    'react-tooltip': {
+      commonjs: 'react-tooltip',
+      commonjs2: 'react-tooltip',
+      amd: 'ReactTooltip',
+      root: 'ReactTooltip',
+    },
   },
   optimization: {
     minimizer: [],

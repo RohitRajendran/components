@@ -1,0 +1,27 @@
+.uic--tooltip-input {
+  // Overrides the input fields to prevent a display issue with the
+  // validation field.
+  .uic--tooltip-input-content {
+    outline: none;
+  }
+
+  .uic--tooltip-wrapper {
+    width: 37rem;
+    max-width: 100%;
+    .uic--validation-error {
+      display: none;
+    }
+
+    &.show .uic--validation-error {
+      display: block;
+    }
+
+    .btn {
+      cursor: pointer;
+    }
+  }
+
+  .uic--tooltip-input-confirm {
+    margin-left: 1.5rem;
+  }
+}
