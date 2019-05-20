@@ -47,14 +47,15 @@ export const validateChildren = (children, startValidated = false) => {
           }
         }
       } else if (
-        (child.props.pattern &&
+        !child.props.disabled &&
+        ((child.props.pattern &&
           !new RegExp(child.props.pattern).test(child.props.value)) ||
-        (child.props.min && child.props.value < child.props.min) ||
-        (child.props.max && child.props.value > child.props.max) ||
-        (child.props.maxLength &&
-          child.props.value &&
-          child.props.value.length > child.props.maxLength) ||
-        (child.props.isValid && !child.props.isValid())
+          (child.props.min && child.props.value < child.props.min) ||
+          (child.props.max && child.props.value > child.props.max) ||
+          (child.props.maxLength &&
+            child.props.value &&
+            child.props.value.length > child.props.maxLength) ||
+          (child.props.isValid && !child.props.isValid()))
       ) {
         isChildValid = false;
       } else {
