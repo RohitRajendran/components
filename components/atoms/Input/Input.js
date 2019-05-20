@@ -184,13 +184,17 @@ export const maskEnum = {
   Date: {
     mask: dateMask,
     placeholder: 'MM/DD/YYYY',
-    isValid: (val) => val.length === 10,
+    isValid: (val) => {
+      return val ? val.length === 10 : true;
+    },
     validationErrorMsg: 'Invalid date value',
   },
   Month: {
     mask: monthMask,
     placeholder: 'MM/YYYY',
-    isValid: (val) => val.length === 7,
+    isValid: (val) => {
+      return val ? val.length === 7 : true;
+    },
     validationErrorMsg: 'Invalid date value',
   },
   Zip: {mask: zipMask},

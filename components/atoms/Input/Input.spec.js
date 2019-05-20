@@ -238,6 +238,7 @@ test('Input - commaSeparatedMask', (t) => {
 });
 
 test('Input - Date Mask isValid', (t) => {
+  t.true(maskEnum['Date'].isValid(), 'Is valid');
   t.true(maskEnum['Date'].isValid('10/12/2019'), 'Is valid');
   t.false(maskEnum['Date'].isValid('10/2019'), 'Is not valid');
 
@@ -245,6 +246,7 @@ test('Input - Date Mask isValid', (t) => {
 });
 
 test('Input - Month Mask isValid', (t) => {
+  t.true(maskEnum['Month'].isValid(), 'Is valid');
   t.true(maskEnum['Month'].isValid('10/2019'), 'Is valid');
   t.false(maskEnum['Month'].isValid('10/12/2019'), 'Is not valid');
 
