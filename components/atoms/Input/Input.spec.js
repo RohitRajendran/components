@@ -5,6 +5,7 @@ import Input, {
   getDeepestInputElement,
   commaSeparatedMask,
   tickerMask,
+  maskEnum,
 } from './Input';
 import {spy} from 'sinon';
 
@@ -40,17 +41,24 @@ test('Input - Renders props as attributes on the input', (t) => {
 });
 
 test('Input - Renders a masked input if mask is provided', (t) => {
-  const component = shallow(
+  const component = mount(
     <Input
       name="fancy_input"
       label="Amount"
       type="text"
       value="05/01/1980"
-      placeholder="some placeholder"
       mask="Date"
     />
   );
 
+  t.equals(
+    component
+      .find('input')
+      .first()
+      .prop('placeholder'),
+    'MM/DD/YYYY',
+    'Uses default mask placeholder'
+  );
   t.equals(component.find('t').length, 1, 'should render MaskedInput');
   t.end();
 });
@@ -226,5 +234,19 @@ test('Input - commaSeparatedMask', (t) => {
     ],
     'Mask should return the correct pattern.'
   );
+  t.end();
+});
+
+test('Input - Date Mask isValid', (t) => {
+  t.true(maskEnum['Date'].isValid('10/12/2019'), 'Is valid');
+  t.false(maskEnum['Date'].isValid('10/2019'), 'Is not valid');
+
+  t.end();
+});
+
+test('Input - Month Mask isValid', (t) => {
+  t.true(maskEnum['Month'].isValid('10/2019'), 'Is valid');
+  t.false(maskEnum['Month'].isValid('10/12/2019'), 'Is not valid');
+
   t.end();
 });

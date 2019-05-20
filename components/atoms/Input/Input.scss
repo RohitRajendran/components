@@ -91,7 +91,7 @@
       position: absolute;
       top: 2.7rem;
       left: 1.3rem;
-      z-index: 9999;
+      z-index: 1000;
       color: $dark-blue;
       font-size: 2rem;
     }
@@ -121,6 +121,7 @@
   .uic--description {
     color: $slate;
     font-style: italic;
+    white-space: initial;
   }
 
   .uic--validation-error,

@@ -178,21 +178,33 @@ export const getDeepestInputElement = (startObject) => {
 
 /** @constant {Object} - Maps prop names prop mask types. */
 export const maskEnum = {
-  ApexAccount: apexAccount,
-  PhoneNumber: phoneNumberMask,
-  SsnNumber: ssnNumberMask,
-  Date: dateMask,
-  Month: monthMask,
-  Zip: zipMask,
-  Ticker: tickerMask,
-  CommaSeparated: commaSeparatedMask,
-  Currency: currencyMask,
-  CurrencyDecimal: currencyDecimalMask,
-  CurrencyAllowNegative: currencyMaskAllowNegative,
-  Number: numberMask,
-  PercentageWithDecimal: percentageWithDecimalMask,
-  PercentageWithDecimalAllowNegative: percentageWithDecimalMaskAllowNegative,
-  SmallPercentageWithDecimal: smallPercentageWithDecimalMask,
+  ApexAccount: {mask: apexAccount},
+  PhoneNumber: {mask: phoneNumberMask},
+  SsnNumber: {mask: ssnNumberMask},
+  Date: {
+    mask: dateMask,
+    placeholder: 'MM/DD/YYYY',
+    isValid: (val) => val.length === 10,
+    validationErrorMsg: 'Invalid date value',
+  },
+  Month: {
+    mask: monthMask,
+    placeholder: 'MM/YYYY',
+    isValid: (val) => val.length === 7,
+    validationErrorMsg: 'Invalid date value',
+  },
+  Zip: {mask: zipMask},
+  Ticker: {mask: tickerMask},
+  CommaSeparated: {mask: commaSeparatedMask},
+  Currency: {mask: currencyMask},
+  CurrencyDecimal: {mask: currencyDecimalMask},
+  CurrencyAllowNegative: {mask: currencyMaskAllowNegative},
+  Number: {mask: numberMask},
+  PercentageWithDecimal: {mask: percentageWithDecimalMask},
+  PercentageWithDecimalAllowNegative: {
+    mask: percentageWithDecimalMaskAllowNegative,
+  },
+  SmallPercentageWithDecimal: {mask: smallPercentageWithDecimalMask},
 };
 
 /** @constant {Array} - Masks that should have '%' appended to it */
@@ -241,7 +253,16 @@ class Input extends Component {
     const isActive = deepest === document.activeElement;
     const isEmpty =
       this.props.value === '' || typeof this.props.value === 'undefined';
-    return isValid(this.props.value) || (hideValidity() && isActive) || isEmpty;
+    const maskValidation =
+      this.props.mask && maskEnum[this.props.mask].isValid
+        ? maskEnum[this.props.mask].isValid(this.props.value)
+        : true;
+
+    return (
+      (isValid(this.props.value) && maskValidation) ||
+      (hideValidity() && isActive) ||
+      isEmpty
+    );
   }
 
   /** @inheritdoc */
@@ -276,7 +297,10 @@ class Input extends Component {
     const attrs = {
       type,
       name,
-      placeholder,
+      placeholder:
+        placeholder ||
+        (this.props.mask && maskEnum[this.props.mask].placeholder) ||
+        null,
       value,
       required,
       maxLength,
@@ -306,7 +330,7 @@ class Input extends Component {
     }
 
     if (this.props.mask) {
-      const mask = maskEnum[this.props.mask] || null;
+      const mask = (this.props.mask && maskEnum[this.props.mask].mask) || null;
 
       if (mask.type === MaskTypes.currency && !onChange) {
         throw new Error(
@@ -327,7 +351,7 @@ class Input extends Component {
       };
     }
     if (onChange) {
-      const mask = maskEnum[this.props.mask];
+      const mask = this.props.mask && maskEnum[this.props.mask].mask;
 
       attrs.onChange = (e) =>
         onChange(
@@ -389,15 +413,14 @@ class Input extends Component {
           {...attrs}
         />
         <label className="uic--position-absolute">{label}</label>
-        {description && (!showInvalidity || !error) ? (
+        {description && !(showInvalidity || error) ? (
           <div className="uic--description">{description}</div>
-        ) : description && (showInvalidity || error) ? (
-          <div className="uic--validation-error">
-            {validationErrorMsg || 'Invalid'}
-          </div>
         ) : (
           <div className="uic--validation-error">
-            {validationErrorMsg || 'Invalid'}
+            {validationErrorMsg ||
+              (this.props.mask &&
+                maskEnum[this.props.mask].validationErrorMsg) ||
+              'Invalid'}
           </div>
         )}
       </div>

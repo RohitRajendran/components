@@ -30,10 +30,10 @@ export const validateChildren = (children, startValidated = false) => {
           hasIncompleteRequiredFields = false;
           if (child.props.mask && child.props.isValid) {
             isChildValid =
-              maskEnum[child.props.mask].regex.test(child.props.value) &&
+              maskEnum[child.props.mask].mask.regex.test(child.props.value) &&
               child.props.isValid();
           } else if (child.props.mask) {
-            isChildValid = maskEnum[child.props.mask].regex.test(
+            isChildValid = maskEnum[child.props.mask].mask.regex.test(
               child.props.value
             );
           } else if (child.props.isValid) {
