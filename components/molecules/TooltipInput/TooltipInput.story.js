@@ -21,7 +21,7 @@ stories.addDecorator(withReadme(TooltipReadMe));
 
 const defaultProps = () => ({
   label: text('label', 'Montezuma is the king of all cats.'),
-  lightLabel: boolean('light', true),
+  lightLabel: boolean('lightLabel', true),
   placement: select('placement', ['top', 'bottom', 'left', 'right'], 'bottom'),
   onConfirm: () => true,
   confirmLabel: text('confirmLabel', 'Confirm'),

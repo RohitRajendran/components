@@ -186,7 +186,7 @@ TooltipInput.propTypes = {
   /** Determines the placement of the Tooltip. */
   placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom']),
   /** Changes the label color scheme to light. */
-  light: PropTypes.bool,
+  lightLabel: PropTypes.bool,
   /** Determines the label (button) variant. */
   labelVariant: PropTypes.oneOf([
     'primary',
@@ -286,7 +286,7 @@ TooltipInput.propTypes = {
 TooltipInput.defaultProps = {
   confirmLabel: 'Confirm',
   cancelLabel: 'Cancel',
-  light: true,
+  lightLabel: true,
   clearStateOnConfirm: true,
 };
 
