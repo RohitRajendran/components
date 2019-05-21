@@ -185,7 +185,11 @@ class McGonagall extends React.Component {
     // Get the side-effect actions to execute
     newState.actions.forEach((action) => {
       // If the action is executable, execute it
-      action.exec && action.exec(this.state.currXState.context, payload);
+      action.exec &&
+        action.exec(this.state.currXState.context, {
+          ...payload,
+          ...updatedPayloadValues,
+        });
     });
 
     // If editing a previous step and not clearing future, it should just return to latest
