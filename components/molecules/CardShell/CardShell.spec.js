@@ -287,7 +287,7 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         mask="Date"
         label="test"
-        isValid={() => values.date !== 'nope'}
+        isValid={(val) => val !== 'nope'}
         required
       />,
       // 6
