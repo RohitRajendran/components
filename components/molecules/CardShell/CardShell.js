@@ -31,13 +31,13 @@ export const validateChildren = (children, startValidated = false) => {
           if (child.props.mask && child.props.isValid) {
             isChildValid =
               maskEnum[child.props.mask].mask.regex.test(child.props.value) &&
-              child.props.isValid();
+              child.props.isValid(child.props.value);
           } else if (child.props.mask) {
             isChildValid = maskEnum[child.props.mask].mask.regex.test(
               child.props.value
             );
           } else if (child.props.isValid) {
-            isChildValid = child.props.isValid();
+            isChildValid = child.props.isValid(child.props.value);
           } else if (Array.isArray(child.props.value)) {
             isChildValid = Boolean(child.props.value.length > 0);
           } else if (typeof child.props.value === 'boolean') {
@@ -55,7 +55,7 @@ export const validateChildren = (children, startValidated = false) => {
           (child.props.maxLength &&
             child.props.value &&
             child.props.value.length > child.props.maxLength) ||
-          (child.props.isValid && !child.props.isValid()))
+          (child.props.isValid && !child.props.isValid(child.props.value)))
       ) {
         isChildValid = false;
       } else {
