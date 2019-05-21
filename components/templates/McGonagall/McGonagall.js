@@ -153,14 +153,14 @@ class McGonagall extends React.Component {
     if (outputDefaults) {
       updatedPayloadValues = Object.keys(payload).reduce((accum, key) => {
         const outputHasNoValue = !payload[key] || payload.key === '';
-        const hasDefaultValue = Boolean(outputDefaults[key]);
+        const hasDefaultValue = Boolean(accum[key]);
 
-        if (outputHasNoValue && hasDefaultValue) {
-          accum[key] = outputDefaults[key];
+        if (!(outputHasNoValue && hasDefaultValue)) {
+          delete accum[key];
         }
 
         return accum;
-      }, {});
+      }, outputDefaults);
     }
 
     if (clearFuture) {

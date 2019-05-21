@@ -62,7 +62,7 @@ RadioButtonCard.propTypes = {
     /** Renders the radio button group in a table. */
     table: PropTypes.bool,
     /** The current selected option in the radio button group. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     /** An array of objects containing options that should be rendered. */
     options: PropTypes.arrayOf(
       PropTypes.shape({

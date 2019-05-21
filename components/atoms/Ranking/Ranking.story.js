@@ -80,6 +80,7 @@ stories
   .addDecorator(StateDecorator(store));
 
 const defaultProps = (formName) => ({
+  name: 'ranking',
   items: store.get(formName),
   onChange: (name, value) => store.set({[name]: value}),
 });

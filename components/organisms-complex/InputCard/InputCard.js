@@ -82,7 +82,7 @@ InputCard.propTypes = {
     /** The placeholder text of the input field. This is displayed if there's no value. */
     placeholder: PropTypes.string,
     /** The current value of the input field.  */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
     pattern: PropTypes.string,
     /** The max length of the input field value. */

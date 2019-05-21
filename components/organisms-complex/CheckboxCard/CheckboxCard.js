@@ -50,7 +50,7 @@ const CheckboxCard = ({
         />
       }
     >
-      <Checkboxes {...config} onChange={onChange} required />
+      <Checkboxes {...config} onChange={onChange} />
     </QuestionCard>
   );
 };
@@ -65,7 +65,7 @@ CheckboxCard.propTypes = {
     /** Renders the checkbox group in a table. */
     table: PropTypes.bool,
     /** The current selected option in the checkbox group. */
-    value: PropTypes.array.isRequired,
+    value: PropTypes.array,
     /** An array of objects containing options that should be rendered. These options are explained below. */
     options: PropTypes.arrayOf(
       PropTypes.shape({

@@ -233,7 +233,7 @@ class Input extends Component {
 
     this.state = {
       isActive: false,
-      value: props.value,
+      value: props.value || '',
     };
 
     this.toggleFocus = this.toggleFocus.bind(this);
@@ -506,6 +506,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
+  value: '',
 };
 
 export default Input;

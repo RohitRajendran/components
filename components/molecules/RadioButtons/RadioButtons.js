@@ -127,7 +127,7 @@ RadioButtons.propTypes = {
   /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,
   /** The current selected option in the radio button group. */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Change handler which takes in the `name` of the input and the `value` of the option which is currently selected. */
   onChange: PropTypes.func,
 };
