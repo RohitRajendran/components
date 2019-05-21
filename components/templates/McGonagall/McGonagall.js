@@ -99,6 +99,7 @@ class McGonagall extends React.Component {
     const newCardHistory = cardHistory;
     let latest = this.stateMachine.transition(currXState.value, {
       type: 'NEXT',
+      navigatingToLatestCard: true,
       ...currXState.context,
     });
     let finalReached = false;
@@ -113,6 +114,7 @@ class McGonagall extends React.Component {
 
       const next = this.stateMachine.transition(latest.value, {
         type: 'NEXT',
+        navigatingToLatestCard: true,
         ...currXState.context,
       });
 
