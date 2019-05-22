@@ -11,9 +11,9 @@ The following functions are available.
 Formats a number into a currency string.
 
 ```javascript
-import {formatCurrency} from '@unitedincome/components';
+import {FormatUtils} from '@unitedincome/components';
 
-formatCurrency(2000);
+FormatUtils.formatCurrency(2000);
 
 // $2,000.00
 ```
@@ -23,9 +23,9 @@ formatCurrency(2000);
 Formats a number into a currency string with no decimal points.
 
 ```javascript
-import {formatCurrencyNoDecimal} from '@unitedincome/components';
+import {FormatUtils} from '@unitedincome/components';
 
-formatCurrencyNoDecimal(2000);
+FormatUtils.formatCurrencyNoDecimal(2000);
 
 // $2,000
 ```

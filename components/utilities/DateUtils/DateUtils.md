@@ -11,9 +11,9 @@ The following functions are available.
 Determines if the provided month/year comes after the current month/year.
 
 ```javascript
-import {isAfterMonth} from '@unitedincome/components';
+import {DateUtils} from '@unitedincome/components';
 
-isAfterMonth('12/2020');
+DateUtils.isAfterMonth('12/2020');
 
 // true/false
 ```
@@ -23,9 +23,9 @@ isAfterMonth('12/2020');
 Determines if the provided month/year comes before the current month/year.
 
 ```javascript
-import {isBeforeMonth} from '@unitedincome/components';
+import {DateUtils} from '@unitedincome/components';
 
-isBeforeMonth('12/2020');
+DateUtils.isBeforeMonth('12/2020');
 
 // true/false
 ```
@@ -35,9 +35,21 @@ isBeforeMonth('12/2020');
 Determines if the provided month/year is the same as or before the current month/year.
 
 ```javascript
-import {isSameOrBeforeMonth} from '@unitedincome/components';
+import {DateUtils} from '@unitedincome/components';
 
-isSameOrBeforeMonth('12/2020');
+DateUtils.isSameOrBeforeMonth('12/2020');
+
+// true/false
+```
+
+### isSameOrAfterMonth
+
+Determines if the provided month/year is the same as or after the current month/year.
+
+```javascript
+import {DateUtils} from '@unitedincome/components';
+
+DateUtils.isSameOrAfterMonth('12/2020');
 
 // true/false
 ```
