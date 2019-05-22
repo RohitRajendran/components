@@ -24,6 +24,7 @@ class TooltipInput extends PureComponent {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleConfirmClick = this.handleConfirmClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.clearInputState = this.clearInputState.bind(this);
   }
@@ -51,6 +52,20 @@ class TooltipInput extends PureComponent {
 
       this.tooltip.current.tooltipRef = null;
       ReactTooltip.hide();
+    }
+  }
+
+  /** Handles the key press event.
+   * @param {object} event - The key press event object.
+   * @returns {undefined}
+   */
+  handleKeyPress(event) {
+    if (event.which === 13 || event.keyCode === 13) {
+      this.handleConfirmClick();
+      return false;
+    } else {
+      // Prevents event bubbling if included within a form.
+      return true;
     }
   }
 
@@ -143,6 +158,7 @@ class TooltipInput extends PureComponent {
             {...config}
             name="tooltipInput"
             onChange={this.handleInputChange}
+            onKeyPress={fieldIsValid ? this.handleKeyPress : null}
             value={this.state.tooltipInput}
           />
 

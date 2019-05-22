@@ -286,6 +286,7 @@ class Input extends Component {
       pattern,
       maxLength,
       onChange,
+      onKeyPress,
       min,
       max,
       step,
@@ -312,9 +313,10 @@ class Input extends Component {
       step,
       disabled,
       pattern,
+      onKeyPress,
     };
 
-    const showInvalidity = !this.isValid();
+    const showInvalidity = !disabled ? !this.isValid() : false;
 
     let InputType = 'input';
     let prependCharacter = prepend;
@@ -473,6 +475,8 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf(Object.keys(maskEnum)),
+  /** Handle which is run whenever a user makes a key press within the input. */
+  onKeyPress: PropTypes.func,
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
   onChange: PropTypes.func,
   /** The minimum number value. Only applicable if the type is set to number. */

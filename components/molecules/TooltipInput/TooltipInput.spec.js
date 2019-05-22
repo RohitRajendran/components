@@ -95,6 +95,39 @@ test('TooltipInput - handleRemoveClick', (t) => {
   t.end();
 });
 
+test('TooltipInput - handleKeyPress', (t) => {
+  const props = {
+    onConfirm: stub(),
+    onRemove: stub(),
+    label: 'Hello',
+    config: {
+      name: 'Hello',
+      value: '123',
+      label: 'Input name',
+      onChange: () => true,
+    },
+  };
+  const component = mount(<TooltipInput {...props} />);
+
+  t.equals(
+    component.instance().handleKeyPress({
+      keyCode: 13,
+    }),
+    false,
+    'Should return false.'
+  );
+
+  t.equals(
+    component.instance().handleKeyPress({
+      keyCode: 50,
+    }),
+    true,
+    'Should return true.'
+  );
+
+  t.end();
+});
+
 test('TooltipInput - handleInputChange', (t) => {
   const props = {
     onConfirm: stub(),
