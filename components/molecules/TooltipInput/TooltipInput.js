@@ -57,7 +57,7 @@ class TooltipInput extends PureComponent {
 
   /** Handles the key press event.
    * @param {object} event - The key press event object.
-   * @returns {undefined}
+   * @returns {boolean} - Returns false if the event was successful.
    */
   handleKeyPress(event) {
     if (event.which === 13 || event.keyCode === 13) {
