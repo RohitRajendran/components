@@ -166,6 +166,12 @@ module.exports = {
       amd: 'ReactTooltip',
       root: 'ReactTooltip',
     },
+    'moment': {
+      commonjs: 'moment',
+      commonjs2: 'moment',
+      amd: 'Moment',
+      root: 'Moment',
+    },
   },
   optimization: {
     minimizer: [],

@@ -233,7 +233,6 @@ class Input extends Component {
 
     this.state = {
       isActive: false,
-      value: props.value || '',
     };
 
     this.toggleFocus = this.toggleFocus.bind(this);

@@ -56,11 +56,13 @@ import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
 import McGonagall from '~components/templates/McGonagall/McGonagall';
 
 // Utilities
+import * as DateUtils from '~components/utilities/DateUtils/DateUtils';
 import * as FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  DateUtils,
   TooltipInput,
   Tooltip,
   FormatUtils,
