@@ -29,3 +29,15 @@ isBeforeMonth('12/2020');
 
 // true/false
 ```
+
+### isSameOrBeforeMonth
+
+Determines if the provided month/year is the same as or before the current month/year.
+
+```javascript
+import {isSameOrBeforeMonth} from '@unitedincome/components';
+
+isSameOrBeforeMonth('12/2020');
+
+// true/false
+```
