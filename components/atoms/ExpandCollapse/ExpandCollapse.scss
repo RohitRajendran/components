@@ -10,6 +10,12 @@
     }
   }
 
+  &.uic--ec-uncollapsible {
+    .uic--ec-label {
+      cursor: initial;
+    }
+  }
+
   .uic--ec-label {
     @include source-sans-pro(1.6rem);
     font-weight: 600;

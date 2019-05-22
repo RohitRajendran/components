@@ -43,11 +43,25 @@ const RadioButtons = ({
           const labelWrapper =
             'uic--w-100 uic--d-flex uic--align-items-center uic--flex-direction-row uic--flex-wrap';
 
+          const radioButtonClasses = classNames({
+            'uic--mcgonagall-radio-button': true,
+            'uic--d-flex': true,
+            'uic--justify-content-between': true,
+            'uic--mcgonagall-radio-button-followup':
+              option.followup && option.value === value,
+          });
+
+          let optionValue = option.value;
+          if (typeof option.value === 'boolean') {
+            optionValue = option.value.toString().toLowerCase();
+
+            if (!onChange) {
+              throw new Error('Boolean values require an onChange handler');
+            }
+          }
+
           return (
-            <div
-              className="uic--mcgonagall-radio-button uic--d-flex uic--justify-content-between"
-              key={option.value}
-            >
+            <div className={radioButtonClasses} key={option.value}>
               <label className={labelClasses}>
                 <span className={labelWrapper}>
                   <input
@@ -55,7 +69,7 @@ const RadioButtons = ({
                     className="uic--radio-input uic--position-absolute"
                     type="radio"
                     disabled={disabled || option.disabled}
-                    value={option.value}
+                    value={optionValue}
                     checked={option.value === value}
                     onChange={() => onChange && onChange(name, option.value)}
                   />
@@ -99,7 +113,7 @@ RadioButtons.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       /** The value of the radio button, for example `yes` or `no`. */
-      value: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
       /** The text that should appear next to the radio button. */
       label: PropTypes.string.isRequired,
       /** Renders a followup input or message if the radio button is selected. */
@@ -113,7 +127,7 @@ RadioButtons.propTypes = {
   /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,
   /** The current selected option in the radio button group. */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Change handler which takes in the `name` of the input and the `value` of the option which is currently selected. */
   onChange: PropTypes.func,
 };

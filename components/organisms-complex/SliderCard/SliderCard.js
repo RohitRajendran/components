@@ -55,7 +55,7 @@ SliderCard.propTypes = {
     /** A string representing the name of the select button group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
     /** The current selected option in the select button group. */
-    value: PropTypes.number.isRequired,
+    value: PropTypes.string,
     /** Data to display inside of the tooltip. */
     tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text to display to the left of the slider. */
@@ -116,6 +116,8 @@ SliderCard.propTypes = {
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,

@@ -34,6 +34,10 @@ $button-padding: 1.6rem;
 
   &:not(:last-child) {
     margin-bottom: 2.8rem;
+
+    &.uic--mcgonagall-checkbox-button-followup {
+      margin-bottom: 1rem;
+    }
   }
 
   .uic--checkbox-input {

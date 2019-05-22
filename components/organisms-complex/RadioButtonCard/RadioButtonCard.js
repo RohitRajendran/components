@@ -24,8 +24,9 @@ const getSelectedAnswerLabel = (options, currValue) => {
  */
 const RadioButtonCard = ({
   answers,
-  editCard,
   config,
+  editCard,
+  onChange,
   shortTitle,
   title,
   ...props
@@ -46,7 +47,7 @@ const RadioButtonCard = ({
         />
       }
     >
-      <RadioButtons {...config} required />
+      <RadioButtons {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
@@ -61,12 +62,13 @@ RadioButtonCard.propTypes = {
     /** Renders the radio button group in a table. */
     table: PropTypes.bool,
     /** The current selected option in the radio button group. */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     /** An array of objects containing options that should be rendered. */
     options: PropTypes.arrayOf(
       PropTypes.shape({
         /** The value of the button. */
-        value: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+          .isRequired,
         /** The label of the button. */
         label: PropTypes.string.isRequired,
         /** Optional followup input JSX. */
@@ -127,6 +129,8 @@ RadioButtonCard.propTypes = {
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,

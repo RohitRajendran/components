@@ -15,7 +15,7 @@ class ExpandCollapse extends Component {
     super(props);
 
     this.state = {
-      open: props.defaultOpen,
+      open: props.defaultOpen || !props.collapsible,
       height: 0,
       isValid: true,
       isRequired: false,
@@ -37,7 +37,9 @@ class ExpandCollapse extends Component {
       });
     }
 
-    this.checkValidation();
+    if (this.props.collapsible) {
+      this.checkValidation();
+    }
   }
 
   /** @inheritdoc */
@@ -53,7 +55,9 @@ class ExpandCollapse extends Component {
       });
     }
 
-    this.checkValidation();
+    if (this.props.collapsible) {
+      this.checkValidation();
+    }
   }
 
   /** Checks the validation state of the component.
@@ -94,13 +98,14 @@ class ExpandCollapse extends Component {
   /** @inheritdoc */
   render() {
     const {
-      label,
-      description,
       aside,
-      disabled,
       children,
       className,
+      collapsible,
+      description,
+      disabled,
       isInvalid,
+      label,
     } = this.props;
 
     const {isValid, isRequired} = this.state;
@@ -109,6 +114,7 @@ class ExpandCollapse extends Component {
       {
         'uic--ec': true,
         'uic--ec-disabled': disabled,
+        'uic--ec-uncollapsible': !collapsible,
         'uic--position-relative': true,
       },
       className
@@ -119,6 +125,8 @@ class ExpandCollapse extends Component {
       'uic--ec-content-container-closed': !this.state.open,
     });
 
+    const toggleable = !disabled && collapsible;
+
     // Toggles the icon component based on validity.
     const IconComponent =
       !isInvalid && isValid ? ExpandyCircleIcon : ErrorFlagIcon;
@@ -128,12 +136,12 @@ class ExpandCollapse extends Component {
         <div className="uic--d-flex uic--align-items-center">
           <div
             className="uic--ec-label uic--w-100"
-            onClick={!disabled && this.openExpandItem}
-            onKeyPress={!disabled && this.openExpandItem}
+            onClick={(toggleable && this.openExpandItem) || null}
+            onKeyPress={(toggleable && this.openExpandItem) || null}
             role="button"
             tabIndex={!disabled ? '0' : ''}
           >
-            {!disabled && (
+            {toggleable && (
               <div className="uic--ec-controls-wrapper uic--position-absolute">
                 <IconComponent
                   className="uic--ec-controls"
@@ -197,11 +205,14 @@ ExpandCollapse.propTypes = {
   isInvalid: PropTypes.bool,
   /** Defaults the state to expanded. */
   defaultOpen: PropTypes.bool,
+  /** Toggles the ability to collapse the component */
+  collapsible: PropTypes.bool,
 };
 
 ExpandCollapse.defaultProps = {
   isInvalid: false,
   defaultOpen: false,
+  collapsible: true,
 };
 
 export default ExpandCollapse;

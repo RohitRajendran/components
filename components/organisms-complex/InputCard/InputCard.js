@@ -82,7 +82,7 @@ InputCard.propTypes = {
     /** The placeholder text of the input field. This is displayed if there's no value. */
     placeholder: PropTypes.string,
     /** The current value of the input field.  */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
     pattern: PropTypes.string,
     /** The max length of the input field value. */
@@ -172,6 +172,8 @@ InputCard.propTypes = {
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,

@@ -126,7 +126,7 @@ Slider.propTypes = {
   /** Passes back the current value and the name of the slider on change. */
   onChange: PropTypes.func.isRequired,
   /** The current value of the slider. */
-  value: PropTypes.number,
+  value: PropTypes.string,
   /** Data to display inside of the tooltip. */
   tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Text to display to the left of the slider. */

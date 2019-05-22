@@ -24,34 +24,38 @@ export const validateChildren = (children, startValidated = false) => {
         hasIncompleteRequiredFields = true;
         if (
           (child.props.value && child.props.value.length > 0) ||
+          typeof child.props.value === 'boolean' ||
           !startValidated
         ) {
           hasIncompleteRequiredFields = false;
           if (child.props.mask && child.props.isValid) {
             isChildValid =
-              maskEnum[child.props.mask].regex.test(child.props.value) &&
-              child.props.isValid();
+              maskEnum[child.props.mask].mask.regex.test(child.props.value) &&
+              child.props.isValid(child.props.value);
           } else if (child.props.mask) {
-            isChildValid = maskEnum[child.props.mask].regex.test(
+            isChildValid = maskEnum[child.props.mask].mask.regex.test(
               child.props.value
             );
           } else if (child.props.isValid) {
-            isChildValid = child.props.isValid();
+            isChildValid = child.props.isValid(child.props.value);
           } else if (Array.isArray(child.props.value)) {
             isChildValid = Boolean(child.props.value.length > 0);
+          } else if (typeof child.props.value === 'boolean') {
+            isChildValid = true;
           } else {
             isChildValid = Boolean(child.props.value);
           }
         }
       } else if (
-        (child.props.pattern &&
+        !child.props.disabled &&
+        ((child.props.pattern &&
           !new RegExp(child.props.pattern).test(child.props.value)) ||
-        (child.props.min && child.props.value < child.props.min) ||
-        (child.props.max && child.props.value > child.props.max) ||
-        (child.props.maxLength &&
-          child.props.value &&
-          child.props.value.length > child.props.maxLength) ||
-        (child.props.isValid && !child.props.isValid())
+          (child.props.min && child.props.value < child.props.min) ||
+          (child.props.max && child.props.value > child.props.max) ||
+          (child.props.maxLength &&
+            child.props.value &&
+            child.props.value.length > child.props.maxLength) ||
+          (child.props.isValid && !child.props.isValid(child.props.value)))
       ) {
         isChildValid = false;
       } else {
@@ -130,7 +134,8 @@ class CardShell extends Component {
       isInvalid: !validateChildren(props.children).isChildValid,
       height: props.animate ? 0 : 'auto',
       animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
-      hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations
+      hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations,
+      isSubmitting: false,
     };
   }
 
@@ -160,9 +165,16 @@ class CardShell extends Component {
    * @param {object} e event
    * @returns {undefined}
    */
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(e);
+    this.setState({isSubmitting: true});
+
+    await this.props.onSubmit(
+      e, // Gets passed through because of Hogwarts
+      this.props.outputDefaults
+    );
+
+    this.setState({isSubmitting: false});
   }
 
   /**
@@ -213,7 +225,13 @@ class CardShell extends Component {
       summary,
       stepIndex,
     } = this.props;
-    const {animationEnded, hasAnimationRun, height, isInvalid} = this.state;
+    const {
+      animationEnded,
+      hasAnimationRun,
+      height,
+      isInvalid,
+      isSubmitting,
+    } = this.state;
 
     const cardClass = classNames(
       {
@@ -282,7 +300,7 @@ class CardShell extends Component {
                         <Button
                           className="uic--card-submit"
                           disabled={isInvalid || disabled}
-                          isLoading={loading}
+                          isLoading={loading || isSubmitting}
                           light
                           type="submit"
                           variant="secondary"
@@ -338,6 +356,8 @@ CardShell.propTypes = {
   onChange: PropTypes.func,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** The summary view that should display when the card is collapsed. */
   summary: PropTypes.node,
   /** The index of this card in the flow, used for animation purposes */

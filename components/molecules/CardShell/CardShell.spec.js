@@ -220,6 +220,7 @@ test('CardShell - validates different input constraints', (t) => {
     selectedNormal: [],
     selectedFollowup: [],
     slider: null,
+    radioBool: '',
   };
   const goodValues = {
     textValue: 'abcdef',
@@ -236,9 +237,10 @@ test('CardShell - validates different input constraints', (t) => {
     selectedNormal: ['2'],
     selectedFollowup: ['3'],
     slider: 5,
+    radioBool: true,
   };
 
-  const numInputs = 12;
+  const numInputs = 14;
 
   const getInput = (values, index) => {
     const inputs = [
@@ -285,7 +287,7 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         mask="Date"
         label="test"
-        isValid={() => values.date !== 'nope'}
+        isValid={(val) => val !== 'nope'}
         required
       />,
       // 6
@@ -343,7 +345,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
-      // 8
+      // 9
       <RadioButtons
         name="bank"
         table
@@ -389,7 +391,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
-      // 9
+      // 10
       <Checkboxes
         name="bank"
         table
@@ -420,7 +422,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
-      // 10
+      // 11
       <Checkboxes
         name="bank"
         table
@@ -466,7 +468,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="bank"
         required
       />,
-      // 11
+      // 12
       <Slider
         name="slider"
         value={values.slider}
@@ -474,7 +476,7 @@ test('CardShell - validates different input constraints', (t) => {
         key="slider"
         required
       />,
-      // 12
+      // 13
       <DropDown
         name="dropdownExample"
         label="dropdown"
@@ -492,6 +494,24 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         required
         key="dropdown"
+      />,
+      // 14
+      <RadioButtons
+        name="radioBool"
+        options={[
+          {
+            label: 'Yes',
+            value: true,
+          },
+          {
+            label: 'No',
+            value: false,
+          },
+        ]}
+        onChange={stub()}
+        value={values.radioBool}
+        key="bank"
+        required
       />,
     ];
     return inputs[index];

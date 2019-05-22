@@ -132,7 +132,7 @@ $transition-duration: 0.25s;
 
   // Dropdown Indicators
   .uic--mcgonagall-dropdown__indicator {
-    padding: 0 6px;
+    padding: 0 0.6rem;
   }
 
   .uic--mcgonagall-dropdown__indicators {
@@ -155,7 +155,7 @@ $transition-duration: 0.25s;
     @include source-sans-pro(2rem);
     border-radius: 0;
     padding: 2.3rem 1.2rem 1rem 1rem;
-    max-height: 63px;
+    max-height: 6.3rem;
     font-style: normal;
     border-color: $white-seven;
     z-index: 999;
@@ -193,7 +193,7 @@ $transition-duration: 0.25s;
   }
 
   .uic--mcgonagall-dropdown__indicator {
-    padding: 0 8px;
+    padding: 0 0.8rem;
   }
 
   .uic--mcgonagall-dropdown__menu {
@@ -204,7 +204,7 @@ $transition-duration: 0.25s;
     z-index: 99999;
 
     .uic--mcgonagall-dropdown__menu-list {
-      max-height: 200px;
+      max-height: 20rem;
       background-color: $white-four;
       border: 1px solid $white-four;
       overflow-y: scroll;
@@ -214,7 +214,7 @@ $transition-duration: 0.25s;
         color: $slate;
         cursor: pointer;
         display: block;
-        padding: 8px 10px;
+        padding: 0.8rem 1rem;
 
         &.uic--mcgonagall-dropdown__option--is-focused {
           background-color: $white-three;

@@ -1,6 +1,8 @@
 .uic--mcg-completion-screen {
   height: calc(100vh - 10rem); // Account for nav
   padding: 0 1.5rem;
+  max-width: 850px;
+  margin: 0 auto;
 
   h2 {
     @include cormorant(4rem);

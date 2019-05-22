@@ -50,7 +50,7 @@ const CheckboxCard = ({
         />
       }
     >
-      <Checkboxes {...config} onChange={onChange} required />
+      <Checkboxes {...config} onChange={onChange} />
     </QuestionCard>
   );
 };
@@ -65,7 +65,7 @@ CheckboxCard.propTypes = {
     /** Renders the checkbox group in a table. */
     table: PropTypes.bool,
     /** The current selected option in the checkbox group. */
-    value: PropTypes.array.isRequired,
+    value: PropTypes.array,
     /** An array of objects containing options that should be rendered. These options are explained below. */
     options: PropTypes.arrayOf(
       PropTypes.shape({
@@ -131,6 +131,8 @@ CheckboxCard.propTypes = {
   onChange: PropTypes.func.isRequired,
   /** The handler to fire when the Submit button is clicked. */
   onSubmit: PropTypes.func.isRequired,
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults: PropTypes.shape({}),
   /** Shorter title to be used with the card summary. */
   shortTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     .isRequired,

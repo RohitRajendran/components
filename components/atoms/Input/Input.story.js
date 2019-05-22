@@ -131,12 +131,9 @@ stories.add('date', () => (
     {...defaultProps({
       formName: 'date',
       label: 'Date',
-      placeholder: 'MM/DD/YYYY',
       mask: 'Date',
-      validationErrorMsg: 'Not a valid date range',
       validateOnBlur: true,
     })}
-    isValid={() => store.get('date').length === 10}
   />
 ));
 

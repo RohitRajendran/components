@@ -9,9 +9,9 @@ import {number, text, select} from '@storybook/addon-knobs';
 const stories = storiesOf('Atoms/Slider', module);
 
 const store = new Store({
-  slider1: 5,
-  slider2: 5,
-  slider3: 5,
+  slider1: '5',
+  slider2: '5',
+  slider3: '5',
 });
 
 stories

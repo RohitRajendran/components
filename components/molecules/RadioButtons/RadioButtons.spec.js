@@ -44,6 +44,77 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
   );
 });
 
+test('RadioButtons - Should be able to render a basic question (with boolean values).', (t) => {
+  t.plan(2);
+
+  const component = mount(
+    <RadioButtons
+      name="yesNo"
+      options={[
+        {
+          label: 'Yes',
+          value: true,
+        },
+        {
+          label: 'No',
+          value: false,
+        },
+      ]}
+      value={true}
+      onChange={stub()}
+    />
+  );
+
+  t.equals(
+    component
+      .find('.uic--label-value')
+      .at(0)
+      .text(),
+    'Yes',
+    'Should find the yes label.'
+  );
+
+  t.equals(
+    component
+      .find('.uic--label-value')
+      .at(1)
+      .text(),
+    'No',
+    'Should find the no label.'
+  );
+});
+
+test('RadioButtons - Should be able to render a basic question (with boolean values and no onChange).', (t) => {
+  try {
+    mount(
+      <RadioButtons
+        name="yesNo"
+        options={[
+          {
+            label: 'Yes',
+            value: true,
+          },
+          {
+            label: 'No',
+            value: false,
+          },
+        ]}
+        value={true}
+      />
+    );
+
+    t.fail('Should have thrown error');
+  } catch (err) {
+    if (err.message === 'Boolean values require an onChange handler') {
+      t.pass('Should have thrown error since no on change handler');
+    } else {
+      t.fail(err.message);
+    }
+  } finally {
+    t.end();
+  }
+});
+
 test('RadioButtons - Should be able to display a secondaryLabel', (t) => {
   const component = mount(
     <RadioButtons
