@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import ReactDOM, {createPortal} from 'react-dom';
-import './Portal.scss';
 
 /** Creates a React Portal.  */
 class Portal extends Component {

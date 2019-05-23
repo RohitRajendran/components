@@ -25,5 +25,3 @@ For elements which require click handlers which interact with the body, you can 
 
 <aside ref={this.props.forwardedRef} />
 ```
-
-[![Portal](https://img.youtube.com/vi/Y6ljFaKRTrI/0.jpg)](https://www.youtube.com/watch?v=Y6ljFaKRTrI)
