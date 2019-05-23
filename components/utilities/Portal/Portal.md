@@ -17,11 +17,13 @@ For elements which require click handlers which interact with the body, you can 
 ```javascript
 <Portal>
   <CabinetInterior
-    forwardedRef={this.cabinetNode}
+    ref={this.cabinetNode}
     >
       {children}
     </CabinetInterior>
 </Portal>
 
-<aside ref={this.props.forwardedRef} />
+const CabinetInterior = React.forwardRef((props, ref) => {
+  return <aside {...props} ref={ref} />;
+});
 ```
