@@ -16,12 +16,8 @@ For elements which require click handlers which interact with the body, you can 
 
 ```javascript
 <Portal>
-  <CabinetInterior
-    ref={this.cabinetNode}
-    >
-      {children}
-    </CabinetInterior>
-</Portal>
+  <CabinetInterior ref={this.cabinetNode}>{children}</CabinetInterior>
+</Portal>;
 
 const CabinetInterior = React.forwardRef((props, ref) => {
   return <aside {...props} ref={ref} />;
