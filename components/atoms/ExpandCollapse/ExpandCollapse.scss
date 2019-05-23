@@ -1,4 +1,6 @@
 .uic--ec {
+  $transition-time: 0.5s;
+
   margin-bottom: 3.3rem;
   color: $dark-blue;
 
@@ -53,11 +55,6 @@
     cursor: pointer;
   }
 
-  .uic--ec-open {
-    overflow: hidden;
-    margin-bottom: 2.1rem;
-  }
-
   .uic--ec-content-container {
     padding-left: 5rem;
 
@@ -90,13 +87,21 @@
     }
 
     .uic--ec-content-inner {
-      -moz-transition: height 0.5s;
-      -ms-transition: height 0.5s;
-      -o-transition: height 0.5s;
-      -webkit-transition: height 0.5s;
-      transition: height 0.5s;
+      transition: height $transition-time;
       height: 0;
       overflow: hidden;
+    }
+
+    &:not(.uic--ec-content-container-closed) {
+      .uic--ec-content-inner {
+        @keyframes delay-overflow {
+          from {
+            overflow: hidden;
+          }
+        }
+        overflow: initial;
+        animation: $transition-time delay-overflow;
+      }
     }
   }
 

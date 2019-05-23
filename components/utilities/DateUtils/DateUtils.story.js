@@ -4,7 +4,7 @@ import {withReadme} from 'storybook-readme';
 import {isBeforeMonth, isAfterMonth, isSameOrBeforeMonth} from './DateUtils';
 import DateUtilsReadMe from './DateUtils.md';
 
-const stories = storiesOf('Utilities/dateUtils', module);
+const stories = storiesOf('Utilities/DateUtils', module);
 
 const IsBeforeMonth = () => (
   <Fragment>

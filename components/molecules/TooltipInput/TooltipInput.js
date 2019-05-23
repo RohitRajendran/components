@@ -57,7 +57,7 @@ class TooltipInput extends PureComponent {
 
   /** Handles the key press event.
    * @param {object} event - The key press event object.
-   * @returns {undefined}
+   * @returns {boolean} - Returns false if the event was successful.
    */
   handleKeyPress(event) {
     if (event.which === 13 || event.keyCode === 13) {
@@ -259,7 +259,7 @@ TooltipInput.propTypes = {
     /** The placeholder text of the input field. This is displayed if there's no value. */
     placeholder: PropTypes.string,
     /** The current value of the input field.  */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     /** Boolean representing if the input value is required in a form. */
     required: PropTypes.bool,
     /** The regex pattern that determines what input characters are allowed. Validates on form submission. */

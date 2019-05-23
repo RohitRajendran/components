@@ -1,6 +1,11 @@
 import moment from 'moment';
 import test from 'tape';
-import {isAfterMonth, isBeforeMonth, isSameOrBeforeMonth} from './DateUtils';
+import {
+  isAfterMonth,
+  isBeforeMonth,
+  isSameOrBeforeMonth,
+  isSameOrAfterMonth,
+} from './DateUtils';
 
 test('DateUtils - isBeforeMonth', (t) => {
   t.true(isBeforeMonth('12/1990'));
@@ -11,6 +16,12 @@ test('DateUtils - isBeforeMonth', (t) => {
 test('DateUtils - isSameOrBeforeMonth', (t) => {
   t.true(isSameOrBeforeMonth(moment().format('MM/YYYY')));
   t.false(isSameOrBeforeMonth('02/4209'));
+  t.end();
+});
+
+test('DateUtils - isSameOrAfterMonth', (t) => {
+  t.false(isSameOrAfterMonth(moment().format('MM/YYYY')));
+  t.true(isSameOrAfterMonth('02/4209'));
   t.end();
 });
 
