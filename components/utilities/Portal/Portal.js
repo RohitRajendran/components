@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {createPortal, unmountComponentAtNode} from 'react-dom';
 
-/** Creates a React Portal.  */
+/** Creates a React Portal which is used to pull DOM nodes
+ * out of their parent container. */
 class Portal extends Component {
   /** @inheritdoc */
   constructor(props) {
