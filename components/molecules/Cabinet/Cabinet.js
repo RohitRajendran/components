@@ -1,47 +1,47 @@
 /** @module Cabinet */
-import React, {Component, createRef} from 'react';
+import React, {Component, createRef, forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
 import Button from '~components/atoms/Button/Button';
+import Portal from '~components/utilities/Portal/Portal';
 
 import './Cabinet.scss';
 
-export const CabinetInterior = ({
-  children,
-  handleClick,
-  handleKeyPress,
-  show,
-  header,
-  visibleInPrint,
-}) => {
-  const containerClasses = classNames({
-    'uic--cabinet': true,
-    'uic--position-fixed': true,
-    'uic--show-cabinet': show,
-    'uic--hide-cabinet': !show,
-    'uic--visible-in-print': visibleInPrint,
-  });
+export const CabinetInterior = forwardRef(
+  (
+    {children, handleClick, handleKeyPress, show, header, visibleInPrint},
+    ref
+  ) => {
+    const containerClasses = classNames({
+      'uic--cabinet': true,
+      'uic--position-fixed': true,
+      'uic--show-cabinet': show,
+      'uic--hide-cabinet': !show,
+      'uic--visible-in-print': visibleInPrint,
+    });
 
-  return (
-    <aside className={containerClasses}>
-      <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
-        <div
-          className="uic--cabinet-close"
-          onClick={handleClick}
-          onKeyPress={handleKeyPress}
-          role="button"
-          tabIndex="0"
-        />
-        <div className="uic--cabinet-title">{header}</div>
-      </div>
-      <div className="uic--cabinet-body uic--position-relative uic--w-100 uic--h-100">
-        {children}
-      </div>
-    </aside>
-  );
-};
+    return (
+      <aside className={containerClasses} ref={ref}>
+        <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
+          <div
+            className="uic--cabinet-close"
+            onClick={handleClick}
+            onKeyPress={handleKeyPress}
+            role="button"
+            tabIndex="0"
+          />
+          <div className="uic--cabinet-title">Help Center</div>
+        </div>
+        <div className="uic--cabinet-body uic--position-relative uic--w-100 uic--h-100">
+          {header && <h2>{header}</h2>}
+          {children}
+        </div>
+      </aside>
+    );
+  }
+);
 
 CabinetInterior.propTypes = {
   /** The contents of the cabinet. */
@@ -56,10 +56,8 @@ CabinetInterior.propTypes = {
   header: PropTypes.string,
   /** Determines if the cabinet should be visible when the page is printed or not. */
   visibleInPrint: PropTypes.bool,
-};
-
-CabinetInterior.defaultProps = {
-  header: 'Help Center',
+  /** The ref to be passed down from the parent for closing functionality. */
+  forwardedRef: PropTypes.objectOf(PropTypes.any),
 };
 
 /** Renders the cabinet component. */
@@ -98,7 +96,6 @@ class Cabinet extends Component {
    */
   handleDocumentClick(event) {
     const show = this.props.handleWithState ? this.state.show : this.props.show;
-
     if (
       this.cabinetNode.current &&
       !this.cabinetNode.current.contains(event.target) &&
@@ -173,7 +170,7 @@ class Cabinet extends Component {
     );
 
     return (
-      <div className={containerClasses} ref={this.cabinetNode}>
+      <div className={containerClasses}>
         {label && (
           <Button
             className={labelClassName}
@@ -186,14 +183,19 @@ class Cabinet extends Component {
             {label}
           </Button>
         )}
-        <CabinetInterior
-          {...this.props}
-          handleClick={this.handleClick}
-          handleKeyPress={this.handleKeyPress}
-          show={this.props.handleWithState ? this.state.show : this.props.show}
-        >
-          {children}
-        </CabinetInterior>
+        <Portal>
+          <CabinetInterior
+            {...this.props}
+            handleClick={this.handleClick}
+            handleKeyPress={this.handleKeyPress}
+            show={
+              this.props.handleWithState ? this.state.show : this.props.show
+            }
+            ref={this.cabinetNode}
+          >
+            {children}
+          </CabinetInterior>
+        </Portal>
       </div>
     );
   }
