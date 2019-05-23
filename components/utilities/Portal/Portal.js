@@ -1,7 +1,7 @@
 /** @module Portal */
 import PropTypes from 'prop-types';
 import {Component} from 'react';
-import ReactDOM, {createPortal} from 'react-dom';
+import ReactDOM, {createPortal, unmountComponentAtNode} from 'react-dom';
 
 /** Creates a React Portal.  */
 class Portal extends Component {
@@ -19,7 +19,7 @@ class Portal extends Component {
 
   /** @inheritdoc */
   componentWillUnmount() {
-    ReactDOM.unmountComponentAtNode(this.portal);
+    unmountComponentAtNode(this.portal);
     document.body.removeChild(this.portal);
   }
 
