@@ -104,6 +104,12 @@ $cabinet-z-index: 99999;
     ol {
       li {
         margin-top: 0.8rem;
+
+        // Nested lists.
+        ul,
+        ol {
+          padding: 0rem 0 1rem 3rem;
+        }
       }
     }
   }

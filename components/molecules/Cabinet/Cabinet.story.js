@@ -38,7 +38,7 @@ stories.add('default', () => (
       header: '10 Reasons Montezuma is the Best Cat',
     })}
   >
-    <h1>These are all the reasons why Montezuma is the best cat.</h1>
+    <p>Let us talk about Montezuma.</p>
     <h2>He has really nice fur</h2>
     <p>
       He really does have nice fur, it is so soft. He really does have nice fur,
@@ -64,6 +64,39 @@ stories.add('default', () => (
       nicest. All cats meow, but his is the nicest. All cats meow, but his is
       the nicest.
     </p>
+    <ul>
+      <li>
+        Your primary home and associated costs, including:
+        <ul>
+          <li>Utilities </li>
+
+          <li>Mortgage payments</li>
+
+          <li>Property tax </li>
+
+          <li>Private mortgage insurance (PMI) payments </li>
+
+          <li>Homeowners association (HOA) payments </li>
+
+          <li>House insurance</li>
+        </ul>
+      </li>
+
+      <li>Rent, including utilities </li>
+
+      <li>Groceries </li>
+
+      <li>Your primary car payments and associated costs like taxes</li>
+
+      <li>Gasoline </li>
+
+      <li>Car insurance </li>
+
+      <li>Public transportation</li>
+
+      <li>Alimony & child support </li>
+    </ul>
+    <p>Monte has no idea what any of the above things are.</p>
     <h2>He enjoys naps</h2>
     <p>He enjoys napping on people.</p>
     <h2>He is the cutest</h2>

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
 import Button from '~components/atoms/Button/Button';
+import Portal from '~components/utilities/Portal/Portal';
 
 import './Cabinet.scss';
 
@@ -15,6 +16,7 @@ export const CabinetInterior = ({
   show,
   header,
   visibleInPrint,
+  forwardedRef,
 }) => {
   const containerClasses = classNames({
     'uic--cabinet': true,
@@ -25,7 +27,7 @@ export const CabinetInterior = ({
   });
 
   return (
-    <aside className={containerClasses}>
+    <aside className={containerClasses} ref={forwardedRef}>
       <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
         <div
           className="uic--cabinet-close"
@@ -34,9 +36,10 @@ export const CabinetInterior = ({
           role="button"
           tabIndex="0"
         />
-        <div className="uic--cabinet-title">{header}</div>
+        <div className="uic--cabinet-title">Help Center</div>
       </div>
       <div className="uic--cabinet-body uic--position-relative uic--w-100 uic--h-100">
+        {header && <h2>{header}</h2>}
         {children}
       </div>
     </aside>
@@ -56,10 +59,8 @@ CabinetInterior.propTypes = {
   header: PropTypes.string,
   /** Determines if the cabinet should be visible when the page is printed or not. */
   visibleInPrint: PropTypes.bool,
-};
-
-CabinetInterior.defaultProps = {
-  header: 'Help Center',
+  /** The ref to be passed down from the parent for closing functionality. */
+  forwardedRef: PropTypes.objectOf(PropTypes.any),
 };
 
 /** Renders the cabinet component. */
@@ -73,6 +74,7 @@ class Cabinet extends Component {
     };
 
     this.cabinetNode = createRef();
+    this.portalNode = createRef();
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -98,7 +100,6 @@ class Cabinet extends Component {
    */
   handleDocumentClick(event) {
     const show = this.props.handleWithState ? this.state.show : this.props.show;
-
     if (
       this.cabinetNode.current &&
       !this.cabinetNode.current.contains(event.target) &&
@@ -173,7 +174,7 @@ class Cabinet extends Component {
     );
 
     return (
-      <div className={containerClasses} ref={this.cabinetNode}>
+      <div className={containerClasses}>
         {label && (
           <Button
             className={labelClassName}
@@ -186,14 +187,19 @@ class Cabinet extends Component {
             {label}
           </Button>
         )}
-        <CabinetInterior
-          {...this.props}
-          handleClick={this.handleClick}
-          handleKeyPress={this.handleKeyPress}
-          show={this.props.handleWithState ? this.state.show : this.props.show}
-        >
-          {children}
-        </CabinetInterior>
+        <Portal>
+          <CabinetInterior
+            {...this.props}
+            handleClick={this.handleClick}
+            handleKeyPress={this.handleKeyPress}
+            show={
+              this.props.handleWithState ? this.state.show : this.props.show
+            }
+            forwardedRef={this.cabinetNode}
+          >
+            {children}
+          </CabinetInterior>
+        </Portal>
       </div>
     );
   }
