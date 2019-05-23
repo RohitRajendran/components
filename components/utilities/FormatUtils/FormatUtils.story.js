@@ -4,7 +4,7 @@ import {withReadme} from 'storybook-readme';
 import {formatCurrency, formatCurrencyNoDecimal} from './FormatUtils';
 import FormatUtilsReadMe from './FormatUtils.md';
 
-const stories = storiesOf('Utilities/formatUtils', module);
+const stories = storiesOf('Utilities/FormatUtils', module);
 
 const FormatCurrency = () => (
   <Fragment>
