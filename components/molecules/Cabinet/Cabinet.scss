@@ -91,12 +91,12 @@ $cabinet-z-index: 99999;
     }
 
     h2 {
-      margin: 3rem 0 0 !important;
+      margin: 3rem 0 0;
     }
 
     p {
       margin-top: 0.8rem;
-      font-style: normal !important; // Enforces paragraph styles on the cabinet.
+      font-style: normal;
       color: $slate;
     }
 
