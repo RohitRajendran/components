@@ -1,8 +1,8 @@
 .uic--mcgonagall-question-card {
   hr {
-    margin: 4rem 0;
     border: 0;
-    border-top: 1px solid $grey;
+    border-top: 1px solid $light-gray;
+    margin: 4rem 0;
   }
 
   .uic--card-more-detail {
@@ -11,12 +11,12 @@
 
   .uic--warning-message {
     @include source-sans-pro(1.2rem);
-    color: $red-magenta;
+    color: $pink;
     font-weight: 600;
     line-height: 1.6rem;
+    margin: 0;
     max-width: 38.5rem;
     text-align: center;
-    margin: 0;
   }
 
   .uic--card-cancel {

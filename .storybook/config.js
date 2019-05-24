@@ -10,7 +10,7 @@ import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
 import {withInfo} from '@storybook/addon-info';
-import {dsmColors as colors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 import {State} from '@sambego/storybook-state';
 import {MemoryRouter} from 'react-router-dom';
 import '../constants/sass/util/prefixed-utils.scss';

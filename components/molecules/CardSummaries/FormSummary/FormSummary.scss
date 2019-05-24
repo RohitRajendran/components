@@ -1,6 +1,8 @@
 .uic--card-summary-group {
-  h3.uic--card-summary-label {
-    font-weight: 600;
+  h3 {
+    &.uic--card-summary-label {
+      font-weight: 600;
+    }
   }
 
   .uic--row {
@@ -11,9 +13,11 @@
     padding-top: 0.5rem;
   }
 
-  &.uic--striped:nth-of-type(2n) {
-    background-color: $pampas;
-    border-top: solid 1px $white-seven;
-    border-bottom: solid 1px $white-seven;
+  &.uic--striped {
+    &:nth-of-type(2n) {
+      background-color: $table-alternate;
+      border-bottom: solid 1px $light-gray;
+      border-top: solid 1px $light-gray;
+    }
   }
 }

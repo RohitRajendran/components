@@ -1,7 +1,7 @@
 /** @module IncomeCircleIllustration */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {dsmColors as colors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 
 /** Renders an income illustration. */
 class IncomeCircleIllustration extends PureComponent {

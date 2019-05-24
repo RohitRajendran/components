@@ -2,32 +2,32 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
 
 .uic--modal-wrapper {
   .uic--modal-container {
+    background-color: $black; // Fallback
+    background-color: $modal-backdrop;
     left: 0;
+    pointer-events: none;
     top: 0;
     z-index: 1500;
-    background-color: $black; /* Fallback color */
-    background-color: $modal-backdrop; /* Black with opacity */
-    pointer-events: none;
 
     .uic--modal-dialog {
       max-width: 100%;
     }
 
     .uic--modal-interior {
-      pointer-events: auto;
-      max-width: 100%;
       margin: 0 1rem;
+      max-width: 100%;
+      pointer-events: auto;
 
       .uic--modal-close {
         background-color: $royal;
-        height: 36px;
-        width: 36px;
         border-radius: 50%;
+        cursor: pointer;
+        height: 36px;
         left: 0;
+        margin: 0 auto;
         right: 0;
         top: -1.5rem;
-        margin: 0 auto;
-        cursor: pointer;
+        width: 36px;
         z-index: 99999;
       }
 
@@ -35,12 +35,12 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
         @include source-sans-pro(1.4rem);
         background-color: $white;
         border-top: 4px solid $royal;
-        padding: 2rem 4rem 4rem;
-        z-index: 99998;
-        width: 56.4rem;
-        max-width: 100%;
-        text-align: center;
         margin: 0 auto;
+        max-width: 100%;
+        padding: 2rem 4rem 4rem;
+        text-align: center;
+        width: 56.4rem;
+        z-index: 99998;
 
         .uic--modal-bottom {
           margin-top: 3.1rem;
@@ -48,9 +48,9 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
 
         h2 {
           @include source-sans-pro(2rem);
-          padding-bottom: 1.2rem;
-          font-weight: normal;
           color: $midnight;
+          font-weight: normal;
+          padding-bottom: 1.2rem;
         }
 
         p {

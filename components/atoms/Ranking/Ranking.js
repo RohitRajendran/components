@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ArrowEllipsisIcon from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
-import {dsmColors as colors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 
 import './Ranking.scss';
 

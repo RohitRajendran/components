@@ -3,23 +3,23 @@ $button-padding: 1.6rem;
 
 .uic--mcgonagall-radio-button-container {
   border: 0;
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   legend {
     border: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
 
     &.uic--table {
-      border: 1px solid $white-seven;
+      border: 1px solid $light-gray;
       margin: 1.4rem 0;
 
       .uic--mcgonagall-radio-button {
-        padding: 1.4rem;
-        border-bottom: 1px solid $white-seven;
+        background-color: $white;
+        border-bottom: 1px solid $light-gray;
         margin: 0;
-        background-color: $white-four;
+        padding: 1.4rem;
 
         &:nth-of-type(2n) {
           background-color: $table-alternate;
@@ -41,29 +41,29 @@ $button-padding: 1.6rem;
   }
 
   .uic--radio-input {
-    opacity: 0;
     left: 0;
+    opacity: 0;
 
     &:focus + .uic--option-box-radio {
-      border: 1px solid $violet-blue;
+      border: 1px solid $royal;
     }
   }
 
   .uic--radio-label {
     color: $slate;
-    user-select: none;
-    padding-left: $button-size + $button-padding;
     cursor: pointer;
     font-weight: normal;
+    padding-left: $button-size + $button-padding;
+    user-select: none;
 
     // Radio Button disabled state.
     &.uic--disabled {
-      opacity: 0.5;
       cursor: default;
+      opacity: 0.5;
 
       .uic--radio {
-        opacity: 0.5;
         cursor: default;
+        opacity: 0.5;
       }
     }
   }
@@ -73,7 +73,7 @@ $button-padding: 1.6rem;
   }
 
   .uic--label-value-secondary {
-    color: $dark-blue;
+    color: $midnight;
     font-weight: 600;
     margin-left: 1rem;
   }

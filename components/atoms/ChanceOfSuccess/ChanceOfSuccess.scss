@@ -1,28 +1,35 @@
+$twenty: #b34d00;
+$forty: #c76501;
+$sixty: #ed9403;
+$eighty: #6bb508;
+$blue: #00f;
+$hundred: #1ba21f;
+
 @keyframes chance-of-success_in-progress {
   0% {
+    fill: $pink;
     transform: rotate(-130deg);
-    fill: $danger-red;
   }
 
   20% {
-    fill: #b34d00;
+    fill: $twenty;
   }
 
   40% {
-    fill: #c76501;
+    fill: $forty;
   }
 
   60% {
-    fill: #ed9403;
+    fill: $sixty;
   }
 
   80% {
-    fill: #6bb508;
+    fill: $eighty;
   }
 
   100% {
+    fill: $hundred;
     transform: rotate(130deg);
-    fill: $safe-green;
   }
 }
 
@@ -33,8 +40,8 @@
   &.uic--chance-of-success__in-progress {
     circle {
       animation: chance-of-success_in-progress 2.3s
-        cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-      background-color: blue;
+        cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate; // sass-lint:disable-line indentation
+      background-color: $blue;
     }
   }
 }

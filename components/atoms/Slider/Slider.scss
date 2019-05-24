@@ -1,10 +1,10 @@
 @import '~rc-slider/assets/index.css';
 
 @mixin star-marker {
-  background-image: url(../../../assets/icons/star.svg);
-  background-size: 75%;
+  background-image: url('../../../assets/icons/star.svg');
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 75%;
 }
 
 @mixin highlighted($color) {
@@ -13,21 +13,22 @@
 }
 
 .uic--slider-wrapper {
-  margin: 16rem 5rem 9rem;
-
   @include media-breakpoint-down(xs) {
     margin-left: 3rem;
     margin-right: 3rem;
   }
+
+  margin: 16rem 5rem 9rem;
 
   &.uic--highlighted-green {
     .uic--tooltip {
       background-color: $green;
 
       &::before {
-        border-color: $green transparent transparent transparent;
+        border-color: $green transparent transparent;
       }
     }
+
     .rc-slider-with-marks {
       .rc-slider-handle {
         @include star-marker;
@@ -38,16 +39,17 @@
 
   &.uic--highlighted-purple {
     .uic--tooltip {
-      background-color: $violet-blue;
+      background-color: $royal;
 
       &::before {
-        border-color: $violet-blue transparent transparent transparent;
+        border-color: $royal transparent transparent;
       }
     }
+
     .rc-slider-with-marks {
       .rc-slider-handle {
         @include star-marker;
-        @include highlighted($violet-blue);
+        @include highlighted($royal);
       }
     }
   }
@@ -55,9 +57,9 @@
   // Annotation containers.
   .uic--left-annotate-container,
   .uic--right-annotate-container {
+    bottom: -13rem;
     height: 8rem;
     width: 8rem;
-    bottom: -13rem;
   }
 
   .uic--left-annotate-container {
@@ -73,89 +75,100 @@
   .uic--right-annotate {
     @include source-sans-pro(1.2rem);
     color: $slate;
-    word-break: break-word;
     text-align: center;
+    word-break: break-word;
   }
 
   .uic--tooltip {
-    top: -13rem;
-    width: 20rem;
+    background-color: $royal;
+    color: $white;
     height: 10rem;
     margin-left: -10.1rem;
-    background-color: $violet-blue;
-    text-align: left;
-    color: white;
     padding: 1.5rem 2rem;
+    text-align: left;
+    top: -13rem;
     transition-duration: 200ms;
     transition-property: left;
     transition-timing-function: ease-in-out;
+    width: 20rem;
 
     &::before {
-      border-color: $violet-blue transparent transparent transparent;
-      content: ' ';
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 1.04rem 0.8rem 0 0.8rem;
-      left: 46.5%;
-      bottom: -1rem;
       @include media-breakpoint-down(xs) {
         display: none;
       }
+      border-color: $royal transparent transparent;
+      border-style: solid;
+      border-width: 1.04rem 0.8rem 0;
+      bottom: -1rem;
+      content: ' ';
+      height: 0;
+      left: 46.5%;
+      position: absolute;
+      width: 0;
     }
   }
 
   .uic--tooltip-sticky-hint {
-    text-align: center;
-    top: 3rem;
-    width: 18rem;
     height: 10rem;
     margin-left: -9rem;
     pointer-events: none;
+    text-align: center;
+    top: 3rem;
+    width: 18rem;
 
     &.uic--show {
       &::after {
-        content: ' ';
-        position: absolute;
-        height: 20px;
-        width: 20px;
-        background-color: $grey;
-        border-radius: 50%;
-        left: 44.44%;
-        top: -3.4rem;
-        z-index: 1;
-
         @include media-breakpoint-down(md) {
           left: 43%;
         }
+        background-color: $light-gray;
+        border-radius: 50%;
+        content: ' ';
+        height: 20px;
+        left: 44.44%;
+        position: absolute;
+        top: -3.4rem;
+        width: 20px;
+        z-index: 1;
       }
-    }
 
-    &.uic--show.uic--green::after {
-      @include star-marker;
-      @include highlighted($green);
-      background-size: 60%;
-    }
+      &.uic--green {
+        &::after {
+          @include star-marker;
+          @include highlighted($green);
+          background-size: 60%;
+        }
+      }
 
-    &.uic--show.uic--purple::after {
-      @include star-marker;
-      @include highlighted($violet-blue);
-      background-size: 60%;
+      &.uic--purple {
+        &::after {
+          @include star-marker;
+          @include highlighted($royal);
+          background-size: 60%;
+        }
+      }
     }
   }
 
   // Creates a CSS class for each tooltip position, 1 - 10
   @for $i from 0 through 10 {
     .uic--tooltip-position-#{$i} {
+      @include media-breakpoint-down(xs) {
+        &.uic--tooltip {
+          left: 50%;
+        }
+      }
+
       @if ($i) < 1 {
         left: 36px;
+
         &::before {
           left: 28.5%;
         }
       } @else if $i == 10 {
         left: auto;
         right: -63px;
+
         &::before {
           left: 64.5%;
         }
@@ -163,21 +176,16 @@
         $position: percentage(($i) * 1/10);
         left: $position;
       }
-      @include media-breakpoint-down(xs) {
-        &.uic--tooltip {
-          left: 50%;
-        }
-      }
     }
   }
 
   // Overrides for React Slider
   .rc-slider-with-marks {
-    margin: 5rem 0rem 7rem 0rem;
+    margin: 5rem 0 7rem;
 
     .rc-slider-rail {
+      color: $light-gray;
       height: 2px;
-      color: $grey;
       z-index: 0;
     }
 
@@ -187,22 +195,22 @@
 
     .rc-slider-handle {
       // Overrides the react slider handler.
+      background-color: $royal;
+      border-color: $royal;
       height: 16px;
-      width: 16px;
       margin-left: -8px;
       margin-top: -7px;
-      background-color: $violet-blue;
-      border-color: $violet-blue;
+      width: 16px;
     }
 
     .rc-slider-mark {
       top: -30px;
-    }
 
-    .rc-slider-mark .rc-slider-mark-text {
-      @include source-sans-pro(1.6rem);
-      color: $slate;
-      top: 6rem;
+      .rc-slider-mark-text {
+        @include source-sans-pro(1.6rem);
+        color: $slate;
+        top: 6rem;
+      }
     }
   }
 }

@@ -6,14 +6,17 @@
   }
 
   .uic--tooltip-wrapper {
-    width: 37rem;
     max-width: 100%;
+    width: 37rem;
+
     .uic--validation-error {
       display: none;
     }
 
-    &.show .uic--validation-error {
-      display: block;
+    &.show {
+      .uic--validation-error {
+        display: block;
+      }
     }
 
     .btn {

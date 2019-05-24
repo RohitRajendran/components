@@ -71,11 +71,11 @@ const Button = ({
   let spinnerColor;
 
   if (variant === 'icon') {
-    spinnerColor = dark ? colors.white : colors['violet-blue'];
+    spinnerColor = dark ? colors.white : colors['royal'];
   } else if (variant === 'secondary' && dark) {
-    spinnerColor = colors.stratos;
+    spinnerColor = colors['super-dark'];
   } else if (variant === 'tertiary' && light) {
-    spinnerColor = colors['violet-blue'];
+    spinnerColor = colors['royal'];
   } else {
     spinnerColor = colors.white;
   }

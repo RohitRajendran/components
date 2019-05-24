@@ -1,7 +1,9 @@
 .uic--confirm-modal {
   .uic--modal-bottom {
-    button:first-of-type {
-      margin-right: 1rem;
+    button {
+      &:first-of-type {
+        margin-right: 1rem;
+      }
     }
   }
 }

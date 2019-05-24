@@ -14,7 +14,7 @@ import {
 } from '../..';
 import McGonagall from './McGonagall';
 import McGonagallReadme from './McGonagall.md';
-import {dsmColors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 import CompletionScreen from '../../organisms-simple/CompletionScreen/CompletionScreen';
 
 const stateChart = {
@@ -338,7 +338,7 @@ stories.add('default', () => {
   return (
     <div
       style={{
-        backgroundColor: dsmColors.parchment,
+        backgroundColor: colors.parchment,
         minHeight: '100vh',
         padding: '3.6rem 0',
       }}

@@ -3,7 +3,7 @@ import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
-import {dsmColors as colors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 
 import './Modal.scss';
 

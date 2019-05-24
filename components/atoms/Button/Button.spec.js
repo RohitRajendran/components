@@ -121,7 +121,7 @@ test('Button - loading', (t) => {
 
   t.equals(
     loadingSecondaryDark.find('Spinner').prop('fill'),
-    colors.stratos,
+    colors['super-dark'],
     'Shows colored spinner'
   );
 
@@ -133,7 +133,7 @@ test('Button - loading', (t) => {
 
   t.equals(
     loadingTertiaryLight.find('Spinner').prop('fill'),
-    colors['violet-blue'],
+    colors['royal'],
     'Shows colored spinner'
   );
 });

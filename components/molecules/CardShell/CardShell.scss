@@ -1,15 +1,15 @@
-.uic--mcgonagall-card {
-  $inactive-border-size: 1px;
-  $active-border-size: 4px;
+$inactive-border-size: 1px;
+$active-border-size: 4px;
 
-  background-color: $white-four;
-  border: solid $inactive-border-size $white-seven;
+.uic--mcgonagall-card {
+  background-color: $white;
+  border: solid $inactive-border-size $light-gray;
   margin: 0 auto;
   max-width: 76.4rem;
   overflow: hidden;
 
   &.uic--active {
-    border-top: none;
+    border-top: 0;
     margin-bottom: 3.6rem;
     margin-top: 3.6rem;
     padding: calc(4rem + #{$active-border-size}) 3.5rem 4rem; // Account for top border in top padding
@@ -23,30 +23,30 @@
     }
 
     .uic--active-border {
-      position: absolute;
-      top: 0;
-      height: $active-border-size;
       background: $royal;
+      height: $active-border-size;
       left: -$inactive-border-size;
+      position: absolute;
       right: -$inactive-border-size;
+      top: 0;
     }
   }
 
   &.uic--collapsed {
     margin-top: 1.2rem;
-    padding: 0.3rem 0.3rem;
+    padding: 0.3rem;
 
     &:first-child {
       margin-top: 0;
     }
 
     &.uic--error {
-      padding: 0.2rem 0.2rem;
+      padding: 0.2rem;
     }
   }
 
   &.uic--error {
-    border: solid 2px $red-magenta;
+    border: solid 2px $pink;
     padding: 4.2rem 3.4rem 3.9rem;
   }
 

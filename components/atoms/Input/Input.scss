@@ -1,18 +1,21 @@
+$input-shadow: rgba(77, 0, 186, 0.5);
+$input-data-value-color: rgba(255, 255, 255, 0);
+
 .uic--mcgonagall-input {
   line-height: normal;
   text-align: left;
 
   &.uic--error {
     input {
-      color: $red-magenta;
+      border: 1px solid $pink;
       box-shadow: none;
-      border: 1px solid $red-magenta;
+      color: $pink;
 
       &:focus,
       &:active {
-        border: 1px solid $red-magenta;
+        border: 1px solid $pink;
         box-shadow: none;
-        color: $red-magenta;
+        color: $pink;
       }
     }
 
@@ -23,81 +26,87 @@
 
   &.uic--disabled {
     .uic--description {
-      color: $bluey-grey;
+      color: $disabled-text;
     }
-  }
-
-  // Styles the label of the input which appears directly beneath it in the DOM.
-  input:disabled + label {
-    color: $bluey-grey;
   }
 
   input {
     @include source-sans-pro(2rem);
-    color: $dark-blue;
-    border: 1px solid $white-seven;
-    background-color: $white-four;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    color: $midnight;
     padding: 2.6rem 1.2rem 1rem 1rem;
     width: 100%;
 
+    // Styles the label of the input which appears directly beneath it in the DOM.
+    &:disabled + label {
+      color: $disabled-text;
+    }
+
     &:focus,
     &:active {
-      border: 1px solid $violet-blue;
-      color: $violet-blue;
-      box-shadow: 0 0 4px 0 rgba(77, 0, 186, 0.5);
+      border: 1px solid $royal;
+      box-shadow: 0 0 4px 0 $input-shadow;
+      color: $royal;
       outline: none;
     }
 
     &:disabled {
-      background-color: $pampas;
-      color: $bluey-grey;
+      background-color: $table-alternate;
+      color: $disabled-text;
 
-      /* Resets the focus and active styles for the input
-        when it's in a disabled state. */
+      // Resets the focus and active styles for the input
+      // when it's in a disabled state.
       &:focus,
       &:active {
-        border: 1px solid $white-seven;
+        border: 1px solid $light-gray;
         box-shadow: none;
       }
     }
 
     &::placeholder {
-      font-weight: normal;
+      color: $disabled-text;
       font-style: italic;
-      color: $bluey-grey;
+      font-weight: normal;
     }
   }
 
   label {
     @include source-sans-pro(1.2rem);
-    padding: 1.2rem;
     color: $slate;
     font-weight: normal;
     left: 0;
+    padding: 1.2rem;
   }
 
   &.uic--input-prepend {
-    &.uic--focus:before {
-      color: $violet-blue;
+    &.uic--focus {
+      &::before {
+        color: $royal;
+      }
     }
 
     // Configures the placeholder color on the pre-pended string.
-    &.uic--empty:before {
-      color: $bluey-grey;
-      font-style: italic;
+    &.uic--empty {
+      &::before {
+        color: $disabled-text;
+        font-style: italic;
+      }
     }
 
-    &.uic--error:before {
-      color: $red-magenta;
+    &.uic--error {
+      &::before {
+        color: $pink;
+      }
     }
 
-    &:before {
+    &::before {
+      color: $midnight;
+      font-size: 2rem;
+      left: 1.3rem;
       position: absolute;
       top: 2.7rem;
-      left: 1.3rem;
       z-index: 1000;
-      color: $dark-blue;
-      font-size: 2rem;
     }
 
     input {
@@ -105,19 +114,8 @@
     }
   }
 
-  &.uic--input-append {
-    /* Mimic's text overflowing for masked/hidden inputs. */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &.uic--focus:after {
-      color: $violet-blue;
-    }
-  }
-
   .uic--validation-error {
-    color: $red-magenta;
+    color: $pink;
     font-weight: bold;
     visibility: hidden;
   }
@@ -134,25 +132,40 @@
     padding: 0.5rem 0 0 1rem;
   }
 
-  &.uic--input-append[data-value]:after {
-    @include source-sans-pro(2rem);
-    color: $dark-blue;
-    position: absolute;
-    width: 100%;
-    left: 1.3rem;
-    top: 2.6rem;
+  &.uic--input-append {
+    // Mimic's text overflowing for masked/hidden inputs.
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-    &:focus,
-    &:active {
-      color: $violet-blue;
+    &.uic--focus {
+      &::after {
+        color: $royal;
+      }
     }
-  }
 
-  &.uic--input-append[data-value] input {
-    color: rgba(255, 255, 255, 0);
-    z-index: 9999;
-    background-color: transparent;
-    position: relative;
-    caret-color: $violet-blue;
+    &[data-value] {
+      input {
+        background-color: transparent;
+        caret-color: $royal;
+        color: $input-data-value-color;
+        position: relative;
+        z-index: 9999;
+      }
+
+      &::after {
+        @include source-sans-pro(2rem);
+        color: $midnight;
+        left: 1.3rem;
+        position: absolute;
+        top: 2.6rem;
+        width: 100%;
+
+        &:focus,
+        &:active {
+          color: $royal;
+        }
+      }
+    }
   }
 }

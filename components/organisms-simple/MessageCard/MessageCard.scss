@@ -8,14 +8,18 @@
   }
 }
 
-.uic--mcgonagall-card.error .uic--card-message-summary {
-  p,
-  .uic--btn-link {
-    color: $red-magenta;
-    font-weight: 600;
-  }
+.uic--mcgonagall-card {
+  &.error {
+    .uic--card-message-summary {
+      p,
+      .uic--btn-link {
+        color: $pink;
+        font-weight: 600;
+      }
 
-  p {
-    margin-bottom: 1rem;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

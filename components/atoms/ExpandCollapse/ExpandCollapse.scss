@@ -1,14 +1,15 @@
-.uic--ec {
-  $transition-time: 0.5s;
+$transition-time: 0.5s;
 
+.uic--ec {
+  color: $midnight;
   margin-bottom: 3.3rem;
-  color: $dark-blue;
+  margin-bottom: 3.3rem;
 
   &.uic--ec-disabled {
     .uic--ec-label {
       color: $slate;
-      font-weight: normal;
       cursor: initial;
+      font-weight: normal;
     }
   }
 
@@ -21,8 +22,8 @@
   .uic--ec-label {
     @include source-sans-pro(1.6rem);
     font-weight: 600;
-    padding-left: 5rem;
     outline: none; // Removes the default focus state.
+    padding-left: 5rem;
 
     &:focus {
       opacity: 0.8;
@@ -35,10 +36,10 @@
   }
 
   .uic--ec-required-fields {
-    font-weight: 800;
-    color: $red-magenta;
-    margin-left: 1rem;
+    color: $pink;
     font-size: 1.2rem;
+    font-weight: 800;
+    margin-left: 1rem;
   }
 
   .uic--ec-controls-wrapper {
@@ -58,17 +59,17 @@
   .uic--ec-content-container {
     padding-left: 5rem;
 
-    &:after {
-      margin-top: 3rem;
-      content: '';
-      height: 1px;
+    &::after {
       border-bottom: 1px solid $light-gray;
+      content: '';
       display: block;
+      height: 1px;
+      margin-top: 3rem;
     }
 
     .uic--ec-content {
-      padding-top: 3rem;
       outline: none;
+      padding-top: 3rem;
     }
 
     h1,
@@ -79,17 +80,17 @@
     }
 
     hr {
-      color: $light-gray;
-      margin-top: 3rem;
-      border: 0;
-      height: 1px;
       background-color: $light-gray;
+      border: 0;
+      color: $light-gray;
+      height: 1px;
+      margin-top: 3rem;
     }
 
     .uic--ec-content-inner {
-      transition: height $transition-time;
       height: 0;
       overflow: hidden;
+      transition: height $transition-time;
     }
 
     &:not(.uic--ec-content-container-closed) {
@@ -99,15 +100,15 @@
             overflow: hidden;
           }
         }
-        overflow: initial;
         animation: $transition-time delay-overflow;
+        overflow: initial;
       }
     }
   }
 
   .uic--ec-aside {
-    font-size: 1.4rem;
     color: $slate;
+    font-size: 1.4rem;
   }
 }
 

@@ -4,7 +4,7 @@ import ReactSlider from 'rc-slider';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import fromPairs from 'lodash/fromPairs';
-import {dsmColors as colors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 
 import './Slider.scss';
 

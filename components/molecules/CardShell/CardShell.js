@@ -6,7 +6,7 @@ import {animated, Spring, config} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
 import {maskEnum} from '~components/atoms/Input/Input';
 import Spinner from '~components/atoms/Spinner/Spinner';
-import {dsmColors} from '~constants/js/colors';
+import {colors} from '~constants/js/colors';
 import './CardShell.scss';
 
 /**
@@ -292,7 +292,7 @@ class CardShell extends Component {
                     {!hideButton &&
                       (isFetching ? (
                         <Spinner
-                          fill={dsmColors['royal']}
+                          fill={colors['royal']}
                           height="25"
                           width="25"
                         />

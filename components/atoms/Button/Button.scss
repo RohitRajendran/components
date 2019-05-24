@@ -1,35 +1,40 @@
-@mixin hoverColor($normalColor, $disabledColor) {
+$btn-primary-disabled-light: rgba($white, 0.3);
+$btn-primary-disabled-dark: rgba($midnight, 0.3);
+$btn-primary-hover-dark: rgba(255, 255, 255, 0.15);
+$btn-secondary-disabled-light: rgba($white, 0.3);
+$btn-secondary-disabled-dark: rgba($midnight, 0.3);
+$btn-tertiary-disabled-light: rgba($royal, 0.3);
+$btn-tertiary-disabled-dark: rgba($super-dark, 0.3);
+
+@mixin hover-color($normal-color, $disabled-color) {
   &:hover,
   &:active,
-  &:focus,
-  &:active:focus {
-    background-color: $normalColor;
+  &:focus {
+    background-color: $normal-color;
   }
+
   &:disabled,
   &[disabled],
   &.disabled {
     &:hover,
     &:active,
-    &:focus,
-    &:active:focus {
-      background-color: $disabledColor;
+    &:focus {
+      background-color: $disabled-color;
       cursor: not-allowed;
     }
   }
 }
-@mixin disabledStyle {
+@mixin disabled-style {
   &[disabled],
   &:disabled,
   &.disabled {
     @content;
-    opacity: 1 !important; // override bootstrap disabled opacity of 0.65
     cursor: not-allowed !important;
+    opacity: 1 !important; // override bootstrap disabled opacity of 0.65
   }
 }
 
-//------------------------
 // Required for anchor tags which look the same as actual buttons.
-//------------------------
 a {
   &.btn-primary,
   &.btn-secondary,
@@ -40,12 +45,10 @@ a {
 }
 
 .btn {
-  //------------------------
   // Main Button Reset
-  //------------------------
+  border: 0;
   outline: none;
   transition: background-color 500ms, color 500ms;
-  border: none;
 
   // Remove default bootstrap styling on active buttons
   &.active,
@@ -55,119 +58,118 @@ a {
 
   &:hover,
   &:active,
-  &:focus,
-  &:active:focus {
+  &:focus {
     outline: 0 !important;
   }
 
-  //------------------------
   // Primary buttons
-  //------------------------
   &.btn-primary {
-    text-transform: uppercase;
-    background-color: $dark-blue;
-    border: none;
-    height: 6rem;
-    color: white;
-    padding: 2rem 4rem;
-    border-radius: 0.5rem;
+    @include hover-color($middle-purple, $midnight);
+    @include disabled-style {
+      color: $btn-primary-disabled-light;
+    }
     @include source-sans-pro(2rem);
+    background-color: $midnight;
+    border: 0;
+    border-radius: 0.5rem;
+    color: $white;
     font-weight: 600;
+    height: 6rem;
     line-height: 1;
+    padding: 2rem 4rem;
+    text-transform: uppercase;
     white-space: normal;
-    @include hoverColor($eggplant, $dark-blue);
-    @include disabledStyle {
-      color: rgba(white, 0.3);
-    }
+
     &.on-dark {
-      background-color: $easter-purple;
-      color: $dark-blue;
-      @include hoverColor($lilac, $easter-purple);
-      @include disabledStyle {
-        color: rgba($dark-blue, 0.3) !important;
+      @include hover-color($white, $white);
+      @include disabled-style {
+        color: $btn-primary-disabled-dark !important;
       }
+      background-color: $white;
+      color: $midnight;
     }
   }
 
-  //------------------------
   // Secondary buttons
-  //------------------------
   &.btn-secondary {
-    text-transform: none;
-    font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    text-transform: none;
+
     &.on-light {
-      background-color: $violet-blue;
-      color: $white-four;
-      @include hoverColor($eggplant, $violet-blue);
-      @include disabledStyle {
-        color: rgba(white, 0.3) !important;
+      @include hover-color($middle-purple, $royal);
+      @include disabled-style {
+        color: $btn-secondary-disabled-light !important;
       }
+
+      background-color: $royal;
+      color: $white;
     }
+
     &.on-dark {
-      background-color: $white-four;
-      color: $stratos;
-      @include hoverColor($midnight-20, $easter-purple);
-      @include disabledStyle {
-        color: rgba($dark-blue, 0.3) !important;
+      @include hover-color($midnight-20, $white);
+      @include disabled-style {
+        color: $btn-secondary-disabled-dark !important;
       }
+      background-color: $white;
+      color: $super-dark;
+
       &.white {
-        background-color: $stratos;
+        background-color: $super-dark;
       }
     }
   }
 
-  //------------------------
   // Tertiary buttons
-  //------------------------
   &.btn-tertiary {
-    text-transform: none;
-    font-weight: 600;
     @include source-sans-pro(1.4rem);
-    padding: 0.8rem 1.6rem;
     border-radius: 0.25rem;
-    &.on-dark {
-      background-color: transparent;
-      border: 1px solid $white-four;
-      color: $white-four;
-      @include hoverColor($white-15, transparent);
-      @include disabledStyle {
-        color: rgba($stratos, 0.3) !important;
-      }
-    }
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    text-transform: none;
+
     &.on-light {
-      border: 1px solid $violet-blue;
-      color: $violet-blue;
-      @include hoverColor($midnight-10, transparent);
-      @include disabledStyle {
-        color: rgba($violet-blue, 0.3) !important;
+      @include hover-color($midnight-10, transparent);
+      @include disabled-style {
+        color: $btn-tertiary-disabled-light !important;
       }
+      border: 1px solid $royal;
+      color: $royal;
+    }
+
+    &.on-dark {
+      @include hover-color($btn-primary-hover-dark, transparent);
+      @include disabled-style {
+        color: $btn-tertiary-disabled-dark !important;
+      }
+
+      background-color: transparent;
+      border: 1px solid $white;
+      color: $white;
     }
   }
 
-  //------------------------
   // Link buttons
-  //------------------------
   &.btn-link {
-    outline: none;
-    color: $violet-blue;
-    background: none !important;
-    border: none;
-    padding: 0 !important;
-    text-decoration: underline;
-    cursor: pointer;
     @include source-sans-pro(1.4rem);
+    background: none !important;
+    border: 0;
+    color: $royal;
+    cursor: pointer;
     font-weight: 600;
+    outline: none;
+    padding: 0 !important;
     text-align: center;
+    text-decoration: underline;
 
     &.on-dark {
-      color: $white-four;
+      color: $white;
 
       &:hover,
       &:focus {
-        color: $white-four;
+        color: $white;
       }
 
       &:focus {
@@ -177,31 +179,33 @@ a {
 
     &:hover,
     &:focus {
-      text-decoration: none;
       color: $midnight;
+      text-decoration: none;
     }
   }
 
-  //------------------------
   // Icon buttons
-  //------------------------
   &.btn-icon {
-    border: none;
     background-color: transparent;
-    padding: 0;
-    line-height: 1;
+    border: 0;
     cursor: pointer;
+    line-height: 1;
+    padding: 0;
 
-    & > .text-wrapper svg {
-      display: block;
-      height: 2.5rem;
-      width: 2.5rem;
-      transition: stroke 500ms;
+    > .text-wrapper {
+      svg {
+        display: block;
+        height: 2.5rem;
+        transition: stroke 500ms;
+        width: 2.5rem;
+      }
     }
 
     &.on-dark {
-      & > .text-wrapper svg {
-        stroke: $white-four;
+      > .text-wrapper {
+        svg {
+          stroke: $white;
+        }
       }
     }
 
@@ -214,12 +218,14 @@ a {
     &:hover,
     &:active,
     &:focus,
-    &:active:focus {
+    &:active {
       // Override .btn
       background-color: transparent;
 
-      & > .text-wrapper svg {
-        stroke: $eggplant;
+      > .text-wrapper {
+        svg {
+          stroke: $middle-purple;
+        }
       }
     }
 
@@ -229,9 +235,11 @@ a {
       &:hover,
       &:active,
       &:focus,
-      &:active:focus {
-        // Override .btn
-        background-color: transparent;
+      &:active {
+        &:focus {
+          // Override .btn
+          background-color: transparent;
+        }
       }
     }
 
@@ -244,13 +252,13 @@ a {
 
   &.show-spinner {
     .spinner-wrapper {
-      margin: 0 auto;
       left: 0;
+      margin: 0 auto;
       right: 0;
     }
 
     .hide-button-text {
-      height: 0px;
+      height: 0;
     }
   }
 
