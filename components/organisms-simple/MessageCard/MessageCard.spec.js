@@ -57,6 +57,29 @@ test('MessageCard - shows description and feature image', (t) => {
   t.end();
 });
 
+test('MessageCard - shows description node and feature image', (t) => {
+  const props = {
+    onSubmit: () => true,
+    name: 'test',
+    title: 'Title',
+    description: <p>Description</p>,
+    shortTitle: 'Q',
+    featureImage: (
+      <img
+        alt="example"
+        src="https://app.unitedincome.com/assets/images/pencil.svg"
+      />
+    ),
+  };
+
+  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+
+  t.equals(comp.find('p').length, 1, 'Should show a description');
+  t.equals(comp.find('img').length, 1, 'Should feature image');
+
+  t.end();
+});
+
 test('MessageCard - collapsed', (t) => {
   const props = {
     onSubmit: () => true,
