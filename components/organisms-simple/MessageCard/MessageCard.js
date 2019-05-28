@@ -27,6 +27,9 @@ const MessageCard = ({
     className
   );
 
+  const descriptionNode =
+    typeof description === 'string' ? <p>{description}</p> : description;
+
   const isIncompleteCollapsedCard = isCollapsed && isLatestCard;
 
   const content = (
@@ -44,7 +47,7 @@ const MessageCard = ({
           </Button>
         </Fragment>
       ) : (
-        description && <p>{description}</p>
+        descriptionNode
       )}
     </div>
   );
@@ -77,7 +80,7 @@ MessageCard.propTypes = {
   /** Additional class names to apply to the button. */
   className: PropTypes.string,
   /** The cards description. */
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  description: PropTypes.node,
   /** Forces the button to be disabled. */
   disabled: PropTypes.bool,
   /** Applies additional class names to the button. */
@@ -101,7 +104,7 @@ MessageCard.propTypes = {
   /** The index of this card in the flow, used for animation purposes */
   stepIndex: PropTypes.number,
   /** The title of the card. */
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default MessageCard;
