@@ -27,12 +27,18 @@ class ItemizationWidget extends PureComponent {
 
   /** @inheritdoc */
   componentDidMount() {
+    document.body.classList.add('uic-itemization-widget--present');
     this.determineError();
   }
 
   /** @inheritdoc */
   componentDidUpdate() {
     this.determineError();
+  }
+
+  /** @inheritdoc */
+  componentWillUnmount() {
+    document.body.classList.remove('uic-itemization-widget--present');
   }
 
   /** Toggles the visibility state of the itemization component for mobile devices.
@@ -51,7 +57,6 @@ class ItemizationWidget extends PureComponent {
       .map((item) => {
         if (item.items) {
           const total = this.sumTotal(item.items);
-
           if (total >= item.threshold && !this.state.warning) {
             this.setState({
               warning: true,
@@ -100,17 +105,18 @@ class ItemizationWidget extends PureComponent {
 
     const containerThresholdWarningClasses = classNames({
       'uic--itemization-widget__threshold-warning': true,
-      'uic--d-md-none': true,
+      'uic--d-xl-none': true,
       'uic--d-none': this.state.thresholdWarning && this.state.open,
     });
 
     return (
-      <Spring to={{start: this.state.open ? 0.85 : 0}}>
+      <Spring native to={{start: this.state.open ? 0.85 : 0}}>
         {({start}) => (
-          <div
+          <animated.div
             className="uic--itemization-widget__wrapper"
             style={{
-              background: `rgba(0, 0, 0, ${start})`,
+              background: start.interpolate((o) => `rgba(0, 0, 0, ${o})`),
+              height: `${this.state.open ? '100' : '0'}%`,
             }}
             role="button"
             tabIndex="0"
@@ -129,7 +135,7 @@ class ItemizationWidget extends PureComponent {
                 <div className="uic--row">
                   <div className="uic--col-6">{title}</div>
 
-                  <div className="uic--col-6 uic--text-right uic--d-md-none">
+                  <div className="uic--col-6 uic--text-right uic--d-xl-none">
                     {completeTotal}
                     {totalSuffix && (
                       <span className="uic--itemization-widget__suffix">
@@ -146,8 +152,8 @@ class ItemizationWidget extends PureComponent {
               </div>
 
               <Spring
-                native
                 force
+                native
                 config={{tension: 2000, friction: 100, precision: 1}}
                 from={{height: this.state.open ? 0 : 'auto'}}
                 to={{height: this.state.open ? 'auto' : 0}}
@@ -199,11 +205,9 @@ class ItemizationWidget extends PureComponent {
                                     key={idx}
                                     className="uic--itemization-widget__itemized"
                                   >
-                                    {item.value && (
-                                      <div className="uic--itemization-widget__itemized-value">
-                                        {formatCurrencyNoDecimal(item.value)}
-                                      </div>
-                                    )}
+                                    <div className="uic--itemization-widget__itemized-value">
+                                      {formatCurrencyNoDecimal(item.value)}
+                                    </div>
 
                                     {item.label && (
                                       <div className="uic--itemization-widget__label">
@@ -233,7 +237,7 @@ class ItemizationWidget extends PureComponent {
                   </animated.div>
                 )}
               </Spring>
-              <div className="uic--itemization-widget__item uic--itemization-widget__total uic--itemization-widget__title uic--d-none uic--d-md-block">
+              <div className="uic--itemization-widget__item uic--itemization-widget__total uic--itemization-widget__title uic--d-none uic--d-xl-block">
                 {completeTotal}
                 {totalSuffix && (
                   <span className="uic--itemization-widget__suffix">
@@ -244,7 +248,7 @@ class ItemizationWidget extends PureComponent {
                 <div className="uic--itemization-widget__label">Total</div>
               </div>
             </div>
-          </div>
+          </animated.div>
         )}
       </Spring>
     );
@@ -283,6 +287,7 @@ ItemizationWidget.propTypes = {
             value: PropTypes.number.isRequired,
             /** The label of the item. */
             label: PropTypes.string.isRequired,
+            /** Determines if the item should be itemized or not. */
           })
         ),
         exclusive(['value']),

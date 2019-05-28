@@ -200,3 +200,43 @@ test('ItemizationWidget - handleClick', (t) => {
 
   t.equals(component.state().open, true, 'Should open the dropdown.');
 });
+
+test('ItemizationWidget - componentWillUnmount', (t) => {
+  t.plan(1);
+
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    values: [
+      {
+        label: 'Primary Residence',
+        value: 4000,
+      },
+      {
+        label: 'Other Essentials',
+        threshold: 1000,
+        suffix: 'mo',
+        thresholdWarning:
+          'You have itemized more than your initial estimate so we have increased that total for you.',
+        items: [
+          {
+            value: 1000,
+            label: 'Itemized',
+          },
+          {
+            value: 50,
+            label: 'Estimated by UI',
+          },
+        ],
+      },
+    ],
+    title: 'Essential Spending',
+    totalSuffix: 'mo',
+  };
+
+  const component = mount(<ItemizationWidget {...props} />);
+
+  component.instance().componentWillUnmount();
+
+  t.pass();
+});
