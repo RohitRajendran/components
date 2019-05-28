@@ -75,3 +75,6 @@ dist-old
 
 # Ignore test-outputs folder
 tests_output
+
+# Storybook Output
+storybook-static

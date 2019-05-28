@@ -14,8 +14,8 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
     .uic--up,
     .uic--down {
       left: 0;
-      right: 0;
       margin: auto;
+      right: 0;
 
       &:focus {
         outline: none;
@@ -38,36 +38,38 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       bottom: -1.5rem;
 
       svg {
-        transform: rotate(180deg) translateX(50%);
         bottom: 0;
+        transform: rotate(180deg) translateX(50%);
       }
     }
   }
 
   ol {
     @include source-sans-pro(1.6rem);
-    padding: 0;
-    margin: 0;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 
     &.uic--idle {
-      li:last-child {
-        border-top: 0;
-      }
+      li {
+        &:last-child {
+          border-top: 0;
+        }
 
-      li:first-child {
-        border-bottom: 0;
+        &:first-child {
+          border-bottom: 0;
+        }
       }
     }
 
     &.uic--dragging {
       li {
-        border: 1px solid $white-seven;
+        border: 1px solid $light-gray;
       }
     }
 
     li {
-      border: 1px solid $white-seven;
+      border: 1px solid $light-gray;
       color: $slate;
 
       &.uic--focus-control {
@@ -77,20 +79,20 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
 
       &.uic--dragging {
-        border: 1px solid $violet-blue;
+        border: 1px solid $royal;
         box-shadow: 0 0 4px 0 $hover-shadow;
       }
 
       .uic--inner {
-        padding: 1.4rem;
-        margin-bottom: 0;
-        background-color: $white-four;
+        background-color: $white;
         border: 1px solid transparent;
+        margin-bottom: 0;
+        padding: 1.4rem;
 
         &.uic--focus-control {
-          z-index: 30;
-          border: 1px solid $violet-blue;
+          border: 1px solid $royal;
           box-shadow: 0 0 4px 0 $hover-shadow;
+          z-index: 30;
         }
       }
 
@@ -107,9 +109,9 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       }
 
       label {
-        padding-left: 2.7rem;
-        margin: 0;
         font-weight: normal;
+        margin: 0;
+        padding-left: 2.7rem;
       }
 
       &:focus {
@@ -120,11 +122,13 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       &:focus {
         outline: none;
 
-        .uic--inner.movable {
-          z-index: 30;
-          border: 1px solid $violet-blue;
-          box-shadow: 0 0 4px 0 $hover-shadow;
-          outline: none;
+        .uic--inner {
+          &.movable {
+            border: 1px solid $royal;
+            box-shadow: 0 0 4px 0 $hover-shadow;
+            outline: none;
+            z-index: 30;
+          }
         }
 
         .uic--ranking-controls {
@@ -135,7 +139,7 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
   }
 
   .uic--label-value-secondary {
-    color: $dark-blue;
+    color: $midnight;
     font-weight: 600;
     margin-left: 1rem;
   }

@@ -1,88 +1,90 @@
 $cabinet-z-index: 99999;
+$cabinet-shadow: rgba(91, 98, 121, 0.2);
 
-.admin-nav-present .uic--cabinet {
-  top: 3rem;
-  padding-bottom: 9rem;
+.admin-nav-present {
+  .uic--cabinet {
+    padding-bottom: 9rem;
+    top: 3rem;
+  }
 }
 
 .uic--cabinet {
   @include source-sans-pro(1.6rem);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: $cabinet-z-index;
-  background-color: $white;
-  min-height: 100vh;
-  width: 50rem;
-  transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
-  box-shadow: 0 2px 20px 15px rgba(91, 98, 121, 0.2);
-  padding-bottom: 6rem;
-  text-align: left;
-
   @include media-breakpoint-down(xs) {
     width: 100%;
   }
+  background-color: $white;
+  bottom: 0;
+  box-shadow: 0 2px 20px 15px $cabinet-shadow;
+  min-height: 100vh;
+  padding-bottom: 6rem;
+  right: 0;
+  text-align: left;
+  top: 0;
+  transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
+  width: 50rem;
+  z-index: $cabinet-z-index;
 
   &.uic--hide-cabinet {
-    transform: translate3d(500px, 0, 0);
-    box-shadow: none;
-
     @include media-breakpoint-down(xs) {
       transform: translate3d(100vw, 0, 0);
     }
+
+    box-shadow: none;
+    transform: translate3d(500px, 0, 0);
   }
 
   &.uic--show-cabinet {
-    transform: translate3d(0vw, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   .uic--visible-in-print {
     @media print {
-      display: block !important;
-      transform: translate3d(0vw, 0, 0);
-      position: relative;
-      width: 100%;
-      min-height: auto;
-      top: auto;
-      right: auto;
       bottom: auto;
+      display: block;
+      min-height: auto;
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: translate3d(0, 0, 0);
+      width: 100%;
     }
   }
 
   .uic--cabinet-header {
+    border-bottom: 1px solid $light-gray;
     padding: 2rem 2.5rem;
-    border-bottom: 1px solid $white-seven;
 
     .uic--cabinet-title {
-      font-size: 1.4rem;
       color: $slate;
+      font-size: 1.4rem;
       line-height: 1;
     }
 
     .uic--cabinet-close {
-      margin-right: 2.1rem;
-      cursor: pointer;
-      width: 11px;
-      height: 11px;
-      margin-top: 2px;
       background-image: url('../../../assets/icons/close.svg');
-      background-size: contain;
       background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      height: 11px;
+      margin-right: 2.1rem;
+      margin-top: 2px;
+      width: 11px;
     }
   }
 
   .uic--cabinet-body {
-    padding: 3rem 6rem;
     color: $slate;
     overflow-y: scroll;
+    padding: 3rem 6rem;
 
     h1,
     h2 {
-      font-size: 2.4rem;
+      color: $midnight;
       font-family: 'Source Sans Pro', sans-serif;
-      color: $dark-blue;
-      font-weight: normal;
+      font-size: 2.4rem;
       font-style: normal;
+      font-weight: normal;
     }
 
     h1 {
@@ -95,9 +97,9 @@ $cabinet-z-index: 99999;
     }
 
     p {
-      margin-top: 0.8rem;
-      font-style: normal;
       color: $slate;
+      font-style: normal;
+      margin-top: 0.8rem;
     }
 
     ul,
@@ -108,7 +110,7 @@ $cabinet-z-index: 99999;
         // Nested lists.
         ul,
         ol {
-          padding: 0rem 0 1rem 3rem;
+          padding: 0 0 1rem 3rem;
         }
       }
     }

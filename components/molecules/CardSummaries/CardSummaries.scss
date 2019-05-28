@@ -1,6 +1,6 @@
 .uic--card-summary {
+  margin: -0.3rem; // Accounts for card border padding fix
   padding: 1.5rem 2rem;
-  margin: -0.3rem -0.3rem; // accounts for card border padding fix
 
   .uic--card-summary-label {
     @include source-sans-pro(1.6rem);
@@ -13,11 +13,12 @@
 
   .uic--card-summary-answer {
     @include source-sans-pro(1.6rem);
-    color: $dark-blue;
+    color: $midnight;
     font-weight: 600;
     line-height: 1.2;
     margin: 10px 0;
     word-break: break-word;
+
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -32,14 +33,16 @@
   &.uic--incomplete-card {
     .uic--card-summary-answer,
     .uic--btn-link {
-      color: $red-magenta;
+      color: $pink;
       font-weight: 600;
     }
   }
 }
 
-.uic--mcgonagall-card.error {
-  .uic--card-summary {
-    padding: -0.2rem -0.2rem; // accounts for card border padding fix
+.uic--mcgonagall-card {
+  &.error {
+    .uic--card-summary {
+      padding: -0.2rem; // Accounts for card border padding fix
+    }
   }
 }

@@ -1,13 +1,14 @@
 $transition-duration: 0.25s;
+$focus-shadow: rgba(77, 0, 186, 0.5);
 
 .uic--mcgonagall-dropdown {
   margin: 0;
   text-align: left;
-  transition-property: color, border-color, box-shadow;
   transition-duration: $transition-duration;
+  transition-property: color, border-color, box-shadow;
 
   .uic--mcgonagall-dropdown-wrapper {
-    background-color: $white-four;
+    background-color: $white;
   }
 
   .uic--validation-error,
@@ -17,7 +18,7 @@ $transition-duration: 0.25s;
   }
 
   .uic--validation-error {
-    color: $red-magenta;
+    color: $pink;
     font-weight: bold;
     visibility: hidden;
   }
@@ -29,10 +30,10 @@ $transition-duration: 0.25s;
 
   label {
     @include source-sans-pro(1.2rem);
-    padding: 1.2rem;
     color: $slate;
     font-weight: normal;
     left: 0;
+    padding: 1.2rem;
     top: 0;
   }
 
@@ -40,19 +41,19 @@ $transition-duration: 0.25s;
     color: $slate;
 
     label {
-      color: $bluey-grey;
+      color: $disabled-text;
     }
 
     .uic--mcgonagall-dropdown-wrapper {
-      background-color: $pampas;
+      background-color: $table-alternate;
     }
 
     .uic--mcgonagall-dropdown__control {
+      border-color: $light-gray;
       color: $slate;
-      border-color: $white-seven;
 
       .uic--mcgonagall-dropdown-wrapper {
-        background-color: $pampas;
+        background-color: $table-alternate;
       }
 
       &:focus,
@@ -65,7 +66,7 @@ $transition-duration: 0.25s;
       }
 
       &.uic--mcgonagall-dropdown__control--is-focused {
-        border: 1px solid $white-four;
+        border: 1px solid $white;
         box-shadow: none;
 
         .uic--mcgonagall-dropdown__value-container,
@@ -78,7 +79,7 @@ $transition-duration: 0.25s;
     }
 
     .uic--description {
-      color: $bluey-grey;
+      color: $disabled-text;
     }
   }
 
@@ -88,9 +89,9 @@ $transition-duration: 0.25s;
     }
 
     .uic--mcgonagall-dropdown__control {
-      color: $red-magenta;
+      border: 1px solid $pink;
       box-shadow: none;
-      border: 1px solid $red-magenta;
+      color: $pink;
 
       &:focus,
       &:active {
@@ -98,18 +99,18 @@ $transition-duration: 0.25s;
       }
 
       .uic--mcgonagall-dropdown__single-value {
-        color: $red-magenta;
+        color: $pink;
       }
 
       &.uic--mcgonagall-dropdown__control--is-focused {
-        border: 1px solid $red-magenta;
+        border: 1px solid $pink;
         box-shadow: none;
 
         .uic--mcgonagall-dropdown__value-container,
         .uic--mcgonagall-dropdown__value-container--has-value,
         .uic--mcgonagall-dropdown__single-value,
         input {
-          color: $red-magenta !important; // Required to override react-select input styles.
+          color: $pink !important; // Required to override react-select input styles.
         }
       }
     }
@@ -117,13 +118,13 @@ $transition-duration: 0.25s;
 
   // Resets padding and margins
   .uic--mcgonagall-dropdown__value-container {
-    padding: 0;
-    min-height: 2.9rem;
-    max-width: 80%;
     height: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    max-width: 80%;
+    min-height: 2.9rem;
     overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     * {
       margin: 0;
@@ -132,14 +133,14 @@ $transition-duration: 0.25s;
 
   // Dropdown Indicators
   .uic--mcgonagall-dropdown__indicator {
-    padding: 0 0.6rem;
+    padding: 0 0.8rem;
   }
 
   .uic--mcgonagall-dropdown__indicators {
-    position: absolute;
-    top: 0;
     bottom: 0;
+    position: absolute;
     right: 2rem;
+    top: 0;
   }
 
   .uic--mcgonagall-dropdown__indicator-separator {
@@ -147,77 +148,73 @@ $transition-duration: 0.25s;
   }
 
   .uic--mcgonagall-dropdown__single-value {
-    color: $dark-blue;
+    color: $midnight;
   }
 
   // Main input field
   .uic--mcgonagall-dropdown__control {
     @include source-sans-pro(2rem);
-    border-radius: 0;
-    padding: 2.3rem 1.2rem 1rem 1rem;
-    max-height: 6.3rem;
-    font-style: normal;
-    border-color: $white-seven;
-    z-index: 999;
     background-color: transparent;
+    border-color: $light-gray;
+    border-radius: 0;
+    font-style: normal;
+    max-height: 6.3rem;
+    padding: 2.3rem 1.2rem 1rem 1rem;
     position: relative;
+    z-index: 999;
 
     input {
       @include source-sans-pro(2rem);
     }
 
     .uic--mcgonagall-dropdown__placeholder {
-      margin: 0;
-      color: $bluey-grey;
+      color: $disabled-text;
       font-style: italic;
       font-weight: normal;
-      width: 100%;
+      margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      width: 100%;
     }
 
     &.uic--mcgonagall-dropdown__control--is-focused {
-      border: 1px solid $violet-blue;
-      color: $violet-blue;
-      box-shadow: 0 0 4px 0 rgba(77, 0, 186, 0.5);
+      border: 1px solid $royal;
+      box-shadow: 0 0 4px 0 $focus-shadow;
+      color: $royal;
       outline: none;
 
       .uic--mcgonagall-dropdown__value-container,
       .uic--mcgonagall-dropdown__value-container--has-value,
       .uic--mcgonagall-dropdown__single-value,
       input {
-        color: $violet-blue !important; // Required to override react-select input styles.
+        color: $royal !important; // Required to override react-select input styles.
       }
     }
   }
 
-  .uic--mcgonagall-dropdown__indicator {
-    padding: 0 0.8rem;
-  }
-
   .uic--mcgonagall-dropdown__menu {
+    border: 0;
     cursor: pointer;
-    border: none;
     font-size: 1.6rem;
     font-weight: normal;
     z-index: 99999;
 
     .uic--mcgonagall-dropdown__menu-list {
+      background-color: $white;
+      border: 1px solid $white;
       max-height: 20rem;
-      background-color: $white-four;
-      border: 1px solid $white-four;
       overflow-y: scroll;
 
       .uic--mcgonagall-dropdown__option {
-        background-color: #fff;
+        background-color: $white;
         color: $slate;
         cursor: pointer;
         display: block;
         padding: 0.8rem 1rem;
 
         &.uic--mcgonagall-dropdown__option--is-focused {
-          background-color: $white-three;
+          background-color: $parchment;
         }
       }
     }

@@ -1,12 +1,12 @@
 .uic--mcg-completion-screen {
   height: calc(100vh - 10rem); // Account for nav
-  padding: 0 1.5rem;
-  max-width: 850px;
   margin: 0 auto;
+  max-width: 850px;
+  padding: 0 1.5rem;
 
   h2 {
     @include cormorant(4rem);
-    color: $dark-blue;
+    color: $midnight;
     font-weight: 500;
     margin: 0;
     text-align: center;
@@ -28,6 +28,8 @@
   }
 }
 
-.admin-nav-present .uic--mcg-completion-screen {
-  height: calc(100vh - 16rem); // Account for admin nav
+.admin-nav-present {
+  .uic--mcg-completion-screen {
+    height: calc(100vh - 16rem); // Account for admin nav
+  }
 }

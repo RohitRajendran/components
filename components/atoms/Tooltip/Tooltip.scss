@@ -1,36 +1,48 @@
-$tooltip-color: $white !important;
+$tooltip-shadow: rgba(91, 98, 121, 0.5);
+$tooltip-filter: rgba(0, 0, 0, 0.5);
 
 .uic--tooltip {
-  // Overrides for react-tooltip.
-  .place-right:after {
-    border-right-color: $tooltip-color;
-  }
+  .uic--tooltip-wrapper {
+    @include source-sans-pro(1.4rem);
+    background-color: $white;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px 0 $tooltip-shadow;
+    filter: drop-shadow(1px 1px 1px $tooltip-filter);
+    padding: 2.1rem;
 
-  .place-bottom:after {
-    border-bottom-color: $tooltip-color;
-  }
+    &.__react_component_tooltip {
+      &.type-dark {
+        color: $slate;
+      }
 
-  .place-left:after {
-    border-left-color: $tooltip-color;
-  }
+      &.place-right {
+        &::after {
+          border-right-color: $white;
+        }
+      }
 
-  .place-top:after {
-    border-top-color: $tooltip-color;
-  }
-}
+      &.place-bottom {
+        &::after {
+          border-bottom-color: $white;
+        }
+      }
 
-.uic--tooltip-wrapper {
-  // Additional react-tooltip overrides are marked with !important.
-  @include source-sans-pro(1.4rem);
-  background-color: $tooltip-color;
-  color: $slate !important;
-  padding: 2.1rem;
-  box-shadow: 3px 3px 6px 0 rgba(91, 98, 121, 0.5);
-  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
-  border-radius: 4px;
-  border: 0;
+      &.place-left {
+        &::after {
+          border-left-color: $white;
+        }
+      }
 
-  &.show {
-    opacity: 1 !important;
+      &.place-top {
+        &::after {
+          border-top-color: $white;
+        }
+      }
+    }
+
+    &.show {
+      opacity: 1;
+    }
   }
 }

@@ -7,8 +7,7 @@ const Loader = () => (
   <div className="container ui-app-container ui-footer-spacing">
     <div className="uic--ui-loader">
       <svg
-        className="uic--position-absolute"
-        id="loader-icon-top"
+        className="uic--position-absolute loader-icon-top"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         width="222"
@@ -21,7 +20,6 @@ const Loader = () => (
         />
       </svg>
       <svg
-        id="loader-icon-bottom"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         width="222"

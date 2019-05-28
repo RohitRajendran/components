@@ -1,7 +1,7 @@
+$button-spacing: 1rem;
+
 .uic--mcg-framework {
   .uic--mcg-subnav {
-    $button-spacing: 1rem;
-
     background-color: $white;
     border-bottom: 1px solid $light-gray;
     height: 5rem;
@@ -19,8 +19,8 @@
 
     button {
       background-color: transparent;
-      cursor: pointer;
       border: 0;
+      cursor: pointer;
       margin-right: $button-spacing;
       margin-top: 5px;
       padding: 0;

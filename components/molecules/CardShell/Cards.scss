@@ -4,16 +4,16 @@
 
     h2 {
       @include source-sans-pro(2rem);
-      color: $dark-blue;
+      color: $midnight;
       font-weight: 400;
       margin: 0;
     }
 
     p {
       @include source-sans-pro(1.4rem);
+      color: $midnight;
       font-style: italic;
-      color: $dark-blue;
-      margin: 1rem 0 0 0;
+      margin: 1rem 0 0;
     }
   }
 
@@ -25,8 +25,8 @@
     }
   }
 
-  /* Configures the margins of the ExpandCollapse component when placed in a card
-    so the arrows float off the left side. */
+  //  Configures the margins of the ExpandCollapse component when placed in a card
+  // so the arrows float off the left side.
   .uic--ec {
     margin-left: -5rem;
 
