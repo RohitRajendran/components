@@ -72,4 +72,12 @@ $active-border-size: 4px;
     // Override for the ExpandCollapse as it should appear higher than other content in the card.
     top: -1rem;
   }
+
+  .uic--itemization-widget__wrapper {
+    @include media-breakpoint-up(xl) {
+      left: -20rem;
+      position: absolute;
+      top: 0;
+    }
+  }
 }

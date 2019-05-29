@@ -2,14 +2,14 @@ $item-color: rgba(248, 247, 244, 0.3);
 $background-color: rgba(0, 0, 0, 0.85);
 
 .uic--itemization-widget__wrapper {
-  @include media-breakpoint-down(sm) {
-    height: 100%;
+  @include media-breakpoint-down(lg) {
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1031;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(xl) {
     // Overrides background color on unapplicable screen sizes.
     background: none !important;
   }
@@ -18,7 +18,7 @@ $background-color: rgba(0, 0, 0, 0.85);
 
 .uic--itemization-widget {
   @include source-sans-pro(2.4rem);
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(lg) {
     cursor: pointer;
     width: 100%;
 
@@ -43,12 +43,12 @@ $background-color: rgba(0, 0, 0, 0.85);
   }
 
   .uic--itemization-widget__item-container {
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
       // Prevents the animations from toggling on larger displays.
       height: auto !important;
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(lg) {
       overflow: hidden;
     }
     height: inherit;

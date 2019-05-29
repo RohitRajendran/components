@@ -49,3 +49,34 @@ $button-spacing: 1rem;
     padding: 3.6rem 1rem;
   }
 }
+
+// Sets up the ItemizationWidget positioning when placed in a card.
+.uic-itemization-widget--present {
+  .uic--mcg-framework {
+    @include media-breakpoint-down(lg) {
+      // Makes space for the widget when it's on a mobile device.
+      margin-top: 15rem;
+    }
+
+    .uic--itemization-widget__wrapper {
+      @include media-breakpoint-down(lg) {
+        top: 5rem;
+      }
+    }
+  }
+
+  .admin-nav-present {
+    .uic--mcg-framework {
+      @include media-breakpoint-down(lg) {
+        // Makes space for the widget when it's on a mobile device.
+        margin-top: 17rem;
+      }
+
+      .uic--itemization-widget__wrapper {
+        @include media-breakpoint-down(lg) {
+          top: 8rem;
+        }
+      }
+    }
+  }
+}
