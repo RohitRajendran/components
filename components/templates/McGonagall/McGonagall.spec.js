@@ -444,7 +444,7 @@ test('McGonagall - isFinalStep', (t) => {
   t.end();
 });
 
-test('McGonagall - confirmChangeCancallation (confirm)', (t) => {
+test('McGonagall - confirmChangeCancellation (confirm)', (t) => {
   const {scrollTo} = window;
   window.scrollTo = stub();
 
@@ -453,7 +453,7 @@ test('McGonagall - confirmChangeCancallation (confirm)', (t) => {
   const onConfirmStub = stub();
 
   comp
-    .confirmChangeCancallation(onConfirmStub)
+    .confirmChangeCancellation(onConfirmStub)
     .then(() => {
       t.true(onConfirmStub.calledOnce, 'Calls on confirm function');
     })
@@ -478,7 +478,7 @@ test('McGonagall - confirmChangeCancallation (confirm)', (t) => {
   document.body.getElementsByTagName('Button')[0].click();
 });
 
-test('McGonagall - confirmChangeCancallation (cancel)', (t) => {
+test('McGonagall - confirmChangeCancellation (cancel)', (t) => {
   const {scrollTo} = window;
   window.scrollTo = stub();
 
@@ -487,7 +487,7 @@ test('McGonagall - confirmChangeCancallation (cancel)', (t) => {
   const onConfirmStub = stub();
 
   comp
-    .confirmChangeCancallation(onConfirmStub)
+    .confirmChangeCancellation(onConfirmStub)
     .then(() => {
       t.false(onConfirmStub.calledOnce, 'Should not call confirm function');
     })
@@ -518,7 +518,7 @@ test('McGonagall - renderStep (no changes)', (t) => {
 
   const comp = new McGonagall(defaultProps);
   comp.updateStateMachine = spy();
-  comp.confirmChangeCancallation = spy();
+  comp.confirmChangeCancellation = spy();
   comp.navigateToStep = spy();
   comp.forceUpdate = spy();
 
@@ -540,7 +540,7 @@ test('McGonagall - renderStep (no changes)', (t) => {
   // cancelChanges
   cardArgs.cancelChanges();
   t.false(
-    comp.confirmChangeCancallation.called,
+    comp.confirmChangeCancellation.called,
     'Does not need to confirm cancellation'
   );
   t.deepEquals(
@@ -552,7 +552,7 @@ test('McGonagall - renderStep (no changes)', (t) => {
   // editCard
   cardArgs.editCard();
   t.false(
-    comp.confirmChangeCancallation.called,
+    comp.confirmChangeCancellation.called,
     'Does not need to confirm cancellation'
   );
   t.deepEquals(
@@ -572,7 +572,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   const comp = new McGonagall(defaultProps);
   comp.state.val = 'test';
   comp.updateStateMachine = spy();
-  comp.confirmChangeCancallation = spy();
+  comp.confirmChangeCancellation = spy();
   comp.navigateToStep = spy();
   comp.forceUpdate = spy();
 
@@ -593,7 +593,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
 
   // cancelChanges
   cardArgs.cancelChanges();
-  comp.confirmChangeCancallation.args[0][0]();
+  comp.confirmChangeCancellation.args[0][0]();
   t.deepEquals(
     comp.navigateToStep.args[0],
     ['start', true, true],
@@ -602,7 +602,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
 
   // editCard
   cardArgs.editCard();
-  comp.confirmChangeCancallation.args[1][0]();
+  comp.confirmChangeCancellation.args[1][0]();
   t.deepEquals(
     comp.navigateToStep.args[1],
     ['start', false, true],
