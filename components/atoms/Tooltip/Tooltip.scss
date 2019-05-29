@@ -18,25 +18,41 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
 
       &.place-right {
         &::after {
+          border-bottom: 12px solid transparent;
           border-right-color: $white;
+          border-right-width: 12px;
+          border-top: 12px solid transparent;
+          left: -12px;
         }
       }
 
       &.place-bottom {
         &::after {
           border-bottom-color: $white;
+          border-bottom-width: 12px;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          top: -12px;
         }
       }
 
       &.place-left {
         &::after {
+          border-bottom: 12px solid transparent;
           border-left-color: $white;
+          border-left-width: 12px;
+          border-top: 12px solid transparent;
+          right: -12px;
         }
       }
 
       &.place-top {
         &::after {
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
           border-top-color: $white;
+          border-top-width: 12px;
+          bottom: -12px;
         }
       }
     }
