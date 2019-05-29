@@ -209,6 +209,7 @@ class McGonagall extends React.Component {
 
     const updatedData = {
       currXState: updatedCurrState,
+      ...updatedCurrState.context,
       ...updatedPayloadValues,
     };
 
