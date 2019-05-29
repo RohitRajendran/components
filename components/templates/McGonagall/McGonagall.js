@@ -209,6 +209,7 @@ class McGonagall extends React.Component {
 
     const updatedData = {
       currXState: updatedCurrState,
+      ...updatedCurrState.context,
       ...updatedPayloadValues,
     };
 
@@ -305,7 +306,7 @@ class McGonagall extends React.Component {
    * @param {func} onConfirm function to call on confirm
    * @returns {undefined}
    */
-  async confirmChangeCancallation(onConfirm) {
+  async confirmChangeCancellation(onConfirm) {
     try {
       await Confirm({
         name: 'Cancel Changes',
@@ -346,7 +347,7 @@ class McGonagall extends React.Component {
       // Dont display confirmation dialog if no changes
       !hasMadeChanges
         ? this.navigateToStep(this.state.currXState.value, true, true)
-        : this.confirmChangeCancallation(() => {
+        : this.confirmChangeCancellation(() => {
             this.navigateToStep(this.state.currXState.value, true, true);
             this.forceUpdate(); // Won't rerender otherwise
           });
@@ -368,7 +369,7 @@ class McGonagall extends React.Component {
       JSON.stringify(currStepStatePayload) ===
         JSON.stringify(currStepContextPayload) || this.activeCard === 'review'
         ? this.navigateToStep(step.name, false, true)
-        : this.confirmChangeCancallation(() => {
+        : this.confirmChangeCancellation(() => {
             this.navigateToStep(step.name, false, true);
             this.forceUpdate(); // Won't rerender otherwise
           });
