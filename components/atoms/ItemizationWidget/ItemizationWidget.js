@@ -118,7 +118,6 @@ class ItemizationWidget extends PureComponent {
               background: start.interpolate((o) => `rgba(0, 0, 0, ${o})`),
               height: `${this.state.open ? '100' : '0'}%`,
             }}
-            role="button"
             tabIndex="0"
             onClick={this.state.open ? this.handleClick : null}
             onKeyPress={this.state.open ? this.handleClick : null}
@@ -126,8 +125,7 @@ class ItemizationWidget extends PureComponent {
             <div
               className={containerClasses}
               style={style}
-              role="button"
-              tabIndex="0"
+              role="presentation"
               onClick={this.handleClick}
               onKeyPress={this.handleClick}
             >
