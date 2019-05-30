@@ -80,6 +80,10 @@ stories.add('followup', () => (
             </div>
           ),
         },
+        {
+          label: 'Another Option',
+          value: 'anotherone',
+        },
       ],
     })}
   />

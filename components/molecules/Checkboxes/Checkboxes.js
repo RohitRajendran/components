@@ -63,6 +63,7 @@ const Checkboxes = ({
             'uic--mcgonagall-checkbox-button': true,
             'uic--d-flex': true,
             'uic--justify-content-between': true,
+            'uic--flex-column': true,
             'uic--mcgonagall-checkbox-button-followup':
               option.followup && values.has(option.value),
           });
@@ -87,14 +88,14 @@ const Checkboxes = ({
                     disabled={disabled || option.disabled}
                   />
                   <span className="uic--label-value">{option.label}</span>
-
-                  {option.followup && values.has(option.value) && (
-                    <div className="uic--followup uic--w-100">
-                      {option.followup}
-                    </div>
-                  )}
                 </span>
               </label>
+
+              {option.followup && values.has(option.value) && (
+                <div className="uic--followup uic--w-100">
+                  {option.followup}
+                </div>
+              )}
 
               {option.secondaryLabel && (
                 <span className="uic--label-value-secondary">

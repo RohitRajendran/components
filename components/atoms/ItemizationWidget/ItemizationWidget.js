@@ -57,13 +57,13 @@ class ItemizationWidget extends PureComponent {
       .map((item) => {
         if (item.items) {
           const total = this.sumTotal(item.items);
-          if (total >= item.threshold && !this.state.warning) {
+          if (total >= item.threshold) {
             this.setState({
               warning: true,
               thresholdWarning: item.thresholdWarning,
             });
           }
-        } else if (item.value >= item.threshold && !this.state.warning) {
+        } else if (item.value >= item.threshold) {
           this.setState({
             warning: true,
             thresholdWarning: item.thresholdWarning,
