@@ -49,6 +49,7 @@ const RadioButtons = ({
             'uic--justify-content-between': true,
             'uic--mcgonagall-radio-button-followup':
               option.followup && option.value === value,
+            'uic--flex-column': option.followup && option.value === value,
           });
 
           let optionValue = option.value;
@@ -81,13 +82,12 @@ const RadioButtons = ({
 
                   <span className="uic--label-value">{option.label}</span>
                 </span>
-                {option.followup && option.value === value && (
-                  <div className="uic--followup uic--w-100 ">
-                    {option.followup}
-                  </div>
-                )}
               </label>
-
+              {option.followup && option.value === value && (
+                <div className="uic--followup uic--w-100">
+                  {option.followup}
+                </div>
+              )}
               {option.secondaryLabel && (
                 <span className="uic--label-value-secondary">
                   {option.secondaryLabel}
