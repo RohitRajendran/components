@@ -297,7 +297,7 @@ class Input extends Component {
       style,
     } = this.props;
 
-    /* We use a unique identifier here to apply pseudo inline styles to the
+    /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
       into the CSS attr property. This allows us to (hopefully) target
       this specific input every time instead of applying it to all inputs on the page. */
