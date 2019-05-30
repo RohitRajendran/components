@@ -1,6 +1,6 @@
 import React from 'react';
 import test from 'tape';
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import {stub} from 'sinon';
 import ItemizationWidget from './ItemizationWidget';
 
@@ -35,7 +35,7 @@ test('ItemizationWidget - renders', (t) => {
     totalSuffix: 'mo',
   };
 
-  shallow(<ItemizationWidget {...props} />);
+  mount(<ItemizationWidget {...props} />);
   t.pass('the component rendered!');
   t.end();
 });
