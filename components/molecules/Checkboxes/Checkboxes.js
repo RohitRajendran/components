@@ -63,9 +63,9 @@ const Checkboxes = ({
             'uic--mcgonagall-checkbox-button': true,
             'uic--d-flex': true,
             'uic--justify-content-between': true,
+            'uic--flex-column': true,
             'uic--mcgonagall-checkbox-button-followup':
               option.followup && values.has(option.value),
-            'uic--flex-column': option.followup && values.has(option.value),
           });
 
           return (
