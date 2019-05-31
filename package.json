@@ -1,10 +1,10 @@
 {
   "name": "@unitedincome/components",
-  "description": "React library for all United Income Front-End projects.",
+  "description": "Component library for all United Income applications.",
   "author": "United Income",
-  "version": "0.1.28",
+  "version": "1.0.0",
   "main": "dist/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "webpack",
