@@ -5,9 +5,9 @@ This component renders a question card for the Hogwarts/McGonagall flow.
 ## Example 🚀
 
 ```javascript
-<QuestionCard {...props} buttonText="Submit">
-  Some card content
-</QuestionCard>
+export const renderCard = (props, state) => {
+  return <QuestionCard {...props}>Some card content</QuestionCard>;
+};
 ```
 
 ### To Use With Hogwarts 1.0

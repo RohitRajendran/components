@@ -7,28 +7,32 @@ The collapsed state of this card uses the Simple Summary component.
 ## Example 🚀
 
 ```javascript
-<RadioButtonCard
-  {...props}
-  config={
-    value: state.yesNo,
-    name: 'yesNo',
-    options:[
-      {
-        label: 'Yes',
-        value: 'yes',
-      },
-      {
-        label: 'No',
-        value: 'no',
-      },
-      {
-        label: "I don't know",
-        value: 'idk',
-        disabled: true,
-      },
-    ]
-  }
-/>
+export const renderCard = (props, state) => {
+  return (
+    <RadioButtonCard
+      {...props}
+      config={
+        value: state.yesNo,
+        name: 'yesNo',
+        options:[
+          {
+            label: 'Yes',
+            value: 'yes',
+          },
+          {
+            label: 'No',
+            value: 'no',
+          },
+          {
+            label: "I don't know",
+            value: 'idk',
+            disabled: true,
+          },
+        ]
+      }
+    />
+  );
+};
 ```
 
 ### To Use With Hogwarts 1.0

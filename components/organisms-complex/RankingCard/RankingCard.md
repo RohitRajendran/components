@@ -7,33 +7,37 @@ The collapsed state of this card uses the Simple Summary component.
 ## Example 🚀
 
 ```javascript
-<RadioButtonCard
-  {...prop}
-  config={
-    name: 'bestCat',
-    options:[
-      {
-        label: 'Montezuma',
-        secondaryLabel: '$8,345',
-        id: 'montezuma',
-        movable: false,
-      },
-      {
-        label: 'Pica',
-        secondaryLabel: '$1,000',
-        id: 'pica',
-        movable: true,
-        focus: true,
-      },
-      {
-        label: 'Pixie',
-        secondaryLabel: '$13,000',
-        id: 'pixie',
-        movable: false,
-      },
-    ]
-  }
-/>
+export const renderCard = (props, state) => {
+  return (
+    <RankingCard
+      {...prop}
+      config={{
+        name: 'yesNo',
+        items: [
+          {
+            label: 'Montezuma',
+            secondaryLabel: '$8,345',
+            id: 'montezuma',
+            movable: false,
+          },
+          {
+            label: 'Pica',
+            secondaryLabel: '$1,000',
+            id: 'pica',
+            movable: true,
+            focus: true,
+          },
+          {
+            label: 'Pixie',
+            secondaryLabel: '$13,000',
+            id: 'pixie',
+            movable: false,
+          },
+        ],
+      }}
+    />
+  );
+};
 ```
 
 ### To Use With Hogwarts 1.0
