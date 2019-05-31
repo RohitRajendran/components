@@ -1,12 +1,11 @@
 /** @module Cabinet */
-import React, {Component, createRef, forwardRef} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, {Component, createRef, forwardRef, Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
 import Portal from '~components/utilities/Portal/Portal';
-
+import {exclusive} from '~proptypes';
 import './Cabinet.scss';
 
 export const CabinetInterior = forwardRef(
@@ -14,6 +13,11 @@ export const CabinetInterior = forwardRef(
     {children, handleClick, handleKeyPress, show, header, visibleInPrint},
     ref
   ) => {
+    const wrapperClasses = classNames({
+      'uic--cabinet-wrapper': true,
+      'uic--position-fixed': true,
+      'uic--d-none': !show,
+    });
     const containerClasses = classNames({
       'uic--cabinet': true,
       'uic--position-fixed': true,
@@ -23,22 +27,25 @@ export const CabinetInterior = forwardRef(
     });
 
     return (
-      <aside className={containerClasses} ref={ref}>
-        <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
-          <div
-            className="uic--cabinet-close"
-            onClick={handleClick}
-            onKeyPress={handleKeyPress}
-            role="button"
-            tabIndex="0"
-          />
-          <div className="uic--cabinet-title">Help Center</div>
-        </div>
-        <div className="uic--cabinet-body uic--position-relative uic--w-100 uic--h-100">
-          {header && <h2>{header}</h2>}
-          {children}
-        </div>
-      </aside>
+      <Fragment>
+        <div className={wrapperClasses} /> {/** Used to cover rest of page */}
+        <aside className={containerClasses} ref={ref}>
+          <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
+            <div
+              className="uic--cabinet-close"
+              onClick={handleClick}
+              onKeyPress={handleKeyPress}
+              role="button"
+              tabIndex="0"
+            />
+            <div className="uic--cabinet-title">Help Center</div>
+          </div>
+          <div className="uic--cabinet-body uic--position-relative uic--w-100 uic--h-100">
+            {header && <h2>{header}</h2>}
+            {children}
+          </div>
+        </aside>
+      </Fragment>
     );
   }
 );
