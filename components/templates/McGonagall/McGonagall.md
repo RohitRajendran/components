@@ -88,9 +88,9 @@ const stateConfig = {
     },
     acquisition: {
       type: 'final',
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 ### stateOptions
@@ -123,7 +123,7 @@ const stateOptions = {
 
 Actions are functions that should be called when an event happens. Action functions take in 2 arguments, the machine context and the event payload.
 
-If you want to update the State Machine's context, you need to wrap the function in `assign` and return the value to update similar to the "saveToContext" action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into redux that are already in the state machine context. 
+If you want to update the State Machine's context, you need to wrap the function in `assign` and return the value to update similar to the "saveToContext" action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into redux that are already in the state machine context.
 
 It's best to use descriptive names for your actions and create seperate actions for functionally different tasks so that if you're viewing it in the xState visualizer, you can easily understand it.
 
@@ -261,7 +261,7 @@ const steps = [
     shortTitle: 'Name',
     outputs: [outputs.nickname],
     card: renderName, //
-    clearFuture: false // Boolean to indicate whether all future cards needs to be cleared when editing thihs card
+    clearFuture: false, // Boolean to indicate whether all future cards needs to be cleared when editing thihs card
   },
 ];
 ```
@@ -297,7 +297,7 @@ The state argument will pass down the McGonagall component's state which will in
 
 ```javascript
 const outputs = {
-  whose: 'whose'
+  whose: 'whose',
 };
 
 export const renderOwner = (props, state) => {
@@ -377,18 +377,12 @@ const stateConfig = {
           {
             cond: 'hasNameAndIsMarried',
             target: 'owner',
-            actions: [
-              'saveToContext',
-              'addNewAsset',
-            ],
+            actions: ['saveToContext', 'addNewAsset'],
           },
           {
             cond: 'hasNameAndIsNotMarried',
             target: 'acquisition',
-            actions: [
-              'saveToContext',
-              'addNewAsset',
-            ],
+            actions: ['saveToContext', 'addNewAsset'],
           },
         ],
       },
@@ -398,9 +392,9 @@ const stateConfig = {
     },
     acquisition: {
       type: 'final',
-    }
-  }
-}
+    },
+  },
+};
 
 const stateOptions = {
   actions: {

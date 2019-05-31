@@ -34,6 +34,8 @@ const RadioButtons = ({
       <legend className={legendClasses}>
         {options.map((option) => {
           const labelClasses = classNames({
+            'uic--d-flex': true,
+            'uic--align-center': true,
             'uic--disabled': disabled || option.disabled,
             'uic--radio-label': true,
             'uic--position-relative': true,
@@ -82,16 +84,16 @@ const RadioButtons = ({
 
                   <span className="uic--label-value">{option.label}</span>
                 </span>
+                {option.secondaryLabel && (
+                  <span className="uic--label-value-secondary">
+                    {option.secondaryLabel}
+                  </span>
+                )}
               </label>
               {option.followup && option.value === value && (
                 <div className="uic--followup uic--w-100">
                   {option.followup}
                 </div>
-              )}
-              {option.secondaryLabel && (
-                <span className="uic--label-value-secondary">
-                  {option.secondaryLabel}
-                </span>
               )}
             </div>
           );
