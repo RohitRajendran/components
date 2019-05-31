@@ -20,12 +20,9 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = ({CabinetName, header}) => ({
+const defaultProps = ({header}) => ({
   visibleInPrint: boolean('visibleInPrint', false),
-  show: store.get('cabinet'),
   header: text('header', header),
-  toggle: (name, value) => store.set({[name]: value}),
-  name: CabinetName,
   label: text('label', 'Open the cabinet'),
   handleWithState: true,
   labelOnDark: boolean('labelOnDark', false),
@@ -34,7 +31,6 @@ const defaultProps = ({CabinetName, header}) => ({
 stories.add('default', () => (
   <Cabinet
     {...defaultProps({
-      CabinetName: 'cabinet',
       header: '10 Reasons Montezuma is the Best Cat',
     })}
   >
