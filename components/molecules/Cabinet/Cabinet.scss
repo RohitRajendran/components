@@ -8,7 +8,7 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
   }
 }
 
-.uic--cabinet-wrapper {
+.uic--cabinet-cover {
   bottom: 0;
   left: 0;
   right: 0;
@@ -38,7 +38,7 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
     }
 
     box-shadow: none;
-    transform: translate3d(500px, 0, 0);
+    transform: translate3d(50rem, 0, 0);
   }
 
   &.uic--show-cabinet {

@@ -13,8 +13,8 @@ export const CabinetInterior = forwardRef(
     {children, handleClick, handleKeyPress, show, header, visibleInPrint},
     ref
   ) => {
-    const wrapperClasses = classNames({
-      'uic--cabinet-wrapper': true,
+    const coverClasses = classNames({
+      'uic--cabinet-cover': true,
       'uic--position-fixed': true,
       'uic--d-none': !show,
     });
@@ -28,7 +28,7 @@ export const CabinetInterior = forwardRef(
 
     return (
       <Fragment>
-        <div className={wrapperClasses} /> {/** Used to cover rest of page */}
+        <div className={coverClasses} /> {/** Used to cover rest of page */}
         <aside className={containerClasses} ref={ref}>
           <div className="uic--cabinet-header uic--w-100 uic--d-flex uic--align-items-center">
             <div
