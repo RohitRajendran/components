@@ -1,10 +1,13 @@
 # Sass Linter Options
 # File Options
 files:
-  include: 'sass/**/*.s+(a|c)ss'
+  include:
+    - 'components/**/*.s+(a|c)ss'
+    - 'constants/sass/*.s+(a|c)ss'
+    - 'constants/sass/**/*.s+(a|c)ss'
   ignore:
-    - 'sass/vendor/**/*.*'
-    
+    - 'node_modules'
+
 # Rule Configuration
 rules:
   extends-before-mixins: 2
