@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-DOCS_BUCKET=ui.unitedincome.com
-DISTRIBUTION=EISUTL1H4NL6S
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 #Parse any options passed in
