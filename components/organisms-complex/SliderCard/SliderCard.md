@@ -7,23 +7,26 @@ The collapsed state of this card uses the Simple Summary component.
 ## Example 🚀
 
 ```javascript
-<SliderCard
-  {...props}
-  config={{
-    name: 'slider',
-    value: state.slider,
-    leftAnnotate: 'Lower Risk',
-    rightAnnotate: 'Higher Risk',
-    name: 'slider',
-    tooltip: (
-      <h3>
-        You can pass any arbitrary node into the tooltip to style it how you'd
-        like
-      </h3>
-    ),
-    tooltipStickyVariant: 'green',
-  }}
-/>
+export const renderCard = (props, state) => {
+  return (
+    <SliderCard
+      {...props}
+      config={{
+        name: 'slider',
+        value: state.slider,
+        leftAnnotate: 'Lower Risk',
+        rightAnnotate: 'Higher Risk',
+        name: 'slider',
+        tooltip: (
+          <h3>
+            You can pass any arbitrary node into the tooltip to style it how you'd
+            like
+          </h3>
+        ),
+        tooltipStickyVariant: 'green',
+      }}
+    />
+  )
 ```
 
 ### To Use With Hogwarts 1.0

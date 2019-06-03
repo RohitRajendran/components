@@ -7,15 +7,19 @@ The collapsed state of this card uses the Simple Summary component.
 ## Example 🚀
 
 ```javascript
-<InputCard
-  {...props}
-  config={{
-    name: 'input',
-    value: state.input,
-    label: 'value',
-    type: 'text',
-  }}
-/>
+export const renderCard = (props, state) => {
+  return (
+    <InputCard
+      {...props}
+      config={{
+        name: 'input',
+        value: state.input,
+        label: 'value',
+        type: 'text',
+      }}
+    />
+  );
+};
 ```
 
 ### To Use With Hogwarts 1.0

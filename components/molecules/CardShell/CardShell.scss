@@ -54,6 +54,20 @@ $active-border-size: 4px;
     overflow: visible;
   }
 
+  .uic--card-content {
+    // Make bootstrap grid a little tighter
+    .uic--row {
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+    }
+
+    .uic--col,
+    [class*='uic--col-'] {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
   .uic--card-after-content {
     margin-top: 3rem;
   }

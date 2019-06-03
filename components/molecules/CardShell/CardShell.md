@@ -5,14 +5,9 @@ This component is a flexible shell for the McGonagall card. See if any of the ot
 ## Example 🚀
 
 ```javascript
-<CardShell
-  buttonText="Submit"
-  hasError={false}
-  isCollapsed={false}
-  onSubmit={() => console.log('Submit')}
->
-  Some card content
-</CardShell>
+export const renderCard = (props, state) => {
+  return <CardShell {...props}>Some card content</CardShell>;
+};
 ```
 
 ### To Use With Hogwarts 1.0

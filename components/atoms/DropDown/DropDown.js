@@ -243,7 +243,7 @@ class DropDown extends Component {
               {...optionProps}
             />
           </div>
-          {this.state.isValid ? (
+          {description && this.state.isValid ? (
             <div className="uic--description">{description}</div>
           ) : (
             <div className="uic--validation-error">

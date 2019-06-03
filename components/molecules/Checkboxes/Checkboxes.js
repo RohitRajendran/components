@@ -50,6 +50,8 @@ const Checkboxes = ({
       <legend className={legendClasses}>
         {options.map((option) => {
           const labelClasses = classNames({
+            'uic--d-flex': true,
+            'uic--align-center': true,
             'uic--disabled': disabled || option.disabled,
             'uic--checkbox-label': true,
             'uic--position-relative': true,
@@ -63,6 +65,7 @@ const Checkboxes = ({
             'uic--mcgonagall-checkbox-button': true,
             'uic--d-flex': true,
             'uic--justify-content-between': true,
+            'uic--flex-column': true,
             'uic--mcgonagall-checkbox-button-followup':
               option.followup && values.has(option.value),
           });
@@ -87,19 +90,18 @@ const Checkboxes = ({
                     disabled={disabled || option.disabled}
                   />
                   <span className="uic--label-value">{option.label}</span>
-
-                  {option.followup && values.has(option.value) && (
-                    <div className="uic--followup uic--w-100">
-                      {option.followup}
-                    </div>
-                  )}
                 </span>
+                {option.secondaryLabel && (
+                  <span className="uic--label-value-secondary">
+                    {option.secondaryLabel}
+                  </span>
+                )}
               </label>
 
-              {option.secondaryLabel && (
-                <span className="uic--label-value-secondary">
-                  {option.secondaryLabel}
-                </span>
+              {option.followup && values.has(option.value) && (
+                <div className="uic--followup uic--w-100">
+                  {option.followup}
+                </div>
               )}
             </div>
           );

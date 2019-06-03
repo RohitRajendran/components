@@ -5,15 +5,18 @@ This component renders the completion screen for the McGonagall flow. It should 
 ## Example 🚀
 
 ```javascript
-<CompletionScreen
-  title="Congrats! You completed something."
-  description="That's pretty cool."
-  actions={
-    <Button type="submit" variant="secondary" light>
-      Finish
-    </Button>
-  }
-/>
+export const renderCard = (props, state) => {
+  return (
+    <CompletionScreen
+      {...props}
+      actions={
+        <Button type="submit" variant="secondary" light>
+          Finish
+        </Button>
+      }
+    />
+  );
+};
 ```
 
 ### To Use With Hogwarts 1.0

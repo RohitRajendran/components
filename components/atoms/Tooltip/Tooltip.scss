@@ -10,6 +10,7 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
     box-shadow: 3px 3px 6px 0 $tooltip-shadow;
     filter: drop-shadow(1px 1px 1px $tooltip-filter);
     padding: 2.1rem;
+    z-index: 1030;
 
     &.__react_component_tooltip {
       &.type-dark {

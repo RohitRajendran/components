@@ -276,6 +276,7 @@ class CardShell extends Component {
             ) : (
               <form
                 autoComplete={autoComplete ? '' : 'off'}
+                className="uic--card-content"
                 onChange={onChange && this.onChange}
                 onSubmit={this.onSubmit}
               >

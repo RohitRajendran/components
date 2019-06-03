@@ -63,22 +63,6 @@ test('DropDown - renders', (t) => {
     'Description node is correct'
   );
 
-  const component3 = shallow(
-    <DropDown
-      name="dropdown"
-      options={[{label: 'some label', value: 'some_value'}]}
-      label="My Options"
-      placeholder="Find your option"
-      value="some_value"
-    />
-  );
-
-  t.equal(
-    component3.find('.uic--description').length,
-    1,
-    'Dropdown block renders, without given description'
-  );
-
   t.end();
 });
 

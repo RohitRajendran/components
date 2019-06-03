@@ -1,10 +1,10 @@
 {
   "name": "@unitedincome/components",
-  "description": "React library for all United Income Front-End projects.",
+  "description": "Component library for all United Income applications.",
   "author": "United Income",
-  "version": "0.1.28",
+  "version": "1.0.0",
   "main": "dist/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "webpack",
@@ -15,8 +15,8 @@
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
-    "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint -v -q './components/**/*.scss' && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' --parser=css || (echo need formatting, use yarn format ; exit 1)",
-    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.scss' --parser=scss",
+    "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint -v -q && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss || (echo need formatting, use yarn format ; exit 1)",
+    "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && sass-lint-auto-fix && prettier --write './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss",
     "generate": "yarn hygen component new",
     "browserstack": "yarn nightwatch -c nightwatch/config.js"
   },
@@ -93,6 +93,7 @@
     "react-text-mask": "*",
     "react-tooltip": "*",
     "sass-lint": "*",
+    "sass-lint-auto-fix": "*",
     "sass-loader": "*",
     "sinon": "*",
     "storybook-addon-jsx": "*",
