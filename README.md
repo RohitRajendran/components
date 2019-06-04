@@ -22,6 +22,8 @@ You can install the component library into your project by running the following
 yarn add @unitedincome/components
 ```
 
+You will also need to install the [required peer dependencies](https://github.com/UnitedIncome/components/blob/master/package.json#L109) into your project. You can learn more about peer dependencies [here](https://nodejs.org/es/blog/npm/peer-dependencies/).
+
 You can then decide if you want to use this library by importing components individually or by importing them all together which will result in a larger bundle size.
 
 For individual importing, you can pull in separate files from the `dist` folder.
