@@ -109,7 +109,7 @@ jobs:
             # If builds stop running to completion at some point, it may be because
             # the GitHub public key changed and needs updated here.
             mkdir -p ~/.ssh
-            echo 'github.com ssh-rsa ${GITHUB_PUBLIC_KEY}' \>> ~/.ssh/known_hosts
+            echo "github.com ssh-rsa ${GITHUB_PUBLIC_KEY}" \>> ~/.ssh/known_hosts
             (umask 077; touch ~/.ssh/id_rsa)
             chmod 0600 ~/.ssh/id_rsa
             (cat \<<EOF > ~/.ssh/id_rsa
