@@ -139,7 +139,7 @@ class ExpandCollapse extends Component {
             onClick={(toggleable && this.openExpandItem) || null}
             onKeyPress={(toggleable && this.openExpandItem) || null}
             role="button"
-            tabIndex={!disabled ? '0' : ''}
+            tabIndex={!disabled && collapsible ? '0' : ''}
           >
             {toggleable && (
               <div className="uic--ec-controls-wrapper uic--position-absolute">

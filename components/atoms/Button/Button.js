@@ -70,7 +70,7 @@ const Button = ({
 
   let spinnerColor;
 
-  if (variant === 'icon') {
+  if (variant === 'icon' || variant === 'link') {
     spinnerColor = dark ? colors.white : colors['royal'];
   } else if (variant === 'secondary' && dark) {
     spinnerColor = colors['super-dark'];

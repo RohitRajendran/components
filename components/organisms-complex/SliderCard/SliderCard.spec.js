@@ -6,13 +6,26 @@ import test from 'tape';
 import SliderCard from './SliderCard';
 
 test('SliderCard - renders', (t) => {
+  const reqAnimFrame = window.requestAnimationFrame;
+  window.requestAnimationFrame = stub();
+
   const props = {
     onSubmit: () => true,
+    name: 'test',
     title: 'Question',
+    summary: <h2>Summary</h2>,
+    moreDetails: {
+      cabinetContent: <span>Test detail</span>,
+      header: 'Test detail',
+      visibleInPrint: false,
+      label: 'Test detail',
+    },
+    isCollapsed: false,
+    isLatestCard: true,
     shortTitle: 'Q',
     config: {
       name: 'yesNo',
-      value: 1,
+      value: '1',
     },
     onChange: stub(),
     cancelChanges: () => true,
@@ -37,8 +50,9 @@ test('SliderCard - renders', (t) => {
       .prop('hasError'),
     'Should not show error state'
   );
-  t.equals(comp.find('Slider').length, 1, 'Displays slider');
+  t.equals(comp.find('QuestionCard').length, 1, 'Displays slider');
 
+  window.requestAnimationFrame = reqAnimFrame;
   t.end();
 });
 
@@ -59,7 +73,7 @@ test('SliderCard - collapsed with answer override', (t) => {
     shortTitle: 'Q',
     config: {
       name: 'yesNo',
-      value: 1,
+      value: '1',
     },
     onChange: stub(),
     answers: ['Yup'],
@@ -108,7 +122,7 @@ test('SliderCard - collapsed without answer override', (t) => {
     shortTitle: 'Q',
     config: {
       name: 'yesNo',
-      value: 1,
+      value: '1',
     },
     onChange: stub(),
     cancelChanges: () => true,
@@ -143,7 +157,7 @@ test('SliderCard - latest collapsed', (t) => {
     shortTitle: 'Q',
     config: {
       name: 'yesNo',
-      value: 1,
+      value: '1',
     },
     onChange: stub(),
     cancelChanges: () => true,

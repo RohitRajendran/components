@@ -1,7 +1,7 @@
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import React from 'react';
-import test from 'tape';
 import {stub} from 'sinon';
+import test from 'tape';
 import TooltipInput from './TooltipInput';
 
 test('TooltipInput - renders', (t) => {
@@ -16,7 +16,7 @@ test('TooltipInput - renders', (t) => {
     },
   };
 
-  const component = shallow(<TooltipInput {...props} />);
+  const component = mount(<TooltipInput {...props} />);
 
   t.equals(
     component.find('Tooltip').length,
