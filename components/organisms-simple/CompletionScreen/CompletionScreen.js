@@ -26,7 +26,7 @@ const CompletionScreen = ({
     <div className={containerClass}>
       {feature && <div className="uic--feature">{feature}</div>}
       <h2>{title}</h2>
-      <p>{description}</p>
+      <p className="uic--text-center">{description}</p>
       <div className="uic--actions uic--d-flex uic--flex-column uic--align-items-center">
         {actions}
       </div>
