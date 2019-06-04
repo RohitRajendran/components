@@ -40,7 +40,6 @@ class McGonagall extends React.Component {
       activeCard,
       cardHistory,
       currXState,
-      hasMounted: false, // Used to switch animation styles
     };
 
     this.close = this.close.bind(this);
@@ -48,11 +47,6 @@ class McGonagall extends React.Component {
     this.navigateToStep = this.navigateToStep.bind(this);
     this.renderStep = this.renderStep.bind(this);
     this.setStateField = this.setStateField.bind(this);
-  }
-
-  /** @inheritdoc */
-  componentDidMount() {
-    this.setState({hasMounted: true});
   }
 
   /** @inheritdoc */
@@ -378,7 +372,7 @@ class McGonagall extends React.Component {
     // Pass props and state into cards
     return step.card(
       {
-        animate: stepIndex !== 0 || (stepIndex === 0 && this.state.hasMounted),
+        animate: stepIndex !== 0,
         cancelChanges,
         clearFuture: step.clearFuture,
         context: this.state.currXState.context,
