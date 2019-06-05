@@ -209,8 +209,9 @@ class CardShell extends Component {
    */
   render() {
     const {
-      autoComplete,
       afterButton,
+      animate,
+      autoComplete,
       beforeButton,
       buttonText,
       children,
@@ -222,8 +223,8 @@ class CardShell extends Component {
       isFetching,
       loading,
       onChange,
-      summary,
       stepIndex,
+      summary,
     } = this.props;
     const {
       animationEnded,
@@ -252,8 +253,8 @@ class CardShell extends Component {
         config={{...config.default, precision: 1}}
         from={{
           height,
-          border: 'none',
-          padding: 0,
+          border: animate ? 'none' : '',
+          padding: animate ? 0 : '',
         }}
         to={{
           height: 'auto',
