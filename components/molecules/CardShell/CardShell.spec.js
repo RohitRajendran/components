@@ -24,7 +24,6 @@ test('CardShell - active', (t) => {
     onChange: stub(),
     beforeButton: <p>Before</p>,
     afterButton: <p>After</p>,
-    animate: true,
   };
 
   const comp = mount(
