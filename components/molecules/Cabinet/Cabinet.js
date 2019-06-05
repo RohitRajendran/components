@@ -170,7 +170,6 @@ class Cabinet extends Component {
 
     const containerClasses = classNames(
       {
-        'uic--text-left': true,
         'uic--cabinet-container': true,
       },
       className
