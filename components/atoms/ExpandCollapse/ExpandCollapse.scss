@@ -92,18 +92,6 @@ $transition-time: 0.5s;
       overflow: hidden;
       transition: height $transition-time;
     }
-
-    &:not(.uic--ec-content-container-closed) {
-      .uic--ec-content-inner {
-        @keyframes delay-overflow {
-          from {
-            overflow: hidden;
-          }
-        }
-        animation: $transition-time delay-overflow;
-        overflow: initial;
-      }
-    }
   }
 
   .uic--ec-aside {

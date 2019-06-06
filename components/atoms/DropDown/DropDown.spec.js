@@ -311,3 +311,24 @@ test('DropDown - getCurrentOption', (t) => {
     'Should get the currently selected option from state.'
   );
 });
+
+test('DropDown - componentWillUnmount', (t) => {
+  t.plan(1);
+
+  const props = {
+    name: 'name',
+    label: 'label',
+    options: [
+      {label: 'some label', value: 'some_value'},
+      {label: 'another label', value: 'some_other_value'},
+    ],
+    placeholder: 'Find your option',
+    value: 'some_other_value',
+  };
+
+  const component = mount(<DropDown {...props} />);
+
+  component.instance().componentWillUnmount();
+
+  t.pass();
+});

@@ -21,6 +21,8 @@ class DropDown extends Component {
     this.onChange = this.onChange.bind(this);
     this.getOptions = this.getOptions.bind(this);
 
+    this.portal = document.createElement('div');
+
     this.state = {
       options: {},
       isFocused: false,
@@ -32,6 +34,11 @@ class DropDown extends Component {
 
   /** @inheritdoc */
   componentDidMount() {
+    // Appends the required class name and pulls the DropDown into a Portal.
+    // This is done so the DropDown can live inside containers with a hidden overflow property.
+    this.portal.classList.add('uic--mcgonagall-dropdown');
+    document.body.appendChild(this.portal);
+
     if (
       this.props.isSubmitted ||
       (!isNullOrUndefined(this.props.value) && this.props.value !== '')
@@ -52,6 +59,11 @@ class DropDown extends Component {
         this.validate
       );
     }
+  }
+
+  /** @inheritdoc */
+  componentWillUnmount() {
+    document.body.removeChild(this.portal);
   }
 
   /**
@@ -240,6 +252,7 @@ class DropDown extends Component {
               isDisabled={disabled}
               isLoading={loading}
               aria-label={label}
+              menuPortalTarget={this.portal}
               {...optionProps}
             />
           </div>
