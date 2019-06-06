@@ -102,6 +102,21 @@ const defaultProps = {
   exitLocation: '',
 };
 
+test('McGonagall - componentDidMount', (t) => {
+  const {scrollTo} = window;
+  window.scrollTo = stub();
+
+  const comp = new McGonagall(defaultProps);
+  comp.setState = spy();
+
+  comp.componentDidMount();
+
+  t.deepEquals(comp.setState.args[0][0], {hasMounted: true}, 'Updates state');
+
+  window.scrollTo = scrollTo;
+  t.end();
+});
+
 test('McGonagall - componentDidUpdate (final card is no longer active card)', (t) => {
   const {scrollTo} = window;
   window.scrollTo = stub();
