@@ -317,9 +317,7 @@ export const renderOwner = (props, state) => {
             value: whoseEnum.THEIRS,
           },
           {
-            label: `${
-              state.userData.spouseFirstName
-            } and I are joint owners of this property`,
+            label: `${state.userData.spouseFirstName} and I are joint owners of this property`,
             value: whoseEnum.OURS,
           },
         ],
