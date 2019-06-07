@@ -3,10 +3,15 @@ import pick from 'lodash/pick';
 import PropTypes from 'prop-types';
 import * as queryString from 'query-string';
 import React from 'react';
-import {Machine} from 'xstate';
+import {assign, Machine} from 'xstate';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import Confirm from '~components/utilities/Confirm/Confirm';
 import './McGonagall.scss';
+
+// Saves the user data to McGonagalls state context.
+export const saveToStateContext = assign((ctx, eve) => ({
+  ...eve,
+}));
 
 /** McGonagall Component */
 class McGonagall extends React.Component {

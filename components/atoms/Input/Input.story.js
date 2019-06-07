@@ -58,6 +58,7 @@ const defaultProps = ({
   mask,
   validationErrorMsg,
   validateOnBlur,
+  showRequiredError,
 }) => ({
   name: formName,
   label: text('label', label),
@@ -66,7 +67,7 @@ const defaultProps = ({
   description: text('description', description),
   placeholder: text('placeholder', placeholder),
   value: store.get(formName),
-  required: boolean('required'),
+  required: boolean('required', true),
   maxLength: number('maxLength'),
   mask: inputMask(mask),
   min: number('min'),
@@ -78,6 +79,7 @@ const defaultProps = ({
   error: boolean('error', error),
   onChange: (name, value) => store.set({[name]: value}),
   sanitize: boolean('sanitize'),
+  showRequiredError: boolean('showRequiredError', showRequiredError),
   type: text('type', 'text'),
   key: formName,
 });
@@ -146,6 +148,19 @@ stories.add('error', () => (
       validationErrorMsg: 'Not a valid input!',
       error: true,
       mask: null,
+    })}
+  />
+));
+
+stories.add('required error', () => (
+  <Input
+    {...defaultProps({
+      formName: 'default',
+      label: 'Address',
+      placeholder: '1660 L Street',
+      validationErrorMsg: 'Not a valid input!',
+      mask: null,
+      showRequiredError: true,
     })}
   />
 ));

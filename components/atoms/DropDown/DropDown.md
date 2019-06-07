@@ -20,7 +20,6 @@ The DropDown component displays a series options in a dropdown list. The list ca
   ]}
   placeholder="optional"
   value={this.state.suffix}
-  value={state.apiExample}
   onChange={(name, value) => this.setState({[name]: value})}
   disabled={false}
   required={true}

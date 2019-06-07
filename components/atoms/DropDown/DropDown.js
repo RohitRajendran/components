@@ -1,12 +1,12 @@
 /** @module DropDown */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import Select, {Async, components} from 'react-select';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
-
+import {CardShellContext} from '../../molecules/CardShell/CardShell';
 import './DropDown.scss';
 
 /** Renders the DropDown field component which wraps react-select. */
@@ -21,6 +21,8 @@ class DropDown extends Component {
     this.onChange = this.onChange.bind(this);
     this.getOptions = this.getOptions.bind(this);
 
+    this.portal = document.createElement('div');
+
     this.state = {
       options: {},
       isFocused: false,
@@ -32,6 +34,11 @@ class DropDown extends Component {
 
   /** @inheritdoc */
   componentDidMount() {
+    // Appends the required class name and pulls the DropDown into a Portal.
+    // This is done so the DropDown can live inside containers with a hidden overflow property.
+    this.portal.classList.add('uic--mcgonagall-dropdown');
+    document.body.appendChild(this.portal);
+
     if (
       this.props.isSubmitted ||
       (!isNullOrUndefined(this.props.value) && this.props.value !== '')
@@ -52,6 +59,11 @@ class DropDown extends Component {
         this.validate
       );
     }
+  }
+
+  /** @inheritdoc */
+  componentWillUnmount() {
+    document.body.removeChild(this.portal);
   }
 
   /**
@@ -165,15 +177,17 @@ class DropDown extends Component {
   /** @inheritdoc */
   render() {
     const {
-      label,
-      options,
-      disabled,
       className,
-      description,
-      placeholder,
-      searchable,
       clearable,
+      description,
+      disabled,
+      label,
       loading,
+      options,
+      placeholder,
+      required,
+      searchable,
+      value,
     } = this.props;
 
     let ComponentType, optionProps;
@@ -188,13 +202,6 @@ class DropDown extends Component {
     }
 
     const containerClasses = classNames(className);
-    const dropDownClasses = classNames({
-      'uic--mcgonagall-dropdown': true,
-      'uic--position-relative': true,
-      'uic--error': !this.state.isValid,
-      'uic--focused': this.state.isFocused,
-      'uic--disabled': disabled,
-    });
 
     const selectedValue =
       (optionProps && optionProps.options) || this.state.options
@@ -220,38 +227,61 @@ class DropDown extends Component {
     };
 
     return (
-      <div className={containerClasses}>
-        <div className={dropDownClasses}>
-          <label className="uic--position-absolute">{label}</label>
-          <div className="uic--mcgonagall-dropdown-wrapper">
-            <ComponentType
-              {...this.props}
-              components={{DropdownIndicator, ClearIndicator}}
-              classNamePrefix="uic--mcgonagall-dropdown"
-              value={selectedValue}
-              placeholder={placeholder}
-              onChange={this.onChange}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              autosize={true}
-              simpleValue={true}
-              isSearchable={searchable}
-              isClearable={clearable}
-              isDisabled={disabled}
-              isLoading={loading}
-              aria-label={label}
-              {...optionProps}
-            />
-          </div>
-          {description && this.state.isValid ? (
-            <div className="uic--description">{description}</div>
-          ) : (
-            <div className="uic--validation-error">
-              {this.state.validationMessage || 'Invalid'}
+      // The Context allows it to get the showRequiredError prop when in the CardShell
+      <CardShellContext.Consumer>
+        {({showRequiredError}) => {
+          const reqErrorNecessary =
+            (this.props.showRequiredError || showRequiredError) &&
+            required &&
+            !value;
+
+          const dropDownClasses = classNames({
+            'uic--mcgonagall-dropdown': true,
+            'uic--position-relative': true,
+            'uic--error': !this.state.isValid || reqErrorNecessary,
+            'uic--focused': this.state.isFocused,
+            'uic--disabled': disabled,
+          });
+
+          return (
+            <div className={containerClasses}>
+              <div className={dropDownClasses}>
+                <label className="uic--position-absolute">{label}</label>
+                <div className="uic--mcgonagall-dropdown-wrapper">
+                  <ComponentType
+                    {...this.props}
+                    components={{DropdownIndicator, ClearIndicator}}
+                    classNamePrefix="uic--mcgonagall-dropdown"
+                    value={selectedValue}
+                    placeholder={placeholder}
+                    onChange={this.onChange}
+                    onFocus={this.onFocus}
+                    onBlur={this.onBlur}
+                    autosize={true}
+                    simpleValue={true}
+                    isSearchable={searchable}
+                    isClearable={clearable}
+                    isDisabled={disabled}
+                    isLoading={loading}
+                    aria-label={label}
+                    menuPortalTarget={this.portal}
+                    {...optionProps}
+                  />
+                </div>
+                {description && this.state.isValid && !reqErrorNecessary ? (
+                  <div className="uic--description">{description}</div>
+                ) : (
+                  <div className="uic--validation-error">
+                    {reqErrorNecessary
+                      ? 'Required Field'
+                      : this.state.validationMessage || 'Invalid'}
+                  </div>
+                )}
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          );
+        }}
+      </CardShellContext.Consumer>
     );
   }
 }
@@ -300,6 +330,8 @@ DropDown.propTypes = {
   loading: PropTypes.bool,
   /** Determines if this field has been submitted or not. */
   isSubmitted: PropTypes.bool,
+  /** Displays error state for incomplete required fields */
+  showRequiredError: PropTypes.bool,
 };
 
 DropDown.defaultProps = {

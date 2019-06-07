@@ -317,9 +317,7 @@ export const renderOwner = (props, state) => {
             value: whoseEnum.THEIRS,
           },
           {
-            label: `${
-              state.userData.spouseFirstName
-            } and I are joint owners of this property`,
+            label: `${state.userData.spouseFirstName} and I are joint owners of this property`,
             value: whoseEnum.OURS,
           },
         ],
@@ -417,4 +415,14 @@ const stateOptions = {
 };
 
 const fetchMachine = Machine(stateConfig, stateOptions);
+```
+
+## Utilities
+You're able to import a number of utilities from McGonagall to help build your flows.
+
+### saveToStateContext
+The `saveToStateContext` function will allow you to save data to your state context. It can be imported using the following pattern.
+
+```javascript
+import {saveToStateContext} from '@unitedincome/components/dist/mcgonagall';
 ```

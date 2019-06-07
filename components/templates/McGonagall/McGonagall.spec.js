@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import React from 'react';
 import test from 'tape';
-import McGonagall from './McGonagall';
+import McGonagall, {saveToStateContext} from './McGonagall';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
 import {stub, spy} from 'sinon';
 import {assign} from 'xstate';
@@ -101,6 +101,19 @@ const defaultProps = {
   },
   exitLocation: '',
 };
+
+test('McGonagall - saveToStateContext', (t) => {
+  const eve = {
+    completionDate: '02/1990',
+  };
+
+  t.deepEquals(
+    saveToStateContext.assignment({}, eve),
+    {completionDate: '02/1990'},
+    'Should return an object.'
+  );
+  t.end();
+});
 
 test('McGonagall - componentDidMount', (t) => {
   const {scrollTo} = window;

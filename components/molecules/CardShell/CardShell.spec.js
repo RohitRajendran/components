@@ -129,12 +129,61 @@ test('CardShell - error', (t) => {
     comp
       .find('div')
       .first()
-      .hasClass('uic--error'),
+      .hasClass('uic--card-error'),
     'Shows error state'
   );
 
   t.equals(comp.find('Button').length, 0, 'Hides button');
 
+  t.end();
+});
+
+test('CardShell - interacting with disabled continue button', (t) => {
+  const reqAnimFrame = window.requestAnimationFrame;
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    beforeButton: <p>Before</p>,
+    afterButton: <p>After</p>,
+    animate: true,
+    disabled: true,
+  };
+
+  const comp = mount(
+    <CardShell {...props}>
+      <input required />
+    </CardShell>
+  );
+
+  const continueBtnWrapper = comp.find('.uic--card-submit-wrapper');
+
+  continueBtnWrapper.prop('onClick')();
+  comp.update();
+  t.false(
+    comp.find('.uic--warning-message__required').length,
+    'Should not show required error message on 1st click'
+  );
+  continueBtnWrapper.prop('onClick')();
+  comp.update();
+  t.false(
+    comp.find('.uic--warning-message__required').length,
+    'Should not show required error message on 2nd click'
+  );
+  continueBtnWrapper.prop('onClick')();
+  comp.update();
+  t.true(
+    comp.find('.uic--warning-message__required').length,
+    'Should show required error message on 3rd click'
+  );
+
+  continueBtnWrapper.prop('onClick')();
+  comp.update();
+  t.true(comp.find('.uic--animate-shake'), 'Should shake message on 4th click');
+
+  window.requestAnimationFrame = reqAnimFrame;
   t.end();
 });
 
@@ -202,6 +251,72 @@ test('CardShell - onAnimationEnd', (t) => {
     hasAnimationRun: true,
   });
 
+  t.end();
+});
+
+test('CardShell - onDisabledContinueClick', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isCollapsed: false,
+  };
+
+  const comp = new CardShell(props);
+  comp.setState = stub();
+
+  comp.onDisabledContinueClick();
+  t.deepEquals(
+    comp.setState.args[0][0],
+    {
+      disabledClickCount: 1,
+    },
+    'Increments disabled click count'
+  );
+
+  comp.state.disabledClickCount = 3;
+  comp.onDisabledContinueClick();
+  t.deepEquals(
+    comp.setState.args[1][0],
+    {
+      cardContext: {showRequiredError: true},
+    },
+    'Updates card context'
+  );
+
+  comp.state.cardContext.showRequiredError = true;
+  comp.onDisabledContinueClick();
+  t.deepEquals(
+    comp.setState.args[2][0],
+    {
+      shakeError: true,
+    },
+    'Updates shake error'
+  );
+
+  t.end();
+});
+
+test('CardShell - scrollToFirstErrorField', (t) => {
+  const getElements = document.getElementsByClassName;
+  const elements = [{scrollIntoView: stub()}];
+  document.getElementsByClassName = stub().returns(elements);
+
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isCollapsed: false,
+  };
+
+  const comp = new CardShell(props);
+  comp.setState = stub();
+
+  comp.scrollToFirstErrorField();
+
+  t.true(elements[0].scrollIntoView.called, 'Scrolls element into view');
+
+  document.getElementsByClassName = getElements;
   t.end();
 });
 

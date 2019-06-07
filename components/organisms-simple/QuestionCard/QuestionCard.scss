@@ -9,16 +9,6 @@
     margin-top: 2.6rem;
   }
 
-  .uic--warning-message {
-    @include source-sans-pro(1.2rem);
-    color: $pink;
-    font-weight: 600;
-    line-height: 1.6rem;
-    margin: 0;
-    max-width: 38.5rem;
-    text-align: center;
-  }
-
   .uic--card-cancel {
     margin-top: 1.2rem;
   }

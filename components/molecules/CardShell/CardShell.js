@@ -10,6 +10,11 @@ import {colors} from '~constants/js/colors';
 import './CardShell.scss';
 
 /**
+ * Creates context for showing the required error state
+ */
+export const CardShellContext = React.createContext({showRequiredError: false});
+
+/**
  * Validates children to see if it is valid
  * @param {array<Node>} children - Component
  * @param {boolean} startValidated - Determines if the validation should start as validated or not.
@@ -124,19 +129,23 @@ class CardShell extends Component {
   constructor(props) {
     super(props);
 
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onAnimationStart = this.onAnimationStart.bind(this);
-    this.onAnimationEnd = this.onAnimationEnd.bind(this);
-
     this.contentNode = createRef();
     this.state = {
-      isInvalid: !validateChildren(props.children).isChildValid,
-      height: props.animate ? 0 : 'auto',
       animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
+      cardContext: {showRequiredError: props.forceUnansweredQuestionError},
       hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations,
+      height: props.animate ? 0 : 'auto',
+      isInvalid: !validateChildren(props.children).isChildValid,
       isSubmitting: false,
+      shakeError: false,
+      disabledClickCount: 0,
     };
+
+    this.onAnimationEnd = this.onAnimationEnd.bind(this);
+    this.onAnimationStart = this.onAnimationStart.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onDisabledContinueClick = this.onDisabledContinueClick.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   /** @inheritdoc */
@@ -174,7 +183,12 @@ class CardShell extends Component {
       this.props.outputDefaults
     );
 
-    this.setState({isSubmitting: false});
+    this.setState({
+      cardContext: {showRequiredError: false},
+      disabledClickCount: 0,
+      isSubmitting: false,
+      shakeError: false,
+    });
   }
 
   /**
@@ -204,6 +218,48 @@ class CardShell extends Component {
   }
 
   /**
+   * Toggles show required fields when the disabled button is clicked
+   * @param {object} e event
+   * @returns {undefined}
+   */
+  onDisabledContinueClick() {
+    // Only perform action after the button has been clicked 3 times
+    if (this.state.disabledClickCount < 2) {
+      return this.setState({
+        disabledClickCount: this.state.disabledClickCount + 1,
+      });
+    }
+
+    if (!this.state.cardContext.showRequiredError) {
+      // Show required errors and answer question message
+      this.setState(
+        {
+          cardContext: {showRequiredError: true},
+        },
+        this.scrollToFirstErrorField
+      );
+    } else {
+      // Jiggle error message if user continues to click
+      this.setState({shakeError: !this.state.shakeError});
+    }
+  }
+
+  /**
+   * Brings the first error field into view
+   * @returns {undefined}
+   */
+  scrollToFirstErrorField() {
+    const invalidElements = document.getElementsByClassName('uic--error');
+
+    if (invalidElements && invalidElements.length > 0) {
+      invalidElements[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }
+
+  /**
    * Standard render method
    * @returns {JSX} - react JSX
    */
@@ -228,10 +284,12 @@ class CardShell extends Component {
     } = this.props;
     const {
       animationEnded,
+      cardContext,
       hasAnimationRun,
       height,
       isInvalid,
       isSubmitting,
+      shakeError,
     } = this.state;
 
     const cardClass = classNames(
@@ -240,12 +298,21 @@ class CardShell extends Component {
         'uic--w-100': true,
         'uic--active': !isCollapsed,
         'uic--collapsed': isCollapsed,
-        'uic--error': hasError,
+        'uic--card-error': hasError,
         'uic--position-relative': true,
         'uic--animation-ended': animationEnded,
       },
       className
     );
+
+    const errorMessageClass = classNames({
+      'uic--warning-message': true,
+      'uic--warning-message__required': true,
+      'uic--animate-shake': shakeError,
+    });
+
+    const showRequiredQuestionError =
+      cardContext.showRequiredError && isInvalid;
 
     return (
       <Spring
@@ -281,13 +348,25 @@ class CardShell extends Component {
                 onChange={onChange && this.onChange}
                 onSubmit={this.onSubmit}
               >
-                {children}
+                <CardShellContext.Provider value={cardContext}>
+                  {children}
+                </CardShellContext.Provider>
 
-                {(beforeButton || afterButton || !hideButton) && (
+                {(beforeButton ||
+                  afterButton ||
+                  !hideButton ||
+                  showRequiredQuestionError) && (
                   <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
-                    {beforeButton && (
+                    {(beforeButton || showRequiredQuestionError) && (
                       <div className="uic--card-before-button">
                         {beforeButton}
+
+                        {showRequiredQuestionError && (
+                          <p className={errorMessageClass}>
+                            You must answer this question before hitting
+                            continue.
+                          </p>
+                        )}
                       </div>
                     )}
 
@@ -299,16 +378,25 @@ class CardShell extends Component {
                           width="25"
                         />
                       ) : (
-                        <Button
-                          className="uic--card-submit"
-                          disabled={isInvalid || disabled}
-                          isLoading={loading || isSubmitting}
-                          light
-                          type="submit"
-                          variant="secondary"
+                        <div
+                          className="uic--card-submit-wrapper"
+                          onClick={
+                            (isInvalid || disabled) &&
+                            this.onDisabledContinueClick
+                          }
+                          role="presentation"
                         >
-                          {buttonText}
-                        </Button>
+                          <Button
+                            className="uic--card-submit"
+                            disabled={isInvalid || disabled}
+                            isLoading={loading || isSubmitting}
+                            light
+                            type="submit"
+                            variant="secondary"
+                          >
+                            {buttonText}
+                          </Button>
+                        </div>
                       ))}
 
                     {afterButton && (
@@ -360,6 +448,8 @@ CardShell.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
   outputDefaults: PropTypes.shape({}),
+  /** Force show the question must be answered error, usually shows on the third click of the disabled Submit button */
+  forceUnansweredQuestionError: PropTypes.bool,
   /** The summary view that should display when the card is collapsed. */
   summary: PropTypes.node,
   /** The index of this card in the flow, used for animation purposes */

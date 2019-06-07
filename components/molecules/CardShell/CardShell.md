@@ -38,3 +38,9 @@ Here's an example of how it was applied in the ExpandCollapse component
   }
 }
 ```
+
+## Behaviors
+
+### Disabled Submit Button
+
+The card iterates through its children to see if there are any invalid fields. If it finds any invalid fields, the Submit button will get disabled. On the third click of the disabled continue button, a message will show above the button saying "You must answer this question before hitting continue.", it will highlight empty required fields, and will scroll you up to the first invalid field. On the fourth click and every other click after that, it will shake the message to reinforce that the question must be answered first.

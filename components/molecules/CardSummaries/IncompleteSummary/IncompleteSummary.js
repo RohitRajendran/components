@@ -21,7 +21,7 @@ const IncompleteSummary = ({shortTitle, editCard, text, to}) => {
           </div>
         </div>
         <div className="uic--col-12 uic--col-sm-5">
-          <p className="uic--card-summary-answer uic--error">{text}</p>
+          <p className="uic--card-summary-answer">{text}</p>
         </div>
       </div>
     </div>
