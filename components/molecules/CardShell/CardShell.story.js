@@ -4,12 +4,16 @@ import React from 'react';
 import {withReadme} from 'storybook-readme';
 import CardShell from './CardShell';
 import CardShellReadme from './CardShell.md';
+import Input from '~components/atoms/Input/Input';
 
 const stories = storiesOf('Molecules/CardShell', module);
 
 stories.addDecorator(withReadme(CardShellReadme));
 
-const defaultProps = (isCollapsed = false) => ({
+const defaultProps = (
+  isCollapsed = false,
+  forceUnansweredQuestionError = false
+) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),
   buttonText: text('buttonText'),
@@ -20,6 +24,10 @@ const defaultProps = (isCollapsed = false) => ({
   isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
   summary: <h1>Collapsed summary content</h1>,
+  forceUnansweredQuestionError: boolean(
+    'forceUnansweredQuestionError',
+    forceUnansweredQuestionError
+  ),
 });
 
 stories.add('active', () => (
@@ -31,5 +39,28 @@ stories.add('active', () => (
 stories.add('collapsed', () => (
   <CardShell {...defaultProps(true)}>
     <h1>Some card content</h1>
+  </CardShell>
+));
+
+stories.add('unanswered question error', () => (
+  <CardShell {...defaultProps(false, true)}>
+    <h1>Some card content</h1>
+    <Input
+      name="suffix"
+      label="Suffix"
+      options={[
+        {
+          value: 'valid',
+          label: 'Montezuma is the best cat',
+        },
+        {
+          value: 'invalid',
+          label: 'Montezuma is not the best cat',
+        },
+      ]}
+      placeholder="optional"
+      value={''}
+      required={true}
+    />
   </CardShell>
 ));

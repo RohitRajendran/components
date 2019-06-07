@@ -1,11 +1,11 @@
 /** @module Input */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import MaskedInput from 'react-text-mask';
 import classNames from 'classnames';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
-
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import {CardShellContext} from '../../molecules/CardShell/CardShell';
 import './Input.scss';
 
 export const hideValidityFalse = () => false;
@@ -296,7 +296,6 @@ class Input extends Component {
       sanitize,
       style,
     } = this.props;
-
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
       into the CSS attr property. This allows us to (hopefully) target
@@ -322,6 +321,7 @@ class Input extends Component {
     };
 
     const showInvalidity = !disabled ? !this.isValid() : false;
+    const isEmpty = (value && value.length < 1) || !value;
 
     let InputType = 'input';
     let prependCharacter = prepend;
@@ -372,68 +372,83 @@ class Input extends Component {
         );
     }
 
-    const containerClasses = classNames(
-      {
-        'uic--mcgonagall-input': true,
-        'uic--position-relative': true,
-        [`uic--input-append uic--input-append-${identifier}`]:
-          appendCharacter && value.length > 0,
-        [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
-        'uic--empty': (value && value.length < 1) || !value,
-        'uic--focus': this.state.isActive,
-        'uic--error': showInvalidity || error,
-        'uic--disabled': disabled,
-      },
-      className
-    );
-
     return (
-      <div className={containerClasses} style={style} data-value={value}>
-        {appendCharacter && (
-          <style>
-            {`
+      // The Context allows it to get the showRequiredError prop when in the CardShell
+      <CardShellContext.Consumer>
+        {({showRequiredError}) => {
+          const reqErrorNecessary =
+            (this.props.showRequiredError || showRequiredError) &&
+            required &&
+            !value;
+
+          const containerClasses = classNames(
+            {
+              'uic--mcgonagall-input': true,
+              'uic--position-relative': true,
+              [`uic--input-append uic--input-append-${identifier}`]:
+                appendCharacter && value.length > 0,
+              [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
+              'uic--empty': isEmpty,
+              'uic--focus': this.state.isActive,
+              'uic--error': showInvalidity || error || reqErrorNecessary,
+              'uic--disabled': disabled,
+            },
+            className
+          );
+
+          return (
+            <div className={containerClasses} style={style} data-value={value}>
+              {appendCharacter && (
+                <style>
+                  {`
               .uic--input-append-${identifier}[data-value]:after {
                 content: attr(data-value) '${appendCharacter}';
               }
             `}
-          </style>
-        )}
+                </style>
+              )}
 
-        {prependCharacter && (
-          <style>
-            {`
+              {prependCharacter && (
+                <style>
+                  {`
               .uic--input-prepend-${identifier}:before {
                 content: '${prependCharacter}';
               }
             `}
-          </style>
-        )}
-        <InputType
-          type="text"
-          aria-label={this.props.label}
-          autoComplete={
-            appendCharacter ? 'off' : autoComplete ? autoComplete : null
-          }
-          onFocus={this.toggleFocus}
-          onBlur={this.toggleFocus}
-          ref={(input) => {
-            this.inputElement = input;
-            this.props.setRef && this.props.setRef(input);
-          }}
-          {...attrs}
-        />
-        <label className="uic--position-absolute">{label}</label>
-        {description && !(showInvalidity || error) ? (
-          <div className="uic--description">{description}</div>
-        ) : (
-          <div className="uic--validation-error">
-            {validationErrorMsg ||
-              (this.props.mask &&
-                maskEnum[this.props.mask].validationErrorMsg) ||
-              'Invalid'}
-          </div>
-        )}
-      </div>
+                </style>
+              )}
+              <InputType
+                type="text"
+                aria-label={this.props.label}
+                autoComplete={
+                  appendCharacter ? 'off' : autoComplete ? autoComplete : null
+                }
+                onFocus={this.toggleFocus}
+                onBlur={this.toggleFocus}
+                ref={(input) => {
+                  this.inputElement = input;
+                  this.props.setRef && this.props.setRef(input);
+                }}
+                {...attrs}
+              />
+              <label className="uic--position-absolute">{label}</label>
+              {description &&
+              !(showInvalidity || error || reqErrorNecessary) ? (
+                <div className="uic--description">{description}</div>
+              ) : (
+                <div className="uic--validation-error">
+                  {isEmpty && reqErrorNecessary
+                    ? 'Required Field'
+                    : validationErrorMsg ||
+                      (this.props.mask &&
+                        maskEnum[this.props.mask].validationErrorMsg) ||
+                      'Invalid'}
+                </div>
+              )}
+            </div>
+          );
+        }}
+      </CardShellContext.Consumer>
     );
   }
 }
@@ -508,6 +523,8 @@ Input.propTypes = {
   className: PropTypes.string,
   /** Sanitizes the input when passed back by the onChange handler. */
   sanitize: PropTypes.bool,
+  /** Displays error state for incomplete required fields */
+  showRequiredError: PropTypes.bool,
   /** Optional inline styles. */
   style: PropTypes.objectOf(PropTypes.string),
 };

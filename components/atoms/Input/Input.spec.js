@@ -1,6 +1,6 @@
 import test from 'tape';
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import Input, {
   getDeepestInputElement,
   commaSeparatedMask,
@@ -13,7 +13,7 @@ test('Input - Renders props as attributes on the input', (t) => {
   t.plan(9);
   const onChangeSpy = spy();
 
-  const component = shallow(
+  const component = mount(
     <Input
       name="fancy_input"
       type="text"
@@ -38,6 +38,39 @@ test('Input - Renders props as attributes on the input', (t) => {
 
   componentInputProps.onChange({target: {value: 5}});
   t.deepEquals(onChangeSpy.args[0], ['fancy_input', 5]);
+});
+
+test('Input - required field error', (t) => {
+  const onChangeSpy = spy();
+
+  const component = mount(
+    <Input
+      name="fancy_input"
+      type="text"
+      value=""
+      placeholder="$0"
+      label="Value"
+      pattern="^\d{5}$"
+      maxLength={5}
+      onChange={onChangeSpy}
+      required
+      showRequiredError={true}
+    />
+  );
+
+  t.equal(
+    component.find('.uic--error').length,
+    1,
+    'Shows dropdown error state'
+  );
+
+  t.equal(
+    component.find('.uic--validation-error').text(),
+    'Required Field',
+    'Shows required field error message'
+  );
+
+  t.end();
 });
 
 test('Input - Renders a masked input if mask is provided', (t) => {
@@ -66,7 +99,7 @@ test('Input - Renders a masked input if mask is provided', (t) => {
 test('Input - Creates error when currency has no onChange function', (t) => {
   t.plan(1);
   t.throws(() =>
-    shallow(
+    mount(
       <Input
         name="test"
         label="Amount"

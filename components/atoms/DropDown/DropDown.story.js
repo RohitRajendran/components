@@ -84,6 +84,7 @@ const defaultProps = ({
   placeholder,
   options,
   disabled,
+  showRequiredError,
 }) => ({
   name: formName,
   validate: [validate],
@@ -97,8 +98,9 @@ const defaultProps = ({
   clearable: boolean('clearable', true),
   loading: boolean('loading', false),
   disabled: boolean('disabled', disabled),
-  required: boolean('required', false),
+  required: boolean('required', true),
   isSubmitted: boolean('isSubmitted', false),
+  showRequiredError: boolean('showRequiredError', showRequiredError),
   key: formName,
 });
 
@@ -174,6 +176,28 @@ stories.add('invalid', () => (
           label: 'Montezuma is not the best cat',
         },
       ],
+    })}
+  />
+));
+
+stories.add('invalid required', () => (
+  <DropDown
+    {...defaultProps({
+      formName: 'selectedExample',
+      options: [
+        {
+          value: 'uk',
+          label: 'United Kingdom',
+        },
+        {
+          value: 'usa',
+          label: 'United States',
+        },
+      ],
+      placeholder: 'Choose a country',
+      description: 'Pick your country',
+      label: 'Country',
+      showRequiredError: true,
     })}
   />
 ));

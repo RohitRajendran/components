@@ -1,11 +1,11 @@
 import test from 'tape';
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import {spy, stub} from 'sinon';
 import DropDown from './DropDown';
 
 test('DropDown - renders', (t) => {
-  const component = shallow(
+  const component = mount(
     <DropDown
       name="dropdown"
       description="string description"
@@ -40,7 +40,7 @@ test('DropDown - renders', (t) => {
     'Description node is correct'
   );
 
-  const component2 = shallow(
+  const component2 = mount(
     <DropDown
       name="dropdown"
       description={<div className="test--desc">node description</div>}
@@ -66,9 +66,38 @@ test('DropDown - renders', (t) => {
   t.end();
 });
 
+test('DropDown - required field error', (t) => {
+  const component = mount(
+    <DropDown
+      name="dropdown"
+      description="string description"
+      options={[{label: 'some label', value: 'some_value'}]}
+      label="My Options"
+      placeholder="Find your option"
+      value=""
+      required
+      showRequiredError={true}
+    />
+  );
+
+  t.equal(
+    component.find('.uic--error').length,
+    1,
+    'Shows dropdown error state'
+  );
+
+  t.equal(
+    component.find('.uic--validation-error').text(),
+    'Required Field',
+    'Shows required field error message'
+  );
+
+  t.end();
+});
+
 test('DropDown - onChange', (t) => {
   const onChangeSpy = spy();
-  const component = shallow(
+  const component = mount(
     <DropDown name="test" value="" onChange={onChangeSpy} label="label" />
   );
 
@@ -90,7 +119,7 @@ test('DropDown - onChange', (t) => {
 
   onChangeSpy.resetHistory();
 
-  const component2 = shallow(
+  const component2 = mount(
     <DropDown
       name="test"
       value=""
@@ -115,7 +144,7 @@ test('DropDown - Blur and Focus', (t) => {
   const onFocusSpy = spy();
   const onBlurSpy = spy();
 
-  const component = shallow(
+  const component = mount(
     <DropDown
       name="test"
       label="label"
@@ -146,7 +175,7 @@ test('DropDown - getOptions', async (t) => {
     value: '',
   };
 
-  const component = shallow(<DropDown {...props} name="name" label="label" />);
+  const component = mount(<DropDown {...props} name="name" label="label" />);
 
   t.equal(component.find('Async').length, 1, 'Render Async dropdown component');
 
@@ -194,7 +223,7 @@ test('DropDown - validationResult', (t) => {
     value: 'invalid',
   };
 
-  const component = shallow(<DropDown {...props} />);
+  const component = mount(<DropDown {...props} />);
 
   t.deepEqual(
     component.instance().validationResults(props.validate),
@@ -219,7 +248,7 @@ test('DropDown - validationResult', (t) => {
     value: 'valid',
   };
 
-  const component2 = shallow(<DropDown {...props2} />);
+  const component2 = mount(<DropDown {...props2} />);
 
   t.deepEqual(
     component2.instance().validationResults(props2.validate),
