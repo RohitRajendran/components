@@ -149,6 +149,15 @@ class CardShell extends Component {
   }
 
   /** @inheritdoc */
+  componentDidMount() {
+    const height = this.contentNode.current.scrollHeight;
+
+    this.setState({
+      height,
+    });
+  }
+
+  /** @inheritdoc */
   componentDidUpdate(prevProps) {
     const updatedState = {};
 
@@ -159,9 +168,11 @@ class CardShell extends Component {
 
     if (
       prevProps.isCollapsed !== this.props.isCollapsed &&
-      this.state.height !== this.contentNode.current.clientHeight
+      this.state.height !== this.contentNode.current.scrollHeight
     ) {
-      updatedState.height = this.contentNode.current.clientHeight;
+      updatedState.height =
+        this.contentNode.current.scrollHeight +
+        (this.props.isCollapsed ? 2 : 1); // Accounts for difference in border thickness
     }
 
     if (Object.keys(updatedState).length > 0) {
@@ -300,10 +311,16 @@ class CardShell extends Component {
         'uic--collapsed': isCollapsed,
         'uic--card-error': hasError,
         'uic--position-relative': true,
-        'uic--animation-ended': animationEnded,
       },
       className
     );
+    const cardShellClass = classNames({
+      'uic--mcgonagall-card-shell': true,
+      'uic--active': !isCollapsed,
+      'uic--animation-ended': animationEnded,
+      'uic--collapsed': isCollapsed,
+      'uic--card-error': hasError,
+    });
 
     const errorMessageClass = classNames({
       'uic--warning-message': true,
@@ -321,93 +338,89 @@ class CardShell extends Component {
         from={{
           height,
           border: animate ? 'none' : '',
-          padding: animate ? 0 : '',
         }}
         to={{
-          height: 'auto',
+          height,
           border: '',
-          padding: '',
         }}
         delay={hasAnimationRun ? 0 : 150 * stepIndex}
         onStart={this.onAnimationStart}
         onRest={this.onAnimationEnd}
       >
         {(style) => (
-          <animated.div
-            className={cardClass}
-            style={style}
-            ref={this.contentNode}
-          >
-            {!isCollapsed && <div className="uic--active-border" />}
-            {isCollapsed ? (
-              summary
-            ) : (
-              <form
-                autoComplete={autoComplete ? '' : 'off'}
-                className="uic--card-content"
-                onChange={onChange && this.onChange}
-                onSubmit={this.onSubmit}
-              >
-                <CardShellContext.Provider value={cardContext}>
-                  {children}
-                </CardShellContext.Provider>
+          <animated.div className={cardShellClass} style={style}>
+            <div className={cardClass} ref={this.contentNode}>
+              {!isCollapsed && <div className="uic--active-border" />}
+              {isCollapsed ? (
+                summary
+              ) : (
+                <form
+                  autoComplete={autoComplete ? '' : 'off'}
+                  className="uic--card-content"
+                  onChange={onChange && this.onChange}
+                  onSubmit={this.onSubmit}
+                >
+                  <CardShellContext.Provider value={cardContext}>
+                    {children}
+                  </CardShellContext.Provider>
 
-                {(beforeButton ||
-                  afterButton ||
-                  !hideButton ||
-                  showRequiredQuestionError) && (
-                  <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
-                    {(beforeButton || showRequiredQuestionError) && (
-                      <div className="uic--card-before-button">
-                        {beforeButton}
+                  {(beforeButton ||
+                    afterButton ||
+                    !hideButton ||
+                    showRequiredQuestionError) && (
+                    <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
+                      {(beforeButton || showRequiredQuestionError) && (
+                        <div className="uic--card-before-button">
+                          {beforeButton}
 
-                        {showRequiredQuestionError && (
-                          <p className={errorMessageClass}>
-                            You must answer this question before hitting
-                            continue.
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {!hideButton &&
-                      (isFetching ? (
-                        <Spinner
-                          fill={colors['royal']}
-                          height="25"
-                          width="25"
-                        />
-                      ) : (
-                        <div
-                          className="uic--card-submit-wrapper"
-                          onClick={
-                            (isInvalid || disabled) &&
-                            this.onDisabledContinueClick
-                          }
-                          role="presentation"
-                        >
-                          <Button
-                            className="uic--card-submit"
-                            disabled={isInvalid || disabled}
-                            isLoading={loading || isSubmitting}
-                            light
-                            type="submit"
-                            variant="secondary"
-                          >
-                            {buttonText}
-                          </Button>
+                          {showRequiredQuestionError && (
+                            <p className={errorMessageClass}>
+                              You must answer this question before hitting
+                              continue.
+                            </p>
+                          )}
                         </div>
-                      ))}
+                      )}
 
-                    {afterButton && (
-                      <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
-                        {afterButton}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </form>
-            )}
+                      {!hideButton &&
+                        (isFetching ? (
+                          <Spinner
+                            fill={colors['royal']}
+                            height="25"
+                            width="25"
+                          />
+                        ) : (
+                          <div
+                            className="uic--card-submit-wrapper"
+                            onClick={
+                              (isInvalid || disabled) &&
+                              this.onDisabledContinueClick
+                            }
+                            role="presentation"
+                          >
+                            <Button
+                              className="uic--card-submit"
+                              disabled={isInvalid || disabled}
+                              isLoading={loading || isSubmitting}
+                              light
+                              type="submit"
+                              variant="secondary"
+                            >
+                              {buttonText}
+                            </Button>
+                          </div>
+                        ))}
+
+                      {afterButton && (
+                        <div className="uic--card-after-button uic--d-flex uic--align-items-center uic--flex-column">
+                          {afterButton}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </form>
+              )}
+            </div>
           </animated.div>
         )}
       </Spring>

@@ -16,7 +16,7 @@ class ExpandCollapse extends Component {
 
     this.state = {
       open: props.defaultOpen || !props.collapsible,
-      height: 0,
+      height: props.defaultOpen || !props.collapsible ? 'auto' : 0,
       isValid: true,
       isRequired: false,
     };
@@ -30,7 +30,7 @@ class ExpandCollapse extends Component {
   componentDidMount() {
     // If the component is set to default open the height gets calculated here so the content displays.
     if (this.state.open && !this.props.disabled) {
-      const height = this.contentNode.clientHeight;
+      const height = this.contentNode.current.scrollHeight;
 
       this.setState({
         height,
@@ -48,10 +48,10 @@ class ExpandCollapse extends Component {
     if (
       this.contentNode.current &&
       this.state.open &&
-      this.state.height !== this.contentNode.current.clientHeight
+      this.state.height !== this.contentNode.current.scrollHeight
     ) {
       this.setState({
-        height: this.contentNode.current.clientHeight,
+        height: this.contentNode.current.scrollHeight,
       });
     }
 
@@ -84,7 +84,7 @@ class ExpandCollapse extends Component {
    **/
   openExpandItem() {
     const height = this.contentNode.current
-      ? this.contentNode.current.clientHeight
+      ? this.contentNode.current.scrollHeight
       : 0;
 
     this.setState({

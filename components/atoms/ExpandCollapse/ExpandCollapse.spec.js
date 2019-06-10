@@ -1,6 +1,6 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
+import test from 'tape';
 import ExpandCollapse from './ExpandCollapse';
 
 test('ExpandCollapse - openExpandItem', (t) => {
@@ -15,9 +15,8 @@ test('ExpandCollapse - openExpandItem', (t) => {
       Just some contnet to appear in the expandy thing
     </ExpandCollapse>
   );
-
   component.instance().openExpandItem();
-
+  component.update();
   t.deepEquals(
     component.state(),
     {
@@ -80,6 +79,37 @@ test('ExpandCollapse - componentDidMount', (t) => {
       isRequired: false,
     },
     'Should render with open as true.'
+  );
+
+  t.end();
+});
+
+test('ExpandCollapse - componentDidUpdate', (t) => {
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    defaultOpen: true,
+    isInvalid: false,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      Just some contnet to appear in the expandy thing
+    </ExpandCollapse>
+  );
+
+  component.setState({height: 100});
+
+  t.deepEquals(
+    component.state(),
+    {
+      open: true,
+      height: 0,
+      isValid: true,
+      isRequired: false,
+    },
+    'Should update state with height from node'
   );
 
   t.end();
