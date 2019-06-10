@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:10.12
+      - image: circleci/node:10.16
     steps:
       - checkout
       - restore_cache:
@@ -67,7 +67,7 @@ jobs:
   
   publish_storybook:
     docker:
-      - image: circleci/node:10.12
+      - image: circleci/node:10.16
     environment:
       NODE_ENV: production
     steps:
@@ -93,7 +93,7 @@ jobs:
 
   publish_package:
     docker:
-      - image: circleci/node:10.12
+      - image: circleci/node:10.16
     environment:
       NODE_ENV: production
     steps:
