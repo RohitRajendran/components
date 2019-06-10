@@ -1,7 +1,8 @@
 $inactive-border-size: 1px;
 $active-border-size: 4px;
 
-.uic--mcgonagall-card {
+// Shell that handles margins and borders for the card
+.uic--mcgonagall-card-shell {
   background-color: $white;
   border: solid $inactive-border-size $light-gray;
   margin: 0 auto;
@@ -12,15 +13,6 @@ $active-border-size: 4px;
     border-top: 0;
     margin-bottom: 3.6rem;
     margin-top: 3.6rem;
-    padding: calc(4rem + #{$active-border-size}) 3.5rem 4rem; // Account for top border in top padding
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
 
     .uic--active-border {
       background: $royal;
@@ -30,27 +22,46 @@ $active-border-size: 4px;
       right: -$inactive-border-size;
       top: 0;
     }
-  }
 
-  &.uic--collapsed {
-    margin-top: 1.2rem;
-    padding: 0.3rem;
+    .uic--mcgonagall-card {
+      padding: calc(4rem + #{$active-border-size}) 3.5rem 4rem; // Account for top border in top padding
+    }
 
     &:first-child {
       margin-top: 0;
     }
 
-    &.uic--card-error {
-      padding: 0.2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.uic--collapsed {
+    margin-top: 1.2rem;
+
+    .uic--mcgonagall-card {
+      padding: 0.3rem;
+
+      &.uic--card-error {
+        padding: 0.2rem;
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 
   &.uic--card-error {
     border: solid 2px $pink;
-    padding: 4.2rem 3.4rem 3.9rem;
+
+    .uic--mcgonagall-card {
+      padding: 4.2rem 3.4rem 3.9rem;
+    }
   }
 
   &.uic--animation-ended {
+    height: auto !important; // Has to override inline height
     overflow: visible;
   }
 

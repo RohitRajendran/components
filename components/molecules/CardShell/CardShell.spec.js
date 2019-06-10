@@ -2,11 +2,11 @@ import {mount} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
-import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
+import Input from '~components/atoms/Input/Input';
 import Slider from '~components/atoms/Slider/Slider';
+import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
+import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import CardShell from './CardShell';
 
 const defaultProps = {
@@ -187,7 +187,52 @@ test('CardShell - interacting with disabled continue button', (t) => {
   t.end();
 });
 
-test('CardShell - componentDidUpdate', (t) => {
+test('CardShell - componentDidUpdate (isCollapsed = true)', (t) => {
+  const props = {
+    ...defaultProps,
+    onSubmit: stub(),
+    onChange: stub(),
+    isCollapsed: true,
+  };
+
+  const comp = mount(
+    <CardShell {...props}>
+      <Input
+        name="fancy_input"
+        label="Amount"
+        type="text"
+        value="05/01/1980"
+        placeholder="some placeholder"
+        mask="Date"
+        isValid={() => true}
+        validationErrorMsg="This is not valid!"
+      />
+    </CardShell>
+  );
+
+  comp.setState({isInvalid: true, height: 100});
+  comp.instance().componentDidUpdate({isCollapsed: false});
+
+  t.deepEquals(
+    comp.state(),
+    {
+      animationEnded: false,
+      // eslint-disable-next-line no-undefined
+      cardContext: {showRequiredError: undefined},
+      hasAnimationRun: false,
+      height: 2,
+      isInvalid: false,
+      isSubmitting: false,
+      shakeError: false,
+      disabledClickCount: 0,
+    },
+    'Updates state'
+  );
+
+  t.end();
+});
+
+test('CardShell - componentDidUpdate (isCollapsed = false)', (t) => {
   const props = {
     ...defaultProps,
     onSubmit: stub(),
@@ -209,10 +254,25 @@ test('CardShell - componentDidUpdate', (t) => {
       />
     </CardShell>
   );
-  comp.setState({isInvalid: true});
-  comp.instance().componentDidUpdate({prevProps: false});
 
-  t.false(comp.state.isInvalid, 'Sets validity on update');
+  comp.setState({height: 100});
+  comp.instance().componentDidUpdate({isCollapsed: true});
+
+  t.deepEquals(
+    comp.state(),
+    {
+      animationEnded: false,
+      // eslint-disable-next-line no-undefined
+      cardContext: {showRequiredError: undefined},
+      hasAnimationRun: false,
+      height: 1,
+      isInvalid: false,
+      isSubmitting: false,
+      shakeError: false,
+      disabledClickCount: 0,
+    },
+    'Updates state'
+  );
 
   t.end();
 });
@@ -352,7 +412,7 @@ test('CardShell - validates different input constraints', (t) => {
     radioFollowup: '3',
     selectedNormal: ['2'],
     selectedFollowup: ['3'],
-    slider: 5,
+    slider: '5',
     radioBool: true,
   };
 

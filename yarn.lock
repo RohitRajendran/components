@@ -10140,9 +10140,9 @@ react-sizeme@^2.5.2:
     throttle-debounce "^2.1.0"
 
 react-spring@*:
-  version "8.0.22"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.22.tgz#df55bba25ff0d7d31455bf9a1ff78b63dd968c07"
-  integrity sha512-X2E75K9JvwqUGzTE9v1B3f0po6eOr2LwErXG4MNZ+QXl5LmBsprbH+ZUEgyDj9p8ZRIhdtIlndvhYtmG9Etl6g==
+  version "8.0.23"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.23.tgz#2a0ddaeb0816ea9e21898d04d3b8da7d1a3daa14"
+  integrity sha512-2mp7+0DnoBQ67h2zY0rFztdMqSm8gdvSWHgfwKz4TbLQ+N4n2IauB6DCMc046K8uvUNwDCUdlKgshUrCj14QUA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
@@ -11782,9 +11782,9 @@ tap-parser@~1.2.2:
     readable-stream "^2"
 
 tap-xunit@*:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tap-xunit/-/tap-xunit-2.4.0.tgz#268a4f54920a604a91dc5a1d0a1a0ce075f8b4f4"
-  integrity sha512-ButAA01aOdHZm1PX6CjcyL+5q3SljFtOnvnatwoh3rv5gcWL9uajBDNF5tk8IZuVnddblI/6Ghc3RauSY/865Q==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/tap-xunit/-/tap-xunit-2.4.1.tgz#9823797b676ae5017f4e380bd70abb893b8e120e"
+  integrity sha512-qcZStDtjjYjMKAo7QNiCtOW256g3tuSyCSe5kNJniG1Q2oeOExJq4vm8CwboHZURpkXAHvtqMl4TVL7mcbMVVA==
   dependencies:
     duplexer "~0.1.1"
     minimist "~1.2.0"
@@ -12795,9 +12795,9 @@ xregexp@2.0.0:
   integrity sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=
 
 xstate@*:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.6.0.tgz#67415832a39d6fdb4d3a2e81eda357f8184d7a50"
-  integrity sha512-1bPy5an0QLUX3GiqtJB68VgBrLIotxZwpItDBO3vbakgzEY0D8UG1hsbM4MJM3BN1Y43pnac3ChmPL5s+Bca0A==
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.6.1.tgz#81d45d7e0a71358a1d8b8c80af90e3a50f98bb18"
+  integrity sha512-f4HqFkGYVN03kDgxIM3Vp4zC9yDvunN6FHhEjbusEuAqwMFkyWg0VOUKdj/K7+W5fDcDHox7OgPYYfGIGWyJ8Q==
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
