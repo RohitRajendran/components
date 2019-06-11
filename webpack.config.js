@@ -130,11 +130,11 @@ module.exports = {
       amd: 'ReactDOM',
       root: 'ReactDOM',
     },
-    'react-router': {
-      commonjs: 'react-router',
-      commonjs2: 'react-router',
-      amd: 'ReactRouter',
-      root: 'ReactRouter',
+    'react-router-dom': {
+      commonjs: 'react-router-dom',
+      commonjs2: 'react-router-dom',
+      amd: 'ReactRouterDom',
+      root: 'ReactRouterDom',
     },
     'prop-types': {
       commonjs: 'prop-types',

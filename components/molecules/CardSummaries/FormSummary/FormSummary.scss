@@ -18,6 +18,10 @@
       background-color: $table-alternate;
       border-bottom: solid 1px $light-gray;
       border-top: solid 1px $light-gray;
+
+      &:last-child {
+        border-bottom: 0;
+      }
     }
   }
 }

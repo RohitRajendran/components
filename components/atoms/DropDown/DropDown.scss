@@ -220,3 +220,8 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
     }
   }
 }
+
+// The z-index here makes it so the drop down doesn't get hidden behind other drop downs.
+.uic--mcgonagall-dropdown-internal > div {
+  z-index: 99999;
+}
