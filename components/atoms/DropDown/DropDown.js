@@ -36,7 +36,10 @@ class DropDown extends Component {
   componentDidMount() {
     // Appends the required class name and pulls the DropDown into a Portal.
     // This is done so the DropDown can live inside containers with a hidden overflow property.
-    this.portal.classList.add('uic--mcgonagall-dropdown');
+    this.portal.classList.add(
+      'uic--mcgonagall-dropdown',
+      'uic--mcgonagall-dropdown-internal'
+    );
     document.body.appendChild(this.portal);
 
     if (

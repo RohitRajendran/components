@@ -6,7 +6,6 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
   text-align: left;
   transition-duration: $transition-duration;
   transition-property: color, border-color, box-shadow;
-  z-index: 10;
 
   .uic--mcgonagall-dropdown-wrapper {
     background-color: $white;
@@ -220,4 +219,9 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
       }
     }
   }
+}
+
+// The z-index here makes it so the drop down doesn't get hidden behind other drop downs.
+.uic--mcgonagall-dropdown-internal > div {
+  z-index: 99999;
 }
