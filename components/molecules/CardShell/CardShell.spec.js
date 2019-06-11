@@ -7,6 +7,7 @@ import Input from '~components/atoms/Input/Input';
 import Slider from '~components/atoms/Slider/Slider';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import * as DateUtils from '~components/utilities/DateUtils/DateUtils';
 import CardShell from './CardShell';
 
 const defaultProps = {
@@ -397,6 +398,7 @@ test('CardShell - validates different input constraints', (t) => {
     selectedFollowup: [],
     slider: null,
     radioBool: '',
+    optionalIncomplete: '12',
   };
   const goodValues = {
     textValue: 'abcdef',
@@ -414,6 +416,7 @@ test('CardShell - validates different input constraints', (t) => {
     selectedFollowup: ['3'],
     slider: '5',
     radioBool: true,
+    optionalIncomplete: '',
   };
 
   const numInputs = 14;
@@ -687,6 +690,19 @@ test('CardShell - validates different input constraints', (t) => {
         onChange={stub()}
         value={values.radioBool}
         key="bank"
+        required
+      />,
+      // 15
+      <Input
+        key={5}
+        name="date"
+        type="text"
+        value={values.optionalIncomplete}
+        float
+        onChange={stub()}
+        mask="Date"
+        label="test"
+        isValid={(val) => DateUtils.isAfterMonth(val) || !val}
         required
       />,
     ];

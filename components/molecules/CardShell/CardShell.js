@@ -2,7 +2,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import {animated, Spring, config} from 'react-spring/renderprops.cjs';
+import {animated, config, Spring} from 'react-spring/renderprops.cjs';
+import {isNullOrUndefined} from 'util';
 import Button from '~components/atoms/Button/Button';
 import {maskEnum} from '~components/atoms/Input/Input';
 import Spinner from '~components/atoms/Spinner/Spinner';
@@ -24,6 +25,7 @@ export const validateChildren = (children, startValidated = false) => {
   const childValidity = React.Children.map(children, (child) => {
     let isChildValid = startValidated;
     let hasIncompleteRequiredFields = false;
+
     if (React.isValidElement(child)) {
       if (!child.props.disabled && child.props.required) {
         hasIncompleteRequiredFields = true;
@@ -53,6 +55,7 @@ export const validateChildren = (children, startValidated = false) => {
         }
       } else if (
         !child.props.disabled &&
+        (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
         ((child.props.pattern &&
           !new RegExp(child.props.pattern).test(child.props.value)) ||
           (child.props.min && child.props.value < child.props.min) ||
@@ -60,7 +63,9 @@ export const validateChildren = (children, startValidated = false) => {
           (child.props.maxLength &&
             child.props.value &&
             child.props.value.length > child.props.maxLength) ||
-          (child.props.isValid && !child.props.isValid(child.props.value)))
+          (child.props.isValid && !child.props.isValid(child.props.value)) ||
+          (child.props.mask &&
+            !maskEnum[child.props.mask].mask.regex.test(child.props.value)))
       ) {
         isChildValid = false;
       } else {
