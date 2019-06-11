@@ -6,6 +6,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
   text-align: left;
   transition-duration: $transition-duration;
   transition-property: color, border-color, box-shadow;
+  z-index: 10;
 
   .uic--mcgonagall-dropdown-wrapper {
     background-color: $white;
