@@ -83,7 +83,7 @@
     "query-string": "<6.0.0",
     "rc-slider": "*",
     "react": "*",
-    "react-beautiful-dnd": "=10.1.1",
+    "react-beautiful-dnd": "=11.0.4",
     "react-dom": "*",
     "react-required-if": "*",
     "react-router-dom": "*",
