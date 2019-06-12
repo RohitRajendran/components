@@ -398,8 +398,9 @@ class CardShell extends Component {
                           <div
                             className="uic--card-submit-wrapper"
                             onClick={
-                              (isInvalid || disabled) &&
-                              this.onDisabledContinueClick
+                              isInvalid || disabled
+                                ? this.onDisabledContinueClick
+                                : null
                             }
                             role="presentation"
                           >
