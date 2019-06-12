@@ -4,7 +4,6 @@ import test from 'tape';
 import Button from './Button';
 import {colors} from '~constants/js/colors';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
-import Link from '~components/utilities/Link/Link';
 
 test('Button - rendering', (t) => {
   t.plan(2);
@@ -19,19 +18,19 @@ test('Button - rendering', (t) => {
 
   const linkComponent = mount(<Button to="/url">Testing</Button>);
 
-  t.equal(linkComponent.find('Link').length, 1, 'should render as a Link');
+  t.equal(linkComponent.find('a').length, 1, 'should render as a Link');
 });
 
 test('Button - rendering with a linkComponent prop', (t) => {
   t.plan(1);
 
   const linkComponent = mount(
-    <Button to="/url" linkComponent={Link} onClick={() => null}>
+    <Button to="/url" linkComponent={Button} onClick={() => null}>
       Testing
     </Button>
   );
 
-  t.equal(linkComponent.find('Link').length, 1, 'should render as a Link');
+  t.equal(linkComponent.find('Button').length, 2, 'should render as a Link');
 });
 
 test('Button - disabling', (t) => {
@@ -59,7 +58,7 @@ test('Button - disabling', (t) => {
 
   t.true(
     linkComponent
-      .find('Link')
+      .find('a')
       .first()
       .hasClass('disabled'),
     'should include "disabled" class'

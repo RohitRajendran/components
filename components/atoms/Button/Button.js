@@ -71,14 +71,6 @@ const Button = ({
 
   let spinnerColor;
 
-  // Switches the link wrapper to the one provided via props if available.
-  let LinkWrapper;
-  if (linkComponent) {
-    LinkWrapper = linkComponent;
-  } else {
-    LinkWrapper = Link;
-  }
-
   if (variant === 'icon' || variant === 'link') {
     spinnerColor = dark ? colors.white : colors['royal'];
   } else if (variant === 'secondary' && dark) {
@@ -96,8 +88,21 @@ const Button = ({
       disabled,
     });
 
+    const buttonProps = {};
+
+    // Switches the link wrapper to the one provided via props if available and then assigns the required props.
+    let LinkWrapper;
+    if (linkComponent) {
+      LinkWrapper = linkComponent;
+
+      buttonProps.to = to;
+    } else {
+      LinkWrapper = 'a';
+      buttonProps.href = to;
+    }
+
     return (
-      <LinkWrapper to={to} className={linkClass} {...props}>
+      <LinkWrapper to={to} className={linkClass} {...buttonProps} {...props}>
         <ButtonInterior
           showSpinner={isLoading}
           spinnerSize={spinnerSize}
