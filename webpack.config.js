@@ -130,12 +130,6 @@ module.exports = {
       amd: 'ReactDOM',
       root: 'ReactDOM',
     },
-    'react-router-dom': {
-      commonjs: 'react-router-dom',
-      commonjs2: 'react-router-dom',
-      amd: 'ReactRouterDom',
-      root: 'ReactRouterDom',
-    },
     'prop-types': {
       commonjs: 'prop-types',
       commonjs2: 'prop-types',
@@ -166,7 +160,7 @@ module.exports = {
       amd: 'ReactTooltip',
       root: 'ReactTooltip',
     },
-    'moment': {
+    moment: {
       commonjs: 'moment',
       commonjs2: 'moment',
       amd: 'Moment',

@@ -2,7 +2,6 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, text, object} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import RankingCard from './RankingCard';
 import RankingCardReadme from './RankingCard.md';
@@ -82,25 +81,17 @@ const defaultProps = (
 });
 
 stories.add('active', () => (
-  <MemoryRouter key="question">
-    <RankingCard {...defaultProps(false, false, true)} />
-  </MemoryRouter>
+  <RankingCard {...defaultProps(false, false, true)} />
 ));
 
 stories.add('editing and clears future', () => (
-  <MemoryRouter key="question">
-    <RankingCard {...defaultProps(false, true, false)} />
-  </MemoryRouter>
+  <RankingCard {...defaultProps(false, true, false)} />
 ));
 
 stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <RankingCard {...defaultProps(true, false, false)} />
-  </MemoryRouter>
+  <RankingCard {...defaultProps(true, false, false)} />
 ));
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <RankingCard {...defaultProps(true, false, true)} />
-  </MemoryRouter>
+  <RankingCard {...defaultProps(true, false, true)} />
 ));

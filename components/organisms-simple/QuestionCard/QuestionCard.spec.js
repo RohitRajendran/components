@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import QuestionCard from './QuestionCard';
 
@@ -130,11 +129,7 @@ test('QuestionCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <QuestionCard {...props}>Content</QuestionCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
   t.equals(
     comp

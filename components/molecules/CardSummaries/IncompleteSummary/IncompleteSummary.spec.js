@@ -1,14 +1,11 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import IncompleteSummary from './IncompleteSummary';
 
 test('IncompleteSummary - Renders', (t) => {
   const component = mount(
-    <MemoryRouter>
-      <IncompleteSummary shortTitle="This is a simpler question" />
-    </MemoryRouter>
+    <IncompleteSummary shortTitle="This is a simpler question" />
   );
 
   t.equals(

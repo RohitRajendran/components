@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import MessageCard from './MessageCard';
 
@@ -121,11 +120,7 @@ test('MessageCard - latest collapsed', (t) => {
     isLatestCard: true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <MessageCard {...props}>Content</MessageCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
 
   t.equals(
     comp

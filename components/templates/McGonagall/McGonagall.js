@@ -471,7 +471,7 @@ McGonagall.propTypes = {
   }),
   /** The local "extended state" for the state machine  */
   stateContext: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  /** Browserhistory object */
+  /** Browser history object */
   browserHistory: PropTypes.shape({
     /** Push new navigation */
     push: PropTypes.func.isRequired,

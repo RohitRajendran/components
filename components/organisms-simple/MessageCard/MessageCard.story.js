@@ -1,7 +1,6 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import MessageCard from './MessageCard';
 import MessageCardReadme from './MessageCard.md';
@@ -31,29 +30,17 @@ const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   editCard: () => true,
 });
 
-stories.add('active', () => (
-  <MemoryRouter key="question">
-    <MessageCard {...defaultProps(false)} />
-  </MemoryRouter>
-));
+stories.add('active', () => <MessageCard {...defaultProps(false)} />);
 
 stories.add('active with feature image', () => (
-  <MemoryRouter key="question">
-    <MessageCard
-      {...defaultProps(false)}
-      featureImage={<LampCircleIllustration height="10rem" width="10rem" />}
-    />
-  </MemoryRouter>
+  <MessageCard
+    {...defaultProps(false)}
+    featureImage={<LampCircleIllustration height="10rem" width="10rem" />}
+  />
 ));
 
-stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <MessageCard {...defaultProps(true)} />
-  </MemoryRouter>
-));
+stories.add('collapsed', () => <MessageCard {...defaultProps(true)} />);
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <MessageCard {...defaultProps(true, true)} />
-  </MemoryRouter>
+  <MessageCard {...defaultProps(true, true)} />
 ));
