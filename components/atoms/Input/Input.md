@@ -1,6 +1,18 @@
-# Input Component
+# Input
 
 The Input component renders a [HTML input element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement) with a number of customization and validation options.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Input from '@unitedincome/components/dist/Input'
+```
+
+```javascript
+import {Input} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

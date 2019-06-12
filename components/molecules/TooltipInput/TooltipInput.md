@@ -1,6 +1,18 @@
-# TooltipInput Component
+# TooltipInput
 
 Wraps an Input field in a Tooltip component which activates on key press. Unlike the regular Tooltip, the TooltipInput component can only activate on button click.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import TooltipInput from '@unitedincome/components/dist/TooltipInput'
+```
+
+```javascript
+import {TooltipInput} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

@@ -1,8 +1,21 @@
-# SliderCard Component
+# SliderCard
 
 This component makes it easier to render a basic slider card for the Hogwarts/McGonagall flow.
 
 The collapsed state of this card uses the Simple Summary component.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import SliderCard from '@unitedincome/components/dist/SliderCard'
+```
+
+```javascript
+import {SliderCard} from '@unitedincome/components'
+```
+
 
 ## Example 🚀
 

@@ -1,6 +1,18 @@
-# ItemizationWidget Component
+# ItemizationWidget
 
 Displays a widget which itemizes and sums totals. Turns into collapsible menu on smaller screen sizes.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ItemizationWidget from '@unitedincome/components/dist/ItemizationWidget'
+```
+
+```javascript
+import {ItemizationWidget} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

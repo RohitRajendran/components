@@ -1,6 +1,20 @@
-# ArrowIcon Component
+# ArrowIcon
 
 The ArrowIcon component creates an arrow icon using inline SVG.
+
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ArrowIcon from '@unitedincome/components/dist/ArrowIcon'
+```
+
+```javascript
+import {ArrowIcon} from '@unitedincome/components'
+```
+
 
 ## Example 🚀
 
