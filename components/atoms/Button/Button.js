@@ -5,7 +5,6 @@ import {exclusive} from '~proptypes';
 import {and, or} from 'airbnb-prop-types';
 import requiredIf from 'react-required-if';
 import classNames from 'classnames';
-import Link from '~components/utilities/Link/Link';
 
 import './Button.scss';
 import Spinner from '~components/atoms/Spinner/Spinner';
