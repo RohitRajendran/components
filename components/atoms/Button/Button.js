@@ -92,7 +92,7 @@ const Button = ({
       ...props,
     };
 
-    // Switches the link wrapper to the one provided via props if available and then assigns the required props.
+    // Switches the link wrapper to the one provided via props if available.
     let LinkWrapper;
     if (linkComponent) {
       LinkWrapper = linkComponent;
@@ -100,12 +100,12 @@ const Button = ({
       LinkWrapper = 'a';
       linkProps.href = to;
 
-      // Deletes the 'to' prop as it's no longer valid.
+      // Deletes the 'to' prop as it's no longer valid when using an anchor tag.
       delete linkProps.to;
     }
 
     return (
-      <LinkWrapper to={to} className={linkClass} {...linkProps}>
+      <LinkWrapper className={linkClass} {...linkProps}>
         <ButtonInterior
           showSpinner={isLoading}
           spinnerSize={spinnerSize}
@@ -185,10 +185,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-};
-
-Button.defaultProps = {
-  to: 'unitedincome.com',
 };
 
 export default Button;
