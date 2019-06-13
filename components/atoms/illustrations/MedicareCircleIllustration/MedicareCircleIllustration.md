@@ -7,11 +7,11 @@ The MedicareCircleIllustration component creates a Medicare illuminator using in
 You can use this component using one of the following import patterns.
 
 ```javascript
-import MedicareCircleIllustration from '@unitedincome/components/dist/MedicareCircleIllustration'
+import MedicareCircleIllustration from '@unitedincome/components/dist/MedicareCircleIllustration';
 ```
 
 ```javascript
-import {MedicareCircleIllustration} from '@unitedincome/components'
+import {MedicareCircleIllustration} from '@unitedincome/components';
 ```
 
 ## Example 🚀

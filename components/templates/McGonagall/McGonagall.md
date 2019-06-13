@@ -7,13 +7,12 @@ McGonagall is the successor to the Hogwarts framework that we initially used to 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import McGonagall from '@unitedincome/components/dist/McGonagall'
+import McGonagall from '@unitedincome/components/dist/McGonagall';
 ```
 
 ```javascript
-import {McGonagall} from '@unitedincome/components'
+import {McGonagall} from '@unitedincome/components';
 ```
-
 
 ## Quick Start
 

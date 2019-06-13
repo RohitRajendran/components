@@ -2,17 +2,16 @@
 
 Display content within a box which can be expanded to display the child content or collapsed to hide it.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import StackableExpandCollapse from '@unitedincome/components/dist/StackableExpandCollapse'
+import StackableExpandCollapse from '@unitedincome/components/dist/StackableExpandCollapse';
 ```
 
 ```javascript
-import {StackableExpandCollapse} from '@unitedincome/components'
+import {StackableExpandCollapse} from '@unitedincome/components';
 ```
 
 ## Example 🚀

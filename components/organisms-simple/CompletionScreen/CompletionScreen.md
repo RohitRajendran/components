@@ -7,13 +7,12 @@ This component renders the completion screen for the McGonagall flow. It should 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import CompletionScreen from '@unitedincome/components/dist/CompletionScreen'
+import CompletionScreen from '@unitedincome/components/dist/CompletionScreen';
 ```
 
 ```javascript
-import {CompletionScreen} from '@unitedincome/components'
+import {CompletionScreen} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

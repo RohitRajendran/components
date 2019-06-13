@@ -7,11 +7,11 @@ Wraps an Input field in a Tooltip component which activates on key press. Unlike
 You can use this component using one of the following import patterns.
 
 ```javascript
-import TooltipInput from '@unitedincome/components/dist/TooltipInput'
+import TooltipInput from '@unitedincome/components/dist/TooltipInput';
 ```
 
 ```javascript
-import {TooltipInput} from '@unitedincome/components'
+import {TooltipInput} from '@unitedincome/components';
 ```
 
 ## Example 🚀
