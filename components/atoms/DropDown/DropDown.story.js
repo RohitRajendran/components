@@ -67,6 +67,7 @@ const store = new Store({
   selectedExample2: 'uk',
   validExample: 'invalid',
   apiExample: '',
+  disabledExampleWithValue: 'disabled',
 });
 
 stories
@@ -219,6 +220,29 @@ stories.add('disabled', () => (
           label: 'Montezuma is not the best cat',
         },
       ],
+      disabled: true,
+    })}
+  />
+));
+
+stories.add('disabled with value', () => (
+  <DropDown
+    {...defaultProps({
+      formName: 'disabledExampleWithValue',
+      label: 'Best Cat',
+      description: 'Who is the best cat?',
+      placeholder: 'Is Montezuma the best cat?',
+      options: [
+        {
+          value: 'disabled',
+          label: 'Montezuma is the best cat',
+        },
+        {
+          value: 'disabledAlso',
+          label: 'Montezuma is not the best cat',
+        },
+      ],
+      value: 'disabled',
       disabled: true,
     })}
   />

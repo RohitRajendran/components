@@ -326,6 +326,7 @@ class Input extends Component {
     let InputType = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
+    let inputLabel = label;
 
     if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
       prependCharacter = '$';
@@ -337,6 +338,10 @@ class Input extends Component {
 
     if (this.props.mask) {
       InputType = MaskedInput;
+    }
+
+    if (label && !required) {
+      inputLabel = `${label} (Optional)`;
     }
 
     if (this.props.mask) {
@@ -419,7 +424,7 @@ class Input extends Component {
               )}
               <InputType
                 type="text"
-                aria-label={this.props.label}
+                aria-label={inputLabel}
                 autoComplete={
                   appendCharacter ? 'off' : autoComplete ? autoComplete : null
                 }
@@ -431,7 +436,7 @@ class Input extends Component {
                 }}
                 {...attrs}
               />
-              <label className="uic--position-absolute">{label}</label>
+              <label className="uic--position-absolute">{inputLabel}</label>
               {description &&
               !(showInvalidity || error || reqErrorNecessary) ? (
                 <div className="uic--description">{description}</div>
@@ -441,8 +446,7 @@ class Input extends Component {
                     ? 'Required Field'
                     : validationErrorMsg ||
                       (this.props.mask &&
-                        maskEnum[this.props.mask].validationErrorMsg) ||
-                      'Invalid'}
+                        maskEnum[this.props.mask].validationErrorMsg)}
                 </div>
               )}
             </div>

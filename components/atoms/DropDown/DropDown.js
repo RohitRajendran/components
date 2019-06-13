@@ -193,7 +193,9 @@ class DropDown extends Component {
       value,
     } = this.props;
 
-    let ComponentType, optionProps;
+    let ComponentType,
+      optionProps,
+      dropDownLabel = label;
     if (this.props.getOptions) {
       ComponentType = Async;
       optionProps = {
@@ -202,6 +204,9 @@ class DropDown extends Component {
     } else {
       ComponentType = Select;
       optionProps = {options};
+    }
+    if (this.props.label && !required) {
+      dropDownLabel = `${label} (Optional)`;
     }
 
     const containerClasses = classNames(className);
@@ -249,7 +254,9 @@ class DropDown extends Component {
           return (
             <div className={containerClasses}>
               <div className={dropDownClasses}>
-                <label className="uic--position-absolute">{label}</label>
+                <label className="uic--position-absolute">
+                  {dropDownLabel}
+                </label>
                 <div className="uic--mcgonagall-dropdown-wrapper">
                   <ComponentType
                     {...this.props}
@@ -266,7 +273,7 @@ class DropDown extends Component {
                     isClearable={clearable}
                     isDisabled={disabled}
                     isLoading={loading}
-                    aria-label={label}
+                    aria-label={dropDownLabel}
                     menuPortalTarget={this.portal}
                     {...optionProps}
                   />

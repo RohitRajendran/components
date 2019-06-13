@@ -178,3 +178,30 @@ stories.add('disabled', () => (
     value="1660 L Street"
   />
 ));
+
+stories.add('disabled', () => (
+  <Input
+    {...defaultProps({
+      formName: 'disabled',
+      label: 'Address',
+      description: 'This is where you live.',
+      placeholder: 'Enter your address...',
+      disabled: true,
+      mask: null,
+    })}
+  />
+));
+
+stories.add('disabled with value', () => (
+  <Input
+    {...defaultProps({
+      formName: 'disabled',
+      label: 'Address',
+      description: 'This is where you live.',
+      placeholder: 'Enter your address...',
+      disabled: true,
+      mask: null,
+    })}
+    value="1660 L Street"
+  />
+));
