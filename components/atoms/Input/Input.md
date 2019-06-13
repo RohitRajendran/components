@@ -28,3 +28,8 @@ import {Input} from '@unitedincome/components';
   value={this.state.institutionName}
 />
 ```
+
+## Props 🔧
+
+### props.disableOptionalFlag
+If an input is _not_ marked as `required` it will show an `(Optional)` flag in the label. You can disable this behavior by setting the `disableOptionalFlag` prop to `true`.
