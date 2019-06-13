@@ -1,8 +1,20 @@
-# Radio Button Card Component
+# RadioButtonCard
 
 This component makes it easier to render a basic radio button card for the Hogwarts/McGonagall flow.
 
 The collapsed state of this card uses the Simple Summary component.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RadioButtonCard from '@unitedincome/components/dist/RadioButtonCard'
+```
+
+```javascript
+import {RadioButtonCard} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

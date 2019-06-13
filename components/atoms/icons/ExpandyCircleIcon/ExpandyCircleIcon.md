@@ -1,6 +1,18 @@
-# ExpandyCircleIcon Component
+# ExpandyCircleIcon 
 
 The ExpandyCircleIcon component creates an arrow icon using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ExpandyCircleIcon from '@unitedincome/components/dist/ExpandyCircleIcon'
+```
+
+```javascript
+import {ExpandyCircleIcon} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

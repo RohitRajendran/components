@@ -1,6 +1,18 @@
-# FormSummary Component
+# FormSummary
 
 This component renders a summary for form questions and can also display groups of data.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import FormSummary from '@unitedincome/components/dist/FormSummary'
+```
+
+```javascript
+import {FormSummary} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

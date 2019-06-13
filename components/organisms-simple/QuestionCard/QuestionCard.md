@@ -1,6 +1,18 @@
-# Question Card Component
+# QuestionCard
 
 This component renders a question card for the Hogwarts/McGonagall flow.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import QuestionCard from '@unitedincome/components/dist/QuestionCard'
+```
+
+```javascript
+import {QuestionCard} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

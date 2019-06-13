@@ -1,6 +1,18 @@
-# DateUtils Component
+# DateUtils
 
 Date utility functions for things such as input validation.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import DateUtils from '@unitedincome/components/dist/DateUtils'
+```
+
+```javascript
+import {DateUtils} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

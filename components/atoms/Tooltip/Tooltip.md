@@ -1,6 +1,18 @@
-# Tooltip Component
+# Tooltip
 
 Attaches a tooltip to a link or button on hover or press.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Tooltip from '@unitedincome/components/dist/Tooltip'
+```
+
+```javascript
+import {Tooltip} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

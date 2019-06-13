@@ -1,8 +1,20 @@
-# Checkbox Card Component
+# CheckboxCard
 
 This component makes it easier to render a basic checkbox card for the Hogwarts/McGonagall flow.
 
 The collapsed state of this card uses the Simple Summary component.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import CheckboxCard from '@unitedincome/components/dist/CheckboxCard'
+```
+
+```javascript
+import {CheckboxCard} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

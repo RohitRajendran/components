@@ -1,6 +1,18 @@
-# Cabinet Component
+# Cabinet
 
 The Cabinet component generates a cabinet pullout which appears on the right side of the screen. By default the Cabinet is controlled using your own state to handle the opening and closing.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Cabinet from '@unitedincome/components/dist/Cabinet'
+```
+
+```javascript
+import {Cabinet} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

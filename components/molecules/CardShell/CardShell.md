@@ -1,6 +1,18 @@
-# Card Shell Component
+# CardShell
 
 This component is a flexible shell for the McGonagall card. See if any of the other card components better suit your need before using this one.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import CardShell from '@unitedincome/components/dist/CardShell'
+```
+
+```javascript
+import {CardShell} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

@@ -1,6 +1,18 @@
-# FormatUtils Component
+# FormatUtils
 
 Format utility functions for things such as currency, dates, etc.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import FormatUtils from '@unitedincome/components/dist/FormatUtils'
+```
+
+```javascript
+import {FormatUtils} from '@unitedincome/components'
+```
 
 ## Example 🚀
 

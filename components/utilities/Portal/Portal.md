@@ -1,6 +1,18 @@
-# Portal Component
+# Portal
 
 Creates a [React Portal](https://reactjs.org/docs/portals.html) which pulls DOM nodes out of their container.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Portal from '@unitedincome/components/dist/Portal'
+```
+
+```javascript
+import {Portal} from '@unitedincome/components'
+```
 
 ## Example 🚀
 
