@@ -7,11 +7,11 @@ The Cabinet component generates a cabinet pullout which appears on the right sid
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Cabinet from '@unitedincome/components/dist/Cabinet'
+import Cabinet from '@unitedincome/components/dist/Cabinet';
 ```
 
 ```javascript
-import {Cabinet} from '@unitedincome/components'
+import {Cabinet} from '@unitedincome/components';
 ```
 
 ## Example 🚀

@@ -7,11 +7,11 @@ The ProfileCircleIllustration component creates a profile illuminator using inli
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ProfileCircleIllustration from '@unitedincome/components/dist/ProfileCircleIllustration'
+import ProfileCircleIllustration from '@unitedincome/components/dist/ProfileCircleIllustration';
 ```
 
 ```javascript
-import {ProfileCircleIllustration} from '@unitedincome/components'
+import {ProfileCircleIllustration} from '@unitedincome/components';
 ```
 
 ## Example 🚀

@@ -7,13 +7,12 @@ The GiftCircleIllustration component creates a gift illuminator using inline SVG
 You can use this component using one of the following import patterns.
 
 ```javascript
-import GiftCircleIllustration from '@unitedincome/components/dist/GiftCircleIllustration'
+import GiftCircleIllustration from '@unitedincome/components/dist/GiftCircleIllustration';
 ```
 
 ```javascript
-import {GiftCircleIllustration} from '@unitedincome/components'
+import {GiftCircleIllustration} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

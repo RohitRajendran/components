@@ -2,17 +2,16 @@
 
 The HealthCircleIllustration component creates a health illuminator using inline SVG.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import HealthCircleIllustration from '@unitedincome/components/dist/HealthCircleIllustration'
+import HealthCircleIllustration from '@unitedincome/components/dist/HealthCircleIllustration';
 ```
 
 ```javascript
-import {HealthCircleIllustration} from '@unitedincome/components'
+import {HealthCircleIllustration} from '@unitedincome/components';
 ```
 
 ## Example 🚀

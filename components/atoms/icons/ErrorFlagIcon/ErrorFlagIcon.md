@@ -7,13 +7,12 @@ The ErrorFlagIcon component creates an error flag icon using inline SVG.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ErrorFlagIcon from '@unitedincome/components/dist/ErrorFlagIcon'
+import ErrorFlagIcon from '@unitedincome/components/dist/ErrorFlagIcon';
 ```
 
 ```javascript
-import {ErrorFlagIcon} from '@unitedincome/components'
+import {ErrorFlagIcon} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

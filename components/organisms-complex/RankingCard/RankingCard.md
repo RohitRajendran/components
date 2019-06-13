@@ -9,11 +9,11 @@ The collapsed state of this card uses the Simple Summary component.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import RankingCard from '@unitedincome/components/dist/RankingCard'
+import RankingCard from '@unitedincome/components/dist/RankingCard';
 ```
 
 ```javascript
-import {RankingCard} from '@unitedincome/components'
+import {RankingCard} from '@unitedincome/components';
 ```
 
 ## Example 🚀

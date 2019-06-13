@@ -9,11 +9,11 @@ The collapsed state of this card uses the Simple Summary component.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import RadioButtonCard from '@unitedincome/components/dist/RadioButtonCard'
+import RadioButtonCard from '@unitedincome/components/dist/RadioButtonCard';
 ```
 
 ```javascript
-import {RadioButtonCard} from '@unitedincome/components'
+import {RadioButtonCard} from '@unitedincome/components';
 ```
 
 ## Example 🚀

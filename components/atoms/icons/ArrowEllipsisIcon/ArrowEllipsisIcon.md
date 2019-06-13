@@ -2,19 +2,17 @@
 
 The ArrowEllipsisIcon component creates an arrow icon using inline SVG.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ArrowEllipsisIcon from '@unitedincome/components/dist/ArrowEllipsisIcon'
+import ArrowEllipsisIcon from '@unitedincome/components/dist/ArrowEllipsisIcon';
 ```
 
 ```javascript
-import {ArrowEllipsisIcon} from '@unitedincome/components'
+import {ArrowEllipsisIcon} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

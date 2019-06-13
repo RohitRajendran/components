@@ -2,19 +2,17 @@
 
 The ClearIcon component creates a clear icon using inline SVG.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ClearIcon from '@unitedincome/components/dist/ClearIcon'
+import ClearIcon from '@unitedincome/components/dist/ClearIcon';
 ```
 
 ```javascript
-import {ClearIcon} from '@unitedincome/components'
+import {ClearIcon} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

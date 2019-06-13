@@ -7,11 +7,11 @@ The LampCircleIllustration component creates a lamp illuminator using inline SVG
 You can use this component using one of the following import patterns.
 
 ```javascript
-import LampCircleIllustration from '@unitedincome/components/dist/LampCircleIllustration'
+import LampCircleIllustration from '@unitedincome/components/dist/LampCircleIllustration';
 ```
 
 ```javascript
-import {LampCircleIllustration} from '@unitedincome/components'
+import {LampCircleIllustration} from '@unitedincome/components';
 ```
 
 ## Example 🚀

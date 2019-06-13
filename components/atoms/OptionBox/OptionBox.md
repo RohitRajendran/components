@@ -7,13 +7,12 @@ The OptionBox component displays an option box which can be used in either selec
 You can use this component using one of the following import patterns.
 
 ```javascript
-import OptionBox from '@unitedincome/components/dist/OptionBox'
+import OptionBox from '@unitedincome/components/dist/OptionBox';
 ```
 
 ```javascript
-import {OptionBox} from '@unitedincome/components'
+import {OptionBox} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

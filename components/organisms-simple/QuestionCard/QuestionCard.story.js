@@ -10,13 +10,20 @@ import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import QuestionCardReadme from './QuestionCard.md';
 import Input from '~components/atoms/Input/Input';
+import DropDown from '~components/atoms/DropDown/DropDown';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
 
 const store = new Store({
   yesNo: '',
   input: '',
+  from: 'capitalOne',
+  frequency: 'monthly',
+  startDate: '05/31/2019',
+  endDate: '07/20/202',
   disabled: false,
+  interest: '100',
+  catTax: '1337',
 });
 
 stories
@@ -52,7 +59,6 @@ const defaultProps = (
     label: 'Show more details',
     cabinetContent: (
       <div>
-        <h1>Montezuma is the best</h1>
         <p>Hello this is the cabinet and yes, Montezuma is the best.</p>
       </div>
     ),
@@ -112,6 +118,109 @@ stories.add('active', () => (
       key="yesNo"
     />
   </QuestionCard>
+));
+
+stories.add('active with simple form', () => (
+  <MemoryRouter key="question">
+    <QuestionCard {...defaultProps(false)}>
+      <DropDown
+        name="from"
+        options={[
+          {
+            value: 'capitalOne',
+            label: 'Capital One Checking ...7890 ($3,234.567.89)',
+          },
+          {
+            value: 'chase',
+            label: 'Chase Savings ...1127 ($999,999.00)',
+          },
+        ]}
+        onChange={(name, value) => store.set({[name]: value})}
+        value={store.get('from')}
+        label="From"
+        required={false}
+      />
+      <DropDown
+        name="to"
+        options={[
+          {
+            value: 'unitedIncome',
+            label: 'United Income Brokerage ...5428 ($2,345,678.89)',
+          },
+          {
+            value: 'montezuma',
+            label: 'Bank of Montezuma ...1337 ($9,999,999.99)',
+          },
+        ]}
+        value="montezuma"
+        disabled={true}
+        description="The acount to transfer the money to."
+        label="To"
+      />
+
+      <div className="uic--row">
+        <div className="uic--col-6">
+          <Input
+            name="interest"
+            label="Additional Interest"
+            mask="PercentageWithDecimal"
+            onChange={(name, value) => store.set({[name]: value})}
+            value={store.get('interest')}
+            disabled={true}
+          />
+        </div>
+
+        <div className="uic--col-6">
+          <Input
+            name="catTax"
+            label="Cat Tax"
+            mask="Currency"
+            onChange={(name, value) => store.set({[name]: value})}
+            value={store.get('catTax')}
+            disabled={true}
+          />
+        </div>
+      </div>
+
+      <DropDown
+        name="frequency"
+        options={[
+          {
+            value: 'monthly',
+            label: 'Monthly',
+          },
+          {
+            value: 'yearly',
+            label: 'Yearly',
+          },
+          {
+            value: 'quarterly',
+            label: 'Quarterly',
+          },
+        ]}
+        onChange={(name, value) => store.set({[name]: value})}
+        value={store.get('frequency')}
+        label="Frequency"
+        required={false}
+      />
+
+      <Input
+        name="startDate"
+        label="Start Date"
+        mask="Date"
+        value={store.get('startDate')}
+        onChange={(name, value) => store.set({[name]: value})}
+      />
+
+      <Input
+        name="endDate"
+        label="End Date"
+        mask="Date"
+        value={store.get('endDate')}
+        validationErrorMsg="Must follow the format mm/dd/yyyy."
+      />
+    </QuestionCard>
+  </MemoryRouter>
 ));
 
 stories.add('active with expand/collapse', () => (
