@@ -205,7 +205,7 @@ class DropDown extends Component {
       ComponentType = Select;
       optionProps = {options};
     }
-    if (this.props.label && !required) {
+    if (label && !required) {
       dropDownLabel = `${label} (Optional)`;
     }
 
