@@ -183,6 +183,7 @@ class DropDown extends Component {
       className,
       clearable,
       description,
+      disableOptionalFlag,
       disabled,
       label,
       loading,
@@ -205,7 +206,7 @@ class DropDown extends Component {
       ComponentType = Select;
       optionProps = {options};
     }
-    if (label && !required) {
+    if (label && !required && !disableOptionalFlag) {
       dropDownLabel = `${label} (Optional)`;
     }
 
@@ -310,6 +311,8 @@ DropDown.propTypes = {
   ),
   /** The currently selected option in the dropdown.  */
   value: PropTypes.string,
+  /** Disables the (Optional) flag when a field is not marked as required. */
+  disableOptionalFlag: PropTypes.bool,
   /** The name of the input field. */
   name: PropTypes.string.isRequired,
   /** Determines if the dropdown input should be disabled or not. */

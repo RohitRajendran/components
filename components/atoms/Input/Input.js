@@ -275,6 +275,7 @@ class Input extends Component {
       append,
       prepend,
       description,
+      disableOptionalFlag,
       error,
       label,
       name,
@@ -340,7 +341,7 @@ class Input extends Component {
       InputType = MaskedInput;
     }
 
-    if (label && !required) {
+    if (label && !required && !disableOptionalFlag) {
       inputLabel = `${label} (Optional)`;
     }
 
@@ -493,6 +494,8 @@ Input.propTypes = {
   value: PropTypes.string,
   /** Boolean representing if the input value is required in a form. */
   required: PropTypes.bool,
+  /** Disables the (Optional) flag when a field is not marked as required. */
+  disableOptionalFlag: PropTypes.bool,
   /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
   pattern: PropTypes.string,
   /** The max length of the input field value. */
