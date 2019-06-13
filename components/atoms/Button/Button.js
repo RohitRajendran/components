@@ -95,12 +95,10 @@ const Button = ({
     let LinkWrapper;
     if (linkComponent) {
       LinkWrapper = linkComponent;
+      linkProps.to = to;
     } else {
       LinkWrapper = 'a';
       linkProps.href = to;
-
-      // Deletes the 'to' prop as it's no longer valid when using an anchor tag.
-      delete linkProps.to;
     }
 
     return (
