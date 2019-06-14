@@ -7,11 +7,11 @@ This component renders a simple summary to be used with a card component when it
 You can use this component using one of the following import patterns.
 
 ```javascript
-import SimpleSummary from '@unitedincome/components/dist/SimpleSummary'
+import SimpleSummary from '@unitedincome/components/dist/SimpleSummary';
 ```
 
 ```javascript
-import {SimpleSummary} from '@unitedincome/components'
+import {SimpleSummary} from '@unitedincome/components';
 ```
 
 ## Example 🚀

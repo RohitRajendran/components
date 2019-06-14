@@ -9,11 +9,11 @@ The collapsed state of this card uses the Simple Summary component.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import InputCard from '@unitedincome/components/dist/InputCard'
+import InputCard from '@unitedincome/components/dist/InputCard';
 ```
 
 ```javascript
-import {InputCard} from '@unitedincome/components'
+import {InputCard} from '@unitedincome/components';
 ```
 
 ## Example 🚀

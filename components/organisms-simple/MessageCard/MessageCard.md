@@ -7,13 +7,12 @@ This component renders a message card for the Hogwarts/McGonagall flow used for 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import MessageCard from '@unitedincome/components/dist/MessageCard'
+import MessageCard from '@unitedincome/components/dist/MessageCard';
 ```
 
 ```javascript
-import {MessageCard} from '@unitedincome/components'
+import {MessageCard} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

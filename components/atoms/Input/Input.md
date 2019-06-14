@@ -7,11 +7,11 @@ The Input component renders a [HTML input element](https://developer.mozilla.org
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Input from '@unitedincome/components/dist/Input'
+import Input from '@unitedincome/components/dist/Input';
 ```
 
 ```javascript
-import {Input} from '@unitedincome/components'
+import {Input} from '@unitedincome/components';
 ```
 
 ## Example 🚀
@@ -28,3 +28,9 @@ import {Input} from '@unitedincome/components'
   value={this.state.institutionName}
 />
 ```
+
+## Props 🔧
+
+### props.disableOptionalFlag
+
+If an input is _not_ marked as `required` it will show an `(Optional)` flag in the label. You can disable this behavior by setting the `disableOptionalFlag` prop to `true`.

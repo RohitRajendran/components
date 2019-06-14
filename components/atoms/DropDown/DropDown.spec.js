@@ -24,7 +24,7 @@ test('DropDown - renders', (t) => {
 
   t.equal(
     component.find('label').text(),
-    'My Options',
+    'My Options (Optional)',
     'Field label is correct'
   );
 

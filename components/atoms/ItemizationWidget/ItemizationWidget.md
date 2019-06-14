@@ -7,11 +7,11 @@ Displays a widget which itemizes and sums totals. Turns into collapsible menu on
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ItemizationWidget from '@unitedincome/components/dist/ItemizationWidget'
+import ItemizationWidget from '@unitedincome/components/dist/ItemizationWidget';
 ```
 
 ```javascript
-import {ItemizationWidget} from '@unitedincome/components'
+import {ItemizationWidget} from '@unitedincome/components';
 ```
 
 ## Example 🚀

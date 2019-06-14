@@ -7,11 +7,11 @@ The Loader component displays a bouncing United Income logo to indicate that the
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Loader from '@unitedincome/components/dist/Loader'
+import Loader from '@unitedincome/components/dist/Loader';
 ```
 
 ```javascript
-import {Loader} from '@unitedincome/components'
+import {Loader} from '@unitedincome/components';
 ```
 
 ## Example 🚀

@@ -9,13 +9,12 @@ The collapsed state of this card uses the Simple Summary component.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import SliderCard from '@unitedincome/components/dist/SliderCard'
+import SliderCard from '@unitedincome/components/dist/SliderCard';
 ```
 
 ```javascript
-import {SliderCard} from '@unitedincome/components'
+import {SliderCard} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 
