@@ -141,6 +141,7 @@ workflows:
           filters:
             branches:
               only:
+                - master
                 - develop
       - publish_storybook:
           requires:
