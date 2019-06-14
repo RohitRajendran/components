@@ -64,13 +64,14 @@ jobs:
       - run:
           name: Run Visual Regression Tests
           command: |
-            #!/usr/bin/env bash
             # Sees if visual tests should be executed on the branch based on what pull requests are open.
+            echo "Checking to see if visual tests are required..."
+            STATUS=$?
+
             # Executes the visual check command.
             yarn testVisual
 
             # Regardless of the status this script should gracefully exit.
-            STATUS=$?
             if [ $STATUS == 0 ]; then
               echo "Initializing visual checks as there is a pending release!"
             else
