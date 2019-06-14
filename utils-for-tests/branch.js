@@ -13,7 +13,7 @@ fetch('https://api.github.com/graphql', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    Authorization: `token ${process.env.GITHUB_REPO_TOKEN}`,
   },
   body: JSON.stringify({
     query: `{
