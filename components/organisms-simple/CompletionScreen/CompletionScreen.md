@@ -1,6 +1,18 @@
-# Completion Screen Component
+# CompletionScreen
 
 This component renders the completion screen for the McGonagall flow. It should be the last screen in the flow.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import CompletionScreen from '@unitedincome/components/dist/CompletionScreen';
+```
+
+```javascript
+import {CompletionScreen} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

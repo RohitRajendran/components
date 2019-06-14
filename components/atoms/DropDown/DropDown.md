@@ -1,6 +1,18 @@
-# DropDown Component
+# DropDown
 
 The DropDown component displays a series options in a dropdown list. The list can either be manually configured, or powered via type ahead.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import DropDown from '@unitedincome/components/dist/DropDown';
+```
+
+```javascript
+import {DropDown} from '@unitedincome/components';
+```
 
 ## Example 🚀
 
@@ -84,3 +96,7 @@ async function getOptions(input) {
   }
 }
 ```
+
+### props.disableOptionalFlag
+
+If an input is _not_ marked as `required` it will show an `(Optional)` flag in the label. You can disable this behavior by setting the `disableOptionalFlag` prop to `true`.

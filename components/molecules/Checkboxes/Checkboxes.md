@@ -1,6 +1,18 @@
-# Checkboxes Component
+# Checkboxes
 
 The Checkboxes component renders a group of HTML select buttons with a number of customization options.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Checkboxes from '@unitedincome/components/dist/Checkboxes';
+```
+
+```javascript
+import {Checkboxes} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

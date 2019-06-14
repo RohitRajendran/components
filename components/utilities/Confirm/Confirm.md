@@ -2,6 +2,18 @@
 
 Allows you to call a confirmation modal similar to how you use `window.confirm`.
 
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Confirm from '@unitedincome/components/dist/Confirm';
+```
+
+```javascript
+import {Confirm} from '@unitedincome/components';
+```
+
 ## Example 🚀
 
 ```javascript

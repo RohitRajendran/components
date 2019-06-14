@@ -1,6 +1,18 @@
-# RadioButtons Component
+# RadioButtons
 
 The RadioButton component renders a group of HTML radio buttons with a number of customization options.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RadioButtons from '@unitedincome/components/dist/RadioButtons';
+```
+
+```javascript
+import {RadioButtons} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

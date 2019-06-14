@@ -183,6 +183,7 @@ class DropDown extends Component {
       className,
       clearable,
       description,
+      disableOptionalFlag,
       disabled,
       label,
       loading,
@@ -193,7 +194,9 @@ class DropDown extends Component {
       value,
     } = this.props;
 
-    let ComponentType, optionProps;
+    let ComponentType,
+      optionProps,
+      dropDownLabel = label;
     if (this.props.getOptions) {
       ComponentType = Async;
       optionProps = {
@@ -202,6 +205,9 @@ class DropDown extends Component {
     } else {
       ComponentType = Select;
       optionProps = {options};
+    }
+    if (label && !required && !disableOptionalFlag) {
+      dropDownLabel = `${label} (Optional)`;
     }
 
     const containerClasses = classNames(className);
@@ -249,7 +255,9 @@ class DropDown extends Component {
           return (
             <div className={containerClasses}>
               <div className={dropDownClasses}>
-                <label className="uic--position-absolute">{label}</label>
+                <label className="uic--position-absolute">
+                  {dropDownLabel}
+                </label>
                 <div className="uic--mcgonagall-dropdown-wrapper">
                   <ComponentType
                     {...this.props}
@@ -266,7 +274,7 @@ class DropDown extends Component {
                     isClearable={clearable}
                     isDisabled={disabled}
                     isLoading={loading}
-                    aria-label={label}
+                    aria-label={dropDownLabel}
                     menuPortalTarget={this.portal}
                     {...optionProps}
                   />
@@ -303,6 +311,8 @@ DropDown.propTypes = {
   ),
   /** The currently selected option in the dropdown.  */
   value: PropTypes.string,
+  /** Disables the (Optional) flag when a field is not marked as required. */
+  disableOptionalFlag: PropTypes.bool,
   /** The name of the input field. */
   name: PropTypes.string.isRequired,
   /** Determines if the dropdown input should be disabled or not. */

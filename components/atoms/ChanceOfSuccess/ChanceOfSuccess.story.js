@@ -23,41 +23,57 @@ const defaultProps = ({percent, draft, running, compact}) => ({
   compact: boolean('compact', compact),
 });
 
-stories.add('default', () => (
-  <ChanceOfSuccess
-    {...defaultProps({
-      percent: 50,
-      draft: false,
-      running: false,
-      compact: false,
-    })}
-  />
-));
+stories.add(
+  'default',
+  () => (
+    <ChanceOfSuccess
+      {...defaultProps({
+        percent: 50,
+        draft: false,
+        running: false,
+        compact: false,
+      })}
+    />
+  ),
+  {skip: true}
+);
 
-stories.add('draft plan', () => (
-  <ChanceOfSuccess
-    {...defaultProps({
-      percent: 50,
-      draft: true,
-      running: false,
-      compact: false,
-    })}
-  />
-));
+stories.add(
+  'draft plan',
+  () => (
+    <ChanceOfSuccess
+      {...defaultProps({
+        percent: 50,
+        draft: true,
+        running: false,
+        compact: false,
+      })}
+    />
+  ),
+  {skip: true}
+);
 
-stories.add('compact', () => (
-  <ChanceOfSuccess
-    {...defaultProps({
-      percent: 50,
-      draft: false,
-      running: false,
-      compact: true,
-    })}
-  />
-));
+stories.add(
+  'compact',
+  () => (
+    <ChanceOfSuccess
+      {...defaultProps({
+        percent: 50,
+        draft: false,
+        running: false,
+        compact: true,
+      })}
+    />
+  ),
+  {skip: true}
+);
 
-stories.add('running plan', () => (
-  <ChanceOfSuccess
-    {...defaultProps({draft: false, running: true, compact: false})}
-  />
-));
+stories.add(
+  'running plan',
+  () => (
+    <ChanceOfSuccess
+      {...defaultProps({draft: false, running: true, compact: false})}
+    />
+  ),
+  {skip: true}
+);

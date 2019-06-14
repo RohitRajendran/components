@@ -58,8 +58,9 @@
       border-radius: 50%;
       display: block;
       height: 10px;
-      left: 2px;
-      top: 2px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       width: 10px;
     }
   }

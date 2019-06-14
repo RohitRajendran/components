@@ -1,6 +1,18 @@
-# Message Card Component
+# MessageCard
 
 This component renders a message card for the Hogwarts/McGonagall flow used for intros or to explain new questions.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import MessageCard from '@unitedincome/components/dist/MessageCard';
+```
+
+```javascript
+import {MessageCard} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

@@ -1,6 +1,18 @@
-# Ranking Component
+# Ranking
 
 The Ranking component renders an ordered list with clickable buttons and drag and drop support.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Ranking from '@unitedincome/components/dist/Ranking';
+```
+
+```javascript
+import {Ranking} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

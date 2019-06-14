@@ -1,6 +1,18 @@
-# Modal Component
+# Modal
 
 The Modal component generates a full screen prompt to the user.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Modal from '@unitedincome/components/dist/Modal';
+```
+
+```javascript
+import {Modal} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

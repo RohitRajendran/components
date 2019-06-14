@@ -1,6 +1,18 @@
-# ExpandCollapse Component
+# ExpandCollapse
 
 The ExpandCollapse component displays content within a drawer which can be used in conjunction with a cabinet or card.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ExpandCollapse from '@unitedincome/components/dist/ExpandCollapse';
+```
+
+```javascript
+import {ExpandCollapse} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

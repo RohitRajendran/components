@@ -94,6 +94,12 @@ $input-data-value-color: rgba(255, 255, 255, 0);
       }
     }
 
+    &.uic--disabled {
+      &::before {
+        color: $disabled-text;
+      }
+    }
+
     &.uic--error {
       &::before {
         color: $pink;
@@ -151,6 +157,18 @@ $input-data-value-color: rgba(255, 255, 255, 0);
         color: $input-data-value-color;
         position: relative;
         z-index: 9999;
+      }
+
+      &.uic--disabled {
+        input {
+          background-color: $table-alternate;
+          position: inherit;
+          z-index: 0;
+        }
+
+        &::after {
+          color: $disabled-text;
+        }
       }
 
       &::after {

@@ -1,6 +1,18 @@
-# ShoppingCircleIllustration Component
+# ShoppingCircleIllustration
 
 The ShoppingCircleIllustration component creates a shopping illuminator using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ShoppingCircleIllustration from '@unitedincome/components/dist/ShoppingCircleIllustration';
+```
+
+```javascript
+import {ShoppingCircleIllustration} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

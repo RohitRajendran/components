@@ -1,6 +1,18 @@
-# RamenCircleIllustration Component
+# RamenCircleIllustration
 
 The RamenCircleIllustration component creates a Ramen illuminator using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RamenCircleIllustration from '@unitedincome/components/dist/RamenCircleIllustration';
+```
+
+```javascript
+import {RamenCircleIllustration} from '@unitedincome/components';
+```
 
 ## Example 🚀
 

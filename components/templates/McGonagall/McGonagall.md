@@ -1,6 +1,18 @@
-# McGonagall Framework
+# McGonagall
 
 McGonagall is the successor to the Hogwarts framework that we initially used to build question flows. McGonagall uses [xState](https://xstate.js.org/docs/), a finite-state machine library, to help it navigate through the flow.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import McGonagall from '@unitedincome/components/dist/McGonagall';
+```
+
+```javascript
+import {McGonagall} from '@unitedincome/components';
+```
 
 ## Quick Start
 
