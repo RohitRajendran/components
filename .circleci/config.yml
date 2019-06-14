@@ -63,7 +63,20 @@ jobs:
 
       - run:
           name: Run Visual Regression Tests
-          command: yarn snapshot
+          command: |
+            #!/usr/bin/env bash
+            # Sees if visual tests should be executed on the branch based on what pull requests are open.
+            # Executes the visual check command.
+            yarn testVisual
+
+            # Regardless of the status this script should gracefully exit.
+            STATUS=$?
+            if [ $STATUS == 0 ]; then
+              echo "Initializing visual checks as there is a pending release!"
+            else
+              echo "Skipping visual checks as there are no pending releases..."
+            fi
+
   
   publish_storybook:
     docker:
@@ -140,7 +153,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - develop
       - publish_storybook:
           requires:
             - build
