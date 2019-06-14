@@ -19,7 +19,7 @@
     "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && sass-lint-auto-fix && prettier --write './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss",
     "generate": "yarn hygen component new",
     "browserstack": "yarn nightwatch -c nightwatch/config.js",
-    "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot"
+    "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
