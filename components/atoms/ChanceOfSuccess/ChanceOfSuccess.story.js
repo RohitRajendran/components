@@ -35,7 +35,7 @@ stories.add(
       })}
     />
   ),
-  {skip: true}
+  {percy: {skip: true}}
 );
 
 stories.add(
@@ -50,7 +50,7 @@ stories.add(
       })}
     />
   ),
-  {skip: true}
+  {percy: {skip: true}}
 );
 
 stories.add(
@@ -65,7 +65,7 @@ stories.add(
       })}
     />
   ),
-  {skip: true}
+  {percy: {skip: true}}
 );
 
 stories.add(
@@ -75,5 +75,5 @@ stories.add(
       {...defaultProps({draft: false, running: true, compact: false})}
     />
   ),
-  {skip: true}
+  {percy: {skip: true}}
 );
