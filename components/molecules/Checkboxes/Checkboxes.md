@@ -7,11 +7,11 @@ The Checkboxes component renders a group of HTML select buttons with a number of
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Checkboxes from '@unitedincome/components/dist/Checkboxes'
+import Checkboxes from '@unitedincome/components/dist/Checkboxes';
 ```
 
 ```javascript
-import {Checkboxes} from '@unitedincome/components'
+import {Checkboxes} from '@unitedincome/components';
 ```
 
 ## Example 🚀

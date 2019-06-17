@@ -2,19 +2,17 @@
 
 The CaretIcon component creates an caret icon using inline SVG.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import CaretIcon from '@unitedincome/components/dist/CaretIcon'
+import CaretIcon from '@unitedincome/components/dist/CaretIcon';
 ```
 
 ```javascript
-import {CaretIcon} from '@unitedincome/components'
+import {CaretIcon} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

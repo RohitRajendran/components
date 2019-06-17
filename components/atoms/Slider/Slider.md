@@ -2,17 +2,16 @@
 
 The Slider component creates an interactive range slider between 1 and 10.
 
-
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Slider from '@unitedincome/components/dist/Slider'
+import Slider from '@unitedincome/components/dist/Slider';
 ```
 
 ```javascript
-import {Slider} from '@unitedincome/components'
+import {Slider} from '@unitedincome/components';
 ```
 
 ## Example 🚀

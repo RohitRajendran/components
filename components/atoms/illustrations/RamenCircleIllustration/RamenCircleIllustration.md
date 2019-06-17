@@ -7,11 +7,11 @@ The RamenCircleIllustration component creates a Ramen illuminator using inline S
 You can use this component using one of the following import patterns.
 
 ```javascript
-import RamenCircleIllustration from '@unitedincome/components/dist/RamenCircleIllustration'
+import RamenCircleIllustration from '@unitedincome/components/dist/RamenCircleIllustration';
 ```
 
 ```javascript
-import {RamenCircleIllustration} from '@unitedincome/components'
+import {RamenCircleIllustration} from '@unitedincome/components';
 ```
 
 ## Example 🚀

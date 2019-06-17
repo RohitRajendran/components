@@ -63,7 +63,8 @@ jobs:
 
       - run:
           name: Run Visual Regression Tests
-          command: yarn snapshot
+          command: yarn testVisual
+
   
   publish_storybook:
     docker:
@@ -141,6 +142,7 @@ workflows:
             branches:
               only:
                 - master
+                - develop
       - publish_storybook:
           requires:
             - build

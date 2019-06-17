@@ -7,11 +7,11 @@ Higher order component that detects the current browser the user is using.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import detectBrowser from '@unitedincome/components/dist/detectBrowser'
+import detectBrowser from '@unitedincome/components/dist/detectBrowser';
 ```
 
 ```javascript
-import {detectBrowser} from '@unitedincome/components'
+import {detectBrowser} from '@unitedincome/components';
 ```
 
 ## Example 🚀

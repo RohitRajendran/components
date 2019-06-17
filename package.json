@@ -15,10 +15,11 @@
     "testSingle": "NODE_ENV=test tape -r @babel/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles",
     "buildStorybook": "build-storybook -c .storybook -o .build",
     "publishStorybook": "yarn buildStorybook && ./publishStorybook.sh",
-    "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint -v -q && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss || (echo need formatting, use yarn format ; exit 1)",
+    "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint -v -q && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.md' './*.md' --parser=markdown && prettier -l './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && sass-lint-auto-fix && prettier --write './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss",
     "generate": "yarn hygen component new",
-    "browserstack": "yarn nightwatch -c nightwatch/config.js"
+    "browserstack": "yarn nightwatch -c nightwatch/config.js",
+    "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
@@ -68,6 +69,7 @@
     "file-loader": "*",
     "hygen": "*",
     "ignore-styles": "*",
+    "isomorphic-fetch": "*",
     "jsdom": "*",
     "jsdom-global": "*",
     "lodash": "*",

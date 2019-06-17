@@ -9,11 +9,11 @@ The collapsed state of this card uses the Simple Summary component.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import CheckboxCard from '@unitedincome/components/dist/CheckboxCard'
+import CheckboxCard from '@unitedincome/components/dist/CheckboxCard';
 ```
 
 ```javascript
-import {CheckboxCard} from '@unitedincome/components'
+import {CheckboxCard} from '@unitedincome/components';
 ```
 
 ## Example 🚀

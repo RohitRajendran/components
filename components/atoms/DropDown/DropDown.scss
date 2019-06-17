@@ -38,7 +38,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
   }
 
   &.uic--disabled {
-    color: $slate;
+    color: $disabled-text;
 
     label {
       color: $disabled-text;
@@ -50,7 +50,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 
     .uic--mcgonagall-dropdown__control {
       border-color: $light-gray;
-      color: $slate;
+      color: $disabled-text;
 
       .uic--mcgonagall-dropdown-wrapper {
         background-color: $table-alternate;
@@ -62,7 +62,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
       }
 
       .uic--mcgonagall-dropdown__single-value {
-        color: $slate;
+        color: $disabled-text;
       }
 
       &.uic--mcgonagall-dropdown__control--is-focused {
@@ -73,7 +73,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
         .uic--mcgonagall-dropdown__value-container--has-value,
         .uic--mcgonagall-dropdown__single-value,
         input {
-          color: $slate !important; // Required to override react-select input styles.
+          color: $disabled-text !important; // Required to override react-select input styles.
         }
       }
     }

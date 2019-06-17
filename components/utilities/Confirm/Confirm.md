@@ -7,11 +7,11 @@ Allows you to call a confirmation modal similar to how you use `window.confirm`.
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Confirm from '@unitedincome/components/dist/Confirm'
+import Confirm from '@unitedincome/components/dist/Confirm';
 ```
 
 ```javascript
-import {Confirm} from '@unitedincome/components'
+import {Confirm} from '@unitedincome/components';
 ```
 
 ## Example 🚀

@@ -7,11 +7,11 @@ This component renders an incomplete summary that tells the user this step still
 You can use this component using one of the following import patterns.
 
 ```javascript
-import IncompleteSummary from '@unitedincome/components/dist/IncompleteSummary'
+import IncompleteSummary from '@unitedincome/components/dist/IncompleteSummary';
 ```
 
 ```javascript
-import {IncompleteSummary} from '@unitedincome/components'
+import {IncompleteSummary} from '@unitedincome/components';
 ```
 
 ## Example 🚀

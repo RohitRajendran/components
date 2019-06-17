@@ -7,11 +7,11 @@ The Ranking component renders an ordered list with clickable buttons and drag an
 You can use this component using one of the following import patterns.
 
 ```javascript
-import Ranking from '@unitedincome/components/dist/Ranking'
+import Ranking from '@unitedincome/components/dist/Ranking';
 ```
 
 ```javascript
-import {Ranking} from '@unitedincome/components'
+import {Ranking} from '@unitedincome/components';
 ```
 
 ## Example 🚀

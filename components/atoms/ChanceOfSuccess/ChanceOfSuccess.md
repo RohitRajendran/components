@@ -1,19 +1,18 @@
 # ChanceOfSuccess
 
-The ChanceOfSuccess component displays the users current chance of success in a dial. 
+The ChanceOfSuccess component displays the users current chance of success in a dial.
 
 ## Importing 📦
 
 You can use this component using one of the following import patterns.
 
 ```javascript
-import ChanceOfSuccess from '@unitedincome/components/dist/ChanceOfSuccess'
+import ChanceOfSuccess from '@unitedincome/components/dist/ChanceOfSuccess';
 ```
 
 ```javascript
-import {ChanceOfSuccess} from '@unitedincome/components'
+import {ChanceOfSuccess} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 

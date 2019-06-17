@@ -7,13 +7,12 @@ The AccountCircleIllustration component creates an account illuminator using inl
 You can use this component using one of the following import patterns.
 
 ```javascript
-import AccountCircleIllustration from '@unitedincome/components/dist/AccountCircleIllustration'
+import AccountCircleIllustration from '@unitedincome/components/dist/AccountCircleIllustration';
 ```
 
 ```javascript
-import {AccountCircleIllustration} from '@unitedincome/components'
+import {AccountCircleIllustration} from '@unitedincome/components';
 ```
-
 
 ## Example 🚀
 
