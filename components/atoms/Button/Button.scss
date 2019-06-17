@@ -125,6 +125,7 @@ a {
   // Tertiary buttons
   &.btn-tertiary {
     @include source-sans-pro(1.4rem);
+    background-color: transparent;
     border-radius: 0.25rem;
     font-weight: 600;
     padding: 0.8rem 1.6rem;
@@ -144,8 +145,7 @@ a {
       @include disabled-style {
         color: $btn-tertiary-disabled-dark !important;
       }
-
-      background-color: transparent;
+      
       border: 1px solid $white;
       color: $white;
     }
