@@ -121,106 +121,104 @@ stories.add('active', () => (
 ));
 
 stories.add('active with simple form', () => (
-  <MemoryRouter key="question">
-    <QuestionCard {...defaultProps(false)}>
-      <DropDown
-        name="from"
-        options={[
-          {
-            value: 'capitalOne',
-            label: 'Capital One Checking ...7890 ($3,234.567.89)',
-          },
-          {
-            value: 'chase',
-            label: 'Chase Savings ...1127 ($999,999.00)',
-          },
-        ]}
-        onChange={(name, value) => store.set({[name]: value})}
-        value={store.get('from')}
-        label="From"
-        required={false}
-      />
-      <DropDown
-        name="to"
-        options={[
-          {
-            value: 'unitedIncome',
-            label: 'United Income Brokerage ...5428 ($2,345,678.89)',
-          },
-          {
-            value: 'montezuma',
-            label: 'Bank of Montezuma ...1337 ($9,999,999.99)',
-          },
-        ]}
-        value="montezuma"
-        disabled={true}
-        description="The acount to transfer the money to."
-        label="To"
-      />
+  <QuestionCard {...defaultProps(false)}>
+    <DropDown
+      name="from"
+      options={[
+        {
+          value: 'capitalOne',
+          label: 'Capital One Checking ...7890 ($3,234.567.89)',
+        },
+        {
+          value: 'chase',
+          label: 'Chase Savings ...1127 ($999,999.00)',
+        },
+      ]}
+      onChange={(name, value) => store.set({[name]: value})}
+      value={store.get('from')}
+      label="From"
+      required={false}
+    />
+    <DropDown
+      name="to"
+      options={[
+        {
+          value: 'unitedIncome',
+          label: 'United Income Brokerage ...5428 ($2,345,678.89)',
+        },
+        {
+          value: 'montezuma',
+          label: 'Bank of Montezuma ...1337 ($9,999,999.99)',
+        },
+      ]}
+      value="montezuma"
+      disabled={true}
+      description="The acount to transfer the money to."
+      label="To"
+    />
 
-      <div className="uic--row">
-        <div className="uic--col-6">
-          <Input
-            name="interest"
-            label="Additional Interest"
-            mask="PercentageWithDecimal"
-            onChange={(name, value) => store.set({[name]: value})}
-            value={store.get('interest')}
-            disabled={true}
-          />
-        </div>
-
-        <div className="uic--col-6">
-          <Input
-            name="catTax"
-            label="Cat Tax"
-            mask="Currency"
-            onChange={(name, value) => store.set({[name]: value})}
-            value={store.get('catTax')}
-            disabled={true}
-          />
-        </div>
+    <div className="uic--row">
+      <div className="uic--col-6">
+        <Input
+          name="interest"
+          label="Additional Interest"
+          mask="PercentageWithDecimal"
+          onChange={(name, value) => store.set({[name]: value})}
+          value={store.get('interest')}
+          disabled={true}
+        />
       </div>
 
-      <DropDown
-        name="frequency"
-        options={[
-          {
-            value: 'monthly',
-            label: 'Monthly',
-          },
-          {
-            value: 'yearly',
-            label: 'Yearly',
-          },
-          {
-            value: 'quarterly',
-            label: 'Quarterly',
-          },
-        ]}
-        onChange={(name, value) => store.set({[name]: value})}
-        value={store.get('frequency')}
-        label="Frequency"
-        required={false}
-      />
+      <div className="uic--col-6">
+        <Input
+          name="catTax"
+          label="Cat Tax"
+          mask="Currency"
+          onChange={(name, value) => store.set({[name]: value})}
+          value={store.get('catTax')}
+          disabled={true}
+        />
+      </div>
+    </div>
 
-      <Input
-        name="startDate"
-        label="Start Date"
-        mask="Date"
-        value={store.get('startDate')}
-        onChange={(name, value) => store.set({[name]: value})}
-      />
+    <DropDown
+      name="frequency"
+      options={[
+        {
+          value: 'monthly',
+          label: 'Monthly',
+        },
+        {
+          value: 'yearly',
+          label: 'Yearly',
+        },
+        {
+          value: 'quarterly',
+          label: 'Quarterly',
+        },
+      ]}
+      onChange={(name, value) => store.set({[name]: value})}
+      value={store.get('frequency')}
+      label="Frequency"
+      required={false}
+    />
 
-      <Input
-        name="endDate"
-        label="End Date"
-        mask="Date"
-        value={store.get('endDate')}
-        validationErrorMsg="Must follow the format mm/dd/yyyy."
-      />
-    </QuestionCard>
-  </MemoryRouter>
+    <Input
+      name="startDate"
+      label="Start Date"
+      mask="Date"
+      value={store.get('startDate')}
+      onChange={(name, value) => store.set({[name]: value})}
+    />
+
+    <Input
+      name="endDate"
+      label="End Date"
+      mask="Date"
+      value={store.get('endDate')}
+      validationErrorMsg="Must follow the format mm/dd/yyyy."
+    />
+  </QuestionCard>
 ));
 
 stories.add('active with expand/collapse', () => (
