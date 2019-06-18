@@ -88,7 +88,6 @@
     "react-beautiful-dnd": "=11.0.4",
     "react-dom": "*",
     "react-required-if": "*",
-    "react-router-dom": "*",
     "react-select": "*",
     "react-spring": "*",
     "react-text-mask": "*",
@@ -116,7 +115,6 @@
     "query-string": "<6.0.0",
     "react": "*",
     "react-dom": "*",
-    "react-router-dom": "*",
     "react-text-mask": "*",
     "react-tooltip": "*",
     "xstate": "*"

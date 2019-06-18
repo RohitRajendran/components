@@ -2,7 +2,6 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import CheckboxCard from './CheckboxCard';
 import CheckboxCardReadme from './CheckboxCard.md';
@@ -77,25 +76,17 @@ const defaultProps = (
 });
 
 stories.add('active', () => (
-  <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(false, false, true)} />
-  </MemoryRouter>
+  <CheckboxCard {...defaultProps(false, false, true)} />
 ));
 
 stories.add('editing and clears future', () => (
-  <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(false, true, false)} />
-  </MemoryRouter>
+  <CheckboxCard {...defaultProps(false, true, false)} />
 ));
 
 stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(true, false, false)} answers={['Yup']} />
-  </MemoryRouter>
+  <CheckboxCard {...defaultProps(true, false, false)} answers={['Yup']} />
 ));
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <CheckboxCard {...defaultProps(true, false, true)} />
-  </MemoryRouter>
+  <CheckboxCard {...defaultProps(true, false, true)} />
 ));

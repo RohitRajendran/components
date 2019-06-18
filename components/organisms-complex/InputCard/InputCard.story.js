@@ -2,7 +2,6 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, number, text, object} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import {inputMask} from '../../atoms/Input/Input.story';
 import InputCard from './InputCard';
@@ -78,25 +77,17 @@ const defaultProps = (
 });
 
 stories.add('active', () => (
-  <MemoryRouter key="question">
-    <InputCard {...defaultProps(false, false, true)} />
-  </MemoryRouter>
+  <InputCard {...defaultProps(false, false, true)} />
 ));
 
 stories.add('editing and clears future', () => (
-  <MemoryRouter key="question">
-    <InputCard {...defaultProps(false, true, false)} />
-  </MemoryRouter>
+  <InputCard {...defaultProps(false, true, false)} />
 ));
 
 stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <InputCard {...defaultProps(true, false, false)} answers={['Yup']} />
-  </MemoryRouter>
+  <InputCard {...defaultProps(true, false, false)} answers={['Yup']} />
 ));
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <InputCard {...defaultProps(true, false, true)} />
-  </MemoryRouter>
+  <InputCard {...defaultProps(true, false, true)} />
 ));

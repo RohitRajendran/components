@@ -12,7 +12,6 @@ import unitedIncomeTheme from './theme';
 import {withInfo} from '@storybook/addon-info';
 import {colors} from '~constants/js/colors';
 import {State} from '@sambego/storybook-state';
-import {MemoryRouter} from 'react-router-dom';
 import '../constants/sass/util/prefixed-utils.scss';
 
 const req = require.context('../components', true, /story\.js$/);
@@ -24,7 +23,7 @@ addDecorator(
   withInfo({
     source: false,
     header: true, // Global configuration for the info addon across all of stories.
-    propTablesExclude: [State, MemoryRouter], // Excludes the state wrapper from appearing in the story prop table.
+    propTablesExclude: [State], // Excludes the state wrapper from appearing in the story prop table.
     styles: {
       button: {
         base: {

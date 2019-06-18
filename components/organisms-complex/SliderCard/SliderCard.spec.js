@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
 import SliderCard from './SliderCard';
@@ -80,11 +79,7 @@ test('SliderCard - collapsed with answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <SliderCard {...props}>Content</SliderCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
   t.equals(
     comp
@@ -128,11 +123,7 @@ test('SliderCard - collapsed without answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <SliderCard {...props}>Content</SliderCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
   t.equals(comp.find('p').text(), '1', 'Shows answer');
 
@@ -163,11 +154,7 @@ test('SliderCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <SliderCard {...props}>Content</SliderCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
   t.equals(
     comp

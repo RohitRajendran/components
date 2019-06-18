@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
 import RankingCard from './RankingCard';
@@ -105,11 +104,7 @@ test('RankingCard - collapsed with focus answer', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RankingCard {...props}>Content</RankingCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RankingCard {...props}>Content</RankingCard>);
 
   t.equals(
     comp
@@ -173,11 +168,7 @@ test('RankingCard - collapsed without focus answer', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RankingCard {...props}>Content</RankingCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RankingCard {...props}>Content</RankingCard>);
 
   t.equals(
     comp
@@ -249,11 +240,7 @@ test('RankingCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RankingCard {...props}>Content</RankingCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RankingCard {...props}>Content</RankingCard>);
 
   t.equals(
     comp

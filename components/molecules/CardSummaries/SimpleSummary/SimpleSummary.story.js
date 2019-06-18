@@ -1,7 +1,6 @@
 import {array, text, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import CardShell from '../../CardShell/CardShell';
 import SimpleSummary from './SimpleSummary';
@@ -9,10 +8,11 @@ import SimpleSummaryReadme from './SimpleSummary.md';
 
 const stories = storiesOf('Molecules/SimpleSummary', module);
 
-stories.addDecorator(withKnobs).add(
-  'default',
-  withReadme(SimpleSummaryReadme, () => (
-    <MemoryRouter>
+stories
+  .addDecorator(withKnobs)
+  .add(
+    'default',
+    withReadme(SimpleSummaryReadme, () => (
       <CardShell
         isCollapsed={true}
         summary={
@@ -26,6 +26,5 @@ stories.addDecorator(withKnobs).add(
           />
         }
       />
-    </MemoryRouter>
-  ))
-);
+    ))
+  );

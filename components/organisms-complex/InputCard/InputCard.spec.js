@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
 import InputCard from './InputCard';
@@ -78,11 +77,7 @@ test('InputCard - collapsed with answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <InputCard {...props}>Content</InputCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<InputCard {...props}>Content</InputCard>);
 
   t.equals(
     comp
@@ -128,11 +123,7 @@ test('InputCard - collapsed without answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <InputCard {...props}>Content</InputCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<InputCard {...props}>Content</InputCard>);
 
   t.equals(comp.find('p').text(), 'no', 'Shows answer');
 
@@ -165,11 +156,7 @@ test('InputCard - collapsed with currency answer', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <InputCard {...props}>Content</InputCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<InputCard {...props}>Content</InputCard>);
 
   t.equals(comp.find('p').text(), '$123', 'Shows answer with $ prepended');
 
@@ -202,11 +189,7 @@ test('InputCard - collapsed with percentage answer', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <InputCard {...props}>Content</InputCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<InputCard {...props}>Content</InputCard>);
 
   t.equals(comp.find('p').text(), '50%', 'Shows answer with % appended');
 
@@ -239,11 +222,7 @@ test('InputCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <InputCard {...props}>Content</InputCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<InputCard {...props}>Content</InputCard>);
 
   t.equals(
     comp

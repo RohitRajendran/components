@@ -2,7 +2,6 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, number, select, text, object} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import SliderCard from './SliderCard';
 import SliderCardReadme from './SliderCard.md';
@@ -67,25 +66,17 @@ const defaultProps = (
 });
 
 stories.add('active', () => (
-  <MemoryRouter key="question">
-    <SliderCard {...defaultProps(false, false, true)} />
-  </MemoryRouter>
+  <SliderCard {...defaultProps(false, false, true)} />
 ));
 
 stories.add('editing and clears future', () => (
-  <MemoryRouter key="question">
-    <SliderCard {...defaultProps(false, true, false)} />
-  </MemoryRouter>
+  <SliderCard {...defaultProps(false, true, false)} />
 ));
 
 stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <SliderCard {...defaultProps(true, false, false)} answers={['Yup']} />
-  </MemoryRouter>
+  <SliderCard {...defaultProps(true, false, false)} answers={['Yup']} />
 ));
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <SliderCard {...defaultProps(true, false, true)} />
-  </MemoryRouter>
+  <SliderCard {...defaultProps(true, false, true)} />
 ));

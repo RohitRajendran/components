@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
 import RadioButtonCard from './RadioButtonCard';
@@ -86,11 +85,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RadioButtonCard {...props}>Content</RadioButtonCard>);
 
   t.equals(
     comp
@@ -144,11 +139,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RadioButtonCard {...props}>Content</RadioButtonCard>);
 
   t.equals(
     comp
@@ -196,11 +187,7 @@ test('RadioButtonCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <RadioButtonCard {...props}>Content</RadioButtonCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<RadioButtonCard {...props}>Content</RadioButtonCard>);
 
   t.equals(
     comp

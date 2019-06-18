@@ -21,3 +21,19 @@ import {Button} from '@unitedincome/components';
   Submit
 </Button>
 ```
+
+## Using with React Router
+
+If you're using `react-router-dom` or something similar in one of your projects, you can pass in a custom wrapper for route changes. This can be achieved by utilizing the `linkComponent` prop.
+
+```javascript
+import React from 'react';
+import {Button} from '@unitedincome/components';
+import {Link} from 'react-router-dom';
+
+const Component = (props) => (
+  <Button linkComponent={Link} to="https://unitedincome.com" />
+);
+```
+
+If a `linkComponent` is not provided then buttons with a `to` prop will default to a standard anchor tag.
