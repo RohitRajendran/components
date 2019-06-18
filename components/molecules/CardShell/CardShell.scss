@@ -105,21 +105,11 @@ $active-border-size: 4px;
     }
   }
 
-  .uic--ec {
-    // Override for the ExpandCollapse as it should appear higher than other content in the card.
-    top: -1rem;
+  h2 {
+    @extend %uic--mcg-question-text;
   }
 
-  .uic--itemization-widget__wrapper {
-    @include media-breakpoint-up(xl) {
-      left: -20rem;
-      position: absolute;
-      top: 0;
-    }
-  }
-
-  .uic--mcgonagall-dropdown,
-  .uic--mcgonagall-input {
-    padding-bottom: 1.5rem;
+  h3 {
+    @extend %uic--mcg-subhead-text;
   }
 }

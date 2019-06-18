@@ -1,4 +1,5 @@
 // Atoms
+import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import Button from '~components/atoms/Button/Button';
 import Loader from '~components/atoms/Loader/Loader';
@@ -63,6 +64,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  ContentSection,
   Portal,
   DateUtils,
   TooltipInput,

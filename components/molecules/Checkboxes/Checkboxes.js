@@ -126,7 +126,7 @@ Checkboxes.propTypes = {
       /** The value of the select button, for example `yes` or `no`. */
       value: PropTypes.string.isRequired,
       /** The text that should appear next to the select button. */
-      label: PropTypes.string.isRequired,
+      label: PropTypes.node.isRequired,
       /** Renders a followup input or message if the radio button is selected. */
       followup: PropTypes.node,
       /** Displays a secondary label to the far right of the radio button.  */

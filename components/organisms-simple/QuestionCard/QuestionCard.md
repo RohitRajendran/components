@@ -36,3 +36,9 @@ This will work similar to the existing Hogwarts Screen components, just set cont
   shortTitle="title"
 />
 ```
+
+## Best Practices
+
+### Text Styles
+
+You can find examples of text style classes to use with cards in the [Typography section](/?path=/story/utilities-styles--typography)

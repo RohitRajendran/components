@@ -225,3 +225,10 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 .uic--mcgonagall-dropdown-internal > div {
   z-index: 99999;
 }
+
+// Modify styling when in card
+.uic--mcgonagall-card-shell {
+  .uic--mcgonagall-dropdown {
+    padding-bottom: 1.5rem;
+  }
+}

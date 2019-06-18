@@ -214,3 +214,12 @@
     }
   }
 }
+
+.uic--mcgonagall-card-shell {
+  .uic--slider-wrapper {
+    @include media-breakpoint-down(xs) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+}

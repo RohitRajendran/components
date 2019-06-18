@@ -39,8 +39,9 @@
   }
 }
 
-.uic--mcgonagall-card {
-  &.error {
+// Modify styling when in card that has an error
+.uic--mcgonagall-card-shell {
+  &.uic--card-error {
     .uic--card-summary {
       padding: -0.2rem; // Accounts for card border padding fix
     }

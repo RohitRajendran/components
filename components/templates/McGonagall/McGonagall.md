@@ -350,6 +350,10 @@ const steps = [
 ];
 ```
 
+##### Text Styles
+
+You can find examples of text style classes to use with cards in the [Typography section](/?path=/story/utilities-styles--typography)
+
 ## File Structure
 
 When creating a McGonagall flow, the code is split up across 4 files:
