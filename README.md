@@ -43,15 +43,15 @@ You will also need to import the relevant CSS files. You have the choice between
 For individual imports you can use the following:
 
 ```scss
-@import "@unitedincome/components/dist/util.css";
-@import "@unitedincome/components/dist/Button.css";
+@import '@unitedincome/components/dist/util.css';
+@import '@unitedincome/components/dist/Button.css';
 ```
 
 To import all styles you can use:
 
 ```scss
-@import "@unitedincome/components/dist/util.css";
-@import "@unitedincome/components/dist/index.css";
+@import '@unitedincome/components/dist/util.css';
+@import '@unitedincome/components/dist/index.css';
 ```
 
 ## Building a Component 🔩
