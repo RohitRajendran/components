@@ -3,7 +3,6 @@ $transition-time: 0.5s;
 .uic--ec {
   color: $midnight;
   margin-bottom: 3.3rem;
-  margin-bottom: 3.3rem;
 
   &.uic--ec-disabled {
     .uic--ec-label {
@@ -100,7 +99,17 @@ $transition-time: 0.5s;
   }
 }
 
+// Modify styling when in card
 .uic--mcgonagall-card-shell {
+  .uic--ec {
+    margin-left: -5rem; // Configures the margins of the ExpandCollapse component when placed in a card so the arrows float off the left side.
+    top: -1rem; // Override to make it appear higher than other content in the card.
+
+    .uic--ec-controls-wrapper {
+      left: 0.3rem;
+    }
+  }
+
   .uic--ec-controls-wrapper {
     transform: scale(0);
   }

@@ -5,7 +5,6 @@ import {exclusive} from '~proptypes';
 import {and, or} from 'airbnb-prop-types';
 import requiredIf from 'react-required-if';
 import classNames from 'classnames';
-import {Link} from 'react-router-dom';
 
 import './Button.scss';
 import Spinner from '~components/atoms/Spinner/Spinner';
@@ -49,6 +48,7 @@ const Button = ({
   disabled,
   isLoading,
   light,
+  linkComponent,
   onClick,
   to,
   type,
@@ -87,8 +87,22 @@ const Button = ({
       disabled,
     });
 
+    const linkProps = {
+      ...props,
+    };
+
+    // Switches the link wrapper to the one provided via props if available.
+    let LinkWrapper;
+    if (linkComponent) {
+      LinkWrapper = linkComponent;
+      linkProps.to = to;
+    } else {
+      LinkWrapper = 'a';
+      linkProps.href = to;
+    }
+
     return (
-      <Link role="button" to={to} className={linkClass} {...props}>
+      <LinkWrapper className={linkClass} {...linkProps}>
         <ButtonInterior
           showSpinner={isLoading}
           spinnerSize={spinnerSize}
@@ -96,7 +110,7 @@ const Button = ({
         >
           {children}
         </ButtonInterior>
-      </Link>
+      </LinkWrapper>
     );
   }
 
@@ -120,6 +134,8 @@ const Button = ({
 };
 
 Button.propTypes = {
+  /** Optional button component, allowing you to wrap the button in things such as rect-router-dom's Link.  */
+  linkComponent: PropTypes.node,
   /** HTML element that should appear within the button.  */
   children: PropTypes.node.isRequired,
   /** Optional class names to appear on the container. */

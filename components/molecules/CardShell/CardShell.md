@@ -32,12 +32,18 @@ This will work similar to the existing Hogwarts Screen components, just set cont
 
 ## Best Practices
 
+### Text Styles
+
+You can find examples of text style classes to use with cards in the [Typography section](/?path=/story/utilities-styles--typography)
+
+### Elements that extend past the card
+
 If you're making a component that will extend past the edges of the card similar to the ExpandCollapse, you will need to add a css animation to make that element appear after the card is finished animating because of the `overflow: hidden` the card uses while animating.
 
 Here's an example of how it was applied in the ExpandCollapse component
 
 ```
-.uic--mcgonagall-card {
+.uic--mcgonagall-card-shell {
   .uic--ec-controls-wrapper {
     transform: scale(0);
   }

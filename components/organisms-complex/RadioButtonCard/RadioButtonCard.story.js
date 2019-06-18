@@ -2,7 +2,6 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {withReadme} from 'storybook-readme';
 import RadioButtonCard from './RadioButtonCard';
 import RadioButtonCardReadme from './RadioButtonCard.md';
@@ -77,25 +76,17 @@ const defaultProps = (
 });
 
 stories.add('active', () => (
-  <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(false, false, true)} />
-  </MemoryRouter>
+  <RadioButtonCard {...defaultProps(false, false, true)} />
 ));
 
 stories.add('editing and clears future', () => (
-  <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(false, true, false)} />
-  </MemoryRouter>
+  <RadioButtonCard {...defaultProps(false, true, false)} />
 ));
 
 stories.add('collapsed', () => (
-  <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(true, false, false)} answers={['Yup']} />
-  </MemoryRouter>
+  <RadioButtonCard {...defaultProps(true, false, false)} answers={['Yup']} />
 ));
 
 stories.add('incomplete collapsed', () => (
-  <MemoryRouter key="question">
-    <RadioButtonCard {...defaultProps(true, false, true)} />
-  </MemoryRouter>
+  <RadioButtonCard {...defaultProps(true, false, true)} />
 ));

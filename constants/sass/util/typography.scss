@@ -1,0 +1,28 @@
+.uic--mcg-question-text,
+%uic--mcg-question-text {
+  @include source-sans-pro(2rem);
+  color: $midnight;
+  font-weight: 400;
+}
+
+.uic--mcg-description-text,
+%uic--mcg-description-text {
+  @include source-sans-pro(1.4rem);
+  color: $midnight;
+  font-style: italic;
+}
+
+.uic--mcg-subhead-text,
+%uic--mcg-subhead-text {
+  @include source-sans-pro(1.6rem);
+  color: $midnight;
+  font-weight: 600;
+}
+
+.uic--mcg-subhead-2-text,
+%uic--mcg-subhead-2-text {
+  @include source-sans-pro(1.6rem);
+  color: $midnight;
+  font-style: italic;
+  font-weight: 600;
+}

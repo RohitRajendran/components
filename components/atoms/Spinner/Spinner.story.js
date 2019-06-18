@@ -17,5 +17,7 @@ const defaultProps = () => ({
 
 stories.add('default', () => <Spinner {...defaultProps()} />, {
   // The Spinner story is disabled from Percy as it moves too much.
-  skip: true,
+  percy: {
+    skip: true,
+  },
 });

@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import {stub} from 'sinon';
 import test from 'tape';
 import CheckboxCard from './CheckboxCard';
@@ -86,11 +85,7 @@ test('CheckboxCard - collapsed with answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <CheckboxCard {...props}>Content</CheckboxCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<CheckboxCard {...props}>Content</CheckboxCard>);
 
   t.equals(
     comp
@@ -144,11 +139,7 @@ test('CheckboxCard - collapsed without answer override', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <CheckboxCard {...props}>Content</CheckboxCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<CheckboxCard {...props}>Content</CheckboxCard>);
 
   t.equals(comp.find('p').length, 2, 'Shows both answers');
 
@@ -189,11 +180,7 @@ test('CheckboxCard - latest collapsed', (t) => {
     cancelChanges: () => true,
   };
 
-  const comp = mount(
-    <MemoryRouter>
-      <CheckboxCard {...props}>Content</CheckboxCard>
-    </MemoryRouter>
-  );
+  const comp = mount(<CheckboxCard {...props}>Content</CheckboxCard>);
 
   t.equals(
     comp

@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {Link, MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import Button from './Button';
 import {colors} from '~constants/js/colors';
@@ -17,13 +16,21 @@ test('Button - rendering', (t) => {
     'should render as an html button'
   );
 
+  const linkComponent = mount(<Button to="/url">Testing</Button>);
+
+  t.equal(linkComponent.find('a').length, 1, 'should render as a Link');
+});
+
+test('Button - rendering with a linkComponent prop', (t) => {
+  t.plan(1);
+
   const linkComponent = mount(
-    <MemoryRouter>
-      <Button to="/url">Testing</Button>
-    </MemoryRouter>
+    <Button to="/url" linkComponent={Button} onClick={() => null}>
+      Testing
+    </Button>
   );
 
-  t.equal(linkComponent.find(Link).length, 1, 'should render as a Link');
+  t.equal(linkComponent.find('Button').length, 2, 'should render as a Link');
 });
 
 test('Button - disabling', (t) => {
@@ -44,16 +51,14 @@ test('Button - disabling', (t) => {
   );
 
   const linkComponent = mount(
-    <MemoryRouter>
-      <Button disabled to="/url">
-        Testing
-      </Button>
-    </MemoryRouter>
+    <Button disabled to="/url">
+      Testing
+    </Button>
   );
 
   t.true(
     linkComponent
-      .find(Link)
+      .find('a')
       .first()
       .hasClass('disabled'),
     'should include "disabled" class'

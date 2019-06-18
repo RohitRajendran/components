@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build:
     docker:
@@ -132,6 +131,7 @@ jobs:
             git push --set-upstream origin $CIRCLE_BRANCH --tags
 
 workflows:
+  version: 2.1
   components:
     jobs:
       - build

@@ -1,26 +1,23 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {MemoryRouter} from 'react-router-dom';
 import test from 'tape';
 import FormSummary from './FormSummary';
 
 test('FormSummary - Renders one answer', (t) => {
   const comp = mount(
-    <MemoryRouter>
-      <FormSummary
-        shortTitle="This is a simpler question"
-        answerGroups={[
-          {
-            answers: [
-              {label: 'From', value: 'Bank of America Checking…8765'},
-              {label: 'To', value: 'United Income Brokerage…2653'},
-              {label: 'Amount', value: '$3,000.00'},
-            ],
-          },
-        ]}
-        editCard={() => true}
-      />
-    </MemoryRouter>
+    <FormSummary
+      shortTitle="This is a simpler question"
+      answerGroups={[
+        {
+          answers: [
+            {label: 'From', value: 'Bank of America Checking…8765'},
+            {label: 'To', value: 'United Income Brokerage…2653'},
+            {label: 'Amount', value: '$3,000.00'},
+          ],
+        },
+      ]}
+      editCard={() => true}
+    />
   );
 
   t.equals(
@@ -45,30 +42,28 @@ test('FormSummary - Renders one answer', (t) => {
 
 test('FormSummary - Renders one answer', (t) => {
   const comp = mount(
-    <MemoryRouter>
-      <FormSummary
-        shortTitle="This is a simpler question"
-        answerGroups={[
-          {
-            groupName: 'group',
-            answers: [
-              {label: 'From', value: 'Bank of America Checking…8765'},
-              {label: 'To', value: 'United Income Brokerage…2653'},
-              {label: 'Amount', value: '$3,000.00'},
-            ],
-          },
-          {
-            groupName: 'group1',
-            answers: [
-              {label: 'From', value: 'Bank of America Checking…8765'},
-              {label: 'To', value: 'United Income Brokerage…2653'},
-              {label: 'Amount', value: '$3,000.00'},
-            ],
-          },
-        ]}
-        editCard={() => true}
-      />
-    </MemoryRouter>
+    <FormSummary
+      shortTitle="This is a simpler question"
+      answerGroups={[
+        {
+          groupName: 'group',
+          answers: [
+            {label: 'From', value: 'Bank of America Checking…8765'},
+            {label: 'To', value: 'United Income Brokerage…2653'},
+            {label: 'Amount', value: '$3,000.00'},
+          ],
+        },
+        {
+          groupName: 'group1',
+          answers: [
+            {label: 'From', value: 'Bank of America Checking…8765'},
+            {label: 'To', value: 'United Income Brokerage…2653'},
+            {label: 'Amount', value: '$3,000.00'},
+          ],
+        },
+      ]}
+      editCard={() => true}
+    />
   );
 
   t.equals(

@@ -3,35 +3,12 @@
     word-break: break-word;
 
     h2 {
-      @include source-sans-pro(2rem);
-      color: $midnight;
-      font-weight: 400;
       margin: 0;
     }
 
     p {
-      @include source-sans-pro(1.4rem);
-      color: $midnight;
-      font-style: italic;
+      @extend %uic--mcg-description-text;
       margin: 1rem 0 0;
-    }
-  }
-
-  // Overrides the slider padding for mobile devices while in a card.
-  .uic--slider-wrapper {
-    @include media-breakpoint-down(xs) {
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-  }
-
-  //  Configures the margins of the ExpandCollapse component when placed in a card
-  // so the arrows float off the left side.
-  .uic--ec {
-    margin-left: -5rem;
-
-    .uic--ec-controls-wrapper {
-      left: 0.3rem;
     }
   }
 
