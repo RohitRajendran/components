@@ -17,5 +17,7 @@ import {ContentSection} from '@unitedincome/components';
 ## Example 🚀
 
 ```javascript
-<ContentSection />
+<ContentSection heading="Current Apartment/Rent">
+  <p>This is where the content goes</p>
+</ContentSection>
 ```
