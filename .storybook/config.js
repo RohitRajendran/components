@@ -1,11 +1,4 @@
-import {
-  configure,
-  getStorybook,
-  setAddon,
-  addDecorator,
-  addParameters,
-} from '@storybook/react';
-import createPercyAddon from '@percy-io/percy-storybook';
+import {configure, addDecorator, addParameters} from '@storybook/react';
 import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import unitedIncomeTheme from './theme';
@@ -15,8 +8,6 @@ import {State} from '@sambego/storybook-state';
 import '../constants/sass/util/prefixed-utils.scss';
 
 const req = require.context('../components', true, /story\.js$/);
-
-const {percyAddon, serializeStories} = createPercyAddon();
 
 // Registers global decorators.
 addDecorator(
@@ -74,6 +65,4 @@ function loadStories() {
   req.keys().forEach(req);
 }
 
-setAddon(percyAddon); // Initializes the Percy addon.
 configure(loadStories, module);
-serializeStories(getStorybook); // Serializes the stories so Percy can access them.
