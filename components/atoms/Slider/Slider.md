@@ -1,6 +1,6 @@
 # Slider
 
-The Slider component creates an interactive range slider between 1 and 10.
+The Slider component creates an interactive range slider between 0 and 10.
 
 ## Importing 📦
 
