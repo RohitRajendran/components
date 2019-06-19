@@ -1,11 +1,12 @@
 /** @module Input */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import {CardShellContext} from '../../molecules/CardShell/CardShell';
+import {isInViewport} from '~components/atoms/Input/Input.util';
 import './Input.scss';
 
 export const hideValidityFalse = () => false;
@@ -233,8 +234,11 @@ class Input extends Component {
 
     this.state = {
       isActive: false,
+      height: 0,
     };
 
+    this.tooltipNode = createRef();
+    this.inputNode = createRef();
     this.toggleFocus = this.toggleFocus.bind(this);
     this.isValid = this.isValid.bind(this);
   }
@@ -243,6 +247,31 @@ class Input extends Component {
    * @returns {undefined}
    */
   toggleFocus() {
+    // Sets the height of the tooltip if applicable.
+    if (this.tooltipNode.current && this.inputNode.current) {
+      this.setState({
+        height: !this.state.isActive
+          ? this.tooltipNode.current.scrollHeight
+          : 0,
+      });
+
+      const isVisible = isInViewport(
+        this.tooltipNode.current,
+        this.tooltipNode.current.scrollHeight
+      );
+
+      // If the tooltip element is not in view it will automatically scroll the user to it.
+      if (!isVisible) {
+        window.scrollTo({
+          top:
+            this.inputNode.current.offsetTop -
+            this.tooltipNode.current.scrollHeight,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
+    }
+
     this.setState({isActive: !this.state.isActive});
   }
 
@@ -277,6 +306,7 @@ class Input extends Component {
       description,
       disableOptionalFlag,
       error,
+      explanation,
       label,
       name,
       type,
@@ -398,46 +428,70 @@ class Input extends Component {
               'uic--focus': this.state.isActive,
               'uic--error': showInvalidity || error || reqErrorNecessary,
               'uic--disabled': disabled,
+              'uic--mcgonagall-input__tooltip-present': this.state.height !== 0,
             },
             className
           );
 
+          const tooltipClasses = classNames({
+            'uic--mcgonagall-input__tooltip': true,
+            'uic--position-absolute': true,
+            'uic--mcgonagall-input__tooltip-hidden': this.state.height === 0,
+          });
+
           return (
-            <div className={containerClasses} style={style} data-value={value}>
+            <div
+              className={containerClasses}
+              style={style}
+              data-value={value}
+              ref={this.inputNode}
+            >
               {appendCharacter && (
                 <style>
                   {`
-              .uic--input-append-${identifier}[data-value]:after {
-                content: attr(data-value) '${appendCharacter}';
-              }
-            `}
+                    .uic--input-append-${identifier}[data-value]:after {
+                      content: attr(data-value) '${appendCharacter}';
+                    }
+                  `}
                 </style>
               )}
 
               {prependCharacter && (
                 <style>
                   {`
-              .uic--input-prepend-${identifier}:before {
-                content: '${prependCharacter}';
-              }
-            `}
+                    .uic--input-prepend-${identifier}:before {
+                      content: '${prependCharacter}';
+                    }
+                `}
                 </style>
               )}
-              <InputType
-                type="text"
-                aria-label={inputLabel}
-                autoComplete={
-                  appendCharacter ? 'off' : autoComplete ? autoComplete : null
-                }
-                onFocus={this.toggleFocus}
-                onBlur={this.toggleFocus}
-                ref={(input) => {
-                  this.inputElement = input;
-                  this.props.setRef && this.props.setRef(input);
-                }}
-                {...attrs}
-              />
-              <label className="uic--position-absolute">{inputLabel}</label>
+              <div className="uic--mcgonagall-input__wrapper">
+                {explanation && (
+                  <div
+                    ref={this.tooltipNode}
+                    className={tooltipClasses}
+                    style={{top: `-${this.state.height}px`}}
+                  >
+                    {explanation}
+                  </div>
+                )}
+                <InputType
+                  type="text"
+                  aria-label={inputLabel}
+                  autoComplete={
+                    appendCharacter ? 'off' : autoComplete ? autoComplete : null
+                  }
+                  className="uic--position-relative"
+                  onFocus={this.toggleFocus}
+                  onBlur={this.toggleFocus}
+                  ref={(input) => {
+                    this.inputElement = input;
+                    this.props.setRef && this.props.setRef(input);
+                  }}
+                  {...attrs}
+                />
+                <label className="uic--position-absolute">{inputLabel}</label>
+              </div>
               {description &&
               !(showInvalidity || error || reqErrorNecessary) ? (
                 <div className="uic--description">{description}</div>
@@ -471,6 +525,8 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   /** The description of the input field. Displayed separately to the label. */
   description: PropTypes.string,
+  /** Displays explanation text on input focus. */
+  explanation: PropTypes.string,
   /** The type of input field. */
   type: PropTypes.oneOf([
     'date',

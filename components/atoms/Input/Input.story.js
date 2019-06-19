@@ -53,6 +53,7 @@ const defaultProps = ({
   append,
   prepend,
   placeholder,
+  explanation,
   error,
   disabled,
   mask,
@@ -66,6 +67,7 @@ const defaultProps = ({
   prepend: text('prepend', prepend),
   description: text('description', description),
   placeholder: text('placeholder', placeholder),
+  explanation: text('explanation', explanation),
   value: store.get(formName),
   required: boolean('required', true),
   maxLength: number('maxLength'),
@@ -84,8 +86,15 @@ const defaultProps = ({
   key: formName,
 });
 
+const storyStyles = {
+  height: '100%',
+  maxWidth: '100%',
+  width: '80rem',
+  paddingTop: '3rem',
+};
+
 stories.add('default', () => (
-  <div className="row">
+  <div className="row" style={storyStyles}>
     <div className="col-xs-12">
       <Input
         {...defaultProps({
@@ -99,8 +108,24 @@ stories.add('default', () => (
   </div>
 ));
 
+stories.add('default with explanation', () => (
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'default',
+          label: 'Address',
+          description: 'This is where you live.',
+          placeholder: '1660 L Street',
+          explanation: 'Montezuma is a ginger cat.',
+        })}
+      />
+    </div>
+  </div>
+));
+
 stories.add('currency', () => (
-  <div className="row">
+  <div className="row" style={storyStyles}>
     <div className="col-xs-12">
       <Input
         {...defaultProps({
@@ -117,91 +142,119 @@ stories.add('currency', () => (
 ));
 
 stories.add('percent', () => (
-  <Input
-    {...defaultProps({
-      formName: 'percent',
-      label: 'Increase',
-      placeholder: '0%',
-      append: '%',
-      mask: 'PercentageWithDecimal',
-    })}
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'percent',
+          label: 'Increase',
+          placeholder: '0%',
+          append: '%',
+          mask: 'PercentageWithDecimal',
+        })}
+      />
+    </div>
+  </div>
 ));
 
 stories.add('date', () => (
-  <Input
-    {...defaultProps({
-      formName: 'date',
-      label: 'Date',
-      mask: 'Date',
-      validateOnBlur: true,
-    })}
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'date',
+          label: 'Date',
+          mask: 'Date',
+          validateOnBlur: true,
+        })}
+      />
+    </div>
+  </div>
 ));
 
 stories.add('error', () => (
-  <Input
-    {...defaultProps({
-      formName: 'errorVal',
-      label: 'Address',
-      placeholder: '1660 L Street',
-      validationErrorMsg: 'Not a valid input!',
-      error: true,
-      mask: null,
-    })}
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'errorVal',
+          label: 'Address',
+          placeholder: '1660 L Street',
+          validationErrorMsg: 'Not a valid input!',
+          error: true,
+          mask: null,
+        })}
+      />
+    </div>
+  </div>
 ));
 
 stories.add('required error', () => (
-  <Input
-    {...defaultProps({
-      formName: 'default',
-      label: 'Address',
-      placeholder: '1660 L Street',
-      validationErrorMsg: 'Not a valid input!',
-      mask: null,
-      showRequiredError: true,
-    })}
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'default',
+          label: 'Address',
+          placeholder: '1660 L Street',
+          validationErrorMsg: 'Not a valid input!',
+          mask: null,
+          showRequiredError: true,
+        })}
+      />
+    </div>
+  </div>
 ));
 
 stories.add('disabled', () => (
-  <Input
-    {...defaultProps({
-      formName: 'disabled',
-      label: 'Address',
-      description: 'This is where you live.',
-      placeholder: '1660 L Street',
-      disabled: true,
-      mask: null,
-    })}
-    value="1660 L Street"
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'disabled',
+          label: 'Address',
+          description: 'This is where you live.',
+          placeholder: '1660 L Street',
+          disabled: true,
+          mask: null,
+        })}
+        value="1660 L Street"
+      />
+    </div>
+  </div>
 ));
 
 stories.add('disabled', () => (
-  <Input
-    {...defaultProps({
-      formName: 'disabled',
-      label: 'Address',
-      description: 'This is where you live.',
-      placeholder: 'Enter your address...',
-      disabled: true,
-      mask: null,
-    })}
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'disabled',
+          label: 'Address',
+          description: 'This is where you live.',
+          placeholder: 'Enter your address...',
+          disabled: true,
+          mask: null,
+        })}
+      />
+    </div>
+  </div>
 ));
 
 stories.add('disabled with value', () => (
-  <Input
-    {...defaultProps({
-      formName: 'disabled',
-      label: 'Address',
-      description: 'This is where you live.',
-      placeholder: 'Enter your address...',
-      disabled: true,
-      mask: null,
-    })}
-    value="1660 L Street"
-  />
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'disabled',
+          label: 'Address',
+          description: 'This is where you live.',
+          placeholder: 'Enter your address...',
+          disabled: true,
+          mask: null,
+        })}
+        value="1660 L Street"
+      />
+    </div>
+  </div>
 ));

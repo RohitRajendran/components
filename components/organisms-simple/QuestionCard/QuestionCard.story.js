@@ -209,6 +209,7 @@ stories.add('active with simple form', () => (
       mask="Date"
       value={store.get('startDate')}
       onChange={(name, value) => store.set({[name]: value})}
+      explanation="Be sure to include all associated costs like Renter’s Insurance and Utilities."
     />
 
     <Input

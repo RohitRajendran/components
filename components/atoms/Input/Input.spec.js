@@ -7,7 +7,8 @@ import Input, {
   tickerMask,
   maskEnum,
 } from './Input';
-import {spy} from 'sinon';
+import {spy, stub} from 'sinon';
+import * as InputUtils from './Input.util';
 
 test('Input - Renders props as attributes on the input', (t) => {
   t.plan(9);
@@ -219,6 +220,35 @@ test('Input - Correctly toggles focus', (t) => {
   t.end();
 });
 
+test('Input - Correctly toggles focus with explanation', (t) => {
+  const component = mount(
+    <Input
+      name="input_name"
+      label="Amount"
+      type="text"
+      value="20"
+      placeholder="some placeholder"
+      mask="PercentageWithDecimal"
+      description="This is the description"
+      explanation="Montezuma is the greatest cat in the world"
+    />
+  );
+
+  window.scrollTo = stub();
+  // Tests the scrolling logic.
+  const isInViewportStub = stub(InputUtils, 'isInViewport').returns(false);
+
+  component.instance().toggleFocus();
+
+  t.equals(component.state().isActive, true, 'Should toggle the focus state.');
+
+  t.true(window.scrollTo.callCount);
+
+  isInViewportStub.restore();
+
+  t.end();
+});
+
 test('Input - onBlur correctly fires both handlers', (t) => {
   const component = mount(
     <Input
@@ -283,5 +313,13 @@ test('Input - Month Mask isValid', (t) => {
   t.true(maskEnum['Month'].isValid('10/2019'), 'Is valid');
   t.false(maskEnum['Month'].isValid('10/12/2019'), 'Is not valid');
 
+  t.end();
+});
+
+test('Input - isInViewport', (t) => {
+  const element = document.createElement('div');
+
+  t.false(InputUtils.isInViewport(element, 500));
+  t.true(InputUtils.isInViewport(element));
   t.end();
 });

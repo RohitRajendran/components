@@ -34,3 +34,7 @@ import {Input} from '@unitedincome/components';
 ### props.disableOptionalFlag
 
 If an input is _not_ marked as `required` it will show an `(Optional)` flag in the label. You can disable this behavior by setting the `disableOptionalFlag` prop to `true`.
+
+### props.explanation
+
+The `explanation` prop allows you to add additional text that appears above the input field its self. This prop requires spacing on top of the component, it's absolute positioned and therefore overlays other elements. It also needs to be placed with enough spacing from the top of the screen so it doesn't get cut off.
