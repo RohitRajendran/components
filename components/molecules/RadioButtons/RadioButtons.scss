@@ -1,5 +1,7 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
+$label-left-padding: $button-size + $button-padding;
+$label-vertical-padding: 1.4rem;
 
 .uic--mcgonagall-radio-button-container {
   border: 0;
@@ -21,6 +23,11 @@ $button-padding: 1.6rem;
         margin: 0;
         padding: 1.4rem;
 
+        .uic--radio-label {
+          padding-bottom: 0;
+          padding-top: 0;
+        }
+
         &:nth-of-type(2n) {
           background-color: $table-alternate;
         }
@@ -33,8 +40,6 @@ $button-padding: 1.6rem;
   @include source-sans-pro(1.6rem);
 
   &:not(:last-child) {
-    margin-bottom: 2.8rem;
-
     &.uic--mcgonagall-radio-button-followup {
       margin-bottom: 1rem;
     }
@@ -53,7 +58,9 @@ $button-padding: 1.6rem;
     color: $slate;
     cursor: pointer;
     font-weight: normal;
-    padding-left: $button-size + $button-padding;
+    padding-bottom: $label-vertical-padding;
+    padding-left: $label-left-padding;
+    padding-top: $label-vertical-padding;
     user-select: none;
 
     // Radio Button disabled state.
@@ -68,14 +75,76 @@ $button-padding: 1.6rem;
     }
   }
 
+  .uic--option-box-radio {
+    top: auto;
+  }
+
   .uic--followup {
     margin-top: 0.6rem;
-    padding-left: 3.2rem;
+    padding-left: $label-left-padding;
   }
 
   .uic--label-value-secondary {
     color: $midnight;
     font-weight: 600;
     margin-left: 1rem;
+  }
+}
+
+// In McG cards, enable hover effect to radio buttons as long as it's not being used in a follow up
+$mcg-side-margin: 3.5rem;
+
+.uic--mcgonagall-card-shell {
+  .uic--mcgonagall-radio-button-container {
+    &:not(.uic--table) {
+      margin-left: -$mcg-side-margin;
+      margin-right: -$mcg-side-margin;
+
+      .uic--radio-label {
+        padding-left: $label-left-padding + $mcg-side-margin;
+
+        &:hover {
+          background-color: $table-alternate;
+        }
+      }
+
+      .uic--followup {
+        padding-left: $label-left-padding + $mcg-side-margin;
+      }
+
+      .uic--radio-input {
+        left: $mcg-side-margin;
+      }
+
+      .uic--option-box-radio {
+        left: $mcg-side-margin;
+      }
+    }
+  }
+
+  // If being used within a followup, should not have the hover styling
+  .uic--followup {
+    .uic--mcgonagall-radio-button-container {
+      &:not(.uic--table) {
+        margin-left: 0;
+        margin-right: 0;
+
+        .uic--radio-label {
+          padding-left: $label-left-padding;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        .uic--radio-input {
+          left: auto;
+        }
+
+        .uic--option-box-radio {
+          left: 0;
+        }
+      }
+    }
   }
 }
