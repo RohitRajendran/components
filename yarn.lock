@@ -7643,12 +7643,7 @@ markdown-to-jsx@^6.9.3:
     prop-types "^15.6.2"
     unquote "^1.1.0"
 
-marked@^0.6.0, marked@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.1.tgz#a63addde477bca9613028de4b2bc3629e53a0562"
-  integrity sha512-+H0L3ibcWhAZE02SKMqmvYsErLo4EAVJxu5h3bHBBDvvjeWXtl92rGUSBYHL2++5Y+RSNgl8dYOAXcYe7lp1fA==
-
-marked@^0.6.2:
+marked@^0.6.0, marked@^0.6.1, marked@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.2.tgz#c574be8b545a8b48641456ca1dbe0e37b6dccc1a"
   integrity sha512-LqxwVH3P/rqKX4EKGz7+c2G9r98WeM/SW34ybhgNGhUQNKtf1GmmSkJ6cDGJ/t6tiyae49qRkpyTw2B9HOrgUA==
@@ -11101,9 +11096,9 @@ storybook-addon-jsx@*:
     react-element-to-jsx-string "^14.0.2"
 
 storybook-readme@*:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.3.tgz#c3944b7dc6d6e334e7e4ed3d138211b0c0c88c8b"
-  integrity sha512-O1y1Njl/gOMjHJ6y0L9g1HAOjuRvtjscIM4EaE7VJHrCk+35+NgOnLIKRVR6gEAaTsPZlC+h8xlnVVh3IyrC7Q==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.5.tgz#93878d7ef326a21acc30c6625fc1666683f74f28"
+  integrity sha512-o3NmBLVabACq/W2fYtqrqvj6Sw2NiekcIs2O3ZHkqjd5xa55f9fI3zx5TMeytimFo3kemXGjzWEshvv7TUW+gA==
   dependencies:
     "@storybook/components" "^5.0.6"
     "@storybook/core-events" "^5.0.6"
