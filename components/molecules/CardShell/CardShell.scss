@@ -68,14 +68,14 @@ $active-border-size: 4px;
   .uic--card-content {
     // Make bootstrap grid a little tighter
     .uic--row {
-      margin-left: -0.75rem;
-      margin-right: -0.75rem;
+      margin-left: -0.66rem;
+      margin-right: -0.66rem;
     }
 
     .uic--col,
     [class*='uic--col-'] {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+      padding-left: 0.66rem;
+      padding-right: 0.66rem;
     }
   }
 

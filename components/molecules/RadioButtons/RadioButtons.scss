@@ -39,12 +39,6 @@ $label-vertical-padding: 1.4rem;
 .uic--mcgonagall-radio-button {
   @include source-sans-pro(1.6rem);
 
-  &:not(:last-child) {
-    &.uic--mcgonagall-radio-button-followup {
-      margin-bottom: 1rem;
-    }
-  }
-
   .uic--radio-input {
     left: 0;
     opacity: 0;

@@ -20,7 +20,7 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     }
 
     .uic--validation-error {
-      visibility: visible;
+      display: block;
     }
   }
 
@@ -155,8 +155,8 @@ $input-data-value-color: rgba(255, 255, 255, 0);
 
   .uic--validation-error {
     color: $pink;
+    display: none;
     font-weight: bold;
-    visibility: hidden;
   }
 
   .uic--description {
@@ -223,6 +223,6 @@ $input-data-value-color: rgba(255, 255, 255, 0);
 // Modify styling when in card
 .uic--mcgonagall-card-shell {
   .uic--mcgonagall-input {
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
   }
 }
