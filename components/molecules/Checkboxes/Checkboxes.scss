@@ -1,6 +1,6 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
-$label-left-padding: $button-size + $button-padding;
+$label-horizontal-padding: $button-size + $button-padding;
 $label-vertical-padding: 1.4rem;
 
 .uic--mcgonagall-checkbox-button-container {
@@ -58,7 +58,7 @@ $label-vertical-padding: 1.4rem;
     cursor: pointer;
     font-weight: normal;
     padding-bottom: $label-vertical-padding;
-    padding-left: $label-left-padding;
+    padding-left: $label-horizontal-padding;
     padding-top: $label-vertical-padding;
     user-select: none;
 
@@ -79,7 +79,7 @@ $label-vertical-padding: 1.4rem;
 
   .uic--followup {
     margin-top: 0.6rem;
-    padding-left: $label-left-padding;
+    padding-left: $label-horizontal-padding;
   }
 
   .uic--label-value-secondary {
@@ -99,7 +99,8 @@ $mcg-side-margin: 3.5rem;
       margin-right: -$mcg-side-margin;
 
       .uic--checkbox-label {
-        padding-left: $label-left-padding + $mcg-side-margin;
+        padding-left: $label-horizontal-padding + $mcg-side-margin;
+        padding-right: $label-horizontal-padding + $mcg-side-margin;
 
         &:hover {
           background-color: $table-alternate;
@@ -107,7 +108,8 @@ $mcg-side-margin: 3.5rem;
       }
 
       .uic--followup {
-        padding-left: $label-left-padding + $mcg-side-margin;
+        padding-left: $label-horizontal-padding + $mcg-side-margin;
+        padding-right: $label-horizontal-padding + $mcg-side-margin;
       }
 
       .uic--checkbox-input {
@@ -121,14 +123,16 @@ $mcg-side-margin: 3.5rem;
   }
 
   // If in a followup, should not have the hover styling
-  .uic--followup {
+  .uic--followup,
+  .uic--ec {
     .uic--mcgonagall-checkbox-button-container {
       &:not(.uic--mcgonagall-checkbox-table-container) {
         margin-left: 0;
         margin-right: 0;
 
         .uic--checkbox-label {
-          padding-left: $label-left-padding;
+          padding-left: $label-horizontal-padding;
+          padding-right: $label-horizontal-padding;
 
           &:hover {
             background-color: transparent;
