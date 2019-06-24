@@ -1379,15 +1379,15 @@
     react-select "^2.2.0"
 
 "@storybook/addon-viewport@*":
-  version "5.1.8"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.1.8.tgz#6d0dd86907399bb5e8f538a42c673cf21009a586"
-  integrity sha512-EXNip7I74KG5wM/pl1pAsc8xfBwBfBMw0nBThAhbPxbw8mwubgflh9imCbnzDbSSO1I3afBtRjYwtFabWB5gEw==
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.1.9.tgz#509819730ae99a9e08d1e1f71e8e567b068da01c"
+  integrity sha512-0EEsZ7rWTj3q3M8AFjm6dXjQPS0w4gto8clMzGzdLHXA6D6KG3w10t9XsVr4mxve7PrEpiFXc6mhqsg7wbTDnQ==
   dependencies:
-    "@storybook/addons" "5.1.8"
-    "@storybook/client-logger" "5.1.8"
-    "@storybook/components" "5.1.8"
-    "@storybook/core-events" "5.1.8"
-    "@storybook/theming" "5.1.8"
+    "@storybook/addons" "5.1.9"
+    "@storybook/client-logger" "5.1.9"
+    "@storybook/components" "5.1.9"
+    "@storybook/core-events" "5.1.9"
+    "@storybook/theming" "5.1.9"
     core-js "^3.0.1"
     global "^4.3.2"
     memoizerific "^1.11.3"
