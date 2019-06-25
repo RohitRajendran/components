@@ -21,7 +21,17 @@ import {ItemizationWidget} from '@unitedincome/components';
   value={[
     {
       label: 'Montezuma',
-      value: 9999,
+      value: state.total,
+      editConfig: {
+        onConfirm: (value) => props.onChange('total', value),
+        config: {
+          disableOptionalFlag: true,
+          label: 'Total Spending',
+          mask: 'Currency',
+          name: 'total',
+          value: state.total,
+        },
+      },
     },
     {
       label: 'Other Cats',
@@ -43,4 +53,27 @@ import {ItemizationWidget} from '@unitedincome/components';
   title="Cat Budget"
   totalSuffix="mo"
 />
+```
+
+## editConfig
+
+You can allow a user to edit a total by passing in a TooltipInput config into the editConfig property. This will show a label (defaults to "Edit Total") under the value that when clicked, will open a tooltip with an input that allows the user to update the value.
+
+```
+[
+    {
+      label: 'Montezuma',
+      value: state.total,
+      editConfig: {
+        onConfirm: (value) => props.onChange('total', value),
+        config: {
+          disableOptionalFlag: true,
+          label: 'Total Spending',
+          mask: 'Currency',
+          name: 'total',
+          value: state.total,
+        }
+      }
+    },
+  ]
 ```

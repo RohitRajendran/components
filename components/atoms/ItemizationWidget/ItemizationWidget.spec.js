@@ -12,6 +12,14 @@ test('ItemizationWidget - renders', (t) => {
       {
         label: 'Primary Residence',
         value: 4000,
+        editConfig: {
+          config: {
+            name: 'total',
+            label: 'Total Spending',
+            value: 4000,
+            required: true,
+          },
+        },
       },
       {
         label: 'Other Essentials',
