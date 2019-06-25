@@ -15,6 +15,30 @@ test('HomeCircleIllustration - renders', (t) => {
   t.end();
 });
 
+test('HomeCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<HomeCircleIllustration draft={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the HomeCircleIllustration component.'
+  );
+
+  t.end();
+});
+
+test('HomeCircleIllustration - renders the draft illustration', (t) => {
+  const component = shallow(<HomeCircleIllustration color={true} />);
+
+  t.equals(
+    component.find('svg').length,
+    1,
+    'Should load the HomeCircleIllustration component.'
+  );
+
+  t.end();
+});
+
 test('HomeCircleIllustration - handleClick', (t) => {
   const component = mount(<HomeCircleIllustration fill="white" />);
 

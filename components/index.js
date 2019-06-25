@@ -1,3 +1,5 @@
+import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
+import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 // Atoms
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
@@ -64,6 +66,8 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  PaintingCircleIllustration,
+  CarCircleIllustration,
   ContentSection,
   Portal,
   DateUtils,

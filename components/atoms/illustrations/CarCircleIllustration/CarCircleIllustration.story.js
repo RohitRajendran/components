@@ -2,12 +2,12 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {text, boolean} from '@storybook/addon-knobs';
 import {withReadme} from 'storybook-readme';
-import HomeCircleIllustration from './HomeCircleIllustration';
-import HomeCircleIllustrationReadMe from './HomeCircleIllustration.md';
+import CarCircleIllustration from './CarCircleIllustration';
+import CarCircleIllustrationReadMe from './CarCircleIllustration.md';
 
-const stories = storiesOf('Atoms/Illustrations/HomeCircleIllustration', module);
+const stories = storiesOf('Atoms/Illustrations/CarCircleIllustration', module);
 
-stories.addDecorator(withReadme(HomeCircleIllustrationReadMe));
+stories.addDecorator(withReadme(CarCircleIllustrationReadMe));
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '265'),
@@ -18,14 +18,14 @@ const defaultProps = (color, draft, illuminate) => ({
 });
 
 stories.add('default', () => (
-  <HomeCircleIllustration {...defaultProps(false, false, false)} />
+  <CarCircleIllustration {...defaultProps(false, false, false)} />
 ));
 stories.add('color', () => (
-  <HomeCircleIllustration {...defaultProps(true, false, false)} />
+  <CarCircleIllustration {...defaultProps(true, false, false)} />
 ));
 stories.add('draft', () => (
-  <HomeCircleIllustration {...defaultProps(false, true, false)} />
+  <CarCircleIllustration {...defaultProps(false, true, false)} />
 ));
 stories.add('illuminated', () => (
-  <HomeCircleIllustration {...defaultProps(false, false, true)} />
+  <CarCircleIllustration {...defaultProps(false, false, true)} />
 ));
