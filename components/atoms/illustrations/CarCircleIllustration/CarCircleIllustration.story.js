@@ -10,8 +10,8 @@ const stories = storiesOf('Atoms/Illustrations/CarCircleIllustration', module);
 stories.addDecorator(withReadme(CarCircleIllustrationReadMe));
 
 const defaultProps = (color, draft, illuminate) => ({
-  height: text('height', '265'),
-  width: text('width', '160'),
+  height: text('height', '14rem'),
+  width: text('width', '14.4rem'),
   illuminate: boolean('illuminate', illuminate),
   color: boolean('color', color),
   draft: boolean('draft', draft),
