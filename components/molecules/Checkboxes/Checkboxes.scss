@@ -28,6 +28,10 @@ $label-vertical-padding: 1.4rem;
           padding-top: 0;
         }
 
+        .uic--option-box-check {
+          top: 0.2rem;
+        }
+
         &:nth-of-type(2n) {
           background-color: $table-alternate;
         }
