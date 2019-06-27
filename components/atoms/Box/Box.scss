@@ -1,0 +1,32 @@
+$box-shadow: rgba(77, 0, 186, 0.5);
+
+.uic--box {
+  background-color: $white;
+  border: 1px solid $light-gray;
+  max-width: 27.1rem;
+  padding: 2.2rem 1.4rem;
+
+  &.uic--box-highlighted {
+    border: 1px solid $royal;
+    box-shadow: 0 0 4px 0 $box-shadow;
+  }
+
+  .uic--box-illustration {
+    // Prevents the default onClick behavior of the illustration.
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .uic--box-header {
+    @include source-sans-pro(1.6rem);
+    color: $midnight;
+    font-weight: 600;
+    margin: 1rem 0 0.4rem;
+  }
+
+  .uic--box-description {
+    @include source-sans-pro(1.4rem);
+    color: $slate;
+    margin-top: 0;
+  }
+}
