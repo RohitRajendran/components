@@ -4,7 +4,20 @@ $box-shadow: rgba(77, 0, 186, 0.5);
   background-color: $white;
   border: 1px solid $light-gray;
   max-width: 27.1rem;
-  padding: 2.2rem 1.4rem;
+  outline: 0;
+  padding: 2.2rem 1.4rem 1.2rem;
+
+  &.uic--box-hover {
+    background-color: $table-alternate;
+    border: 1px solid transparent;
+    outline: 1px solid $disabled-text;
+  }
+
+  &:focus {
+    background-color: $table-alternate;
+    border: 1px solid transparent;
+    outline: 1px solid $disabled-text;
+  }
 
   &.uic--box-highlighted {
     border: 1px solid $royal;

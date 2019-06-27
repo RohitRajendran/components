@@ -1,42 +1,41 @@
-/** @module RadioButtonCard */
+/** @module BoxSelectCard */
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import BoxSelect from '~components/molecules/BoxSelect/BoxSelect';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import {getSelectedAnswerLabel} from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
+import './BoxSelectCard.scss';
 
-/**
- * Gets the label of a given value
- * @param {array<object>} options Array of options available
- * @param {any} currValue The value to look for
- * @returns {string} answer label
- */
-export const getSelectedAnswerLabel = (options, currValue) => {
-  const option = options.find((opt) => opt.value === currValue);
-  if (option) {
-    return option.label;
-  }
-};
-
-/** Displays the RadioButtonCard component.
+/** Displays the BoxSelectCard component.
  * @param {object} props - Component props.
- * @returns {JSX} - JSX representation of the RadioButtonCard component.
+ * @returns {JSX} - JSX representation of the BoxSelectCard component.
  */
-const RadioButtonCard = ({
+const BoxSelectCard = ({
   answers,
   config,
+  className,
   editCard,
   onChange,
   shortTitle,
   title,
   ...props
 }) => {
+  const cardClass = classNames(
+    {
+      'uic--box-select-card': true,
+    },
+    className
+  );
+
   return (
     <QuestionCard
       {...props}
       editCard={editCard}
       shortTitle={shortTitle}
       title={title}
+      className={cardClass}
       summary={
         <SimpleSummary
           answers={
@@ -47,38 +46,33 @@ const RadioButtonCard = ({
         />
       }
     >
-      <RadioButtons {...config} onChange={onChange} required />
+      <BoxSelect {...config} onChange={onChange} required />
     </QuestionCard>
   );
 };
 
-export default RadioButtonCard;
-
-RadioButtonCard.propTypes = {
-  /** Values to pass into radio button */
+BoxSelectCard.propTypes = {
+  /** Values to pass into  BoxSelect component. */
   config: PropTypes.shape({
-    /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
-    name: PropTypes.string.isRequired,
-    /** Renders the radio button group in a table. */
-    table: PropTypes.bool,
-    /** The current selected option in the radio button group. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    /** An array of objects containing options that should be rendered. */
+    /** The select options to appear within the box. */
     options: PropTypes.arrayOf(
       PropTypes.shape({
-        /** The value of the button. */
-        value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
-          .isRequired,
-        /** The label of the button. */
-        label: PropTypes.string.isRequired,
-        /** Optional followup input JSX. */
-        followup: PropTypes.node,
-        /** Label to appear to the right of the selection. */
-        secondaryLabel: PropTypes.string,
-        /** Disables the option. */
-        disabled: PropTypes.bool,
+        /** The value of the select button, for example `yes` or `no`. */
+        value: PropTypes.string.isRequired,
+        /** The label to appear on the box. */
+        label: PropTypes.string,
+        /** The description to appear on the box. */
+        description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        /** The icon to display at the top of the card. */
+        icon: PropTypes.node,
       })
     ).isRequired,
+    /** The name of the box group. Gets passed back when the onClick handler is triggered. */
+    name: PropTypes.string.isRequired,
+    /** Handler which gets initiated every time a selection is made. Passes back the selection group name and the value. */
+    onChange: PropTypes.func.isRequired,
+    /** The item that is currently selected. */
+    value: PropTypes.string,
   }),
   /** Whether it should animate on mount */
   animate: PropTypes.bool,
@@ -139,3 +133,5 @@ RadioButtonCard.propTypes = {
   /** The title of the card. */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
+
+export default BoxSelectCard;

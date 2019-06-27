@@ -18,7 +18,7 @@ import {Box} from '@unitedincome/components';
 
 ```javascript
 <Box
-  title="Montezuma the Cat"
+  label="Montezuma the Cat"
   description="Montezuma is honestly the best cat I've ever seen."
   icon={CatIllustration}
 />
