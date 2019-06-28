@@ -1,6 +1,6 @@
 # BoxSelectCard
 
-This component makes it easier to rendefr a basic box select card for the Hogwarts/McGonagall flow.
+This component makes it easier to render a basic box select card for the Hogwarts/McGonagall flow.
 
 ## Importing 📦
 
