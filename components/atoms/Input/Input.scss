@@ -20,13 +20,46 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     }
 
     .uic--validation-error {
-      visibility: visible;
+      display: block;
     }
   }
 
   &.uic--disabled {
     .uic--description {
       color: $disabled-text;
+    }
+  }
+
+  .uic--mcgonagall-input__wrapper {
+    background-color: transparent;
+  }
+
+  // When the tooltip is present the width of the input and label
+  // need to be adjusted to prevent content jumping.
+  &.uic--mcgonagall-input__tooltip-present {
+    input {
+      border: 1px solid transparent !important;
+    }
+
+    .uic--mcgonagall-input__wrapper {
+      outline: 2px solid $royal;
+    }
+  }
+
+  .uic--mcgonagall-input__tooltip {
+    @include source-sans-pro(1.2rem);
+    background-color: $royal;
+    border-radius: 4px 10px 0 0;
+    box-shadow: 0 0 0.2rem 0 $input-shadow;
+    color: $white;
+    font-style: italic;
+    margin: 0 -2px;
+    padding: 0.9rem 1.2rem 0.7rem;
+    width: calc(100% + 4px);
+    z-index: 99999;
+
+    &.uic--mcgonagall-input__tooltip-hidden {
+      visibility: hidden;
     }
   }
 
@@ -122,8 +155,8 @@ $input-data-value-color: rgba(255, 255, 255, 0);
 
   .uic--validation-error {
     color: $pink;
+    display: none;
     font-weight: bold;
-    visibility: hidden;
   }
 
   .uic--description {
@@ -139,11 +172,6 @@ $input-data-value-color: rgba(255, 255, 255, 0);
   }
 
   &.uic--input-append {
-    // Mimic's text overflowing for masked/hidden inputs.
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
     &.uic--focus {
       &::after {
         color: $royal;
@@ -175,8 +203,12 @@ $input-data-value-color: rgba(255, 255, 255, 0);
         @include source-sans-pro(2rem);
         color: $midnight;
         left: 1.3rem;
+        max-width: calc(100% - 2.6rem);
+        overflow: hidden;
         position: absolute;
+        text-overflow: ellipsis;
         top: 2.6rem;
+        white-space: nowrap;
         width: 100%;
 
         &:focus,
@@ -191,6 +223,6 @@ $input-data-value-color: rgba(255, 255, 255, 0);
 // Modify styling when in card
 .uic--mcgonagall-card-shell {
   .uic--mcgonagall-input {
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
   }
 }

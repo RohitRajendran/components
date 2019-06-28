@@ -13,8 +13,8 @@ const stories = storiesOf(
 stories.addDecorator(withReadme(HealthCircleIllustrationReadMe));
 
 const defaultProps = (color, draft, illuminate) => ({
-  height: text('height', '265'),
-  width: text('width', '160'),
+  height: text('height', '14rem'),
+  width: text('width', '14.4rem'),
   color: boolean('color', color),
   draft: boolean('draft', draft),
   illuminate: boolean('illuminate', illuminate),

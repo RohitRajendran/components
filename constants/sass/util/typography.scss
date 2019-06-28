@@ -1,3 +1,76 @@
+.uic--header-1-text,
+%uic--header-1-text {
+  @include cormorant(6rem);
+  color: $midnight;
+  font-weight: 500;
+}
+
+.uic--header-1-5-text,
+%uic--header-1-5-text {
+  @include cormorant(4rem);
+  color: $midnight;
+  font-weight: 500;
+}
+
+.uic--header-2-text,
+%uic--header-2-text {
+  @include source-sans-pro(2.4rem);
+  color: $midnight;
+  font-weight: 400;
+}
+
+.uic--header-3-text,
+%uic--header-3-text {
+  @include source-sans-pro(1.4rem);
+  color: $midnight;
+  font-weight: 700;
+}
+
+.uic--body-text,
+%uic--body-text {
+  @include source-sans-pro(1.6rem);
+  color: $slate;
+  font-weight: 400;
+}
+
+.uic--stand-alone-cta-text,
+%uic--stand-alone-cta-text {
+  @include source-sans-pro(1.4rem);
+  color: $royal;
+  font-weight: 600;
+}
+
+.uic--field-description-text,
+%uic--field-description-text {
+  @include source-sans-pro(1.2rem);
+  color: $slate;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.uic--library-blog-header-3a,
+%uic--library-blog-header-3a {
+  @include source-sans-pro(1.6rem);
+  color: $royal;
+  font-weight: 600;
+}
+
+.uic--library-blog-header-3b,
+%uic--library-blog-header-3b {
+  @include source-sans-pro(1.6rem);
+  color: $royal;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.uic--library-pull-quote,
+%uic--library-pull-quote {
+  @include cormorant(3.2rem);
+  color: $midnight;
+  font-style: italic;
+  font-weight: 500;
+}
+
 .uic--mcg-question-text,
 %uic--mcg-question-text {
   @include source-sans-pro(2rem);

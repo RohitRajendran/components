@@ -19,8 +19,8 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 
   .uic--validation-error {
     color: $pink;
+    display: none;
     font-weight: bold;
-    visibility: hidden;
   }
 
   .uic--description {
@@ -85,7 +85,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 
   &.uic--error {
     .uic--validation-error {
-      visibility: visible;
+      display: block;
     }
 
     .uic--mcgonagall-dropdown__control {
@@ -229,6 +229,6 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 // Modify styling when in card
 .uic--mcgonagall-card-shell {
   .uic--mcgonagall-dropdown {
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
   }
 }

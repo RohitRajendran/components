@@ -11,7 +11,7 @@ import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard
  * @param {any} currValue The value to look for
  * @returns {string} answer label
  */
-const getSelectedAnswerLabel = (options, currValue) => {
+export const getSelectedAnswerLabel = (options, currValue) => {
   const option = options.find((opt) => opt.value === currValue);
   if (option) {
     return option.label;

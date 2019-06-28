@@ -1,0 +1,16 @@
+.uic--box-select {
+  max-width: 84rem;
+
+  .uic--box {
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
+  }
+
+  .uic--col,
+  [class*='uic--col-'] {
+    margin-bottom: 1.2rem;
+    padding-left: 0.66rem;
+    padding-right: 0.66rem;
+  }
+}

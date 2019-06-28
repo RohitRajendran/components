@@ -99,6 +99,14 @@ $background-color: rgba(0, 0, 0, 0.85);
       }
     }
   }
+
+  .uic--itemization-tooltip {
+    margin-top: -1rem; // Fix for tooltip height
+
+    button {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 // Modify styling when in card

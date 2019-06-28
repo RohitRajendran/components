@@ -1,5 +1,7 @@
 $button-size: 1.6rem;
 $button-padding: 1.6rem;
+$label-horizontal-padding: $button-size + $button-padding;
+$label-vertical-padding: 1.4rem;
 
 .uic--mcgonagall-checkbox-button-container {
   border: 0;
@@ -21,6 +23,15 @@ $button-padding: 1.6rem;
         margin: 0;
         padding: 1.4rem;
 
+        .uic--checkbox-label {
+          padding-bottom: 0;
+          padding-top: 0;
+        }
+
+        .uic--option-box-check {
+          top: 0.2rem;
+        }
+
         &:nth-of-type(2n) {
           background-color: $table-alternate;
         }
@@ -33,15 +44,12 @@ $button-padding: 1.6rem;
   @include source-sans-pro(1.6rem);
 
   &:not(:last-child) {
-    margin-bottom: 2.8rem;
-
     &.uic--mcgonagall-checkbox-button-followup {
       margin-bottom: 1rem;
     }
   }
 
   .uic--checkbox-input {
-    left: 0;
     opacity: 0;
 
     &:focus + .uic--option-box-check {
@@ -53,7 +61,9 @@ $button-padding: 1.6rem;
     color: $slate;
     cursor: pointer;
     font-weight: normal;
-    padding-left: $button-size + $button-padding;
+    padding-bottom: $label-vertical-padding;
+    padding-left: $label-horizontal-padding;
+    padding-top: $label-vertical-padding;
     user-select: none;
 
     &.uic--disabled {
@@ -67,14 +77,80 @@ $button-padding: 1.6rem;
     }
   }
 
+  .uic--option-box-check {
+    top: auto;
+  }
+
   .uic--followup {
-    margin-top: 0.6rem;
-    padding-left: 3.2rem;
+    margin-bottom: 1.2rem;
+    padding-left: $label-horizontal-padding;
   }
 
   .uic--label-value-secondary {
     color: $midnight;
     font-weight: 600;
     margin-left: 1rem;
+  }
+}
+
+// In McG cards, enable hover effect to checkboxes as long as it's not being used in a follow up
+$mcg-side-margin: 3.5rem;
+
+.uic--mcgonagall-card-shell {
+  .uic--mcgonagall-checkbox-button-container {
+    &:not(.uic--mcgonagall-checkbox-table-container) {
+      margin-left: -$mcg-side-margin;
+      margin-right: -$mcg-side-margin;
+
+      .uic--checkbox-label {
+        padding-left: $label-horizontal-padding + $mcg-side-margin;
+        padding-right: $label-horizontal-padding + $mcg-side-margin;
+
+        &:hover {
+          background-color: $table-alternate;
+        }
+      }
+
+      .uic--followup {
+        padding-left: $label-horizontal-padding + $mcg-side-margin;
+        padding-right: $label-horizontal-padding + $mcg-side-margin;
+      }
+
+      .uic--checkbox-input {
+        left: $mcg-side-margin;
+      }
+
+      .uic--option-box-check {
+        left: $mcg-side-margin;
+      }
+    }
+  }
+
+  // If in a followup, should not have the hover styling
+  .uic--followup,
+  .uic--ec {
+    .uic--mcgonagall-checkbox-button-container {
+      &:not(.uic--mcgonagall-checkbox-table-container) {
+        margin-left: 0;
+        margin-right: 0;
+
+        .uic--checkbox-label {
+          padding-left: $label-horizontal-padding;
+          padding-right: $label-horizontal-padding;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        .uic--checkbox-input {
+          left: auto;
+        }
+
+        .uic--option-box-check {
+          left: 0;
+        }
+      }
+    }
   }
 }

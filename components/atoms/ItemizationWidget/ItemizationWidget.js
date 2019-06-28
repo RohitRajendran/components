@@ -1,12 +1,12 @@
 /** @module ItemizationWidget */
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {exclusive} from '~proptypes';
 import {and} from 'airbnb-prop-types';
-import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
-
+import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
+import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
+import {exclusive} from '~proptypes';
 import './ItemizationWidget.scss';
 
 /** Renders the ItemizationWidget component. */
@@ -172,6 +172,7 @@ class ItemizationWidget extends PureComponent {
                           threshold,
                           thresholdWarning,
                           suffix: itemSuffix,
+                          editConfig,
                         },
                         index
                       ) => {
@@ -196,6 +197,18 @@ class ItemizationWidget extends PureComponent {
                             <div className="uic--itemization-widget__label">
                               {label}
                             </div>
+                            {editConfig && (
+                              <div className="uic--itemization-tooltip">
+                                <TooltipInput
+                                  label={editConfig.label || 'Edit Total'}
+                                  labelVariant="link"
+                                  placement="bottom"
+                                  confirmLabel="Save"
+                                  lightLabel={false}
+                                  {...editConfig}
+                                />
+                              </div>
+                            )}
                             {items && (
                               <div className="uic--itemization-widget__itemized-container">
                                 {items.map((item, idx) => (
@@ -290,6 +303,45 @@ ItemizationWidget.propTypes = {
         ),
         exclusive(['value']),
       ]),
+      /** Shows and configures edit tooltip for the value */
+      editConfig: PropTypes.shape({
+        /** Label text for the edit link */
+        label: PropTypes.string,
+        /** Function which fires when the user confirms the input. */
+        onConfirm: PropTypes.func,
+        /** Config object for the input field. */
+        config: PropTypes.shape({
+          /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
+          append: PropTypes.string,
+          /** Determines the autoComplete type on the input. */
+          autoComplete: PropTypes.string,
+          /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
+          prepend: PropTypes.string,
+          /** The label representing the input field. */
+          label: PropTypes.string.isRequired,
+          /** The name of the input field. */
+          name: PropTypes.string.isRequired,
+          /** The description of the input field. Displayed separately to the label. */
+          description: PropTypes.string,
+          /** The type of input field. */
+          type: PropTypes.oneOf([
+            'date',
+            'datetime-local',
+            'email',
+            'file',
+            'hidden',
+            'month',
+            'number',
+            'password',
+            'search',
+            'tel',
+            'text',
+            'time',
+            'url',
+            'week',
+          ]),
+        }),
+      }),
     })
   ).isRequired,
 };

@@ -19,6 +19,7 @@ const Checkboxes = ({
   const containerClasses = classNames(
     {
       'uic--mcgonagall-checkbox-button-container': true,
+      'uic--mcgonagall-checkbox-table-container': table,
     },
     className
   );

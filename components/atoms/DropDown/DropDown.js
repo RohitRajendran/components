@@ -285,7 +285,7 @@ class DropDown extends Component {
                   <div className="uic--validation-error">
                     {reqErrorNecessary
                       ? 'Required Field'
-                      : this.state.validationMessage || 'Invalid'}
+                      : this.state.validationMessage}
                   </div>
                 )}
               </div>
