@@ -38,6 +38,7 @@ $navigation-z-index: 99999;
         @include source-sans-pro(1.4rem);
         margin: 0;
         padding: 1.5rem 2rem;
+        width: 100%;
 
         a {
           text-decoration: none;
