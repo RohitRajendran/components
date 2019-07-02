@@ -1,7 +1,7 @@
 /** @module Navbar */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
@@ -132,11 +132,12 @@ class Navbar extends PureComponent {
   render() {
     const {
       className,
-      style,
-      leftNavigation,
-      rightNavigation,
       fixedLogo,
+      leftNavigation,
+      logoLink,
+      rightNavigation,
       staticLogo,
+      style,
     } = this.props;
 
     const {fixed, open} = this.state;
@@ -154,7 +155,6 @@ class Navbar extends PureComponent {
     );
 
     const IconComponent = open ? CloseIcon : HamburgerIcon;
-
     const renderLeftNavigation = leftNavigation
       ? this.generateNavigation('left', leftNavigation)
       : null;
@@ -162,10 +162,24 @@ class Navbar extends PureComponent {
       ? this.generateNavigation('right', rightNavigation)
       : null;
 
+    let linkProps = {};
+    const LinkWrapper = this.props.linkComponent;
+    if (this.props.linkComponent !== 'a') {
+      linkProps.to = logoLink;
+    } else {
+      linkProps.href = logoLink;
+    }
+
     return (
       <nav className={containerClasses} style={style}>
         <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
-          {fixed ? fixedLogo : staticLogo}
+          {logoLink ? (
+            <LinkWrapper {...linkProps}>
+              {fixed ? fixedLogo : staticLogo}
+            </LinkWrapper>
+          ) : (
+            <Fragment>{fixed ? fixedLogo : staticLogo}</Fragment>
+          )}
         </div>
 
         <div className="uic--navbar__left-navigation uic--d-flex uic--align-items-center uic--w-100">
@@ -231,6 +245,8 @@ Navbar.propTypes = {
     PropTypes.func,
     PropTypes.string,
   ]),
+  /** The path the logo should direct users to. */
+  logoLink: PropTypes.string,
   /** Allows you to specify if the navigation bar should always be fixed. */
   isFixed: PropTypes.bool,
   /** Allows you to specify if the navigation bar should always be static. */
@@ -244,43 +260,47 @@ Navbar.propTypes = {
   /** Determines at what point the navigation bar should switch to the fixed state. Measured in pixels from the top. */
   transitionToFixed: PropTypes.number,
   /** Navigation items which appear in the left of the bar. */
-  leftNavigation: PropTypes.shape({
-    /** The navigation item label. */
-    label: PropTypes.string.isRequired,
-    /** The url the navigation item should take you to. */
-    link: PropTypes.string.isRequired,
-    /** Allows you to specify a button variant for the item. */
-    variant: PropTypes.oneOf([
-      'primary',
-      'secondary',
-      'tertiary',
-      'link',
-      'icon',
-    ]),
-    /** Hides the item on the fixed state. */
-    hideFixed: PropTypes.bool,
-    /** Hides the item on the static state. */
-    hideStatic: PropTypes.bool,
-  }),
+  leftNavigation: PropTypes.arrayOf(
+    PropTypes.shape({
+      /** The navigation item label. */
+      label: PropTypes.string.isRequired,
+      /** The url the navigation item should take you to. */
+      link: PropTypes.string.isRequired,
+      /** Allows you to specify a button variant for the item. */
+      variant: PropTypes.oneOf([
+        'primary',
+        'secondary',
+        'tertiary',
+        'link',
+        'icon',
+      ]),
+      /** Hides the item on the fixed state. */
+      hideFixed: PropTypes.bool,
+      /** Hides the item on the static state. */
+      hideStatic: PropTypes.bool,
+    })
+  ),
   /** Navigation items which appear on the right side of the bar. */
-  rightNavigation: PropTypes.shape({
-    /** The navigation item label. */
-    label: PropTypes.string.isRequired,
-    /** The url the navigation item should take you to. */
-    link: PropTypes.string.isRequired,
-    /** Allows you to specify a button variant for the item. */
-    variant: PropTypes.oneOf([
-      'primary',
-      'secondary',
-      'tertiary',
-      'link',
-      'icon',
-    ]),
-    /** Hides the item on the fixed state. */
-    hideFixed: PropTypes.bool,
-    /** Hides the item on the static state. */
-    hideStatic: PropTypes.bool,
-  }),
+  rightNavigation: PropTypes.arrayOf(
+    PropTypes.shape({
+      /** The navigation item label. */
+      label: PropTypes.string.isRequired,
+      /** The url the navigation item should take you to. */
+      link: PropTypes.string.isRequired,
+      /** Allows you to specify a button variant for the item. */
+      variant: PropTypes.oneOf([
+        'primary',
+        'secondary',
+        'tertiary',
+        'link',
+        'icon',
+      ]),
+      /** Hides the item on the fixed state. */
+      hideFixed: PropTypes.bool,
+      /** Hides the item on the static state. */
+      hideStatic: PropTypes.bool,
+    })
+  ),
 };
 
 Navbar.defaultProps = {
