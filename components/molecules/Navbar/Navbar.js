@@ -162,7 +162,7 @@ class Navbar extends PureComponent {
       ? this.generateNavigation('right', rightNavigation)
       : null;
 
-    let linkProps = {};
+    const linkProps = {};
     const LinkWrapper = this.props.linkComponent;
     if (this.props.linkComponent !== 'a') {
       linkProps.to = logoLink;

@@ -76,6 +76,7 @@ test('Navbar - toggleFixed', (t) => {
     isFixed: false,
     isStatic: false,
     transitionToFixed: 100,
+    logoLink: 'https://unitedincome.com',
   };
 
   const component = mount(<Navbar {...props} />);
@@ -136,6 +137,7 @@ test('Navbar - generateNavigation handler', (t) => {
     isStatic: false,
     transitionToFixed: 100,
     linkComponent: 'div',
+    logoLink: 'https://unitedincome.com',
     rightNavigation: [
       {
         label: 'Login',
