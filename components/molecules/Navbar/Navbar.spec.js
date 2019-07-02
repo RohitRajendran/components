@@ -80,7 +80,7 @@ test('Navbar - toggleFixed', (t) => {
   t.end();
 });
 
-test('Navbar - toggleDrawer', (t) => {
+test('Navbar - toggleActive', (t) => {
   window.requestAnimationFrame = stub();
   const props = {
     isFixed: false,
@@ -92,7 +92,9 @@ test('Navbar - toggleDrawer', (t) => {
 
   const component = mount(<Navbar {...props} />);
 
-  component.instance().toggleDrawer();
+  t.equals(component.state().open, true, 'Should default to true.');
+
+  component.instance().toggleActive();
 
   t.equals(
     component.state().open,
