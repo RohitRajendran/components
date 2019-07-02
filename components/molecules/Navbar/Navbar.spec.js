@@ -109,6 +109,7 @@ test('Navbar - generateNavigation', (t) => {
     isFixed: false,
     isStatic: false,
     transitionToFixed: 100,
+    linkComponent: 'div',
   };
 
   const component = mount(<Navbar {...props} />);
