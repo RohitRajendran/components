@@ -9,6 +9,7 @@ import Loader from '~components/atoms/Loader/Loader';
 import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
 import Spinner from '~components/atoms/Spinner/Spinner';
+import CategoryBubble from '~components/atoms/CategoryBubble/CategoryBubble';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
@@ -99,6 +100,7 @@ export {
   DropDown,
   ChanceOfSuccess,
   Spinner,
+  CategoryBubble,
   CardShell,
   RadioButtons,
   QuestionCard,
