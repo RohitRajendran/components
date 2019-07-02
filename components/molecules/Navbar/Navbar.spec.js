@@ -56,7 +56,6 @@ test('Navbar - toggleFixed', (t) => {
     isStatic: false,
     transitionToFixed: 100,
     logoLink: 'https://unitedincome.com',
-    linkComponent: 'a',
   };
 
   const component = mount(<Navbar {...props} />);
@@ -89,6 +88,20 @@ test('Navbar - toggleActive', (t) => {
     transitionToFixed: 100,
     isOpen: true,
     logoLink: 'https://unitedincome.com',
+    leftNavigation: [
+      {
+        label: 'Login',
+        link: '#',
+        hideFixed: true,
+      },
+      {
+        label: 'Join us Today',
+        link: '#',
+        variant: 'secondary',
+        hideStatic: true,
+      },
+    ],
+    linkComponent: 'a',
   };
 
   const component = mount(<Navbar {...props} />);
