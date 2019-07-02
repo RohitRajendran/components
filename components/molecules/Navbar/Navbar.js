@@ -94,7 +94,7 @@ class Navbar extends PureComponent {
       });
 
       if (this.props.linkComponent !== 'a') {
-        linkProps.to = item.link;
+        linkProps.to = link;
       } else {
         linkProps.href = link;
       }
