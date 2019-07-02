@@ -56,6 +56,7 @@ test('Navbar - toggleFixed', (t) => {
     isStatic: false,
     transitionToFixed: 100,
     logoLink: 'https://unitedincome.com',
+    linkComponent: 'a',
   };
 
   const component = mount(<Navbar {...props} />);
