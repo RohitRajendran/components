@@ -1,3 +1,4 @@
+import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
 import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 // Atoms
@@ -35,6 +36,7 @@ import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircle
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 
 // Molecules
+import Navbar from '~components/molecules/Navbar/Navbar';
 import BoxSelect from '~components/molecules/BoxSelect/BoxSelect';
 import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
 import CardShell from '~components/molecules/CardShell/CardShell';
@@ -70,6 +72,8 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  HamburgerIcon,
+  Navbar,
   BoxSelectCard,
   BoxSelect,
   Box,

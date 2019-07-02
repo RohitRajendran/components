@@ -135,7 +135,7 @@ const Button = ({
 
 Button.propTypes = {
   /** Optional button component, allowing you to wrap the button in things such as rect-router-dom's Link.  */
-  linkComponent: PropTypes.node,
+  linkComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   /** HTML element that should appear within the button.  */
   children: PropTypes.node.isRequired,
   /** Optional class names to appear on the container. */

@@ -1,0 +1,78 @@
+# Navbar
+
+Renders a responsive global navigation bar.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Navbar from '@unitedincome/components/dist/Navbar';
+```
+
+```javascript
+import {Navbar} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+```javascript
+<Navbar
+  isStatic={false}
+  isFixed={false}
+  fixedLogo={<svg />}
+  staticLogo={<svg />}
+  leftNavigation={[
+    {
+      label: 'How We Help',
+      link: '#',
+    },
+    {
+      label: 'Who we are',
+      link: '#',
+      variant: '',
+    },
+    {
+      label: 'What we charge',
+      link: '#',
+    },
+    {
+      label: 'Library',
+      link: '#',
+    },
+  ]}
+  rightNavigation={[
+    {
+      label: 'Login',
+      link: '#',
+    },
+    {
+      label: 'Join us Today',
+      link: '#',
+      variant: 'secondary',
+      hideStatic: true,
+    },
+  ]}
+  transitionToFixed={100}
+/>
+```
+
+## `fixed` vs `static`
+
+By default the Navbar will transition from the static to fixed state when the scroll depth exceeds the height of the static page. You can alter this behavior by passing in a `transitionToFixed` prop.
+
+If you'd prefer to keep the navigation in a specific state, you can use the `isStatic` and `isFixed` prop.
+
+## Using with React Router
+
+If you're using `react-router-dom` or something similar in one of your projects, you can pass in a custom wrapper for route changes. This can be achieved by utilizing the `linkComponent` prop.
+
+```javascript
+import React from 'react';
+import {Navbar} from '@unitedincome/components';
+import {Link} from 'react-router-dom';
+
+const Component = (props) => <Navbar linkComponent={Link} />;
+```
+
+If a `linkComponent` is not provided then buttons with a `to` prop will default to a standard anchor tag.
