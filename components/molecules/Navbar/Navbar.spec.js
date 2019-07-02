@@ -28,27 +28,6 @@ test('Navbar - componentWillUnmount', (t) => {
   t.end();
 });
 
-test('Navbar - toggleActive', (t) => {
-  window.requestAnimationFrame = stub();
-  const props = {
-    isOpen: true,
-  };
-
-  const component = mount(<Navbar {...props} />);
-
-  t.equals(component.state().active, null, 'Active id should start null.');
-
-  component.instance().toggleActive('primary-1');
-
-  t.equals(
-    component.state().active,
-    'primary-1',
-    'Should correctly set the active id.'
-  );
-
-  t.end();
-});
-
 test('Navbar - toggleDrawer', (t) => {
   window.requestAnimationFrame = stub();
   const component = mount(<Navbar />);
@@ -101,6 +80,29 @@ test('Navbar - toggleFixed', (t) => {
   t.end();
 });
 
+test('Navbar - toggleDrawer', (t) => {
+  window.requestAnimationFrame = stub();
+  const props = {
+    isFixed: false,
+    isStatic: false,
+    transitionToFixed: 100,
+    isOpen: true,
+    logoLink: 'https://unitedincome.com',
+  };
+
+  const component = mount(<Navbar {...props} />);
+
+  component.instance().toggleDrawer();
+
+  t.equals(
+    component.state().open,
+    false,
+    'Should close the drawer if it is open'
+  );
+
+  t.end();
+});
+
 test('Navbar - generateNavigation', (t) => {
   window.requestAnimationFrame = stub();
   const props = {
@@ -111,7 +113,7 @@ test('Navbar - generateNavigation', (t) => {
 
   const component = mount(<Navbar {...props} />);
 
-  const results = component.instance().generateNavigation('primary', [
+  const results = component.instance().generateNavigation([
     {
       label: 'Login',
       link: '#',
@@ -126,42 +128,6 @@ test('Navbar - generateNavigation', (t) => {
   ]);
 
   t.true(results);
-
-  t.end();
-});
-
-test('Navbar - generateNavigation handler', (t) => {
-  window.requestAnimationFrame = stub();
-  const props = {
-    isFixed: false,
-    isStatic: false,
-    transitionToFixed: 100,
-    linkComponent: 'div',
-    logoLink: 'https://unitedincome.com',
-    rightNavigation: [
-      {
-        label: 'Login',
-        link: '#',
-        hideFixed: true,
-      },
-      {
-        label: 'Join us Today',
-        link: '#',
-        variant: 'secondary',
-        hideStatic: true,
-      },
-    ],
-  };
-
-  const component = mount(<Navbar {...props} />);
-
-  component
-    .find('.uic--navbar__right-navigation')
-    .find('li')
-    .at(0)
-    .prop('onClick')();
-
-  t.equals(component.state().active, 'right-0', 'Should set the active state.');
 
   t.end();
 });

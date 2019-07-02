@@ -18,10 +18,11 @@ class Navbar extends PureComponent {
     this.state = {
       open: props.isOpen,
       fixed: props.isFixed,
-      active: null,
+      active: props.activeLink,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.toggleFixed = this.toggleFixed.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
   }
 
   /** @inheritdoc */
@@ -34,15 +35,10 @@ class Navbar extends PureComponent {
     window.removeEventListener('scroll', this.toggleFixed);
   }
 
-  /** Toggles the active navigation item.
-   * @param {string} id - The id of the navigation item.
+  /** Closes the navigation bar on active toggle.
    * @returns {undefined}
    */
-  toggleActive(id) {
-    this.setState({
-      active: id,
-    });
-
+  toggleActive() {
     // If the mobile navigation is open then it gets closed once a route has been selected.
     if (this.state.open) {
       this.toggleDrawer();
@@ -77,11 +73,10 @@ class Navbar extends PureComponent {
   }
 
   /** Generates the list item for the navigation bar.
-   * @param {string} type - The navigation type. Used to highlight the selected item on the bar.
    * @param {array} items - The navigation items to generate.
    * @returns {JSX} - Returns the list item JSX.
    */
-  generateNavigation(type, items) {
+  generateNavigation(items) {
     const linkProps = {
       className: 'uic--navbar__navigation-link',
     };
@@ -92,8 +87,8 @@ class Navbar extends PureComponent {
       const listItemClasses = classNames({
         'uic--position-relative': true,
         'uic--d-inline-flex': true,
-        'uic--navbar__navigation-active':
-          this.state.active === `${type}-${index}`,
+        'uic--justify-content-center': true,
+        'uic--navbar__navigation-active': this.state.active.startsWith(link),
         'uic--navbar__navigation-hide-fixed': hideFixed,
         'uic--navbar__navigation-hide-static': hideStatic,
       });
@@ -108,7 +103,7 @@ class Navbar extends PureComponent {
         <li
           className={listItemClasses}
           key={index}
-          onClick={() => this.toggleActive(`${type}-${index}`)}
+          onClick={this.toggleActive}
           role="presentation"
         >
           {variant ? (
@@ -156,10 +151,10 @@ class Navbar extends PureComponent {
 
     const IconComponent = open ? CloseIcon : HamburgerIcon;
     const renderLeftNavigation = leftNavigation
-      ? this.generateNavigation('left', leftNavigation)
+      ? this.generateNavigation(leftNavigation)
       : null;
     const renderRightNavigation = rightNavigation
-      ? this.generateNavigation('right', rightNavigation)
+      ? this.generateNavigation(rightNavigation)
       : null;
 
     const linkProps = {};
@@ -259,6 +254,8 @@ Navbar.propTypes = {
   staticLogo: PropTypes.node,
   /** Determines at what point the navigation bar should switch to the fixed state. Measured in pixels from the top. */
   transitionToFixed: PropTypes.number,
+  /** The current route which is provided to apply proper active highlighting on load. */
+  activeLink: PropTypes.string.isRequired,
   /** Navigation items which appear in the left of the bar. */
   leftNavigation: PropTypes.arrayOf(
     PropTypes.shape({
@@ -304,11 +301,12 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  isStatic: false,
+  activeLink: '',
   isFixed: false,
   isOpen: false,
-  transitionToFixed: 0,
+  isStatic: false,
   linkComponent: 'a',
+  transitionToFixed: 0,
 };
 
 export default Navbar;

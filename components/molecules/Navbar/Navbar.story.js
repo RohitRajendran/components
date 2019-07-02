@@ -11,6 +11,7 @@ const stories = storiesOf('Molecules/Navbar', module);
 stories.addDecorator(withReadme(NavbarReadMe));
 
 const defaultProps = ({isOpen, isFixed, isStatic}) => ({
+  activeLink: '/about',
   fixedLogo: (
     <svg
       id="Layer_1"
@@ -139,31 +140,31 @@ const defaultProps = ({isOpen, isFixed, isStatic}) => ({
   leftNavigation: object('leftNavigation', [
     {
       label: 'How We Help',
-      link: '#',
+      link: '/help',
     },
     {
       label: 'Who we are',
-      link: '#',
+      link: '/about',
       variant: '',
     },
     {
       label: 'What we charge',
-      link: '#',
+      link: '/price',
     },
     {
       label: 'Library',
-      link: '#',
+      link: '/library',
     },
   ]),
 
   rightNavigation: object('rightNavigation', [
     {
       label: 'Login',
-      link: '#',
+      link: '/login',
     },
     {
       label: 'Join us Today',
-      link: '#',
+      link: '/join',
       variant: 'secondary',
       hideStatic: true,
     },
