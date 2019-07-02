@@ -17,6 +17,7 @@ const Tooltip = ({
   label,
   labelVariant,
   lightLabel,
+  isDarkTooltip,
   hover,
   tooltipRef,
 }) => {
@@ -27,6 +28,11 @@ const Tooltip = ({
     },
     className
   );
+
+  const tooltipClasses = classNames({
+    'uic--tooltip-wrapper': true,
+    'uic--tooltip-dark': isDarkTooltip,
+  });
 
   // Unique identifier for the Tooltip.
   const id = Math.round(Math.random() * 10000000).toString();
@@ -44,7 +50,7 @@ const Tooltip = ({
         {label}
       </Button>
       <ReactTooltip
-        className="uic--tooltip-wrapper"
+        className={tooltipClasses}
         globalEventOff="click"
         id={id}
         place={placement}
@@ -67,6 +73,8 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   /** Determines if the tooltip should be triggered by hovering over the label or not. */
   hover: PropTypes.bool,
+  /** Shows purple tooltip with white text */
+  isDarkTooltip: PropTypes.bool,
   /** Determines the placement of the Tooltip. */
   placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom']),
   /** Changes the label color scheme to light. */
@@ -88,6 +96,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   placement: 'bottom',
   labelVariant: 'link',
+  isDarkTooltip: false,
 };
 
 export default memo(Tooltip);

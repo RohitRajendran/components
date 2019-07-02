@@ -1,10 +1,12 @@
 $tooltip-shadow: rgba(91, 98, 121, 0.5);
 $tooltip-filter: rgba(0, 0, 0, 0.5);
+$dark-background-color: $royal;
+$light-background-color: $white;
 
 .uic--tooltip {
   .uic--tooltip-wrapper {
     @include source-sans-pro(1.4rem);
-    background-color: $white;
+    background-color: $light-background-color;
     border: 0;
     border-radius: 4px;
     box-shadow: 3px 3px 6px 0 $tooltip-shadow;
@@ -20,7 +22,7 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
       &.place-right {
         &::after {
           border-bottom: 12px solid transparent;
-          border-right-color: $white;
+          border-right-color: $light-background-color;
           border-right-width: 12px;
           border-top: 12px solid transparent;
           left: -11px;
@@ -29,7 +31,7 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
 
       &.place-bottom {
         &::after {
-          border-bottom-color: $white;
+          border-bottom-color: $light-background-color;
           border-bottom-width: 12px;
           border-left: 12px solid transparent;
           border-right: 12px solid transparent;
@@ -40,7 +42,7 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
       &.place-left {
         &::after {
           border-bottom: 12px solid transparent;
-          border-left-color: $white;
+          border-left-color: $light-background-color;
           border-left-width: 12px;
           border-top: 12px solid transparent;
           right: -11px;
@@ -51,9 +53,43 @@ $tooltip-filter: rgba(0, 0, 0, 0.5);
         &::after {
           border-left: 12px solid transparent;
           border-right: 12px solid transparent;
-          border-top-color: $white;
+          border-top-color: $light-background-color;
           border-top-width: 12px;
           bottom: -11px;
+        }
+      }
+    }
+
+    &.uic--tooltip-dark {
+      background-color: $dark-background-color;
+
+      &.__react_component_tooltip {
+        &.type-dark {
+          color: $white;
+        }
+
+        &.place-right {
+          &::after {
+            border-right-color: $dark-background-color;
+          }
+        }
+
+        &.place-bottom {
+          &::after {
+            border-bottom-color: $dark-background-color;
+          }
+        }
+
+        &.place-left {
+          &::after {
+            border-left-color: $dark-background-color;
+          }
+        }
+
+        &.place-top {
+          &::after {
+            border-top-color: $dark-background-color;
+          }
         }
       }
     }
