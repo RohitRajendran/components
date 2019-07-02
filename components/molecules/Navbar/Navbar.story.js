@@ -176,6 +176,7 @@ const defaultProps = ({isOpen, isFixed, isStatic}) => ({
 
 stories.add('default', () => (
   <Fragment>
+    <style>{`body { margin: 0}`}</style>
     <Navbar
       {...defaultProps({
         isOpen: false,
@@ -192,6 +193,7 @@ stories.add('default', () => (
 
 stories.add('static', () => (
   <Fragment>
+    <style>{`body { margin: 0}`}</style>
     <Navbar
       {...defaultProps({
         isStatic: true,
@@ -208,6 +210,7 @@ stories.add('static', () => (
 
 stories.add('fixed', () => (
   <Fragment>
+    <style>{`body { margin: 0}`}</style>
     <Navbar
       {...defaultProps({
         isFixed: true,
@@ -224,6 +227,7 @@ stories.add('fixed', () => (
 
 stories.add('mobile fixed open', () => (
   <Fragment>
+    <style>{`body { margin: 0}`}</style>
     <Navbar
       {...defaultProps({
         isOpen: true,
@@ -240,6 +244,7 @@ stories.add('mobile fixed open', () => (
 
 stories.add('mobile static open', () => (
   <Fragment>
+    <style>{`body { margin: 0}`}</style>
     <Navbar
       {...defaultProps({
         isOpen: true,
