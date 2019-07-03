@@ -204,7 +204,7 @@ class Navbar extends PureComponent {
           </ul>
         </div>
 
-        <div className="uic--navbar__mobile-drawer">
+        <div className="uic--navbar__mobile-drawer uic--position-relative">
           <div
             className="uic--navbar__mobile-drawer-icon uic--d-flex uic--align-items-center uic--h-100"
             onKeyPress={this.toggleDrawer}
