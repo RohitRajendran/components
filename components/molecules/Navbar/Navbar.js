@@ -183,7 +183,7 @@ class Navbar extends PureComponent {
     }
 
     return (
-      <nav className={containerClasses} style={style}>
+      <nav className={containerClasses} style={style} role="navigation">
         <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
           {logoLink ? (
             <LinkWrapper {...linkProps}>
