@@ -5,7 +5,6 @@ $fixed-navbar-border: hsla(0, 0%, 100%, 0.1);
 $navigation-z-index: 99999;
 
 .uic--navbar__prevent-scroll {
-  height: 100%;
   overflow: hidden;
   position: relative;
 }
