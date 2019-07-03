@@ -69,7 +69,12 @@ class Navbar extends PureComponent {
    */
   toggleFixed() {
     // Only toggles if isFixed and isStatic is false.
-    if (window && !this.props.isFixed && !this.props.isStatic) {
+    if (
+      window &&
+      !this.props.isFixed &&
+      !this.props.isStatic &&
+      !this.state.open
+    ) {
       if (window.scrollY > this.props.transitionToFixed) {
         this.setState({
           fixed: true,
