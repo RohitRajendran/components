@@ -1823,11 +1823,6 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@vuepress/plugin-google-analytics@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-1.0.2.tgz#c5754d55d01bf7e1a9a5b1ff5fde07a08e4a797d"
-  integrity sha512-NdU18hTBW4TkNK80dgpPu4yq/smNkIUZi9gL5hCiuW43BnXFA7WFfhGcvZJ61+keNDr6gw9UIv4HQuFFPoRXQA==
-
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -12455,11 +12450,9 @@ xregexp@2.0.0:
   integrity sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=
 
 xstate@*:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.6.3.tgz#21e5a132867e5509a08d16c32b525ba4898492bd"
-  integrity sha512-ihJcpZWjqW60psaC+RxFhfZxgFDNRpEmHeSsM4DgtKswsz6HxEzNx7rgesZtg8/LqluOba8puy8lVtB748RG6A==
-  dependencies:
-    "@vuepress/plugin-google-analytics" "^1.0.1"
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.6.4.tgz#15ab4eb4526483a9caa9d67b26f026dfe390697f"
+  integrity sha512-/L361v1dSGJWdERtmodT1EgkglobW9ewDBZoVzU7kPo1Sg0l65Df6fpUhCCA1NIhPzXe1axFacu29hIRR0oRJw==
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
