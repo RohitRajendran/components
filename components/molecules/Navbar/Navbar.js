@@ -19,6 +19,7 @@ class Navbar extends PureComponent {
       open: props.isOpen,
       fixed: props.isFixed,
       active: props.activeLink,
+      scroll: 0,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.toggleFixed = this.toggleFixed.bind(this);
@@ -53,17 +54,26 @@ class Navbar extends PureComponent {
    * @returns {undefined}
    */
   toggleDrawer() {
+    const scroll = window ? window.scrollY : 0;
     if (document && !this.state.open) {
+      this.setState({
+        open: !this.state.open,
+        scroll,
+      });
+
       document.documentElement.classList.add('uic--navbar__prevent-scroll');
       document.body.classList.add('uic--navbar__prevent-scroll');
     } else {
       document.documentElement.classList.remove('uic--navbar__prevent-scroll');
       document.body.classList.remove('uic--navbar__prevent-scroll');
-    }
 
-    this.setState({
-      open: !this.state.open,
-    });
+      this.setState({
+        open: !this.state.open,
+      });
+
+      // Sets the scroll once it gets closed.
+      window.scrollTo(0, this.state.scroll);
+    }
   }
 
   /** Toggles to the fixed version of the navigation bar.
