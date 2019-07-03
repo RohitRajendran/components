@@ -27,12 +27,16 @@ class Navbar extends PureComponent {
 
   /** @inheritdoc */
   componentDidMount() {
-    window.addEventListener('scroll', this.toggleFixed);
+    if (window) {
+      window.addEventListener('scroll', this.toggleFixed);
+    }
   }
 
   /** @inheritdoc */
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.toggleFixed);
+    if (window) {
+      window.removeEventListener('scroll', this.toggleFixed);
+    }
   }
 
   /** Closes the navigation bar on active toggle.
@@ -49,6 +53,14 @@ class Navbar extends PureComponent {
    * @returns {undefined}
    */
   toggleDrawer() {
+    if (document && !this.state.open) {
+      document.documentElement.classList.add('uic--navbar__prevent-scroll');
+      document.body.classList.add('uic--navbar__prevent-scroll');
+    } else {
+      document.documentElement.classList.remove('uic--navbar__prevent-scroll');
+      document.body.classList.remove('uic--navbar__prevent-scroll');
+    }
+
     this.setState({
       open: !this.state.open,
     });
@@ -59,7 +71,12 @@ class Navbar extends PureComponent {
    */
   toggleFixed() {
     // Only toggles if isFixed and isStatic is false.
-    if (!this.props.isFixed && !this.props.isStatic) {
+    if (
+      window &&
+      !this.props.isFixed &&
+      !this.props.isStatic &&
+      !this.state.open
+    ) {
       if (window.scrollY > this.props.transitionToFixed) {
         this.setState({
           fixed: true,
@@ -94,7 +111,7 @@ class Navbar extends PureComponent {
       });
 
       if (this.props.linkComponent !== 'a') {
-        linkProps.to = item.link;
+        linkProps.to = link;
       } else {
         linkProps.href = link;
       }
@@ -189,7 +206,7 @@ class Navbar extends PureComponent {
           </ul>
         </div>
 
-        <div className="uic--navbar__mobile-drawer">
+        <div className="uic--navbar__mobile-drawer uic--position-relative">
           <div
             className="uic--navbar__mobile-drawer-icon uic--d-flex uic--align-items-center uic--h-100"
             onKeyPress={this.toggleDrawer}

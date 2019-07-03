@@ -72,4 +72,10 @@ HamburgerIcon.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
 };
 
+HamburgerIcon.defaultProps = {
+  width: '1.3rem',
+  height: '1.3rem',
+  fill: '#fff',
+};
+
 export default HamburgerIcon;

@@ -4,6 +4,12 @@ $static-navbar-border: hsla(0, 0%, 0%, 0.1);
 $fixed-navbar-border: hsla(0, 0%, 100%, 0.1);
 $navigation-z-index: 99999;
 
+.uic--navbar__prevent-scroll {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .uic--navbar {
   flex-direction: row;
   justify-content: space-between;
@@ -28,6 +34,7 @@ $navigation-z-index: 99999;
     }
 
     .uic--navbar__mobile-drawer-list {
+      -ms-overflow-style: none; // Used to hide scroll-bar on IE.
       list-style: none;
       margin: 0;
       overflow: scroll;
@@ -93,6 +100,10 @@ $navigation-z-index: 99999;
       li {
         @include source-sans-pro(1.4rem);
         padding-left: 4.3rem;
+
+        &:first-child {
+          padding-left: 0;
+        }
 
         a {
           text-decoration: none;

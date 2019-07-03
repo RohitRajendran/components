@@ -1,3 +1,6 @@
+import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon';
+import FacebookIcon from '~components/atoms/icons/FacebookIcon/FacebookIcon';
+import TwitterIcon from '~components/atoms/icons/TwitterIcon/TwitterIcon';
 import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
 import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
@@ -72,6 +75,9 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  LinkedInIcon,
+  FacebookIcon,
+  TwitterIcon,
   HamburgerIcon,
   Navbar,
   BoxSelectCard,
