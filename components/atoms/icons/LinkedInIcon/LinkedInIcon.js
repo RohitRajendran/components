@@ -51,8 +51,8 @@ LinkedInIcon.propTypes = {
 };
 
 LinkedInIcon.defaultProps = {
-  width: '1.3rem',
-  height: '1.3rem',
+  width: '1.8rem',
+  height: '1.5rem',
   fill: '#fff',
 };
 

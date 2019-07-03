@@ -47,8 +47,8 @@ TwitterIcon.propTypes = {
 };
 
 TwitterIcon.defaultProps = {
-  width: '1.3rem',
-  height: '1.3rem',
+  width: '2.1rem',
+  height: '1.5rem',
   fill: '#fff',
 };
 
