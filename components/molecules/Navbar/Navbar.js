@@ -54,8 +54,10 @@ class Navbar extends PureComponent {
    */
   toggleDrawer() {
     if (document && !this.state.open) {
+      document.documentElement.classList.add('uic--navbar__prevent-scroll');
       document.body.classList.add('uic--navbar__prevent-scroll');
     } else {
+      document.documentElement.classList.remove('uic--navbar__prevent-scroll');
       document.body.classList.remove('uic--navbar__prevent-scroll');
     }
 
