@@ -1,13 +1,14 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
+import {spy, stub} from 'sinon';
+import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Input, {
   getDeepestInputElement,
   commaSeparatedMask,
   tickerMask,
   maskEnum,
 } from './Input';
-import {spy, stub} from 'sinon';
 import * as InputUtils from './Input.util';
 
 test('Input - Renders props as attributes on the input', (t) => {
@@ -321,5 +322,17 @@ test('Input - isInViewport', (t) => {
 
   t.false(InputUtils.isInViewport(element, 500));
   t.true(InputUtils.isInViewport(element));
+  t.end();
+});
+
+test('Input - isInViewport - no browser environment', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    false
+  );
+  const element = document.createElement('div');
+
+  t.false(InputUtils.isInViewport(element, 500));
+
+  isWindowDefinedStub.restore();
   t.end();
 });

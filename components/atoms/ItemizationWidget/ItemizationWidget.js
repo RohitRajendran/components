@@ -6,6 +6,7 @@ import React, {PureComponent} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
 import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import {exclusive} from '~proptypes';
 import './ItemizationWidget.scss';
 
@@ -27,7 +28,10 @@ class ItemizationWidget extends PureComponent {
 
   /** @inheritdoc */
   componentDidMount() {
-    document.body.classList.add('uic-itemization-widget--present');
+    if (isDocumentDefined()) {
+      document.body.classList.add('uic-itemization-widget--present');
+    }
+
     this.determineError();
   }
 
@@ -38,7 +42,9 @@ class ItemizationWidget extends PureComponent {
 
   /** @inheritdoc */
   componentWillUnmount() {
-    document.body.classList.remove('uic-itemization-widget--present');
+    if (isDocumentDefined()) {
+      document.body.classList.remove('uic-itemization-widget--present');
+    }
   }
 
   /** Toggles the visibility state of the itemization component for mobile devices.

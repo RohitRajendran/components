@@ -6,6 +6,7 @@ import React from 'react';
 import {assign, Machine} from 'xstate';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import Confirm from '~components/utilities/Confirm/Confirm';
+import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './McGonagall.scss';
 
 // Saves the user data to McGonagalls state context.
@@ -262,7 +263,7 @@ class McGonagall extends React.Component {
         step: stepName,
       },
     });
-    if (shouldScrollToTop) {
+    if (shouldScrollToTop && isWindowDefined()) {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
   }
@@ -289,7 +290,7 @@ class McGonagall extends React.Component {
     }
     // Ignoring this if since window.location can't be set in unit test
     /* istanbul ignore if  */
-    if (this.props.exitLocation.startsWith('http')) {
+    if (this.props.exitLocation.startsWith('http') && isWindowDefined()) {
       window.location = this.props.exitLocation;
     } else {
       this.props.browserHistory.push(this.props.exitLocation);

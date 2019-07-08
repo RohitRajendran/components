@@ -95,6 +95,7 @@ While there are always going to be special cases, the following guidelines shoul
 5. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
 6. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 7. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
+8. Check for the existance of global variables such as those exposed by `window` in a browser before accessing them. We use this library in non-browser environments, [such as `react-static` which requires code to be node-safe](https://github.com/nozzle/react-static/blob/v6/docs/concepts.md#writing-universal-node-safe-code).
 
 ---
 

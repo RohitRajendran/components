@@ -3,10 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '~components/atoms/Button/Button';
 import Modal from '~components/molecules/Modal/Modal';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './Confirm.scss';
 
 const Confirm = ({name, title, description, okLabel, cancelLabel}) => {
-  const wrapper = document.body.appendChild(document.createElement('div'));
+  const wrapper = !isDocumentDefined()
+    ? null
+    : document.body.appendChild(document.createElement('div'));
 
   const promise = new Promise((resolve, reject) => {
     ReactDOM.render(
@@ -33,13 +36,19 @@ const Confirm = ({name, title, description, okLabel, cancelLabel}) => {
 
   return promise
     .then((result) => {
+      if (isDocumentDefined()) {
+        setTimeout(() => document.body.removeChild(wrapper));
+      }
+
       ReactDOM.unmountComponentAtNode(wrapper);
-      setTimeout(() => document.body.removeChild(wrapper));
       return result;
     })
     .catch((result) => {
+      if (isDocumentDefined()) {
+        setTimeout(() => document.body.removeChild(wrapper));
+      }
+
       ReactDOM.unmountComponentAtNode(wrapper);
-      setTimeout(() => document.body.removeChild(wrapper));
       return Promise.reject(result);
     });
 };

@@ -1,11 +1,27 @@
 import React, {Component} from 'react';
 
+/**
+ * Determine if a browser environment is defined globally.
+ * @returns {boolean} True if 'window' is defined
+ */
+export function isWindowDefined() {
+  return typeof window !== 'undefined';
+}
+
+/**
+ * Determine if a document environment is defined globally.
+ * @returns {boolean} True if 'document' is defined
+ */
+export function isDocumentDefined() {
+  return typeof document !== 'undefined';
+}
+
 /* eslint-disable */
 /** Detects if the user is using IE.
  * @returns {integer} - Returns an integer if the browser matches a certain type.
  */
 export function detectInternetExplorer() {
-  if (typeof window === 'undefined') return 0;
+  if (!isWindowDefined()) return 0;
 
   const ua = window.navigator.userAgent;
   const msie = ua.indexOf('MSIE ');
@@ -36,7 +52,9 @@ export function detectInternetExplorer() {
  * @returns {Boolean} - Returns true or false if a user is on iOS or not.
  */
 export function detectIOS() {
-  return /^(iPhone|iPad|iPod)/.test(navigator.platform);
+  return (
+    isWindowDefined() && /^(iPhone|iPad|iPod)/.test(window.navigator.platform)
+  );
 }
 
 /* eslint-disable no-useless-escape */
@@ -44,7 +62,12 @@ export function detectIOS() {
  * @returns {Boolean} - Returns true or false if a user is on mobile or not.
  */
 export function detectMobile() {
-  const agent = navigator.userAgent || navigator.vendor || window.opera;
+  if (!isWindowDefined()) {
+    return false;
+  }
+
+  const agent =
+    window.navigator.userAgent || window.navigator.vendor || window.opera;
   // Details: https://stackoverflow.com/a/11381730/4933483
   if (
     /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
@@ -64,7 +87,12 @@ export function detectMobile() {
  * @returns {Boolean} - Returns true or false if a user is on a tablet or not.
  */
 export function detectTablet() {
-  const agent = navigator.userAgent || navigator.vendor || window.opera;
+  if (!isWindowDefined()) {
+    return false;
+  }
+
+  const agent =
+    window.navigator.userAgent || window.navigator.vendor || window.opera;
   // Details: https://stackoverflow.com/a/11381730/4933483
   if (
     /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(

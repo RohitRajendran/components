@@ -45,7 +45,6 @@ test('Navbar - toggleDrawer', (t) => {
     true,
     'Drawer open state should toggle to true.'
   );
-
   t.end();
 });
 
