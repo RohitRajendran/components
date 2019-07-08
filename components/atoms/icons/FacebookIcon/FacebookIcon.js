@@ -47,8 +47,8 @@ FacebookIcon.propTypes = {
 };
 
 FacebookIcon.defaultProps = {
-  width: '1.3rem',
-  height: '1.3rem',
+  width: '1.1rem',
+  height: '1.8rem',
   fill: '#fff',
 };
 
