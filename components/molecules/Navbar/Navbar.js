@@ -176,6 +176,14 @@ class Navbar extends PureComponent {
       className
     );
 
+    const mobileWrapperClasses = classNames({
+      'uic--navbar__mobile-drawer-wrapper': true,
+      'uic--navbar__mobile-drawer-wrapper-closed': !open,
+      'uic--position-fixed': true,
+      'uic--w-100': true,
+      'uic--h-100': true,
+    });
+
     const IconComponent = open ? CloseIcon : HamburgerIcon;
     const renderLeftNavigation = leftNavigation
       ? this.generateNavigation(leftNavigation)
@@ -230,7 +238,7 @@ class Navbar extends PureComponent {
               fill={fixed ? colors['white'] : colors['slate']}
             />
           </div>
-          <div className="uic--navbar__mobile-drawer-wrapper uic--position-fixed uic--w-100 uic--h-100">
+          <div className={mobileWrapperClasses}>
             <Spring native to={{start: open ? 100 : 0}}>
               {({start}) => (
                 <animated.div

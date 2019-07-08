@@ -26,6 +26,10 @@ $navigation-z-index: 99999;
 
     .uic--navbar__mobile-drawer-wrapper {
       left: 0;
+
+      &.uic--navbar__mobile-drawer-wrapper-closed {
+        pointer-events: none;
+      }
     }
 
     .uic--navbar__mobile-drawer-icon {
