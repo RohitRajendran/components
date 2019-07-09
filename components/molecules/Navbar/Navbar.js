@@ -7,6 +7,10 @@ import Button from '~components/atoms/Button/Button';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
 import {colors} from '~constants/js/colors';
+import {
+  isDocumentDefined,
+  isWindowDefined,
+} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './Navbar.scss';
 
 /** Renders a site wide navigation bar.  */
@@ -28,14 +32,14 @@ class Navbar extends PureComponent {
 
   /** @inheritdoc */
   componentDidMount() {
-    if (window) {
+    if (isWindowDefined()) {
       window.addEventListener('scroll', this.toggleFixed);
     }
   }
 
   /** @inheritdoc */
   componentWillUnmount() {
-    if (window) {
+    if (isWindowDefined()) {
       window.removeEventListener('scroll', this.toggleFixed);
     }
   }
@@ -54,25 +58,31 @@ class Navbar extends PureComponent {
    * @returns {undefined}
    */
   toggleDrawer() {
-    const scroll = window ? window.scrollY : 0;
-    if (document && !this.state.open) {
+    if (!this.state.open) {
       this.setState({
         open: !this.state.open,
-        scroll,
+        scroll: !isWindowDefined() ? 0 : window.scrollY,
       });
 
-      document.documentElement.classList.add('uic--navbar__prevent-scroll');
-      document.body.classList.add('uic--navbar__prevent-scroll');
+      if (isDocumentDefined()) {
+        document.documentElement.classList.add('uic--navbar__prevent-scroll');
+        document.body.classList.add('uic--navbar__prevent-scroll');
+      }
     } else {
-      document.documentElement.classList.remove('uic--navbar__prevent-scroll');
-      document.body.classList.remove('uic--navbar__prevent-scroll');
-
+      if (isDocumentDefined()) {
+        document.documentElement.classList.remove(
+          'uic--navbar__prevent-scroll'
+        );
+        document.body.classList.remove('uic--navbar__prevent-scroll');
+      }
       this.setState({
         open: !this.state.open,
       });
 
-      // Sets the scroll once it gets closed.
-      window.scrollTo(0, this.state.scroll);
+      if (isWindowDefined()) {
+        // Sets the scroll once it gets closed.
+        window.scrollTo(0, this.state.scroll);
+      }
     }
   }
 
@@ -82,7 +92,7 @@ class Navbar extends PureComponent {
   toggleFixed() {
     // Only toggles if isFixed and isStatic is false.
     if (
-      window &&
+      isWindowDefined() &&
       !this.props.isFixed &&
       !this.props.isStatic &&
       !this.state.open

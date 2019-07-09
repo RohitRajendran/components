@@ -8,6 +8,7 @@ import Button from '~components/atoms/Button/Button';
 import {maskEnum} from '~components/atoms/Input/Input';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './CardShell.scss';
 
 /**
@@ -265,7 +266,9 @@ class CardShell extends Component {
    * @returns {undefined}
    */
   scrollToFirstErrorField() {
-    const invalidElements = document.getElementsByClassName('uic--error');
+    const invalidElements = !isDocumentDefined()
+      ? []
+      : document.getElementsByClassName('uic--error');
 
     if (invalidElements && invalidElements.length > 0) {
       invalidElements[0].scrollIntoView({

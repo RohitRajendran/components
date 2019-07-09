@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {createPortal} from 'react-dom';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 
 /** Creates a React Portal.  */
 class Portal extends Component {
@@ -9,17 +10,21 @@ class Portal extends Component {
   constructor(props) {
     super(props);
 
-    this.portal = document.createElement('div');
+    this.portal = !isDocumentDefined() ? null : document.createElement('div');
   }
 
   /** @inheritdoc */
   componentDidMount() {
-    document.body.appendChild(this.portal);
+    if (isDocumentDefined()) {
+      document.body.appendChild(this.portal);
+    }
   }
 
   /** @inheritdoc */
   componentWillUnmount() {
-    document.body.removeChild(this.portal);
+    if (isDocumentDefined()) {
+      document.body.removeChild(this.portal);
+    }
   }
 
   /** @inheritdoc */

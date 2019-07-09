@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import {colors} from '~constants/js/colors';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 
 import './Modal.scss';
 
@@ -76,14 +77,22 @@ class Modal extends Component {
 
   /** @inheritdoc */
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleDocumentClick, false);
-    document.addEventListener('keydown', this.handleEscapePress, false);
+    if (isDocumentDefined()) {
+      document.addEventListener('mousedown', this.handleDocumentClick, false);
+      document.addEventListener('keydown', this.handleEscapePress, false);
+    }
   }
 
   /** @inheritdoc **/
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleDocumentClick, false);
-    document.removeEventListener('keydown', this.handleEscapePress, false);
+    if (isDocumentDefined()) {
+      document.removeEventListener(
+        'mousedown',
+        this.handleDocumentClick,
+        false
+      );
+      document.removeEventListener('keydown', this.handleEscapePress, false);
+    }
   }
 
   /**

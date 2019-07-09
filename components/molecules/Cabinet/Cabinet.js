@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React, {Component, createRef, forwardRef, Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
 import Portal from '~components/utilities/Portal/Portal';
+import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import {exclusive} from '~proptypes';
 import './Cabinet.scss';
 
@@ -86,14 +87,22 @@ class Cabinet extends Component {
 
   /** @inheritdoc */
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleDocumentClick, false);
-    document.addEventListener('keydown', this.handleEscapePress, false);
+    if (isDocumentDefined()) {
+      document.addEventListener('mousedown', this.handleDocumentClick, false);
+      document.addEventListener('keydown', this.handleEscapePress, false);
+    }
   }
 
   /** @inheritdoc **/
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleDocumentClick, false);
-    document.removeEventListener('keydown', this.handleEscapePress, false);
+    if (isDocumentDefined()) {
+      document.removeEventListener(
+        'mousedown',
+        this.handleDocumentClick,
+        false
+      );
+      document.removeEventListener('keydown', this.handleEscapePress, false);
+    }
   }
 
   /**

@@ -7,6 +7,10 @@ import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrect
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import {CardShellContext} from '../../molecules/CardShell/CardShell';
 import {isInViewport} from '~components/atoms/Input/Input.util';
+import {
+  isWindowDefined,
+  isDocumentDefined,
+} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './Input.scss';
 
 export const hideValidityFalse = () => false;
@@ -261,7 +265,7 @@ class Input extends Component {
       );
 
       // If the tooltip element is not in view it will automatically scroll the user to it.
-      if (!isVisible) {
+      if (!isVisible && isWindowDefined()) {
         window.scrollTo({
           top:
             this.inputNode.current.offsetTop -
@@ -282,7 +286,7 @@ class Input extends Component {
   isValid() {
     const {isValid = () => true, hideValidity = () => true} = this.props;
     const deepest = getDeepestInputElement(this);
-    const isActive = deepest === document.activeElement;
+    const isActive = isDocumentDefined() && deepest === document.activeElement;
     const isEmpty =
       this.props.value === '' || typeof this.props.value === 'undefined';
     const maskValidation =

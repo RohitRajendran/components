@@ -1,0 +1,39 @@
+.uic--question-answer {
+  border-color: $light-gray;
+  border-style: solid;
+  border-width: 1px 0;
+  overflow: hidden;
+
+  .uic--question-answer__header {
+    @include cormorant(4rem);
+    @include media-breakpoint-up(md) {
+      background-color: $white;
+    }
+    background-color: $table-alternate;
+    border-right: 1px solid $light-gray;
+    color: $midnight;
+  }
+
+  .uic--question-answer__qa {
+    background-color: $table-alternate;
+
+    .uic--question-answer__qa-wrapper {
+      @include media-breakpoint-up(md) {
+        margin: 0 -15px;
+      }
+
+      margin: auto;
+
+      .uic--question-answer__qa-wrapper-question {
+        min-height: 1rem;
+
+        &:last-child {
+          .uic--ec {
+            border-bottom: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

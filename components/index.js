@@ -39,6 +39,7 @@ import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircle
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 
 // Molecules
+import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
 import Navbar from '~components/molecules/Navbar/Navbar';
 import BoxSelect from '~components/molecules/BoxSelect/BoxSelect';
 import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
@@ -75,6 +76,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  QuestionAnswer,
   LinkedInIcon,
   FacebookIcon,
   TwitterIcon,
