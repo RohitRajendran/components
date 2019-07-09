@@ -1,9 +1,3 @@
-import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon';
-import FacebookIcon from '~components/atoms/icons/FacebookIcon/FacebookIcon';
-import TwitterIcon from '~components/atoms/icons/TwitterIcon/TwitterIcon';
-import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
-import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
-import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 // Atoms
 import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
@@ -37,6 +31,13 @@ import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCi
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
+import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon';
+import FacebookIcon from '~components/atoms/icons/FacebookIcon/FacebookIcon';
+import TwitterIcon from '~components/atoms/icons/TwitterIcon/TwitterIcon';
+import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
+import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
+import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
+import Slider from '~components/atoms/Slider/Slider';
 
 // Molecules
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
@@ -76,6 +77,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  Slider,
   QuestionAnswer,
   LinkedInIcon,
   FacebookIcon,
