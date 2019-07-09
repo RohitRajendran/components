@@ -1,4 +1,5 @@
 $transition-time: 0.5s;
+$fast-transition-time: 0.2s;
 
 .uic--ec {
   color: $midnight;
@@ -118,6 +119,52 @@ $transition-time: 0.5s;
     .uic--ec-controls-wrapper {
       transform: scale(1);
       transition: 0.5s cubic-bezier(0.18, 0.89, 0.35, 2.05) transform;
+    }
+  }
+}
+
+// Modify styling when used in the QuestionAnswer component.
+.uic--question-answer {
+  .uic--ec {
+    border-bottom: 1px solid $light-gray;
+    margin-top: 3rem;
+    padding-bottom: 1.8rem;
+
+    .uic--ec-label {
+      @include source-sans-pro(2.2rem);
+      font-weight: normal;
+      padding: 0 1.5rem 0 4.2rem;
+    }
+
+    .uic--ec-content-container {
+      padding: 0 1.5rem 0 4.2rem;
+
+      &::after {
+        border-bottom: 0;
+        margin-top: 0;
+      }
+    }
+
+    .uic--ec-controls-wrapper {
+      @include media-breakpoint-up(md) {
+        left: -1.2rem;
+      }
+
+      left: 0.4rem;
+      top: 0.3rem;
+    }
+
+    .uic--ec-content {
+      @include source-sans-pro(1.4rem);
+      border-bottom: 0;
+      color: $slate;
+      line-height: 1.5;
+      padding-top: 0.6rem;
+    }
+
+    .uic--ec-content-inner {
+      margin-top: 1.2rem;
+      transition: height $fast-transition-time;
     }
   }
 }

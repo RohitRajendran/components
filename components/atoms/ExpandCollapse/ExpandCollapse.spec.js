@@ -1,6 +1,8 @@
 import {mount} from 'enzyme';
 import React from 'react';
+import {stub} from 'sinon';
 import test from 'tape';
+import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import ExpandCollapse from './ExpandCollapse';
 
 test('ExpandCollapse - openExpandItem', (t) => {
@@ -32,6 +34,9 @@ test('ExpandCollapse - openExpandItem', (t) => {
 });
 
 test('ExpandCollapse - render as uncollapsible', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    true
+  );
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
     description: 'It is a very cute cat',
@@ -51,6 +56,8 @@ test('ExpandCollapse - render as uncollapsible', (t) => {
     'Hides collapse icon'
   );
   t.equals(component.find('p').length, 1, 'Should drawer content');
+
+  isWindowDefinedStub.restore();
 
   t.end();
 });
@@ -142,6 +149,60 @@ test('ExpandCollapse - checkValidation', (t) => {
     },
     'Should validate the items within the menu.'
   );
+
+  t.end();
+});
+
+test('ExpandCollapse - componentWillUnmount', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    true
+  );
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    defaultOpen: true,
+    isInvalid: false,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      <input value="" required />
+    </ExpandCollapse>
+  );
+
+  component.instance().componentWillUnmount();
+
+  t.pass();
+
+  isWindowDefinedStub.restore();
+
+  t.end();
+});
+
+test('ExpandCollapse - handleResize', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    true
+  );
+  const props = {
+    label: 'There is a picture of a catbehind this expandy collapse menu',
+    description: 'It is a very cute cat',
+    disabled: false,
+    defaultOpen: true,
+    isInvalid: false,
+  };
+
+  const component = mount(
+    <ExpandCollapse {...props}>
+      <input value="" required />
+    </ExpandCollapse>
+  );
+
+  component.instance().handleResize();
+
+  t.pass();
+
+  isWindowDefinedStub.restore();
 
   t.end();
 });

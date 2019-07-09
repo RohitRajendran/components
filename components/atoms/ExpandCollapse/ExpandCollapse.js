@@ -1,11 +1,11 @@
 /** @module ExpandCollapse */
-import React, {Component, createRef} from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
+import PropTypes from 'prop-types';
+import React, {Component, createRef} from 'react';
 import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon';
+import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import {validateChildren} from '~components/molecules/CardShell/CardShell';
-
+import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './ExpandCollapse.scss';
 
 /** Expand/Collapse component used for the cabinet and card content.  */
@@ -24,10 +24,22 @@ class ExpandCollapse extends Component {
     this.contentNode = createRef();
     this.openExpandItem = this.openExpandItem.bind(this);
     this.checkValidation = this.checkValidation.bind(this);
+    this.handleResize = this.handleResize.bind(this);
+  }
+
+  /** Handles the resizing event when the user makes the screen larger/smaller.
+   * @returns {undefined}
+   */
+  handleResize() {
+    return this.forceUpdate();
   }
 
   /** @inheritdoc */
   componentDidMount() {
+    if (isWindowDefined()) {
+      window.addEventListener('resize', this.handleResize);
+    }
+
     // If the component is set to default open the height gets calculated here so the content displays.
     if (this.state.open && !this.props.disabled) {
       const height = this.contentNode.current.scrollHeight;
@@ -39,6 +51,13 @@ class ExpandCollapse extends Component {
 
     if (this.props.collapsible) {
       this.checkValidation();
+    }
+  }
+
+  /** @inheritdoc */
+  componentWillUnmount() {
+    if (isWindowDefined()) {
+      window.removeEventListener('resize', this.handleResize);
     }
   }
 
@@ -192,7 +211,7 @@ ExpandCollapse.propTypes = {
   /** The label of the item. */
   label: PropTypes.string.isRequired,
   /** Optional description of the expand/collapse component. */
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** The contents of the expand/collapse item. */
   children: PropTypes.node,
   /** Optional content to appear to the right of the expand/collapse component. */
