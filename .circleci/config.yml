@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16
+    resource_class: small
     steps:
       - checkout
       - restore_cache:
@@ -56,6 +57,7 @@ jobs:
   visual:
     docker:
       - image: circleci/node:10-browsers
+    resource_class: small
     steps:
       - attach_workspace:
           at: .
@@ -64,10 +66,11 @@ jobs:
           name: Run Visual Regression Tests
           command: yarn testVisual
 
-  
+
   publish_storybook:
     docker:
       - image: circleci/node:10.16
+    resource_class: small
     environment:
       NODE_ENV: production
     steps:
@@ -94,6 +97,7 @@ jobs:
   publish_package:
     docker:
       - image: circleci/node:10.16
+    resource_class: small
     environment:
       NODE_ENV: production
     steps:
@@ -149,7 +153,7 @@ workflows:
             - visual
           filters:
             branches:
-              only: 
+              only:
                 - master
                 - develop
       - publish_package:
@@ -157,5 +161,5 @@ workflows:
             - visual
           filters:
             branches:
-              only: 
+              only:
                 - master

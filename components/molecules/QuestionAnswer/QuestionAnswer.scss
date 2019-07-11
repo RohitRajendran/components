@@ -12,6 +12,13 @@
     background-color: $table-alternate;
     border-right: 1px solid $light-gray;
     color: $midnight;
+
+    .uic--question-answer__header-inner {
+      @include media-breakpoint-up(md) {
+        text-align: center;
+        width: 34rem;
+      }
+    }
   }
 
   .uic--question-answer__qa {

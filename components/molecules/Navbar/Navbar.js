@@ -125,7 +125,7 @@ class Navbar extends PureComponent {
         'uic--position-relative': true,
         'uic--d-inline-flex': true,
         'uic--justify-content-center': true,
-        'uic--navbar__navigation-active': this.state.active.startsWith(link),
+        'uic--navbar__navigation-active': this.state.active === link,
         'uic--navbar__navigation-hide-fixed': hideFixed,
         'uic--navbar__navigation-hide-static': hideStatic,
       });

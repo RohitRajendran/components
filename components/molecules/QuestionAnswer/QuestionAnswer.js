@@ -21,7 +21,7 @@ const QuestionAnswer = ({className, style, header, items}) => {
     <div className={containerClasses} style={style}>
       <div className="uic--row">
         <div className="uic--question-answer__header uic--d-flex uic--justify-content-center uic--align-items-center uic--col-12 uic--col-md-6">
-          {header}
+          <div className="uic--question-answer__header-inner">{header}</div>
         </div>
 
         <div className="uic--question-answer__qa uic--col-12 uic--col-md-6">
