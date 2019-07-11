@@ -1,3 +1,6 @@
+import DiceIcon from '~components/atoms/icons/DiceIcon/DiceIcon';
+import ThumbsDownIcon from '~components/atoms/icons/ThumbsDownIcon/ThumbsDownIcon';
+import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 // Atoms
 import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
@@ -77,6 +80,9 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  DiceIcon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
   Slider,
   QuestionAnswer,
   LinkedInIcon,
