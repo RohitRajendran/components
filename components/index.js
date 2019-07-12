@@ -41,6 +41,8 @@ import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
 import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 import Slider from '~components/atoms/Slider/Slider';
+import BubbleDropdown from '~components/atoms/BubbleDropdown/BubbleDropdown';
+import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
 
 // Molecules
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
@@ -55,6 +57,7 @@ import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSum
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import Modal from '~components/molecules/Modal/Modal';
 import Cabinet from '~components/molecules/Cabinet/Cabinet';
+import BubbleNav from '~components/molecules/BubbleNav/BubbleNav';
 
 // Simple Organisms
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
@@ -84,6 +87,8 @@ export {
   ThumbsDownIcon,
   ThumbsUpIcon,
   Slider,
+  BubbleDropdown,
+  BubbleSelector,
   QuestionAnswer,
   LinkedInIcon,
   FacebookIcon,
@@ -117,6 +122,7 @@ export {
   Input,
   Modal,
   Cabinet,
+  BubbleNav,
   DropDown,
   ChanceOfSuccess,
   Spinner,
