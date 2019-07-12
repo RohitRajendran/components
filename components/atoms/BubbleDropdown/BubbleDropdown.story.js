@@ -8,7 +8,7 @@ import BubbleDropdownReadme from './BubbleDropdown.md';
 
 const stories = storiesOf('Atoms/BubbleDropdown', module);
 
-const store = new Store({value: 'Bye'});
+const store = new Store({value: 'Small'});
 
 stories
   .addDecorator(withReadme(BubbleDropdownReadme))
@@ -19,7 +19,7 @@ store.subscribe(() => {
 });
 
 const defaultProps = (
-  options = [{value: 'Hi asdf asd fsa fsa fds', color: 'Red'}, {value: 'Bye'}]
+  options = [{value: 'Big', color: 'Red'}, {value: 'Small'}]
 ) => ({
   options: object('Options', options),
   value: store.get('value'),
