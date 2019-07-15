@@ -30,6 +30,15 @@ class Navbar extends PureComponent {
   }
 
   /** @inheritdoc */
+  componentDidUpdate(prevProps) {
+    if (prevProps.isFixed !== this.props.isFixed) {
+      this.setState({
+        fixed: this.props.isFixed,
+      });
+    }
+  }
+
+  /** @inheritdoc */
   componentDidMount() {
     if (isWindowDefined()) {
       window.addEventListener('scroll', this.toggleFixed);
