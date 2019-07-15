@@ -147,3 +147,30 @@ test('Navbar - generateNavigation', (t) => {
 
   t.end();
 });
+
+test('Navbar - componentDidUpdate', (t) => {
+  t.plan(3);
+  window.requestAnimationFrame = stub();
+  const props = {
+    isFixed: true,
+    isStatic: false,
+    transitionToFixed: 100,
+    linkComponent: 'div',
+  };
+
+  const component = mount(<Navbar {...props} />);
+
+  t.deepEquals(component.state().fixed, true, 'Should be fixed.');
+
+  component.setProps({isFixed: false});
+
+  t.deepEquals(component.state().fixed, false, 'Should not be fixed.');
+
+  component.instance().componentDidUpdate({isFixed: false});
+
+  t.deepEquals(
+    component.state().fixed,
+    false,
+    'Should still not be fixed as the props never updated.'
+  );
+});

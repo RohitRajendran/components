@@ -22,12 +22,20 @@ class Navbar extends PureComponent {
     this.state = {
       open: props.isOpen,
       fixed: props.isFixed,
-      active: props.activeLink,
       scroll: 0,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.toggleFixed = this.toggleFixed.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
+  }
+
+  /** @inheritdoc */
+  componentDidUpdate(prevProps) {
+    if (prevProps.isFixed !== this.props.isFixed) {
+      this.setState({
+        fixed: this.props.isFixed,
+      });
+    }
   }
 
   /** @inheritdoc */
@@ -125,7 +133,7 @@ class Navbar extends PureComponent {
         'uic--position-relative': true,
         'uic--d-inline-flex': true,
         'uic--justify-content-center': true,
-        'uic--navbar__navigation-active': this.state.active === link,
+        'uic--navbar__navigation-active': this.props.activeLink === link,
         'uic--navbar__navigation-hide-fixed': hideFixed,
         'uic--navbar__navigation-hide-static': hideStatic,
       });
