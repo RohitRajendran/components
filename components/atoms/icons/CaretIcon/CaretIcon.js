@@ -8,7 +8,15 @@ import {colors} from '~constants/js/colors';
  * @param {object} props - Component props.
  * @returns {JSX.Element} - JSX representation of the CaretIcon component.
  */
-const CaretIcon = ({width, height, fill, className, direction, style}) => {
+const CaretIcon = ({
+  className,
+  direction,
+  fill,
+  height,
+  stroke,
+  style,
+  width,
+}) => {
   const containerClasses = classNames(
     {
       'uic--rotate-right': direction === 'right',
@@ -38,7 +46,7 @@ const CaretIcon = ({width, height, fill, className, direction, style}) => {
     >
       <polyline
         stroke={fill}
-        strokeWidth="1.5"
+        strokeWidth={stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
@@ -58,6 +66,8 @@ CaretIcon.propTypes = {
   fill: PropTypes.string,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
+  /** The stroke size of the icon which adjusts the thickness. */
+  stroke: PropTypes.string,
   /** Changes the direction of the arrow. */
   direction: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   /** Additional inline styles to apply to the container. */
@@ -67,6 +77,7 @@ CaretIcon.propTypes = {
 CaretIcon.defaultProps = {
   width: '1.4rem',
   height: '1.4rem',
+  stroke: '1.5',
   fill: colors.slate,
 };
 

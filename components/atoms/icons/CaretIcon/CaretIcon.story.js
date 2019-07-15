@@ -13,6 +13,7 @@ const defaultProps = () => ({
   fill: text('fill', '#000'),
   height: text('height', '2rem'),
   width: text('width', '2rem'),
+  stroke: text('stroke', '1.5'),
   direction: select('direction', ['down', 'up', 'right', 'left'], 'down'),
 });
 
