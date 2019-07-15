@@ -21,7 +21,7 @@ class Navbar extends PureComponent {
 
     this.state = {
       open: props.isOpen,
-      fixed: props.isFixed,=
+      fixed: props.isFixed,
       scroll: 0,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
