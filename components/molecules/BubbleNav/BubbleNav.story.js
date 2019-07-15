@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf, forceReRender} from '@storybook/react';
-import {boolean, object} from '@storybook/addon-knobs';
+import {object, text} from '@storybook/addon-knobs';
 import {StateDecorator, Store} from '@sambego/storybook-state';
 import {withReadme} from 'storybook-readme';
 import BubbleNav from './BubbleNav';
@@ -24,16 +24,16 @@ const defaultProps = ({
     {value: 'there', color: 'Blue'},
     {value: 'son', color: 'Red'},
   ],
-  isFixedWidth = false,
+  fixedWidth = '',
 }) => ({
   options: object('Options', options),
   value: store.get('value'),
   onChange: (newValue) => store.set({value: newValue}),
-  isFixedWidth: boolean('Fixed Width?', isFixedWidth),
+  fixedWidth: text('Fixed Width', fixedWidth),
 });
 
 stories.add('default', () => <BubbleNav {...defaultProps({})} />);
 
 stories.add('fixed width', () => (
-  <BubbleNav {...defaultProps({isFixedWidth: true})} />
+  <BubbleNav {...defaultProps({fixedWidth: '14rem'})} />
 ));
