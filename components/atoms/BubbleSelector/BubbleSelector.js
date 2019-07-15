@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import './BubbleSelector.scss';
 
-const BubbleSelector = ({options, value, onChange, isFixedWidth = false}) => (
+const BubbleSelector = ({options, value, onChange, fixedWidth}) => (
   <Fragment>
     {options &&
       options.length > 0 &&
@@ -12,7 +12,7 @@ const BubbleSelector = ({options, value, onChange, isFixedWidth = false}) => (
         const className = classNames({
           'uic--bubble-selector__item': true,
           'uic--bubble-selector__item--selected': value === option.value,
-          'uic--bubble-selector__item--fixed-width': isFixedWidth,
+          'uic--bubble-selector__item--fixed-width': fixedWidth,
         });
 
         return (
@@ -23,14 +23,15 @@ const BubbleSelector = ({options, value, onChange, isFixedWidth = false}) => (
             onClick={() => {
               onChange(option.value);
             }}
-            style={
-              value !== option.value || !option.color
+            style={{
+              ...(value !== option.value || !option.color
                 ? {}
                 : {
                     backgroundColor: option.color,
                     borderColor: option.color,
-                  }
-            }
+                  }),
+              maxWidth: fixedWidth,
+            }}
           >
             {option.value}
             <div
@@ -63,8 +64,8 @@ BubbleSelector.propTypes = {
   value: PropTypes.string.isRequired,
   /** Handler for when the selected value changes */
   onChange: PropTypes.func.isRequired,
-  /** Whether each item should be the same fixed width */
-  isFixedWidth: PropTypes.bool,
+  /** Optional fixed width of each selector */
+  fixedWidth: PropTypes.string,
 };
 
 export default BubbleSelector;

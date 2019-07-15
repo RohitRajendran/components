@@ -3,14 +3,14 @@ import React, {Fragment} from 'react';
 import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
 import BubbleDropdown from '~components/atoms/BubbleDropdown/BubbleDropdown';
 
-const BubbleNav = ({options, value, onChange, isFixedWidth = false}) => (
+const BubbleNav = ({options, value, onChange, fixedWidth}) => (
   <Fragment>
     <div className="uic--d-none uic--d-sm-flex">
       <BubbleSelector
         options={options}
         value={value}
         onChange={onChange}
-        isFixedWidth={isFixedWidth}
+        fixedWidth={fixedWidth}
       />
     </div>
     <div className="uic--d-sm-none">
@@ -33,8 +33,8 @@ BubbleNav.propTypes = {
   value: PropTypes.string.isRequired,
   /** Handler for when the selected value changes */
   onChange: PropTypes.func.isRequired,
-  /** Whether each item should be the same fixed width */
-  isFixedWidth: PropTypes.bool,
+  /** Optional fixed width of each selector */
+  fixedWidth: PropTypes.string,
 };
 
 export default BubbleNav;

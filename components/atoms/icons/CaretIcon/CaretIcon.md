@@ -17,5 +17,5 @@ import {CaretIcon} from '@unitedincome/components';
 ## Example 🚀
 
 ```javascript
-<CaretIcon fill="#000" height="2rem" width="2rem" />
+<CaretIcon fill="#000" height="2rem" width="2rem" stroke="1.5 />
 ```
