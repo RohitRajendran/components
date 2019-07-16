@@ -49,12 +49,15 @@ QuestionAnswer.propTypes = {
   /** The header of the QuestionAnswer section. */
   header: PropTypes.string.isRequired,
   /** The items to appear within the QuestionAnswer component. */
-  items: PropTypes.arrayOf({
-    /** The question being asked. */
-    question: PropTypes.string.isRequired,
-    /** The answer of the question. */
-    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  }).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      /** The question being asked. */
+      question: PropTypes.string.isRequired,
+      /** The answer of the question. */
+      answer: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+        .isRequired,
+    })
+  ).isRequired,
 };
 
 export default memo(QuestionAnswer);
