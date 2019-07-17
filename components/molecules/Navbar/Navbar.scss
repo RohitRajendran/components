@@ -17,6 +17,12 @@ $navigation-z-index: 99999;
   transition: all 0.3s linear;
   z-index: $navigation-z-index;
 
+  .uic--navbar__logo {
+    svg {
+      max-width: 100%;
+    }
+  }
+
   .uic--navbar__mobile-drawer {
     @include media-breakpoint-up(lg) {
       display: none;
