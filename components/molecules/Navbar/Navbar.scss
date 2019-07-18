@@ -4,6 +4,10 @@ $static-navbar-border: hsla(0, 0%, 0%, 0.1);
 $fixed-navbar-border: hsla(0, 0%, 100%, 0.1);
 $navigation-z-index: 99999;
 
+.uic--navbar__spacer {
+  height: $static-navbar-height;
+}
+
 .uic--navbar__prevent-scroll {
   height: 100%;
   overflow: hidden;
