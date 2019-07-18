@@ -219,7 +219,6 @@ class Navbar extends PureComponent {
     }
 
     return (
-              <Fragment>{fixed ? fixedLogo : staticLogo}</Fragment>
       <nav className={containerClasses} style={style} role="navigation">
         <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
           {logoLink ? (
