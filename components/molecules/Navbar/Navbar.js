@@ -125,10 +125,13 @@ class Navbar extends PureComponent {
     const linkProps = {
       className: 'uic--navbar__navigation-link',
     };
-    const LinkWrapper = this.props.linkComponent;
 
     return items.map((item, index) => {
-      const {label, link, variant, hideFixed, hideStatic} = item;
+      const {label, link, variant, hideFixed, hideStatic, linkComponent} = item;
+      // Allows you to individually override the default link component for a specific menu item.
+      const LinkWrapper = linkComponent
+        ? linkComponent
+        : this.props.linkComponent;
       const listItemClasses = classNames({
         'uic--position-relative': true,
         'uic--d-inline-flex': true,
@@ -173,7 +176,6 @@ class Navbar extends PureComponent {
     const {
       className,
       fixedLogo,
-      isFixed,
       leftNavigation,
       logoLink,
       rightNavigation,
@@ -220,69 +222,65 @@ class Navbar extends PureComponent {
     }
 
     return (
-      <Fragment>
-        {/** Reduces scroll jank on layouts with a lot of scroll interaction. */}
-        {fixed && !isFixed && <div className="uic--navbar__spacer" />}
-        <nav className={containerClasses} style={style} role="navigation">
-          <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
-            {logoLink ? (
-              <LinkWrapper {...linkProps}>
-                {fixed ? fixedLogo : staticLogo}
-              </LinkWrapper>
-            ) : (
-              <Fragment>{fixed ? fixedLogo : staticLogo}</Fragment>
-            )}
-          </div>
+      <nav className={containerClasses} style={style} role="navigation">
+        <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
+          {logoLink ? (
+            <LinkWrapper {...linkProps}>
+              {fixed ? fixedLogo : staticLogo}
+            </LinkWrapper>
+          ) : (
+            <Fragment>{fixed ? fixedLogo : staticLogo}</Fragment>
+          )}
+        </div>
 
-          <div className="uic--navbar__left-navigation uic--d-flex uic--align-items-center uic--w-100">
-            <ul className="uic--navbar__left-navigation-list">
-              {renderLeftNavigation}
-            </ul>
-          </div>
+        <div className="uic--navbar__left-navigation uic--d-flex uic--align-items-center uic--w-100">
+          <ul className="uic--navbar__left-navigation-list">
+            {renderLeftNavigation}
+          </ul>
+        </div>
 
-          <div className="uic--navbar__right-navigation uic--d-flex uic--align-items-center uic--w-100">
-            <ul className="uic--navbar__right-navigation-list">
-              {renderRightNavigation}
-            </ul>
-          </div>
+        <div className="uic--navbar__right-navigation uic--d-flex uic--align-items-center uic--w-100">
+          <ul className="uic--navbar__right-navigation-list">
+            {renderRightNavigation}
+          </ul>
+        </div>
 
-          <div className="uic--navbar__mobile-drawer uic--position-relative">
-            <div
-              className="uic--navbar__mobile-drawer-icon uic--d-flex uic--align-items-center uic--h-100"
-              onKeyPress={this.toggleDrawer}
-              onClick={this.toggleDrawer}
-              role="button"
-              tabIndex="0"
-            >
-              <IconComponent
-                width="24px"
-                height="24px"
-                fill={fixed ? colors['white'] : colors['slate']}
-              />
-            </div>
-            <div className={mobileWrapperClasses}>
-              <Spring native to={{start: open ? 100 : 0}}>
-                {({start}) => (
-                  <animated.div
-                    className="uic--navbar__mobile-drawer-inner"
-                    style={{
-                      height: start.interpolate((o) => `${o}%`),
-                    }}
-                    tabIndex="0"
-                    onClick={open ? this.handleClick : null}
-                    onKeyPress={open ? this.handleClick : null}
-                  >
-                    <ul className="uic--navbar__mobile-drawer-list uic--h-100">
-                      {renderLeftNavigation}
-                      {renderRightNavigation}
-                    </ul>
-                  </animated.div>
-                )}
-              </Spring>
-            </div>
+        <div className="uic--navbar__mobile-drawer uic--position-relative">
+          <div
+            className="uic--navbar__mobile-drawer-icon uic--d-flex uic--align-items-center uic--h-100"
+            onKeyPress={this.toggleDrawer}
+            onClick={this.toggleDrawer}
+            role="button"
+            tabIndex="0"
+          >
+            <IconComponent
+              width="24px"
+              height="24px"
+              fill={fixed ? colors['white'] : colors['slate']}
+            />
           </div>
-        </nav>
-      </Fragment>
+          <div className={mobileWrapperClasses}>
+            <Spring native to={{start: open ? 100 : 0}}>
+              {({start}) => (
+                <animated.div
+                  className="uic--navbar__mobile-drawer-inner"
+                  style={{
+                    height: start.interpolate((o) => `${o}%`),
+                  }}
+                  tabIndex="0"
+                  onClick={open ? this.handleClick : null}
+                  onKeyPress={open ? this.handleClick : null}
+                >
+                  <ul className="uic--navbar__mobile-drawer-list uic--h-100">
+                    {renderLeftNavigation}
+                    {renderRightNavigation}
+                  </ul>
+                </animated.div>
+              )}
+            </Spring>
+          </div>
+        </div>
+      </nav>
     );
   }
 }
@@ -333,6 +331,12 @@ Navbar.propTypes = {
       hideFixed: PropTypes.bool,
       /** Hides the item on the static state. */
       hideStatic: PropTypes.bool,
+      /** Button component override for a specific menu item.  */
+      linkComponent: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func,
+        PropTypes.string,
+      ]),
     })
   ),
   /** Navigation items which appear on the right side of the bar. */
@@ -354,6 +358,12 @@ Navbar.propTypes = {
       hideFixed: PropTypes.bool,
       /** Hides the item on the static state. */
       hideStatic: PropTypes.bool,
+      /** Button component override for a specific menu item.  */
+      linkComponent: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func,
+        PropTypes.string,
+      ]),
     })
   ),
 };
