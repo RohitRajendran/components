@@ -141,7 +141,7 @@ class Navbar extends PureComponent {
         'uic--navbar__navigation-hide-static': hideStatic,
       });
 
-      if (this.props.linkComponent !== 'a') {
+      if (LinkWrapper !== 'a') {
         linkProps.to = link;
       } else {
         linkProps.href = link;
