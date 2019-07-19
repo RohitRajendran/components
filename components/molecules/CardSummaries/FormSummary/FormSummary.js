@@ -65,6 +65,8 @@ FormSummary.propTypes = {
   /** An array of objects containing the groups of answers to display. The object is broken down below. */
   answerGroups: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The React key to use for the group of data */
+      key: PropTypes.string,
       /** The name of the group of data */
       groupName: PropTypes.string,
       /** An array of objects containing the answers for the group. The object is broken down below. */
