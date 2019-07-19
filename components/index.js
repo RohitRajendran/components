@@ -6,6 +6,7 @@ import Button from '~components/atoms/Button/Button';
 import Loader from '~components/atoms/Loader/Loader';
 import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
+import SimpleDropdown from '~components/atoms/SimpleDropdown/SimpleDropdown';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import CategoryBubble from '~components/atoms/CategoryBubble/CategoryBubble';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
@@ -126,6 +127,7 @@ export {
   Cabinet,
   BubbleNav,
   DropDown,
+  SimpleDropdown,
   ChanceOfSuccess,
   Spinner,
   CategoryBubble,
