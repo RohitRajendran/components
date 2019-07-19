@@ -1,7 +1,7 @@
 /** @module Navbar */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {PureComponent, Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
@@ -14,7 +14,7 @@ import {
 import './Navbar.scss';
 
 /** Renders a site wide navigation bar.  */
-class Navbar extends PureComponent {
+class Navbar extends Component {
   /** @inheritdoc */
   constructor(props) {
     super(props);
