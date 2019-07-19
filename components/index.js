@@ -1,6 +1,3 @@
-import DiceIcon from '~components/atoms/icons/DiceIcon/DiceIcon';
-import ThumbsDownIcon from '~components/atoms/icons/ThumbsDownIcon/ThumbsDownIcon';
-import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 // Atoms
 import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
@@ -43,6 +40,10 @@ import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllu
 import Slider from '~components/atoms/Slider/Slider';
 import BubbleDropdown from '~components/atoms/BubbleDropdown/BubbleDropdown';
 import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
+import CompassCircleIllustration from '~components/atoms/illustrations/CompassCircleIllustration/CompassCircleIllustration';
+import DiceIcon from '~components/atoms/icons/DiceIcon/DiceIcon';
+import ThumbsDownIcon from '~components/atoms/icons/ThumbsDownIcon/ThumbsDownIcon';
+import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 
 // Molecules
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
@@ -83,6 +84,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  CompassCircleIllustration,
   DiceIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
