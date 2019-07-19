@@ -1,0 +1,55 @@
+// Wrapper class gives specificity to override react-select styles
+.uic--simple-dropdown {
+  @include source-sans-pro(1.4rem);
+
+  .uic--simple-dropdown__control {
+    border: 1px solid $light-gray;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0.7rem 0;
+    z-index: 1;
+
+    &:hover {
+      border: 1px solid $slate-80;
+    }
+  }
+
+  .uic--simple-dropdown__control--is-focused {
+    border: 1px solid $slate-80;
+    box-shadow: none;
+
+    &:hover {
+      border: 1px solid $light-gray;
+    }
+  }
+
+  .uic--simple-dropdown__single-value {
+    color: $midnight;
+  }
+
+  .uic--simple-dropdown__indicator {
+    margin-left: 0.8rem;
+  }
+
+  .uic--simple-dropdown__indicator-separator {
+    display: none;
+  }
+
+  .uic--simple-dropdown__menu {
+    z-index: 2;
+  }
+
+  .uic--simple-dropdown__option {
+    color: $midnight;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+  }
+
+  .uic--simple-dropdown__option--is-selected {
+    background-color: $white;
+  }
+
+  .uic--simple-dropdown__option--is-focused {
+    background-color: $parchment;
+  }
+}
