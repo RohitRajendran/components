@@ -125,10 +125,13 @@ class Navbar extends PureComponent {
     const linkProps = {
       className: 'uic--navbar__navigation-link',
     };
-    const LinkWrapper = this.props.linkComponent;
 
     return items.map((item, index) => {
-      const {label, link, variant, hideFixed, hideStatic} = item;
+      const {label, link, variant, hideFixed, hideStatic, linkComponent} = item;
+      // Allows you to individually override the default link component for a specific menu item.
+      const LinkWrapper = linkComponent
+        ? linkComponent
+        : this.props.linkComponent;
       const listItemClasses = classNames({
         'uic--position-relative': true,
         'uic--d-inline-flex': true,
@@ -328,6 +331,12 @@ Navbar.propTypes = {
       hideFixed: PropTypes.bool,
       /** Hides the item on the static state. */
       hideStatic: PropTypes.bool,
+      /** Button component override for a specific menu item.  */
+      linkComponent: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func,
+        PropTypes.string,
+      ]),
     })
   ),
   /** Navigation items which appear on the right side of the bar. */
@@ -349,6 +358,12 @@ Navbar.propTypes = {
       hideFixed: PropTypes.bool,
       /** Hides the item on the static state. */
       hideStatic: PropTypes.bool,
+      /** Button component override for a specific menu item.  */
+      linkComponent: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func,
+        PropTypes.string,
+      ]),
     })
   ),
 };
