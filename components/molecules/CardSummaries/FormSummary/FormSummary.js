@@ -26,7 +26,7 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
         </div>
       </div>
       {answerGroups.map((group, index) => {
-        const key = group.groupName || `${shortTitle}-${index}`;
+        const key = group.key || group.groupName || `${shortTitle}-${index}`;
 
         const groupClass = classNames({
           'uic--card-summary': true,
