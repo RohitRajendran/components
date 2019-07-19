@@ -16,7 +16,7 @@ const defaultProps = () => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
   isAnimated: boolean('isAnimateed', false),
-  animationDuration: number('animationSpeed', 10),
+  animationDuration: number('animationDuration', 10),
 });
 
 stories.add('default', () => <CompassCircleIllustration {...defaultProps()} />);
