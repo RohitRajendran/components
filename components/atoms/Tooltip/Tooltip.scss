@@ -1,5 +1,3 @@
-$tooltip-shadow: rgba(91, 98, 121, 0.5);
-$tooltip-filter: rgba(0, 0, 0, 0.5);
 $dark-background-color: $royal;
 $light-background-color: $white;
 
@@ -9,8 +7,8 @@ $light-background-color: $white;
     background-color: $light-background-color;
     border: 0;
     border-radius: 4px;
-    box-shadow: 3px 3px 6px 0 $tooltip-shadow;
-    filter: drop-shadow(1px 1px 1px $tooltip-filter);
+    box-shadow: 0 2px 6px $light-gray;
+    max-width: 70vw;
     padding: 2.1rem;
     z-index: 1030;
 
