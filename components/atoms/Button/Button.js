@@ -93,7 +93,7 @@ const Button = ({
 
     // Switches the link wrapper to the one provided via props if available.
     let LinkWrapper;
-    if (linkComponent) {
+    if (linkComponent && linkComponent !== 'a') {
       LinkWrapper = linkComponent;
       linkProps.to = to;
     } else {
