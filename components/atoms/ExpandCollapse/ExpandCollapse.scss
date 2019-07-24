@@ -133,6 +133,7 @@ $fast-transition-time: 0.2s;
     .uic--ec-label {
       @include source-sans-pro(2.2rem);
       font-weight: normal;
+      line-height: initial;
       padding: 0 1.5rem 0 4.2rem;
     }
 
@@ -150,6 +151,7 @@ $fast-transition-time: 0.2s;
         left: -1.2rem;
       }
 
+      display: flex;
       left: 0.4rem;
       top: 0.3rem;
     }
