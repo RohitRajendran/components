@@ -42,8 +42,7 @@ const Tooltip = ({
       <Button
         data-tip
         data-for={id}
-        data-event={hover ? 'touchstart focus mouseover' : 'click'}
-        data-event-off={null}
+        data-event={hover ? null : 'click'}
         variant={labelVariant}
         light={lightLabel}
         dark={!lightLabel}
