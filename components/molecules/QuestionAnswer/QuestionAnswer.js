@@ -1,7 +1,7 @@
 /** @module QuestionAnswer */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {memo} from 'react';
+import React, {PureComponent} from 'react';
 import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
 import './QuestionAnswer.scss';
 
@@ -9,37 +9,70 @@ import './QuestionAnswer.scss';
  * @param {object} props - The component props.
  * @returns {JSX} - Returns the JSX representation of the QuestionAnswer component.
  */
-const QuestionAnswer = ({className, style, header, items}) => {
-  const containerClasses = classNames(
-    {
-      'uic--question-answer': true,
-    },
-    className
-  );
+class QuestionAnswer extends PureComponent {
+  /** @inheritdoc */
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={containerClasses} style={style}>
-      <div className="uic--row">
-        <div className="uic--question-answer__header uic--d-flex uic--justify-content-center uic--align-items-center uic--col-12 uic--col-md-6">
-          <div className="uic--question-answer__header-inner">{header}</div>
-        </div>
+    this.state = {
+      expanded: null,
+    };
 
-        <div className="uic--question-answer__qa uic--col-12 uic--col-md-6">
-          <div className="uic--question-answer__qa-wrapper">
-            {items.map(({question, answer}, index) => (
-              <div
-                key={index}
-                className="uic--question-answer__qa-wrapper-question"
-              >
-                <ExpandCollapse label={question}>{answer}</ExpandCollapse>
-              </div>
-            ))}
+    this.setExpanded = this.setExpanded.bind(this);
+  }
+
+  /** Sets the expanded item.
+   * @param {integer} item - The item index.
+   * @returns {undefined}
+   */
+  setExpanded(item) {
+    this.setState({
+      expanded: this.state.expanded === item ? null : item,
+    });
+  }
+
+  /** @inheritdoc */
+  render() {
+    const {className, style, items, header} = this.props;
+
+    const containerClasses = classNames(
+      {
+        'uic--question-answer': true,
+      },
+      className
+    );
+
+    return (
+      <div className={containerClasses} style={style}>
+        <div className="uic--row">
+          <div className="uic--question-answer__header uic--d-flex uic--justify-content-center uic--align-items-center uic--col-12 uic--col-md-6">
+            <div className="uic--question-answer__header-inner">{header}</div>
+          </div>
+
+          <div className="uic--question-answer__qa uic--col-12 uic--col-md-6">
+            <div className="uic--question-answer__qa-wrapper">
+              {items.map(({question, answer}, index) => (
+                <div
+                  key={index}
+                  className="uic--question-answer__qa-wrapper-question"
+                >
+                  <ExpandCollapse
+                    name={`item-${index}`}
+                    open={`item-${index}` === this.state.expanded}
+                    onClick={this.setExpanded}
+                    label={question}
+                  >
+                    {answer}
+                  </ExpandCollapse>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 QuestionAnswer.propTypes = {
   /* Additional class names to apply to the container. */
@@ -60,4 +93,4 @@ QuestionAnswer.propTypes = {
   ).isRequired,
 };
 
-export default memo(QuestionAnswer);
+export default QuestionAnswer;

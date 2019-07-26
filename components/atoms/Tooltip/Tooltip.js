@@ -42,7 +42,8 @@ const Tooltip = ({
       <Button
         data-tip
         data-for={id}
-        data-event={hover ? null : 'click'}
+        data-event={hover ? 'touchstart focus mouseover' : 'click'}
+        data-event-off={hover ? 'mouseout' : null}
         variant={labelVariant}
         light={lightLabel}
         dark={!lightLabel}
@@ -51,7 +52,7 @@ const Tooltip = ({
       </Button>
       <ReactTooltip
         className={tooltipClasses}
-        globalEventOff="click"
+        globalEventOff="click touchstart"
         id={id}
         place={placement}
         ref={tooltipRef || null}
