@@ -27,6 +27,18 @@ class ExpandCollapse extends Component {
     this.handleResize = this.handleResize.bind(this);
   }
 
+  /** @inheritdoc */
+  static getDerivedStateFromProps(props, state) {
+    if (typeof props.open !== 'undefined' && props.open !== state.open) {
+      return {
+        open: props.open,
+        height: 0,
+      };
+    }
+
+    return false;
+  }
+
   /** Handles the resizing event when the user makes the screen larger/smaller.
    * @returns {undefined}
    */
@@ -110,6 +122,10 @@ class ExpandCollapse extends Component {
       open: !this.state.open,
       height: !this.state.open ? height : 0,
     });
+
+    if (this.props.onClick && this.props.name) {
+      this.props.onClick(this.props.name);
+    }
 
     return this.contentNode.current.focus();
   }
@@ -226,6 +242,12 @@ ExpandCollapse.propTypes = {
   defaultOpen: PropTypes.bool,
   /** Toggles the ability to collapse the component */
   collapsible: PropTypes.bool,
+  /** Handler which fires when an option is clicked. */
+  onClick: PropTypes.func,
+  /** The name of the ExpandCollapse component. */
+  name: PropTypes.string,
+  /** Determines if the item should be open or not. */
+  open: PropTypes.bool,
 };
 
 ExpandCollapse.defaultProps = {

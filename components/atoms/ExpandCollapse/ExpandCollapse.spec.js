@@ -10,6 +10,8 @@ test('ExpandCollapse - openExpandItem', (t) => {
     label: 'There is a picture of a catbehind this expandy collapse menu',
     description: 'It is a very cute cat',
     disabled: false,
+    onClick: stub(),
+    name: 'item-1',
   };
 
   const component = mount(
@@ -28,6 +30,22 @@ test('ExpandCollapse - openExpandItem', (t) => {
       isRequired: false,
     },
     'Should toggle the drawer open.'
+  );
+
+  t.true(props.onClick.callCount);
+
+  component.setProps({open: false});
+
+  // When a `open: false` prop is provided it should close the component.
+  t.deepEquals(
+    component.state(),
+    {
+      open: false,
+      height: 0,
+      isValid: true,
+      isRequired: false,
+    },
+    'Should toggle the drawer close.'
   );
 
   t.end();
@@ -98,6 +116,7 @@ test('ExpandCollapse - componentDidUpdate', (t) => {
     disabled: false,
     defaultOpen: true,
     isInvalid: false,
+    onClick: () => true,
   };
 
   const component = mount(
@@ -190,6 +209,7 @@ test('ExpandCollapse - handleResize', (t) => {
     disabled: false,
     defaultOpen: true,
     isInvalid: false,
+    open: true,
   };
 
   const component = mount(
