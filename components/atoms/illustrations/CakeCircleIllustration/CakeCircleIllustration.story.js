@@ -9,18 +9,16 @@ const stories = storiesOf('Atoms/Illustrations/CakeCircleIllustration', module);
 
 stories.addDecorator(withReadme(CakeCircleIllustrationReadMe));
 
-const defaultProps = (color, draft, illuminate) => ({
+const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
-  color: boolean('color', color),
-  draft: boolean('draft', draft),
   illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
-  <CakeCircleIllustration {...defaultProps(false, false, false)} />
+  <CakeCircleIllustration {...defaultProps(false)} />
 ));
 
 stories.add('illuminated', () => (
-  <CakeCircleIllustration {...defaultProps(false, false, true)} />
+  <CakeCircleIllustration {...defaultProps(true)} />
 ));

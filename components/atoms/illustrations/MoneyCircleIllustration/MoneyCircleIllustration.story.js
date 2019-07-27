@@ -12,18 +12,16 @@ const stories = storiesOf(
 
 stories.addDecorator(withReadme(MoneyCircleIllustrationReadMe));
 
-const defaultProps = (color, draft, illuminate) => ({
+const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
-  color: boolean('color', color),
-  draft: boolean('draft', draft),
   illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
-  <MoneyCircleIllustration {...defaultProps(false, false, false)} />
+  <MoneyCircleIllustration {...defaultProps(false)} />
 ));
 
 stories.add('illuminated', () => (
-  <MoneyCircleIllustration {...defaultProps(false, false, true)} />
+  <MoneyCircleIllustration {...defaultProps(true)} />
 ));

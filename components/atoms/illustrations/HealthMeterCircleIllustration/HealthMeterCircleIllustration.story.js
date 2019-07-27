@@ -15,15 +15,13 @@ stories.addDecorator(withReadme(HealthMeterCircleIllustrationReadMe));
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
-  color: boolean('color', color),
-  draft: boolean('draft', draft),
   illuminate: boolean('illuminate', illuminate),
 });
 
 stories.add('default', () => (
-  <HealthMeterCircleIllustration {...defaultProps(false, false, false)} />
+  <HealthMeterCircleIllustration {...defaultProps(false)} />
 ));
 
 stories.add('illuminated', () => (
-  <HealthMeterCircleIllustration {...defaultProps(false, false, true)} />
+  <HealthMeterCircleIllustration {...defaultProps(true)} />
 ));
