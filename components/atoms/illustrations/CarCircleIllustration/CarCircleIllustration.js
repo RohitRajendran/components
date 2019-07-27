@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-/** Renders a gift illustration. */
+/** Renders a car illustration. */
 class CarCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
@@ -59,7 +59,6 @@ class CarCircleIllustration extends PureComponent {
           <defs>
             <style>{`.car-cls-1{fill:none;}.car-cls-2{fill:#f17732;}.car-cls-3{fill:#99052e;}.car-cls-4{fill:#10004c;}.car-cls-5{fill:#9da1af;}.car-cls-6{fill:#feca1e;}.car-cls-7{fill:url(#_4-dot);}.car-cls-8{fill:url(#_5-dot);}.car-cls-9{fill:#fde5cb;}.car-cls-10{fill:#7c8194;}.car-cls-11{fill:#2870b5;}.car-cls-12{fill:#6b7186;}.car-cls-13{fill:#f8f7f4;}.car-cls-14{fill:#5fcbeb;}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -77,7 +76,6 @@ class CarCircleIllustration extends PureComponent {
               <circle className="car-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -95,11 +93,11 @@ class CarCircleIllustration extends PureComponent {
               <circle className="car-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="car-cls-4" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-car">
+          <g>
             <path
               className="car-cls-3"
               d="M31.28,85.46h9.59A6.18,6.18,0,0,1,47,91.64v3a4.26,4.26,0,0,1-4.26,4.26H29.36A4.26,4.26,0,0,1,25.1,94.6v-3a6.18,6.18,0,0,1,6.18-6.18Z"
@@ -228,7 +226,6 @@ class CarCircleIllustration extends PureComponent {
           <defs>
             <style>{`.car-cls-1{fill:none;}.car-cls-2{fill:#f17732;}.car-cls-3{fill:#99052e;}.car-cls-4{fill:#10004c;}.car-cls-5{fill:#9da1af;}.car-cls-6{fill:#feca1e;}.car-cls-7{fill:url(#_4-dot);}.car-cls-8{fill:url(#_5-dot);}.car-cls-9{fill:#fde5cb;}.car-cls-10{fill:#7c8194;}.car-cls-11{fill:#2870b5;}.car-cls-12{fill:#6b7186;}.car-cls-13{fill:#5fcbeb;}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -245,7 +242,6 @@ class CarCircleIllustration extends PureComponent {
               <circle className="car-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -262,11 +258,11 @@ class CarCircleIllustration extends PureComponent {
               <circle className="car-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="car-cls-4" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-car">
+          <g>
             <path
               className="car-cls-3"
               d="M31.28,85.46h9.59A6.18,6.18,0,0,1,47,91.64v3a4.26,4.26,0,0,1-4.26,4.26H29.36A4.26,4.26,0,0,1,25.1,94.6v-3a6.18,6.18,0,0,1,6.18-6.18Z"
@@ -386,11 +382,11 @@ class CarCircleIllustration extends PureComponent {
           <defs>
             <style>{`.car-cls-1{fill:#5b6279;}.car-cls-2{fill:#7c8194;}.car-cls-3{fill:#9da1af;}.car-cls-4{fill:#cdcfd6;}.car-cls-5{fill:#bdc0c9;}.car-cls-6{fill:#eeeff1;}.car-cls-7{fill:#8c91a1;}.car-cls-8{fill:#6b7186;}.car-cls-9{fill:#adb0bc;}`}</style>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="car-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-car">
+          <g>
             <path
               className="car-cls-2"
               d="M31.28,85.46h9.59A6.18,6.18,0,0,1,47,91.64v3a4.26,4.26,0,0,1-4.26,4.26H29.36A4.26,4.26,0,0,1,25.1,94.6v-3A6.18,6.18,0,0,1,31.28,85.46Z"
@@ -502,11 +498,11 @@ class CarCircleIllustration extends PureComponent {
           <defs>
             <style>{`.car-cls-1{fill:#10004c;}.car-cls-2{fill:#3f336f;}.car-cls-3{fill:#9da1af;}.car-cls-4{fill:#b7b3c9;}.car-cls-5{fill:#9f99b7;}.car-cls-6{fill:#e7e6ed;}.car-cls-7{fill:#7c8194;}.car-cls-8{fill:#584d82;}.car-cls-9{fill:#6b7186;}.car-cls-10{fill:#281a5e;}.car-cls-11{fill:#adb0bc;}`}</style>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="car-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-car">
+          <g>
             <path
               className="car-cls-2"
               d="M31.28,85.46h9.59A6.18,6.18,0,0,1,47,91.64v3a4.26,4.26,0,0,1-4.26,4.26H29.36A4.26,4.26,0,0,1,25.1,94.6v-3a6.18,6.18,0,0,1,6.18-6.18Z"

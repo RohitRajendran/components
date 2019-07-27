@@ -59,7 +59,6 @@ class LampCircleIllustration extends PureComponent {
           <defs>
             <style>{`.lamp-cls-1{fill:none;}.lamp-cls-2{fill:#fde5cb;}.lamp-cls-3{fill:#f17732;}.lamp-cls-4{fill:#99052e;}.lamp-cls-5{fill:#10004c;}.lamp-cls-6{fill:#f8f7f4;}.lamp-cls-7{fill:url(#_2-dot);}.lamp-cls-8{fill:#2870b5;}.lamp-cls-9{fill:#feca1e;}.lamp-cls-10{fill:url(#_4-dot);}.lamp-cls-11{fill:url(#_5-dot);}.lamp-cls-12{fill:#5fcbeb;}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class LampCircleIllustration extends PureComponent {
               <circle className="lamp-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -93,7 +91,6 @@ class LampCircleIllustration extends PureComponent {
               <circle className="lamp-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -110,11 +107,11 @@ class LampCircleIllustration extends PureComponent {
               <circle className="lamp-cls-4" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="lamp-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="essentials-color-2">
+          <g>
             <path
               className="lamp-cls-6"
               d="M60.46,32.69h29.7l12.06-22.22a70.19,70.19,0,0,0-53.92-.19Z"
@@ -229,7 +226,6 @@ class LampCircleIllustration extends PureComponent {
           <defs>
             <style>{`.lamp-cls-1{fill:none;}.lamp-cls-2{fill:#f17732;}.lamp-cls-3{fill:#99052e;}.lamp-cls-4{fill:#10004c;}.lamp-cls-5{fill:#2870b5;}.lamp-cls-6{fill:#5fcbeb;}.lamp-cls-7{fill:#feca1e;}.lamp-cls-8{fill:url(#_4-dot);}.lamp-cls-9{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -246,7 +242,6 @@ class LampCircleIllustration extends PureComponent {
               <circle className="lamp-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -263,11 +258,11 @@ class LampCircleIllustration extends PureComponent {
               <circle className="lamp-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="lamp-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="essentials-color">
+          <g>
             <path
               className="lamp-cls-5"
               d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
@@ -361,11 +356,10 @@ class LampCircleIllustration extends PureComponent {
           <defs>
             <style>{`.lamp-cls-1{fill:#5b6279;}.lamp-cls-2{fill:#9da1af;}.lamp-cls-3{fill:#cdcfd6;}.lamp-cls-4{fill:#8c91a1;}.lamp-cls-5{fill:#adb0bc;}.lamp-cls-6{fill:#fff;}.lamp-cls-7{fill:#dee0e4;}.lamp-cls-8{fill:#6b7186;}.lamp-cls-9{fill:#7c8194;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="lamp-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="essentials-gray">
+          <g>
             <path
               className="lamp-cls-2"
               d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
@@ -451,11 +445,11 @@ class LampCircleIllustration extends PureComponent {
           <defs>
             <style>{`.lamp-cls-1{fill:#10004c;}.lamp-cls-2{fill:#6f6693;}.lamp-cls-3{fill:#cfccdb;}.lamp-cls-4{fill:#8780a5;}.lamp-cls-5{fill:#281a5e;}.lamp-cls-6{fill:#3f336f;}.lamp-cls-7{fill:#fff;}.lamp-cls-8{fill:#b7b3c9;}.lamp-cls-9{fill:#8c91a1;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="lamp-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="essentials-purple">
+          <g>
             <rect
               className="lamp-cls-2"
               x="74.04"

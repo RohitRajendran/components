@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-/** Renders a sushi illustration. */
+/** Renders a ramen illustration. */
 class RamenCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
@@ -59,7 +59,6 @@ class RamenCircleIllustration extends PureComponent {
           <defs>
             <style>{`.ramen-cls-1{fill:none;}.ramen-cls-2{fill:#f17732;}.ramen-cls-3{fill:#99052e;}.ramen-cls-4{fill:#10004c;}.ramen-cls-5{fill:#2870b5;}.ramen-cls-6{fill:#feca1e;}.ramen-cls-7{fill:url(#_4-dot);}.ramen-cls-8{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class RamenCircleIllustration extends PureComponent {
               <circle className="ramen-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -93,11 +91,10 @@ class RamenCircleIllustration extends PureComponent {
               <circle className="ramen-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="ramen-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="lifestyle-color-2">
+          <g>
             <polygon
               className="ramen-cls-5"
               points="19.85 60.23 91.89 102.38 92.15 101.94 20.87 58.53 19.85 60.23"
@@ -163,7 +160,6 @@ class RamenCircleIllustration extends PureComponent {
               />
             </clipPath>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -180,7 +176,6 @@ class RamenCircleIllustration extends PureComponent {
               <circle className="ramen-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -197,11 +192,10 @@ class RamenCircleIllustration extends PureComponent {
               <circle className="ramen-cls-4" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="ramen-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="lifestyle-color">
+          <g>
             <ellipse
               className="ramen-cls-6"
               cx="70.66"
@@ -388,11 +382,10 @@ class RamenCircleIllustration extends PureComponent {
               />
             </clipPath>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="ramen-cls-2" cx="75" cy="75" r="70" />
           </g>
-          <g id="lifestyle-gray">
+          <g>
             <ellipse
               className="ramen-cls-3"
               cx="70.66"
@@ -571,11 +564,10 @@ class RamenCircleIllustration extends PureComponent {
               />
             </clipPath>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="ramen-cls-2" cx="75" cy="75" r="70" />
           </g>
-          <g id="lifestyle-purple">
+          <g>
             <ellipse
               className="ramen-cls-3"
               cx="70.66"

@@ -80,24 +80,15 @@ class AccountCircleIllustration extends PureComponent {
           fill="none"
           fillRule="evenodd"
         >
-          <g
-            id="Intro-Page---Financial-Accounts"
-            transform="translate(-605.000000, -140.000000)"
-          >
-            <g id="Image" transform="translate(605.000000, 140.000000)">
+          <g transform="translate(-605.000000, -140.000000)">
+            <g transform="translate(605.000000, 140.000000)">
               <mask id="mask-2" fill="white">
                 <use xlinkHref="#path-1" />
               </mask>
               <use id="Mask" fill={colors.midnight} xlinkHref="#path-1" />
-              <g
-                id="Illustration-/-Source-/-Banking-Purple"
-                mask="url(#mask-2)"
-              >
+              <g mask="url(#mask-2)">
                 <g transform="translate(-31.000000, 28.000000)">
-                  <g
-                    id="Rectangle-42"
-                    transform="translate(94.365854, 64.482759)"
-                  >
+                  <g transform="translate(94.365854, 64.482759)">
                     <mask id="mask-4" fill="white">
                       <use xlinkHref="#path-3" />
                     </mask>
@@ -116,57 +107,46 @@ class AccountCircleIllustration extends PureComponent {
                   </g>
                   <g id="Group" transform="translate(65.926829, 15.475862)">
                     <polygon
-                      id="Triangle-4"
                       fill={fill}
                       opacity="0.1"
                       points="82.4645742 5.90121023 146.292826 39.2367208 18.6363225 39.2367208"
                     />
                     <polygon
-                      id="Triangle-4"
                       fill={fill}
                       opacity="0.1"
                       points="82.4645742 9.21073476 133.619184 35.9271963 31.3099646 35.9271963"
                     />
                     <polygon
-                      id="Rectangle-16"
                       fill={fill}
                       opacity="0.300000012"
                       points="33.5177559 54.1655172 45.0346543 54.1655172 45.0346543 125.096552 33.5177559 125.096552"
                     />
                     <polygon
-                      id="Rectangle-16-Copy-2"
                       fill={fill}
                       opacity="0.200000003"
                       points="102.619146 54.1655172 114.136045 54.1655172 114.136045 125.096552 102.619146 125.096552"
                     />
                     <polygon
-                      id="Rectangle-16-Copy-2"
                       fill={fill}
                       opacity="0.200000003"
                       points="85.3437988 54.1655172 96.8606972 54.1655172 96.8606972 125.096552 85.3437988 125.096552"
                     />
                     <polygon
-                      id="Rectangle-16-Copy"
                       fill={fill}
                       opacity="0.300000012"
                       points="50.7931035 54.1655172 62.310002 54.1655172 62.310002 125.096552 50.7931035 125.096552"
                     />
                     <polygon
-                      id="Rectangle-16-Copy"
                       fill={fill}
                       opacity="0.300000012"
                       points="68.0684512 54.1655172 79.5853496 54.1655172 79.5853496 125.096552 68.0684512 125.096552"
                     />
                     <polygon
-                      id="Rectangle-16-Copy-3"
                       fill={fill}
                       opacity="0.200000003"
                       points="119.894494 54.1655172 131.411392 54.1655172 131.411392 125.096552 119.894494 125.096552"
                     />
-                    <g
-                      id="Rectangle-42"
-                      transform="translate(28.439024, 125.096552)"
-                    >
+                    <g transform="translate(28.439024, 125.096552)">
                       <mask id="mask-6" fill="white">
                         <use xlinkHref="#path-5" />
                       </mask>
@@ -183,10 +163,7 @@ class AccountCircleIllustration extends PureComponent {
                         points="-40.0731707 -134.124138 54.2926829 -134.124138 54.2926829 16.7655172 -40.0731707 16.7655172"
                       />
                     </g>
-                    <g
-                      id="Rectangle-42"
-                      transform="translate(24.560976, 130.255172)"
-                    >
+                    <g transform="translate(24.560976, 130.255172)">
                       <mask id="mask-8" fill="white">
                         <use xlinkHref="#path-7" />
                       </mask>
@@ -223,7 +200,7 @@ class AccountCircleIllustration extends PureComponent {
                         points="-36.195122 -52.8758621 58.1707317 -52.8758621 58.1707317 98.0137931 -36.195122 98.0137931"
                       />
                     </g>
-                    <g id="Rectangle-42">
+                    <g>
                       <mask id="mask-12" fill="white">
                         <use xlinkHref="#path-11" />
                       </mask>

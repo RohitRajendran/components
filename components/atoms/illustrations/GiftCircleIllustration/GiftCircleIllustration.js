@@ -59,7 +59,6 @@ class GiftCircleIllustration extends PureComponent {
           <defs>
             <style>{`.gift-cls-1{fill:none;}.gift-cls-2{fill:#fde5cb;}.gift-cls-3{fill:#f17732;}.gift-cls-4{fill:#99052e;}.gift-cls-5{fill:#10004c;}.gift-cls-6{fill:#2870b5;}.gift-cls-7{fill:#5fcbeb;}.gift-cls-8{fill:#f8f7f4;}.gift-cls-9{fill:url(#_2-dot);}.gift-cls-10{fill:#feca1e;}.gift-cls-11{fill:url(#_4-dot);}.gift-cls-12{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -93,7 +91,6 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -110,11 +107,11 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-4" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="gift-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="gift-color-2">
+          <g>
             <path
               className="gift-cls-3"
               d="M50.42,57.06c0-1.79-2.39-10.53-8.69-16.51,20.63,0,25.36,12.71,39.48,16.73Z"
@@ -237,7 +234,6 @@ class GiftCircleIllustration extends PureComponent {
           <defs>
             <style>{`.gift-cls-1{fill:none;}.gift-cls-2{fill:#fde5cb;}.gift-cls-3{fill:#f17732;}.gift-cls-4{fill:#99052e;}.gift-cls-5{fill:#10004c;}.gift-cls-6{fill:#5fcbeb;}.gift-cls-7{fill:#f8f7f4;}.gift-cls-8{fill:url(#_2-dot);}.gift-cls-9{fill:#2870b5;}.gift-cls-10{fill:#feca1e;}.gift-cls-11{fill:url(#_4-dot);}.gift-cls-12{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -254,7 +250,6 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -271,7 +266,6 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -288,11 +282,11 @@ class GiftCircleIllustration extends PureComponent {
               <circle className="gift-cls-4" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="gift-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="gift-color">
+          <g>
             <path
               className="gift-cls-6"
               d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"
@@ -427,11 +421,11 @@ class GiftCircleIllustration extends PureComponent {
           <defs>
             <style>{`.gift-cls-1{fill:#5b6279;}.gift-cls-2{fill:#bdc0c9;}.gift-cls-3{fill:#8c91a1;}.gift-cls-4{fill:#dee0e4;}.gift-cls-5{fill:#cdcfd6;}.gift-cls-6{fill:#fff;}.gift-cls-7{fill:#eeeff1;}.gift-cls-8{fill:#6b7186;}.gift-cls-9{fill:#9da1af;}.gift-cls-10{fill:#adb0bc;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="gift-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="gift-gray">
+          <g>
             <path
               className="gift-cls-2"
               d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"
@@ -541,11 +535,11 @@ class GiftCircleIllustration extends PureComponent {
           <defs>
             <style>{`.gift-cls-1{fill:#10004c;}.gift-cls-2{fill:#9f99b7;}.gift-cls-3{fill:#584d82;}.gift-cls-4{fill:#cfccdb;}.gift-cls-5{fill:#b7b3c9;}.gift-cls-6{fill:#fff;}.gift-cls-7{fill:#e7e6ed;}.gift-cls-8{fill:#281a5e;}.gift-cls-9{fill:#6f6693;}.gift-cls-10{fill:#8780a5;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="gift-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="gift-purple">
+          <g>
             <path
               className="gift-cls-2"
               d="M100.34,39.88C97.2,34.83,84.82,50.5,77.58,53.63,86.26,51,94.24,40.93,96.66,43.22c2,1.88-1.45,7.28-19.08,10.41C96.72,53.3,103.46,44.89,100.34,39.88Z"

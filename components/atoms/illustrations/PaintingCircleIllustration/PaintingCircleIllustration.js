@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-/** Renders a gift illustration. */
+/** Renders a painting illustration. */
 class PaintingCircleIllustration extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
@@ -59,7 +59,6 @@ class PaintingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.painting-cls-1{fill:none;}.painting-cls-2{fill:#f17732;}.painting-cls-3{fill:#10004c;}.painting-cls-4{fill:#5fcbeb;}.painting-cls-5{fill:#2870b5;}.painting-cls-6{fill:#f8f7f4;}.painting-cls-7{fill:#99052e;}.painting-cls-8{fill:#feca1e;}.painting-cls-9{fill:url(#_4-dot);}.painting-cls-10{fill:#fde5cb;}.painting-cls-11{fill:url(#_4-dot-3);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -77,7 +76,6 @@ class PaintingCircleIllustration extends PureComponent {
               <circle className="painting-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot-3"
               data-name="4-dot"
               width="4"
               height="4"
@@ -95,12 +93,11 @@ class PaintingCircleIllustration extends PureComponent {
               <circle className="painting-cls-2" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+          <g>
             <circle className="painting-cls-3" cx="70" cy="70" r="70" />
             <circle className="painting-cls-3" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-other">
+          <g>
             <rect
               className="painting-cls-4"
               x="29.58"
@@ -232,7 +229,6 @@ class PaintingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.painting-cls-1{fill:none;}.painting-cls-2{fill:#f17732;}.painting-cls-3{fill:#10004c;}.painting-cls-4{fill:#5fcbeb;}.painting-cls-5{fill:#2870b5;}.painting-cls-6{fill:#f8f7f4;}.painting-cls-7{fill:#fde5cb;}.painting-cls-8{fill:#99052e;}.painting-cls-9{fill:#feca1e;}.painting-cls-10{fill:url(#_4-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -249,12 +245,12 @@ class PaintingCircleIllustration extends PureComponent {
               <circle className="painting-cls-2" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="painting-cls-3" cx="70" cy="70" r="70" />
             <circle className="painting-cls-3" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-other">
+          <g>
             <rect
               className="painting-cls-4"
               x="29.58"
@@ -397,11 +393,11 @@ class PaintingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.painting-cls-1{fill:#5b6279;}.painting-cls-2{fill:#bdc0c9;}.painting-cls-3{fill:#9da1af;}.painting-cls-4{fill:#fff;}.painting-cls-5{fill:#dee0e4;}.painting-cls-6{fill:#adb0bc;}.painting-cls-7{fill:#cdcfd6;}`}</style>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="painting-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-other">
+          <g>
             <rect
               className="painting-cls-2"
               x="29.58"
@@ -523,12 +519,12 @@ class PaintingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.painting-cls-1{fill:#10004c;}.painting-cls-2{fill:#9f99b7;}.painting-cls-3{fill:#6f6693;}.painting-cls-4{fill:#fff;}.painting-cls-5{fill:#cfccdb;}.painting-cls-6{fill:#8780a5;}.painting-cls-7{fill:#b7b3c9;}`}</style>
           </defs>
-          <title>app</title>
-          <g id="Circle-BG">
+
+          <g>
             <circle className="painting-cls-1" cx="70" cy="70" r="70" />
             <circle className="painting-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-other">
+          <g>
             <rect
               className="painting-cls-2"
               x="29.58"

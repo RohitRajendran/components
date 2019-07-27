@@ -59,7 +59,6 @@ class ShoppingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.shopping-cls-1{fill:none;}.shopping-cls-2{fill:#fde5cb;}.shopping-cls-3{fill:#f17732;}.shopping-cls-4{fill:#99052e;}.shopping-cls-5{fill:#10004c;}.shopping-cls-6{fill:#f8f7f4;}.shopping-cls-7{fill:url(#_2-dot);}.shopping-cls-8{fill:#feca1e;}.shopping-cls-9{fill:url(#_4-dot);}.shopping-cls-10{fill:url(#_5-dot);}.shopping-cls-11{fill:#5fcbeb;}.shopping-cls-12{fill:#2870b5;}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -93,7 +91,6 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -110,11 +107,10 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-4" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="shopping-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="experience-color-2">
+          <g>
             <rect
               className="shopping-cls-6"
               x="52.67"
@@ -279,7 +275,6 @@ class ShoppingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.shopping-cls-1{fill:none;}.shopping-cls-2{fill:#fde5cb;}.shopping-cls-3{fill:#f17732;}.shopping-cls-4{fill:#99052e;}.shopping-cls-5{fill:#10004c;}.shopping-cls-6{fill:#feca1e;}.shopping-cls-7{fill:url(#_4-dot);}.shopping-cls-8{fill:url(#_5-dot);}.shopping-cls-9{fill:#5fcbeb;}.shopping-cls-10{fill:#2870b5;}.shopping-cls-11{fill:#fff;}.shopping-cls-12{fill:#f8f7f4;}.shopping-cls-13{fill:url(#_2-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -296,7 +291,6 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-3" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -313,7 +307,6 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-4" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -330,11 +323,10 @@ class ShoppingCircleIllustration extends PureComponent {
               <circle className="shopping-cls-2" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="shopping-cls-5" cx="75" cy="75" r="70" />
           </g>
-          <g id="experience-color">
+          <g>
             <polygon
               className="shopping-cls-6"
               points="107.03 45.83 105.11 43.52 103.19 45.83 101.27 43.52 99.36 45.83 97.44 43.52 95.52 45.83 93.6 43.52 91.68 45.83 89.76 43.52 87.84 45.83 85.92 43.52 84 45.83 82.08 43.52 80.16 45.83 78.3 43.59 76.44 45.83 74.52 43.52 72.61 45.83 70.69 43.52 68.77 45.83 66.85 43.52 64.93 45.83 63.01 43.52 61.09 45.83 59.17 43.52 57.25 45.83 55.33 43.52 53.41 45.83 51.49 43.52 51.49 107.01 108.94 107.01 108.94 43.53 107.03 45.83"
@@ -563,10 +555,10 @@ class ShoppingCircleIllustration extends PureComponent {
             <style>{`.shopping-cls-1{fill:#5b6279;}.shopping-cls-2{fill:#adb0bc;}.shopping-cls-3{fill:#9da1af;}.shopping-cls-4{fill:#dee0e4;}.shopping-cls-5{fill:#cdcfd6;}.shopping-cls-6{fill:#fff;}.shopping-cls-7{fill:#bdc0c9;}.shopping-cls-8{fill:#eeeff1;}.shopping-cls-9{fill:#7c8194;}`}</style>
           </defs>
           <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="shopping-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="experience-gray">
+          <g>
             <polygon
               className="shopping-cls-2"
               points="107.03 45.83 105.11 43.52 103.19 45.83 101.27 43.52 99.36 45.83 97.44 43.52 95.52 45.83 93.6 43.52 91.68 45.83 89.76 43.52 87.84 45.83 85.92 43.52 84 45.83 82.08 43.52 80.16 45.83 78.3 43.59 76.44 45.83 74.52 43.52 72.61 45.83 70.69 43.52 68.77 45.83 66.85 43.52 64.93 45.83 63.01 43.52 61.09 45.83 59.17 43.52 57.25 45.83 55.33 43.52 53.41 45.83 51.49 43.52 51.49 107.01 108.94 107.01 108.94 43.53 107.03 45.83"
@@ -666,10 +658,10 @@ class ShoppingCircleIllustration extends PureComponent {
             <style>{`.shopping-cls-1{fill:#10004c;}.shopping-cls-2{fill:#6f6693;}.shopping-cls-3{fill:#584d82;}.shopping-cls-4{fill:#cfccdb;}.shopping-cls-5{fill:#b7b3c9;}.shopping-cls-6{fill:#fff;}.shopping-cls-7{fill:#3f336f;}.shopping-cls-8{fill:#281a5e;}.shopping-cls-9{fill:#9f99b7;}.shopping-cls-10{fill:#8780a5;}.shopping-cls-11{fill:#e7e6ed;}.shopping-cls-12{fill:#f8f7f4;}`}</style>
           </defs>
           <title>circle</title>
-          <g id="Backgrounds">
+          <g>
             <circle className="shopping-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="experience-purple">
+          <g>
             <polygon
               className="shopping-cls-2"
               points="107.03 45.83 105.11 43.52 103.19 45.83 101.27 43.52 99.36 45.83 97.44 43.52 95.52 45.83 93.6 43.52 91.68 45.83 89.76 43.52 87.84 45.83 85.92 43.52 84 45.83 82.08 43.52 80.16 45.83 78.3 43.59 76.44 45.83 74.52 43.52 72.61 45.83 70.69 43.52 68.77 45.83 66.85 43.52 64.93 45.83 63.01 43.52 61.09 45.83 59.17 43.52 57.25 45.83 55.33 43.52 53.41 45.83 51.49 43.52 51.49 107.01 108.94 107.01 108.94 43.53 107.03 45.83"
