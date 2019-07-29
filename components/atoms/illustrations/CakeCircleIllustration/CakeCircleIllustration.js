@@ -43,10 +43,9 @@ class CakeCircleIllustration extends PureComponent {
     if (illuminate || this.state.illuminated) {
       return (
         <svg
+          {...elementProps}
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          width="140"
-          height="140"
           viewBox="0 0 140 140"
         >
           <defs>
