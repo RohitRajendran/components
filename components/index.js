@@ -38,6 +38,10 @@ import TwitterIcon from '~components/atoms/icons/TwitterIcon/TwitterIcon';
 import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
 import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
+import CakeCircleIllustration from '~components/atoms/illustrations/CakeCircleIllustration/CakeCircleIllustration';
+import MoneyCircleIllustration from '~components/atoms/illustrations/MoneyCircleIllustration/MoneyCircleIllustration';
+import HealthMeterCircleIllustration from '~components/atoms/illustrations/HealthMeterCircleIllustration/HealthMeterCircleIllustration';
+import GingerBreadCircleIllustration from '~components/atoms/illustrations/GingerBreadCircleIllustration/GingerBreadCircleIllustration';
 import Slider from '~components/atoms/Slider/Slider';
 import BubbleDropdown from '~components/atoms/BubbleDropdown/BubbleDropdown';
 import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
@@ -161,4 +165,8 @@ export {
   ProfileCircleIllustration,
   ShoppingCircleIllustration,
   RamenCircleIllustration,
+  CakeCircleIllustration,
+  GingerBreadCircleIllustration,
+  HealthMeterCircleIllustration,
+  MoneyCircleIllustration,
 };
