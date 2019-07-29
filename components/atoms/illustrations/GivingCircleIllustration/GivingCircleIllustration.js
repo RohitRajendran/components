@@ -59,7 +59,6 @@ class GivingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.giving-cls-1{fill:none;}.giving-cls-2{fill:#f17732;}.giving-cls-3{fill:#99052e;}.giving-cls-12,.giving-cls-4{fill:#10004c;}.giving-cls-5,.giving-cls-7{fill:#5fcbeb;}.giving-cls-6,.giving-cls-8{fill:#2870b5;}.giving-cls-12,.giving-cls-7,.giving-cls-8{fill-rule:evenodd;}.giving-cls-9{fill:#feca1e;}.giving-cls-10{fill:url(#_4-dot);}.giving-cls-11{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class GivingCircleIllustration extends PureComponent {
               <circle className="giving-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -93,12 +91,12 @@ class GivingCircleIllustration extends PureComponent {
               <circle className="giving-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="giving-cls-4" cx="75" cy="75" r="70" />
             <circle className="giving-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="bequest-color-2">
+          <g>
             <path
               className="giving-cls-5"
               d="M76,5a15.6,15.6,0,0,0,3,3.83c2.46,2.43-2.2,6.43-3.62,12-1,3.8,0,10.27,3.81,10.27,2.25,0,1-2.85,2.44-6.84.73-2,3.91-6,6.33-8.52,1.7-1.74,2-6,3-9A69.88,69.88,0,0,0,76,5Z"
@@ -200,7 +198,6 @@ class GivingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.giving-cls-1{fill:none;}.giving-cls-2{fill:#f17732;}.giving-cls-3{fill:#99052e;}.giving-cls-11,.giving-cls-4{fill:#10004c;}.giving-cls-5,.giving-cls-7{fill:#5fcbeb;}.giving-cls-11,.giving-cls-5,.giving-cls-6{fill-rule:evenodd;}.giving-cls-6{fill:#2870b5;}.giving-cls-8{fill:#feca1e;}.giving-cls-9{fill:url(#_4-dot);}.giving-cls-10{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -217,7 +214,6 @@ class GivingCircleIllustration extends PureComponent {
               <circle className="giving-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -234,12 +230,12 @@ class GivingCircleIllustration extends PureComponent {
               <circle className="giving-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="giving-cls-4" cx="75" cy="75" r="70" />
             <circle className="giving-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="bequest-color">
+          <g>
             <path
               className="giving-cls-5"
               d="M137.88,105.78,116.66,82.14a12.28,12.28,0,0,0-12.48-6.51,17.62,17.62,0,0,0-5.63,1.71q-5.73,2.56-19.79,9.87a.69.69,0,0,0-.37.55l-21.9.18a.54.54,0,0,0-.22,0L43,80.65a2.79,2.79,0,0,0-3.8,1.09L38.56,83a1.39,1.39,0,0,0,.54,1.9l16.76,9.29a.74.74,0,0,0,.36.24l25.43,7a.72.72,0,0,0,.61.22Q105,98.32,109.78,101l12.38,25.77A70.21,70.21,0,0,0,137.88,105.78Z"
@@ -324,11 +320,11 @@ class GivingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.giving-cls-1,.giving-cls-9{fill:#5b6279;}.giving-cls-2{fill:#9da1af;}.giving-cls-2,.giving-cls-3,.giving-cls-9{fill-rule:evenodd;}.giving-cls-3,.giving-cls-4{fill:#8c91a1;}.giving-cls-5{fill:#bdc0c9;}.giving-cls-6{fill:#cdcfd6;}.giving-cls-7{fill:#eeeff1;}.giving-cls-8{fill:#dee0e4;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="giving-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="bequest-gray">
+          <g>
             <path
               className="giving-cls-2"
               d="M137.88,105.78,116.66,82.14a12.28,12.28,0,0,0-12.48-6.51,17.62,17.62,0,0,0-5.63,1.71q-5.73,2.56-19.79,9.87a.69.69,0,0,0-.37.55l-21.9.18a.54.54,0,0,0-.22,0L43,80.65a2.79,2.79,0,0,0-3.8,1.09L38.56,83a1.39,1.39,0,0,0,.54,1.9l16.76,9.29a.74.74,0,0,0,.36.24l25.43,7a.72.72,0,0,0,.61.22Q105,98.32,109.78,101l12.38,25.77A70.21,70.21,0,0,0,137.88,105.78Z"
@@ -402,12 +398,12 @@ class GivingCircleIllustration extends PureComponent {
           <defs>
             <style>{`.giving-cls-1,.giving-cls-9{fill:#10004c;}.giving-cls-2{fill:#6f6693;}.giving-cls-2,.giving-cls-3,.giving-cls-9{fill-rule:evenodd;}.giving-cls-3,.giving-cls-4{fill:#584d82;}.giving-cls-5{fill:#9f99b7;}.giving-cls-6{fill:#b7b3c9;}.giving-cls-7{fill:#e7e6ed;}.giving-cls-8{fill:#cfccdb;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="giving-cls-1" cx="75" cy="75" r="70" />
             <circle className="giving-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="bequest-purple">
+          <g>
             <path
               className="giving-cls-2"
               d="M137.88,105.78,116.66,82.14a12.28,12.28,0,0,0-12.48-6.51,17.62,17.62,0,0,0-5.63,1.71q-5.73,2.56-19.79,9.87a.69.69,0,0,0-.37.55l-21.9.18a.54.54,0,0,0-.22,0L43,80.65a2.79,2.79,0,0,0-3.8,1.09L38.56,83a1.39,1.39,0,0,0,.54,1.9l16.76,9.29a.74.74,0,0,0,.36.24l25.43,7a.72.72,0,0,0,.61.22Q105,98.32,109.78,101l12.38,25.77A70.21,70.21,0,0,0,137.88,105.78Z"

@@ -33,7 +33,6 @@ const CompassCircleIllustration = ({
       <defs>
         <style>{`.compass-illustration-1{fill:none;}.compass-illustration-2{fill:#fde5cb;}.compass-illustration-3{fill:#f17732;}.compass-illustration-4{fill:#99052e;}.compass-illustration-5{fill:#10004c;}.compass-illustration-6{fill:#5fcbeb;}.compass-illustration-7{fill:#2870b5;}.compass-illustration-8{fill:#feca1e;}.compass-illustration-9{fill:url(#_4-dot);}.compass-illustration-10{fill:url(#_5-dot);}.compass-illustration-11{fill:#f8f7f4;}.compass-illustration-12{fill:url(#_2-dot);}.compass-illustration-13{clip-path:url(#clip-path);}`}</style>
         <pattern
-          id="_4-dot"
           data-name="4-dot"
           width="4"
           height="4"
@@ -50,7 +49,6 @@ const CompassCircleIllustration = ({
           <circle className="compass-illustration-3" cx="1" r="0.35" />
         </pattern>
         <pattern
-          id="_5-dot"
           data-name="5-dot"
           width="4"
           height="4"
@@ -67,7 +65,6 @@ const CompassCircleIllustration = ({
           <circle className="compass-illustration-4" cx="1" r="0.35" />
         </pattern>
         <pattern
-          id="_2-dot"
           data-name="2-dot"
           width="4"
           height="4"
@@ -92,10 +89,10 @@ const CompassCircleIllustration = ({
           />
         </clipPath>
       </defs>
-      <g id="Circle-BG">
+      <g>
         <circle className="compass-illustration-5" cx="70" cy="70" r="70" />
       </g>
-      <g id="_404" data-name="404">
+      <g data-name="404">
         <circle className="compass-illustration-6" cx="70" cy="19.71" r="5.9" />
         <circle
           className="compass-illustration-5"

@@ -59,7 +59,6 @@ class HomeCircleIllustration extends PureComponent {
           <defs>
             <style>{`.home-cls-1{fill:none;}.home-cls-2{fill:#fde5cb;}.home-cls-3{fill:#f17732;}.home-cls-4{fill:#10004c;}.home-cls-5{fill:#5fcbeb;}.home-cls-6{fill:#2870b5;}.home-cls-7{fill:#feca1e;}.home-cls-8{fill:#f8f7f4;}.home-cls-9{fill:url(#_2-dot);}.home-cls-10{fill:#99052e;}.home-cls-11{fill:url(#_4-dot);}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -77,7 +76,6 @@ class HomeCircleIllustration extends PureComponent {
               <circle className="home-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -95,10 +93,10 @@ class HomeCircleIllustration extends PureComponent {
               <circle className="home-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <g id="Circle-BG">
+          <g>
             <circle className="home-cls-4" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-house">
+          <g>
             <rect
               className="home-cls-5"
               x="32.07"
@@ -279,7 +277,6 @@ class HomeCircleIllustration extends PureComponent {
           <defs>
             <style>{`.home-cls-1{fill:none;}.home-cls-2{fill:#fde5cb;}.home-cls-3{fill:#f17732;}.home-cls-4{fill:#10004c;}.home-cls-5{fill:#5fcbeb;}.home-cls-6{fill:#2870b5;}.home-cls-7{fill:#f8f7f4;}.home-cls-8{fill:url(#_2-dot);}.home-cls-9{fill:#feca1e;}.home-cls-10{fill:#99052e;}.home-cls-11{fill:url(#_4-dot);}`}</style>
             <pattern
-              id="_2-dot"
               data-name="2-dot"
               width="4"
               height="4"
@@ -297,7 +294,6 @@ class HomeCircleIllustration extends PureComponent {
               <circle className="home-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -315,10 +311,10 @@ class HomeCircleIllustration extends PureComponent {
               <circle className="home-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <g id="Circle-BG">
+          <g>
             <circle className="home-cls-4" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-house">
+          <g>
             <rect
               className="home-cls-5"
               x="32.07"
@@ -498,10 +494,10 @@ class HomeCircleIllustration extends PureComponent {
           <defs>
             <style>{`.home-cls-1{fill:#5b6279;}.home-cls-2{fill:#cdcfd6;}.home-cls-3{fill:#9da1af;}.home-cls-4{fill:#8c91a1;}.home-cls-5{fill:#fff;}.home-cls-6{fill:#feca1e;}.home-cls-7{fill:#eeeff1;}.home-cls-8{fill:#f17732;}.home-cls-9{fill:#6b7186;}.home-cls-10{fill:#adb0bc;}`}</style>
           </defs>
-          <g id="Circle-BG">
+          <g>
             <circle className="home-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-house">
+          <g>
             <rect
               className="home-cls-2"
               x="32.07"
@@ -669,10 +665,10 @@ class HomeCircleIllustration extends PureComponent {
           <defs>
             <style>{`.home-cls-1{fill:#10004c;}.home-cls-2{fill:#b7b3c9;}.home-cls-3{fill:#6f6693;}.home-cls-4{fill:#584d82;}.home-cls-5{fill:#fff;}.home-cls-6{fill:#feca1e;}.home-cls-7{fill:#e7e6ed;}.home-cls-8{fill:#f17732;}.home-cls-9{fill:#281a5e;}.home-cls-10{fill:#8780a5;}`}</style>
           </defs>
-          <g id="Circle-BG">
+          <g>
             <circle className="home-cls-1" cx="70" cy="70" r="70" />
           </g>
-          <g id="asset-house">
+          <g>
             <rect
               className="home-cls-2"
               x="32.07"

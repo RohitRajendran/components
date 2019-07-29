@@ -59,7 +59,6 @@ class HealthCircleIllustration extends PureComponent {
           <defs>
             <style>{`.health-cls-1{fill:none;}.health-cls-2{fill:#f17732;}.health-cls-3{fill:#99052e;}.health-cls-4{fill:#10004c;}.health-cls-5{fill:#2870b5;}.health-cls-6{fill:#5fcbeb;}.health-cls-7{fill:#feca1e;}.health-cls-8{fill:url(#_4-dot);}.health-cls-9{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -76,7 +75,6 @@ class HealthCircleIllustration extends PureComponent {
               <circle className="health-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -93,11 +91,11 @@ class HealthCircleIllustration extends PureComponent {
               <circle className="health-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="health-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="health-color-2">
+          <g>
             <path
               className="health-cls-5"
               d="M102.82,34.23C102,33,99,31.79,89.11,32.62a1.34,1.34,0,0,0,.23,2.68c5.12-.43,10.31-.22,11.2.38.73,2.81,0,27.41-8.7,39.66-3.1,4.38-6.86,6.6-11.18,6.6s-8.07-2.22-11.17-6.6c-8.65-12.2-9.42-36.65-8.71-39.63,1.06-.64,6.17-.83,11.21-.41a1.34,1.34,0,1,0,.22-2.68c-9.9-.83-12.92.42-13.7,1.61-1.42,2.15-.79,25.33,6.76,39.38,3.94,7.31,9.11,11,15.39,11s11.47-3.71,15.4-11C103.61,59.56,104.24,36.38,102.82,34.23Z"
@@ -181,7 +179,6 @@ class HealthCircleIllustration extends PureComponent {
           <defs>
             <style>{`.health-cls-1{fill:none;}.health-cls-2{fill:#f17732;}.health-cls-3{fill:#99052e;}.health-cls-4{fill:#10004c;}.health-cls-5{fill:#2870b5;}.health-cls-6{fill:#5fcbeb;}.health-cls-7{fill:#feca1e;}.health-cls-8{fill:url(#_4-dot);}.health-cls-9{fill:url(#_5-dot);}`}</style>
             <pattern
-              id="_4-dot"
               data-name="4-dot"
               width="4"
               height="4"
@@ -198,7 +195,6 @@ class HealthCircleIllustration extends PureComponent {
               <circle className="health-cls-2" cx="1" r="0.35" />
             </pattern>
             <pattern
-              id="_5-dot"
               data-name="5-dot"
               width="4"
               height="4"
@@ -215,11 +211,11 @@ class HealthCircleIllustration extends PureComponent {
               <circle className="health-cls-3" cx="1" r="0.35" />
             </pattern>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="health-cls-4" cx="75" cy="75" r="70" />
           </g>
-          <g id="health-color">
+          <g>
             <path
               className="health-cls-5"
               d="M102.82,34.23C102,33,99,31.79,89.11,32.62a1.34,1.34,0,0,0,.23,2.68c5.12-.43,10.31-.22,11.2.38.73,2.81,0,27.41-8.7,39.66-3.1,4.38-6.86,6.6-11.18,6.6s-8.07-2.22-11.17-6.6c-8.65-12.2-9.42-36.65-8.71-39.63,1.06-.64,6.17-.83,11.21-.41a1.34,1.34,0,1,0,.22-2.68c-9.9-.83-12.92.42-13.7,1.61-1.42,2.15-.79,25.33,6.76,39.38,3.94,7.31,9.11,11,15.39,11s11.47-3.71,15.4-11C103.61,59.56,104.24,36.38,102.82,34.23Z"
@@ -302,11 +298,11 @@ class HealthCircleIllustration extends PureComponent {
           <defs>
             <style>{`.health-cls-1{fill:#5b6279;}.health-cls-2{fill:#9da1af;}.health-cls-3{fill:#7c8194;}.health-cls-4{fill:#8c91a1;}.health-cls-5{fill:#bdc0c9;}.health-cls-6{fill:#dee0e4;}.health-cls-7{fill:#fff;}.health-cls-8{fill:#eeeff1;}.health-cls-9{fill:#cdcfd6;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="health-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="health-gray">
+          <g>
             <path
               className="health-cls-2"
               d="M102.82,34.23C102,33,99,31.79,89.11,32.62a1.34,1.34,0,0,0,.23,2.68c5.12-.43,10.31-.22,11.2.38.73,2.81,0,27.41-8.7,39.66-3.1,4.38-6.86,6.6-11.18,6.6s-8.07-2.22-11.17-6.6c-8.65-12.2-9.42-36.65-8.71-39.63,1.06-.64,6.17-.83,11.21-.41a1.34,1.34,0,1,0,.22-2.68c-9.9-.83-12.92.42-13.7,1.61-1.42,2.15-.79,25.33,6.76,39.38,3.94,7.31,9.11,11,15.39,11s11.47-3.71,15.4-11C103.61,59.56,104.24,36.38,102.82,34.23Z"
@@ -379,11 +375,11 @@ class HealthCircleIllustration extends PureComponent {
           <defs>
             <style>{`.health-cls-1{fill:#10004c;}.health-cls-2{fill:#6f6693;}.health-cls-3{fill:#3f336f;}.health-cls-4{fill:#584d82;}.health-cls-5{fill:#9f99b7;}.health-cls-6{fill:#cfccdb;}.health-cls-7{fill:#fff;}`}</style>
           </defs>
-          <title>circle</title>
-          <g id="Backgrounds">
+
+          <g>
             <circle className="health-cls-1" cx="75" cy="75" r="70" />
           </g>
-          <g id="health-purple">
+          <g>
             <path
               className="health-cls-2"
               d="M102.82,34.23C102,33,99,31.79,89.11,32.62a1.34,1.34,0,0,0,.23,2.68c5.12-.43,10.31-.22,11.2.38.73,2.81,0,27.41-8.7,39.66-3.1,4.38-6.86,6.6-11.18,6.6s-8.07-2.22-11.17-6.6c-8.65-12.2-9.42-36.65-8.71-39.63,1.06-.64,6.17-.83,11.21-.41a1.34,1.34,0,1,0,.22-2.68c-9.9-.83-12.92.42-13.7,1.61-1.42,2.15-.79,25.33,6.76,39.38,3.94,7.31,9.11,11,15.39,11s11.47-3.71,15.4-11C103.61,59.56,104.24,36.38,102.82,34.23Z"
