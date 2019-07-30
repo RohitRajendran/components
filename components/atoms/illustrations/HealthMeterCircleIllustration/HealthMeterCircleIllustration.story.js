@@ -12,7 +12,7 @@ const stories = storiesOf(
 
 stories.addDecorator(withReadme(HealthMeterCircleIllustrationReadMe));
 
-const defaultProps = (color, draft, illuminate) => ({
+const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
   illuminate: boolean('illuminate', illuminate),

@@ -32,6 +32,7 @@ class PaintingCircleIllustration extends PureComponent {
       height,
       className,
       style,
+      id,
     } = this.props;
 
     const elementProps = {
@@ -52,588 +53,245 @@ class PaintingCircleIllustration extends PureComponent {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 140 140"
         >
-          <defs>
-            <style>{`.painting-cls-1{fill:none;}.painting-cls-2{fill:#f17732;}.painting-cls-3{fill:#10004c;}.painting-cls-4{fill:#5fcbeb;}.painting-cls-5{fill:#2870b5;}.painting-cls-6{fill:#f8f7f4;}.painting-cls-7{fill:#99052e;}.painting-cls-8{fill:#feca1e;}.painting-cls-9{fill:url(#_4-dot);}.painting-cls-10{fill:#fde5cb;}.painting-cls-11{fill:url(#_4-dot-3);}`}</style>
-            <pattern
-              data-name="4-dot"
-              width="4"
-              height="4"
-              patternTransform="translate(1.02 3.87)"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="painting-cls-1" width="4" height="4" />
-              <circle className="painting-cls-2" cx="3" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="1" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="4" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="3" r="0.35" />
-              <circle className="painting-cls-2" cx="1" r="0.35" />
-            </pattern>
-            <pattern
-              data-name="4-dot"
-              width="4"
-              height="4"
-              patternTransform="translate(0.78 -0.23) rotate(-90)"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="painting-cls-1" width="4" height="4" />
-              <circle className="painting-cls-2" cx="3" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="1" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="4" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="3" r="0.35" />
-              <circle className="painting-cls-2" cx="1" r="0.35" />
-            </pattern>
-          </defs>
-          <g>
-            <circle className="painting-cls-3" cx="70" cy="70" r="70" />
-            <circle className="painting-cls-3" cx="70" cy="70" r="70" />
-          </g>
-          <g>
-            <rect
-              className="painting-cls-4"
-              x="29.58"
-              y="36.99"
-              width="80.85"
-              height="66.01"
-            />
-            <path
-              className="painting-cls-5"
-              d="M110.42,103H29.58V37C54,103,110.42,103,110.42,103Z"
-            />
-            <rect
-              className="painting-cls-3"
-              x="35.49"
-              y="42.78"
-              width="69.01"
-              height="54.44"
-            />
-            <rect
-              className="painting-cls-6"
-              x="35.57"
-              y="42.78"
-              width="25.07"
-              height="9.2"
-            />
-            <rect
-              className="painting-cls-6"
-              x="87.42"
-              y="66.82"
-              width="10.38"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-7"
-              x="87.42"
-              y="42.78"
-              width="17.08"
-              height="22.5"
-            />
-            <rect
-              className="painting-cls-6"
-              x="74.15"
-              y="42.78"
-              width="11.76"
-              height="36.58"
-            />
-            <rect
-              className="painting-cls-6"
-              x="87.42"
-              y="81.03"
-              width="17.08"
-              height="16.16"
-            />
-            <rect
-              className="painting-cls-8"
-              x="99.38"
-              y="66.82"
-              width="5.13"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-9"
-              x="99.38"
-              y="66.82"
-              width="5.13"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-10"
-              x="55.52"
-              y="80.11"
-              width="5.14"
-              height="29.03"
-              transform="translate(-36.53 152.71) rotate(-90)"
-            />
-            <rect
-              className="painting-cls-6"
-              x="77.46"
-              y="88.74"
-              width="5.14"
-              height="11.76"
-              transform="translate(-14.59 174.65) rotate(-90)"
-            />
-            <path
-              className="painting-cls-10"
-              d="M74.15,92.16v5H84.7A87.57,87.57,0,0,1,74.15,92.16Z"
-            />
-            <rect
-              className="painting-cls-7"
-              x="36.21"
-              y="91.4"
-              width="5.14"
-              height="6.43"
-              transform="translate(-55.84 133.4) rotate(-90)"
-            />
-            <rect
-              className="painting-cls-6"
-              x="62.13"
-              y="42.78"
-              width="10.47"
-              height="9.2"
-            />
-            <rect
-              className="painting-cls-8"
-              x="35.49"
-              y="53.44"
-              width="37.04"
-              height="37.04"
-            />
-            <polygon
-              className="painting-cls-11"
-              points="72.59 53.38 72.59 90.48 35.49 90.48 35.49 53.38 72.59 53.38"
-            />
-            <path
-              className="painting-cls-2"
-              d="M35.49,90.48h35.8c-11.93-7.3-24.48-18.84-34.35-37.1H35.49Z"
-            />
-          </g>
+          <pattern
+            id={`${id}-a`}
+            height="4"
+            patternTransform="translate(1.02 3.87)"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#f17732" r=".35" />
+            <circle cx="1" cy="4" fill="#f17732" r=".35" />
+            <circle cx="4" cy="2" fill="#f17732" r=".35" />
+            <circle cx="2" cy="2" fill="#f17732" r=".35" />
+            <circle cy="2" fill="#f17732" r=".35" />
+            <circle cx="3" fill="#f17732" r=".35" />
+            <circle cx="1" fill="#f17732" r=".35" />
+          </pattern>
+          <pattern
+            id={`${id}-b`}
+            height="4"
+            patternTransform="matrix(0 -1 1 0 .78 -.23)"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#f17732" r=".35" />
+            <circle cx="1" cy="4" fill="#f17732" r=".35" />
+            <circle cx="4" cy="2" fill="#f17732" r=".35" />
+            <circle cx="2" cy="2" fill="#f17732" r=".35" />
+            <circle cy="2" fill="#f17732" r=".35" />
+            <circle cx="3" fill="#f17732" r=".35" />
+            <circle cx="1" fill="#f17732" r=".35" />
+          </pattern>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path d="m29.58 36.99h80.85v66.01h-80.85z" fill="#5fcbeb" />
+          <path
+            d="m110.42 103h-80.84v-66c24.42 66 80.84 66 80.84 66z"
+            fill="#2870b5"
+          />
+          <path d="m35.49 42.78h69.01v54.44h-69.01z" fill="#10004c" />
+          <path d="m35.57 42.78h25.07v9.2h-25.07z" fill="#f8f7f4" />
+          <path d="m87.42 66.82h10.38v12.54h-10.38z" fill="#f8f7f4" />
+          <path d="m87.42 42.78h17.08v22.5h-17.08z" fill="#99052e" />
+          <path d="m74.15 42.78h11.76v36.58h-11.76z" fill="#f8f7f4" />
+          <path d="m87.42 81.03h17.08v16.16h-17.08z" fill="#f8f7f4" />
+          <path d="m99.38 66.82h5.13v12.54h-5.13z" fill="#feca1e" />
+          <path d="m99.38 66.82h5.13v12.54h-5.13z" fill={`url(#${id}-a)`} />
+          <path
+            d="m55.52 80.11h5.14v29.03h-5.14z"
+            fill="#fde5cb"
+            transform="matrix(0 -1 1 0 -36.53 152.71)"
+          />
+          <path
+            d="m77.46 88.74h5.14v11.76h-5.14z"
+            fill="#f8f7f4"
+            transform="matrix(0 -1 1 0 -14.59 174.65)"
+          />
+          <path
+            d="m74.15 92.16v5h10.55a87.57 87.57 0 0 1 -10.55-5z"
+            fill="#fde5cb"
+          />
+          <path
+            d="m36.21 91.4h5.14v6.43h-5.14z"
+            fill="#99052e"
+            transform="matrix(0 -1 1 0 -55.84 133.4)"
+          />
+          <path d="m62.13 42.78h10.47v9.2h-10.47z" fill="#f8f7f4" />
+          <path d="m35.49 53.44h37.04v37.04h-37.04z" fill="#feca1e" />
+          <path d="m72.59 53.38v37.1h-37.1v-37.1z" fill={`url(#${id}-b)`} />
+          <path
+            d="m35.49 90.48h35.8c-11.93-7.3-24.48-18.84-34.35-37.1h-1.45z"
+            fill="#f17732"
+          />
         </svg>
       );
     } else if (color) {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 140 140"
         >
-          <defs>
-            <style>{`.painting-cls-1{fill:none;}.painting-cls-2{fill:#f17732;}.painting-cls-3{fill:#10004c;}.painting-cls-4{fill:#5fcbeb;}.painting-cls-5{fill:#2870b5;}.painting-cls-6{fill:#f8f7f4;}.painting-cls-7{fill:#fde5cb;}.painting-cls-8{fill:#99052e;}.painting-cls-9{fill:#feca1e;}.painting-cls-10{fill:url(#_4-dot);}`}</style>
-            <pattern
-              data-name="4-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="painting-cls-1" width="4" height="4" />
-              <circle className="painting-cls-2" cx="3" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="1" cy="4" r="0.35" />
-              <circle className="painting-cls-2" cx="4" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cy="2" r="0.35" />
-              <circle className="painting-cls-2" cx="3" r="0.35" />
-              <circle className="painting-cls-2" cx="1" r="0.35" />
-            </pattern>
-          </defs>
-
-          <g>
-            <circle className="painting-cls-3" cx="70" cy="70" r="70" />
-            <circle className="painting-cls-3" cx="70" cy="70" r="70" />
-          </g>
-          <g>
-            <rect
-              className="painting-cls-4"
-              x="29.58"
-              y="36.99"
-              width="80.85"
-              height="66.01"
-            />
-            <path
-              className="painting-cls-5"
-              d="M110.42,103H29.58V37C54,103,110.42,103,110.42,103Z"
-            />
-            <rect
-              className="painting-cls-3"
-              x="35.49"
-              y="42.78"
-              width="69.01"
-              height="54.44"
-            />
-            <rect
-              className="painting-cls-6"
-              x="35.49"
-              y="70.4"
-              width="23.65"
-              height="26.82"
-            />
-            <path
-              className="painting-cls-7"
-              d="M59.14,81.57A95.37,95.37,0,0,1,48.32,70.4H35.49V97.22H59.14Z"
-            />
-            <rect
-              className="painting-cls-8"
-              x="60.82"
-              y="42.78"
-              width="37.04"
-              height="37.04"
-            />
-            <rect
-              className="painting-cls-6"
-              x="48.76"
-              y="56.16"
-              width="10.38"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-6"
-              x="48.76"
-              y="42.78"
-              width="10.38"
-              height="11.84"
-            />
-            <rect
-              className="painting-cls-9"
-              x="35.49"
-              y="42.78"
-              width="11.76"
-              height="25.92"
-            />
-            <rect
-              className="painting-cls-6"
-              x="79.34"
-              y="81.52"
-              width="25.17"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-7"
-              d="M79.34,94.85v2.37h5.43Q82.12,96.17,79.34,94.85Z"
-            />
-            <rect
-              className="painting-cls-9"
-              x="60.82"
-              y="81.52"
-              width="4.53"
-              height="15.7"
-            />
-            <rect
-              className="painting-cls-10"
-              x="60.82"
-              y="81.52"
-              width="4.53"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-2"
-              d="M65.35,86.51c-1.51-1.1-3-2.26-4.53-3.51V97.22h4.53Z"
-            />
-            <rect
-              className="painting-cls-6"
-              x="99.37"
-              y="50.79"
-              width="5.14"
-              height="29.03"
-            />
-            <rect
-              className="painting-cls-9"
-              x="99.37"
-              y="42.78"
-              width="5.14"
-              height="6.43"
-            />
-            <rect
-              className="painting-cls-10"
-              x="35.49"
-              y="42.78"
-              width="11.76"
-              height="25.92"
-            />
-            <rect
-              className="painting-cls-10"
-              x="99.37"
-              y="42.78"
-              width="5.14"
-              height="6.43"
-            />
-            <rect
-              className="painting-cls-6"
-              x="66.98"
-              y="91.02"
-              width="10.47"
-              height="6.2"
-            />
-            <path
-              className="painting-cls-7"
-              d="M77.45,93.92q-2.6-1.32-5.27-2.9H67v6.2H77.45Z"
-            />
-            <path
-              className="painting-cls-2"
-              d="M35.49,50.6V68.7H47A108.76,108.76,0,0,1,35.49,50.6Z"
-            />
-          </g>
+          <pattern
+            id={`${id}-a`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#f17732" r=".35" />
+            <circle cx="1" cy="4" fill="#f17732" r=".35" />
+            <circle cx="4" cy="2" fill="#f17732" r=".35" />
+            <circle cx="2" cy="2" fill="#f17732" r=".35" />
+            <circle cy="2" fill="#f17732" r=".35" />
+            <circle cx="3" fill="#f17732" r=".35" />
+            <circle cx="1" fill="#f17732" r=".35" />
+          </pattern>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path d="m29.58 36.99h80.85v66.01h-80.85z" fill="#5fcbeb" />
+          <path
+            d="m110.42 103h-80.84v-66c24.42 66 80.84 66 80.84 66z"
+            fill="#2870b5"
+          />
+          <path d="m35.49 42.78h69.01v54.44h-69.01z" fill="#10004c" />
+          <path d="m35.49 70.4h23.65v26.82h-23.65z" fill="#f8f7f4" />
+          <path
+            d="m59.14 81.57a95.37 95.37 0 0 1 -10.82-11.17h-12.83v26.82h23.65z"
+            fill="#fde5cb"
+          />
+          <path d="m60.82 42.78h37.04v37.04h-37.04z" fill="#99052e" />
+          <path d="m48.76 56.16h10.38v12.54h-10.38z" fill="#f8f7f4" />
+          <path d="m48.76 42.78h10.38v11.84h-10.38z" fill="#f8f7f4" />
+          <path d="m35.49 42.78h11.76v25.92h-11.76z" fill="#feca1e" />
+          <path d="m79.34 81.52h25.17v15.7h-25.17z" fill="#f8f7f4" />
+          <path
+            d="m79.34 94.85v2.37h5.43q-2.65-1.05-5.43-2.37z"
+            fill="#fde5cb"
+          />
+          <path d="m60.82 81.52h4.53v15.7h-4.53z" fill="#feca1e" />
+          <path d="m60.82 81.52h4.53v15.7h-4.53z" fill={`url(#${id}-a)`} />
+          <path
+            d="m65.35 86.51c-1.51-1.1-3-2.26-4.53-3.51v14.22h4.53z"
+            fill="#f17732"
+          />
+          <path d="m99.37 50.79h5.14v29.03h-5.14z" fill="#f8f7f4" />
+          <path d="m99.37 42.78h5.14v6.43h-5.14z" fill="#feca1e" />
+          <path d="m35.49 42.78h11.76v25.92h-11.76z" fill={`url(#${id}-a)`} />
+          <path d="m99.37 42.78h5.14v6.43h-5.14z" fill={`url(#${id}-a)`} />
+          <path d="m66.98 91.02h10.47v6.2h-10.47z" fill="#f8f7f4" />
+          <path
+            d="m77.45 93.92q-2.6-1.32-5.27-2.9h-5.18v6.2h10.45z"
+            fill="#fde5cb"
+          />
+          <path
+            d="m35.49 50.6v18.1h11.51a108.76 108.76 0 0 1 -11.51-18.1z"
+            fill="#f17732"
+          />
         </svg>
       );
     } else if (draft) {
       return (
         <svg
           {...elementProps}
-          xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 140 140"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <defs>
-            <style>{`.painting-cls-1{fill:#5b6279;}.painting-cls-2{fill:#bdc0c9;}.painting-cls-3{fill:#9da1af;}.painting-cls-4{fill:#fff;}.painting-cls-5{fill:#dee0e4;}.painting-cls-6{fill:#adb0bc;}.painting-cls-7{fill:#cdcfd6;}`}</style>
-          </defs>
-
-          <g>
-            <circle className="painting-cls-1" cx="70" cy="70" r="70" />
-          </g>
-          <g>
-            <rect
-              className="painting-cls-2"
-              x="29.58"
-              y="36.99"
-              width="80.85"
-              height="66.01"
-            />
-            <path
-              className="painting-cls-3"
-              d="M110.42,103H29.58V37C54,103,110.42,103,110.42,103Z"
-            />
-            <rect
-              className="painting-cls-1"
-              x="35.49"
-              y="42.78"
-              width="69.01"
-              height="54.44"
-            />
-            <rect
-              className="painting-cls-4"
-              x="35.49"
-              y="70.4"
-              width="23.65"
-              height="26.82"
-            />
-            <path
-              className="painting-cls-5"
-              d="M59.14,81.57A95.37,95.37,0,0,1,48.32,70.4H35.49V97.22H59.14Z"
-            />
-            <rect
-              className="painting-cls-6"
-              x="60.82"
-              y="42.78"
-              width="37.04"
-              height="37.04"
-            />
-            <rect
-              className="painting-cls-4"
-              x="48.76"
-              y="56.16"
-              width="10.38"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-4"
-              x="48.76"
-              y="42.78"
-              width="10.38"
-              height="11.84"
-            />
-            <rect
-              className="painting-cls-5"
-              x="35.49"
-              y="42.78"
-              width="11.76"
-              height="25.92"
-            />
-            <path
-              className="painting-cls-2"
-              d="M35.49,50.6V68.7H47A108.76,108.76,0,0,1,35.49,50.6Z"
-            />
-            <rect
-              className="painting-cls-4"
-              x="79.34"
-              y="81.52"
-              width="25.17"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-5"
-              d="M79.34,94.85v2.37h5.43Q82.12,96.17,79.34,94.85Z"
-            />
-            <rect
-              className="painting-cls-7"
-              x="60.82"
-              y="81.52"
-              width="4.53"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-6"
-              d="M65.35,86.51c-1.51-1.1-3-2.26-4.53-3.51V97.22h4.53Z"
-            />
-            <rect
-              className="painting-cls-4"
-              x="99.37"
-              y="50.79"
-              width="5.14"
-              height="29.03"
-            />
-            <rect
-              className="painting-cls-7"
-              x="99.37"
-              y="42.78"
-              width="5.14"
-              height="6.43"
-            />
-            <rect
-              className="painting-cls-4"
-              x="66.98"
-              y="91.02"
-              width="10.47"
-              height="6.2"
-            />
-            <path
-              className="painting-cls-5"
-              d="M77.45,93.92q-2.6-1.32-5.27-2.9H67v6.2H77.45Z"
-            />
-          </g>
+          <circle cx="70" cy="70" fill="#5b6279" r="70" />
+          <path d="m29.58 36.99h80.85v66.01h-80.85z" fill="#bdc0c9" />
+          <path
+            d="m110.42 103h-80.84v-66c24.42 66 80.84 66 80.84 66z"
+            fill="#9da1af"
+          />
+          <path d="m35.49 42.78h69.01v54.44h-69.01z" fill="#5b6279" />
+          <path d="m35.49 70.4h23.65v26.82h-23.65z" fill="#fff" />
+          <path
+            d="m59.14 81.57a95.37 95.37 0 0 1 -10.82-11.17h-12.83v26.82h23.65z"
+            fill="#dee0e4"
+          />
+          <path d="m60.82 42.78h37.04v37.04h-37.04z" fill="#adb0bc" />
+          <path d="m48.76 56.16h10.38v12.54h-10.38z" fill="#fff" />
+          <path d="m48.76 42.78h10.38v11.84h-10.38z" fill="#fff" />
+          <path d="m35.49 42.78h11.76v25.92h-11.76z" fill="#dee0e4" />
+          <path
+            d="m35.49 50.6v18.1h11.51a108.76 108.76 0 0 1 -11.51-18.1z"
+            fill="#bdc0c9"
+          />
+          <path d="m79.34 81.52h25.17v15.7h-25.17z" fill="#fff" />
+          <path
+            d="m79.34 94.85v2.37h5.43q-2.65-1.05-5.43-2.37z"
+            fill="#dee0e4"
+          />
+          <path d="m60.82 81.52h4.53v15.7h-4.53z" fill="#cdcfd6" />
+          <path
+            d="m65.35 86.51c-1.51-1.1-3-2.26-4.53-3.51v14.22h4.53z"
+            fill="#adb0bc"
+          />
+          <path d="m99.37 50.79h5.14v29.03h-5.14z" fill="#fff" />
+          <path d="m99.37 42.78h5.14v6.43h-5.14z" fill="#cdcfd6" />
+          <path d="m66.98 91.02h10.47v6.2h-10.47z" fill="#fff" />
+          <path
+            d="m77.45 93.92q-2.6-1.32-5.27-2.9h-5.18v6.2h10.45z"
+            fill="#dee0e4"
+          />
         </svg>
       );
     } else {
       return (
         <svg
           {...elementProps}
-          xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 140 140"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <defs>
-            <style>{`.painting-cls-1{fill:#10004c;}.painting-cls-2{fill:#9f99b7;}.painting-cls-3{fill:#6f6693;}.painting-cls-4{fill:#fff;}.painting-cls-5{fill:#cfccdb;}.painting-cls-6{fill:#8780a5;}.painting-cls-7{fill:#b7b3c9;}`}</style>
-          </defs>
-
-          <g>
-            <circle className="painting-cls-1" cx="70" cy="70" r="70" />
-            <circle className="painting-cls-1" cx="70" cy="70" r="70" />
-          </g>
-          <g>
-            <rect
-              className="painting-cls-2"
-              x="29.58"
-              y="36.99"
-              width="80.85"
-              height="66.01"
-            />
-            <path
-              className="painting-cls-3"
-              d="M110.42,103H29.58V37C54,103,110.42,103,110.42,103Z"
-            />
-            <rect
-              className="painting-cls-1"
-              x="35.49"
-              y="42.78"
-              width="69.01"
-              height="54.44"
-            />
-            <rect
-              className="painting-cls-4"
-              x="35.49"
-              y="70.4"
-              width="23.65"
-              height="26.82"
-            />
-            <path
-              className="painting-cls-5"
-              d="M59.14,81.57A95.37,95.37,0,0,1,48.32,70.4H35.49V97.22H59.14Z"
-            />
-            <rect
-              className="painting-cls-6"
-              x="60.82"
-              y="42.78"
-              width="37.04"
-              height="37.04"
-            />
-            <rect
-              className="painting-cls-4"
-              x="48.76"
-              y="56.16"
-              width="10.38"
-              height="12.54"
-            />
-            <rect
-              className="painting-cls-4"
-              x="48.76"
-              y="42.78"
-              width="10.38"
-              height="11.84"
-            />
-            <rect
-              className="painting-cls-5"
-              x="35.49"
-              y="42.78"
-              width="11.76"
-              height="25.92"
-            />
-            <path
-              className="painting-cls-2"
-              d="M35.49,50.6V68.7H47A108.76,108.76,0,0,1,35.49,50.6Z"
-            />
-            <rect
-              className="painting-cls-4"
-              x="79.34"
-              y="81.52"
-              width="25.17"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-5"
-              d="M79.34,94.85v2.37h5.43Q82.12,96.17,79.34,94.85Z"
-            />
-            <rect
-              className="painting-cls-7"
-              x="60.82"
-              y="81.52"
-              width="4.53"
-              height="15.7"
-            />
-            <path
-              className="painting-cls-6"
-              d="M65.35,86.51c-1.51-1.1-3-2.26-4.53-3.51V97.22h4.53Z"
-            />
-            <rect
-              className="painting-cls-4"
-              x="99.37"
-              y="50.79"
-              width="5.14"
-              height="29.03"
-            />
-            <rect
-              className="painting-cls-7"
-              x="99.37"
-              y="42.78"
-              width="5.14"
-              height="6.43"
-            />
-            <rect
-              className="painting-cls-4"
-              x="66.98"
-              y="91.02"
-              width="10.47"
-              height="6.2"
-            />
-            <path
-              className="painting-cls-5"
-              d="M77.45,93.92q-2.6-1.32-5.27-2.9H67v6.2H77.45Z"
-            />
-          </g>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path d="m29.58 36.99h80.85v66.01h-80.85z" fill="#9f99b7" />
+          <path
+            d="m110.42 103h-80.84v-66c24.42 66 80.84 66 80.84 66z"
+            fill="#6f6693"
+          />
+          <path d="m35.49 42.78h69.01v54.44h-69.01z" fill="#10004c" />
+          <path d="m35.49 70.4h23.65v26.82h-23.65z" fill="#fff" />
+          <path
+            d="m59.14 81.57a95.37 95.37 0 0 1 -10.82-11.17h-12.83v26.82h23.65z"
+            fill="#cfccdb"
+          />
+          <path d="m60.82 42.78h37.04v37.04h-37.04z" fill="#8780a5" />
+          <path d="m48.76 56.16h10.38v12.54h-10.38z" fill="#fff" />
+          <path d="m48.76 42.78h10.38v11.84h-10.38z" fill="#fff" />
+          <path d="m35.49 42.78h11.76v25.92h-11.76z" fill="#cfccdb" />
+          <path
+            d="m35.49 50.6v18.1h11.51a108.76 108.76 0 0 1 -11.51-18.1z"
+            fill="#9f99b7"
+          />
+          <path d="m79.34 81.52h25.17v15.7h-25.17z" fill="#fff" />
+          <path
+            d="m79.34 94.85v2.37h5.43q-2.65-1.05-5.43-2.37z"
+            fill="#cfccdb"
+          />
+          <path d="m60.82 81.52h4.53v15.7h-4.53z" fill="#b7b3c9" />
+          <path
+            d="m65.35 86.51c-1.51-1.1-3-2.26-4.53-3.51v14.22h4.53z"
+            fill="#8780a5"
+          />
+          <path d="m99.37 50.79h5.14v29.03h-5.14z" fill="#fff" />
+          <path d="m99.37 42.78h5.14v6.43h-5.14z" fill="#b7b3c9" />
+          <path d="m66.98 91.02h10.47v6.2h-10.47z" fill="#fff" />
+          <path
+            d="m77.45 93.92q-2.6-1.32-5.27-2.9h-5.18v6.2h10.45z"
+            fill="#cfccdb"
+          />
         </svg>
       );
     }
@@ -655,11 +313,14 @@ PaintingCircleIllustration.propTypes = {
   className: PropTypes.string,
   /** Additional inline styles to apply to the container. */
   style: PropTypes.objectOf(PropTypes.string),
+  /** Allows you to adjust the id of the SVG, this can be useful when using multiple of the same SVG on the same page. */
+  id: PropTypes.string,
 };
 
 PaintingCircleIllustration.defaultProps = {
   height: '14rem',
   width: '14.4rem',
+  id: 'painting-circle-illustration',
 };
 
 export default PaintingCircleIllustration;
