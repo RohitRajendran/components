@@ -149,7 +149,8 @@ $fast-transition-time: 0.2s;
     .uic--ec-controls-wrapper {
       @include media-breakpoint-up(md) {
         left: -1.6rem;
-        
+      }
+
       @include media-breakpoint-up(lg) {
         left: -1.2rem;
       }
