@@ -32,6 +32,7 @@ class LampCircleIllustration extends PureComponent {
       height,
       className,
       style,
+      id,
     } = this.props;
 
     const elementProps = {
@@ -52,523 +53,368 @@ class LampCircleIllustration extends PureComponent {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 150 150"
         >
-          <defs>
-            <style>{`.lamp-cls-1{fill:none;}.lamp-cls-2{fill:#fde5cb;}.lamp-cls-3{fill:#f17732;}.lamp-cls-4{fill:#99052e;}.lamp-cls-5{fill:#10004c;}.lamp-cls-6{fill:#f8f7f4;}.lamp-cls-7{fill:url(#_2-dot);}.lamp-cls-8{fill:#2870b5;}.lamp-cls-9{fill:#feca1e;}.lamp-cls-10{fill:url(#_4-dot);}.lamp-cls-11{fill:url(#_5-dot);}.lamp-cls-12{fill:#5fcbeb;}`}</style>
-            <pattern
-              data-name="2-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="lamp-cls-1" width="4" height="4" />
-              <circle className="lamp-cls-2" cx="3" cy="4" r="0.35" />
-              <circle className="lamp-cls-2" cx="1" cy="4" r="0.35" />
-              <circle className="lamp-cls-2" cx="4" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cx="2" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cx="3" r="0.35" />
-              <circle className="lamp-cls-2" cx="1" r="0.35" />
-            </pattern>
-            <pattern
-              data-name="4-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="lamp-cls-1" width="4" height="4" />
-              <circle className="lamp-cls-3" cx="3" cy="4" r="0.35" />
-              <circle className="lamp-cls-3" cx="1" cy="4" r="0.35" />
-              <circle className="lamp-cls-3" cx="4" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cx="2" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cx="3" r="0.35" />
-              <circle className="lamp-cls-3" cx="1" r="0.35" />
-            </pattern>
-            <pattern
-              data-name="5-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="lamp-cls-1" width="4" height="4" />
-              <circle className="lamp-cls-4" cx="3" cy="4" r="0.35" />
-              <circle className="lamp-cls-4" cx="1" cy="4" r="0.35" />
-              <circle className="lamp-cls-4" cx="4" cy="2" r="0.35" />
-              <circle className="lamp-cls-4" cx="2" cy="2" r="0.35" />
-              <circle className="lamp-cls-4" cy="2" r="0.35" />
-              <circle className="lamp-cls-4" cx="3" r="0.35" />
-              <circle className="lamp-cls-4" cx="1" r="0.35" />
-            </pattern>
-          </defs>
-
-          <g>
-            <circle className="lamp-cls-5" cx="75" cy="75" r="70" />
+          <pattern
+            id={`${id}-a`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#fde5cb" r=".35" />
+            <circle cx="1" cy="4" fill="#fde5cb" r=".35" />
+            <circle cx="4" cy="2" fill="#fde5cb" r=".35" />
+            <circle cx="2" cy="2" fill="#fde5cb" r=".35" />
+            <circle cy="2" fill="#fde5cb" r=".35" />
+            <circle cx="3" fill="#fde5cb" r=".35" />
+            <circle cx="1" fill="#fde5cb" r=".35" />
+          </pattern>
+          <pattern
+            id={`${id}-b`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#f17732" r=".35" />
+            <circle cx="1" cy="4" fill="#f17732" r=".35" />
+            <circle cx="4" cy="2" fill="#f17732" r=".35" />
+            <circle cx="2" cy="2" fill="#f17732" r=".35" />
+            <circle cy="2" fill="#f17732" r=".35" />
+            <circle cx="3" fill="#f17732" r=".35" />
+            <circle cx="1" fill="#f17732" r=".35" />
+          </pattern>
+          <pattern
+            id={`${id}-c`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#99052e" r=".35" />
+            <circle cx="1" cy="4" fill="#99052e" r=".35" />
+            <circle cx="4" cy="2" fill="#99052e" r=".35" />
+            <circle cx="2" cy="2" fill="#99052e" r=".35" />
+            <circle cy="2" fill="#99052e" r=".35" />
+            <circle cx="3" fill="#99052e" r=".35" />
+            <circle cx="1" fill="#99052e" r=".35" />
+          </pattern>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path
+            d="m55.46 27.69h29.7l12.06-22.22a70.19 70.19 0 0 0 -53.92-.19z"
+            fill="#f8f7f4"
+          />
+          <path
+            d="m55.46 27.69h29.7l12.06-22.22a70.19 70.19 0 0 0 -53.92-.19z"
+            fill={`url(#${id}-a)`}
+          />
+          <path
+            d="m102.9 71.38h-65.18l-19.83 45.34a70 70 0 0 0 104.75-.56z"
+            fill="#f8f7f4"
+          />
+          <path
+            d="m102.9 71.38h-65.18l-19.83 45.34a70 70 0 0 0 104.75-.56z"
+            fill={`url(#${id}-a)`}
+          />
+          <path
+            d="m72.33 26.08a2.08 2.08 0 1 0 -4.08 0 2.43 2.43 0 0 0 1.52 2.39v3.06h1v-3.06a2.44 2.44 0 0 0 1.56-2.39z"
+            fill="#2870b5"
+          />
+          <path d="m102.88 71.36h-65.18l17.73-43.66h29.71z" fill="#feca1e" />
+          <path
+            d="m102.88 71.36h-65.18l17.73-43.66h29.71z"
+            fill={`url(#${id}-b)`}
+          />
+          <path d="m69.04 68.69h2.48v11.19h-2.48z" fill="#2870b5" />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill="#f17732"
+          />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill={`url(#${id}-c)`}
+          />
+          <path
+            d="m43.36 67.32a5.37 5.37 0 0 0 .34-10.73l-3.83 9.41a5.33 5.33 0 0 0 3.49 1.32z"
+            fill="#99052e"
+          />
+          <circle cx="54.12" cy="61.93" fill="#99052e" r="5.38" />
+          <circle cx="64.93" cy="61.93" fill="#f17732" r="5.38" />
+          <circle cx="75.69" cy="61.93" fill="#f17732" r="5.38" />
+          <path
+            d="m70.37 62.5a5.32 5.32 0 0 0 8.1 4 59.69 59.69 0 0 1 -8.1-4z"
+            fill="#99052e"
+          />
+          <circle cx="86.45" cy="61.93" fill="#f17732" r="5.38" />
+          <path
+            d="m97.22 67.32a5.32 5.32 0 0 0 3.48-1.32l-3.82-9.41a5.37 5.37 0 0 0 .34 10.73z"
+            fill="#f17732"
+          />
+          <path
+            d="m64.93 67.32a5.37 5.37 0 0 0 5.33-4.88 59.6 59.6 0 0 1 -7.56-5.39 5.38 5.38 0 0 0 2.23 10.27z"
+            fill="#99052e"
+          />
+          <path d="m66.14 79.12h8.28v4.1h-8.28z" fill="#5fcbeb" />
+          <path
+            d="m86 105.74c0 9.09-7.06 10.41-15.75 10.41s-15.75-1.32-15.75-10.41 7.05-22.51 15.75-22.51 15.75 13.42 15.75 22.51z"
+            fill="#5fcbeb"
+          />
+          <g fill="#2870b5">
+            <path d="m84.8 111.2c-2.39 4.21-8 5-14.51 5-8.7 0-15.75-1.32-15.75-10.41a27.75 27.75 0 0 1 2.69-11.12c9.25 17.25 26.53 17.95 27.57 16.53z" />
+            <path d="m78.42 115.43a35.85 35.85 0 0 1 -8.13.72c-8.7 0-15.75-1.32-15.75-10.41 0 0 4.96 11.05 23.88 9.69z" />
+            <path d="m66.14 83.23h8.28v1.08h-8.28z" />
           </g>
-          <g>
-            <path
-              className="lamp-cls-6"
-              d="M60.46,32.69h29.7l12.06-22.22a70.19,70.19,0,0,0-53.92-.19Z"
-            />
-            <path
-              className="lamp-cls-7"
-              d="M60.46,32.69h29.7l12.06-22.22a70.19,70.19,0,0,0-53.92-.19Z"
-            />
-            <path
-              className="lamp-cls-6"
-              d="M107.9,76.38H42.72L22.89,121.72a70,70,0,0,0,104.75-.56Z"
-            />
-            <path
-              className="lamp-cls-7"
-              d="M107.9,76.38H42.72L22.89,121.72a70,70,0,0,0,104.75-.56Z"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
-            />
-            <polygon
-              className="lamp-cls-9"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <polygon
-              className="lamp-cls-10"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <rect
-              className="lamp-cls-8"
-              x="74.04"
-              y="73.69"
-              width="2.48"
-              height="11.19"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-11"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-4"
-              d="M48.36,72.32a5.37,5.37,0,0,0,.34-10.73L44.87,71A5.33,5.33,0,0,0,48.36,72.32Z"
-            />
-            <circle className="lamp-cls-4" cx="59.12" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-3" cx="69.93" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-3" cx="80.69" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-4"
-              d="M75.37,67.5a5.32,5.32,0,0,0,8.1,4A59.69,59.69,0,0,1,75.37,67.5Z"
-            />
-            <circle className="lamp-cls-3" cx="91.45" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-3"
-              d="M102.22,72.32A5.32,5.32,0,0,0,105.7,71l-3.82-9.41a5.37,5.37,0,0,0,.34,10.73Z"
-            />
-            <path
-              className="lamp-cls-4"
-              d="M69.93,72.32a5.37,5.37,0,0,0,5.33-4.88,59.6,59.6,0,0,1-7.56-5.39,5.38,5.38,0,0,0,2.23,10.27Z"
-            />
-            <rect
-              className="lamp-cls-12"
-              x="71.14"
-              y="84.12"
-              width="8.28"
-              height="4.1"
-            />
-            <path
-              className="lamp-cls-12"
-              d="M91,110.74c0,9.09-7.06,10.41-15.75,10.41s-15.75-1.32-15.75-10.41,7.05-22.51,15.75-22.51S91,101.65,91,110.74Z"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M89.8,116.2c-2.39,4.21-8,5-14.51,5-8.7,0-15.75-1.32-15.75-10.41a27.75,27.75,0,0,1,2.69-11.12C71.48,116.92,88.76,117.62,89.8,116.2Z"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M83.42,120.43a35.85,35.85,0,0,1-8.13.72c-8.7,0-15.75-1.32-15.75-10.41C59.54,110.74,64.5,121.79,83.42,120.43Z"
-            />
-            <rect
-              className="lamp-cls-8"
-              x="71.14"
-              y="88.23"
-              width="8.28"
-              height="1.08"
-            />
-            <ellipse
-              className="lamp-cls-5"
-              cx="75.29"
-              cy="111.45"
-              rx="4.93"
-              ry="1.97"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M72.46,111.45c0,1.09,1.15,2,2.83,2,2.72,0,4.92-.88,4.92-2s-2.2-2-4.92-2C73.53,109.49,72.46,110.37,72.46,111.45Z"
-            />
-          </g>
+          <ellipse cx="70.29" cy="106.45" fill="#10004c" rx="4.93" ry="1.97" />
+          <path
+            d="m67.46 106.45c0 1.09 1.15 2 2.83 2 2.72 0 4.92-.88 4.92-2s-2.2-2-4.92-2c-1.76.04-2.83.92-2.83 2z"
+            fill="#f17732"
+          />
         </svg>
       );
     } else if (color) {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 150 150"
         >
-          <defs>
-            <style>{`.lamp-cls-1{fill:none;}.lamp-cls-2{fill:#f17732;}.lamp-cls-3{fill:#99052e;}.lamp-cls-4{fill:#10004c;}.lamp-cls-5{fill:#2870b5;}.lamp-cls-6{fill:#5fcbeb;}.lamp-cls-7{fill:#feca1e;}.lamp-cls-8{fill:url(#_4-dot);}.lamp-cls-9{fill:url(#_5-dot);}`}</style>
-            <pattern
-              data-name="4-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="lamp-cls-1" width="4" height="4" />
-              <circle className="lamp-cls-2" cx="3" cy="4" r="0.35" />
-              <circle className="lamp-cls-2" cx="1" cy="4" r="0.35" />
-              <circle className="lamp-cls-2" cx="4" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cx="2" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cy="2" r="0.35" />
-              <circle className="lamp-cls-2" cx="3" r="0.35" />
-              <circle className="lamp-cls-2" cx="1" r="0.35" />
-            </pattern>
-            <pattern
-              data-name="5-dot"
-              width="4"
-              height="4"
-              patternUnits="userSpaceOnUse"
-              viewBox="0 0 4 4"
-            >
-              <rect className="lamp-cls-1" width="4" height="4" />
-              <circle className="lamp-cls-3" cx="3" cy="4" r="0.35" />
-              <circle className="lamp-cls-3" cx="1" cy="4" r="0.35" />
-              <circle className="lamp-cls-3" cx="4" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cx="2" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cy="2" r="0.35" />
-              <circle className="lamp-cls-3" cx="3" r="0.35" />
-              <circle className="lamp-cls-3" cx="1" r="0.35" />
-            </pattern>
-          </defs>
-
-          <g>
-            <circle className="lamp-cls-4" cx="75" cy="75" r="70" />
-          </g>
-          <g>
-            <path
-              className="lamp-cls-5"
-              d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
-            />
-            <rect
-              className="lamp-cls-5"
-              x="74.04"
-              y="73.69"
-              width="2.48"
-              height="11.19"
-            />
-            <rect
-              className="lamp-cls-6"
-              x="71.14"
-              y="84.12"
-              width="8.28"
-              height="4.1"
-            />
-            <path
-              className="lamp-cls-6"
-              d="M91,110.74c0,9.09-7.06,10.41-15.75,10.41s-15.75-1.32-15.75-10.41,7.05-22.51,15.75-22.51S91,101.65,91,110.74Z"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M89.8,116.2c-2.39,4.21-8,5-14.51,5-8.7,0-15.75-1.32-15.75-10.41a27.75,27.75,0,0,1,2.69-11.12C71.48,116.92,88.76,117.62,89.8,116.2Z"
-            />
-            <rect
-              className="lamp-cls-5"
-              x="71.14"
-              y="88.23"
-              width="8.28"
-              height="1.08"
-            />
-            <polygon
-              className="lamp-cls-7"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <polygon
-              className="lamp-cls-8"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <ellipse
-              className="lamp-cls-4"
-              cx="75.29"
-              cy="111.45"
-              rx="4.93"
-              ry="1.97"
-            />
-            <path
-              className="lamp-cls-2"
-              d="M72.46,111.45c0,1.09,1.15,2,2.83,2,2.72,0,4.92-.88,4.92-2s-2.2-2-4.92-2C73.53,109.49,72.46,110.37,72.46,111.45Z"
-            />
-            <path
-              className="lamp-cls-2"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-9"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M48.36,72.32a5.37,5.37,0,0,0,.34-10.73L44.87,71A5.33,5.33,0,0,0,48.36,72.32Z"
-            />
-            <circle className="lamp-cls-3" cx="59.12" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-2" cx="69.93" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-2" cx="80.69" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-3"
-              d="M75.37,67.5a5.32,5.32,0,0,0,8.1,4A59.69,59.69,0,0,1,75.37,67.5Z"
-            />
-            <circle className="lamp-cls-2" cx="91.45" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-2"
-              d="M102.22,72.32A5.32,5.32,0,0,0,105.7,71l-3.82-9.41a5.37,5.37,0,0,0,.34,10.73Z"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M69.93,72.32a5.37,5.37,0,0,0,5.33-4.88,59.6,59.6,0,0,1-7.56-5.39,5.38,5.38,0,0,0,2.23,10.27Z"
-            />
-          </g>
+          <pattern
+            id={`${id}-a`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#f17732" r=".35" />
+            <circle cx="1" cy="4" fill="#f17732" r=".35" />
+            <circle cx="4" cy="2" fill="#f17732" r=".35" />
+            <circle cx="2" cy="2" fill="#f17732" r=".35" />
+            <circle cy="2" fill="#f17732" r=".35" />
+            <circle cx="3" fill="#f17732" r=".35" />
+            <circle cx="1" fill="#f17732" r=".35" />
+          </pattern>
+          <pattern
+            id={`${id}-b`}
+            height="4"
+            patternUnits="userSpaceOnUse"
+            viewBox="0 0 4 4"
+            width="4"
+          >
+            <path d="m0 0h4v4h-4z" fill="none" />
+            <circle cx="3" cy="4" fill="#99052e" r=".35" />
+            <circle cx="1" cy="4" fill="#99052e" r=".35" />
+            <circle cx="4" cy="2" fill="#99052e" r=".35" />
+            <circle cx="2" cy="2" fill="#99052e" r=".35" />
+            <circle cy="2" fill="#99052e" r=".35" />
+            <circle cx="3" fill="#99052e" r=".35" />
+            <circle cx="1" fill="#99052e" r=".35" />
+          </pattern>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path
+            d="m72.33 26.08a2.08 2.08 0 1 0 -4.08 0 2.43 2.43 0 0 0 1.52 2.39v3.06h1v-3.06a2.44 2.44 0 0 0 1.56-2.39z"
+            fill="#2870b5"
+          />
+          <path d="m69.04 68.69h2.48v11.19h-2.48z" fill="#2870b5" />
+          <path d="m66.14 79.12h8.28v4.1h-8.28z" fill="#5fcbeb" />
+          <path
+            d="m86 105.74c0 9.09-7.06 10.41-15.75 10.41s-15.75-1.32-15.75-10.41 7.05-22.51 15.75-22.51 15.75 13.42 15.75 22.51z"
+            fill="#5fcbeb"
+          />
+          <path
+            d="m84.8 111.2c-2.39 4.21-8 5-14.51 5-8.7 0-15.75-1.32-15.75-10.41a27.75 27.75 0 0 1 2.69-11.12c9.25 17.25 26.53 17.95 27.57 16.53z"
+            fill="#2870b5"
+          />
+          <path d="m66.14 83.23h8.28v1.08h-8.28z" fill="#2870b5" />
+          <path d="m102.88 71.36h-65.18l17.73-43.66h29.71z" fill="#feca1e" />
+          <path
+            d="m102.88 71.36h-65.18l17.73-43.66h29.71z"
+            fill={`url(#${id}-a)`}
+          />
+          <ellipse cx="70.29" cy="106.45" fill="#10004c" rx="4.93" ry="1.97" />
+          <path
+            d="m67.46 106.45c0 1.09 1.15 2 2.83 2 2.72 0 4.92-.88 4.92-2s-2.2-2-4.92-2c-1.76.04-2.83.92-2.83 2z"
+            fill="#f17732"
+          />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill="#f17732"
+          />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill={`url(#${id}-b)`}
+          />
+          <path
+            d="m43.36 67.32a5.37 5.37 0 0 0 .34-10.73l-3.83 9.41a5.33 5.33 0 0 0 3.49 1.32z"
+            fill="#99052e"
+          />
+          <circle cx="54.12" cy="61.93" fill="#99052e" r="5.38" />
+          <circle cx="64.93" cy="61.93" fill="#f17732" r="5.38" />
+          <circle cx="75.69" cy="61.93" fill="#f17732" r="5.38" />
+          <path
+            d="m70.37 62.5a5.32 5.32 0 0 0 8.1 4 59.69 59.69 0 0 1 -8.1-4z"
+            fill="#99052e"
+          />
+          <circle cx="86.45" cy="61.93" fill="#f17732" r="5.38" />
+          <path
+            d="m97.22 67.32a5.32 5.32 0 0 0 3.48-1.32l-3.82-9.41a5.37 5.37 0 0 0 .34 10.73z"
+            fill="#f17732"
+          />
+          <path
+            d="m64.93 67.32a5.37 5.37 0 0 0 5.33-4.88 59.6 59.6 0 0 1 -7.56-5.39 5.38 5.38 0 0 0 2.23 10.27z"
+            fill="#99052e"
+          />
         </svg>
       );
     } else if (draft) {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 150 150"
         >
-          <defs>
-            <style>{`.lamp-cls-1{fill:#5b6279;}.lamp-cls-2{fill:#9da1af;}.lamp-cls-3{fill:#cdcfd6;}.lamp-cls-4{fill:#8c91a1;}.lamp-cls-5{fill:#adb0bc;}.lamp-cls-6{fill:#fff;}.lamp-cls-7{fill:#dee0e4;}.lamp-cls-8{fill:#6b7186;}.lamp-cls-9{fill:#7c8194;}`}</style>
-          </defs>
-          <g>
-            <circle className="lamp-cls-1" cx="75" cy="75" r="70" />
-          </g>
-          <g>
-            <path
-              className="lamp-cls-2"
-              d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
-            />
-            <rect
-              className="lamp-cls-2"
-              x="74.04"
-              y="73.69"
-              width="2.48"
-              height="11.19"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M91,110.74c0,9.09-7.06,10.41-15.75,10.41s-15.75-1.32-15.75-10.41,7.05-22.51,15.75-22.51S91,101.65,91,110.74Z"
-            />
-            <rect
-              className="lamp-cls-3"
-              x="71.14"
-              y="84.12"
-              width="8.28"
-              height="4.1"
-            />
-            <rect
-              className="lamp-cls-4"
-              x="71.14"
-              y="88.23"
-              width="8.28"
-              height="1.08"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M83.42,120.43a35.85,35.85,0,0,1-8.13.72c-8.7,0-15.75-1.32-15.75-10.41C59.54,110.74,64.5,121.79,83.42,120.43Z"
-            />
-            <polygon
-              className="lamp-cls-6"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <ellipse
-              className="lamp-cls-1"
-              cx="75.29"
-              cy="111.45"
-              rx="4.93"
-              ry="1.97"
-            />
-            <path
-              className="lamp-cls-6"
-              d="M72.46,111.45c0,1.09,1.15,2,2.83,2,2.72,0,4.92-.88,4.92-2s-2.2-2-4.92-2C73.53,109.49,72.46,110.37,72.46,111.45Z"
-            />
-            <path
-              className="lamp-cls-7"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M48.36,72.32a5.37,5.37,0,0,0,.34-10.73L44.87,71A5.33,5.33,0,0,0,48.36,72.32Z"
-            />
-            <circle className="lamp-cls-8" cx="59.12" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-9" cx="69.93" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-9" cx="80.69" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-8"
-              d="M75.37,67.5a5.32,5.32,0,0,0,8.1,4A59.69,59.69,0,0,1,75.37,67.5Z"
-            />
-            <circle className="lamp-cls-9" cx="91.45" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-9"
-              d="M102.22,72.32A5.32,5.32,0,0,0,105.7,71l-3.82-9.41a5.37,5.37,0,0,0,.34,10.73Z"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M69.93,72.32a5.37,5.37,0,0,0,5.33-4.88,59.6,59.6,0,0,1-7.56-5.39,5.38,5.38,0,0,0,2.23,10.27Z"
-            />
-          </g>
+          <circle cx="70" cy="70" fill="#5b6279" r="70" />
+          <path
+            d="m72.33 26.08a2.08 2.08 0 1 0 -4.08 0 2.43 2.43 0 0 0 1.52 2.39v3.06h1v-3.06a2.44 2.44 0 0 0 1.56-2.39z"
+            fill="#9da1af"
+          />
+          <path d="m69.04 68.69h2.48v11.19h-2.48z" fill="#9da1af" />
+          <path
+            d="m86 105.74c0 9.09-7.06 10.41-15.75 10.41s-15.75-1.32-15.75-10.41 7.05-22.51 15.75-22.51 15.75 13.42 15.75 22.51z"
+            fill="#cdcfd6"
+          />
+          <path d="m66.14 79.12h8.28v4.1h-8.28z" fill="#cdcfd6" />
+          <path d="m66.14 83.23h8.28v1.08h-8.28z" fill="#8c91a1" />
+          <path
+            d="m78.42 115.43a35.85 35.85 0 0 1 -8.13.72c-8.7 0-15.75-1.32-15.75-10.41 0 0 4.96 11.05 23.88 9.69z"
+            fill="#adb0bc"
+          />
+          <path d="m102.88 71.36h-65.18l17.73-43.66h29.71z" fill="#fff" />
+          <ellipse cx="70.29" cy="106.45" fill="#5b6279" rx="4.93" ry="1.97" />
+          <path
+            d="m67.46 106.45c0 1.09 1.15 2 2.83 2 2.72 0 4.92-.88 4.92-2s-2.2-2-4.92-2c-1.76.04-2.83.92-2.83 2z"
+            fill="#fff"
+          />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill="#dee0e4"
+          />
+          <path
+            d="m43.36 67.32a5.37 5.37 0 0 0 .34-10.73l-3.83 9.41a5.33 5.33 0 0 0 3.49 1.32z"
+            fill="#6b7186"
+          />
+          <circle cx="54.12" cy="61.93" fill="#6b7186" r="5.38" />
+          <circle cx="64.93" cy="61.93" fill="#7c8194" r="5.38" />
+          <circle cx="75.69" cy="61.93" fill="#7c8194" r="5.38" />
+          <path
+            d="m70.37 62.5a5.32 5.32 0 0 0 8.1 4 59.69 59.69 0 0 1 -8.1-4z"
+            fill="#6b7186"
+          />
+          <circle cx="86.45" cy="61.93" fill="#7c8194" r="5.38" />
+          <path
+            d="m97.22 67.32a5.32 5.32 0 0 0 3.48-1.32l-3.82-9.41a5.37 5.37 0 0 0 .34 10.73z"
+            fill="#7c8194"
+          />
+          <path
+            d="m64.93 67.32a5.37 5.37 0 0 0 5.33-4.88 59.6 59.6 0 0 1 -7.56-5.39 5.38 5.38 0 0 0 2.23 10.27z"
+            fill="#6b7186"
+          />
         </svg>
       );
     } else {
       return (
         <svg
           {...elementProps}
+          viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 150 150"
         >
-          <defs>
-            <style>{`.lamp-cls-1{fill:#10004c;}.lamp-cls-2{fill:#6f6693;}.lamp-cls-3{fill:#cfccdb;}.lamp-cls-4{fill:#8780a5;}.lamp-cls-5{fill:#281a5e;}.lamp-cls-6{fill:#3f336f;}.lamp-cls-7{fill:#fff;}.lamp-cls-8{fill:#b7b3c9;}.lamp-cls-9{fill:#8c91a1;}`}</style>
-          </defs>
-
-          <g>
-            <circle className="lamp-cls-1" cx="75" cy="75" r="70" />
-          </g>
-          <g>
-            <rect
-              className="lamp-cls-2"
-              x="74.04"
-              y="73.69"
-              width="2.48"
-              height="11.19"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M91,110.74c0,9.09-7.06,10.41-15.75,10.41s-15.75-1.32-15.75-10.41,7.05-22.51,15.75-22.51S91,101.65,91,110.74Z"
-            />
-            <path
-              className="lamp-cls-4"
-              d="M83.42,120.43a35.85,35.85,0,0,1-8.13.72c-8.7,0-15.75-1.32-15.75-10.41C59.54,110.74,64.5,121.79,83.42,120.43Z"
-            />
-            <ellipse
-              className="lamp-cls-1"
-              cx="75.29"
-              cy="111.45"
-              rx="4.93"
-              ry="1.97"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M48.36,72.32a5.37,5.37,0,0,0,.34-10.73L44.87,71A5.33,5.33,0,0,0,48.36,72.32Z"
-            />
-            <circle className="lamp-cls-5" cx="59.12" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-6" cx="69.93" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-6" cx="80.69" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-5"
-              d="M75.37,67.5a5.32,5.32,0,0,0,8.1,4A59.69,59.69,0,0,1,75.37,67.5Z"
-            />
-            <circle className="lamp-cls-6" cx="91.45" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-6"
-              d="M102.22,72.32A5.32,5.32,0,0,0,105.7,71l-3.82-9.41a5.37,5.37,0,0,0,.34,10.73Z"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M69.93,72.32a5.37,5.37,0,0,0,5.33-4.88,59.6,59.6,0,0,1-7.56-5.39,5.38,5.38,0,0,0,2.23,10.27Z"
-            />
-            <path
-              className="lamp-cls-2"
-              d="M77.33,31.08a2.08,2.08,0,1,0-4.08,0,2.43,2.43,0,0,0,1.52,2.39v3.06h1V33.47A2.44,2.44,0,0,0,77.33,31.08Z"
-            />
-            <polygon
-              className="lamp-cls-7"
-              points="107.88 76.36 42.7 76.36 60.43 32.7 90.14 32.7 107.88 76.36"
-            />
-            <rect
-              className="lamp-cls-2"
-              x="74.04"
-              y="73.69"
-              width="2.48"
-              height="11.19"
-            />
-            <path
-              className="lamp-cls-8"
-              d="M91,110.74c0,9.09-7.06,10.41-15.75,10.41s-15.75-1.32-15.75-10.41,7.05-22.51,15.75-22.51S91,101.65,91,110.74Z"
-            />
-            <rect
-              className="lamp-cls-8"
-              x="71.14"
-              y="84.12"
-              width="8.28"
-              height="4.1"
-            />
-            <rect
-              className="lamp-cls-9"
-              x="71.14"
-              y="88.23"
-              width="8.28"
-              height="1.08"
-            />
-            <path
-              className="lamp-cls-4"
-              d="M83.42,120.43a35.85,35.85,0,0,1-8.13.72c-8.7,0-15.75-1.32-15.75-10.41C59.54,110.74,64.5,121.79,83.42,120.43Z"
-            />
-            <ellipse
-              className="lamp-cls-1"
-              cx="75.29"
-              cy="111.45"
-              rx="4.93"
-              ry="1.97"
-            />
-            <path
-              className="lamp-cls-7"
-              d="M72.46,111.45c0,1.09,1.15,2,2.83,2,2.72,0,4.92-.88,4.92-2s-2.2-2-4.92-2C73.53,109.49,72.46,110.37,72.46,111.45Z"
-            />
-            <path
-              className="lamp-cls-3"
-              d="M107.88,76.36H42.7l12.06-29.7C73.25,78,107.88,76.36,107.88,76.36Z"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M48.36,72.32a5.37,5.37,0,0,0,.34-10.73L44.87,71A5.33,5.33,0,0,0,48.36,72.32Z"
-            />
-            <circle className="lamp-cls-5" cx="59.12" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-6" cx="69.93" cy="66.93" r="5.38" />
-            <circle className="lamp-cls-6" cx="80.69" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-5"
-              d="M75.37,67.5a5.32,5.32,0,0,0,8.1,4A59.69,59.69,0,0,1,75.37,67.5Z"
-            />
-            <circle className="lamp-cls-6" cx="91.45" cy="66.93" r="5.38" />
-            <path
-              className="lamp-cls-6"
-              d="M102.22,72.32A5.32,5.32,0,0,0,105.7,71l-3.82-9.41a5.37,5.37,0,0,0,.34,10.73Z"
-            />
-            <path
-              className="lamp-cls-5"
-              d="M69.93,72.32a5.37,5.37,0,0,0,5.33-4.88,59.6,59.6,0,0,1-7.56-5.39,5.38,5.38,0,0,0,2.23,10.27Z"
-            />
-          </g>
+          <circle cx="70" cy="70" fill="#10004c" r="70" />
+          <path d="m69.04 68.69h2.48v11.19h-2.48z" fill="#6f6693" />
+          <path
+            d="m86 105.74c0 9.09-7.06 10.41-15.75 10.41s-15.75-1.32-15.75-10.41 7.05-22.51 15.75-22.51 15.75 13.42 15.75 22.51z"
+            fill="#cfccdb"
+          />
+          <path
+            d="m78.42 115.43a35.85 35.85 0 0 1 -8.13.72c-8.7 0-15.75-1.32-15.75-10.41 0 0 4.96 11.05 23.88 9.69z"
+            fill="#8780a5"
+          />
+          <ellipse cx="70.29" cy="106.45" fill="#10004c" rx="4.93" ry="1.97" />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill="#cfccdb"
+          />
+          <path
+            d="m43.36 67.32a5.37 5.37 0 0 0 .34-10.73l-3.83 9.41a5.33 5.33 0 0 0 3.49 1.32z"
+            fill="#281a5e"
+          />
+          <circle cx="54.12" cy="61.93" fill="#281a5e" r="5.38" />
+          <circle cx="64.93" cy="61.93" fill="#3f336f" r="5.38" />
+          <circle cx="75.69" cy="61.93" fill="#3f336f" r="5.38" />
+          <path
+            d="m70.37 62.5a5.32 5.32 0 0 0 8.1 4 59.69 59.69 0 0 1 -8.1-4z"
+            fill="#281a5e"
+          />
+          <circle cx="86.45" cy="61.93" fill="#3f336f" r="5.38" />
+          <path
+            d="m97.22 67.32a5.32 5.32 0 0 0 3.48-1.32l-3.82-9.41a5.37 5.37 0 0 0 .34 10.73z"
+            fill="#3f336f"
+          />
+          <path
+            d="m64.93 67.32a5.37 5.37 0 0 0 5.33-4.88 59.6 59.6 0 0 1 -7.56-5.39 5.38 5.38 0 0 0 2.23 10.27z"
+            fill="#281a5e"
+          />
+          <path
+            d="m72.33 26.08a2.08 2.08 0 1 0 -4.08 0 2.43 2.43 0 0 0 1.52 2.39v3.06h1v-3.06a2.44 2.44 0 0 0 1.56-2.39z"
+            fill="#6f6693"
+          />
+          <path d="m102.88 71.36h-65.18l17.73-43.66h29.71z" fill="#fff" />
+          <path d="m69.04 68.69h2.48v11.19h-2.48z" fill="#6f6693" />
+          <path
+            d="m86 105.74c0 9.09-7.06 10.41-15.75 10.41s-15.75-1.32-15.75-10.41 7.05-22.51 15.75-22.51 15.75 13.42 15.75 22.51z"
+            fill="#b7b3c9"
+          />
+          <path d="m66.14 79.12h8.28v4.1h-8.28z" fill="#b7b3c9" />
+          <path d="m66.14 83.23h8.28v1.08h-8.28z" fill="#8c91a1" />
+          <path
+            d="m78.42 115.43a35.85 35.85 0 0 1 -8.13.72c-8.7 0-15.75-1.32-15.75-10.41 0 0 4.96 11.05 23.88 9.69z"
+            fill="#8780a5"
+          />
+          <ellipse cx="70.29" cy="106.45" fill="#10004c" rx="4.93" ry="1.97" />
+          <path
+            d="m67.46 106.45c0 1.09 1.15 2 2.83 2 2.72 0 4.92-.88 4.92-2s-2.2-2-4.92-2c-1.76.04-2.83.92-2.83 2z"
+            fill="#fff"
+          />
+          <path
+            d="m102.88 71.36h-65.18l12.06-29.7c18.49 31.34 53.12 29.7 53.12 29.7z"
+            fill="#cfccdb"
+          />
+          <path
+            d="m43.36 67.32a5.37 5.37 0 0 0 .34-10.73l-3.83 9.41a5.33 5.33 0 0 0 3.49 1.32z"
+            fill="#281a5e"
+          />
+          <circle cx="54.12" cy="61.93" fill="#281a5e" r="5.38" />
+          <circle cx="64.93" cy="61.93" fill="#3f336f" r="5.38" />
+          <circle cx="75.69" cy="61.93" fill="#3f336f" r="5.38" />
+          <path
+            d="m70.37 62.5a5.32 5.32 0 0 0 8.1 4 59.69 59.69 0 0 1 -8.1-4z"
+            fill="#281a5e"
+          />
+          <circle cx="86.45" cy="61.93" fill="#3f336f" r="5.38" />
+          <path
+            d="m97.22 67.32a5.32 5.32 0 0 0 3.48-1.32l-3.82-9.41a5.37 5.37 0 0 0 .34 10.73z"
+            fill="#3f336f"
+          />
+          <path
+            d="m64.93 67.32a5.37 5.37 0 0 0 5.33-4.88 59.6 59.6 0 0 1 -7.56-5.39 5.38 5.38 0 0 0 2.23 10.27z"
+            fill="#281a5e"
+          />
         </svg>
       );
     }
@@ -590,11 +436,14 @@ LampCircleIllustration.propTypes = {
   className: PropTypes.string,
   /** Additional inline styles to apply to the container. */
   style: PropTypes.objectOf(PropTypes.string),
+  /** Allows you to adjust the id of the SVG, this can be useful when using multiple of the same SVG on the same page. */
+  id: PropTypes.string,
 };
 
 LampCircleIllustration.defaultProps = {
   height: '14rem',
   width: '14.4rem',
+  id: 'lamp-circle-illustration',
 };
 
 export default LampCircleIllustration;

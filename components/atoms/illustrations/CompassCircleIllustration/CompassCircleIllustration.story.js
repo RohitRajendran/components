@@ -15,7 +15,7 @@ stories.addDecorator(withReadme(CompassCircleIllustrationReadMe));
 const defaultProps = () => ({
   height: text('height', '14rem'),
   width: text('width', '14.4rem'),
-  isAnimated: boolean('isAnimateed', false),
+  isAnimated: boolean('isAnimated', false),
   animationDuration: number('animationDuration', 10),
 });
 
