@@ -215,7 +215,9 @@ class Navbar extends PureComponent {
       ? this.generateNavigation(rightNavigation)
       : null;
 
-    const linkProps = {};
+    const linkProps = {
+      'aria-label': 'home',
+    };
     const LinkWrapper = this.props.linkComponent;
     if (this.props.linkComponent !== 'a') {
       linkProps.to = logoLink;
