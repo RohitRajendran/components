@@ -55,6 +55,7 @@ class QuestionAnswer extends PureComponent {
                 <div
                   key={index}
                   className="uic--question-answer__qa-wrapper-question"
+                  role="menu"
                 >
                   <ExpandCollapse
                     name={`item-${index}`}
