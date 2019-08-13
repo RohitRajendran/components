@@ -1,10 +1,6 @@
 .uic--tooltip-input {
   // Overrides the input fields to prevent a display issue with the
   // validation field.
-  .uic--tooltip-input-content {
-    outline: none;
-  }
-
   .uic--tooltip-wrapper {
     @include media-breakpoint-down(lg) {
       width: auto;

@@ -47,19 +47,12 @@ a {
 .btn {
   // Main Button Reset
   border: 0;
-  outline: none;
   transition: background-color 500ms, color 500ms;
 
   // Remove default bootstrap styling on active buttons
   &.active,
   &:active {
     box-shadow: none;
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    outline: 0 !important;
   }
 
   // Primary buttons
@@ -159,7 +152,6 @@ a {
     color: $royal;
     cursor: pointer;
     font-weight: 600;
-    outline: none;
     padding: 0 !important;
     text-align: center;
     text-decoration: underline;

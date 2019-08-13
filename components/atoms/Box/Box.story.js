@@ -12,7 +12,7 @@ stories.addDecorator(withReadme(BoxReadMe));
 
 const defaultProps = (selected) => ({
   selected: boolean('selected', selected),
-  title: text('title', 'Essentials'),
+  label: text('label', 'Essentials'),
   description: text(
     'description',
     'These are the basics: paying the bills and putting food on the table. They include your non-discretionary spending.'

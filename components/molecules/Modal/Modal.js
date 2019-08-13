@@ -23,10 +23,7 @@ export const ModalInterior = ({
   });
 
   return (
-    <aside
-      className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center"
-      role="dialog"
-    >
+    <aside className="uic--h-100 uic--w-100 uic--d-flex uic--align-items-center uic--justify-content-center">
       <div className={interiorClasses}>
         <div className="uic--modal-interior">
           {!preventClose && (

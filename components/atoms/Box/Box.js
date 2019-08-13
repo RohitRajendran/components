@@ -76,8 +76,8 @@ class Box extends PureComponent {
             color
           />
         )}
-        <h3 className="uic--box-header">{label}</h3>
-        <p className="uic--box-description">{description}</p>
+        {label && <h3 className="uic--box-header">{label}</h3>}
+        {description && <p className="uic--box-description">{description}</p>}
       </div>
     );
   }

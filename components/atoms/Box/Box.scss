@@ -4,7 +4,6 @@ $box-shadow: rgba(77, 0, 186, 0.5);
   background-color: $white;
   border: 1px solid $light-gray;
   max-width: 27.1rem;
-  outline: 0;
   padding: 2.2rem 1.4rem 1.2rem;
 
   &.uic--box-hover {
@@ -26,6 +25,7 @@ $box-shadow: rgba(77, 0, 186, 0.5);
 
   .uic--box-illustration {
     // Prevents the default onClick behavior of the illustration.
+    margin-bottom: 1rem;
     pointer-events: none;
     user-select: none;
   }
@@ -34,7 +34,7 @@ $box-shadow: rgba(77, 0, 186, 0.5);
     @include source-sans-pro(1.6rem);
     color: $midnight;
     font-weight: 600;
-    margin: 1rem 0 0.4rem;
+    margin: 0 0 0.4rem;
   }
 
   .uic--box-description {

@@ -167,7 +167,7 @@ class ExpandCollapse extends Component {
       !isInvalid && isValid ? ExpandyCircleIcon : ErrorFlagIcon;
 
     return (
-      <div className={containerClasses}>
+      <div className={containerClasses} role="menu">
         <div className="uic--d-flex uic--align-items-center">
           <div
             className="uic--ec-label uic--w-100"

@@ -13,4 +13,14 @@
   body {
     font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
+
+  /*
+  This will hide the focus indicator if the element receives focus via the mouse,
+  but it will still show up on keyboard focus.
+*/
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
 </style>
+<!-- Focus Visible Polyfill: https://github.com/WICG/focus-visible -->
+<script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>

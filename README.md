@@ -95,7 +95,8 @@ While there are always going to be special cases, the following guidelines shoul
 5. Keep external dependencies to an absolute minimum and, when used, most likely add them as peer dependencies in the `package.json` and as external dependencies in `webpack.config.js`.
 6. While components can utilize internal state, do not make them reliant on a global state (i.e., redux).
 7. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
-8. Check for the existance of global variables such as those exposed by `window` in a browser before accessing them. We use this library in non-browser environments, [such as `react-static` which requires code to be node-safe](https://github.com/nozzle/react-static/blob/v6/docs/concepts.md#writing-universal-node-safe-code).
+8. Check for the existence of global variables such as those exposed by `window` in a browser before accessing them. We use this library in non-browser environments, [such as `react-static` which requires code to be node-safe](https://github.com/nozzle/react-static/blob/v6/docs/concepts.md#writing-universal-node-safe-code).
+9. Do not remove the browser default `outline` focus state unless you're replacing it with something else.
 
 ---
 
@@ -190,6 +191,27 @@ stories.add('default', () => (
   />
 ));
 ```
+
+---
+
+### Accessibility 💬
+
+Components are linted for accessibility using the [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y#readme) and validated using [storybook-addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y).
+
+Additionally included in the component library preview is a polyfill for the `:focus-visible` CSS pseudo selector, which turns off the `outline` CSS property off for users who are not using a keyboard to navigate. You can include the polyfill in your own project by including the script file and the required CSS on the page.
+
+```html
+<!-- Turns off the outline for those not using a keyboard -->
+<style>
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
+```
+
+You can learn more about the `:focus-visible` polyfill [here](https://github.com/WICG/focus-visible).
 
 ---
 

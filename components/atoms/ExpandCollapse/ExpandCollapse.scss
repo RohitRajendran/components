@@ -22,7 +22,6 @@ $fast-transition-time: 0.2s;
   .uic--ec-label {
     @include source-sans-pro(1.6rem);
     font-weight: 600;
-    outline: none; // Removes the default focus state.
     padding-left: 5rem;
 
     &:focus {
@@ -68,7 +67,6 @@ $fast-transition-time: 0.2s;
     }
 
     .uic--ec-content {
-      outline: none;
       padding-top: 3rem;
     }
 
