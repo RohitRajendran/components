@@ -4,6 +4,7 @@ export const colors = {
   midnight: '#10004c',
   'middle-purple': '#260070',
   royal: '#4d00ba',
+  'royal-bright': '#6a10e4',
 
   /* Neutrals */
   white: '#ffffff',
