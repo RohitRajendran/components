@@ -13,7 +13,6 @@ $background-color: rgba(0, 0, 0, 0.85);
     // Overrides background color on unapplicable screen sizes.
     background: none !important;
   }
-  outline: none;
 }
 
 .uic--itemization-widget {
@@ -28,7 +27,6 @@ $background-color: rgba(0, 0, 0, 0.85);
   }
   background-color: $midnight;
   color: $white;
-  outline: none;
   width: 16.4rem;
 
   .uic--itemization-widget__threshold-warning,

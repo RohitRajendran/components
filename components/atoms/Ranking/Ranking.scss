@@ -17,10 +17,6 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
       margin: auto;
       right: 0;
 
-      &:focus {
-        outline: none;
-      }
-
       svg {
         left: 50%;
       }
@@ -114,19 +110,12 @@ $hover-shadow: rgba(77, 0, 186, 0.5);
         padding-left: 2.7rem;
       }
 
-      &:focus {
-        outline: none;
-      }
-
       &:hover,
       &:focus {
-        outline: none;
-
         .uic--inner {
           &.movable {
             border: 1px solid $royal;
             box-shadow: 0 0 4px 0 $hover-shadow;
-            outline: none;
             z-index: 30;
           }
         }
