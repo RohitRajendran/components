@@ -6,18 +6,23 @@
 
   .uic--question-answer__header {
     @include cormorant(4rem);
-    @include media-breakpoint-up(md) {
-      background-color: $white;
+    @include media-breakpoint-down(md) {
+      background-color: $table-alternate;
+      border-bottom: 1px solid $light-gray;
+      padding: 2rem 0;
     }
-    background-color: $table-alternate;
+
+    background-color: $white;
     border-right: 1px solid $light-gray;
     color: $midnight;
 
     .uic--question-answer__header-inner {
       @include media-breakpoint-up(md) {
-        text-align: center;
         width: 34rem;
       }
+
+      line-height: 1.2;
+      padding: 0 1.5rem;
     }
   }
 
