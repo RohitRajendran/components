@@ -23,10 +23,12 @@ class Navbar extends PureComponent {
       open: props.isOpen,
       fixed: props.isFixed,
       scroll: 0,
+      mobile: false,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.toggleFixed = this.toggleFixed.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   /** @inheritdoc */
@@ -42,6 +44,7 @@ class Navbar extends PureComponent {
   componentDidMount() {
     if (isWindowDefined()) {
       window.addEventListener('scroll', this.toggleFixed);
+      window.addEventListener('resize', this.handleResize);
     }
   }
 
@@ -173,6 +176,15 @@ class Navbar extends PureComponent {
     });
   }
 
+  /** Handles the resizing of the navigation bar.
+   * @returns {undefined}
+   */
+  handleResize() {
+    this.setState({
+      mobile: window && window.innerWidth <= 767,
+    });
+  }
+
   /** @inheritdoc */
   render() {
     const {
@@ -182,10 +194,11 @@ class Navbar extends PureComponent {
       logoLink,
       rightNavigation,
       staticLogo,
+      staticLogoMobile,
       style,
     } = this.props;
 
-    const {fixed, open} = this.state;
+    const {fixed, open, mobile} = this.state;
 
     const containerClasses = classNames(
       {
@@ -224,16 +237,19 @@ class Navbar extends PureComponent {
     } else {
       linkProps.href = logoLink;
     }
+    const navbarLogo = fixed
+      ? fixedLogo
+      : mobile && staticLogoMobile
+      ? staticLogoMobile
+      : staticLogo;
 
     return (
       <nav className={containerClasses} style={style} role="navigation">
         <div className="uic--navbar__logo uic--d-flex uic--align-items-center">
           {logoLink ? (
-            <LinkWrapper {...linkProps}>
-              {fixed ? fixedLogo : staticLogo}
-            </LinkWrapper>
+            <LinkWrapper {...linkProps}>{navbarLogo}</LinkWrapper>
           ) : (
-            <Fragment>{fixed ? fixedLogo : staticLogo}</Fragment>
+            <Fragment>{navbarLogo}</Fragment>
           )}
         </div>
 
@@ -312,6 +328,8 @@ Navbar.propTypes = {
   fixedLogo: PropTypes.node,
   /** The logo which should appear in the static position. */
   staticLogo: PropTypes.node,
+  /** Optional logo to display on mobile devices when the navigation bar is in the static state. */
+  staticLogoMobile: PropTypes.node,
   /** Determines at what point the navigation bar should switch to the fixed state. Measured in pixels from the top. */
   transitionToFixed: PropTypes.number,
   /** The current route which is provided to apply proper active highlighting on load. */

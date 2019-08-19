@@ -174,3 +174,29 @@ test('Navbar - componentDidUpdate', (t) => {
     'Should still not be fixed as the props never updated.'
   );
 });
+
+test('Navbar - handleResize', (t) => {
+  window.requestAnimationFrame = stub();
+  const props = {
+    isFixed: true,
+    isStatic: false,
+    transitionToFixed: 100,
+    linkComponent: 'div',
+  };
+
+  const component = mount(<Navbar {...props} />);
+
+  t.deepEquals(component.state().mobile, false, 'Should be false.');
+
+  window.innerWidth = 500;
+
+  component.instance().handleResize();
+
+  t.deepEquals(
+    component.state().mobile,
+    true,
+    'Should toggle to the mobile state.'
+  );
+
+  t.end();
+});
