@@ -215,6 +215,24 @@ You can learn more about the `:focus-visible` polyfill [here](https://github.com
 
 ---
 
+### `rem` Sizing
+
+This component library uses [CSS rem sizing](https://css-tricks.com/rem-global-em-local/) for spacing and font sizes. In order to get the intended effect your application should use the following sizing base.
+
+```css
+html {
+  font-size: 10px;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 8px;
+  }
+}
+```
+
+---
+
 ## Additional Resources 🍕
 
 When learning about this library, the following resources may come in handy.
