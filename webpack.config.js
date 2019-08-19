@@ -26,7 +26,6 @@ entries.index = path.resolve(__dirname, 'components/index.js');
 entries.util = prefixUtilFilepath;
 
 module.exports = {
-  mode: 'production',
   entry: entries,
   output: {
     filename: '[name].js',
@@ -99,75 +98,70 @@ module.exports = {
       path: path.resolve(__dirname, 'dist'),
     }),
   ],
-  externals: {
-    classnames: {
-      commonjs: 'classnames',
-      commonjs2: 'classnames',
-      amd: 'ClassNames',
-      root: 'ClassNames',
+  externals: [
+    {
+      classnames: {
+        commonjs: 'classnames',
+        commonjs2: 'classnames',
+        amd: 'ClassNames',
+        root: 'ClassNames',
+      },
+      accounting: {
+        commonjs: 'accounting',
+        commonjs2: 'accounting',
+        amd: 'Accounting',
+        root: 'Accounting',
+      },
+      react: {
+        commonjs: 'react',
+        commonjs2: 'react',
+        amd: 'React',
+        root: 'React',
+      },
+      'react-dom': {
+        commonjs: 'react-dom',
+        commonjs2: 'react-dom',
+        amd: 'ReactDOM',
+        root: 'ReactDOM',
+      },
+      'prop-types': {
+        commonjs: 'prop-types',
+        commonjs2: 'prop-types',
+        amd: 'PropTypes',
+        root: 'PropTypes',
+      },
+      'react-text-mask': {
+        commonjs: 'react-text-mask',
+        commonjs2: 'react-text-mask',
+        amd: 'ReactTextMask',
+        root: 'ReactTextMask',
+      },
+      xstate: {
+        commonjs: 'xstate',
+        commonjs2: 'xstate',
+        amd: 'Xstate',
+        root: 'Xstate',
+      },
+      'query-string': {
+        commonjs: 'query-string',
+        commonjs2: 'query-string',
+        amd: 'QueryString',
+        root: 'QueryString,',
+      },
+      'react-tooltip': {
+        commonjs: 'react-tooltip',
+        commonjs2: 'react-tooltip',
+        amd: 'ReactTooltip',
+        root: 'ReactTooltip',
+      },
+      moment: {
+        commonjs: 'moment',
+        commonjs2: 'moment',
+        amd: 'Moment',
+        root: 'Moment',
+      },
     },
-    accounting: {
-      commonjs: 'accounting',
-      commonjs2: 'accounting',
-      amd: 'Accounting',
-      root: 'Accounting',
-    },
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'Lodash',
-      root: 'Lodash',
-    },
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'React',
-      root: 'React',
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'ReactDOM',
-      root: 'ReactDOM',
-    },
-    'prop-types': {
-      commonjs: 'prop-types',
-      commonjs2: 'prop-types',
-      amd: 'PropTypes',
-      root: 'PropTypes',
-    },
-    'react-text-mask': {
-      commonjs: 'react-text-mask',
-      commonjs2: 'react-text-mask',
-      amd: 'ReactTextMask',
-      root: 'ReactTextMask',
-    },
-    xstate: {
-      commonjs: 'xstate',
-      commonjs2: 'xstate',
-      amd: 'Xstate',
-      root: 'Xstate',
-    },
-    'query-string': {
-      commonjs: 'query-string',
-      commonjs2: 'query-string',
-      amd: 'QueryString',
-      root: 'QueryString,',
-    },
-    'react-tooltip': {
-      commonjs: 'react-tooltip',
-      commonjs2: 'react-tooltip',
-      amd: 'ReactTooltip',
-      root: 'ReactTooltip',
-    },
-    moment: {
-      commonjs: 'moment',
-      commonjs2: 'moment',
-      amd: 'Moment',
-      root: 'Moment',
-    },
-  },
-  optimization: {
-    minimizer: [],
-  },
+    /^lodash\/.+$/,
+    /^react-spring\/.+$/,
+  ],
 };

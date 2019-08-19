@@ -26,14 +26,10 @@
     "type": "git",
     "url": "https://github.com/UnitedIncome/components.git"
   },
-  "bugs": {
-    "url": "https://github.com/UnitedIncome/components/issues"
-  },
   "devDependencies": {
     "@babel/core": "*",
     "@babel/plugin-transform-runtime": "*",
     "@babel/plugin-transform-spread": "*",
-    "@babel/polyfill": "*",
     "@babel/preset-env": "*",
     "@babel/preset-react": "*",
     "@babel/register": "*",
@@ -109,12 +105,14 @@
   "peerDependencies": {
     "accounting": "*",
     "classnames": "*",
+    "core-js": "*",
     "lodash": "*",
     "moment": "*",
     "prop-types": "*",
     "query-string": "<6.0.0",
     "react": "*",
     "react-dom": "*",
+    "react-spring": "*",
     "react-text-mask": "*",
     "react-tooltip": "*",
     "xstate": "*"
