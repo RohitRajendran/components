@@ -45,6 +45,8 @@ class Navbar extends PureComponent {
     if (isWindowDefined()) {
       window.addEventListener('scroll', this.toggleFixed);
       window.addEventListener('resize', this.handleResize);
+
+      this.handleResize();
     }
   }
 
@@ -180,9 +182,23 @@ class Navbar extends PureComponent {
    * @returns {undefined}
    */
   handleResize() {
-    this.setState({
-      mobile: window && window.innerWidth <= 767,
-    });
+    if (isWindowDefined()) {
+      this.setState({
+        mobile: window.innerWidth <= 767,
+      });
+
+      if (isDocumentDefined() && this.state.open && window.innerWidth >= 992) {
+        // Handles the removal of the fixed class if the window is resized with the bar open.
+        document.documentElement.classList.remove(
+          'uic--navbar__prevent-scroll'
+        );
+        document.body.classList.remove('uic--navbar__prevent-scroll');
+
+        this.setState({
+          open: false,
+        });
+      }
+    }
   }
 
   /** @inheritdoc */
@@ -203,6 +219,7 @@ class Navbar extends PureComponent {
     const containerClasses = classNames(
       {
         'uic--navbar': true,
+        'uic--navbar__open': open,
         'uic--navbar__fixed': fixed,
         'uic--navbar__static': !fixed,
         'uic--position-fixed': fixed,

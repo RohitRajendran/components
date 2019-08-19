@@ -105,6 +105,8 @@ test('Navbar - toggleActive', (t) => {
 
   const component = mount(<Navbar {...props} />);
 
+  component.setState({open: true});
+
   t.equals(component.state().open, true, 'Should default to true.');
 
   component.instance().toggleActive();
@@ -196,6 +198,36 @@ test('Navbar - handleResize', (t) => {
     component.state().mobile,
     true,
     'Should toggle to the mobile state.'
+  );
+
+  t.end();
+});
+
+test('Navbar - handleResize (Close)', (t) => {
+  window.requestAnimationFrame = stub();
+  const props = {
+    isFixed: true,
+    isStatic: false,
+    transitionToFixed: 100,
+    linkComponent: 'div',
+  };
+
+  const component = mount(<Navbar {...props} />);
+
+  component.setState({
+    open: true,
+  });
+
+  t.deepEquals(component.state().open, true, 'Should be true.');
+
+  window.innerWidth = 1000;
+
+  component.instance().handleResize();
+
+  t.deepEquals(
+    component.state().open,
+    false,
+    'Should toggle to the state to closed.'
   );
 
   t.end();
