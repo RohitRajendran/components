@@ -105,7 +105,6 @@
   "peerDependencies": {
     "accounting": "*",
     "classnames": "*",
-    "core-js": "*",
     "lodash": "*",
     "moment": "*",
     "prop-types": "*",
