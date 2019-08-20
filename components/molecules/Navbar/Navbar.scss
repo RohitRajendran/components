@@ -135,12 +135,18 @@ $navigation-z-index: 1450;
   }
 
   &.uic--navbar__static {
-    @include media-breakpoint-up(lg) {
-      opacity: 0.8;
+    @include media-breakpoint-up(md) {
+      height: $static-navbar-height;
     }
 
     background-color: $white;
-    height: $static-navbar-height;
+    height: $fixed-navbar-height;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+
+    &.uic--navbar__open {
+      opacity: 1;
+    }
 
     .uic--navbar__logo {
       padding-right: 5.4rem;
@@ -154,7 +160,11 @@ $navigation-z-index: 1450;
       }
 
       .uic--navbar__mobile-drawer-wrapper {
-        top: $static-navbar-height;
+        @include media-breakpoint-up(md) {
+          top: $static-navbar-height;
+        }
+
+        top: $fixed-navbar-height;
 
         .uic--navbar__mobile-drawer-inner {
           background-color: $white;

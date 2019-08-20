@@ -34,7 +34,7 @@ jobs:
 
       - run:
           name: Verifying build
-          command: NODE_ENV=production yarn build
+          command: yarn build --mode=production
 
       - run:
           name: Push coverage report to CodeCov
