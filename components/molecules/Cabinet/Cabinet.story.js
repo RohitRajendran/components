@@ -84,9 +84,13 @@ stories.add('default', () => (
 
       <li>Your primary car payments and associated costs like taxes</li>
 
-      <li>Gasoline </li>
+      <li>
+        Gasoline<sup>1</sup>
+      </li>
 
-      <li>Car insurance </li>
+      <li>
+        Car insurance<sup>2</sup>
+      </li>
 
       <li>Public transportation</li>
 
@@ -100,6 +104,15 @@ stories.add('default', () => (
     <img src="https://jamesiv.es/assets/images/montezuma.png" alt="Montezuma" />
     <h2>He likes fish</h2>
     <p>He likes it.</p>
+    <footer>
+      <ol>
+        <li>
+          Montezuma is the best cat in the world. Any claim that does not state
+          this is false and should be disregarded.
+        </li>
+        <li>This is another thing</li>
+      </ol>
+    </footer>
   </Cabinet>
 ));
 
@@ -177,5 +190,14 @@ stories.add('open', () => (
     <img src="https://jamesiv.es/assets/images/montezuma.png" alt="Montezuma" />
     <h2>He likes fish</h2>
     <p>He likes it.</p>
+    <footer>
+      <ol>
+        <li>
+          Montezuma is the best cat in the world. Any claim that does not state
+          this is false and should be disregarded.
+        </li>
+        <li>This is another thing</li>
+      </ol>
+    </footer>
   </Cabinet>
 ));
