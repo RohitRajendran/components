@@ -85,6 +85,10 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
     overflow-y: scroll;
     padding: 3rem 6rem;
 
+    sup {
+      font-size: 1rem;
+    }
+
     h1,
     h2 {
       color: $midnight;
@@ -119,6 +123,18 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
         ol {
           padding: 0 0 1rem 3rem;
         }
+      }
+    }
+
+    footer {
+      border-top: 1px solid $light-gray;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+
+      ul,
+      ol {
+        padding-left: 1rem;
       }
     }
   }

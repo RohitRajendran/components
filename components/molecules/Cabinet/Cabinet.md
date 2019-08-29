@@ -26,7 +26,19 @@ import {Cabinet} from '@unitedincome/components';
   <h2>Montezuma is the best cat</h2>
   <p>You can place a paragraph about how good of a cat he is here</p>
   <h2>This is why</h2>
-  <p>Because he just is</p>
+  <p>
+    Because he just is
+    <sup>1</sup>
+  </p>
+  <footer>
+    <ol>
+      <li>
+        Montezuma is the best cat in the world. Any claim that doesn't state
+        this is false and should be disregarded.
+      </li>
+      <li>This is another thing</li>
+    </ol>
+  </footer>
 </Cabinet>
 ```
 
@@ -39,7 +51,19 @@ If you're including the Cabinet once on the page you can use the `handleWithStat
   <h2>Montezuma is the best cat</h2>
   <p>You can place a paragraph about how good of a cat he is here</p>
   <h2>This is why</h2>
-  <p>Because he just is</p>
+  <p>
+    Because he just is
+    <sup>1</sup>
+  </p>
+  <footer>
+    <ol>
+      <li>
+        Montezuma is the best cat in the world. Any claim that doesn't state
+        this is false and should be disregarded.
+      </li>
+      <li>This is another thing</li>
+    </ol>
+  </footer>
 </Cabinet>
 ```
 
