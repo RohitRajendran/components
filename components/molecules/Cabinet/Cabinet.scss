@@ -87,6 +87,12 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
 
     sup {
       font-size: 1rem;
+
+      a {
+        color: $royal;
+        font-weight: 600;
+        text-decoration: underline;
+      }
     }
 
     h1,
