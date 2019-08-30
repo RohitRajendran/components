@@ -45,6 +45,9 @@ stories.add('default', () => (
       have nice fur, it is so soft. He really does have nice fur, it is so soft.
       He really does have nice fur, it is so soft. He really does have nice fur,
       it is so soft.
+      <sup>
+        <a href="#link1">1</a>
+      </sup>
     </p>
     <h2>He meows</h2>
     <p>
@@ -110,7 +113,7 @@ stories.add('default', () => (
           Montezuma is the best cat in the world. Any claim that does not state
           this is false and should be disregarded.
         </li>
-        <li>This is another thing</li>
+        <li id="link1">This is another thing</li>
       </ol>
     </footer>
   </Cabinet>
