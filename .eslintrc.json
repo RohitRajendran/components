@@ -101,7 +101,6 @@
     "no-catch-shadow": "error",
     "no-shadow-restricted-names": "error",
     "no-shadow": "error",
-    "no-undefined": "error",
     "no-use-before-define": "error",
     "no-process-exit": "error",
     "array-bracket-spacing": ["error", "never"],

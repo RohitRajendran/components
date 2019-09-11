@@ -80,7 +80,7 @@ test('detectMobile - Should return true or false if the user is on mobile', (t) 
 
 test('DetectBrowser - no browser environment', (t) => {
   const originalWindow = window;
-  global.__defineGetter__('window', () => undefined); // eslint-disable-line no-undefined
+  global.__defineGetter__('window', () => undefined);
 
   t.false(detectIOS());
   t.false(detectTablet());

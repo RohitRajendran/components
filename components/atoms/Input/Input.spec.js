@@ -34,7 +34,7 @@ test('Input - Renders props as attributes on the input', (t) => {
   t.equal(componentInputProps.type, 'text');
   t.equal(componentInputProps.placeholder, '$0');
   t.equal(componentInputProps['aria-label'], 'Value (Optional)');
-  t.equal(componentInputProps.required, undefined); // eslint-disable-line no-undefined
+  t.equal(componentInputProps.required, undefined);
   t.equal(componentInputProps.pattern, '^\\d{5}$');
   t.equal(componentInputProps.maxLength, 5);
 

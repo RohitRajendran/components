@@ -252,7 +252,6 @@ test('DropDown - validationResult', (t) => {
 
   t.deepEqual(
     component2.instance().validationResults(props2.validate),
-    // eslint-disable-next-line no-undefined
     undefined,
     'Should return undefined if valid.'
   );
