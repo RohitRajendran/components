@@ -69,8 +69,6 @@ BoxSelectCard.propTypes = {
     ).isRequired,
     /** The name of the box group. Gets passed back when the onClick handler is triggered. */
     name: PropTypes.string.isRequired,
-    /** Handler which gets initiated every time a selection is made. Passes back the selection group name and the value. */
-    onChange: PropTypes.func.isRequired,
     /** The item that is currently selected. */
     value: PropTypes.string,
   }),

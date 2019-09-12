@@ -545,7 +545,6 @@ test('McGonagall - renderStep (no changes)', (t) => {
   cardArgs.onSubmit();
   t.deepEquals(
     comp.updateStateMachine.args[0],
-    // eslint-disable-next-line no-undefined
     [['val'], undefined, true],
     'Submits sends proper info'
   );
@@ -599,7 +598,6 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   cardArgs.onSubmit();
   t.deepEquals(
     comp.updateStateMachine.args[0],
-    // eslint-disable-next-line no-undefined
     [['val'], undefined, false],
     'Submits sends proper info'
   );

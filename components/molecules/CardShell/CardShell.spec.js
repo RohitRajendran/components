@@ -218,7 +218,6 @@ test('CardShell - componentDidUpdate (isCollapsed = true)', (t) => {
     comp.state(),
     {
       animationEnded: false,
-      // eslint-disable-next-line no-undefined
       cardContext: {showRequiredError: undefined},
       hasAnimationRun: false,
       height: 2,
@@ -263,7 +262,6 @@ test('CardShell - componentDidUpdate (isCollapsed = false)', (t) => {
     comp.state(),
     {
       animationEnded: false,
-      // eslint-disable-next-line no-undefined
       cardContext: {showRequiredError: undefined},
       hasAnimationRun: false,
       height: 1,
