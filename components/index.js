@@ -52,6 +52,7 @@ import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon';
 
 // Molecules
+import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
 import Navbar from '~components/molecules/Navbar/Navbar';
 import BoxSelect from '~components/molecules/BoxSelect/BoxSelect';
@@ -90,6 +91,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  CardContentDescription,
   ArrowLineIcon,
   CompassCircleIllustration,
   DiceIcon,
