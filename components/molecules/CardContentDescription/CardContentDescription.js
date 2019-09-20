@@ -40,7 +40,7 @@ class CardContentDescription extends Component {
    * @returns {undefined}
    */
   checkValidityAndFetch(valuesChanged) {
-    const valid = this.props.validate();
+    const valid = this.props.validate && this.props.validate();
 
     if (valuesChanged && valid) {
       this.setState({
