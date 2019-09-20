@@ -20,6 +20,7 @@ class CardContentDescription extends Component {
     };
 
     this.fetchData = debounce(this.fetchData.bind(this), 1000);
+    this.checkValidityAndFetch = this.checkValidityAndFetch.bind(this);
   }
 
   /** Fetches data and sets state to indicate it's complete.
@@ -33,27 +34,41 @@ class CardContentDescription extends Component {
     });
   }
 
+  /**
+   * Checks validity before fetching
+   * @param {boolean} valuesChanged has values changed
+   * @returns {undefined}
+   */
+  checkValidityAndFetch(valuesChanged) {
+    const valid = this.props.validate();
+
+    if (valuesChanged && valid) {
+      this.setState({
+        isFetching: true,
+        valid,
+      });
+
+      this.fetchData();
+    } else if (!valid && valid !== this.state.valid) {
+      // If the field is invalid then the following state causes the text to hide.
+      this.setState({
+        valid,
+      });
+    }
+  }
+
+  /** @inheritdoc */
+  componentDidMount() {
+    this.checkValidityAndFetch(true);
+  }
+
   /** @inheritdoc */
   componentDidUpdate(prevProps) {
     if (this.props.validate && this.props.values && this.props.onChange) {
       const prevValues = JSON.stringify(prevProps.values);
       const values = JSON.stringify(this.props.values);
-      const valid = this.props.validate();
 
-      // Ensures the new values are different than the old ones.
-      if (values !== prevValues && valid) {
-        this.setState({
-          isFetching: true,
-          valid,
-        });
-
-        this.fetchData();
-      } else if (!valid && valid !== this.state.valid) {
-        // If the field is invalid then the following state causes the text to hide.
-        this.setState({
-          valid,
-        });
-      }
+      this.checkValidityAndFetch(values !== prevValues);
     }
   }
 

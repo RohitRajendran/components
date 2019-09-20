@@ -18,11 +18,52 @@ test('CardContentDescription - fetchData', async (t) => {
 
   t.deepEquals(
     component.state(),
-    {valid: false, isFetching: false},
+    {valid: true, isFetching: false},
     'State should be correctly set..'
   );
 
   clock.restore();
+  t.end();
+});
+
+test('CardContentDescription - checkValidityAndFetch (valid)', async (t) => {
+  const props = {
+    onChange: stub().resolves('Montezuma is the best cat'),
+    validate: () => true,
+    values: ['montezuma'],
+  };
+
+  const component = new CardContentDescription(props);
+  component.setState = stub();
+  await component.checkValidityAndFetch(true);
+
+  t.deepEquals(
+    component.setState.args[0][0],
+    {isFetching: true, valid: true},
+    'Sets fetching to true'
+  );
+
+  t.end();
+});
+
+test('CardContentDescription - checkValidityAndFetch (invalidvalid)', async (t) => {
+  const props = {
+    onChange: stub().resolves('Montezuma is the best cat'),
+    validate: () => false,
+    values: ['montezuma'],
+  };
+
+  const component = new CardContentDescription(props);
+  component.state.valid = true;
+  component.setState = stub();
+  component.checkValidityAndFetch(false);
+
+  t.deepEquals(
+    component.setState.args[0][0],
+    {valid: false},
+    'Does not set fetching to true'
+  );
+
   t.end();
 });
 
