@@ -13,6 +13,10 @@ $animation-duration: 0.3s;
   &:last-of-type {
     border-bottom: $border;
 
+    .uic--stackable-expand-collapse-clickable {
+      padding: 1.4rem 2rem 1.6rem;
+    }
+
     .uic--stackable-expand-collapse-divider {
       border: 0;
     }
