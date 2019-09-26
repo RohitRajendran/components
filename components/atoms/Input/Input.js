@@ -3,172 +3,19 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
-import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
-import {CardShellContext} from '../../molecules/CardShell/CardShell';
+import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {isInViewport} from '~components/atoms/Input/Input.util';
 import {
   isWindowDefined,
   isDocumentDefined,
 } from '~components/utilities/DetectBrowser/DetectBrowser';
+import {
+  currencyMasks,
+  maskEnum,
+  MaskTypes,
+  percentageMasks,
+} from './Input.masks';
 import './Input.scss';
-
-export const hideValidityFalse = () => false;
-export const MaskTypes = {currency: 'currency'};
-
-/** @constant {regex[]} The mask for a phone number */
-export const phoneNumberMask = {
-  mask: [
-    '(',
-    /[1-9]/,
-    /\d/,
-    /\d/,
-    ')',
-    ' ',
-    /\d/,
-    /\d/,
-    /\d/,
-    '-',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-  ],
-  regex: /\(?[1-9]\d{2}\)? ?\d{3}-?\d{4}/,
-};
-
-/** @constant {regex[]} The mask for an SSN */
-export const ssnNumberMask = {
-  mask: [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
-  regex: /\d{3}-\d{2}-\d{4}/,
-};
-
-/** @constant {regex[]} The mask for a date */
-export const dateMask = {
-  mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
-  pipe: createAutoCorrectedDatePipe('mm/dd/yyyy'),
-  regex: /\d\d\/\d\d\/\d\d\d\d/,
-};
-
-/** @constant {regex[]} The mask for a month/year date */
-export const monthMask = {
-  mask: [/\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
-  pipe: createAutoCorrectedDatePipe('mm/yyyy'),
-  regex: /\d\d\/\d\d\d\d/,
-};
-
-/** @constant {regex[]} The mask for a zip code */
-export const zipMask = {
-  mask: [/\d/, /\d/, /\d/, /\d/, /\d/],
-  regex: /^\d{5}(-\d{4})?$/,
-};
-
-/**
- * Create a ticker mask which only accepts capital letters
- * @param {string} input - raw input from component
- * @returns {regex[]} The mask
- */
-export const tickerMask = {
-  /* istanbul ignore next */
-  mask(input) {
-    return Array(input.length).fill(/[a-zA-Z]/);
-  },
-  regex: /[a-zA-Z]+/,
-};
-
-/**
- * Create a mask which only accepts letters, commas, and spaces
- * @param {string} input - raw input from component
- * @returns {regex[]} the mask
- */
-export const commaSeparatedMask = {
-  /* istanbul ignore next */
-  mask(input) {
-    return Array(input.length + 1).fill(/[A-Za-z, ]/);
-  },
-  regex: /[A-Za-z]+[A-Za-z, ]*/,
-};
-
-/** @constant {object} - A currency mask */
-export const currencyMask = {
-  mask: createNumberMask({prefix: ''}),
-  regex: /[0-9]+/,
-  type: MaskTypes.currency,
-  sanitize: /[,]/g,
-};
-
-/** @constant {object} A currency mask */
-export const currencyMaskAllowNegative = {
-  mask: createNumberMask({prefix: '', allowNegative: true}),
-  regex: /[0-9]+/,
-  type: MaskTypes.currency,
-  sanitize: /[,]/g,
-};
-
-/** @constant {object} - A currency mask that accepts decimals */
-export const currencyDecimalMask = {
-  mask: createNumberMask({
-    prefix: '',
-    allowDecimal: true,
-  }),
-  regex: /[0-9]+/,
-  type: MaskTypes.currency,
-  sanitize: /[,]/g,
-};
-
-/** @constant {object} - A number mask */
-export const numberMask = {
-  mask: createNumberMask({
-    prefix: '',
-    includeThousandsSeparator: false,
-    allowLeadingZeroes: true,
-  }),
-  regex: /[0-9]+/,
-};
-
-/** @constant {object} - A percentage mask that allows decimals */
-export const percentageWithDecimalMask = {
-  mask: createNumberMask({
-    prefix: '',
-    allowDecimal: true,
-    includeThousandsSeparator: false,
-    decimalLimit: 3,
-  }),
-  regex: /[0-9]+/,
-};
-
-/** @constant {object} - A percentage mask that allows decimals */
-export const percentageWithDecimalMaskAllowNegative = {
-  mask: createNumberMask({
-    prefix: '',
-    allowNegative: true,
-    allowDecimal: true,
-    includeThousandsSeparator: false,
-    decimalLimit: 3,
-  }),
-  regex: /[0-9]+/,
-};
-
-/**
- * @constant {object} - A percentage mask for percentages < 100% and up
- * to three digits after the decimal place.
- */
-export const smallPercentageWithDecimalMask = {
-  mask: createNumberMask({
-    prefix: '',
-    allowDecimal: true,
-    includeThousandsSeparator: false,
-    decimalLimit: 3,
-    integerLimit: 2,
-  }),
-  regex: /\d{0,2}(\.\d{0,3})?/,
-};
-
-/** @constant {object} - A mask to loosely match Apex account numbers */
-export const apexAccount = {
-  mask: [/\d/, /[A-Z]/, /[A-Z]/, /\d/, /\d/, /\d/, /\d/, /\d/],
-  regex: /\d[A-Z]{2}\d{5}/,
-};
 
 /** Gets the deepest input element for validation.
  * @param {object} startObject - The first input.
@@ -180,55 +27,6 @@ export const getDeepestInputElement = (startObject) => {
   }
   return getDeepestInputElement(startObject.inputElement);
 };
-
-/** @constant {Object} - Maps prop names prop mask types. */
-export const maskEnum = {
-  ApexAccount: {mask: apexAccount},
-  PhoneNumber: {mask: phoneNumberMask},
-  SsnNumber: {mask: ssnNumberMask},
-  Date: {
-    mask: dateMask,
-    placeholder: 'MM/DD/YYYY',
-    isValid: (val) => {
-      return val ? val.length === 10 : true;
-    },
-    validationErrorMsg: 'Invalid date value',
-  },
-  Month: {
-    mask: monthMask,
-    placeholder: 'MM/YYYY',
-    isValid: (val) => {
-      return val ? val.length === 7 : true;
-    },
-    validationErrorMsg: 'Invalid date value',
-  },
-  Zip: {mask: zipMask},
-  Ticker: {mask: tickerMask},
-  CommaSeparated: {mask: commaSeparatedMask},
-  Currency: {mask: currencyMask},
-  CurrencyDecimal: {mask: currencyDecimalMask},
-  CurrencyAllowNegative: {mask: currencyMaskAllowNegative},
-  Number: {mask: numberMask},
-  PercentageWithDecimal: {mask: percentageWithDecimalMask},
-  PercentageWithDecimalAllowNegative: {
-    mask: percentageWithDecimalMaskAllowNegative,
-  },
-  SmallPercentageWithDecimal: {mask: smallPercentageWithDecimalMask},
-};
-
-/** @constant {Array} - Masks that should have '%' appended to it */
-export const percentageMasks = [
-  'SmallPercentageWithDecimal',
-  'PercentageWithDecimal',
-  'PercentageWithDecimalAllowNegative',
-];
-
-/** @constant {Array} - Masks that should have '$' prepended to it */
-export const currencyMasks = [
-  'Currency',
-  'CurrencyDecimal',
-  'CurrencyAllowNegative',
-];
 
 /** Renders the Input field component. */
 class Input extends Component {
@@ -337,24 +135,6 @@ class Input extends Component {
       this specific input every time instead of applying it to all inputs on the page. */
     const identifier = Math.round(Math.random() * 10000000);
 
-    const attrs = {
-      type,
-      name,
-      placeholder:
-        placeholder ||
-        (this.props.mask && maskEnum[this.props.mask].placeholder) ||
-        null,
-      value,
-      required,
-      maxLength,
-      min,
-      max,
-      step,
-      disabled,
-      pattern,
-      onKeyPress,
-    };
-
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
 
@@ -378,6 +158,24 @@ class Input extends Component {
     if (label && !required && !disableOptionalFlag) {
       inputLabel = `${label} (Optional)`;
     }
+
+    const attrs = {
+      type,
+      name,
+      placeholder:
+        `${placeholder || ''}${appendCharacter || ''}` ||
+        (this.props.mask && maskEnum[this.props.mask].placeholder) ||
+        null,
+      value,
+      required,
+      maxLength,
+      min,
+      max,
+      step,
+      disabled,
+      pattern,
+      onKeyPress,
+    };
 
     if (this.props.mask) {
       const mask = (this.props.mask && maskEnum[this.props.mask].mask) || null;

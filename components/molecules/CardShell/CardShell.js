@@ -5,7 +5,7 @@ import React, {Component, createRef} from 'react';
 import {animated, config, Spring} from 'react-spring/renderprops.cjs';
 import {isNullOrUndefined} from 'util';
 import Button from '~components/atoms/Button/Button';
-import {maskEnum} from '~components/atoms/Input/Input';
+import {maskEnum} from '~components/atoms/Input/Input.masks';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
 import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';

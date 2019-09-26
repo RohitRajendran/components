@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Input from '~components/atoms/Input/Input';
+import {
+  currencyMasks,
+  percentageMasks,
+} from '~components/atoms/Input/Input.masks';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
-import {currencyMasks, percentageMasks} from '../../atoms/Input/Input';
 
 /** Displays the InputCard component.
  * @param {object} props - Component props.
