@@ -55,18 +55,21 @@ export const validateChildren = (children, startValidated = false) => {
           }
         }
       } else if (
-        !child.props.disabled &&
-        (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
-        ((child.props.pattern &&
-          !new RegExp(child.props.pattern).test(child.props.value)) ||
-          (child.props.min && child.props.value < child.props.min) ||
-          (child.props.max && child.props.value > child.props.max) ||
-          (child.props.maxLength &&
-            child.props.value &&
-            child.props.value.length > child.props.maxLength) ||
-          (child.props.isValid && !child.props.isValid(child.props.value)) ||
-          (child.props.mask &&
-            !maskEnum[child.props.mask].mask.regex.test(child.props.value)))
+        (!child.props.disabled &&
+          (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
+          ((child.props.pattern &&
+            !new RegExp(child.props.pattern).test(child.props.value)) ||
+            (child.props.min && child.props.value < child.props.min) ||
+            (child.props.max && child.props.value > child.props.max) ||
+            (child.props.maxLength &&
+              child.props.value &&
+              child.props.value.length > child.props.maxLength) ||
+            (child.props.isValid && !child.props.isValid(child.props.value)) ||
+            (child.props.mask &&
+              !maskEnum[child.props.mask].mask.regex.test(
+                child.props.value
+              )))) ||
+        (child.props.fetchStatus && child.props.isFetching)
       ) {
         isChildValid = false;
       } else {

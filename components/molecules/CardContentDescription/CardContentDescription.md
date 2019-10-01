@@ -26,19 +26,9 @@ import {CardContentDescription} from '@unitedincome/components';
 
 ## Props 🔧
 
-### `props.validate`
+### `props.isValid`
 
-The validate function should return `true` or `false` based on whatever condition you want.
-
-```javascript
-const validationFunction = () => {
-  if (store.get('yesNo').length > 2) {
-    return true;
-  } else {
-    return false;
-  }
-};
-```
+The `isValid` prop should be a boolean which determines if the data returned from the `onChange` handler is valid or not. Providing `false` here will cause the component to hide. Any subsequent `onChange` fires will still fire, and the component will come back into view while it's fetching or when this value is `true`.
 
 ### `props.values`
 
@@ -54,8 +44,22 @@ The `onChange` prop accepts a function which returns a promise.
 
 ```javascript
 const handler = () => {
-  return Promise.resolve(
-    'This is the text that should display in the component when fetched.'
-  );
+  return Promise.resolve();
 };
+```
+
+### `props.isFetching`
+
+If you're using the data that is returned from `onChange` to validate a McGonnagal card you'll need to assign a `fetchStatus` and `isFetching` prop to the component. This is so the cards validation function will know that the data isn't ready yet when it reads from its prop values.
+
+You can view an example of this below.
+
+```javascript
+<CardContentDescription
+  validate={validateFunc}
+  values={values}
+  onChange={() => Promise.resolve('Value')}
+  isFetching={this.state.isFetching}
+  fetchStatus={(fetching) => this.setState({isFetching: fetching})}
+/>
 ```

@@ -7,8 +7,9 @@ import CardContentDescription from './CardContentDescription';
 test('CardContentDescription - fetchData', async (t) => {
   const props = {
     onChange: stub().resolves('Montezuma is the best cat'),
-    validate: () => true,
+    isValid: true,
     values: ['montezuma'],
+    fetchStatus: stub(),
   };
 
   const clock = useFakeTimers();
@@ -18,7 +19,7 @@ test('CardContentDescription - fetchData', async (t) => {
 
   t.deepEquals(
     component.state(),
-    {valid: true, isFetching: false},
+    {isFetching: false},
     'State should be correctly set..'
   );
 
@@ -26,11 +27,12 @@ test('CardContentDescription - fetchData', async (t) => {
   t.end();
 });
 
-test('CardContentDescription - checkValidityAndFetch (valid)', async (t) => {
+test('CardContentDescription - checkValidityAndFetch', async (t) => {
   const props = {
     onChange: stub().resolves('Montezuma is the best cat'),
-    validate: () => true,
+    isValid: true,
     values: ['montezuma'],
+    fetchStatus: stub(),
   };
 
   const component = new CardContentDescription(props);
@@ -39,39 +41,19 @@ test('CardContentDescription - checkValidityAndFetch (valid)', async (t) => {
 
   t.deepEquals(
     component.setState.args[0][0],
-    {isFetching: true, valid: true},
+    {isFetching: true},
     'Sets fetching to true'
   );
 
   t.end();
 });
 
-test('CardContentDescription - checkValidityAndFetch (invalidvalid)', async (t) => {
+test('CardContentDescription - componentDidUpdate', (t) => {
   const props = {
     onChange: stub().resolves('Montezuma is the best cat'),
-    validate: () => false,
+    isValid: true,
     values: ['montezuma'],
-  };
-
-  const component = new CardContentDescription(props);
-  component.state.valid = true;
-  component.setState = stub();
-  component.checkValidityAndFetch(false);
-
-  t.deepEquals(
-    component.setState.args[0][0],
-    {valid: false},
-    'Does not set fetching to true'
-  );
-
-  t.end();
-});
-
-test('CardContentDescription - componentDidUpdate (invalid/valid toggle)', (t) => {
-  const props = {
-    onChange: stub().resolves('Montezuma is the best cat'),
-    validate: () => true,
-    values: ['montezuma'],
+    fetchStatus: stub(),
   };
 
   const component = mount(<CardContentDescription {...props} />);
@@ -82,43 +64,21 @@ test('CardContentDescription - componentDidUpdate (invalid/valid toggle)', (t) =
 
   t.deepEquals(
     component.state(),
-    {valid: true, isFetching: true},
+    {isFetching: true},
     'Should go into fetching mode.'
   );
 
   // Toggle to valid to make sure it correctly sets the validation state.
   component.setProps({
     values: ['montezuma2'],
-    validate: () => false,
+    isValid: true,
   });
 
   t.deepEquals(
     component.state(),
     // isFetching is true here due to how this function is being called.
-    {valid: false, isFetching: true},
+    {isFetching: true},
     'Should go into fetching mode.'
-  );
-
-  t.end();
-});
-
-test('CardContentDescription - componentDidUpdate (invalid)', (t) => {
-  const props = {
-    onChange: stub().resolves('Montezuma is the best cat'),
-    validate: () => false,
-    values: ['montezuma'],
-  };
-
-  const component = mount(<CardContentDescription {...props} />);
-
-  component.setProps({
-    values: ['montezuma2'],
-  });
-
-  t.deepEquals(
-    component.state(),
-    {valid: false, isFetching: false},
-    'Should not go into fetching mode.'
   );
 
   t.end();
