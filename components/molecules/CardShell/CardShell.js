@@ -5,7 +5,7 @@ import React, {Component, createRef} from 'react';
 import {animated, config, Spring} from 'react-spring/renderprops.cjs';
 import {isNullOrUndefined} from 'util';
 import Button from '~components/atoms/Button/Button';
-import {maskEnum} from '~components/atoms/Input/Input';
+import {maskEnum} from '~components/atoms/Input/Input.masks';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
 import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
@@ -55,18 +55,21 @@ export const validateChildren = (children, startValidated = false) => {
           }
         }
       } else if (
-        !child.props.disabled &&
-        (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
-        ((child.props.pattern &&
-          !new RegExp(child.props.pattern).test(child.props.value)) ||
-          (child.props.min && child.props.value < child.props.min) ||
-          (child.props.max && child.props.value > child.props.max) ||
-          (child.props.maxLength &&
-            child.props.value &&
-            child.props.value.length > child.props.maxLength) ||
-          (child.props.isValid && !child.props.isValid(child.props.value)) ||
-          (child.props.mask &&
-            !maskEnum[child.props.mask].mask.regex.test(child.props.value)))
+        (!child.props.disabled &&
+          (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
+          ((child.props.pattern &&
+            !new RegExp(child.props.pattern).test(child.props.value)) ||
+            (child.props.min && child.props.value < child.props.min) ||
+            (child.props.max && child.props.value > child.props.max) ||
+            (child.props.maxLength &&
+              child.props.value &&
+              child.props.value.length > child.props.maxLength) ||
+            (child.props.isValid && !child.props.isValid(child.props.value)) ||
+            (child.props.mask &&
+              !maskEnum[child.props.mask].mask.regex.test(
+                child.props.value
+              )))) ||
+        (child.props.fetchStatus && child.props.isFetching)
       ) {
         isChildValid = false;
       } else {

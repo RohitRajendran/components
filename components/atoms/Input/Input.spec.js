@@ -3,12 +3,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {spy, stub} from 'sinon';
 import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
-import Input, {
-  getDeepestInputElement,
-  commaSeparatedMask,
-  tickerMask,
-  maskEnum,
-} from './Input';
+import Input, {getDeepestInputElement} from './Input';
 import * as InputUtils from './Input.util';
 
 test('Input - Renders props as attributes on the input', (t) => {
@@ -272,47 +267,6 @@ test('Input - onBlur correctly fires both handlers', (t) => {
     true,
     'Should toggle the focus state when something is blurred even with validateOnBlur toggled.'
   );
-
-  t.end();
-});
-
-test('Input - tickerMask', (t) => {
-  t.deepEquals(
-    tickerMask.mask('hello'),
-    [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/],
-    'Mask should return the correct pattern.'
-  );
-  t.end();
-});
-
-test('Input - commaSeparatedMask', (t) => {
-  t.deepEquals(
-    commaSeparatedMask.mask('hello'),
-    [
-      /[A-Za-z, ]/,
-      /[A-Za-z, ]/,
-      /[A-Za-z, ]/,
-      /[A-Za-z, ]/,
-      /[A-Za-z, ]/,
-      /[A-Za-z, ]/,
-    ],
-    'Mask should return the correct pattern.'
-  );
-  t.end();
-});
-
-test('Input - Date Mask isValid', (t) => {
-  t.true(maskEnum['Date'].isValid(), 'Is valid');
-  t.true(maskEnum['Date'].isValid('10/12/2019'), 'Is valid');
-  t.false(maskEnum['Date'].isValid('10/2019'), 'Is not valid');
-
-  t.end();
-});
-
-test('Input - Month Mask isValid', (t) => {
-  t.true(maskEnum['Month'].isValid(), 'Is valid');
-  t.true(maskEnum['Month'].isValid('10/2019'), 'Is valid');
-  t.false(maskEnum['Month'].isValid('10/12/2019'), 'Is not valid');
 
   t.end();
 });

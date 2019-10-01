@@ -21,6 +21,7 @@ const store = new Store({
   disabled: false,
   interest: '100',
   catTax: '1337',
+  status: false,
 });
 
 stories
@@ -77,11 +78,12 @@ const defaultProps = (
 const contentDescriptionProps = () => ({
   removeTopBorder: boolean('removeTopBorder', false),
   removeBottomBorder: boolean('removeBottomBorder', false),
+  isValid: boolean('isValid', true),
 });
 
 stories.add('default', () => {
   const validationFunction = () => {
-    if (store.get('yesNo').length > 2) {
+    if (store.get('yesNo').length > 0) {
       return true;
     } else {
       return false;
@@ -110,6 +112,8 @@ stories.add('default', () => {
         values={values}
         validate={validationFunction}
         onChange={changeHandler}
+        fetchStatus={(ev) => store.set({status: ev})}
+        isFetching={store.get('status')}
       >
         Montezuma is the best cat
       </CardContentDescription>

@@ -15,7 +15,6 @@ class CardContentDescription extends Component {
     super(props);
 
     this.state = {
-      valid: false,
       isFetching: false,
     };
 
@@ -32,6 +31,10 @@ class CardContentDescription extends Component {
     this.setState({
       isFetching: false,
     });
+
+    if (this.props.fetchStatus) {
+      this.props.fetchStatus(false);
+    }
   }
 
   /**
@@ -40,20 +43,16 @@ class CardContentDescription extends Component {
    * @returns {undefined}
    */
   checkValidityAndFetch(valuesChanged) {
-    const valid = this.props.validate && this.props.validate();
+    if (valuesChanged) {
+      if (this.props.fetchStatus) {
+        this.props.fetchStatus(true);
+      }
 
-    if (valuesChanged && valid) {
       this.setState({
         isFetching: true,
-        valid,
       });
 
       this.fetchData();
-    } else if (!valid && valid !== this.state.valid) {
-      // If the field is invalid then the following state causes the text to hide.
-      this.setState({
-        valid,
-      });
     }
   }
 
@@ -64,10 +63,9 @@ class CardContentDescription extends Component {
 
   /** @inheritdoc */
   componentDidUpdate(prevProps) {
-    if (this.props.validate && this.props.values && this.props.onChange) {
+    if (this.props.values && this.props.onChange) {
       const prevValues = JSON.stringify(prevProps.values);
       const values = JSON.stringify(this.props.values);
-
       this.checkValidityAndFetch(values !== prevValues);
     }
   }
@@ -80,10 +78,10 @@ class CardContentDescription extends Component {
       children,
       removeTopBorder,
       removeBottomBorder,
-      validate,
+      isValid,
     } = this.props;
 
-    const {isFetching, valid} = this.state;
+    const {isFetching} = this.state;
 
     const containerClasses = classNames(
       {
@@ -93,21 +91,17 @@ class CardContentDescription extends Component {
       className
     );
 
-    if (validate && !valid) {
-      return null;
-    }
-
     return (
       <div className={containerClasses} style={style}>
-        {!removeTopBorder && <hr />}
+        {!removeTopBorder && (isValid || isFetching) && <hr />}
         <div className="uic--card-content-description__content uic--text-center uic--mcg-subhead-2-text">
           {isFetching ? (
             <Spinner height="2rem" width="2rem" fill={colors.midnight} />
           ) : (
-            children
+            isValid && children
           )}
         </div>
-        {!removeBottomBorder && <hr />}
+        {!removeBottomBorder && (isValid || isFetching) && <hr />}
       </div>
     );
   }
@@ -124,12 +118,20 @@ CardContentDescription.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string),
   /** The function which will fire when the validation function passes, and if a value has changed. */
   onChange: requiredIf(PropTypes.func, (props) => props.values),
-  /** The validation function which is used to see if the conditions are right for the onChange handler to fire. Must returns true/false. */
-  validate: requiredIf(PropTypes.func, (props) => props.values),
   /** Removes the top horizontal rule. */
   removeTopBorder: PropTypes.bool,
   /** Removes the bottom horizontal rule. */
   removeBottomBorder: PropTypes.bool,
+  /** Polls for the fetching status. */
+  fetchStatus: PropTypes.func,
+  /** Determines if the component is fetching. */
+  isFetching: PropTypes.bool,
+  /** Hides the component from site if it's not considered valid. This allows you to hide the component while still making the fetch. */
+  isValid: PropTypes.bool,
+};
+
+CardContentDescription.defaultProps = {
+  isValid: false,
 };
 
 export default CardContentDescription;

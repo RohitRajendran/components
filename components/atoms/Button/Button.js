@@ -10,7 +10,12 @@ import './Button.scss';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
 
-const ButtonInterior = ({showSpinner, spinnerSize, spinnerColor, children}) => {
+export const ButtonInterior = ({
+  showSpinner,
+  spinnerSize,
+  spinnerColor,
+  children,
+}) => {
   const spinnerClassNames = classNames({
     'spinner-wrapper': true,
     'uic--d-none': !showSpinner,

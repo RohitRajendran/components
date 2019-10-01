@@ -133,7 +133,6 @@ stories.add('currency', () => (
           label: 'Amount',
           placeholder: '0',
           mask: 'Currency',
-          prepend: '$',
           error: false,
         })}
       />
@@ -148,8 +147,7 @@ stories.add('percent', () => (
         {...defaultProps({
           formName: 'percent',
           label: 'Increase',
-          placeholder: '0%',
-          append: '%',
+          placeholder: '0',
           mask: 'PercentageWithDecimal',
         })}
       />

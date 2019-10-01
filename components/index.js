@@ -5,6 +5,7 @@ import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import Button from '~components/atoms/Button/Button';
 import Loader from '~components/atoms/Loader/Loader';
 import Input from '~components/atoms/Input/Input';
+import FileInput from '~components/atoms/FileInput/FileInput';
 import DropDown from '~components/atoms/DropDown/DropDown';
 import SimpleDropdown from '~components/atoms/SimpleDropdown/SimpleDropdown';
 import Spinner from '~components/atoms/Spinner/Spinner';
@@ -131,6 +132,7 @@ export {
   Button,
   Loader,
   Input,
+  FileInput,
   Modal,
   Cabinet,
   BubbleNav,
