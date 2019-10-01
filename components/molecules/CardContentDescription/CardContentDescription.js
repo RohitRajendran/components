@@ -57,11 +57,6 @@ class CardContentDescription extends Component {
   }
 
   /** @inheritdoc */
-  componentDidMount() {
-    this.checkValidityAndFetch(true);
-  }
-
-  /** @inheritdoc */
   componentDidUpdate(prevProps) {
     if (this.props.values && this.props.onChange) {
       const prevValues = JSON.stringify(prevProps.values);
