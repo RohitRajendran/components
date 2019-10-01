@@ -82,13 +82,7 @@ const contentDescriptionProps = () => ({
 });
 
 stories.add('default', () => {
-  const validationFunction = () => {
-    if (store.get('yesNo').length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  const validationFunction = store.get('yesNo').length > 0;
 
   const changeHandler = () => {
     return Promise.resolve(<p>Hello I am some text</p>);
@@ -110,7 +104,7 @@ stories.add('default', () => {
       <CardContentDescription
         {...contentDescriptionProps()}
         values={values}
-        validate={validationFunction}
+        isValid={validationFunction}
         onChange={changeHandler}
         fetchStatus={(ev) => store.set({status: ev})}
         isFetching={store.get('status')}
@@ -131,7 +125,11 @@ stories.add('static text', () => {
         value={store.get('yesNo')}
         onChange={(name, value) => store.set({[name]: value})}
       />
-      <CardContentDescription {...contentDescriptionProps()}>
+      <CardContentDescription
+        {...contentDescriptionProps()}
+        isValid={true}
+        isFetching={false}
+      >
         Montezuma is the best cat
       </CardContentDescription>
     </QuestionCard>
