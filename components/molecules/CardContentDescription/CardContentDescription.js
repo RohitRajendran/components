@@ -15,7 +15,7 @@ class CardContentDescription extends Component {
     super(props);
 
     this.state = {
-      isFetching: false,
+      isFetchingData: false,
     };
 
     this.fetchData = debounce(this.fetchData.bind(this), 1000);
@@ -29,7 +29,7 @@ class CardContentDescription extends Component {
     await this.props.onChange();
 
     this.setState({
-      isFetching: false,
+      isFetchingData: false,
     });
 
     if (this.props.fetchStatus) {
@@ -49,7 +49,7 @@ class CardContentDescription extends Component {
       }
 
       this.setState({
-        isFetching: true,
+        isFetchingData: true,
       });
 
       this.fetchData();
@@ -74,9 +74,10 @@ class CardContentDescription extends Component {
       removeTopBorder,
       removeBottomBorder,
       isValid,
+      isFetching,
     } = this.props;
 
-    const {isFetching} = this.state;
+    const {isFetchingData} = this.state;
 
     const containerClasses = classNames(
       {
@@ -88,15 +89,19 @@ class CardContentDescription extends Component {
 
     return (
       <div className={containerClasses} style={style}>
-        {!removeTopBorder && (isValid || isFetching) && <hr />}
+        {!removeTopBorder && (isValid || (isFetching && isFetchingData)) && (
+          <hr />
+        )}
         <div className="uic--card-content-description__content uic--text-center uic--mcg-subhead-2-text">
-          {isFetching ? (
+          {isFetching && isFetchingData ? (
             <Spinner height="2rem" width="2rem" fill={colors.midnight} />
           ) : (
             isValid && children
           )}
         </div>
-        {!removeBottomBorder && (isValid || isFetching) && <hr />}
+        {!removeBottomBorder && (isValid || (isFetching && isFetchingData)) && (
+          <hr />
+        )}
       </div>
     );
   }
@@ -127,6 +132,7 @@ CardContentDescription.propTypes = {
 
 CardContentDescription.defaultProps = {
   isValid: false,
+  isFetching: false,
 };
 
 export default CardContentDescription;
