@@ -19,7 +19,7 @@ test('CardContentDescription - fetchData', async (t) => {
 
   t.deepEquals(
     component.state(),
-    {isFetching: false},
+    {isFetchingData: false},
     'State should be correctly set..'
   );
 
@@ -41,7 +41,7 @@ test('CardContentDescription - checkValidityAndFetch', async (t) => {
 
   t.deepEquals(
     component.setState.args[0][0],
-    {isFetching: true},
+    {isFetchingData: true},
     'Sets fetching to true'
   );
 
@@ -64,7 +64,7 @@ test('CardContentDescription - componentDidUpdate', (t) => {
 
   t.deepEquals(
     component.state(),
-    {isFetching: true},
+    {isFetchingData: true},
     'Should go into fetching mode.'
   );
 
@@ -77,7 +77,7 @@ test('CardContentDescription - componentDidUpdate', (t) => {
   t.deepEquals(
     component.state(),
     // isFetching is true here due to how this function is being called.
-    {isFetching: true},
+    {isFetchingData: true},
     'Should go into fetching mode.'
   );
 
