@@ -32,6 +32,8 @@ import MedicareCircleIllustration from '~components/atoms/illustrations/Medicare
 import ProfileCircleIllustration from '~components/atoms/illustrations/ProfileCircleIllustration/ProfileCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
+import PlantCircleIllustration from '~components/atoms/illustrations/PlantCircleIllustration/PlantCircleIllustration';
+import CreditCardCircleIllustration from '~components/atoms/illustrations/CreditCardCircleIllustration/CreditCardCircleIllustration';
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon';
 import FacebookIcon from '~components/atoms/icons/FacebookIcon/FacebookIcon';
@@ -173,4 +175,6 @@ export {
   GingerBreadCircleIllustration,
   HealthMeterCircleIllustration,
   MoneyCircleIllustration,
+  CreditCardCircleIllustration,
+  PlantCircleIllustration,
 };
