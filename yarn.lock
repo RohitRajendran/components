@@ -1466,16 +1466,16 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-backgrounds@*":
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.1.11.tgz#c1abfb2b2f8ce5bce616b811fe50afa3442a3a63"
-  integrity sha512-+ORh5MEpKAYa77iHjIHjVQgdJg9SiKABm80f+fn6w/nOnWdazmkmNWwt5dVhiX5VdBWI5d/GJUmYanwSX5Dlkg==
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.2.3.tgz#e19ba49843f249ee3fecba835c94304cd80961a9"
+  integrity sha512-BytRjaiiOIieMFe4oJAFiCxG1vy6uAfcnSthAFPAaFHMWpkoWCCSx7R38BRpCrM852KPCCTxP5Jrlm/2g/rTug==
   dependencies:
-    "@storybook/addons" "5.1.11"
-    "@storybook/api" "5.1.11"
-    "@storybook/client-logger" "5.1.11"
-    "@storybook/components" "5.1.11"
-    "@storybook/core-events" "5.1.11"
-    "@storybook/theming" "5.1.11"
+    "@storybook/addons" "5.2.3"
+    "@storybook/api" "5.2.3"
+    "@storybook/client-logger" "5.2.3"
+    "@storybook/components" "5.2.3"
+    "@storybook/core-events" "5.2.3"
+    "@storybook/theming" "5.2.3"
     core-js "^3.0.1"
     memoizerific "^1.11.3"
     react "^16.8.3"
@@ -1738,14 +1738,14 @@
     react-textarea-autosize "^7.1.0"
     simplebar-react "^1.0.0-alpha.6"
 
-"@storybook/core-events@5.1.11", "@storybook/core-events@^5.0.6":
+"@storybook/core-events@5.1.11":
   version "5.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.1.11.tgz#9d00503a936d30398f7a64336eb956303d053765"
   integrity sha512-m+yIFRdB47+IPBFBGS2OUXrSLkoz5iAXvb3c0lGAePf5wSR+o/Ni/9VD5l6xBf+InxHLSc9gcDEJehrT0fJAaQ==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core-events@5.2.3":
+"@storybook/core-events@5.2.3", "@storybook/core-events@^5.0.6":
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.2.3.tgz#b592273a1e00040dcec258e3bd0ca2fd53357c00"
   integrity sha512-sZEv93yE1o+/UJdhtqQ6vo2EauZ90FjN/L8F7CR7iqDEZzqo9g77Idg9LSgcN3TAeXcGAWVSrPb1vkK7H96L2g==
