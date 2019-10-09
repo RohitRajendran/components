@@ -127,7 +127,7 @@ class DollarCircleIllustration extends PureComponent {
           />
           <path
             d="m112.34 50.29-65.23-9.78a4.7 4.7 0 0 0 -5.34 3.94l-2.52 16.81a4.69 4.69 0 0 0 4 5.34l65.23 9.78a4.7 4.7 0 0 0 5.34-3.94l2.52-16.81a4.69 4.69 0 0 0 -4-5.34z"
-            fill="url(#a)"
+            fill={`url(#${id}-a)`}
           />
           <path
             d="m47.11 40.51a4.7 4.7 0 0 0 -5.34 3.94l-2.52 16.82a4.69 4.69 0 0 0 4 5.33l45 6.74c-14.53-5.94-33.75-16.53-41-32.82z"
@@ -135,7 +135,7 @@ class DollarCircleIllustration extends PureComponent {
           />
           <path
             d="m47.11 40.51a4.7 4.7 0 0 0 -5.34 3.94l-2.52 16.82a4.69 4.69 0 0 0 4 5.33l45 6.74c-14.53-5.94-33.75-16.53-41-32.82z"
-            fill="url(#b)"
+            fill={`url(#${id}-b`}
           />
           <path
             d="m81.57 56.53h24.18v8.61h-24.18z"
@@ -290,7 +290,7 @@ class DollarCircleIllustration extends PureComponent {
           />
           <path
             d="m90.88 44.5-62.57 20.86a4.7 4.7 0 0 0 -3 5.94l5.38 16.12a4.7 4.7 0 0 0 5.94 3l62.6-20.89a4.7 4.7 0 0 0 3-5.94l-5.41-16.12a4.7 4.7 0 0 0 -5.94-2.97z"
-            fill="url(#a)"
+            fill={`url(#${id}-a)`}
           />
           <path
             d="m28.31 65.36a4.7 4.7 0 0 0 -3 5.94l5.38 16.13a4.7 4.7 0 0 0 5.94 3l43.14-14.43c-15.63 1.29-37.57.57-51.4-10.68z"
@@ -298,7 +298,7 @@ class DollarCircleIllustration extends PureComponent {
           />
           <path
             d="m28.31 65.36a4.7 4.7 0 0 0 -3 5.94l5.38 16.13a4.7 4.7 0 0 0 5.94 3l43.14-14.43c-15.63 1.29-37.57.57-51.4-10.68z"
-            fill="url(#b)"
+            fill={`url(#${id}-b`}
           />
           <path
             d="m66.93 58.06h24.18v8.61h-24.18z"
