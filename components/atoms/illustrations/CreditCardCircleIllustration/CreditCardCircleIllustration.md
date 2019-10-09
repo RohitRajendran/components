@@ -17,5 +17,5 @@ import {CreditCardCircleIllustration} from '@unitedincome/components';
 ## Example 🚀
 
 ```javascript
-<CreditCardCircleIllustration fill="#fff" height="2rem" width="2rem" />
+<CreditCardCircleIllustration height="2rem" width="2rem" />
 ```
