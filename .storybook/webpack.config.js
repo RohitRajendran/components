@@ -37,7 +37,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              data: '@import "./constants/sass/manifest.scss";',
+              prependData: '@import "./constants/sass/manifest.scss";',
             },
           },
         ],
