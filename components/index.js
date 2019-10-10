@@ -40,6 +40,8 @@ import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon';
 import FacebookIcon from '~components/atoms/icons/FacebookIcon/FacebookIcon';
 import TwitterIcon from '~components/atoms/icons/TwitterIcon/TwitterIcon';
 import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
+import StarIcon from '~components/atoms/icons/StarIcon/StarIcon';
+import StarCircleIcon from '~components/atoms/icons/StarCircleIcon/StarCircleIcon';
 import PaintingCircleIllustration from '~components/atoms/illustrations/PaintingCircleIllustration/PaintingCircleIllustration';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 import CakeCircleIllustration from '~components/atoms/illustrations/CakeCircleIllustration/CakeCircleIllustration';
@@ -83,6 +85,7 @@ import RadioButtonCard from '~components/organisms-complex/RadioButtonCard/Radio
 import InputCard from '~components/organisms-complex/InputCard/InputCard';
 import SliderCard from '~components/organisms-complex/SliderCard/SliderCard';
 import RankingCard from '~components/organisms-complex/RankingCard/RankingCard';
+import DataTable from '~components/organisms-complex/DataTable/DataTable';
 
 // Templates
 import McGonagall from '~components/templates/McGonagall/McGonagall';
@@ -109,6 +112,8 @@ export {
   FacebookIcon,
   TwitterIcon,
   HamburgerIcon,
+  StarIcon,
+  StarCircleIcon,
   Navbar,
   BoxSelectCard,
   BoxSelect,
@@ -157,6 +162,7 @@ export {
   SliderCard,
   McGonagall,
   RankingCard,
+  DataTable,
   CompletionScreen,
   ItemizationWidget,
   ExpandCollapse,
