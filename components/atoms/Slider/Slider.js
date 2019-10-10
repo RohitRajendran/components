@@ -73,7 +73,6 @@ const Slider = ({
         .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {
           height: 20px !important;
           width: 20px !important;
-          margin-left: -10px !important;
           margin-top: -9px !important;
         }
 
@@ -111,7 +110,7 @@ const Slider = ({
         onChange={handleChange}
         min={0}
         max={10}
-        step={1}
+        step={null}
         marks={markers}
         included={false}
         required={required}
