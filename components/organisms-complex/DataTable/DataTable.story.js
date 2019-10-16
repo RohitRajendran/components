@@ -68,7 +68,15 @@ stories.add('default', () => <DataTable {...defaultProps()} />);
 
 stories.add('expanding rows', () => (
   <DataTable
-    {...defaultProps()}
+    {...defaultProps(
+      [
+        {
+          expander: true,
+          className: 'rt-expandable',
+          headerClassName: 'rt-expandable',
+        },
+      ].concat(defaultColumns)
+    )}
     SubComponent={() => (
       <div style={{fontSize: '1.6rem', padding: '2rem'}}>
         I was hidden before

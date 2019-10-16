@@ -21,11 +21,26 @@
     }
   }
 
+  .rt-th {
+    align-items: flex-end;
+    border: 0;
+    display: flex;
+    line-height: 1;
+    padding: 1rem 2rem;
+    text-align: left;
+    text-overflow: initial;
+    white-space: normal;
+  }
+
   .rt-td {
     border: 0;
-    padding: 1.3rem 1.6rem;
+    padding: 1.3rem 2rem;
+  }
 
+  .rt-td,
+  .rt-th {
     &.rt-expandable {
+      padding-left: 1.6rem;
       padding-right: 0;
     }
   }
@@ -53,15 +68,6 @@
     }
 
     .rt-th {
-      align-items: flex-end;
-      border: 0;
-      display: flex;
-      line-height: 1;
-      padding: 1rem 1.6rem;
-      text-align: left;
-      text-overflow: initial;
-      white-space: normal;
-
       &.uic--text-right {
         justify-content: flex-end;
         text-align: right;
@@ -163,6 +169,11 @@
       &:nth-child(even) {
         background-color: $middle-purple;
       }
+    }
+
+    .rt-td {
+      padding-bottom: 0.9rem;
+      padding-top: 0.9rem;
     }
   }
 
