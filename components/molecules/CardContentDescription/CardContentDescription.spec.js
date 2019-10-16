@@ -48,6 +48,25 @@ test('CardContentDescription - checkValidityAndFetch', async (t) => {
   t.end();
 });
 
+test('CardContentDescription - componentDidMount', (t) => {
+  const props = {
+    onChange: stub().resolves('Montezuma is the best cat'),
+    isValid: true,
+    values: ['montezuma'],
+    fetchStatus: stub(),
+  };
+
+  const component = mount(<CardContentDescription {...props} />);
+
+  t.deepEquals(
+    component.state(),
+    {isFetchingData: true},
+    'Should go into fetching mode.'
+  );
+
+  t.end();
+});
+
 test('CardContentDescription - componentDidUpdate', (t) => {
   const props = {
     onChange: stub().resolves('Montezuma is the best cat'),
