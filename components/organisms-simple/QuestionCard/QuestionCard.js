@@ -146,8 +146,6 @@ QuestionCard.propTypes = {
   hasError: PropTypes.bool,
   /** If changes have been made */
   hasMadeChanges: PropTypes.bool,
-  /** Hides the button. */
-  hideButton: PropTypes.bool,
   /** Shows the collapsed state of the card which switches the content to the summary. */
   isCollapsed: PropTypes.bool,
   /** Whether this is the furthest step. if this and isCollapsed is true, this will collapse to the incomplete summary/ */

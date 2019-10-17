@@ -65,6 +65,10 @@ BoxSelectCard.propTypes = {
         description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         /** The icon to display at the top of the card. */
         icon: PropTypes.node,
+        /** Shows check icon */
+        showCheck: PropTypes.bool,
+        /** Disables the box */
+        disabled: PropTypes.bool,
       })
     ).isRequired,
     /** The name of the box group. Gets passed back when the onClick handler is triggered. */

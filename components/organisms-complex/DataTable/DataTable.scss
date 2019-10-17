@@ -9,13 +9,7 @@
     .rt-tbody {
       .rt-tr {
         &:not(.-padRow):hover {
-          background: none;
-        }
-      }
-
-      .rt-tr-group {
-        &:not(.-padRow):hover {
-          background: $table-hover;
+          background-color: $table-hover;
         }
       }
     }

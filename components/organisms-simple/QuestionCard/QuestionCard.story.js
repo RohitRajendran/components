@@ -50,7 +50,6 @@ const defaultProps = (
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),
   hasMadeChanges: boolean('hasMadeChanges', true),
-  hideButton: boolean('hideButton', false),
   isCollapsed: boolean('isCollapsed', isCollapsed),
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),

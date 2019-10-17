@@ -56,6 +56,7 @@ import DiceIcon from '~components/atoms/icons/DiceIcon/DiceIcon';
 import ThumbsDownIcon from '~components/atoms/icons/ThumbsDownIcon/ThumbsDownIcon';
 import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon';
+import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
 
 // Molecules
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
@@ -98,6 +99,7 @@ import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
 export {
+  CheckIcon,
   CardContentDescription,
   ArrowLineIcon,
   CompassCircleIllustration,
