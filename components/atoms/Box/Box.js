@@ -82,8 +82,8 @@ class Box extends PureComponent {
           <BoxIcon
             className="uic--box-illustration"
             illuminate={selected || this.state.hover}
-            height="10rem"
-            width="10rem"
+            height="7.2rem"
+            width="7.2rem"
             color={!disabled}
             draft={disabled}
           />
