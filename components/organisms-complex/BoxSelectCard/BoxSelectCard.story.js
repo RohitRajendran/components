@@ -57,6 +57,8 @@ const defaultProps = (
         description:
           'These are the basics: paying the bills and putting food on the table. They include your non-discretionary spending.',
         icon: LampCircleIllustration,
+        disabled: true,
+        showCheck: true,
       },
       {
         value: 'lifestyle',

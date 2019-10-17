@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
 import requiredIf from 'react-required-if';
+import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
 /** Displays content within a simple box with an icon, label, and description. */
@@ -42,7 +43,16 @@ class Box extends PureComponent {
 
   /** @inheritdoc */
   render() {
-    const {className, description, icon, label, selected, style} = this.props;
+    const {
+      className,
+      description,
+      disabled,
+      icon,
+      label,
+      selected,
+      showCheck,
+      style,
+    } = this.props;
 
     const containerClasses = classNames(
       {
@@ -50,6 +60,7 @@ class Box extends PureComponent {
         'uic--text-center': true,
         'uic--box-highlighted': selected,
         'uic--box-hover': this.state.hover,
+        'uic--box__disabled': disabled,
       },
       className
     );
@@ -62,10 +73,10 @@ class Box extends PureComponent {
         style={style}
         role="button"
         tabIndex="0"
-        onClick={this.handleClick}
-        onKeyPress={this.handleClick}
-        onMouseEnter={this.handleHover}
-        onMouseLeave={this.handleHover}
+        onClick={(!disabled && this.handleClick) || null}
+        onKeyPress={(!disabled && this.handleClick) || null}
+        onMouseEnter={(!disabled && this.handleHover) || null}
+        onMouseLeave={(!disabled && this.handleHover) || null}
       >
         {BoxIcon && (
           <BoxIcon
@@ -73,7 +84,16 @@ class Box extends PureComponent {
             illuminate={selected || this.state.hover}
             height="10rem"
             width="10rem"
-            color
+            color={!disabled}
+            draft={disabled}
+          />
+        )}
+
+        {showCheck && (
+          <CheckIcon
+            height="3.2rem"
+            width="3.2rem"
+            className="uic--box__check"
           />
         )}
         {label && <h3 className="uic--box-header">{label}</h3>}
@@ -100,6 +120,10 @@ Box.propTypes = {
   onClick: PropTypes.func,
   /** The value of the selection. Only applicable if using an onClick handler. */
   value: requiredIf(PropTypes.string, (props) => props.onClick),
+  /** Shows check icon */
+  showCheck: PropTypes.bool,
+  /** Disables the box */
+  disabled: PropTypes.bool,
 };
 
 export default Box;

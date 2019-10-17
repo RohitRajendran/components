@@ -1,10 +1,12 @@
 $box-shadow: rgba(77, 0, 186, 0.5);
+$disabled-border: rgba($light-gray, 0.6);
 
 .uic--box {
   background-color: $white;
   border: 1px solid $light-gray;
   max-width: 27.1rem;
   padding: 2.2rem 1.4rem 1.2rem;
+  position: relative;
 
   &.uic--box-hover {
     background-color: $table-alternate;
@@ -12,10 +14,12 @@ $box-shadow: rgba(77, 0, 186, 0.5);
     outline: 1px solid $disabled-text;
   }
 
-  &:focus {
-    background-color: $table-alternate;
-    border: 1px solid transparent;
-    outline: 1px solid $disabled-text;
+  &:not(.uic--box__disabled) {
+    &:focus {
+      background-color: $table-alternate;
+      border: 1px solid transparent;
+      outline: 1px solid $disabled-text;
+    }
   }
 
   &.uic--box-highlighted {
@@ -41,5 +45,22 @@ $box-shadow: rgba(77, 0, 186, 0.5);
     @include source-sans-pro(1.4rem);
     color: $slate;
     margin-top: 0;
+  }
+
+  .uic--box__check {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  &.uic--box__disabled {
+    border: 1px solid $disabled-border;
+
+    .uic--box-illustration,
+    .uic--box-header,
+    .uic--box-description {
+      color: $slate;
+      opacity: 0.6;
+    }
   }
 }
