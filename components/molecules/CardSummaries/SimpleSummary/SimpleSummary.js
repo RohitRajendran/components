@@ -16,7 +16,7 @@ const SimpleSummary = ({shortTitle, editCard, editCardText, answers, to}) => {
         <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
           <div className="uic--d-flex uic--justify-content-end">
             <Button variant="link" onClick={editCard} to={to}>
-              {editCardText || 'Edit'}
+              {editCardText}
             </Button>
           </div>
         </div>
@@ -39,12 +39,14 @@ SimpleSummary.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),
-  /** Optional text to display in the edit button--defaults to 'Edit' if not present */
-  editCardText: PropTypes.string,
+  /** Text to display in the edit button--defaults to 'Edit' if not present */
+  editCardText: PropTypes.string.isRequired,
   /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
   to: and([PropTypes.string, exclusive(['editCard'])]),
   /** A shorter version of the card title. */
   shortTitle: PropTypes.string.isRequired,
 };
+
+SimpleSummary.defaultProps = {editCardText: 'Edit'};
 
 export default React.memo(SimpleSummary);
