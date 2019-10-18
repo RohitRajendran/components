@@ -20,8 +20,9 @@ test('DateUtils - isSameOrBeforeMonth', (t) => {
 });
 
 test('DateUtils - isSameOrAfterMonth', (t) => {
-  t.false(isSameOrAfterMonth(moment().format('MM/YYYY')));
+  t.true(isSameOrAfterMonth(moment().format('MM/YYYY')));
   t.true(isSameOrAfterMonth('02/4209'));
+  t.false(isSameOrAfterMonth('02/1990'));
   t.end();
 });
 

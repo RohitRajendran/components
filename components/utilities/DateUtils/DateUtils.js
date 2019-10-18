@@ -21,7 +21,7 @@ export function isBeforeMonth(date) {
  * @returns {boolean} - Returns true if the month/year comes before the current month/year.
  */
 export function isSameOrBeforeMonth(date) {
-  return moment(date, 'MM/YYYY').isSameOrBefore(moment());
+  return moment(date, 'MM/YYYY').isSameOrBefore(moment().startOf('month'));
 }
 
 /** Compares a month/year to see if it's the same or after the current month/year.
@@ -29,5 +29,5 @@ export function isSameOrBeforeMonth(date) {
  * @returns {boolean} - Returns true if the month/year comes after the current month/year.
  */
 export function isSameOrAfterMonth(date) {
-  return moment(date, 'MM/YYYY').isSameOrAfter(moment());
+  return moment(date, 'MM/YYYY').isSameOrAfter(moment().startOf('month'));
 }
