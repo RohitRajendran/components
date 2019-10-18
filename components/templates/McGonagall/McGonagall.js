@@ -227,12 +227,12 @@ class McGonagall extends React.Component {
       ];
     }
 
-    this.setState(updatedData);
     this.navigateToStep(
       this.activeCard !== this.state.currXState.value && !clearFuture
         ? this.state.currXState.value
         : newState.value
     );
+    this.setState(updatedData);
   }
 
   /**
