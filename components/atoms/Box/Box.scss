@@ -1,5 +1,6 @@
 $box-shadow: rgba(77, 0, 186, 0.5);
 $disabled-border: rgba($light-gray, 0.6);
+$highlighted-border: 1px solid $royal;
 
 .uic--box {
   background-color: $white;
@@ -23,8 +24,12 @@ $disabled-border: rgba($light-gray, 0.6);
   }
 
   &.uic--box-highlighted {
-    border: 1px solid $royal;
+    border: $highlighted-border;
     box-shadow: 0 0 4px 0 $box-shadow;
+
+    &:focus {
+      border: $highlighted-border;
+    }
   }
 
   .uic--box-illustration {
