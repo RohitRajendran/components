@@ -25,7 +25,7 @@ test('Button - rendering with a linkComponent prop', (t) => {
   t.plan(1);
 
   const linkComponent = mount(
-    <Button to="/url" linkComponent={Button} onClick={() => null}>
+    <Button to="/url" linkComponent={Button}>
       Testing
     </Button>
   );
