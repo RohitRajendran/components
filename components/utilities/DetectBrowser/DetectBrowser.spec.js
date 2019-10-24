@@ -2,8 +2,8 @@ import test from 'tape';
 import {
   detectInternetExplorer,
   detectIOS,
-  detectTablet,
   detectMobile,
+  detectTablet,
 } from './DetectBrowser';
 
 test('detectInternetExplorer - Should return a string if the userAgent matches the param', (t) => {

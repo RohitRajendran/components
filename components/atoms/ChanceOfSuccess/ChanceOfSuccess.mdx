@@ -1,0 +1,104 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ChanceOfSuccess from './ChanceOfSuccess';
+
+# ChanceOfSuccess
+
+The ChanceOfSuccess component displays the users current chance of success in a dial.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ChanceOfSuccess from '@unitedincome/components/dist/ChanceOfSuccess';
+```
+
+```javascript
+import {ChanceOfSuccess} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={50}
+      isDraftPlan={false}
+      currentPlanChanceOfSuccess={50}
+    />
+  </div>
+</Preview>
+
+```javascript
+<ChanceOfSuccess
+  percent={50}
+  isDraftPlan={false}
+  currentPlanChanceOfSuccess={50}
+/>
+```
+
+### Refreshed Chance of Success
+
+If the user has a refreshed chance of success then a `refreshedPlanChanceOfSuccess` prop can be provided to indicate this on the dial. It will compare against the `currentPlanChanceOfSuccess` and display the difference.
+
+<Preview>
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={20}
+      isDraftPlan={false}
+      currentPlanChanceOfSuccess={20}
+      refreshedPlanChanceOfSuccess={22}
+      isRunningPlan={false}
+      compact={false}
+    />
+  </div>
+</Preview>
+
+```javascript
+<ChanceOfSuccess
+  percent={20}
+  isDraftPlan={false}
+  currentPlanChanceOfSuccess={20}
+  refreshedPlanChanceOfSuccess={22}
+  isRunningPlan={false}
+  compact={false}
+/>
+```
+
+### Running Plan and Draft Plan
+
+The chance of success dial can indicate that the user is either in a draft plan using the `isDraftPlan` prop. This will alter the color scheme of the dial.
+
+<Preview>
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess
+      percent={20}
+      isDraftPlan={true}
+      currentPlanChanceOfSuccess={20}
+    />
+  </div>
+</Preview>
+
+```javascript
+<ChanceOfSuccess
+  percent={20}
+  isDraftPlan={true}
+  currentPlanChanceOfSuccess={20}
+/>
+```
+
+You can also provide the `isRunningPlan` prop to indicate that the user is currently running a financial plan. This prop will trigger an animation to play.
+
+<Preview>
+  <div style={{backgroundColor: 'black'}}>
+    <ChanceOfSuccess isRunningPlan={true} />
+  </div>
+</Preview>
+
+```javascript
+<ChanceOfSuccess isRunningPlan={true} />
+```
+
+## Props 🔧
+
+<Props of={ChanceOfSuccess} />

@@ -1,0 +1,72 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import Slider from './Slider';
+
+# Slider
+
+The Slider component creates an interactive range slider between 0 and 10.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Slider from '@unitedincome/components/dist/Slider';
+```
+
+```javascript
+import {Slider} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <Slider
+    value={3}
+    leftAnnotate="Lower Risk"
+    rightAnnotate="Higher Risk"
+    tooltip="You can pass any arbitrary node into the tooltip to style it how you'd Like"
+  />
+</Preview>
+
+```javascript
+<Slider
+  value={3}
+  leftAnnotate="Lower Risk"
+  rightAnnotate="Higher Risk"
+  tooltip="You can pass any arbitrary node into the tooltip to style it how you'd Like"
+/>
+```
+
+### Reccomended Position
+
+Depending on the question you may wish to show a reccomended value on the slider. This can be achieved by using the `tooltipStickyPosition` and `tooltipStickyVariant` props.
+
+<Preview>
+  <Slider
+    value={3}
+    leftAnnotate="Lower Risk"
+    rightAnnotate="Higher Risk"
+    tooltip="You can pass any arbitrary node into the tooltip to style it how you'd Like"
+    tooltipStickyPosition={5}
+    tooltipStickyVariant="green"
+  />
+</Preview>
+
+```javascript
+<Slider
+  value={3}
+  leftAnnotate="Lower Risk"
+  rightAnnotate="Higher Risk"
+  tooltip="You can pass any arbitrary node into the tooltip to style it how you'd Like"
+  tooltipStickyPosition={5}
+  tooltipStickyVariant="green"
+/>
+```
+
+## Props 🔧
+
+<Props of={Slider} />
+
+## Related ✨
+
+- [SliderCard](/?path=/story/complex-organisms-slidercard--active)

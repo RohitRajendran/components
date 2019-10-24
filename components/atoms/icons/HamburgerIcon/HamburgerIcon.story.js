@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import HamburgerIcon from './HamburgerIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import HamburgerIconReadme from './HamburgerIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import HamburgerIcon from './HamburgerIcon';
+import HamburgerIconReadme from './HamburgerIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/HamburgerIcon', module);
 
-stories.addDecorator(withReadme(HamburgerIconReadme));
+stories.addParameters({
+  docs: {
+    page: HamburgerIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

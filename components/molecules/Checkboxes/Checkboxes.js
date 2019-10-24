@@ -1,9 +1,8 @@
 /** @module Checkboxes */
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
-
 import './Checkboxes.scss';
 
 const Checkboxes = ({

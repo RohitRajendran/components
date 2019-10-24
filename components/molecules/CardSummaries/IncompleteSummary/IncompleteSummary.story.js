@@ -1,27 +1,29 @@
 import {text, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import CardShell from '../../CardShell/CardShell';
 import IncompleteSummary from './IncompleteSummary';
-import IncompleteSummaryReadme from './IncompleteSummary.md';
+import IncompleteSummaryReadme from './IncompleteSummary.mdx';
 
 const stories = storiesOf('Molecules/IncompleteSummary', module);
 
+stories.addParameters({
+  docs: {
+    page: IncompleteSummaryReadme,
+  },
+});
+
 stories
   .addDecorator(withKnobs)
-  .add(
-    'default',
-    withReadme(IncompleteSummaryReadme, () => (
-      <CardShell
-        isCollapsed={true}
-        hasError={true}
-        summary={
-          <IncompleteSummary
-            shortTitle={text('shortTitle', 'This is a simpler question')}
-            editCard={() => true}
-          />
-        }
-      />
-    ))
-  );
+  .add('default', () => (
+    <CardShell
+      isCollapsed={true}
+      hasError={true}
+      summary={
+        <IncompleteSummary
+          shortTitle={text('shortTitle', 'This is a simpler question')}
+          editCard={() => true}
+        />
+      }
+    />
+  ));

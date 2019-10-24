@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
 import {color, text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import StackableExpandCollapse from './StackableExpandCollapse';
-import StackableExpandCollapseReadMe from './StackableExpandCollapse.md';
+import StackableExpandCollapseReadMe from './StackableExpandCollapse.mdx';
 
 const stories = storiesOf('Atoms/StackableExpandCollapse', module);
 
-stories.addDecorator(withReadme(StackableExpandCollapseReadMe));
+stories.addParameters({
+  docs: {
+    page: StackableExpandCollapseReadMe,
+  },
+});
 
 const defaultProps = (
   defaultLabel = 'Click to Open Me',

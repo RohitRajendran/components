@@ -1,0 +1,173 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import RadioButtons from './RadioButtons';
+
+# RadioButtons
+
+The RadioButton component renders a group of HTML radio buttons with a number of customization options.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RadioButtons from '@unitedincome/components/dist/RadioButtons';
+```
+
+```javascript
+import {RadioButtons} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <RadioButtons
+    options={[
+      {
+        label: 'Montezuma is the worlds best cat, this is guaranteed.',
+        value: 'montezuma1',
+        disabled: true,
+      },
+      {
+        label: 'Montezuma is a really good ginger boi',
+        value: 'montezuma2',
+      },
+      {
+        label: 'Some people say he is the best cat ever',
+        value: 'montezuma3',
+      },
+    ]}
+    value="montezuma3"
+  />
+</Preview>
+
+```javascript
+<RadioButtons
+  options={[
+    {
+      label: 'Montezuma is the worlds best cat, this is guaranteed.',
+      value: 'montezuma1',
+      disabled: true,
+    },
+    {
+      label: 'Montezuma is a really good ginger boi',
+      value: 'montezuma2',
+    },
+    {
+      label: 'Some people say he is the best cat ever',
+      value: 'montezuma3',
+    },
+  ]}
+  value="montezuma3"
+/>
+```
+
+### Question Followup
+
+If your answer requires a followup input or response, you can utilize the `followup` key in the `options` prop.
+
+<Preview>
+  <RadioButtons
+    options={[
+      {
+        label: 'Montezuma is the worlds best cat, this is guaranteed.',
+        value: 'montezuma1',
+        disabled: true,
+      },
+      {
+        label: 'Montezuma is a really good ginger boi',
+        value: 'montezuma2',
+      },
+      {
+        label: 'Some people say he is the best cat ever',
+        value: 'montezuma3',
+        followup: <p>This is a followup!</p>,
+      },
+    ]}
+    value="montezuma3"
+  />
+</Preview>
+
+```javascript
+<RadioButtons
+  options={[
+    {
+      label: 'Montezuma is the worlds best cat, this is guaranteed.',
+      value: 'montezuma1',
+      disabled: true,
+    },
+    {
+      label: 'Montezuma is a really good ginger boi',
+      value: 'montezuma2',
+    },
+    {
+      label: 'Some people say he is the best cat ever',
+      value: 'montezuma3',
+      followup: <p>This is a followup!</p>,
+    },
+  ]}
+  value="montezuma3"
+/>
+```
+
+### Secondary label
+
+Depending on the scenario you may require the use of a secondary label that appears to the far right of the option. You can pass `secondaryLabel` to each option that requires it. This option works best with the `table` prop, as demonstrated below.
+
+<Preview>
+  <RadioButtons
+    table={true}
+    options={[
+      {
+        label: 'Montezuma is the worlds best cat, this is guaranteed.',
+        value: 'montezuma1',
+        disabled: true,
+        secondaryLabel: '$200',
+      },
+      {
+        label: 'Montezuma is a really good ginger boi',
+        value: 'montezuma2',
+        secondaryLabel: '$300',
+      },
+      {
+        label: 'Some people say he is the best cat ever',
+        value: 'montezuma3',
+        secondaryLabel: '$400',
+      },
+    ]}
+    value="montezuma3"
+  />
+</Preview>
+
+```javascript
+<RadioButtons
+  options={[
+    {
+      label: 'Montezuma is the worlds best cat, this is guaranteed.',
+      value: 'montezuma1',
+      disabled: true,
+      secondaryLabel: '$200',
+    },
+    {
+      label: 'Montezuma is a really good ginger boi',
+      value: 'montezuma2',
+      secondaryLabel: '$300',
+    },
+    {
+      label: 'Some people say he is the best cat ever',
+      value: 'montezuma3',
+      secondaryLabel: '$400',
+    },
+  ]}
+  value="montezuma3"
+/>
+```
+
+## Props 🔧
+
+<Props of={RadioButtons} />
+
+## Related ✨
+
+- [OptionBox](/?path=/story/atoms-optionbox--check)
+- [RadioButtonCard](/?path=/story/complex-organisms-radiobuttoncard--active)
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

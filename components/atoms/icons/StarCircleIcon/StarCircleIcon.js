@@ -1,6 +1,6 @@
 /** @module StarCircleIcon */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {colors} from '~constants/js/colors';
 
 /**

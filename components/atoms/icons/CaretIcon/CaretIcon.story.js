@@ -1,13 +1,16 @@
-import React from 'react';
+import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, select} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import CaretIcon from './CaretIcon';
-import CaretIconReadme from './CaretIcon.md';
+import CaretIconReadme from './CaretIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/CaretIcon', module);
 
-stories.addDecorator(withReadme(CaretIconReadme));
+stories.addParameters({
+  docs: {
+    page: CaretIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

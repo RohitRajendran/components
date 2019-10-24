@@ -1,0 +1,56 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import QuestionAnswer from './QuestionAnswer';
+
+# QuestionAnswer
+
+Displays a group of frequently asked questions in a list.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import QuestionAnswer from '@unitedincome/components/dist/QuestionAnswer';
+```
+
+```javascript
+import {QuestionAnswer} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <QuestionAnswer
+    header="FAQs"
+    items={[
+      {
+        question: 'This is my question',
+        answer: 'This is my answer',
+      },
+      {
+        question: 'This is my other question',
+        answer: 'This is my other answer',
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<QuestionAnswer
+  header="FAQs"
+  items={[
+    {
+      question: 'This is my question',
+      answer: 'This is my answer',
+    },
+    {
+      question: 'This is my other question',
+      answer: 'This is my other answer',
+    },
+  ]}
+/>
+```
+
+## Props 🔧
+
+<Props of={QuestionAnswer} />

@@ -1,10 +1,15 @@
-import React, {Fragment} from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
+import React, {Fragment} from 'react';
 import {formatCurrency, formatCurrencyNoDecimal} from './FormatUtils';
-import FormatUtilsReadMe from './FormatUtils.md';
+import FormatUtilsReadMe from './FormatUtils.mdx';
 
 const stories = storiesOf('Utilities/FormatUtils', module);
+
+stories.addParameters({
+  docs: {
+    page: FormatUtilsReadMe,
+  },
+});
 
 const FormatCurrency = () => (
   <Fragment>
@@ -19,8 +24,6 @@ const FormatCurrencyNoDecimal = () => (
     <p>Turns 20000 into {formatCurrencyNoDecimal(20000)}</p>
   </Fragment>
 );
-
-stories.addDecorator(withReadme(FormatUtilsReadMe));
 
 stories.add('formatCurrency', () => <FormatCurrency />);
 stories.add('formatCurrencyNoDecimal', () => <FormatCurrencyNoDecimal />);

@@ -1,14 +1,17 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import Box from './Box';
-import BoxReadMe from './Box.md';
 import {boolean, text} from '@storybook/addon-knobs';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
+import Box from './Box';
+import BoxReadMe from './Box.mdx';
 
 const stories = storiesOf('Atoms/Box', module);
 
-stories.addDecorator(withReadme(BoxReadMe));
+stories.addParameters({
+  docs: {
+    page: BoxReadMe,
+  },
+});
 
 const defaultProps = (selected, disabled, showCheck) => ({
   selected: boolean('selected', selected),

@@ -1,13 +1,12 @@
 /** @module Button */
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {and, or} from 'airbnb-prop-types';
-import requiredIf from 'react-required-if';
 import classNames from 'classnames';
-
-import {exclusive} from '~proptypes';
+import PropTypes from 'prop-types';
+import React, {Fragment} from 'react';
+import requiredIf from 'react-required-if';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
+import {exclusive} from '~proptypes';
 import './Button.scss';
 
 export const ButtonInterior = ({

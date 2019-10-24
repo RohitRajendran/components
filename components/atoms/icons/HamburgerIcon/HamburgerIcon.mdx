@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import HamburgerIcon from './HamburgerIcon';
+
+# HamburgerIcon
+
+The HamburgerIcon component creates a star icon using inline SVG. This icon is typically used to indicate that a menu can be opened.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import HamburgerIcon from '@unitedincome/components/dist/HamburgerIcon';
+```
+
+```javascript
+import {HamburgerIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <HamburgerIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<HamburgerIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <HamburgerIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<HamburgerIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={HamburgerIcon} />

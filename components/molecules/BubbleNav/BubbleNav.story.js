@@ -1,18 +1,21 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {object, text} from '@storybook/addon-knobs';
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {withReadme} from 'storybook-readme';
+import {object, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
 import BubbleNav from './BubbleNav';
-import BubbleNavReadme from './BubbleNav.md';
+import BubbleNavReadme from './BubbleNav.mdx';
 
 const stories = storiesOf('Molecules/BubbleNav', module);
 
+stories.addParameters({
+  docs: {
+    page: BubbleNavReadme,
+  },
+});
+
 const store = new Store({value: 'there'});
 
-stories
-  .addDecorator(withReadme(BubbleNavReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

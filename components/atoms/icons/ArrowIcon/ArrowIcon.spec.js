@@ -1,6 +1,6 @@
-import test from 'tape';
-import React from 'react';
 import {shallow} from 'enzyme';
+import React from 'react';
+import test from 'tape';
 import ArrowIcon from './ArrowIcon';
 
 test('ArrowIcon - renders', (t) => {

@@ -1,6 +1,6 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
+import test from 'tape';
 import PureChanceOfSuccess, {
   percentDescriptor,
   percentIsValid,

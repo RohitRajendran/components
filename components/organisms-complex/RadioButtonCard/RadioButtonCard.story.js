@@ -2,11 +2,16 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import RadioButtonCard from './RadioButtonCard';
-import RadioButtonCardReadme from './RadioButtonCard.md';
+import RadioButtonCardReadme from './RadioButtonCard.mdx';
 
 const stories = storiesOf('Complex Organisms/RadioButtonCard', module);
+
+stories.addParameters({
+  docs: {
+    page: RadioButtonCardReadme,
+  },
+});
 
 const store = new Store({
   radioBtnQuestion: '',
@@ -16,9 +21,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(RadioButtonCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

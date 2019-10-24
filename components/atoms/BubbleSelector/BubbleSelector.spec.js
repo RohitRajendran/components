@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {shallow} from 'enzyme';
+import React from 'react';
 import {spy} from 'sinon';
+import test from 'tape';
 import BubbleSelector from './BubbleSelector';
 
 test('BubbleSelector - render', (t) => {

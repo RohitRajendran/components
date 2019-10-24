@@ -1,6 +1,6 @@
 /** @module GingerBreadCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a ginger bread illustration. */
 class GingerBreadCircleIllustration extends PureComponent {
@@ -348,10 +348,6 @@ GingerBreadCircleIllustration.propTypes = {
   height: PropTypes.string,
   /** Determines if the illustration should default to the illuminated state. */
   illuminate: PropTypes.bool,
-  /** Determines if the color variant should be shown or not. */
-  color: PropTypes.bool,
-  /** Determines if the draft variant should be shown or not. */
-  draft: PropTypes.bool,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
   /** Additional inline styles to apply to the container. */

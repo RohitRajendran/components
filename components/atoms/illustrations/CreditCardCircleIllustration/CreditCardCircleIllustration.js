@@ -1,6 +1,6 @@
 /** @module CreditCardCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a credit card illustration. */
 class CreditCardCircleIllustration extends PureComponent {

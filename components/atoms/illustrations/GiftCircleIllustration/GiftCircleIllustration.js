@@ -1,6 +1,6 @@
 /** @module GiftCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a gift illustration. */
 class GiftCircleIllustration extends PureComponent {

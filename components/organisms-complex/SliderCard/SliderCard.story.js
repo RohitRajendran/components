@@ -1,12 +1,17 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, number, select, text, object} from '@storybook/addon-knobs';
+import {boolean, number, object, select, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import SliderCard from './SliderCard';
-import SliderCardReadme from './SliderCard.md';
+import SliderCardReadme from './SliderCard.mdx';
 
 const stories = storiesOf('Complex Organisms/SliderCard', module);
+
+stories.addParameters({
+  docs: {
+    page: SliderCardReadme,
+  },
+});
 
 const store = new Store({
   slider: 5,
@@ -16,9 +21,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(SliderCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

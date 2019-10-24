@@ -1,13 +1,16 @@
 import {object} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import DataTable from './DataTable';
-import DataTableReadme from './DataTable.md';
+import DataTableReadme from './DataTable.mdx';
 
 const stories = storiesOf('Complex Organisms/DataTable', module);
 
-stories.addDecorator(withReadme(DataTableReadme));
+stories.addParameters({
+  docs: {
+    page: DataTableReadme,
+  },
+});
 
 const defaultColumns = [
   {

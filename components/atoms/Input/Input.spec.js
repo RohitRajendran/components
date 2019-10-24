@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {spy, stub} from 'sinon';
+import test from 'tape';
 import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Input, {getDeepestInputElement} from './Input';
 import * as InputUtils from './Input.util';

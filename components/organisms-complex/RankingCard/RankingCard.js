@@ -1,8 +1,8 @@
 /** @module RankingCard */
 import PropTypes from 'prop-types';
 import React from 'react';
-import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Ranking from '~components/atoms/Ranking/Ranking';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
 /** Displays the RankingCard component.

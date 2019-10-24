@@ -2,14 +2,19 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import Input from '~components/atoms/Input/Input';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 import CardContentDescription from './CardContentDescription';
-import CardContentDescriptionReadMe from './CardContentDescription.md';
+import CardContentDescriptionReadMe from './CardContentDescription.mdx';
 
 const stories = storiesOf('Molecules/CardContentDescription', module);
+
+stories.addParameters({
+  docs: {
+    page: CardContentDescriptionReadMe,
+  },
+});
 
 const store = new Store({
   yesNo: '',
@@ -24,9 +29,7 @@ const store = new Store({
   status: false,
 });
 
-stories
-  .addDecorator(withReadme(CardContentDescriptionReadMe))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

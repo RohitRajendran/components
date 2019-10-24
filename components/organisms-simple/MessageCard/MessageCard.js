@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
-import CardShell from '~components/molecules/CardShell/CardShell';
 import '~components/molecules/CardShell/Cards.scss';
+import CardShell from '~components/molecules/CardShell/CardShell';
 import '~components/molecules/CardSummaries/CardSummaries.scss';
 import './MessageCard.scss';
 

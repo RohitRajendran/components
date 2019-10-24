@@ -2,7 +2,6 @@ import {Store} from '@sambego/storybook-state';
 import {object} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import GiftCircleIllustration from '~components/atoms/illustrations/GiftCircleIllustration/GiftCircleIllustration';
 import GivingCircleIllustration from '~components/atoms/illustrations/GivingCircleIllustration/GivingCircleIllustration';
 import HealthCircleIllustration from '~components/atoms/illustrations/HealthCircleIllustration/HealthCircleIllustration';
@@ -10,9 +9,15 @@ import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIl
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
 import BoxSelect from './BoxSelect';
-import BoxSelectReadMe from './BoxSelect.md';
+import BoxSelectReadMe from './BoxSelect.mdx';
 
 const stories = storiesOf('Molecules/BoxSelect', module);
+
+stories.addParameters({
+  docs: {
+    page: BoxSelectReadMe,
+  },
+});
 
 const store = new Store({
   boxGroup: '',
@@ -22,8 +27,6 @@ const store = new Store({
 store.subscribe(() => {
   forceReRender();
 });
-
-stories.addDecorator(withReadme(BoxSelectReadMe));
 
 const items = [
   {

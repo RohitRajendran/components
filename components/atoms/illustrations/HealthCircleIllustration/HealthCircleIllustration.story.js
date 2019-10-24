@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import HealthCircleIllustration from './HealthCircleIllustration';
-import HealthCircleIllustrationReadMe from './HealthCircleIllustration.md';
+import HealthCircleIllustrationReadMe from './HealthCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/HealthCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(HealthCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: HealthCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

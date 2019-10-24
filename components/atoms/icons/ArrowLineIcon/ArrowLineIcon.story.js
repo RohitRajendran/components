@@ -1,13 +1,16 @@
-import React from 'react';
+import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import ArrowLineIcon from './ArrowLineIcon';
-import ArrowLineIconReadMe from './ArrowLineIcon.md';
-import {text, select} from '@storybook/addon-knobs';
+import ArrowLineIconReadMe from './ArrowLineIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ArrowLineIcon', module);
 
-stories.addDecorator(withReadme(ArrowLineIconReadMe));
+stories.addParameters({
+  docs: {
+    page: ArrowLineIconReadMe,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

@@ -1,20 +1,23 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import {text, boolean} from '@storybook/addon-knobs';
-import FileInputReadme from './FileInput.md';
-import FileInput from './FileInput';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import FileInput from './FileInput';
+import FileInputReadme from './FileInput.mdx';
 
 const stories = storiesOf('Atoms/FileInput', module);
+
+stories.addParameters({
+  docs: {
+    page: FileInputReadme,
+  },
+});
 
 const store = new Store({
   errorVal: '',
 });
 
-stories
-  .addDecorator(withReadme(FileInputReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

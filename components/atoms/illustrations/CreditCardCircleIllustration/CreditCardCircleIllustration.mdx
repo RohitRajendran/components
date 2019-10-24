@@ -1,0 +1,68 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import CreditCardCircleIllustration from './CreditCardCircleIllustration';
+
+# CreditCardCircleIllustration
+
+The CreditCardCircleIllustration component creates a credit card illustration using inline SVG. This illustration is commonly used within McGonnagal introduction cards.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import CreditCardCircleIllustration from '@unitedincome/components/dist/CreditCardCircleIllustration';
+```
+
+```javascript
+import {CreditCardCircleIllustration} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <CreditCardCircleIllustration height="14rem" width="14rem" />
+</Preview>
+
+```javascript
+<CreditCardCircleIllustration height="14rem" width="14rem" />
+```
+
+### Draft
+
+You can use the `draft` prop to render the illustrations draft mode variant.
+
+<Preview>
+  <CreditCardCircleIllustration height="14rem" width="14rem" draft />
+</Preview>
+
+```javascript
+<CreditCardCircleIllustration height="14rem" width="14rem" draft />
+```
+
+### Color
+
+You can use the `color` prop to render the illustrations full color variant.
+
+<Preview>
+  <CreditCardCircleIllustration height="14rem" width="14rem" color />
+</Preview>
+
+```javascript
+<CreditCardCircleIllustration height="14rem" width="14rem" color />
+```
+
+### Illuminate
+
+The `illuminate` prop activates the interaction variant of the illustration. By default the interaction occurs when the illustration is clicked, this prop allows you to override that behavior so you can trigger it as a side effect of another action.
+
+<Preview>
+  <CreditCardCircleIllustration height="14rem" width="14rem" illuminate />
+</Preview>
+
+```javascript
+<CreditCardCircleIllustration height="14rem" width="14rem" illuminate />
+```
+
+## Props 🔧
+
+<Props of={CreditCardCircleIllustration} />

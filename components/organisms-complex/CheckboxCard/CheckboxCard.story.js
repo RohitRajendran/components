@@ -2,11 +2,16 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import CheckboxCard from './CheckboxCard';
-import CheckboxCardReadme from './CheckboxCard.md';
+import CheckboxCardReadme from './CheckboxCard.mdx';
 
 const stories = storiesOf('Complex Organisms/CheckboxCard', module);
+
+stories.addParameters({
+  docs: {
+    page: CheckboxCardReadme,
+  },
+});
 
 const store = new Store({
   selectBtnOption: [],
@@ -16,9 +21,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(CheckboxCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

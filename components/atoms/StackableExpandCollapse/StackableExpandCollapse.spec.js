@@ -1,7 +1,7 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import test from 'tape';
 import {spy} from 'sinon';
+import test from 'tape';
 import StackableExpandCollapse from './StackableExpandCollapse';
 
 test('StackableExpandCollapse - render', (t) => {

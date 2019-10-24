@@ -1,13 +1,16 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import CarCircleIllustration from './CarCircleIllustration';
-import CarCircleIllustrationReadMe from './CarCircleIllustration.md';
+import CarCircleIllustrationReadMe from './CarCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/CarCircleIllustration', module);
 
-stories.addDecorator(withReadme(CarCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: CarCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

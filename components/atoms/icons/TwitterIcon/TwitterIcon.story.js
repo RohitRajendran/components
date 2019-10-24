@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import TwitterIcon from './TwitterIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import TwitterIconReadme from './TwitterIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import TwitterIcon from './TwitterIcon';
+import TwitterIconReadme from './TwitterIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/TwitterIcon', module);
 
-stories.addDecorator(withReadme(TwitterIconReadme));
+stories.addParameters({
+  docs: {
+    page: TwitterIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

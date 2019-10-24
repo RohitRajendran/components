@@ -1,0 +1,111 @@
+import BubbleNav from './BubbleNav';
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+
+# BubbleNav
+
+The BubbleNav component renders a responsive navigation selector in a solid color bubble style. This component dynamically switches between the `BubbleSelector` and `BubbleDropdown` components.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import BubbleNav from '@unitedincome/components/dist/BubbleNav';
+```
+
+```javascript
+import {BubbleNav} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <BubbleNav
+    options={[
+      {value: 'montezuma1'},
+      {value: 'montezuma2'},
+      {value: 'montezuma3'},
+    ]}
+    value="montezuma1"
+    onChange={(value) => true}
+  />
+</Preview>
+
+```javascript
+<BubbleNav
+  options={[
+    {value: 'montezuma1'},
+    {value: 'montezuma2'},
+    {value: 'montezuma3'},
+  ]}
+  value="montezuma1"
+  onChange={(value) => true}
+/>
+```
+
+### Bubble Colors
+
+You can change each bubbles color by providing the option with a `color` property.
+
+<Preview>
+  <BubbleNav
+    options={[
+      {value: 'montezuma1'},
+      {value: 'montezuma2'},
+      {value: 'montezuma3', color: 'Red'},
+    ]}
+    value="montezuma3"
+    onChange={(value) => true}
+  />
+</Preview>
+
+```javascript
+<BubbleNav
+  options={[
+    {value: 'montezuma1'},
+    {value: 'montezuma2'},
+    {value: 'montezuma3', color: 'Red'},
+  ]}
+  value="montezuma3"
+  onChange={(value) => true}
+/>
+```
+
+### Adjusting the Width
+
+If you'd like to change the width of the bubbles, you can provide the component with a `fixedWidth` prop.
+
+<Preview>
+  <BubbleNav
+    fixedWidth="14rem"
+    options={[
+      {value: 'montezuma1'},
+      {value: 'montezuma2'},
+      {value: 'montezuma3', color: 'Red'},
+    ]}
+    value="montezuma3"
+    onChange={(value) => true}
+  />
+</Preview>
+
+```javascript
+<BubbleNav
+  fixedWidth="14rem"
+  options={[
+    {value: 'montezuma1'},
+    {value: 'montezuma2'},
+    {value: 'montezuma3', color: 'Red'},
+  ]}
+  value="montezuma3"
+  onChange={(value) => true}
+/>
+```
+
+## Props 🔧
+
+<Props of={BubbleNav} />
+
+## Related ✨
+
+- [BubbleSelector](/?path=/story/atoms-bubbleselector--dynamic-width)
+- [BubbleDropdown](/?path=/story/atoms-bubbledropdown--default)

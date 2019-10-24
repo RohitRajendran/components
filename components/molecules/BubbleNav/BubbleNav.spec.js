@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {spy} from 'sinon';
+import test from 'tape';
 import BubbleNav from './BubbleNav';
 
 test('BubbleNav - render', (t) => {

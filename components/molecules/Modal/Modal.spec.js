@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {stub} from 'sinon';
+import test from 'tape';
 import Modal from './Modal';
 
 test('Modal - handleKeyPress', (t) => {

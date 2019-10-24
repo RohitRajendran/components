@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import DiceIcon from './DiceIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import DiceIconReadme from './DiceIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import DiceIcon from './DiceIcon';
+import DiceIconReadme from './DiceIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/DiceIcon', module);
 
-stories.addDecorator(withReadme(DiceIconReadme));
+stories.addParameters({
+  docs: {
+    page: DiceIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

@@ -1,21 +1,20 @@
 /* eslint-disable react/prop-types */
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
-import {withReadme} from 'storybook-readme';
 import {assign} from 'xstate';
+import {colors} from '~constants/js/colors';
 import {
+  Button,
   CheckboxCard,
   InputCard,
   QuestionCard,
   RadioButtonCard,
   SimpleSummary,
   SliderCard,
-  Button,
 } from '../..';
-import McGonagall from './McGonagall';
-import McGonagallReadme from './McGonagall.md';
-import {colors} from '~constants/js/colors';
 import CompletionScreen from '../../organisms-simple/CompletionScreen/CompletionScreen';
+import McGonagall from './McGonagall';
+import McGonagallReadme from './McGonagall.mdx';
 
 const stateChart = {
   id: 'household',
@@ -332,7 +331,11 @@ const steps = [
 
 const stories = storiesOf('Templates/McGonagall', module);
 
-stories.addDecorator(withReadme(McGonagallReadme));
+stories.addParameters({
+  docs: {
+    page: McGonagallReadme,
+  },
+});
 
 stories.add('default', () => {
   return (

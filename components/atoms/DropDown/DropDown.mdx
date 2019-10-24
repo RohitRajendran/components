@@ -1,0 +1,127 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import DropDown from './DropDown';
+
+# DropDown
+
+The DropDown component displays a series options in a dropdown list. The list can either be manually configured, or powered via type ahead.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import DropDown from '@unitedincome/components/dist/DropDown';
+```
+
+```javascript
+import {DropDown} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <DropDown
+    label="Suffix"
+    options={[
+      {
+        value: 'valid',
+        label: 'Montezuma is the best cat',
+      },
+      {
+        value: 'invalid',
+        label: 'Montezuma is not the best cat',
+      },
+    ]}
+    placeholder="optional"
+    value="valid"
+    onChange={(name, value) => true}
+    disabled={false}
+    required={true}
+  />
+</Preview>
+
+```javascript
+<DropDown
+  label="Suffix"
+  options={[
+    {
+      value: 'valid',
+      label: 'Montezuma is the best cat',
+    },
+    {
+      value: 'invalid',
+      label: 'Montezuma is not the best cat',
+    },
+  ]}
+  placeholder="optional"
+  value="valid"
+  onChange={(name, value) => true}
+  disabled={false}
+  required={true}
+/>
+```
+
+### Validation
+
+The `validate` prop allows you to validate the dropdown selection against an array of conditions.
+
+```javascript
+function validator(value) {
+  if (value === 'invalid') {
+    return {
+      isValid: false,
+      message: 'Message to display beneath the input',
+    };
+  } else {
+    return {isValid: true};
+  }
+}
+
+const props {
+  validate: [validator],
+}
+
+<DropDown {...props} />
+```
+
+### Fetch Options
+
+You can use the `getOptions` prop to fetch content from an endpoint to populate the dropdown. It requires a function which will eventually resolve to an object with the key of `options` containing your array of options. You can filter down via the input in this function also.
+
+```javascript
+async function getOptions(input) {
+  if (input) {
+    const options = await Promise.resolve(
+      [
+        {
+          label: 'Montezuma',
+          value: 'montezuma',
+        },
+        {
+          label: 'Pica',
+          value: 'pica',
+        },
+        {
+          label: 'Hector',
+          value: 'hector',
+        },
+        {
+          label: 'Peterson',
+          value: 'peterson',
+        },
+      ].filter((data) => input === data.value)
+    );
+    return {options};
+  } else {
+    return Promise.resolve({});
+  }
+}
+```
+
+## Props 🔧
+
+<Props of={DropDown} />
+
+## Related ✨
+
+- [SimpleDropdown](/?path=/story/atoms-simpledropdown--default)

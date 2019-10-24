@@ -1,13 +1,16 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import CakeCircleIllustration from './CakeCircleIllustration';
-import CakeCircleIllustrationReadMe from './CakeCircleIllustration.md';
+import CakeCircleIllustrationReadMe from './CakeCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/CakeCircleIllustration', module);
 
-stories.addDecorator(withReadme(CakeCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: CakeCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),

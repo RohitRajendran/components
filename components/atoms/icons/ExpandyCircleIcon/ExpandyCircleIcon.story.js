@@ -1,13 +1,16 @@
-import React from 'react';
+import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
+import React from 'react';
 import ExpandyCircleIcon from './ExpandyCircleIcon';
-import {text, select} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ExpandyCircleIconReadme from './ExpandyCircleIcon.md';
+import ExpandyCircleIconReadme from './ExpandyCircleIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ExpandyCircleIcon', module);
 
-stories.addDecorator(withReadme(ExpandyCircleIconReadme));
+stories.addParameters({
+  docs: {
+    page: ExpandyCircleIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

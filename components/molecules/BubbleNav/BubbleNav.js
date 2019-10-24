@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
-import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
 import BubbleDropdown from '~components/atoms/BubbleDropdown/BubbleDropdown';
+import BubbleSelector from '~components/atoms/BubbleSelector/BubbleSelector';
 
 const BubbleNav = ({options, value, onChange, fixedWidth}) => (
   <Fragment>

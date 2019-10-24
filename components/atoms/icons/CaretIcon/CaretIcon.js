@@ -1,7 +1,7 @@
 /** @module CaretIcon */
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {colors} from '~constants/js/colors';
 
 /** Displays the CaretIcon component.

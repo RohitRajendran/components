@@ -1,13 +1,18 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import RadioButtons from './RadioButtons';
-import {boolean, object} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import RadioButtonReadme from './RadioButtons.md';
-import Input from '~components/atoms/Input/Input';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, object} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Input from '~components/atoms/Input/Input';
+import RadioButtons from './RadioButtons';
+import RadioButtonReadme from './RadioButtons.mdx';
 
 const stories = storiesOf('Molecules/RadioButtons', module);
+
+stories.addParameters({
+  docs: {
+    page: RadioButtonReadme,
+  },
+});
 
 const store = new Store({
   yesNo: '',
@@ -16,9 +21,7 @@ const store = new Store({
   bank: '',
 });
 
-stories
-  .addDecorator(withReadme(RadioButtonReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

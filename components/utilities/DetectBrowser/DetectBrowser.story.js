@@ -1,11 +1,16 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import React, {Fragment} from 'react';
 import detectBrowser from './DetectBrowser';
-import {withReadme} from 'storybook-readme';
-import DetectBrowserReadme from './DetectBrowser.md';
+import DetectBrowserReadme from './DetectBrowser.mdx';
 
-const stories = storiesOf('Utilities/detectBrowser', module);
+const stories = storiesOf('Utilities/DetectBrowser', module);
+
+stories.addParameters({
+  docs: {
+    page: DetectBrowserReadme,
+  },
+});
 
 const TestComponent = (props) => (
   <Fragment>
@@ -25,7 +30,4 @@ TestComponent.propTypes = {
 
 const WrappedTestComponent = detectBrowser(TestComponent);
 
-stories.add(
-  'default',
-  withReadme(DetectBrowserReadme, () => <WrappedTestComponent />)
-);
+stories.add('default', () => <WrappedTestComponent />);

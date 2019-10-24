@@ -1,9 +1,9 @@
 /** @module Tooltip */
-import React, {memo} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Button from '~components/atoms/Button/Button';
+import React, {memo} from 'react';
 import ReactTooltip from 'react-tooltip';
+import Button from '~components/atoms/Button/Button';
 import './Tooltip.scss';
 
 /** Attaches a tooltip to a link or button on hover or press.

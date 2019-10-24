@@ -1,9 +1,9 @@
 import {mount} from 'enzyme';
 import React from 'react';
 import test from 'tape';
-import Button from './Button';
-import {colors} from '~constants/js/colors';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import {colors} from '~constants/js/colors';
+import Button from './Button';
 
 test('Button - rendering', (t) => {
   t.plan(2);

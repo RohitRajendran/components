@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
-import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {isInViewport} from '~components/atoms/Input/Input.util';
+import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {
-  isWindowDefined,
   isDocumentDefined,
+  isWindowDefined,
 } from '~components/utilities/DetectBrowser/DetectBrowser';
 import {
   currencyMasks,

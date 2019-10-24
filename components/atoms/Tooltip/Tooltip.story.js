@@ -1,13 +1,18 @@
-import React from 'react';
 import {Store} from '@sambego/storybook-state';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import Tooltip from './Tooltip';
-import TooltipReadMe from './Tooltip.md';
+import {boolean, select, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
 import CardShell from '~components/molecules/CardShell/CardShell';
-import {text, select, boolean} from '@storybook/addon-knobs';
+import Tooltip from './Tooltip';
+import TooltipReadMe from './Tooltip.mdx';
 
 const stories = storiesOf('Atoms/Tooltip', module);
+
+stories.addParameters({
+  docs: {
+    page: TooltipReadMe,
+  },
+});
 
 const store = new Store({
   input: '',
@@ -16,8 +21,6 @@ const store = new Store({
 store.subscribe(() => {
   forceReRender();
 });
-
-stories.addDecorator(withReadme(TooltipReadMe));
 
 const defaultProps = (hoverEnabled, darkTooltip) => ({
   label: text('label', 'keyboard'),

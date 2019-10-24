@@ -1,7 +1,7 @@
-import React from 'react';
-import test from 'tape';
 import {mount} from 'enzyme';
+import React from 'react';
 import {stub} from 'sinon';
+import test from 'tape';
 import ItemizationWidget from './ItemizationWidget';
 
 test('ItemizationWidget - renders', (t) => {

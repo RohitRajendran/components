@@ -1,9 +1,9 @@
-import test from 'tape';
-import React from 'react';
 import {shallow} from 'enzyme';
+import React from 'react';
 import {spy} from 'sinon';
-import BubbleDropdown from './BubbleDropdown';
+import test from 'tape';
 import {colors} from '~constants/js/colors';
+import BubbleDropdown from './BubbleDropdown';
 
 test('BubbleDropdown - render', (t) => {
   const onChangeSpy = spy();

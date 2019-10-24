@@ -1,6 +1,6 @@
 /** @module CakeCircleIllustratio */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a cake illustration. */
 class CakeCircleIllustration extends PureComponent {

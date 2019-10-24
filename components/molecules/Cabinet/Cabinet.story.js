@@ -1,20 +1,23 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import Cabinet from './Cabinet';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import CabinetReadme from './Cabinet.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Cabinet from './Cabinet';
+import CabinetReadme from './Cabinet.mdx';
 
 const stories = storiesOf('Molecules/Cabinet', module);
+
+stories.addParameters({
+  docs: {
+    page: CabinetReadme,
+  },
+});
 
 const store = new Store({
   cabinet: true,
 });
 
-stories
-  .addDecorator(withReadme(CabinetReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

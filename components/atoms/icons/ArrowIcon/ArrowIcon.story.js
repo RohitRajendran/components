@@ -1,13 +1,16 @@
-import React from 'react';
+import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
+import React from 'react';
 import ArrowIcon from './ArrowIcon';
-import {text, select} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ArrowIconReadme from './ArrowIcon.md';
+import ArrowIconReadme from './ArrowIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ArrowIcon', module);
 
-stories.addDecorator(withReadme(ArrowIconReadme));
+stories.addParameters({
+  docs: {
+    page: ArrowIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

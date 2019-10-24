@@ -2,8 +2,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {ButtonInterior} from '~components/atoms/Button/Button';
+import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {colors} from '~constants/js/colors';
 import './FileInput.scss';
 

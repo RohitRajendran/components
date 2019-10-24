@@ -1,9 +1,14 @@
 import React, {Fragment} from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import TypographyReadme from './typography.md';
+import TypographyReadme from './typography.mdx';
 
 const stories = storiesOf('Utilities/Styles', module);
+
+stories.addParameters({
+  docs: {
+    page: TypographyReadme,
+  },
+});
 
 const TextStyles = () => (
   <Fragment>
@@ -31,7 +36,5 @@ const TextStyles = () => (
     <div className="uic--mcg-subhead-2-text">uic--mcg-subhead-2-text</div>
   </Fragment>
 );
-
-stories.addDecorator(withReadme(TypographyReadme));
 
 stories.add('typography', () => <TextStyles />);

@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import StarCircleIcon from './StarCircleIcon';
-import StarCricleIconReadme from './StarCircleIcon.md';
+import StarCircleIconReadme from './StarCircleIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/StarCircleIcon', module);
 
-stories.addDecorator(withReadme(StarCricleIconReadme));
+stories.addParameters({
+  docs: {
+    page: StarCircleIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#FFF'),

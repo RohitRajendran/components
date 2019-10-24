@@ -1,6 +1,6 @@
 /** @module PaintingCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a painting illustration. */
 class PaintingCircleIllustration extends PureComponent {

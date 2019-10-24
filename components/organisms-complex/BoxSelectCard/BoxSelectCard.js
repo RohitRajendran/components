@@ -1,11 +1,11 @@
 /** @module BoxSelectCard */
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
-import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import BoxSelect from '~components/molecules/BoxSelect/BoxSelect';
-import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import {getSelectedAnswerLabel} from '~components/organisms-complex/RadioButtonCard/RadioButtonCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 import './BoxSelectCard.scss';
 
 /** Displays the BoxSelectCard component.

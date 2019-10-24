@@ -11,9 +11,8 @@ import {storiesOf, forceReRender} from '@storybook/react';
 <% } else {-%>
 import {storiesOf} from '@storybook/react';
 <% } -%>
-import {withReadme} from 'storybook-readme';
 import <%= compName %> from './<%= compName %>';
-import <%= compName %>ReadMe from './<%= compName %>.md';
+import <%= compName %>ReadMe from './<%= compName %>.mdx';
 
 const stories = storiesOf('<%= storyPath %>/<%= compName %>', module);
 
@@ -25,7 +24,11 @@ store.subscribe(() => {
 });
 
 <% }-%>
-stories.addDecorator(withReadme(<%= compName %>ReadMe));
+stories.addParameters({
+  docs: {
+    page: <%= compName %>ReadMe,
+  },
+});
 
 const defaultProps = () => ({
   // Add props that the component uses with the appropriate storybook knob

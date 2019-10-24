@@ -1,12 +1,17 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {PureSlider as Slider} from '~components/atoms/Slider/Slider';
-import {withReadme} from 'storybook-readme';
-import SliderReadme from '~components/atoms/Slider/Slider.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {number, text, select} from '@storybook/addon-knobs';
+import {number, select, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import {PureSlider as Slider} from '~components/atoms/Slider/Slider';
+import SliderReadme from '~components/atoms/Slider/Slider.mdx';
 
 const stories = storiesOf('Atoms/Slider', module);
+
+stories.addParameters({
+  docs: {
+    page: SliderReadme,
+  },
+});
 
 const store = new Store({
   slider1: '5',
@@ -14,9 +19,7 @@ const store = new Store({
   slider3: '5',
 });
 
-stories
-  .addDecorator(withReadme(SliderReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

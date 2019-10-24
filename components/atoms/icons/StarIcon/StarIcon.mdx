@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import StarIcon from './StarIcon';
+
+# StarIcon
+
+The StarIcon component creates a star icon using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import StarIcon from '@unitedincome/components/dist/StarIcon';
+```
+
+```javascript
+import {StarIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <StarIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<StarIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <StarIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<StarIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={StarIcon} />

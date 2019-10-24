@@ -1,13 +1,16 @@
-import React from 'react';
+import {number, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
+import React from 'react';
 import ClearIcon from './ClearIcon';
-import {withReadme} from 'storybook-readme';
-import ClearIconReadme from './ClearIcon.md';
-import {text, number} from '@storybook/addon-knobs';
+import ClearIconReadme from './ClearIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ClearIcon', module);
 
-stories.addDecorator(withReadme(ClearIconReadme));
+stories.addParameters({
+  docs: {
+    page: ClearIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

@@ -1,16 +1,19 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import MedicareCircleIllustration from './MedicareCircleIllustration';
-import MedicareCircleIllustrationReadMe from './MedicareCircleIllustration.md';
+import MedicareCircleIllustrationReadMe from './MedicareCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/MedicareCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(MedicareCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: MedicareCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#fff'),

@@ -1,6 +1,6 @@
 /** @module ArrowEllipsisIcon */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 /** Displays the ArrowEllipsisIcon component.
  * @param {object} props - Component props.

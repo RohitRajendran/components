@@ -1,13 +1,13 @@
 /** @module TooltipInput */
-import React, {PureComponent, createRef} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import React, {createRef, PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
-import Tooltip from '~components/atoms/Tooltip/Tooltip';
-import Input from '~components/atoms/Input/Input';
-import {maskEnum} from '~components/atoms/Input/Input.masks';
 import Button from '~components/atoms/Button/Button';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import Input from '~components/atoms/Input/Input';
+import {maskEnum} from '~components/atoms/Input/Input.masks';
+import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import './TooltipInput.scss';
 
 /** Input field which is wrapped in a Tooltip.  */
