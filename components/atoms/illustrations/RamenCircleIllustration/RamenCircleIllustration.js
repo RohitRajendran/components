@@ -1,6 +1,6 @@
 /** @module RamenCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a ramen illustration. */
 class RamenCircleIllustration extends PureComponent {

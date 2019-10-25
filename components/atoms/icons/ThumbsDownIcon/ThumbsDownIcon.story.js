@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import ThumbsDownIcon from './ThumbsDownIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ThumbsDownIconReadme from './ThumbsDownIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import ThumbsDownIcon from './ThumbsDownIcon';
+import ThumbsDownIconReadme from './ThumbsDownIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ThumbsDownIcon', module);
 
-stories.addDecorator(withReadme(ThumbsDownIconReadme));
+stories.addParameters({
+  docs: {
+    page: ThumbsDownIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

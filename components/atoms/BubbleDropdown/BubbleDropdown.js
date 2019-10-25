@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Select, {components} from 'react-select';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import {colors} from '~constants/js/colors';
-
 import './BubbleDropdown.scss';
 
 // react-select dropdown icon

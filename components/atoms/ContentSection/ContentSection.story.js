@@ -1,14 +1,17 @@
-import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import ContentSection from './ContentSection';
-import ContentSectionReadMe from './ContentSection.md';
-import QuestionCard from '../../organisms-simple/QuestionCard/QuestionCard';
+import React from 'react';
 import Checkboxes from '../../molecules/Checkboxes/Checkboxes';
+import QuestionCard from '../../organisms-simple/QuestionCard/QuestionCard';
+import ContentSection from './ContentSection';
+import ContentSectionReadMe from './ContentSection.mdx';
 
 const stories = storiesOf('Atoms/ContentSection', module);
 
-stories.addDecorator(withReadme(ContentSectionReadMe));
+stories.addParameters({
+  docs: {
+    page: ContentSectionReadMe,
+  },
+});
 
 const defaultProps = () => ({
   heading: 'Current Apartment/Rent',

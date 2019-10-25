@@ -1,0 +1,56 @@
+import SimpleSummary from './SimpleSummary';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+
+# SimpleSummary
+
+This component renders a simple summary to be used with a card component when it is collapsed. This summary component should be used for simpler questions like radio button or checkbox questions.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import SimpleSummary from '@unitedincome/components/dist/SimpleSummary';
+```
+
+```javascript
+import {SimpleSummary} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <QuestionCard
+    isCollapsed={true}
+    summary={
+      <SimpleSummary
+        shortTitle="This is a simpler question"
+        answers={['This is the first answer', 'This is the second answer']}
+        editCard={() => true}
+      />
+    }
+  />
+</Preview>
+
+```javascript
+<QuestionCard
+  isCollapsed={true}
+  summary={
+    <SimpleSummary
+      shortTitle="This is a simpler question"
+      answers={['This is the first answer', 'This is the second answer']}
+      editCard={() => true}
+    />
+  }
+/>
+```
+
+## Props 🔧
+
+<Props of={SimpleSummary} />
+
+## Related ✨
+
+- [QuestionCard](/?path=/story/simple-organisms-questioncard--active)
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

@@ -1,13 +1,18 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, number, text, object} from '@storybook/addon-knobs';
+import {boolean, number, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import {inputMask} from '../../atoms/Input/Input.story';
 import InputCard from './InputCard';
-import InputCardReadme from './InputCard.md';
+import InputCardReadme from './InputCard.mdx';
 
 const stories = storiesOf('Complex Organisms/InputCard', module);
+
+stories.addParameters({
+  docs: {
+    page: InputCardReadme,
+  },
+});
 
 const store = new Store({
   input: '',
@@ -17,9 +22,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(InputCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

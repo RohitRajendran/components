@@ -1,16 +1,19 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
 import {boolean, text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import CreditCardCircleIllustration from './CreditCardCircleIllustration';
-import CreditCardCircleIllustrationReadMe from './CreditCardCircleIllustration.md';
+import CreditCardCircleIllustrationReadMe from './CreditCardCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/CreditCardCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(CreditCardCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: CreditCardCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

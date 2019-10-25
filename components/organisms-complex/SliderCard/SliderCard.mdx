@@ -1,0 +1,126 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import SliderCard from './SliderCard';
+
+# SliderCard
+
+This component makes it easier to render a basic slider card for McGonagall flows The collapsed state of this card uses the Simple Summary component.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import SliderCard from '@unitedincome/components/dist/SliderCard';
+```
+
+```javascript
+import {SliderCard} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <SliderCard
+    title="On a scale of 1 to 10 how amazing is Monte?"
+    description="Be honest hes a 10"
+    shortTitle="Rate the Cat"
+    config={{
+      name: 'slider',
+      value: 2,
+      leftAnnotate: 'Lower Risk',
+      rightAnnotate: 'Higher Risk',
+      name: 'slider',
+      tooltip: 'Rate the cat',
+      tooltipStickyVariant: 'green',
+    }}
+  />
+</Preview>
+
+```javascript
+<SliderCard
+  title="On a scale of 1 to 10 how amazing is Monte?"
+  description="Be honest hes a 10"
+  shortTitle="Rate the Cat"
+  config={{
+    name: 'slider',
+    value: 2,
+    leftAnnotate: 'Lower Risk',
+    rightAnnotate: 'Higher Risk',
+    name: 'slider',
+    tooltip: 'Rate the cat',
+    tooltipStickyVariant: 'green',
+  }}
+/>
+```
+
+### Reccomended Position
+
+Depending on the question you may wish to show a reccomended value on the slider. This can be achieved by using the `tooltipStickyPosition` and `tooltipStickyVariant` props.
+
+<Preview>
+  <SliderCard
+    title="On a scale of 1 to 10 how amazing is Monte?"
+    description="Be honest hes a 10"
+    shortTitle="Rate the Cat"
+    config={{
+      name: 'slider',
+      value: 2,
+      leftAnnotate: 'Lower Risk',
+      rightAnnotate: 'Higher Risk',
+      name: 'slider',
+      tooltip: 'Rate the cat',
+      tooltipStickyPosition: 5,
+      tooltipStickyVariant: 'green',
+    }}
+  />
+</Preview>
+
+```javascript
+<SliderCard
+  title="On a scale of 1 to 10 how amazing is Monte?"
+  description="Be honest hes a 10"
+  shortTitle="Rate the Cat"
+  config={{
+    name: 'slider',
+    value: 2,
+    leftAnnotate: 'Lower Risk',
+    rightAnnotate: 'Higher Risk',
+    name: 'slider',
+    tooltip: 'Rate the cat',
+    tooltipStickyPosition: 5,
+    tooltipStickyVariant: 'green',
+  }}
+/>
+```
+
+### Using in a McGonagall Flow
+
+You can use the `SliderCard` component in a McGonagall flow using the following pattern.
+
+```javascript
+export const renderCard = (props, state) => {
+  return (
+    <SliderCard
+      {...props}
+      config={{
+        name: 'slider',
+        value: state.slider,
+        leftAnnotate: 'Lower Risk',
+        rightAnnotate: 'Higher Risk',
+        name: 'slider',
+        tooltip: 'Rate the cat',
+        tooltipStickyVariant: 'green',
+      }}
+    />
+  );
+};
+```
+
+## Props 🔧
+
+<Props of={SliderCard} />
+
+## Related ✨
+
+- [Slider](/?path=/story/atoms-slider--default)
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

@@ -1,0 +1,75 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ExpandyCircleIcon from './ExpandyCircleIcon';
+
+# ExpandyCircleIcon
+
+The ExpandyCircleIcon component creates an arrow icon using inline SVG. This icon is typically used to indicate that some content can be expanded.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ExpandyCircleIcon from '@unitedincome/components/dist/ExpandyCircleIcon';
+```
+
+```javascript
+import {ExpandyCircleIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ExpandyCircleIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<ExpandyCircleIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <ExpandyCircleIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<ExpandyCircleIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+### Changing the Direction
+
+Using the `direction` prop you can adjust the direction that the arrow points.
+
+<Preview>
+  <ExpandyCircleIcon height="3rem" width="3rem" direction="right" />
+</Preview>
+
+```javascript
+<ExpandyCircleIcon height="3rem" width="3rem" direction="right" />
+```
+
+### Applying an Animation
+
+If you'd like to apply an animation to the arrow icon you can do so with CSS by transitioning on `transform`. An example of this would look something like this:
+
+```css
+.arrow-icon {
+  transition: transform 0.2s ease-in-out;
+}
+```
+
+```javascript
+<ExpandyCircleIcon
+  className="arrow-icon"
+  fill="#000"
+  height="2rem"
+  width="2rem"
+/>
+```
+
+## Props 🔧
+
+<Props of={ExpandyCircleIcon} />

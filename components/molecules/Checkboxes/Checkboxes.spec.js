@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {stub} from 'sinon';
+import test from 'tape';
 import Checkboxes from './Checkboxes';
 
 test('Checkboxes - Should be able to render a basic question.', (t) => {

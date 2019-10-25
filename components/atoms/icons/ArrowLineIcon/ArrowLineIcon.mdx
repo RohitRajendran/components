@@ -1,0 +1,56 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ArrowLineIcon from './ArrowLineIcon';
+
+# ArrowLineIcon
+
+The ArrowLineIcon component creates an arrow with a line icon using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ArrowLineIcon from '@unitedincome/components/dist/ArrowLineIcon';
+```
+
+```javascript
+import {ArrowLineIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ArrowLineIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<ArrowLineIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <ArrowLineIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<ArrowLineIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+### Changing the Direction
+
+Using the `direction` prop you can adjust the direction that the arrow points.
+
+<Preview>
+  <ArrowLineIcon height="3rem" width="3rem" direction="right" />
+</Preview>
+
+```javascript
+<ArrowLineIcon height="3rem" width="3rem" direction="right" />
+```
+
+## Props 🔧
+
+<Props of={ArrowLineIcon} />

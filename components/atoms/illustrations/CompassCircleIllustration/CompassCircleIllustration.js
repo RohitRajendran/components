@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React, {memo} from 'react';
 
 const CompassCircleIllustration = ({
-  className,
   style,
   width,
   height,
@@ -12,7 +11,7 @@ const CompassCircleIllustration = ({
   id,
 }) => {
   const elementProps = {
-    className,
+    //className,
     style: {
       /**
        * Workaround svg height and width attributes not supporting rems in Firefox and IE by passing it through style

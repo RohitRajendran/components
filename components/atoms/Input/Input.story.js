@@ -1,12 +1,17 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import {text, boolean, number, select} from '@storybook/addon-knobs';
-import InputReadme from './Input.md';
-import Input from './Input';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, number, select, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Input from './Input';
+import InputReadme from './Input.mdx';
 
 const stories = storiesOf('Atoms/Input', module);
+
+stories.addParameters({
+  docs: {
+    page: InputReadme,
+  },
+});
 
 const store = new Store({
   default: '',
@@ -16,9 +21,7 @@ const store = new Store({
   errorVal: '1660 L Street',
 });
 
-stories
-  .addDecorator(withReadme(InputReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

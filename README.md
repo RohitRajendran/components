@@ -12,15 +12,15 @@ This library aims to standardize the implementation and appearance of [React](ht
 
 # Getting Started 🚀
 
-This component library can be installed and initialized by running `yarn install`followed by `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
-
-## Using a Component 📚
-
-You can install the component library into your project by running the following command.
+You can install the United Income component library into your project by running the following command.
 
 ```bash
 yarn add @unitedincome/components
 ```
+
+This component library can be installed and initialized by running `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
+
+## Using a Component 📚
 
 We utilize peer dependencies as we often require packages that already exist in our other applications. Because of this you will also need to install the [required peer dependencies](https://github.com/UnitedIncome/components/blob/master/package.json#L109) into your project. You can learn more about peer dependencies [here](https://nodejs.org/es/blog/npm/peer-dependencies/).
 
@@ -64,7 +64,7 @@ Running `yarn generate` will create the folder and files you need to start build
 ├── atoms
 │ └── Input
 │ ├── Input.js
-│ ├── Input.md
+│ ├── Input.mdx
 │ ├── Input.spec.js
 │ └── Input.story.js
 └── molecules
@@ -97,6 +97,7 @@ While there are always going to be special cases, the following guidelines shoul
 7. The Bootstrap 4 grid and utility classes are included, and prefixed with `uic--`, these should be used as much as possible.
 8. Check for the existence of global variables such as those exposed by `window` in a browser before accessing them. We use this library in non-browser environments, [such as `react-static` which requires code to be node-safe](https://github.com/nozzle/react-static/blob/v6/docs/concepts.md#writing-universal-node-safe-code).
 9. Do not remove the browser default `outline` focus state unless you're replacing it with something else.
+10. Documentation should be clear and concise, and offer code samples as much as possible using [mdx](https://mdxjs.com/).
 
 ---
 
@@ -113,12 +114,15 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import TrashIcon from './TrashIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
 import TrashIconReadme from './TrashIcon.md';
 
 const stories = storiesOf('Atoms/Icons/TrashIcon', module);
 
-stories.addDecorator(withReadme(TrashIconReadme));
+stories.addParameters({
+  docs: {
+    page: TrashIconReadme,
+  },
+});
 
 // Sets up the default props for multiple different story variations.
 const defaultProps = () => ({

@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import HealthMeterCircleIllustration from './HealthMeterCircleIllustration';
-import HealthMeterCircleIllustrationReadMe from './HealthMeterCircleIllustration.md';
+import HealthMeterCircleIllustrationReadMe from './HealthMeterCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/HealthMeterCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(HealthMeterCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: HealthMeterCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),

@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {stub} from 'sinon';
+import test from 'tape';
 import Cabinet from './Cabinet';
 
 test('Cabinet - handleKeyPress', (t) => {

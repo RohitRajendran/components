@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ErrorFlagIcon from './ErrorFlagIcon';
+
+# ErrorFlagIcon
+
+The ErrorFlagIcon component creates an explanation mark icon using inline SVG. This icon is typically used to indicate that there is an error.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ErrorFlagIcon from '@unitedincome/components/dist/ErrorFlagIcon';
+```
+
+```javascript
+import {ErrorFlagIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ErrorFlagIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<ErrorFlagIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <ErrorFlagIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<ErrorFlagIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={ErrorFlagIcon} />

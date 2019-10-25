@@ -1,12 +1,12 @@
 /** @module InputCard */
 import PropTypes from 'prop-types';
 import React from 'react';
-import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Input from '~components/atoms/Input/Input';
 import {
   currencyMasks,
   percentageMasks,
 } from '~components/atoms/Input/Input.masks';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
 
 /** Displays the InputCard component.

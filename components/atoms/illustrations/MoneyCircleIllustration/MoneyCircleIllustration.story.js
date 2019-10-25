@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import MoneyCircleIllustration from './MoneyCircleIllustration';
-import MoneyCircleIllustrationReadMe from './MoneyCircleIllustration.md';
+import MoneyCircleIllustrationReadMe from './MoneyCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/MoneyCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(MoneyCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: MoneyCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),

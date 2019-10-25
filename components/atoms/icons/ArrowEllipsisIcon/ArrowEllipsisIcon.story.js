@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import ArrowEllipsisIcon from './ArrowEllipsisIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ArrowEllipsisIconReadme from './ArrowEllipsisIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import ArrowEllipsisIcon from './ArrowEllipsisIcon';
+import ArrowEllipsisIconReadme from './ArrowEllipsisIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ArrowEllipsisIcon', module);
 
-stories.addDecorator(withReadme(ArrowEllipsisIconReadme));
+stories.addParameters({
+  docs: {
+    page: ArrowEllipsisIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

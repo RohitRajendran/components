@@ -2,17 +2,22 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
-import BoxSelectCard from './BoxSelectCard';
-import BoxSelectCardReadme from './BoxSelectCard.md';
 import GiftCircleIllustration from '~components/atoms/illustrations/GiftCircleIllustration/GiftCircleIllustration';
 import GivingCircleIllustration from '~components/atoms/illustrations/GivingCircleIllustration/GivingCircleIllustration';
 import HealthCircleIllustration from '~components/atoms/illustrations/HealthCircleIllustration/HealthCircleIllustration';
 import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration';
 import ShoppingCircleIllustration from '~components/atoms/illustrations/ShoppingCircleIllustration/ShoppingCircleIllustration';
+import BoxSelectCard from './BoxSelectCard';
+import BoxSelectCardReadme from './BoxSelectCard.mdx';
 
 const stories = storiesOf('Complex Organisms/BoxSelectCard', module);
+
+stories.addParameters({
+  docs: {
+    page: BoxSelectCardReadme,
+  },
+});
 
 const store = new Store({
   radioBtnQuestion: '',
@@ -22,9 +27,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(BoxSelectCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

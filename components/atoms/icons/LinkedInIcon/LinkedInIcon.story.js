@@ -1,13 +1,16 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
+import React from 'react';
 import LinkedInIcon from './LinkedInIcon';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import LinkedInIconReadme from './LinkedInIcon.md';
+import LinkedInIconReadme from './LinkedInIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/LinkedInIcon', module);
 
-stories.addDecorator(withReadme(LinkedInIconReadme));
+stories.addParameters({
+  docs: {
+    page: LinkedInIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

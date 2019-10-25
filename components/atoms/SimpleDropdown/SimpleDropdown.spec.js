@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {spy} from 'sinon';
+import test from 'tape';
 import SimpleDropdown from './SimpleDropdown';
 
 test('SimpleDropdown - render', (t) => {

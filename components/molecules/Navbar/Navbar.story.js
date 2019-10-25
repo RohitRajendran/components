@@ -1,14 +1,17 @@
-import {boolean, object, number} from '@storybook/addon-knobs';
+import {boolean, number, object} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
-import {withReadme} from 'storybook-readme';
 import {catIpsum} from '~constants/js/ipsum';
 import Navbar from './Navbar';
-import NavbarReadMe from './Navbar.md';
+import NavbarReadMe from './Navbar.mdx';
 
 const stories = storiesOf('Molecules/Navbar', module);
 
-stories.addDecorator(withReadme(NavbarReadMe));
+stories.addParameters({
+  docs: {
+    page: NavbarReadMe,
+  },
+});
 
 const defaultProps = ({isOpen, isFixed, isStatic}) => ({
   activeLink: '/about',

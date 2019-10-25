@@ -1,11 +1,10 @@
 /** @module Ranking */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import ArrowEllipsisIcon from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import {colors} from '~constants/js/colors';
-
 import './Ranking.scss';
 
 /** Renders a list which allows  */

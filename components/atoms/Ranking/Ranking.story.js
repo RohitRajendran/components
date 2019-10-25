@@ -1,11 +1,16 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import Ranking from './Ranking';
-import RankingReadme from './Ranking.md';
-import {withReadme} from 'storybook-readme';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Ranking from './Ranking';
+import RankingReadme from './Ranking.mdx';
 
 const stories = storiesOf('Atoms/Ranking', module);
+
+stories.addParameters({
+  docs: {
+    page: RankingReadme,
+  },
+});
 
 const store = new Store({
   default: [
@@ -75,9 +80,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(RankingReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (formName) => ({
   name: 'ranking',

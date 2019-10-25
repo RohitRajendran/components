@@ -1,12 +1,17 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, text, object} from '@storybook/addon-knobs';
+import {boolean, object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import RankingCard from './RankingCard';
-import RankingCardReadme from './RankingCard.md';
+import RankingCardReadme from './RankingCard.mdx';
 
 const stories = storiesOf('Complex Organisms/RankingCard', module);
+
+stories.addParameters({
+  docs: {
+    page: RankingCardReadme,
+  },
+});
 
 const store = new Store({
   ranking: [
@@ -36,9 +41,7 @@ store.subscribe(() => {
   forceReRender();
 });
 
-stories
-  .addDecorator(withReadme(RankingCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 const defaultProps = (
   isCollapsed = false,

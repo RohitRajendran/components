@@ -1,9 +1,9 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {spy} from 'sinon';
-import FileInput from './FileInput';
+import test from 'tape';
 import {ButtonInterior} from '../Button/Button';
+import FileInput from './FileInput';
 
 test('FileInput - renders', (t) => {
   const onChangeSpy = spy();

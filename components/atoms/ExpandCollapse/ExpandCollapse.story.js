@@ -1,14 +1,17 @@
-import React, {Fragment} from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import ExpandCollapse from './ExpandCollapse';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ExpandCollapseReadme from './ExpandCollapse.md';
+import React, {Fragment} from 'react';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
+import ExpandCollapse from './ExpandCollapse';
+import ExpandCollapseReadme from './ExpandCollapse.mdx';
 
 const stories = storiesOf('Atoms/ExpandCollapse', module);
 
-stories.addDecorator(withReadme(ExpandCollapseReadme));
+stories.addParameters({
+  docs: {
+    page: ExpandCollapseReadme,
+  },
+});
 
 const defaultProps = (
   startDisabled,

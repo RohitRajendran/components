@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
+import Cabinet from '~components/molecules/Cabinet/Cabinet';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
-import Cabinet from '~components/molecules/Cabinet/Cabinet';
 import './QuestionCard.scss';
 
 const QuestionCard = ({

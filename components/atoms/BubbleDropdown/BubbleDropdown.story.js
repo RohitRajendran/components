@@ -1,18 +1,21 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {object} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {object} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
 import BubbleDropdown from './BubbleDropdown';
-import BubbleDropdownReadme from './BubbleDropdown.md';
+import BubbleDropdownReadme from './BubbleDropdown.mdx';
 
 const stories = storiesOf('Atoms/BubbleDropdown', module);
 
+stories.addParameters({
+  docs: {
+    page: BubbleDropdownReadme,
+  },
+});
+
 const store = new Store({value: 'Small'});
 
-stories
-  .addDecorator(withReadme(BubbleDropdownReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

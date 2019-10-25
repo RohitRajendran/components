@@ -1,18 +1,21 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {object} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {object} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
 import SimpleDropdown from './SimpleDropdown';
-import SimpleDropdownReadme from './SimpleDropdown.md';
+import SimpleDropdownReadme from './SimpleDropdown.mdx';
 
 const stories = storiesOf('Atoms/SimpleDropdown', module);
 
+stories.addParameters({
+  docs: {
+    page: SimpleDropdownReadme,
+  },
+});
+
 const store = new Store({value: 'Small'});
 
-stories
-  .addDecorator(withReadme(SimpleDropdownReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

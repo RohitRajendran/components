@@ -1,0 +1,68 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import RamenCircleIllustration from './RamenCircleIllustration';
+
+# RamenCircleIllustration
+
+The RamenCircleIllustration component creates a ramen illustration using inline SVG. This illustration is commonly used within McGonnagal introduction cards.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RamenCircleIllustration from '@unitedincome/components/dist/RamenCircleIllustration';
+```
+
+```javascript
+import {RamenCircleIllustration} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <RamenCircleIllustration height="14rem" width="14rem" />
+</Preview>
+
+```javascript
+<RamenCircleIllustration height="14rem" width="14rem" />
+```
+
+### Draft
+
+You can use the `draft` prop to render the illustrations draft mode variant.
+
+<Preview>
+  <RamenCircleIllustration height="14rem" width="14rem" draft />
+</Preview>
+
+```javascript
+<RamenCircleIllustration height="14rem" width="14rem" draft />
+```
+
+### Color
+
+You can use the `color` prop to render the illustrations full color variant.
+
+<Preview>
+  <RamenCircleIllustration height="14rem" width="14rem" color />
+</Preview>
+
+```javascript
+<RamenCircleIllustration height="14rem" width="14rem" color />
+```
+
+### Illuminate
+
+The `illuminate` prop activates the interaction variant of the illustration. By default the interaction occurs when the illustration is clicked, this prop allows you to override that behavior so you can trigger it as a side effect of another action.
+
+<Preview>
+  <RamenCircleIllustration height="14rem" width="14rem" illuminate />
+</Preview>
+
+```javascript
+<RamenCircleIllustration height="14rem" width="14rem" illuminate />
+```
+
+## Props 🔧
+
+<Props of={RamenCircleIllustration} />

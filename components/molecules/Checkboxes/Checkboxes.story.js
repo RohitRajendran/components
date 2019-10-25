@@ -1,13 +1,18 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import Checkboxes from './Checkboxes';
-import Input from '~components/atoms/Input/Input';
-import {boolean, object} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import SelectButtonReadme from './Checkboxes.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, object} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Input from '~components/atoms/Input/Input';
+import Checkboxes from './Checkboxes';
+import CheckboxesReadme from './Checkboxes.mdx';
 
 const stories = storiesOf('Molecules/Checkboxes', module);
+
+stories.addParameters({
+  docs: {
+    page: CheckboxesReadme,
+  },
+});
 
 const store = new Store({
   yesNo: [],
@@ -16,9 +21,7 @@ const store = new Store({
   input: '',
 });
 
-stories
-  .addDecorator(withReadme(SelectButtonReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

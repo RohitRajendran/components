@@ -1,7 +1,7 @@
+import {mount, shallow} from 'enzyme';
 import React from 'react';
-import test from 'tape';
-import {shallow, mount} from 'enzyme';
 import {spy, stub} from 'sinon';
+import test from 'tape';
 import {PureSlider} from './Slider';
 
 test('Slider - renders', (t) => {

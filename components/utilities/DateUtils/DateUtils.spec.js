@@ -3,8 +3,8 @@ import test from 'tape';
 import {
   isAfterMonth,
   isBeforeMonth,
-  isSameOrBeforeMonth,
   isSameOrAfterMonth,
+  isSameOrBeforeMonth,
 } from './DateUtils';
 
 test('DateUtils - isBeforeMonth', (t) => {

@@ -1,16 +1,19 @@
 import {boolean, number, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import CompassCircleIllustration from './CompassCircleIllustration';
-import CompassCircleIllustrationReadMe from './CompassCircleIllustration.md';
+import CompassCircleIllustrationReadMe from './CompassCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/CompassCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(CompassCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: CompassCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = () => ({
   height: text('height', '14rem'),

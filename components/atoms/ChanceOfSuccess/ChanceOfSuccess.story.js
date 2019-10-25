@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {PureChanceOfSuccess as ChanceOfSuccess} from './ChanceOfSuccess';
 import {boolean, number} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ChanceOfSuccessReadme from './ChanceOfSuccess.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import {PureChanceOfSuccess as ChanceOfSuccess} from './ChanceOfSuccess';
+import ChanceOfSuccessReadme from './ChanceOfSuccess.mdx';
 
 const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 
-stories.addDecorator(withReadme(ChanceOfSuccessReadme));
+stories.addParameters({
+  docs: {
+    page: ChanceOfSuccessReadme,
+  },
+});
 
 const defaultProps = ({percent, draft, running, compact}) => ({
   percent: number('percent', percent, {

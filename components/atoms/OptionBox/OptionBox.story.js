@@ -1,13 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
 import OptionBox from './OptionBox';
-import OptionBoxReadme from './OptionBox.md';
+import OptionBoxReadme from './OptionBox.mdx';
 import {boolean, select} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Atoms/OptionBox', module);
 
-stories.addDecorator(withReadme(OptionBoxReadme));
+stories.addParameters({
+  docs: {
+    page: OptionBoxReadme,
+  },
+});
 
 const defaultProps = (defaultVariant, checked) => ({
   variant: select('Variant', ['check', 'radio'], defaultVariant),

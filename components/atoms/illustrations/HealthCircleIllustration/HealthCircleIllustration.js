@@ -1,6 +1,6 @@
 /** @module HealthCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a health illustration. */
 class HealthCircleIllustration extends PureComponent {

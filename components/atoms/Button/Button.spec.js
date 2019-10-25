@@ -1,9 +1,9 @@
 import {mount} from 'enzyme';
 import React from 'react';
 import test from 'tape';
-import Button from './Button';
-import {colors} from '~constants/js/colors';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import {colors} from '~constants/js/colors';
+import Button from './Button';
 
 test('Button - rendering', (t) => {
   t.plan(2);
@@ -25,7 +25,7 @@ test('Button - rendering with a linkComponent prop', (t) => {
   t.plan(1);
 
   const linkComponent = mount(
-    <Button to="/url" linkComponent={Button} onClick={() => null}>
+    <Button to="/url" linkComponent={Button}>
       Testing
     </Button>
   );

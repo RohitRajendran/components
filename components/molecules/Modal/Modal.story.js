@@ -1,22 +1,25 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import Modal from './Modal';
-import Button from '~components/atoms/Button/Button';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import ModalReadme from './Modal.md';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import Button from '~components/atoms/Button/Button';
+import Modal from './Modal';
+import ModalReadme from './Modal.mdx';
 
 const stories = storiesOf('Molecules/Modal', module);
+
+stories.addParameters({
+  docs: {
+    page: ModalReadme,
+  },
+});
 
 const store = new Store({
   modal1: true,
   modal2: true,
 });
 
-stories
-  .addDecorator(withReadme(ModalReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

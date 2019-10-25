@@ -1,15 +1,20 @@
-import React, {Fragment} from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
+import React, {Fragment} from 'react';
 import {
-  isBeforeMonth,
   isAfterMonth,
-  isSameOrBeforeMonth,
+  isBeforeMonth,
   isSameOrAfterMonth,
+  isSameOrBeforeMonth,
 } from './DateUtils';
-import DateUtilsReadMe from './DateUtils.md';
+import DateUtilsReadMe from './DateUtils.mdx';
 
 const stories = storiesOf('Utilities/DateUtils', module);
+
+stories.addParameters({
+  docs: {
+    page: DateUtilsReadMe,
+  },
+});
 
 const IsBeforeMonth = () => (
   <Fragment>
@@ -38,8 +43,6 @@ const IsAfterMonth = () => (
     <p>Provided: 02/2020: {String(isAfterMonth('02/2020'))}</p>
   </Fragment>
 );
-
-stories.addDecorator(withReadme(DateUtilsReadMe));
 
 stories.add('isBeforeMonth', () => <IsBeforeMonth />);
 stories.add('isSameOrBeforeMonth', () => <IsSameOrBeforeMonth />);

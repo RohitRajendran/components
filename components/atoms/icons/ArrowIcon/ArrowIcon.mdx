@@ -1,0 +1,56 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ArrowIcon from './ArrowIcon';
+
+# ArrowIcon
+
+The ArrowIcon component creates an arrow icon using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ArrowIcon from '@unitedincome/components/dist/ArrowIcon';
+```
+
+```javascript
+import {ArrowIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ArrowIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<ArrowIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <ArrowIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<ArrowIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+### Changing the Direction
+
+Using the `direction` prop you can adjust the direction that the arrow points.
+
+<Preview>
+  <ArrowIcon height="3rem" width="3rem" direction="right" />
+</Preview>
+
+```javascript
+<ArrowIcon height="3rem" width="3rem" direction="right" />
+```
+
+## Props 🔧
+
+<Props of={ArrowIcon} />

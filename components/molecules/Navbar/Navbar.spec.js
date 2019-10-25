@@ -1,6 +1,6 @@
 import {mount, shallow} from 'enzyme';
-import {stub} from 'sinon';
 import React from 'react';
+import {stub} from 'sinon';
 import test from 'tape';
 import Navbar from './Navbar';
 

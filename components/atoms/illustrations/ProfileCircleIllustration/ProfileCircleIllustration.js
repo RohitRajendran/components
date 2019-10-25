@@ -1,6 +1,6 @@
 /** @module ProfileCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 import {colors} from '~constants/js/colors';
 
 /** Renders a profile illustration. */

@@ -1,6 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import './CategoryBubble.scss';
 
 const CategoryBubble = ({label, color}) => (

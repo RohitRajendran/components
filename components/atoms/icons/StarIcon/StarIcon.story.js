@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import StarIcon from './StarIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import StarIconReadme from './StarIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import StarIcon from './StarIcon';
+import StarIconReadme from './StarIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/StarIcon', module);
 
-stories.addDecorator(withReadme(StarIconReadme));
+stories.addParameters({
+  docs: {
+    page: StarIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

@@ -1,5 +1,5 @@
 import test from 'tape';
-import {commaSeparatedMask, tickerMask, maskEnum} from './Input.masks';
+import {commaSeparatedMask, maskEnum, tickerMask} from './Input.masks';
 
 test('Input - tickerMask', (t) => {
   t.deepEquals(

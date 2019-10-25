@@ -1,6 +1,6 @@
 /** @module ShoppingCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a shopping illustration. */
 class ShoppingCircleIllustration extends PureComponent {

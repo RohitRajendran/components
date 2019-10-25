@@ -1,14 +1,17 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
-import CardShell from './CardShell';
-import CardShellReadme from './CardShell.md';
 import Input from '~components/atoms/Input/Input';
+import CardShell from './CardShell';
+import CardShellReadme from './CardShell.mdx';
 
 const stories = storiesOf('Molecules/CardShell', module);
 
-stories.addDecorator(withReadme(CardShellReadme));
+stories.addParameters({
+  docs: {
+    page: CardShellReadme,
+  },
+});
 
 const defaultProps = (
   isCollapsed = false,

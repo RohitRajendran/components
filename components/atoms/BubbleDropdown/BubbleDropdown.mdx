@@ -1,0 +1,81 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import BubbleDropdown from './BubbleDropdown';
+
+# BubbleDropdown
+
+The BubbleDropdown component renders a simple static dropdown menu in a solid color bubble style.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import BubbleDropdown from '@unitedincome/components/dist/BubbleDropdown';
+```
+
+```javascript
+import {BubbleDropdown} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <BubbleDropdown
+    options={[
+      {value: 'montezuma1'},
+      {value: 'montezuma2'},
+      {value: 'montezuma3'},
+    ]}
+    value="montezuma3"
+    onChange={(value) => value}
+  />
+</Preview>
+
+```javascript
+<BubbleDropdown
+  options={[
+    {value: 'montezuma1'},
+    {value: 'montezuma2'},
+    {value: 'montezuma3'},
+  ]}
+  value="montezuma3"
+  onChange={(value) => value}
+/>
+```
+
+### Bubble Colors
+
+You can change each bubbles color by providing the option with a `color` property.
+
+<Preview>
+  <BubbleDropdown
+    options={[
+      {value: 'montezuma1', color: 'Red'},
+      {value: 'montezuma2', color: 'Blue'},
+      {value: 'montezuma3', color: 'Green'},
+    ]}
+    value="montezuma3"
+    onChange={(value) => value}
+  />
+</Preview>
+
+```javascript
+<BubbleDropdown
+  options={[
+    {value: 'montezuma1', color: 'Red'},
+    {value: 'montezuma2', color: 'Blue'},
+    {value: 'montezuma3', color: 'Green'},
+  ]}
+  value="montezuma3"
+  onChange={(value) => value}
+/>
+```
+
+## Props 🔧
+
+<Props of={BubbleDropdown} />
+
+## Related ✨
+
+- [BubbleNav](/?path=/story/molecules-bubblenav--default)
+- [BubbleSelector](/?path=/story/atoms-bubbleselector--dynamic-width)

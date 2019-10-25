@@ -1,0 +1,68 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import CaretIcon from './CaretIcon';
+
+# CaretIcon
+
+The CaretIcon component creates an arrow icon using inline SVG. This icon is typically used to indicate that some content can be expanded.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import CaretIcon from '@unitedincome/components/dist/CaretIcon';
+```
+
+```javascript
+import {CaretIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <CaretIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<CaretIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <CaretIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<CaretIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+### Changing the Direction
+
+Using the `direction` prop you can adjust the direction that the arrow points.
+
+<Preview>
+  <CaretIcon height="3rem" width="3rem" direction="right" />
+</Preview>
+
+```javascript
+<CaretIcon height="3rem" width="3rem" direction="right" />
+```
+
+### Adjusting the Thickness
+
+You can adjust how thick the arrow is using the `stroke` prop.
+
+<Preview>
+  <CaretIcon height="3rem" width="3rem" stroke="4px" />
+</Preview>
+
+```javascript
+<CaretIcon height="3rem" width="3rem" stroke="4px" />
+```
+
+## Props 🔧
+
+<Props of={CaretIcon} />

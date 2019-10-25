@@ -1,0 +1,66 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import TooltipInput from './TooltipInput';
+
+# TooltipInput
+
+Wraps an Input field in a Tooltip component which activates on key press. Unlike the regular Tooltip, the TooltipInput component can only activate on button click.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import TooltipInput from '@unitedincome/components/dist/TooltipInput';
+```
+
+```javascript
+import {TooltipInput} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <TooltipInput
+    label="Click me to open up the tooltip"
+    labelVariant="link"
+    placement="bottom"
+    confirmLabel="Confirm"
+    cancelLabel="Cancel"
+    onRemove={() => true}
+    config={{
+      name: 'inputValue',
+      label: 'Name',
+      placeholder: 'Enter a name...',
+      value: 'Montezuma',
+    }}
+  />
+</Preview>
+
+```javascript
+<TooltipInput
+  label="keyboard"
+  labelVariant="link"
+  placement="bottom"
+  confirmLabel="Confirm"
+  cancelLabel="Cancel"
+  onRemove={() => true}
+  config={{
+    name: 'inputValue',
+    label: 'Name',
+    placeholder: 'Enter a name...',
+    value: 'Montezuma',
+  }}
+/>
+```
+
+### onRemove
+
+If you include an `onRemove` handler as a prop it will automatically render a trash can icon on the tooltip. This will trigger the handler when it's clicked.
+
+## Props 🔧
+
+<Props of={TooltipInput} />
+
+## Related ✨
+
+- [Tooltip](/?path=/story/atoms-tooltip--default)

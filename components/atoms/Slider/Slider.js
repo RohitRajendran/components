@@ -1,11 +1,10 @@
 /** @module Slider */
-import React, {memo} from 'react';
-import ReactSlider from 'rc-slider';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import fromPairs from 'lodash/fromPairs';
+import PropTypes from 'prop-types';
+import ReactSlider from 'rc-slider';
+import React, {memo} from 'react';
 import {colors} from '~constants/js/colors';
-
 import './Slider.scss';
 
 const Slider = ({

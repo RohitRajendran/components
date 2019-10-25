@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
-import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
 import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
+import {formatCurrencyNoDecimal} from '~components/utilities/FormatUtils/FormatUtils';
 import {exclusive} from '~proptypes';
 import './ItemizationWidget.scss';
 

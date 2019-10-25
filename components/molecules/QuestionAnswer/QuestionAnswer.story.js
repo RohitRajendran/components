@@ -1,13 +1,16 @@
 import {object, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
-import {withReadme} from 'storybook-readme';
 import QuestionAnswer from './QuestionAnswer';
-import QuestionAnswerReadMe from './QuestionAnswer.md';
+import QuestionAnswerReadMe from './QuestionAnswer.mdx';
 
 const stories = storiesOf('Molecules/QuestionAnswer', module);
 
-stories.addDecorator(withReadme(QuestionAnswerReadMe));
+stories.addParameters({
+  docs: {
+    page: QuestionAnswerReadMe,
+  },
+});
 
 const defaultProps = () => ({
   header: text('header', 'FAQs'),

@@ -1,13 +1,16 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import HomeCircleIllustration from './HomeCircleIllustration';
-import HomeCircleIllustrationReadMe from './HomeCircleIllustration.md';
+import HomeCircleIllustrationReadMe from './HomeCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/HomeCircleIllustration', module);
 
-stories.addDecorator(withReadme(HomeCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: HomeCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

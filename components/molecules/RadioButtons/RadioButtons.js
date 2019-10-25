@@ -1,9 +1,8 @@
 /** @module RadioButtons */
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
-
 import './RadioButtons.scss';
 
 const RadioButtons = ({

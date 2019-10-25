@@ -1,12 +1,15 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
 import Portal from './Portal';
-import PortalReadMe from './Portal.md';
+import PortalReadMe from './Portal.mdx';
 
 const stories = storiesOf('Utilities/Portal', module);
 
-stories.addDecorator(withReadme(PortalReadMe));
+stories.addParameters({
+  docs: {
+    page: PortalReadMe,
+  },
+});
 
 stories.add('default', () => (
   <Portal>

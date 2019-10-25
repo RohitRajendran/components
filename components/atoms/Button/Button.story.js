@@ -1,14 +1,17 @@
-import React from 'react';
+import {boolean, select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import {select, text, boolean} from '@storybook/addon-knobs';
-import ButtonReadme from './Button.md';
-import Button from './Button';
+import React from 'react';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import Button from './Button';
+import ButtonReadme from './Button.mdx';
 
 const stories = storiesOf('Atoms/Button', module);
 
-stories.addDecorator(withReadme(ButtonReadme));
+stories.addParameters({
+  docs: {
+    page: ButtonReadme,
+  },
+});
 
 const permutations = [
   {

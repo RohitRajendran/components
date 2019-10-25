@@ -1,9 +1,14 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import ButtonsReadme from './buttons.md';
+import ButtonsReadme from './buttons.mdx';
 
 const stories = storiesOf('Utilities/Styles', module);
+
+stories.addParameters({
+  docs: {
+    page: ButtonsReadme,
+  },
+});
 
 const ButtonStyles = () => (
   <button className="uic--button-unstyled">
@@ -11,7 +16,5 @@ const ButtonStyles = () => (
     but do not need the default button styling.
   </button>
 );
-
-stories.addDecorator(withReadme(ButtonsReadme));
 
 stories.add('buttons', () => <ButtonStyles />);

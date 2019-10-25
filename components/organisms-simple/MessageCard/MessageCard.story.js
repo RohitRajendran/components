@@ -1,14 +1,17 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
-import MessageCard from './MessageCard';
-import MessageCardReadme from './MessageCard.md';
 import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
+import MessageCard from './MessageCard';
+import MessageCardReadme from './MessageCard.mdx';
 
 const stories = storiesOf('Simple Organisms/MessageCard', module);
 
-stories.addDecorator(withReadme(MessageCardReadme));
+stories.addParameters({
+  docs: {
+    page: MessageCardReadme,
+  },
+});
 
 const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   afterButton: text('afterButton'),

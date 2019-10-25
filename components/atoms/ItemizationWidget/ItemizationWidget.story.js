@@ -2,19 +2,22 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
 import ItemizationWidget from './ItemizationWidget';
-import ItemizationWidgetReadme from './ItemizationWidget.md';
+import ItemizationWidgetReadme from './ItemizationWidget.mdx';
 
 const stories = storiesOf('Atoms/ItemizationWidget', module);
+
+stories.addParameters({
+  docs: {
+    page: ItemizationWidgetReadme,
+  },
+});
 
 const store = new Store({
   total: 9999,
 });
 
-stories
-  .addDecorator(withReadme(ItemizationWidgetReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

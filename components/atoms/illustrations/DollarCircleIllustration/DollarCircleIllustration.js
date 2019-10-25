@@ -1,6 +1,6 @@
 /** @module DollarCircleIllustration */
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
 
 /** Renders a dollar illustration. */
 class DollarCircleIllustration extends PureComponent {

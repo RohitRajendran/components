@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import CloseIcon from './CloseIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import CloseIconReadme from './CloseIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import CloseIcon from './CloseIcon';
+import CloseIconReadme from './CloseIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/CloseIcon', module);
 
-stories.addDecorator(withReadme(CloseIconReadme));
+stories.addParameters({
+  docs: {
+    page: CloseIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

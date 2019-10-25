@@ -1,8 +1,8 @@
 import {mount} from 'enzyme';
 import React from 'react';
 import test from 'tape';
-import CompletionScreen from './CompletionScreen';
 import {Button} from '../..';
+import CompletionScreen from './CompletionScreen';
 
 test('CompletionScreen - Renders', (t) => {
   const comp = mount(

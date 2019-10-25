@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef, forwardRef, Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
-import Portal from '~components/utilities/Portal/Portal';
 import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
+import Portal from '~components/utilities/Portal/Portal';
 import {exclusive} from '~proptypes';
 import './Cabinet.scss';
 

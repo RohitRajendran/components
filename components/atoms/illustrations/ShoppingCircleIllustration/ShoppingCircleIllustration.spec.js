@@ -1,6 +1,6 @@
-import test from 'tape';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import test from 'tape';
 import ShoppingCircleIllustration from './ShoppingCircleIllustration';
 
 test('ShoppingCircleIllustration - renders', (t) => {

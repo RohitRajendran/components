@@ -1,16 +1,19 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
 import AccountCircleIllustration from './AccountCircleIllustration';
-import AccountCircleIllustrationReadMe from './AccountCircleIllustration.md';
+import AccountCircleIllustrationReadMe from './AccountCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/AccountCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(AccountCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: AccountCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#fff'),

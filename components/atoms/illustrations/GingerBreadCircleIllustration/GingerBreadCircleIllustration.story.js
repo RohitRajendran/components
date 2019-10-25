@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import GingerBreadCircleIllustration from './GingerBreadCircleIllustration';
-import GingerBreadCircleIllustrationReadMe from './GingerBreadCircleIllustration.md';
+import GingerBreadCircleIllustrationReadMe from './GingerBreadCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/GingerBreadCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(GingerBreadCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: GingerBreadCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (illuminate) => ({
   height: text('height', '14rem'),

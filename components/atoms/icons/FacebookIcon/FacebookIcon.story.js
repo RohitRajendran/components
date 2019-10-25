@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import FacebookIcon from './FacebookIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import FacebookIconReadme from './FacebookIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import FacebookIcon from './FacebookIcon';
+import FacebookIconReadme from './FacebookIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/FacebookIcon', module);
 
-stories.addDecorator(withReadme(FacebookIconReadme));
+stories.addParameters({
+  docs: {
+    page: FacebookIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

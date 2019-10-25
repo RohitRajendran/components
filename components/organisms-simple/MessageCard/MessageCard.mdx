@@ -1,0 +1,117 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import MessageCard from './MessageCard';
+import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
+import Button from '~components/atoms/Button/Button';
+
+# MessageCard
+
+This component renders a message card for the Hogwarts/McGonagall flow used for intros or to explain new questions.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import MessageCard from '@unitedincome/components/dist/MessageCard';
+```
+
+```javascript
+import {MessageCard} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <MessageCard
+    title="Montezuma is a great cat"
+    description="He is indeed."
+    onSubmit={() => alert('Submitted!')}
+    featureImage={
+      <img
+        alt="example"
+        src="https://app.unitedincome.com/assets/images/pencil.svg"
+        style={{height: 100, width: 100}}
+      />
+    }
+  />
+</Preview>
+
+```javascript
+<MessageCard
+  title="Montezuma is a great cat"
+  description="He is indeed."
+  onSubmit={() => alert('Submitted!')}
+  featureImage={
+    <img
+      alt="example"
+      src="https://app.unitedincome.com/assets/images/pencil.svg"
+      style={{height: 100, width: 100}}
+    />
+  }
+/>
+```
+
+### Using in a McGonagall Flow
+
+You can use the `MessageCard` component in a McGonagall flow using the following pattern.
+
+```javascript
+export const renderCard = (props, state) => {
+  return (
+    <MessageCard
+      {...props}
+      featureImage={
+        <img
+          alt="example"
+          src="https://app.unitedincome.com/assets/images/pencil.svg"
+          style={{height: 100, width: 100}}
+        />
+      }
+    />
+  );
+};
+```
+
+### Collapsed
+
+You can collapse the card using the `isCollapsed` prop. The McGonagall framework will automatically hand this prop down when it's not the current card.
+
+<Preview>
+  <MessageCard
+    title="Montezuma is a great cat"
+    description="He is indeed."
+    onSubmit={() => alert('Submitted!')}
+    isCollapsed={true}
+    featureImage={
+      <img
+        alt="example"
+        src="https://app.unitedincome.com/assets/images/pencil.svg"
+        style={{height: 100, width: 100}}
+      />
+    }
+  />
+</Preview>
+
+```javascript
+<MessageCard
+  title="Montezuma is a great cat"
+  description="He is indeed."
+  onSubmit={() => alert('Submitted!')}
+  isCollapsed={true}
+  featureImage={
+    <img
+      alt="example"
+      src="https://app.unitedincome.com/assets/images/pencil.svg"
+      style={{height: 100, width: 100}}
+    />
+  }
+/>
+```
+
+## Props 🔧
+
+<Props of={MessageCard} />
+
+## Related ✨
+
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

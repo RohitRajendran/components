@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {stub} from 'sinon';
+import test from 'tape';
 import Ranking from './Ranking';
 
 test('Ranking - Correctly re-orders the items array', (t) => {

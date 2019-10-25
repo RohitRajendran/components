@@ -1,13 +1,16 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import LampCircleIllustration from './LampCircleIllustration';
-import LampCircleIllustrationReadMe from './LampCircleIllustration.md';
+import LampCircleIllustrationReadMe from './LampCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/LampCircleIllustration', module);
 
-stories.addDecorator(withReadme(LampCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: LampCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

@@ -1,13 +1,16 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import TrashIcon from './TrashIcon';
 import {text} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
-import TrashIconReadme from './TrashIcon.md';
+import {storiesOf} from '@storybook/react';
+import React from 'react';
+import TrashIcon from './TrashIcon';
+import TrashIconReadme from './TrashIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/TrashIcon', module);
 
-stories.addDecorator(withReadme(TrashIconReadme));
+stories.addParameters({
+  docs: {
+    page: TrashIconReadme,
+  },
+});
 
 const defaultProps = () => ({
   fill: text('fill', '#000'),

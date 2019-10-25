@@ -1,10 +1,9 @@
-import React from 'react';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import DropDown from './DropDown';
-import DropDownReadme from './DropDown.md';
-import {text, boolean, object} from '@storybook/addon-knobs';
 import {StateDecorator, Store} from '@sambego/storybook-state';
+import {boolean, object, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
+import DropDown from './DropDown';
+import DropDownReadme from './DropDown.mdx';
 
 /** Creates a timeout for async functions.
  * @param {integer} time - The length of the timeout.
@@ -62,6 +61,12 @@ async function getOptions(input) {
 
 const stories = storiesOf('Atoms/DropDown', module);
 
+stories.addParameters({
+  docs: {
+    page: DropDownReadme,
+  },
+});
+
 const store = new Store({
   selectedExample: '',
   selectedExample2: 'uk',
@@ -70,9 +75,7 @@ const store = new Store({
   disabledExampleWithValue: 'disabled',
 });
 
-stories
-  .addDecorator(withReadme(DropDownReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

@@ -1,7 +1,7 @@
-import test from 'tape';
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
 import {spy, stub} from 'sinon';
+import test from 'tape';
 import DropDown from './DropDown';
 
 test('DropDown - renders', (t) => {

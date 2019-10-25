@@ -1,16 +1,16 @@
 /** @module Navbar */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {PureComponent, Fragment} from 'react';
+import React, {Fragment, PureComponent} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
-import {colors} from '~constants/js/colors';
 import {
   isDocumentDefined,
   isWindowDefined,
 } from '~components/utilities/DetectBrowser/DetectBrowser';
+import {colors} from '~constants/js/colors';
 import './Navbar.scss';
 
 /** Renders a site wide navigation bar.  */

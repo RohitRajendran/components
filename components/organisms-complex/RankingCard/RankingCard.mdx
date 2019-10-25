@@ -1,0 +1,131 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import RankingCard from './RankingCard';
+
+# RankingCard
+
+This component makes it easier to render a basic Ranking card in a McGonagall flow. The collapsed state of this card uses the Simple Summary component. This card is typically used to rank different items against eachother.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import RankingCard from '@unitedincome/components/dist/RankingCard';
+```
+
+```javascript
+import {RankingCard} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <RankingCard
+    title="Rank the Cats"
+    description="All of them are very cute"
+    shortTitle="Cat Rank"
+    config={{
+      name: 'yesNo',
+      items: [
+        {
+          label: 'Montezuma',
+          secondaryLabel: '$8,345',
+          id: 'montezuma',
+          movable: false,
+        },
+        {
+          label: 'Pica',
+          secondaryLabel: '$1,000',
+          id: 'pica',
+          movable: true,
+          focus: true,
+        },
+        {
+          label: 'Pixie',
+          secondaryLabel: '$13,000',
+          id: 'pixie',
+          movable: false,
+        },
+      ],
+    }}
+  />
+</Preview>
+
+```javascript
+<RankingCard
+  title="Rank the Cats"
+  description="All of them are very cute"
+  shortTitle="Cat Rank"
+  config={{
+    name: 'yesNo',
+    items: [
+      {
+        label: 'Montezuma',
+        secondaryLabel: '$8,345',
+        id: 'montezuma',
+        movable: false,
+      },
+      {
+        label: 'Pica',
+        secondaryLabel: '$1,000',
+        id: 'pica',
+        movable: true,
+        focus: true,
+      },
+      {
+        label: 'Pixie',
+        secondaryLabel: '$13,000',
+        id: 'pixie',
+        movable: false,
+      },
+    ],
+  }}
+/>
+```
+
+### Using in a McGonagall Flow
+
+You can use the `SliderCard` component in a McGonagall flow using the following pattern.
+
+```javascript
+export const renderCard = (props, state) => {
+  return (
+    <RankingCard
+      {...prop}
+      config={{
+        name: 'yesNo',
+        items: [
+          {
+            label: 'Montezuma',
+            secondaryLabel: '$8,345',
+            id: 'montezuma',
+            movable: false,
+          },
+          {
+            label: 'Pica',
+            secondaryLabel: '$1,000',
+            id: 'pica',
+            movable: true,
+            focus: true,
+          },
+          {
+            label: 'Pixie',
+            secondaryLabel: '$13,000',
+            id: 'pixie',
+            movable: false,
+          },
+        ],
+      }}
+    />
+  );
+};
+```
+
+## Props 🔧
+
+<Props of={RankingCard} />
+
+## Related ✨
+
+- [Ranking](/?path=/story/atoms-ranking--default)
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

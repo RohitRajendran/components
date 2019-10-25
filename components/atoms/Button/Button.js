@@ -1,14 +1,13 @@
 /** @module Button */
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-import {exclusive} from '~proptypes';
 import {and, or} from 'airbnb-prop-types';
-import requiredIf from 'react-required-if';
 import classNames from 'classnames';
-
-import './Button.scss';
+import PropTypes from 'prop-types';
+import React, {Fragment} from 'react';
+import requiredIf from 'react-required-if';
 import Spinner from '~components/atoms/Spinner/Spinner';
 import {colors} from '~constants/js/colors';
+import {exclusive} from '~proptypes';
+import './Button.scss';
 
 export const ButtonInterior = ({
   showSpinner,
@@ -139,13 +138,13 @@ const Button = ({
 };
 
 Button.propTypes = {
-  /** Optional button component, allowing you to wrap the button in things such as rect-router-dom's Link.  */
-  linkComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  /** HTML element that should appear within the button.  */
+  /** Optional button component, allowing you to wrap the button in things such as react-router-dom's Link. */
+  linkComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.func]),
+  /** Element that should appear within the button. */
   children: PropTypes.node.isRequired,
   /** Optional class names to appear on the container. */
   className: PropTypes.string,
-  /** Changes the color scheme to dark.  */
+  /** Changes the color scheme to dark. */
   dark: PropTypes.bool,
   /** Determines if the button is disabled or not. */
   disabled: PropTypes.bool,

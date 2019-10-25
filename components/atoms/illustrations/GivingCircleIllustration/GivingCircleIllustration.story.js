@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import GivingCircleIllustration from './GivingCircleIllustration';
-import GivingCircleIllustrationReadMe from './GivingCircleIllustration.md';
+import GivingCircleIllustrationReadMe from './GivingCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/GivingCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(GivingCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: GivingCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),

@@ -53,19 +53,6 @@ jobs:
           paths:
             - .
 
-  visual:
-    docker:
-      - image: circleci/node:10-browsers
-    resource_class: small
-    steps:
-      - attach_workspace:
-          at: .
-
-      - run:
-          name: Run Visual Regression Tests
-          command: yarn testVisual
-
-
   publish_storybook:
     docker:
       - image: circleci/node:10.16
@@ -138,18 +125,9 @@ workflows:
   components:
     jobs:
       - build
-      - visual:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-                - develop
       - publish_storybook:
           requires:
             - build
-            - visual
           filters:
             branches:
               only:
@@ -157,7 +135,7 @@ workflows:
                 - develop
       - publish_package:
           requires:
-            - visual
+            - build
           filters:
             branches:
               only:

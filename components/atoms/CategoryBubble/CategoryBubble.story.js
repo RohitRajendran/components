@@ -1,13 +1,16 @@
-import React from 'react';
+import {color as colorKnob, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import {text, color as colorKnob} from '@storybook/addon-knobs';
-import CategoryBubbleReadme from './CategoryBubble.md';
+import React from 'react';
 import CategoryBubble from './CategoryBubble';
+import CategoryBubbleReadme from './CategoryBubble.mdx';
 
 const stories = storiesOf('Atoms/CategoryBubble', module);
 
-stories.addDecorator(withReadme(CategoryBubbleReadme));
+stories.addParameters({
+  docs: {
+    page: CategoryBubbleReadme,
+  },
+});
 
 const defaultProps = (label = 'Blogs', color = '#000') => ({
   label: text('Label', label),

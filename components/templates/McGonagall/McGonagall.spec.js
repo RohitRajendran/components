@@ -1,10 +1,10 @@
 import {shallow} from 'enzyme';
 import React from 'react';
+import {spy, stub} from 'sinon';
 import test from 'tape';
-import McGonagall, {saveToStateContext} from './McGonagall';
-import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
-import {stub, spy} from 'sinon';
 import {assign} from 'xstate';
+import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
+import McGonagall, {saveToStateContext} from './McGonagall';
 
 const stateConfig = {
   id: 'mcgTest',

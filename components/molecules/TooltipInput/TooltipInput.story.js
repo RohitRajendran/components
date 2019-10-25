@@ -1,13 +1,18 @@
-import React from 'react';
 import {Store} from '@sambego/storybook-state';
-import {storiesOf, forceReRender} from '@storybook/react';
-import {withReadme} from 'storybook-readme';
-import TooltipInput from './TooltipInput';
-import TooltipReadMe from './TooltipInput.md';
+import {boolean, select, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
+import React from 'react';
 import CardShell from '~components/molecules/CardShell/CardShell';
-import {text, select, boolean} from '@storybook/addon-knobs';
+import TooltipInput from './TooltipInput';
+import TooltipReadMe from './TooltipInput.mdx';
 
 const stories = storiesOf('Molecules/TooltipInput', module);
+
+stories.addParameters({
+  docs: {
+    page: TooltipReadMe,
+  },
+});
 
 const store = new Store({
   input: '',
@@ -16,8 +21,6 @@ const store = new Store({
 store.subscribe(() => {
   forceReRender();
 });
-
-stories.addDecorator(withReadme(TooltipReadMe));
 
 const defaultProps = () => ({
   label: text('label', 'Montezuma is the king of all cats.'),

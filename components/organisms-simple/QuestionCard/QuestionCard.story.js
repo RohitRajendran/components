@@ -1,18 +1,23 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, text, object} from '@storybook/addon-knobs';
-import {storiesOf, forceReRender} from '@storybook/react';
+import {boolean, object, text} from '@storybook/addon-knobs';
+import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import {withReadme} from 'storybook-readme';
-import QuestionCard from './QuestionCard';
-import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
-import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
-import OptionBox from '~components/atoms/OptionBox/OptionBox';
-import QuestionCardReadme from './QuestionCard.md';
-import Input from '~components/atoms/Input/Input';
 import DropDown from '~components/atoms/DropDown/DropDown';
+import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
+import Input from '~components/atoms/Input/Input';
+import OptionBox from '~components/atoms/OptionBox/OptionBox';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
+import QuestionCard from './QuestionCard';
+import QuestionCardReadme from './QuestionCard.mdx';
 
 const stories = storiesOf('Simple Organisms/QuestionCard', module);
+
+stories.addParameters({
+  docs: {
+    page: QuestionCardReadme,
+  },
+});
 
 const store = new Store({
   yesNo: '',
@@ -26,9 +31,7 @@ const store = new Store({
   catTax: '1337',
 });
 
-stories
-  .addDecorator(withReadme(QuestionCardReadme))
-  .addDecorator(StateDecorator(store));
+stories.addDecorator(StateDecorator(store));
 
 store.subscribe(() => {
   forceReRender();

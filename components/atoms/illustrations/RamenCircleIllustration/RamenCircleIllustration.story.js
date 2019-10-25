@@ -1,16 +1,19 @@
-import React from 'react';
+import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {text, boolean} from '@storybook/addon-knobs';
-import {withReadme} from 'storybook-readme';
+import React from 'react';
 import RamenCircleIllustration from './RamenCircleIllustration';
-import RamenCircleIllustrationReadMe from './RamenCircleIllustration.md';
+import RamenCircleIllustrationReadMe from './RamenCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/RamenCircleIllustration',
   module
 );
 
-stories.addDecorator(withReadme(RamenCircleIllustrationReadMe));
+stories.addParameters({
+  docs: {
+    page: RamenCircleIllustrationReadMe,
+  },
+});
 
 const defaultProps = (color, draft, illuminate) => ({
   height: text('height', '14rem'),
