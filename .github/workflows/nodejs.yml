@@ -1,0 +1,22 @@
+name: VisualTesting
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Yarn Install
+      run: yarn install
+    - name: Yarn Build
+      run: yarn build
+    - name: Percy
+      run: yarn snapshot
+      env:
+        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
