@@ -22,8 +22,14 @@ const prefixUtilFilepath = path.resolve(
   'constants/sass/util/prefixed-utils.scss'
 );
 
+const sassColorVariables = path.resolve(
+  __dirname,
+  'constants/sass/variables/colors.scss'
+)
+
 entries.index = path.resolve(__dirname, 'components/index.js');
 entries.util = prefixUtilFilepath;
+entries.shared = sassColorVariables;
 
 module.exports = {
   entry: entries,
@@ -39,6 +45,19 @@ module.exports = {
         test: /\.jsx?$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
+      },
+      {
+        // Exports the Sass color variables into the dist folder.
+        test: sassColorVariables,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'colors.scss',
+              context: '',
+            },
+          },
+        ],
       },
       {
         include: prefixUtilFilepath,
@@ -61,8 +80,9 @@ module.exports = {
         ],
       },
       {
+
         test: /\.scss$/,
-        exclude: prefixUtilFilepath,
+        exclude: [prefixUtilFilepath, sassColorVariables],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

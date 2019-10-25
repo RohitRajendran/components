@@ -98,6 +98,9 @@ import * as FormatUtils from '~components/utilities/FormatUtils/FormatUtils';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 import Confirm from '~components/utilities/Confirm/Confirm';
 
+// Colors
+import {colors} from '~constants/js/colors';
+
 export {
   CheckIcon,
   CardContentDescription,
@@ -187,4 +190,5 @@ export {
   CreditCardCircleIllustration,
   PlantCircleIllustration,
   DollarCircleIllustration,
+  colors,
 };
