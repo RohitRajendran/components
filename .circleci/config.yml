@@ -138,14 +138,14 @@ workflows:
   components:
     jobs:
       - build
-      - visual:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-                - develop
+      # - visual:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - develop
       - publish_storybook:
           requires:
             - build
