@@ -1,0 +1,71 @@
+import {Preview, Props, Meta} from '@storybook/addon-docs/blocks';
+import README from '../README.md'
+
+<Meta title="Introduction" />
+
+<img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="650" />
+
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![Invision](https://img.shields.io/badge/Invision-DSM-%23fd3366)](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/United-Income/Component-Library)
+
+This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+
+## Getting Started 🚀
+
+You can install the United Income component library into your project by running the following command.
+
+```shell
+yarn add @unitedincome/components
+```
+
+## Using a Component 📚
+
+We utilize peer dependencies as we often require packages that already exist in our other applications. Because of this you will also need to install the [required peer dependencies](https://github.com/UnitedIncome/components/blob/master/package.json#L109) into your project. You can learn more about peer dependencies [here](https://nodejs.org/es/blog/npm/peer-dependencies/).
+
+You can then decide if you want to use this library by importing components individually or by importing them all together which will result in a larger bundle size.
+
+For individual importing, you can pull in separate files from the `dist` folder.
+
+```javascript
+import Button from '@unitedincome/components/dist/Button';
+```
+
+To import all components together, you can import more simply:
+
+```javascript
+import {Button, CardShell, Slider} from '@unitedincome/components';
+```
+
+You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes a prefixed grid layout and utility classes from [Bootstrap](https://getbootstrap.com/).
+
+For individual imports you can use the following:
+
+```scss
+@import '@unitedincome/components/dist/util.css';
+@import '@unitedincome/components/dist/Button.css';
+```
+
+To import all styles you can use:
+
+```scss
+@import '@unitedincome/components/dist/util.css';
+@import '@unitedincome/components/dist/index.css';
+```
+
+This component library also comes packaged with a series of color variables that are outlined in the [United Income DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand). These can be imported into your Sass manifest like so:
+
+```scss
+@import '~@unitedincome/components/dist/colors.scss';
+```
+
+These variables can also be utilized in JavaScript.
+
+```javascript
+import {colors} from '@unitedincome/compnonents';
+```
+
+## Resources 🍕
+
+You can find a number of resources related to this component library below.
+
+- [GitHub Repository and Developer Docs](https://github.com/UnitedIncome/components)
+- [Invision DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand)
