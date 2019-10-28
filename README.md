@@ -1,10 +1,9 @@
 <p align="center">
   <img src="https://i.imgur.com/rPP3kdY.png" alt="United Income logo" width="650" />
 </p>
-
 <div align="center">
 
-[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/United-Income/Component-Library)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![Invision](https://img.shields.io/badge/Invision-DSM-%23fd3366)](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/United-Income/Component-Library)
 
 </div>
 
@@ -54,7 +53,19 @@ To import all styles you can use:
 @import '@unitedincome/components/dist/index.css';
 ```
 
-## Building a Component 🔩
+This component library also comes packaged with a series of color variables that are outlined in the [United Income DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand/folder/colors/5bfd958fc541d90011cf975d). These can be imported into your Sass manifest like so:
+
+```scss
+@import '~@unitedincome/components/dist/colors.scss';
+```
+
+These variables can also be utilized in JavaScript.
+
+```javascript
+import {colors} from '@unitedincome/compnonents';
+```
+
+# Building a Component 🔩
 
 Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
@@ -72,9 +83,7 @@ Running `yarn generate` will create the folder and files you need to start build
 
 To make utilizing other components within your component easier, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
 
----
-
-### Testing Changes 💊
+## Testing Changes 💊
 
 As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
 
@@ -82,9 +91,7 @@ You can mimic publishing this repository locally by running `yarn link` in the d
 
 At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
 
----
-
-### Best Practices 🏁
+## Best Practices 🏁
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
 
@@ -99,9 +106,7 @@ While there are always going to be special cases, the following guidelines shoul
 9. Do not remove the browser default `outline` focus state unless you're replacing it with something else.
 10. Documentation should be clear and concise, and offer code samples as much as possible using [mdx](https://mdxjs.com/).
 
----
-
-### Creating a `.story.js` file 📒
+## Creating a `.story.js` file 📒
 
 The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called [Percy](https://percy.io/), so capturing different visual variations of your component in a story is preferred.
 
@@ -134,9 +139,7 @@ const defaultProps = () => ({
 stories.add('default', () => <TrashIcon {...defaultProps()} />);
 ```
 
----
-
-### State Wrapper 🗽
+## State Wrapper 🗽
 
 If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
@@ -196,9 +199,7 @@ stories.add('default', () => (
 ));
 ```
 
----
-
-### Accessibility 💬
+## Accessibility 💬
 
 Components are linted for accessibility using the [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y#readme) and validated using [storybook-addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y).
 
@@ -217,8 +218,6 @@ Additionally included in the component library preview is a polyfill for the `:f
 
 You can learn more about the `:focus-visible` polyfill [here](https://github.com/WICG/focus-visible).
 
----
-
 ### `rem` Sizing
 
 This component library uses [CSS rem sizing](https://css-tricks.com/rem-global-em-local/) for spacing and font sizes. In order to get the intended effect your application should use the following sizing base.
@@ -235,9 +234,7 @@ html {
 }
 ```
 
----
-
-## Additional Resources 🍕
+# Additional Resources 🍕
 
 When learning about this library, the following resources may come in handy.
 
