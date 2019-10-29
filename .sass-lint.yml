@@ -37,3 +37,5 @@ rules:
     -
       size: 2
   property-sort-order: 2
+  force-pseudo-nesting: 2
+  force-element-nesting: 2
