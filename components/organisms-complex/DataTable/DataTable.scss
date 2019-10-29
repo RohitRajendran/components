@@ -2,7 +2,7 @@
 @import '~react-table/react-table.css';
 
 .uic--react-table {
-  .ReactTable {
+  &.ReactTable {
     border: 1px solid $light-gray;
     color: $slate;
 
