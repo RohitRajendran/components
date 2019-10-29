@@ -3,7 +3,7 @@
 </p>
 <div align="center">
 
-[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![Invision](https://img.shields.io/badge/Invision-DSM-%23fd3366)](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/United-Income/Component-Library)
+[![Release](https://img.shields.io/github/package-json/v/unitedincome/components)](https://github.com/UnitedIncome/components/releases) [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://ui.unitedincome.com) [![Invision](https://img.shields.io/badge/Invision-DSM-%23fd3366)](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) [![CircleCI](https://circleci.com/gh/UnitedIncome/components.svg?style=svg&circle-token=d8c505b4412cf8d13df383f7b5411ea9dc5d3e6a)](https://circleci.com/gh/UnitedIncome/components) [![codecov](https://codecov.io/gh/UnitedIncome/components/branch/master/graph/badge.svg?token=O1vKU2SVdc)](https://codecov.io/gh/UnitedIncome/components) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/United-Income/Component-Library)
 
 </div>
 
@@ -53,7 +53,7 @@ To import all styles you can use:
 @import '@unitedincome/components/dist/index.css';
 ```
 
-This component library also comes packaged with a series of color variables that are outlined in the [United Income DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand/folder/colors/5bfd958fc541d90011cf975d). These can be imported into your Sass manifest like so:
+This component library also comes packaged with a series of color variables that are outlined in the [United Income DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand). These can be imported into your Sass manifest like so:
 
 ```scss
 @import '~@unitedincome/components/dist/colors.scss';
