@@ -9,7 +9,7 @@ test('DiceIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the DiceIcon component.'
+    'Should load the DiceIcon component.',
   );
 
   t.end();

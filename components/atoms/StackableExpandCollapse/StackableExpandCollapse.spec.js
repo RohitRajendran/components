@@ -9,25 +9,25 @@ test('StackableExpandCollapse - render', (t) => {
   // so we can not do anything with refs and element styles right now
   const setContentHeightSpy = spy(
     StackableExpandCollapse.prototype,
-    'setContentHeight'
+    'setContentHeight',
   );
 
   const component = mount(
     <StackableExpandCollapse label="Hi Everybody">
       <div>Yo</div>
-    </StackableExpandCollapse>
+    </StackableExpandCollapse>,
   );
 
   t.equal(
     component.find('.uic--stackable-expand-collapse').length,
     1,
-    'Should load the StackableExpandCollapse component.'
+    'Should load the StackableExpandCollapse component.',
   );
 
   t.equal(
     component.find('.uic--stackable-expand-collapse-clickable').text(),
     'Hi Everybody',
-    'Text label is correct'
+    'Text label is correct',
   );
 
   t.true(setContentHeightSpy.calledOnce, 'Set content height on mount');
@@ -37,7 +37,7 @@ test('StackableExpandCollapse - render', (t) => {
 
   t.true(
     setContentHeightSpy.calledOnce,
-    'Set content height on children change'
+    'Set content height on children change',
   );
 
   t.end();
@@ -47,7 +47,7 @@ test('StackableExpandCollapse - expand/collapse', (t) => {
   const component = mount(
     <StackableExpandCollapse label="Text">
       <div />
-    </StackableExpandCollapse>
+    </StackableExpandCollapse>,
   );
 
   t.equal(component.state().isExpanded, false, 'Component starts collapsed');

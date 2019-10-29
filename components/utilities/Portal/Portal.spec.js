@@ -7,13 +7,13 @@ test('Portal - renders', (t) => {
   const component = shallow(
     <Portal>
       <div>Hello</div>
-    </Portal>
+    </Portal>,
   );
 
   t.equals(
     component.find('div').length,
     1,
-    'Should load the Portal component.'
+    'Should load the Portal component.',
   );
 
   t.end();

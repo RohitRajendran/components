@@ -22,7 +22,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
       ]}
       value="no"
       onChange={stub()}
-    />
+    />,
   );
 
   t.equals(
@@ -31,7 +31,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
       .at(0)
       .text(),
     'Yes',
-    'Should find the yes label.'
+    'Should find the yes label.',
   );
 
   t.equals(
@@ -40,7 +40,7 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
       .at(1)
       .text(),
     'No',
-    'Should find the no label.'
+    'Should find the no label.',
   );
 });
 
@@ -62,7 +62,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
       ]}
       value={true}
       onChange={stub()}
-    />
+    />,
   );
 
   t.equals(
@@ -71,7 +71,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
       .at(0)
       .text(),
     'Yes',
-    'Should find the yes label.'
+    'Should find the yes label.',
   );
 
   t.equals(
@@ -80,7 +80,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
       .at(1)
       .text(),
     'No',
-    'Should find the no label.'
+    'Should find the no label.',
   );
 });
 
@@ -100,7 +100,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
           },
         ]}
         value={true}
-      />
+      />,
     );
 
     t.fail('Should have thrown error');
@@ -132,7 +132,7 @@ test('RadioButtons - Should be able to display a secondaryLabel', (t) => {
       ]}
       value="no"
       onChange={stub()}
-    />
+    />,
   );
 
   t.true(component.find('.uic--label-value-secondary').length);
@@ -160,7 +160,7 @@ test('RadioButtons - Should be able to display a followup question', (t) => {
       ]}
       value="yes"
       onChange={stub()}
-    />
+    />,
   );
 
   t.true(component.find('.followup-question').length);
@@ -188,7 +188,7 @@ test('RadioButtons - Followup question should be hidden if the parent question i
       ]}
       value="no"
       onChange={stub()}
-    />
+    />,
   );
 
   t.false(component.find('.followup-question').length);
@@ -225,12 +225,12 @@ test('RadioButtons - onChange should pass back the correct value', (t) => {
   t.equals(
     props.onChange.args[0][0],
     'yesNo',
-    'Should fire the onChange handler and pass back the value of the first item'
+    'Should fire the onChange handler and pass back the value of the first item',
   );
 
   t.equals(
     props.onChange.args[0][1],
     'yes',
-    'Should fire the onChange handler and pass back the value of the first item'
+    'Should fire the onChange handler and pass back the value of the first item',
   );
 });

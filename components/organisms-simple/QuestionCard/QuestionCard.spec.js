@@ -20,7 +20,7 @@ test('QuestionCard - renders', (t) => {
       .first()
       .text(),
     'Question',
-    'Shows title'
+    'Shows title',
   );
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
@@ -29,7 +29,7 @@ test('QuestionCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
   t.end();
 });
@@ -57,7 +57,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
   t.equals(
     comp.find('.uic--warning-message').length,
     1,
-    'Should show warning text'
+    'Should show warning text',
   );
   t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
   t.equals(
@@ -65,7 +65,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
       .find('.uic--card-submit')
       .first()
       .text(),
-    'Save Changes'
+    'Save Changes',
   );
 
   t.end();
@@ -97,14 +97,14 @@ test('QuestionCard - collapsed', (t) => {
       .first()
       .text(),
     'Summary',
-    'Shows summary'
+    'Shows summary',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -137,14 +137,14 @@ test('QuestionCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Q',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

@@ -43,7 +43,7 @@ class BubbleDropdown extends React.Component {
     // the styles API and CSS classes conflict when trying to
     // override properties.
     const {color = colors.royal} = options.find(
-      (option) => option.value === value
+      (option) => option.value === value,
     );
 
     const styles = {
@@ -90,7 +90,7 @@ BubbleDropdown.propTypes = {
       value: PropTypes.string.isRequired,
       /** Optional custom option color */
       color: PropTypes.string,
-    })
+    }),
   ).isRequired,
   /** Currently selected value */
   value: PropTypes.string.isRequired,

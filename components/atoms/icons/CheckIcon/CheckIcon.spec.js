@@ -9,7 +9,7 @@ test('CheckIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the CheckIcon component.'
+    'Should load the CheckIcon component.',
   );
 
   t.end();

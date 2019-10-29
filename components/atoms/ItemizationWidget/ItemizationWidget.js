@@ -106,7 +106,7 @@ class ItemizationWidget extends PureComponent {
         'uic--itemization-widget-threshold':
           this.state.warning && !this.state.open,
       },
-      className
+      className,
     );
 
     const containerThresholdWarningClasses = classNames({
@@ -180,7 +180,7 @@ class ItemizationWidget extends PureComponent {
                           suffix: itemSuffix,
                           editConfig,
                         },
-                        index
+                        index,
                       ) => {
                         const itemClasses = classNames({
                           'uic--itemization-widget__item': true,
@@ -192,7 +192,7 @@ class ItemizationWidget extends PureComponent {
                         return (
                           <div key={index} className={itemClasses}>
                             {formatCurrencyNoDecimal(
-                              items ? this.sumTotal(items) : value || 0
+                              items ? this.sumTotal(items) : value || 0,
                             )}
                             {itemSuffix && (
                               <span className="uic--itemization-widget__suffix">
@@ -249,7 +249,7 @@ class ItemizationWidget extends PureComponent {
                             ) : null}
                           </div>
                         );
-                      }
+                      },
                     )}
                   </animated.div>
                 )}
@@ -305,7 +305,7 @@ ItemizationWidget.propTypes = {
             /** The label of the item. */
             label: PropTypes.string.isRequired,
             /** Determines if the item should be itemized or not. */
-          })
+          }),
         ),
         exclusive(['value']),
       ]),
@@ -348,7 +348,7 @@ ItemizationWidget.propTypes = {
           ]),
         }),
       }),
-    })
+    }),
   ).isRequired,
 };
 

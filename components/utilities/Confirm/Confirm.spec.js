@@ -19,7 +19,7 @@ test('Confirm - user clicks okay', (t) => {
       t.equals(
         document.body.getElementsByClassName('uic--confirm-modal').length,
         0,
-        'Modal goes away'
+        'Modal goes away',
       );
       t.end();
     });
@@ -27,7 +27,7 @@ test('Confirm - user clicks okay', (t) => {
   t.equals(
     document.body.getElementsByClassName('uic--confirm-modal').length,
     1,
-    'Modal appears'
+    'Modal appears',
   );
   document.body.getElementsByTagName('Button')[0].click();
 });
@@ -50,7 +50,7 @@ test('Confirm - user clicks cancel', (t) => {
       t.equals(
         document.body.getElementsByClassName('uic--confirm-modal').length,
         0,
-        'Modal goes away'
+        'Modal goes away',
       );
       t.end();
     });
@@ -58,7 +58,7 @@ test('Confirm - user clicks cancel', (t) => {
   t.equals(
     document.body.getElementsByClassName('uic--confirm-modal').length,
     1,
-    'Modal appears'
+    'Modal appears',
   );
   document.body.getElementsByTagName('Button')[1].click();
 });

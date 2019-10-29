@@ -26,7 +26,7 @@ const Tooltip = ({
       'uic--tooltip': true,
       'uic--position-relative': true,
     },
-    className
+    className,
   );
 
   const tooltipClasses = classNames({

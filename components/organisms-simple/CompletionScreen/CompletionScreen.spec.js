@@ -15,13 +15,13 @@ test('CompletionScreen - Renders', (t) => {
           Finish
         </Button>
       }
-    />
+    />,
   );
 
   t.equals(
     comp.find('h2').text(),
     'Congrats! You completed something.',
-    'Renders screen'
+    'Renders screen',
   );
 
   t.end();

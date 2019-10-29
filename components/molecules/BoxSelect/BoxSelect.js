@@ -36,7 +36,7 @@ class BoxSelect extends Component {
   componentDidMount() {
     if (this.contentNode && this.contentNode.current) {
       const components = this.contentNode.current.getElementsByClassName(
-        'uic--box'
+        'uic--box',
       );
 
       // Ensures that each box in the grid remains at a consistent height.
@@ -67,7 +67,7 @@ class BoxSelect extends Component {
         'uic--row': true,
         'uic--h-100': true,
       },
-      className
+      className,
     );
 
     return (
@@ -111,7 +111,7 @@ BoxSelect.propTypes = {
       showCheck: PropTypes.bool,
       /** Disables the box */
       disabled: PropTypes.bool,
-    })
+    }),
   ).isRequired,
   /** The name of the box group. Gets passed back when the onClick handler is triggered. */
   name: PropTypes.string.isRequired,

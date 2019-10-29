@@ -5,13 +5,13 @@ import CreditCardCircleIllustration from './CreditCardCircleIllustration';
 
 test('CreditCardCircleIllustration - renders', (t) => {
   const component = shallow(
-    <CreditCardCircleIllustration id="foo" fill="white" />
+    <CreditCardCircleIllustration id="foo" fill="white" />,
   );
 
   t.equals(
     component.find('#foo-purple').length,
     1,
-    'Should load the CreditCardIllustration component.'
+    'Should load the CreditCardIllustration component.',
   );
 
   t.end();
@@ -19,13 +19,13 @@ test('CreditCardCircleIllustration - renders', (t) => {
 
 test('CreditCardCircleIllustration - renders color', (t) => {
   const component = shallow(
-    <CreditCardCircleIllustration color id="foo" fill="white" />
+    <CreditCardCircleIllustration color id="foo" fill="white" />,
   );
 
   t.equals(
     component.find('#foo-color').length,
     1,
-    'Should load the CreditCardIllustration component.'
+    'Should load the CreditCardIllustration component.',
   );
 
   t.end();
@@ -33,13 +33,13 @@ test('CreditCardCircleIllustration - renders color', (t) => {
 
 test('CreditCardCircleIllustration - renders draft', (t) => {
   const component = shallow(
-    <CreditCardCircleIllustration draft id="foo" fill="white" />
+    <CreditCardCircleIllustration draft id="foo" fill="white" />,
   );
 
   t.equals(
     component.find('#foo-draft').length,
     1,
-    'Should load the CreditCardIllustration component.'
+    'Should load the CreditCardIllustration component.',
   );
 
   t.end();
@@ -47,13 +47,13 @@ test('CreditCardCircleIllustration - renders draft', (t) => {
 
 test('CreditCardCircleIllustration - renders illuminated', (t) => {
   const component = shallow(
-    <CreditCardCircleIllustration illuminate id="foo" fill="white" />
+    <CreditCardCircleIllustration illuminate id="foo" fill="white" />,
   );
 
   t.equals(
     component.find('#foo-illuminated').length,
     1,
-    'Should load the CreditCardIllustration component.'
+    'Should load the CreditCardIllustration component.',
   );
 
   t.end();
@@ -67,7 +67,7 @@ test('CreditCardCircleIllustration - handleClick', (t) => {
   t.equals(
     component.state().illuminated,
     true,
-    'Should toggle illuminated to true.'
+    'Should toggle illuminated to true.',
   );
 
   t.end();

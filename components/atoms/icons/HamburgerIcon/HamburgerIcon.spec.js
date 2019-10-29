@@ -9,7 +9,7 @@ test('HamburgerIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the HamburgerIcon component.'
+    'Should load the HamburgerIcon component.',
   );
 
   t.end();

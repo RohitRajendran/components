@@ -5,7 +5,7 @@ test('Input - tickerMask', (t) => {
   t.deepEquals(
     tickerMask.mask('hello'),
     [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/],
-    'Mask should return the correct pattern.'
+    'Mask should return the correct pattern.',
   );
   t.end();
 });
@@ -21,7 +21,7 @@ test('Input - commaSeparatedMask', (t) => {
       /[A-Za-z, ]/,
       /[A-Za-z, ]/,
     ],
-    'Mask should return the correct pattern.'
+    'Mask should return the correct pattern.',
   );
   t.end();
 });

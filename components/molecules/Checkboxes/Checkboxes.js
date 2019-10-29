@@ -20,7 +20,7 @@ const Checkboxes = ({
       'uic--mcgonagall-checkbox-button-container': true,
       'uic--mcgonagall-checkbox-table-container': table,
     },
-    className
+    className,
   );
 
   const legendClasses = classNames({
@@ -133,7 +133,7 @@ Checkboxes.propTypes = {
       secondaryLabel: PropTypes.string,
       /** Disables the option. */
       disabled: PropTypes.bool,
-    })
+    }),
   ),
   /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,

@@ -10,7 +10,7 @@ const ContentSection = ({className, children, style, heading}) => {
       'uic--content-section': true,
       'uic--position-relative': true,
     },
-    className
+    className,
   );
 
   const headingNode =

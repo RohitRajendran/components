@@ -19,7 +19,7 @@ const defaultProps = (isCollapsed = false, isLatestCard = false) => ({
   buttonText: text('buttonText'),
   description: text(
     'description',
-    'This is where the optional description goes.'
+    'This is where the optional description goes.',
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),

@@ -32,7 +32,7 @@ test('BoxSelect - renders', (t) => {
   t.equals(
     component.find('.uic--box-select').length,
     1,
-    'Should load the BoxSelect component.'
+    'Should load the BoxSelect component.',
   );
 
   t.end();
@@ -69,7 +69,7 @@ test('BoxSelect - toggleSelected', (t) => {
   t.deepEquals(
     props.onChange.args[0],
     ['boxGroup', 'montezuma'],
-    'Should be called with the correct arguments.'
+    'Should be called with the correct arguments.',
   );
 
   t.end();

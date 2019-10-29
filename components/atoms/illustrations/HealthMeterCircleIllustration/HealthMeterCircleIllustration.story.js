@@ -6,7 +6,7 @@ import HealthMeterCircleIllustrationReadMe from './HealthMeterCircleIllustration
 
 const stories = storiesOf(
   'Atoms/Illustrations/HealthMeterCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

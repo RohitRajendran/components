@@ -28,7 +28,7 @@ test('InputCard - renders', (t) => {
       .first()
       .text(),
     'Question',
-    'Shows title'
+    'Shows title',
   );
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
@@ -37,7 +37,7 @@ test('InputCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.true(
@@ -45,7 +45,7 @@ test('InputCard - renders', (t) => {
       .find('.uic--card-submit')
       .first()
       .prop('disabled'),
-    'Continue should be disabled since no value'
+    'Continue should be disabled since no value',
   );
 
   t.end();
@@ -85,14 +85,14 @@ test('InputCard - collapsed with answer override', (t) => {
       .first()
       .text(),
     'Yup',
-    'Shows answer'
+    'Shows answer',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -230,14 +230,14 @@ test('InputCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Q',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

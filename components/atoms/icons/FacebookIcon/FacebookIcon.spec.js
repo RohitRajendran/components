@@ -9,7 +9,7 @@ test('FacebookIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the FacebookIcon component.'
+    'Should load the FacebookIcon component.',
   );
 
   t.end();

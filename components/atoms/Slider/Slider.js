@@ -38,7 +38,7 @@ const Slider = ({
       'uic--slider-wrapper': true,
       'uic--position-relative': true,
     },
-    className
+    className,
   );
 
   const range = Array.from({length: 11}, (v, i) => i);

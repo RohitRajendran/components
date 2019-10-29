@@ -35,7 +35,7 @@ test('BoxSelectCard - renders', (t) => {
       .first()
       .text(),
     'Question',
-    'Shows title'
+    'Shows title',
   );
 
   t.false(
@@ -43,7 +43,7 @@ test('BoxSelectCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
   t.equals(comp.find('.uic--box').length, 2, 'Displays 2 values');
 
@@ -92,14 +92,14 @@ test('BoxSelectCard - collapsed with answer override', (t) => {
       .first()
       .text(),
     'Yup',
-    'Shows answer'
+    'Shows answer',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -146,7 +146,7 @@ test('BoxSelectCard - collapsed with answer override', (t) => {
       .first()
       .text(),
     'No',
-    'Shows answer'
+    'Shows answer',
   );
 
   t.end();
@@ -194,14 +194,14 @@ test('BoxSelectCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Q',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

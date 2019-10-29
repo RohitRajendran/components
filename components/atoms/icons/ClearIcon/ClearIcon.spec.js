@@ -9,7 +9,7 @@ test('ClearIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ClearIcon component.'
+    'Should load the ClearIcon component.',
   );
 
   t.end();

@@ -70,7 +70,7 @@ RankingCard.propTypes = {
         movable: PropTypes.bool,
         /** Set to true if this is the only item in the list which is movable, and you'd like to always display the controls. */
         focus: PropTypes.bool,
-      })
+      }),
     ),
   }),
   /** Whether it should animate on mount */

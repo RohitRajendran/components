@@ -22,7 +22,7 @@ const ExpandyCircleIcon = ({
       'uic--rotate-left': direction === 'left',
       'uic--rotate-up': direction === 'up',
     },
-    className
+    className,
   );
 
   return (

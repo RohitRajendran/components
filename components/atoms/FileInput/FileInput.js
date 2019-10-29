@@ -169,7 +169,7 @@ class FileInput extends Component {
               'uic--error': showInvalidity || error || reqErrorNecessary,
               'uic--disabled': disabled,
             },
-            className
+            className,
           );
 
           const labelClasses = classNames({

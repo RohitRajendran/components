@@ -17,8 +17,8 @@ function exclusiveProps(exclusives) {
     if (multiples.length > 0 && typeof props[propName] !== 'undefined') {
       return new Error(
         `Invalid prop ${propName} supplied to ${componentName}. Other exclusive props already defined: ${multiples.join(
-          ', '
-        )}`
+          ', ',
+        )}`,
       );
     }
   };

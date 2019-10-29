@@ -9,7 +9,7 @@ test('LinkedInIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the LinkedInIcon component.'
+    'Should load the LinkedInIcon component.',
   );
 
   t.end();

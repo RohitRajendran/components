@@ -11,13 +11,13 @@ test('BubbleSelector - render', (t) => {
       options={[{value: 'Yo'}, {value: 'Dawg'}]}
       value="Dawg"
       onChange={onChangeSpy}
-    />
+    />,
   );
 
   t.equal(
     component.find('.uic--bubble-selector__item').length,
     2,
-    'Display two items'
+    'Display two items',
   );
 
   component

@@ -33,7 +33,7 @@ const QuestionCard = ({
     {
       'uic--mcgonagall-question-card': true,
     },
-    className
+    className,
   );
 
   const cancelButtonClass = classNames({

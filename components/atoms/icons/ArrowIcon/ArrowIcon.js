@@ -15,7 +15,7 @@ const ArrowIcon = ({width, height, fill, className, direction, style}) => {
       'uic--rotate-left': direction === 'left',
       'uic--rotate-up': direction === 'up',
     },
-    className
+    className,
   );
 
   return (

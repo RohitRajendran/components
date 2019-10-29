@@ -19,7 +19,7 @@ test('MessageCard - renders', (t) => {
       .first()
       .text(),
     'Title',
-    'Shows title'
+    'Shows title',
   );
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
@@ -28,7 +28,7 @@ test('MessageCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
   t.end();
 });
@@ -97,14 +97,14 @@ test('MessageCard - collapsed', (t) => {
       .first()
       .text(),
     'Title',
-    'Shows collapsed state'
+    'Shows collapsed state',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -128,14 +128,14 @@ test('MessageCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Pick up where you left off',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

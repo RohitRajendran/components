@@ -9,7 +9,7 @@ test('MedicareCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the MedicareCircleIllustration component.'
+    'Should load the MedicareCircleIllustration component.',
   );
 
   t.end();
@@ -23,7 +23,7 @@ test('MedicareCircleIllustration - handleClick', (t) => {
   t.equals(
     component.state().illuminated,
     true,
-    'Should toggle illuminated to true.'
+    'Should toggle illuminated to true.',
   );
 
   t.end();

@@ -20,9 +20,9 @@ test('Custom PropTypes - Exclusive - should flag problems', (t) => {
   t.deepEqual(
     error,
     new Error(
-      'Invalid prop one supplied to AwesomeComponent. Other exclusive props already defined: three'
+      'Invalid prop one supplied to AwesomeComponent. Other exclusive props already defined: three',
     ),
-    'should throw error for exlcusive props'
+    'should throw error for exlcusive props',
   );
 });
 

@@ -9,7 +9,7 @@ test('CaretIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the CaretIcon component.'
+    'Should load the CaretIcon component.',
   );
 
   t.end();

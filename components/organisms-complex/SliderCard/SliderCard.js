@@ -24,7 +24,7 @@ const SliderCard = ({
     {
       'mcg-radio-button-card': true,
     },
-    className
+    className,
   );
 
   return (

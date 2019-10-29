@@ -27,13 +27,13 @@ test('DataTable - render', (t) => {
   t.deepEqual(
     comp.find('ReactTable').prop('data'),
     [{name: 'Bob'}, {name: 'Rob'}],
-    'Pass data prop to inner component'
+    'Pass data prop to inner component',
   );
 
   t.equal(
     comp.find('ReactTable').prop('sortable'),
     false,
-    'Pass additional prop to inner component'
+    'Pass additional prop to inner component',
   );
 
   const expander = comp.find('ReactTable').prop('ExpanderComponent')({
@@ -43,7 +43,7 @@ test('DataTable - render', (t) => {
   t.equal(
     expander.props.direction,
     'down',
-    'Expander pointing down when expanded'
+    'Expander pointing down when expanded',
   );
 
   t.end();

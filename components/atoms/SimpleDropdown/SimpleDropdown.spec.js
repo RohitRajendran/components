@@ -11,7 +11,7 @@ test('SimpleDropdown - render', (t) => {
       options={['Yo', 'Red', 'Dawg']}
       value="Dawg"
       onChange={onChangeSpy}
-    />
+    />,
   );
 
   // The child component has a weird name for some reason
@@ -24,7 +24,7 @@ test('SimpleDropdown - render', (t) => {
       {label: 'Red', value: 'Red'},
       {label: 'Dawg', value: 'Dawg'},
     ],
-    'Pass correct options to Select component'
+    'Pass correct options to Select component',
   );
 
   component.instance().onChange({value: 'Yo', label: 'Yo'});

@@ -295,13 +295,13 @@ ChanceOfSuccess.propTypes = {
   currentPlanChanceOfSuccess: disallowedIf(
     PropTypes.number,
     'isDraftPlan',
-    PropTypes.bool
+    PropTypes.bool,
   ),
   /** The updated plan chance of success. This will cause the component to show the difference between the current and the refreshed chance. */
   refreshedPlanChanceOfSuccess: disallowedIf(
     PropTypes.number,
     'isDraftPlan',
-    PropTypes.bool
+    PropTypes.bool,
   ),
   /** Unique string identifier. Used when there's multiple of the same component on the page. */
   identifier: PropTypes.string,

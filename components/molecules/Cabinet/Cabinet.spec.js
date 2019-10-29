@@ -19,7 +19,7 @@ test('Cabinet - handleKeyPress', (t) => {
     <Cabinet {...props}>
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
-    </Cabinet>
+    </Cabinet>,
   );
 
   component.instance().handleKeyPress({keyCode: 12});
@@ -27,7 +27,7 @@ test('Cabinet - handleKeyPress', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     0,
-    'Should not toggle the Cabinet as key code 12 is not enter.'
+    'Should not toggle the Cabinet as key code 12 is not enter.',
   );
 
   component.instance().handleKeyPress({keyCode: 13});
@@ -35,7 +35,7 @@ test('Cabinet - handleKeyPress', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     1,
-    'Should toggle the Cabinet as enter/return has been pressed.'
+    'Should toggle the Cabinet as enter/return has been pressed.',
   );
 
   t.end();
@@ -54,7 +54,7 @@ test('Cabinet - handleClick', (t) => {
     <Cabinet {...props}>
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
-    </Cabinet>
+    </Cabinet>,
   );
 
   component.instance().handleClick();
@@ -75,7 +75,7 @@ test('Cabinet - handleClick (handleWithState)', (t) => {
     <Cabinet {...props}>
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
-    </Cabinet>
+    </Cabinet>,
   );
 
   component.instance().handleClick();
@@ -83,7 +83,7 @@ test('Cabinet - handleClick (handleWithState)', (t) => {
   t.deepEquals(
     component.state().show,
     true,
-    'Should toggle the Cabinet state to true.'
+    'Should toggle the Cabinet state to true.',
   );
 
   t.end();
@@ -102,7 +102,7 @@ test('Cabinet - handleEscapePress', (t) => {
     <Cabinet {...props}>
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
-    </Cabinet>
+    </Cabinet>,
   );
 
   component.instance().handleEscapePress({keyCode: 27});
@@ -123,7 +123,7 @@ test('Cabinet - handleEscapePress (handleWithState)', (t) => {
     <Cabinet {...props}>
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
-    </Cabinet>
+    </Cabinet>,
   );
 
   component.setState({show: true});
@@ -133,7 +133,7 @@ test('Cabinet - handleEscapePress (handleWithState)', (t) => {
   t.deepEquals(
     component.state().show,
     false,
-    'Should toggle the Cabinet state to false.'
+    'Should toggle the Cabinet state to false.',
   );
 
   t.end();
@@ -154,7 +154,7 @@ test('Cabinet - handleDocumentClick', (t) => {
       <h2>Montezuma is the best cat</h2>
       <p>You can place a paragraph about how good of a cat he is here</p>
     </Cabinet>,
-    {attachTo: div}
+    {attachTo: div},
   );
 
   component.instance().handleDocumentClick({
@@ -164,7 +164,7 @@ test('Cabinet - handleDocumentClick', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     1,
-    'Should fire the toggle handler as the click is outside of the Cabinet.'
+    'Should fire the toggle handler as the click is outside of the Cabinet.',
   );
 
   t.end();
@@ -188,7 +188,7 @@ test('Cabinet - componentWillUnmount', (t) => {
         <p>Additional content to place at the bottom of the Cabinet.</p>
       </div>
     </Cabinet>,
-    {attachTo: div}
+    {attachTo: div},
   );
 
   component.unmount();

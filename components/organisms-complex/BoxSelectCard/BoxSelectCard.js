@@ -26,7 +26,7 @@ const BoxSelectCard = ({
     {
       'uic--box-select-card': true,
     },
-    className
+    className,
   );
 
   return (
@@ -69,7 +69,7 @@ BoxSelectCard.propTypes = {
         showCheck: PropTypes.bool,
         /** Disables the box */
         disabled: PropTypes.bool,
-      })
+      }),
     ).isRequired,
     /** The name of the box group. Gets passed back when the onClick handler is triggered. */
     name: PropTypes.string.isRequired,

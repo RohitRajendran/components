@@ -23,13 +23,13 @@ test('Box - renders with an icon', (t) => {
 
 test('Box - renders disabled with check', (t) => {
   const component = shallow(
-    <Box icon={CarCircleIllustration} disabled={true} showCheck={true} />
+    <Box icon={CarCircleIllustration} disabled={true} showCheck={true} />,
   );
 
   t.equals(
     component.find('.uic--box__disabled').length,
     1,
-    'Should load the Box component with disabled class.'
+    'Should load the Box component with disabled class.',
   );
   t.equals(component.find('CheckIcon').length, 1, 'Shows check');
   t.end();
@@ -54,7 +54,7 @@ test('Box - should hand back the value onClick', (t) => {
   t.deepEquals(
     props.onClick.args[0][0],
     'montezuma',
-    'The montezuma box was selected.'
+    'The montezuma box was selected.',
   );
 
   t.end();

@@ -357,7 +357,7 @@ stories.add('default', () => {
               null,
               `${pathname}?${Object.keys(query)
                 .map((key) => `${key}=${query[key]}`)
-                .join('&')}`
+                .join('&')}`,
             );
           },
         }}

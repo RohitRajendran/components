@@ -20,7 +20,7 @@ const RadioButtons = ({
       'uic--mcgonagall-radio-button-container': true,
       'uic--table': table,
     },
-    className
+    className,
   );
 
   const legendClasses = classNames({
@@ -123,7 +123,7 @@ RadioButtons.propTypes = {
       secondaryLabel: PropTypes.string,
       /** Disables the option. */
       disabled: PropTypes.bool,
-    })
+    }),
   ),
   /** Determines if an input from the group is required or not for form validation. */
   required: PropTypes.bool,

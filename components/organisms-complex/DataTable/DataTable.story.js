@@ -78,7 +78,7 @@ stories.add('expanding rows', () => (
           className: 'rt-expandable',
           headerClassName: 'rt-expandable',
         },
-      ].concat(defaultColumns)
+      ].concat(defaultColumns),
     )}
     SubComponent={() => (
       <div style={{fontSize: '1.6rem', padding: '2rem'}}>

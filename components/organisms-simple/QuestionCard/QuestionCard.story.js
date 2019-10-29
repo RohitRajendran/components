@@ -40,7 +40,7 @@ store.subscribe(() => {
 const defaultProps = (
   isCollapsed = false,
   clearFuture = false,
-  isLatestCard = false
+  isLatestCard = false,
 ) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),
@@ -48,7 +48,7 @@ const defaultProps = (
   clearFuture: boolean('clearFuture', clearFuture),
   description: text(
     'description',
-    'This is where the optional description goes.'
+    'This is where the optional description goes.',
   ),
   disabled: boolean('disabled', false),
   hasError: boolean('hasError', false),

@@ -64,7 +64,7 @@ const defaultProps = (
   defaultVariant = 'primary',
   defaultBackground = 'light',
   defaultText = 'Become A Member',
-  defaultTitle = ''
+  defaultTitle = '',
 ) => ({
   variant: select(
     'Variant',
@@ -75,7 +75,7 @@ const defaultProps = (
       Link: 'link',
       Icon: 'icon',
     },
-    defaultVariant
+    defaultVariant,
   ),
   background: select(
     'Background',
@@ -83,7 +83,7 @@ const defaultProps = (
       Light: 'light',
       Dark: 'dark',
     },
-    defaultBackground
+    defaultBackground,
   ),
   text:
     // Icon buttons are meant to display components,
@@ -100,7 +100,7 @@ for (const permutation of permutations) {
       permutation.variant,
       permutation.background,
       permutation.text,
-      permutation.title
+      permutation.title,
     );
 
     return (

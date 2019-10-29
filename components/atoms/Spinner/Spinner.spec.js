@@ -9,7 +9,7 @@ test('Spinner - renders the IE version', (t) => {
   t.equals(
     component.find('.spinner-ie').length,
     1,
-    'Should load the IE variant of the spinner.'
+    'Should load the IE variant of the spinner.',
   );
 
   t.end();
@@ -21,7 +21,7 @@ test('Spinner - renders the non-IE version', (t) => {
   t.equals(
     component.find('.spinner-normal').length,
     1,
-    'Should load the regular variant.'
+    'Should load the regular variant.',
   );
 
   t.end();

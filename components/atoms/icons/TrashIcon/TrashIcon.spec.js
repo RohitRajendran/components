@@ -9,7 +9,7 @@ test('TrashIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the TrashIcon component.'
+    'Should load the TrashIcon component.',
   );
 
   t.end();

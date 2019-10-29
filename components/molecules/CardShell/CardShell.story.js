@@ -15,7 +15,7 @@ stories.addParameters({
 
 const defaultProps = (
   isCollapsed = false,
-  forceUnansweredQuestionError = false
+  forceUnansweredQuestionError = false,
 ) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),
@@ -29,7 +29,7 @@ const defaultProps = (
   summary: <h1>Collapsed summary content</h1>,
   forceUnansweredQuestionError: boolean(
     'forceUnansweredQuestionError',
-    forceUnansweredQuestionError
+    forceUnansweredQuestionError,
   ),
 });
 

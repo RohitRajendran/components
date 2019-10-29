@@ -9,7 +9,7 @@ test('TwitterIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the TwitterIcon component.'
+    'Should load the TwitterIcon component.',
   );
 
   t.end();

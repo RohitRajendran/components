@@ -6,7 +6,7 @@ import PaintingCircleIllustrationReadMe from './PaintingCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/PaintingCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

@@ -30,7 +30,7 @@ const Confirm = ({name, title, description, okLabel, cancelLabel}) => {
           </Button>
         </div>
       </Modal>,
-      wrapper
+      wrapper,
     );
   });
 

@@ -110,7 +110,7 @@ test('McGonagall - saveToStateContext', (t) => {
   t.deepEquals(
     saveToStateContext.assignment({}, eve),
     {completionDate: '02/1990'},
-    'Should return an object.'
+    'Should return an object.',
   );
   t.end();
 });
@@ -185,7 +185,7 @@ test('McGonagall - componentDidUpdate (final card is no longer active card)', (t
   t.equals(
     comp.setState.args[0][0].cardHistory.length,
     4,
-    'Reached final card'
+    'Reached final card',
   );
   comp.state.currXState = comp.setState.args[0][0].currXState;
   comp.state.cardHistory = comp.setState.args[0][0].cardHistory;
@@ -196,12 +196,12 @@ test('McGonagall - componentDidUpdate (final card is no longer active card)', (t
   t.equals(
     comp.setState.args[1][0].currXState.value,
     'third',
-    'Updated xstate'
+    'Updated xstate',
   );
   t.equals(
     comp.setState.args[1][0].cardHistory.length,
     3,
-    'Removed final from card history'
+    'Removed final from card history',
   );
 
   window.scrollTo = scrollTo;
@@ -258,7 +258,7 @@ test('McGonagall - navigateToLatestCard (completed flow)', (t) => {
   t.equals(
     comp.state.currXState.value,
     'second',
-    'Navigate to last card before final if completed flow'
+    'Navigate to last card before final if completed flow',
   );
 
   window.scrollTo = scrollTo;
@@ -288,22 +288,22 @@ test('McGonagall - updateStateMachine', (t) => {
   t.deepEquals(
     comp.setState.args[0][0].currXState.value,
     'second',
-    'Updated xstate'
+    'Updated xstate',
   );
   t.deepEquals(
     comp.setState.args[0][0].currXState.context.incompleteVal,
     true,
-    'Uses default value for incompleteVal'
+    'Uses default value for incompleteVal',
   );
   t.deepEquals(
     comp.setState.args[0][0].cardHistory[0].name,
     'second',
-    'Updated card history'
+    'Updated card history',
   );
   t.deepEquals(
     props.browserHistory.push.args[0][0],
     {pathname: 'unitedincome.com', query: {step: 'second'}},
-    'Updated path'
+    'Updated path',
   );
 
   // Editing a previous card
@@ -317,22 +317,22 @@ test('McGonagall - updateStateMachine', (t) => {
   t.deepEquals(
     comp.setState.args[1][0].currXState.value,
     'second',
-    'Updated xstate'
+    'Updated xstate',
   );
   t.deepEquals(
     comp.setState.args[1][0].currXState.context.val,
     'newVal',
-    'Updated xstate context'
+    'Updated xstate context',
   );
   t.false(
     comp.setState.args[1][0].cardHistory,
     'second',
-    'Should not have updated card history'
+    'Should not have updated card history',
   );
   t.deepEquals(
     props.browserHistory.push.args[1][0],
     {pathname: 'unitedincome.com', query: {step: 'second'}},
-    'Updated path'
+    'Updated path',
   );
 
   // Clear future
@@ -343,7 +343,7 @@ test('McGonagall - updateStateMachine', (t) => {
   t.equals(
     comp.setState.args[2][0].cardHistory.length,
     3,
-    'Added another card to history'
+    'Added another card to history',
   );
 
   comp.updateStateMachine(['val'], null, true);
@@ -351,17 +351,17 @@ test('McGonagall - updateStateMachine', (t) => {
   t.deepEquals(
     comp.setState.args[3][0].currXState.value,
     'second',
-    'Updated xstate'
+    'Updated xstate',
   );
   t.equals(
     comp.setState.args[3][0].cardHistory.length,
     2,
-    'Should have cleared future history and taken to second card'
+    'Should have cleared future history and taken to second card',
   );
   t.deepEquals(
     props.browserHistory.push.args[3][0],
     {pathname: 'unitedincome.com', query: {step: 'second'}},
-    'Updated path'
+    'Updated path',
   );
 
   window.scrollTo = scrollTo;
@@ -397,7 +397,7 @@ test('McGonagall - navigateToStep', (t) => {
   t.deepEquals(
     props.browserHistory.push.args[0][0],
     {pathname: 'unitedincome.com', query: {step: 'second'}},
-    'Pushed new path'
+    'Pushed new path',
   );
   t.true(window.scrollTo.calledOnce, 'Scrolled to top');
 
@@ -434,7 +434,7 @@ test('McGonagall - close (with onClose)', (t) => {
   t.deepEquals(
     props.browserHistory.push.args[0][0],
     '/test',
-    'Pushes new route'
+    'Pushes new route',
   );
 
   window.scrollTo = scrollTo;
@@ -477,7 +477,7 @@ test('McGonagall - confirmChangeCancellation (confirm)', (t) => {
       t.equals(
         document.body.getElementsByClassName('uic--confirm-modal').length,
         0,
-        'Modal goes away'
+        'Modal goes away',
       );
       window.scrollTo = scrollTo;
       t.end();
@@ -486,7 +486,7 @@ test('McGonagall - confirmChangeCancellation (confirm)', (t) => {
   t.equals(
     document.body.getElementsByClassName('uic--confirm-modal').length,
     1,
-    'Modal appears'
+    'Modal appears',
   );
   document.body.getElementsByTagName('Button')[0].click();
 });
@@ -511,7 +511,7 @@ test('McGonagall - confirmChangeCancellation (cancel)', (t) => {
       t.equals(
         document.body.getElementsByClassName('uic--confirm-modal').length,
         0,
-        'Modal goes away'
+        'Modal goes away',
       );
       window.scrollTo = scrollTo;
       t.end();
@@ -520,7 +520,7 @@ test('McGonagall - confirmChangeCancellation (cancel)', (t) => {
   t.equals(
     document.body.getElementsByClassName('uic--confirm-modal').length,
     1,
-    'Modal appears'
+    'Modal appears',
   );
   document.body.getElementsByTagName('Button')[1].click();
 });
@@ -546,31 +546,31 @@ test('McGonagall - renderStep (no changes)', (t) => {
   t.deepEquals(
     comp.updateStateMachine.args[0],
     [['val'], undefined, true],
-    'Submits sends proper info'
+    'Submits sends proper info',
   );
 
   // cancelChanges
   cardArgs.cancelChanges();
   t.false(
     comp.confirmChangeCancellation.called,
-    'Does not need to confirm cancellation'
+    'Does not need to confirm cancellation',
   );
   t.deepEquals(
     comp.navigateToStep.args[0],
     ['start', true, true],
-    'Calls and passes values to navigateToStep after confirming cancel'
+    'Calls and passes values to navigateToStep after confirming cancel',
   );
 
   // editCard
   cardArgs.editCard();
   t.false(
     comp.confirmChangeCancellation.called,
-    'Does not need to confirm cancellation'
+    'Does not need to confirm cancellation',
   );
   t.deepEquals(
     comp.navigateToStep.args[1],
     ['start', false, true],
-    'Calls and passes values to navigateToStep after confirming cancel'
+    'Calls and passes values to navigateToStep after confirming cancel',
   );
 
   window.scrollTo = scrollTo;
@@ -599,7 +599,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   t.deepEquals(
     comp.updateStateMachine.args[0],
     [['val'], undefined, false],
-    'Submits sends proper info'
+    'Submits sends proper info',
   );
 
   // cancelChanges
@@ -608,7 +608,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   t.deepEquals(
     comp.navigateToStep.args[0],
     ['start', true, true],
-    'Calls and passes values to navigateToStep after confirming cancel'
+    'Calls and passes values to navigateToStep after confirming cancel',
   );
 
   // editCard
@@ -617,7 +617,7 @@ test('McGonagall - renderStep (has made changes)', (t) => {
   t.deepEquals(
     comp.navigateToStep.args[1],
     ['start', false, true],
-    'Calls and passes values to navigateToStep after confirming cancel'
+    'Calls and passes values to navigateToStep after confirming cancel',
   );
 
   window.scrollTo = scrollTo;
@@ -675,7 +675,7 @@ test('McGonagall - renders', async (t) => {
   t.equals(
     comp.find('.uic--mcg-card-container').children().length,
     3,
-    'Displays 3 cards'
+    'Displays 3 cards',
   );
 
   window.scrollTo = scrollTo;

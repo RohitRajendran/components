@@ -41,7 +41,7 @@ class StackableExpandCollapse extends Component {
     const height = this.contentsInnerRef.current.offsetHeight;
     this.contentsRef.current.style.setProperty(
       '--content-height',
-      `${height}px`
+      `${height}px`,
     );
   }
 
@@ -61,7 +61,7 @@ class StackableExpandCollapse extends Component {
       {
         'uic--stackable-expand-collapse': true,
       },
-      className
+      className,
     );
 
     return (

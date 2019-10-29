@@ -31,7 +31,7 @@ test('CardShell - active', (t) => {
   const comp = mount(
     <CardShell {...props}>
       <h1>Test</h1>
-    </CardShell>
+    </CardShell>,
   );
 
   t.true(
@@ -39,7 +39,7 @@ test('CardShell - active', (t) => {
       .find('div')
       .first()
       .hasClass('uic--active'),
-    'Shows active state'
+    'Shows active state',
   );
 
   t.equals(comp.find('p').length, 2, 'Shows before and after content');
@@ -71,7 +71,7 @@ test('CardShell - active and isFetching', (t) => {
   const comp = mount(
     <CardShell {...props}>
       <h1>Test</h1>
-    </CardShell>
+    </CardShell>,
   );
 
   t.true(
@@ -79,7 +79,7 @@ test('CardShell - active and isFetching', (t) => {
       .find('div')
       .first()
       .hasClass('uic--active'),
-    'Shows active state'
+    'Shows active state',
   );
 
   t.equals(comp.find('Spinner').length, 1, 'Shows spinner');
@@ -97,7 +97,7 @@ test('CardShell - collapsed', (t) => {
   const comp = mount(
     <CardShell {...props}>
       <h1>Test</h1>
-    </CardShell>
+    </CardShell>,
   );
 
   t.true(
@@ -105,7 +105,7 @@ test('CardShell - collapsed', (t) => {
       .find('div')
       .first()
       .hasClass('uic--collapsed'),
-    'Shows collapsed state'
+    'Shows collapsed state',
   );
 
   t.equals(comp.find('p').length, 1, 'Shows summary content');
@@ -123,7 +123,7 @@ test('CardShell - error', (t) => {
   const comp = mount(
     <CardShell {...props}>
       <h1>Test</h1>
-    </CardShell>
+    </CardShell>,
   );
 
   t.true(
@@ -131,7 +131,7 @@ test('CardShell - error', (t) => {
       .find('div')
       .first()
       .hasClass('uic--card-error'),
-    'Shows error state'
+    'Shows error state',
   );
 
   t.equals(comp.find('Button').length, 0, 'Hides button');
@@ -156,7 +156,7 @@ test('CardShell - interacting with disabled continue button', (t) => {
   const comp = mount(
     <CardShell {...props}>
       <input required />
-    </CardShell>
+    </CardShell>,
   );
 
   const continueBtnWrapper = comp.find('.uic--card-submit-wrapper');
@@ -165,19 +165,19 @@ test('CardShell - interacting with disabled continue button', (t) => {
   comp.update();
   t.false(
     comp.find('.uic--warning-message__required').length,
-    'Should not show required error message on 1st click'
+    'Should not show required error message on 1st click',
   );
   continueBtnWrapper.prop('onClick')();
   comp.update();
   t.false(
     comp.find('.uic--warning-message__required').length,
-    'Should not show required error message on 2nd click'
+    'Should not show required error message on 2nd click',
   );
   continueBtnWrapper.prop('onClick')();
   comp.update();
   t.true(
     comp.find('.uic--warning-message__required').length,
-    'Should show required error message on 3rd click'
+    'Should show required error message on 3rd click',
   );
 
   continueBtnWrapper.prop('onClick')();
@@ -208,7 +208,7 @@ test('CardShell - componentDidUpdate (isCollapsed = true)', (t) => {
         isValid={() => true}
         validationErrorMsg="This is not valid!"
       />
-    </CardShell>
+    </CardShell>,
   );
 
   comp.setState({isInvalid: true, height: 100});
@@ -226,7 +226,7 @@ test('CardShell - componentDidUpdate (isCollapsed = true)', (t) => {
       shakeError: false,
       disabledClickCount: 0,
     },
-    'Updates state'
+    'Updates state',
   );
 
   t.end();
@@ -252,7 +252,7 @@ test('CardShell - componentDidUpdate (isCollapsed = false)', (t) => {
         isValid={() => true}
         validationErrorMsg="This is not valid!"
       />
-    </CardShell>
+    </CardShell>,
   );
 
   comp.setState({height: 100});
@@ -270,7 +270,7 @@ test('CardShell - componentDidUpdate (isCollapsed = false)', (t) => {
       shakeError: false,
       disabledClickCount: 0,
     },
-    'Updates state'
+    'Updates state',
   );
 
   t.end();
@@ -330,7 +330,7 @@ test('CardShell - onDisabledContinueClick', (t) => {
     {
       disabledClickCount: 1,
     },
-    'Increments disabled click count'
+    'Increments disabled click count',
   );
 
   comp.state.disabledClickCount = 3;
@@ -340,7 +340,7 @@ test('CardShell - onDisabledContinueClick', (t) => {
     {
       cardContext: {showRequiredError: true},
     },
-    'Updates card context'
+    'Updates card context',
   );
 
   comp.state.cardContext.showRequiredError = true;
@@ -350,7 +350,7 @@ test('CardShell - onDisabledContinueClick', (t) => {
     {
       shakeError: true,
     },
-    'Updates shake error'
+    'Updates shake error',
   );
 
   t.end();
@@ -709,21 +709,21 @@ test('CardShell - validates different input constraints', (t) => {
 
   for (let i = 0; i < numInputs; i++) {
     const component = mount(
-      <CardShell {...defaultProps}>{getInput(badValues, i)}</CardShell>
+      <CardShell {...defaultProps}>{getInput(badValues, i)}</CardShell>,
     );
     t.true(
       component.find('Button').props().disabled,
-      `Should disable button for input ${i + 1}`
+      `Should disable button for input ${i + 1}`,
     );
   }
 
   for (let i = 0; i < numInputs; i++) {
     const component = mount(
-      <CardShell {...defaultProps}>{getInput(goodValues, i)}</CardShell>
+      <CardShell {...defaultProps}>{getInput(goodValues, i)}</CardShell>,
     );
     t.false(
       component.find('Button').props().disabled,
-      `Should enable button for input ${i + 1}`
+      `Should enable button for input ${i + 1}`,
     );
   }
   t.end();

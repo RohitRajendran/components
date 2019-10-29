@@ -13,31 +13,31 @@ test('DropDown - renders', (t) => {
       label="My Options"
       placeholder="Find your option"
       value="some_value"
-    />
+    />,
   );
 
   t.equal(
     component.find('.uic--mcgonagall-dropdown').length,
     1,
-    'Dropdown block renders'
+    'Dropdown block renders',
   );
 
   t.equal(
     component.find('label').text(),
     'My Options (Optional)',
-    'Field label is correct'
+    'Field label is correct',
   );
 
   t.equal(
     component.find('.uic--description').length,
     1,
-    'Dropdown block renders with string'
+    'Dropdown block renders with string',
   );
 
   t.equal(
     component.find('.uic--description').text(),
     'string description',
-    'Description node is correct'
+    'Description node is correct',
   );
 
   const component2 = mount(
@@ -48,19 +48,19 @@ test('DropDown - renders', (t) => {
       label="My Options"
       placeholder="Find your option"
       value="some_value"
-    />
+    />,
   );
 
   t.equal(
     component2.find('.uic--description').length,
     1,
-    'Dropdown block renders with node'
+    'Dropdown block renders with node',
   );
 
   t.equal(
     component2.find('.test--desc').text(),
     'node description',
-    'Description node is correct'
+    'Description node is correct',
   );
 
   t.end();
@@ -77,19 +77,19 @@ test('DropDown - required field error', (t) => {
       value=""
       required
       showRequiredError={true}
-    />
+    />,
   );
 
   t.equal(
     component.find('.uic--error').length,
     1,
-    'Shows dropdown error state'
+    'Shows dropdown error state',
   );
 
   t.equal(
     component.find('.uic--validation-error').text(),
     'Required Field',
-    'Shows required field error message'
+    'Shows required field error message',
   );
 
   t.end();
@@ -98,13 +98,13 @@ test('DropDown - required field error', (t) => {
 test('DropDown - onChange', (t) => {
   const onChangeSpy = spy();
   const component = mount(
-    <DropDown name="test" value="" onChange={onChangeSpy} label="label" />
+    <DropDown name="test" value="" onChange={onChangeSpy} label="label" />,
   );
 
   component.instance().onChange({value: 'testval', label: 'thing'});
   t.true(
     onChangeSpy.withArgs('test', 'testval').calledOnce,
-    'should call the method with value provided'
+    'should call the method with value provided',
   );
   t.true(onChangeSpy.calledOnce, 'Call method once');
 
@@ -113,7 +113,7 @@ test('DropDown - onChange', (t) => {
   component.instance().onChange(null);
   t.true(
     onChangeSpy.withArgs('test', '').calledOnce,
-    'Call the method with an empty string'
+    'Call the method with an empty string',
   );
   t.true(onChangeSpy.calledOnce, 'Call method once');
 
@@ -126,7 +126,7 @@ test('DropDown - onChange', (t) => {
       onChange={onChangeSpy}
       getOptions={stub()}
       label="label"
-    />
+    />,
   );
 
   component2.instance().onChange({value: 'testval', label: 'thing'});
@@ -134,7 +134,7 @@ test('DropDown - onChange', (t) => {
   t.equals(
     onChangeSpy.callCount,
     1,
-    'Should fire provided props function when getOptions is present also.'
+    'Should fire provided props function when getOptions is present also.',
   );
 
   t.end();
@@ -151,7 +151,7 @@ test('DropDown - Blur and Focus', (t) => {
       value=""
       onFocus={onFocusSpy}
       onBlur={onBlurSpy}
-    />
+    />,
   );
 
   t.equal(component.state().isFocused, false, 'Start without focus');
@@ -228,7 +228,7 @@ test('DropDown - validationResult', (t) => {
   t.deepEqual(
     component.instance().validationResults(props.validate),
     {isValid: false},
-    'Should not be valid.'
+    'Should not be valid.',
   );
 
   const props2 = {
@@ -253,7 +253,7 @@ test('DropDown - validationResult', (t) => {
   t.deepEqual(
     component2.instance().validationResults(props2.validate),
     undefined,
-    'Should return undefined if valid.'
+    'Should return undefined if valid.',
   );
 });
 
@@ -288,7 +288,7 @@ test('DropDown - componentDidUpdate', (t) => {
       isValid: true,
       validationMessage: '',
     },
-    'Should validate on updates.'
+    'Should validate on updates.',
   );
 
   t.end();
@@ -313,7 +313,7 @@ test('DropDown - getCurrentOption', (t) => {
   t.deepEqual(
     component.instance().getCurrentOption(props.options),
     [{label: 'another label', value: 'some_other_value'}],
-    'Should get the currently selected option.'
+    'Should get the currently selected option.',
   );
 
   const props2 = {
@@ -336,7 +336,7 @@ test('DropDown - getCurrentOption', (t) => {
   t.deepEqual(
     component2.instance().getCurrentOption(props2.options),
     [{label: 'Montezuma', value: 'montezuma'}],
-    'Should get the currently selected option from state.'
+    'Should get the currently selected option from state.',
   );
 });
 

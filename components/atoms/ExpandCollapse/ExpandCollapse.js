@@ -97,7 +97,7 @@ class ExpandCollapse extends Component {
   checkValidation() {
     const {hasIncompleteRequiredFields, isChildValid} = validateChildren(
       this.props.children,
-      true
+      true,
     );
     if (
       hasIncompleteRequiredFields !== this.state.isRequired ||
@@ -152,7 +152,7 @@ class ExpandCollapse extends Component {
         'uic--ec-uncollapsible': !collapsible,
         'uic--position-relative': true,
       },
-      className
+      className,
     );
 
     const contentContainerClasses = classNames({

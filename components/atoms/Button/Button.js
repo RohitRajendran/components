@@ -69,7 +69,7 @@ const Button = ({
       'show-spinner': isLoading,
       'hide-spinner': !isLoading,
     },
-    className
+    className,
   );
 
   let spinnerColor;
