@@ -7,7 +7,7 @@
 
 </div>
 
-This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. This library has a series of exportable components that can be reused. It also utilizes [Storybook](https://storybook.js.org/) to create a pseudo-design system manager that is based on the principals of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
+This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. It includes a series of exportable components derived from the [United Income Design System](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) that can be used across teams to build a uniform experience.
 
 # Getting Started 🚀
 
