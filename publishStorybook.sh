@@ -24,6 +24,14 @@ echo "Bucket: ${BUCKET}"
 
 PROFILE=${AWS_PROFILE:-$PROFILENAME}
 STORYBOOK_DIR=.build/
-aws s3 sync $STORYBOOK_DIR s3://$DOCS_BUCKET/$BRANCH --delete
 
+# Publish 'master' to the root directory', and other deployment branches into their own folder.
+if [[ $BRANCH == *"master"* ]]; 
+then
+    aws s3 sync $STORYBOOK_DIR s3://$DOCS_BUCKET --delete
+else
+    aws s3 sync $STORYBOOK_DIR s3://$DOCS_BUCKET/$BRANCH --delete
+fi
+
+aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION" --path "/*"
 aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION" --path "/${BRANCH}/*"
