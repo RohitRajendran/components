@@ -15,6 +15,8 @@ import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import PrinterIcon from '~components/atoms/icons/PrinterIcon/PrinterIcon';
+import PrinterCircleIcon from '~components/atoms/icons/PrinterCircleIcon/PrinterCircleIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
@@ -135,6 +137,8 @@ export {
   ArrowIcon,
   CaretIcon,
   ClearIcon,
+  PrinterIcon,
+  PrinterCircleIcon,
   TrashIcon,
   ArrowIconEllipsis,
   Ranking,
