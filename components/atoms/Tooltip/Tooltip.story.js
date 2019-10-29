@@ -29,7 +29,7 @@ const defaultProps = (hoverEnabled, darkTooltip) => ({
   labelVariant: select(
     'labelVariant',
     ['link', 'icon', 'tertiary', 'secondary', 'primary'],
-    'link'
+    'link',
   ),
   hover: boolean('hover', hoverEnabled),
   placement: select('placement', ['top', 'bottom', 'left', 'right'], 'bottom'),

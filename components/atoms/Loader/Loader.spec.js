@@ -9,7 +9,7 @@ test('Loader - renders', (t) => {
   t.equals(
     component.find('svg').length,
     2,
-    'Should load the Loader component SVG tags.'
+    'Should load the Loader component SVG tags.',
   );
 
   t.end();

@@ -6,7 +6,7 @@ import RamenCircleIllustrationReadMe from './RamenCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/RamenCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

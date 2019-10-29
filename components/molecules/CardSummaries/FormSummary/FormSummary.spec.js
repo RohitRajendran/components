@@ -17,24 +17,24 @@ test('FormSummary - Renders one answer', (t) => {
         },
       ]}
       editCard={() => true}
-    />
+    />,
   );
 
   t.equals(
     comp.find('h2').text(),
     'This is a simpler question',
-    'Displays summary'
+    'Displays summary',
   );
   t.equals(
     comp.find('.uic--striped').length,
     0,
-    'Should not add striped class'
+    'Should not add striped class',
   );
   t.equals(comp.find('h3').length, 0, 'Should not show group name');
   t.equals(
     comp.find('.uic--card-summary-answer').length,
     3,
-    'Should show 3 answers'
+    'Should show 3 answers',
   );
 
   t.end();
@@ -64,25 +64,25 @@ test('FormSummary - Renders one answer', (t) => {
         },
       ]}
       editCard={() => true}
-    />
+    />,
   );
 
   t.equals(
     comp.find('h2').text(),
     'This is a simpler question',
-    'Displays summary'
+    'Displays summary',
   );
   t.equals(
     comp.find('.uic--card-summary-group').length,
     2,
-    'Should show one summary group'
+    'Should show one summary group',
   );
   t.equals(comp.find('.uic--striped').length, 2, 'Should have striped class');
   t.equals(comp.find('h3').length, 2, 'Should show group names');
   t.equals(
     comp.find('.uic--card-summary-answer').length,
     6,
-    'Should show 3 answers'
+    'Should show 3 answers',
   );
 
   t.end();

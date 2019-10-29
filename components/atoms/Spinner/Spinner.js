@@ -15,7 +15,7 @@ const Spinner = (props) => {
     {
       [`spinner-${isIe ? 'ie' : 'normal'}`]: true,
     },
-    className
+    className,
   );
   if (isIe) {
     return (

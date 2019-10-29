@@ -9,7 +9,7 @@ test('ExpandyCircleIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ExpandyCircleIcon component.'
+    'Should load the ExpandyCircleIcon component.',
   );
 
   t.end();

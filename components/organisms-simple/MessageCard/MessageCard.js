@@ -24,7 +24,7 @@ const MessageCard = ({
     {
       'uic--mcgonagall-message-card': true,
     },
-    className
+    className,
   );
 
   const descriptionNode =

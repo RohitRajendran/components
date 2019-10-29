@@ -9,7 +9,7 @@ test('PaintingCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the PaintingCircleIllustration component.'
+    'Should load the PaintingCircleIllustration component.',
   );
 
   t.end();
@@ -21,7 +21,7 @@ test('PaintingCircleIllustration - renders the draft illustration', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the PaintingCircleIllustration component.'
+    'Should load the PaintingCircleIllustration component.',
   );
 
   t.end();
@@ -33,7 +33,7 @@ test('PaintingCircleIllustration - renders the draft illustration', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the PaintingCircleIllustration component.'
+    'Should load the PaintingCircleIllustration component.',
   );
 
   t.end();
@@ -47,7 +47,7 @@ test('PaintingCircleIllustration - handleClick', (t) => {
   t.equals(
     component.state().illuminated,
     true,
-    'Should toggle illuminated to true.'
+    'Should toggle illuminated to true.',
   );
 
   t.end();

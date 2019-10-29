@@ -9,7 +9,7 @@ test('Tooltip - renders', (t) => {
   t.equals(
     component.find('span').length,
     1,
-    'Should load the Tooltip component.'
+    'Should load the Tooltip component.',
   );
 
   t.end();

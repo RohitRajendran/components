@@ -20,7 +20,7 @@ test('Input - Renders props as attributes on the input', (t) => {
       pattern="^\d{5}$"
       maxLength={5}
       onChange={onChangeSpy}
-    />
+    />,
   );
   const componentInputProps = component.find('input').props();
 
@@ -52,19 +52,19 @@ test('Input - required field error', (t) => {
       onChange={onChangeSpy}
       required
       showRequiredError={true}
-    />
+    />,
   );
 
   t.equal(
     component.find('.uic--error').length,
     1,
-    'Shows dropdown error state'
+    'Shows dropdown error state',
   );
 
   t.equal(
     component.find('.uic--validation-error').text(),
     'Required Field',
-    'Shows required field error message'
+    'Shows required field error message',
   );
 
   t.end();
@@ -78,7 +78,7 @@ test('Input - Renders a masked input if mask is provided', (t) => {
       type="text"
       value="05/01/1980"
       mask="Date"
-    />
+    />,
   );
 
   t.equals(
@@ -87,7 +87,7 @@ test('Input - Renders a masked input if mask is provided', (t) => {
       .first()
       .prop('placeholder'),
     'MM/DD/YYYY',
-    'Uses default mask placeholder'
+    'Uses default mask placeholder',
   );
   t.equals(component.find('t').length, 1, 'should render MaskedInput');
   t.end();
@@ -103,8 +103,8 @@ test('Input - Creates error when currency has no onChange function', (t) => {
         type="text"
         value="100,000"
         mask="Currency"
-      />
-    )
+      />,
+    ),
   );
 });
 
@@ -119,13 +119,13 @@ test('Input - Renders an error message when the form is invalid', (t) => {
       mask="Date"
       isValid={() => true}
       validationErrorMsg="This is not valid!"
-    />
+    />,
   );
 
   t.equals(
     component.find('.uic--validation-error').text(),
     'This is not valid!',
-    'Should render the invalid message.'
+    'Should render the invalid message.',
   );
 
   t.end();
@@ -141,13 +141,13 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
       placeholder="some placeholder"
       mask="Date"
       description="This is the description"
-    />
+    />,
   );
 
   t.equals(
     component.find('.uic--description').text(),
     'This is the description',
-    'Should render the description.'
+    'Should render the description.',
   );
 
   const component2 = mount(
@@ -159,13 +159,13 @@ test('Input - Shows a description field beneath the text if applicable', (t) => 
       placeholder="some placeholder"
       mask="Date"
       description={<div className="test--desc">Node description</div>}
-    />
+    />,
   );
 
   t.equals(
     component2.find('.test--desc').text(),
     'Node description',
-    'Should render the description node.'
+    'Should render the description node.',
   );
 
   t.end();
@@ -184,7 +184,7 @@ test('Input - Gets the deepest input element', (t) => {
       placeholder="some placeholder"
       mask="Date"
       description="This is the description"
-    />
+    />,
   );
 
   const result = getDeepestInputElement(component.instance());
@@ -206,7 +206,7 @@ test('Input - Correctly toggles focus', (t) => {
       placeholder="some placeholder"
       mask="PercentageWithDecimal"
       description="This is the description"
-    />
+    />,
   );
 
   component.instance().toggleFocus();
@@ -227,7 +227,7 @@ test('Input - Correctly toggles focus with explanation', (t) => {
       mask="PercentageWithDecimal"
       description="This is the description"
       explanation="Montezuma is the greatest cat in the world"
-    />
+    />,
   );
 
   window.scrollTo = stub();
@@ -257,7 +257,7 @@ test('Input - onBlur correctly fires both handlers', (t) => {
       mask="Date"
       description="This is the description"
       validateOnBlur={true}
-    />
+    />,
   );
 
   component.find('input').simulate('blur');
@@ -265,7 +265,7 @@ test('Input - onBlur correctly fires both handlers', (t) => {
   t.equals(
     component.state().isActive,
     true,
-    'Should toggle the focus state when something is blurred even with validateOnBlur toggled.'
+    'Should toggle the focus state when something is blurred even with validateOnBlur toggled.',
   );
 
   t.end();
@@ -281,7 +281,7 @@ test('Input - isInViewport', (t) => {
 
 test('Input - isInViewport - no browser environment', (t) => {
   const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
-    false
+    false,
   );
   const element = document.createElement('div');
 

@@ -39,7 +39,7 @@ class QuestionAnswer extends PureComponent {
       {
         'uic--question-answer': true,
       },
-      className
+      className,
     );
 
     return (
@@ -92,7 +92,7 @@ QuestionAnswer.propTypes = {
       /** The answer of the question. */
       answer: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
         .isRequired,
-    })
+    }),
   ).isRequired,
 };
 

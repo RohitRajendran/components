@@ -9,7 +9,7 @@ test('ThumbsDownIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ThumbsDownIcon component.'
+    'Should load the ThumbsDownIcon component.',
   );
 
   t.end();

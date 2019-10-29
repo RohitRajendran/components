@@ -6,7 +6,7 @@ import GingerBreadCircleIllustrationReadMe from './GingerBreadCircleIllustration
 
 const stories = storiesOf(
   'Atoms/Illustrations/GingerBreadCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

@@ -35,7 +35,7 @@ test('RadioButtonCard - renders', (t) => {
       .first()
       .text(),
     'Question',
-    'Shows title'
+    'Shows title',
   );
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
@@ -44,7 +44,7 @@ test('RadioButtonCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
   t.equals(comp.find('.uic--label-value').length, 2, 'Displays 2 values');
 
@@ -93,14 +93,14 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
       .first()
       .text(),
     'Yup',
-    'Shows answer'
+    'Shows answer',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -147,7 +147,7 @@ test('RadioButtonCard - collapsed with answer override', (t) => {
       .first()
       .text(),
     'No',
-    'Shows answer'
+    'Shows answer',
   );
 
   t.end();
@@ -195,14 +195,14 @@ test('RadioButtonCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Q',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

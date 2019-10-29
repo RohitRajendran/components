@@ -6,7 +6,7 @@ import GivingCircleIllustrationReadMe from './GivingCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/GivingCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

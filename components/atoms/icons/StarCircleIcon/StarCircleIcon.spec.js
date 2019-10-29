@@ -9,7 +9,7 @@ test('StarCircleIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Render the StarCircleIcon component.'
+    'Render the StarCircleIcon component.',
   );
 
   t.end();

@@ -14,7 +14,7 @@ test('FileInput - renders', (t) => {
         label="File Name"
         onChange={onChangeSpy}
         required
-      />
+      />,
     );
 
     const componentInputProps = component.find('input').props();
@@ -52,7 +52,7 @@ test('FileInput - required field error', (t) => {
         label="File Name"
         required
         showRequiredError
-      />
+      />,
     );
 
     t.equal(component.find('.uic--error').length, 1);
@@ -72,13 +72,13 @@ test('FileInput - validation error', (t) => {
         label="File Name"
         error
         validationErrorMsg="Hey! You did it wrong!"
-      />
+      />,
     );
 
     t.equal(component.find('.uic--error').length, 1);
     t.equal(
       component.find('.uic--validation-error').text(),
-      'Hey! You did it wrong!'
+      'Hey! You did it wrong!',
     );
   } catch (err) {
     t.fail(err);
@@ -90,7 +90,7 @@ test('FileInput - validation error', (t) => {
 test('FileInput - disabled', (t) => {
   try {
     const component = mount(
-      <FileInput name="test_file_input" label="File Name" disabled />
+      <FileInput name="test_file_input" label="File Name" disabled />,
     );
 
     t.equal(component.find('.uic--disabled').length, 2);
@@ -109,30 +109,30 @@ test('FileInput - label, span, button states', (t) => {
         label="File Name"
         description="Described!"
         placeholder="Upload the file, fool!"
-      />
+      />,
     );
 
     t.equal(
       component.find('.uic--description').text(),
       'Described!',
-      'Label is empty when no file is present'
+      'Label is empty when no file is present',
     );
 
     t.equal(
       component.find('label').map((label) => label.text())[1],
       '',
-      'Label is empty when no file is present'
+      'Label is empty when no file is present',
     );
 
     t.equal(
       component.find('span').map((span) => span.text())[0],
       'Upload the file, fool!',
-      'Span shows placeholder when no file is present'
+      'Span shows placeholder when no file is present',
     );
 
     t.equal(
       component.find(ButtonInterior).map((btn) => btn.text())[0],
-      'Choose File'
+      'Choose File',
     );
 
     component.setProps({buttonText: 'Upload It!'});
@@ -140,7 +140,7 @@ test('FileInput - label, span, button states', (t) => {
     t.equal(
       component.find(ButtonInterior).text(),
       'Upload It!',
-      'Custom buttonText is shown when no file is present'
+      'Custom buttonText is shown when no file is present',
     );
 
     component.setState({file: {name: 'a-file.txt'}});
@@ -148,19 +148,19 @@ test('FileInput - label, span, button states', (t) => {
     t.equal(
       component.find('label').map((label) => label.text())[1],
       'File Name (Optional)',
-      'Label is present when file is present'
+      'Label is present when file is present',
     );
 
     t.equal(
       component.find('span').map((span) => span.text())[0],
       'a-file.txt',
-      'Span shows file name when file is present'
+      'Span shows file name when file is present',
     );
 
     t.equal(
       component.find(ButtonInterior).text(),
       'Upload It!',
-      'Custom buttonText is shown when file is present and no buttonTextWithFile is present'
+      'Custom buttonText is shown when file is present and no buttonTextWithFile is present',
     );
 
     component.setProps({
@@ -171,13 +171,13 @@ test('FileInput - label, span, button states', (t) => {
     t.equal(
       component.find('label').map((label) => label.text())[1],
       'File Name',
-      'Label is present when file is present'
+      'Label is present when file is present',
     );
 
     t.equal(
       component.find(ButtonInterior).text(),
       'Upload the Right File!!',
-      'Custom buttonTextWithFile is shown when file is present and buttonTextWithFile is present'
+      'Custom buttonTextWithFile is shown when file is present and buttonTextWithFile is present',
     );
   } catch (err) {
     t.fail(err);
@@ -190,7 +190,7 @@ test('FileInput - setRef', (t) => {
   const setRefSpy = spy();
   try {
     mount(
-      <FileInput name="test_file_input" label="File Name" setRef={setRefSpy} />
+      <FileInput name="test_file_input" label="File Name" setRef={setRefSpy} />,
     );
     t.equal(setRefSpy.args.length, 1);
   } catch (err) {
@@ -208,7 +208,7 @@ test('FileInput - isValid', (t) => {
         name="test_file_input"
         label="File Name"
         isValid={isValidSpy}
-      />
+      />,
     );
     t.equal(isValidSpy.args.length, 1);
   } catch (err) {
@@ -227,7 +227,7 @@ test('FileInput - drag/drop handlers', (t) => {
         name="test_file_input"
         label="File Name"
         onChange={onChangeSpy}
-      />
+      />,
     );
 
     t.false(component.state('isDraggingOver'));
@@ -263,7 +263,7 @@ test('FileInput - drag/drop handlers', (t) => {
 test('FileInput - focus/blur handlers', (t) => {
   try {
     const component = mount(
-      <FileInput name="test_file_input" label="File Name" />
+      <FileInput name="test_file_input" label="File Name" />,
     );
     t.false(component.state('isFocused'));
     component.instance().onFocus();

@@ -109,7 +109,7 @@ test('ItemizationWidget - determineError', (t) => {
   t.equals(
     component.state().thresholdWarning,
     'You have itemized more than your initial estimate so we have increased that total for you.',
-    'Should save the threshold warning to state.'
+    'Should save the threshold warning to state.',
   );
 
   const component2 = mount(<ItemizationWidget {...props2} />);
@@ -157,13 +157,13 @@ test('ItemizationWidget - sumTotal', (t) => {
   t.equals(
     component.instance().sumTotal(props.values),
     5050,
-    'Should sum the entire object.'
+    'Should sum the entire object.',
   );
 
   t.equals(
     component.instance().sumTotal(props.values[1].items),
     1050,
-    'Should sum the individual item.'
+    'Should sum the individual item.',
   );
 });
 

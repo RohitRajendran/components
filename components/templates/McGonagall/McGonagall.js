@@ -27,18 +27,18 @@ class McGonagall extends React.Component {
     this.stateMachine = Machine(
       props.stateConfig,
       props.stateOptions,
-      props.stateContext
+      props.stateContext,
     );
 
     // Finds the step that matches the initial step declared by state machine
     const firstStep = this.getMatchingStep(
       props.steps,
-      this.stateMachine.initialState
+      this.stateMachine.initialState,
     );
 
     const {currXState, activeCard, cardHistory} = this.navigateToLatestCard(
       [firstStep],
-      this.stateMachine.initialState
+      this.stateMachine.initialState,
     );
 
     this.state = {
@@ -67,7 +67,7 @@ class McGonagall extends React.Component {
     if (
       this.isFinalStep(
         this.props.stateConfig.states,
-        this.state.cardHistory[0].name
+        this.state.cardHistory[0].name,
       ) &&
       this.activeCard !== this.state.cardHistory[0].name
     ) {
@@ -172,7 +172,7 @@ class McGonagall extends React.Component {
     if (clearFuture) {
       // Find current position in card history
       const currIndex = this.state.cardHistory.findIndex(
-        (history) => history.name === this.activeCard
+        (history) => history.name === this.activeCard,
       );
 
       // Clear out future history
@@ -187,7 +187,7 @@ class McGonagall extends React.Component {
         ...payload,
         ...updatedPayloadValues,
       },
-      {...this.state.currXState.context}
+      {...this.state.currXState.context},
     );
 
     // Get the side-effect actions to execute
@@ -230,7 +230,7 @@ class McGonagall extends React.Component {
     this.navigateToStep(
       this.activeCard !== this.state.currXState.value && !clearFuture
         ? this.state.currXState.value
-        : newState.value
+        : newState.value,
     );
     this.setState(updatedData);
   }
@@ -344,7 +344,7 @@ class McGonagall extends React.Component {
     // On submit will send data to state machine and update
     const onSubmit = (
       e, // Have to include because cards have to support Hogwarts passing through event
-      outputDefaults
+      outputDefaults,
     ) =>
       this.updateStateMachine(step.outputs, outputDefaults, step.clearFuture);
 
@@ -363,12 +363,12 @@ class McGonagall extends React.Component {
     const editCard = () => {
       // Check for changes in active step
       const currStepOutputs = this.props.steps.find(
-        ({name}) => name === this.activeCard
+        ({name}) => name === this.activeCard,
       ).outputs;
       const currStepStatePayload = pick(this.state, currStepOutputs);
       const currStepContextPayload = pick(
         this.state.currXState.context,
-        currStepOutputs
+        currStepOutputs,
       );
 
       // Dont display confirmation dialog if no changes in active step or is currently at the review step
@@ -403,7 +403,7 @@ class McGonagall extends React.Component {
         stepIndex,
         title: step.title,
       },
-      this.state
+      this.state,
     );
   }
 
@@ -494,7 +494,7 @@ McGonagall.propTypes = {
       card: PropTypes.func.isRequired,
       /** The names of all the outputs for this card, required for cards that update values */
       outputs: PropTypes.arrayOf(PropTypes.string),
-    })
+    }),
   ).isRequired,
   /** Shows loading indicator in place of card button  */
   isFetching: PropTypes.bool,

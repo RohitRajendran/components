@@ -19,7 +19,7 @@ const CompletionScreen = ({
       'uic--justify-content-center': true,
       'uic--w-100': true,
     },
-    className
+    className,
   );
 
   return (

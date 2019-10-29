@@ -22,7 +22,7 @@ test('Modal - handleKeyPress', (t) => {
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
       </div>
-    </Modal>
+    </Modal>,
   );
 
   component.instance().handleKeyPress({keyCode: 12});
@@ -30,7 +30,7 @@ test('Modal - handleKeyPress', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     0,
-    'Should not toggle the modal as key code 12 is not enter.'
+    'Should not toggle the modal as key code 12 is not enter.',
   );
 
   component.instance().handleKeyPress({keyCode: 13});
@@ -38,7 +38,7 @@ test('Modal - handleKeyPress', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     1,
-    'Should toggle the modal as enter/return has been pressed.'
+    'Should toggle the modal as enter/return has been pressed.',
   );
 
   t.end();
@@ -60,7 +60,7 @@ test('Modal - handleClick', (t) => {
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
       </div>
-    </Modal>
+    </Modal>,
   );
 
   component.instance().handleClick();
@@ -86,7 +86,7 @@ test('Modal - handleEscapePress', (t) => {
       <div className="uic--modal-bottom">
         <p>Additional content to place at the bottom of the modal.</p>
       </div>
-    </Modal>
+    </Modal>,
   );
 
   component.instance().handleEscapePress({keyCode: 27});
@@ -114,7 +114,7 @@ test('Modal - handleDocumentClick', (t) => {
         <p>Additional content to place at the bottom of the modal.</p>
       </div>
     </Modal>,
-    {attachTo: div}
+    {attachTo: div},
   );
 
   component.instance().handleDocumentClick({
@@ -124,7 +124,7 @@ test('Modal - handleDocumentClick', (t) => {
   t.deepEquals(
     props.toggle.callCount,
     1,
-    'Should fire the toggle handler as the click is outside of the modal.'
+    'Should fire the toggle handler as the click is outside of the modal.',
   );
 
   t.end();
@@ -148,7 +148,7 @@ test('Modal - componentWillUnmount', (t) => {
         <p>Additional content to place at the bottom of the modal.</p>
       </div>
     </Modal>,
-    {attachTo: div}
+    {attachTo: div},
   );
 
   component.unmount();

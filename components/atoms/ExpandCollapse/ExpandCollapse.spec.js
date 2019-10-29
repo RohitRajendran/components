@@ -17,7 +17,7 @@ test('ExpandCollapse - openExpandItem', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       Just some contnet to appear in the expandy thing
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
   component.instance().openExpandItem();
   component.update();
@@ -29,7 +29,7 @@ test('ExpandCollapse - openExpandItem', (t) => {
       isValid: true,
       isRequired: false,
     },
-    'Should toggle the drawer open.'
+    'Should toggle the drawer open.',
   );
 
   t.true(props.onClick.callCount);
@@ -45,7 +45,7 @@ test('ExpandCollapse - openExpandItem', (t) => {
       isValid: true,
       isRequired: false,
     },
-    'Should toggle the drawer close.'
+    'Should toggle the drawer close.',
   );
 
   t.end();
@@ -53,7 +53,7 @@ test('ExpandCollapse - openExpandItem', (t) => {
 
 test('ExpandCollapse - render as uncollapsible', (t) => {
   const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
-    true
+    true,
   );
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
@@ -65,13 +65,13 @@ test('ExpandCollapse - render as uncollapsible', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       <p>Just some contnet to appear in the expandy thing</p>
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   t.equals(
     component.find('.uic--ec-controls').length,
     0,
-    'Hides collapse icon'
+    'Hides collapse icon',
   );
   t.equals(component.find('p').length, 1, 'Should drawer content');
 
@@ -92,7 +92,7 @@ test('ExpandCollapse - componentDidMount', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       Just some contnet to appear in the expandy thing
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   t.deepEquals(
@@ -103,7 +103,7 @@ test('ExpandCollapse - componentDidMount', (t) => {
       isValid: true,
       isRequired: false,
     },
-    'Should render with open as true.'
+    'Should render with open as true.',
   );
 
   t.end();
@@ -122,7 +122,7 @@ test('ExpandCollapse - componentDidUpdate', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       Just some contnet to appear in the expandy thing
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   component.setState({height: 100});
@@ -135,7 +135,7 @@ test('ExpandCollapse - componentDidUpdate', (t) => {
       isValid: true,
       isRequired: false,
     },
-    'Should update state with height from node'
+    'Should update state with height from node',
   );
 
   t.end();
@@ -153,7 +153,7 @@ test('ExpandCollapse - checkValidation', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       <input value="" required />
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   component.instance().checkValidation();
@@ -166,7 +166,7 @@ test('ExpandCollapse - checkValidation', (t) => {
       isValid: true,
       isRequired: true,
     },
-    'Should validate the items within the menu.'
+    'Should validate the items within the menu.',
   );
 
   t.end();
@@ -174,7 +174,7 @@ test('ExpandCollapse - checkValidation', (t) => {
 
 test('ExpandCollapse - componentWillUnmount', (t) => {
   const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
-    true
+    true,
   );
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
@@ -187,7 +187,7 @@ test('ExpandCollapse - componentWillUnmount', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       <input value="" required />
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   component.instance().componentWillUnmount();
@@ -201,7 +201,7 @@ test('ExpandCollapse - componentWillUnmount', (t) => {
 
 test('ExpandCollapse - handleResize', (t) => {
   const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
-    true
+    true,
   );
   const props = {
     label: 'There is a picture of a catbehind this expandy collapse menu',
@@ -215,7 +215,7 @@ test('ExpandCollapse - handleResize', (t) => {
   const component = mount(
     <ExpandCollapse {...props}>
       <input value="" required />
-    </ExpandCollapse>
+    </ExpandCollapse>,
   );
 
   component.instance().handleResize();

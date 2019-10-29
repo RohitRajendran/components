@@ -6,7 +6,7 @@ import MedicareCircleIllustrationReadMe from './MedicareCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/MedicareCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

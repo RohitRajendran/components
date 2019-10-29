@@ -91,7 +91,7 @@ class CardContentDescription extends Component {
         'uic--card-content-description': true,
         'uic--text-center': true,
       },
-      className
+      className,
     );
 
     return (

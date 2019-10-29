@@ -9,7 +9,7 @@ test('RamenCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the RamenCircleIllustration component.'
+    'Should load the RamenCircleIllustration component.',
   );
 
   t.end();
@@ -21,7 +21,7 @@ test('RamenCircleIllustration - renders the draft illustration', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the RamenCircleIllustration component.'
+    'Should load the RamenCircleIllustration component.',
   );
 
   t.end();
@@ -33,7 +33,7 @@ test('RamenCircleIllustration - renders the color illustration', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the RamenCircleIllustration component.'
+    'Should load the RamenCircleIllustration component.',
   );
 
   t.end();
@@ -47,7 +47,7 @@ test('RamenCircleIllustration - handleClick', (t) => {
   t.equals(
     component.state().illuminated,
     true,
-    'Should toggle illuminated to true.'
+    'Should toggle illuminated to true.',
   );
 
   t.end();

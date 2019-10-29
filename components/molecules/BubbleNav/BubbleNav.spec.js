@@ -11,19 +11,19 @@ test('BubbleNav - render', (t) => {
       options={[{value: 'Yo'}, {value: 'Dawg'}]}
       value="Dawg"
       onChange={onChangeSpy}
-    />
+    />,
   );
 
   t.equal(
     component.find('BubbleSelector').length,
     1,
-    'Display bubble selector'
+    'Display bubble selector',
   );
 
   t.equal(
     component.find('BubbleDropdown').length,
     1,
-    'Display bubble dropdown'
+    'Display bubble dropdown',
   );
 
   t.end();

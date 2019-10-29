@@ -6,7 +6,7 @@ import CreditCardCircleIllustrationReadMe from './CreditCardCircleIllustration.m
 
 const stories = storiesOf(
   'Atoms/Illustrations/CreditCardCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

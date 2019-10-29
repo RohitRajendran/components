@@ -9,7 +9,7 @@ test('ErrorFlagIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ErrorFlagIcon component.'
+    'Should load the ErrorFlagIcon component.',
   );
 
   t.end();

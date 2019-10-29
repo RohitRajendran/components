@@ -18,7 +18,7 @@ test('QuestionAnswer - renders', (t) => {
   t.equals(
     component.find('.uic--question-answer').length,
     1,
-    'Should load the QuestionAnswer component.'
+    'Should load the QuestionAnswer component.',
   );
 
   t.end();
@@ -43,7 +43,7 @@ test('QuestionAnswer - setExpanded', (t) => {
   t.equals(
     component.state().expanded,
     'item-1',
-    'Should set the state to item-1.'
+    'Should set the state to item-1.',
   );
 
   t.end();

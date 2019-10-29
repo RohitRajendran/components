@@ -84,7 +84,7 @@ class Navbar extends PureComponent {
     } else {
       if (isDocumentDefined()) {
         document.documentElement.classList.remove(
-          'uic--navbar__prevent-scroll'
+          'uic--navbar__prevent-scroll',
         );
         document.body.classList.remove('uic--navbar__prevent-scroll');
       }
@@ -190,7 +190,7 @@ class Navbar extends PureComponent {
       if (isDocumentDefined() && this.state.open && window.innerWidth >= 992) {
         // Handles the removal of the fixed class if the window is resized with the bar open.
         document.documentElement.classList.remove(
-          'uic--navbar__prevent-scroll'
+          'uic--navbar__prevent-scroll',
         );
         document.body.classList.remove('uic--navbar__prevent-scroll');
 
@@ -226,7 +226,7 @@ class Navbar extends PureComponent {
         'uic--w-100': fixed,
         'uic--d-flex': true,
       },
-      className
+      className,
     );
 
     const mobileWrapperClasses = classNames({
@@ -376,7 +376,7 @@ Navbar.propTypes = {
         PropTypes.func,
         PropTypes.string,
       ]),
-    })
+    }),
   ),
   /** Navigation items which appear on the right side of the bar. */
   rightNavigation: PropTypes.arrayOf(
@@ -403,7 +403,7 @@ Navbar.propTypes = {
         PropTypes.func,
         PropTypes.string,
       ]),
-    })
+    }),
   ),
 };
 

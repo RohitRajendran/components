@@ -32,7 +32,7 @@ stories.addDecorator(StateDecorator(store));
 const defaultProps = (
   isCollapsed = false,
   clearFuture = false,
-  isLatestCard = false
+  isLatestCard = false,
 ) => ({
   afterButton: text('afterButton'),
   beforeButton: text('beforeButton'),

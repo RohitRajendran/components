@@ -9,7 +9,7 @@ test('StarIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the StarIcon component.'
+    'Should load the StarIcon component.',
   );
 
   t.end();

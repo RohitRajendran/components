@@ -6,7 +6,7 @@ import MoneyCircleIllustrationReadMe from './MoneyCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/MoneyCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

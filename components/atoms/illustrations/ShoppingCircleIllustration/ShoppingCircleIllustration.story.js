@@ -6,7 +6,7 @@ import ShoppingCircleIllustrationReadMe from './ShoppingCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/ShoppingCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

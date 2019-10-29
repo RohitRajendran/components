@@ -21,7 +21,7 @@ test('TooltipInput - renders', (t) => {
   t.equals(
     component.find('Tooltip').length,
     1,
-    'Should load the TooltipInput component.'
+    'Should load the TooltipInput component.',
   );
 
   t.end();
@@ -64,7 +64,7 @@ test('TooltipInput - handleConfirmClick', (t) => {
   t.equals(
     props.onConfirm.callCount,
     1,
-    'Should call the handle confirm function.'
+    'Should call the handle confirm function.',
   );
 
   t.end();
@@ -89,7 +89,7 @@ test('TooltipInput - handleRemoveClick', (t) => {
   t.equals(
     props.onRemove.callCount,
     1,
-    'Should call the handle remove function.'
+    'Should call the handle remove function.',
   );
 
   t.end();
@@ -114,7 +114,7 @@ test('TooltipInput - handleKeyPress', (t) => {
       keyCode: 13,
     }),
     false,
-    'Should return false.'
+    'Should return false.',
   );
 
   t.equals(
@@ -122,7 +122,7 @@ test('TooltipInput - handleKeyPress', (t) => {
       keyCode: 50,
     }),
     true,
-    'Should return true.'
+    'Should return true.',
   );
 
   t.end();
@@ -147,7 +147,7 @@ test('TooltipInput - handleInputChange', (t) => {
   t.equals(
     component.state().tooltipInput,
     'value',
-    'Should update the input state.'
+    'Should update the input state.',
   );
 
   t.end();

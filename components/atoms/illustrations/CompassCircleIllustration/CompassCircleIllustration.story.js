@@ -6,7 +6,7 @@ import CompassCircleIllustrationReadMe from './CompassCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/CompassCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

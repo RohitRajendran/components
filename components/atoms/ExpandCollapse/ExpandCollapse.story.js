@@ -17,11 +17,11 @@ const defaultProps = (
   startDisabled,
   startOpen,
   invalid,
-  collapsible = true
+  collapsible = true,
 ) => ({
   label: text(
     'label',
-    'There is a picture of a cat behind this expandy collapse menu'
+    'There is a picture of a cat behind this expandy collapse menu',
   ),
   description: text('description', 'It is a very cute cat.'),
   disabled: boolean('disabled', startDisabled),

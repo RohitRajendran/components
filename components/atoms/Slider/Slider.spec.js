@@ -11,14 +11,14 @@ test('Slider - renders', (t) => {
       value={8}
       tooltipStickyVariant="green"
       onChange={spy()}
-    />
+    />,
   );
   t.pass('the component rendered!');
 
   t.equal(
     component.find('.uic--tooltip-sticky-hint.uic--show').length,
     0,
-    'The sticky dot should not be present.'
+    'The sticky dot should not be present.',
   );
 
   const component2 = shallow(
@@ -29,12 +29,12 @@ test('Slider - renders', (t) => {
       tooltipStickyHint={<div>This is a big deal</div>}
       tooltipStickyVariant="green"
       onChange={spy()}
-    />
+    />,
   );
   t.equal(
     component2.find('.uic--tooltip-sticky-hint.uic--show').length,
     1,
-    'The sticky hint should be present.'
+    'The sticky hint should be present.',
   );
 
   t.end();
@@ -60,12 +60,12 @@ test('Slider - onChange', (t) => {
   t.equals(
     props.onChange.args[0][0],
     'test',
-    'Should fire the onChange handler correctly when prompted.'
+    'Should fire the onChange handler correctly when prompted.',
   );
 
   t.equals(
     props.onChange.args[0][1],
     '5',
-    'Should fire the onChange handler correctly when prompted.'
+    'Should fire the onChange handler correctly when prompted.',
   );
 });

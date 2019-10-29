@@ -12,7 +12,7 @@ const OptionBox = ({variant, checked, disabled, className}) => {
       'uic--checked': checked,
       'uic--disabled': disabled,
     },
-    className
+    className,
   );
 
   return <span className={containerClasses} />;

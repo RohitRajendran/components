@@ -6,7 +6,7 @@ import PlantCircleIllustrationReadMe from './PlantCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/PlantCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

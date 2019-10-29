@@ -79,7 +79,7 @@ CheckboxCard.propTypes = {
         secondaryLabel: PropTypes.string,
         /** Disables the option. */
         disabled: PropTypes.bool,
-      })
+      }),
     ),
   }),
   /** Whether it should animate on mount */

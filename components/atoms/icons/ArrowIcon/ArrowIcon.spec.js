@@ -9,7 +9,7 @@ test('ArrowIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ArrowIcon component.'
+    'Should load the ArrowIcon component.',
   );
 
   t.end();

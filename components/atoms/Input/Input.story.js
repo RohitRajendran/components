@@ -46,7 +46,7 @@ export const inputMask = (defaultMask) =>
       'SmallPercentageWithDecimal',
       'PercentageWithDecimalAllowNegative',
     ],
-    defaultMask
+    defaultMask,
   );
 
 const defaultProps = ({

@@ -1,177 +1,207 @@
 // React-Table Styles
 @import '~react-table/react-table.css';
 
-.uic--react-table.ReactTable {
-  border: 1px solid $light-gray;
-  color: $slate;
+.uic--react-table {
+  .ReactTable {
+    border: 1px solid $light-gray;
+    color: $slate;
 
-  &.-highlight {
-    .rt-tbody {
-      .rt-tr {
-        &:not(.-padRow):hover {
-          background-color: $table-hover;
+    &.-highlight {
+      .rt-tbody {
+        .rt-tr {
+          &:not(.-padRow) {
+            &:hover {
+              background-color: $table-hover;
+            }
+          }
         }
-      }
-    }
-  }
-
-  .rt-th {
-    align-items: flex-end;
-    border: 0;
-    display: flex;
-    line-height: 1;
-    padding: 1rem 2rem;
-    text-align: left;
-    text-overflow: initial;
-    white-space: normal;
-  }
-
-  .rt-td {
-    border: 0;
-    padding: 1.3rem 2rem;
-  }
-
-  .rt-td,
-  .rt-th {
-    &.rt-expandable {
-      padding-left: 1.6rem;
-      padding-right: 0;
-    }
-  }
-
-  .rt-thead {
-    border-bottom: 1px solid $light-gray;
-
-    &.-header {
-      background-color: $table-alternate;
-      box-shadow: none;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    &.-filters {
-      input {
-        width: 100%;
-      }
-
-      .rt-th {
-        padding-bottom: 1rem;
-        padding-top: 1rem;
       }
     }
 
     .rt-th {
-      &.uic--text-right {
-        justify-content: flex-end;
-        text-align: right;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &.-cursor-pointer {
-        overflow: visible;
-
-        &:hover > div:first-child::after {
-          visibility: visible;
-        }
-
-        & > div:first-child {
-          bottom: 0;
-          display: inline-block;
-          overflow: visible;
-          position: relative;
-
-          &::after {
-            // Use a hidden placeholder to keep headers from shifting on state changes
-            content: '\25bc';
-            float: right;
-            font-size: 70%;
-            margin-right: -1rem;
-            position: relative;
-            top: 0.2rem;
-            visibility: hidden;
-          }
-        }
-
-        &.-sort-desc,
-        &.-sort-asc {
-          // Override default
-          box-shadow: none;
-          color: $midnight;
-
-          & > div:first-child::after {
-            visibility: visible;
-          }
-        }
-
-        &.-sort-desc {
-          & > div:first-child::after {
-            content: '\25b2';
-          }
-
-          &:hover > div:first-child::after {
-            content: '\25bc';
-          }
-        }
-
-        &.-sort-asc {
-          & > div:first-child::after {
-            content: '\25bc';
-            visibility: visible;
-          }
-
-          &:hover > div:first-child::after {
-            content: '\25b2';
-          }
-        }
-      }
-    }
-  }
-
-  .rt-tbody {
-    font-size: 1.6rem;
-
-    .rt-tr-group {
-      border-bottom: 1px solid $light-gray;
-
-      &:nth-child(odd) {
-        background-color: $white;
-      }
-
-      &:nth-child(even) {
-        background-color: $table-alternate;
-      }
-
-      &:last-child {
-        border-bottom: 0;
-      }
-    }
-  }
-
-  .rt-tfoot {
-    background-color: $midnight;
-    box-shadow: none;
-    color: $white;
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-transform: uppercase;
-
-    .rt-tr {
-      &:nth-child(even) {
-        background-color: $middle-purple;
-      }
+      align-items: flex-end;
+      border: 0;
+      display: flex;
+      line-height: 1;
+      padding: 1rem 2rem;
+      text-align: left;
+      text-overflow: initial;
+      white-space: normal;
     }
 
     .rt-td {
-      padding-bottom: 0.9rem;
-      padding-top: 0.9rem;
+      border: 0;
+      padding: 1.3rem 2rem;
     }
-  }
 
-  .rt-noData {
-    padding: 0.5rem;
+    .rt-td,
+    .rt-th {
+      &.rt-expandable {
+        padding-left: 1.6rem;
+        padding-right: 0;
+      }
+    }
+
+    .rt-thead {
+      border-bottom: 1px solid $light-gray;
+
+      &.-header {
+        background-color: $table-alternate;
+        box-shadow: none;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      &.-filters {
+        input {
+          width: 100%;
+        }
+
+        .rt-th {
+          padding-bottom: 1rem;
+          padding-top: 1rem;
+        }
+      }
+
+      .rt-th {
+        &.uic--text-right {
+          justify-content: flex-end;
+          text-align: right;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &.-cursor-pointer {
+          overflow: visible;
+
+          &:hover > div {
+            &:first-child {
+              &::after {
+                visibility: visible;
+              }
+            }
+          }
+
+          & > div {
+            &:first-child {
+              bottom: 0;
+              display: inline-block;
+              overflow: visible;
+              position: relative;
+
+              &::after {
+                // Use a hidden placeholder to keep headers from shifting on state changes
+                content: '\25bc';
+                float: right;
+                font-size: 70%;
+                margin-right: -1rem;
+                position: relative;
+                top: 0.2rem;
+                visibility: hidden;
+              }
+            }
+          }
+
+          &.-sort-desc,
+          &.-sort-asc {
+            // Override default
+            box-shadow: none;
+            color: $midnight;
+
+            & > div {
+              &:first-child {
+                &::after {
+                  visibility: visible;
+                }
+              }
+            }
+          }
+
+          &.-sort-desc {
+            & > div {
+              &:first-child {
+                &::after {
+                  content: '\25b2';
+                }
+              }
+            }
+
+            &:hover > div {
+              &:first-child {
+                &::after {
+                  content: '\25bc';
+                }
+              }
+            }
+          }
+
+          &.-sort-asc {
+            &:hover > div {
+              &:first-child {
+                &::after {
+                  content: '\25b2';
+                }
+              }
+            }
+
+            & > div {
+              &:first-child {
+                &::after {
+                  content: '\25bc';
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .rt-tbody {
+      font-size: 1.6rem;
+
+      .rt-tr-group {
+        border-bottom: 1px solid $light-gray;
+
+        &:nth-child(odd) {
+          background-color: $white;
+        }
+
+        &:nth-child(even) {
+          background-color: $table-alternate;
+        }
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    .rt-tfoot {
+      background-color: $midnight;
+      box-shadow: none;
+      color: $white;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      .rt-tr {
+        &:nth-child(even) {
+          background-color: $middle-purple;
+        }
+      }
+
+      .rt-td {
+        padding-bottom: 0.9rem;
+        padding-top: 0.9rem;
+      }
+    }
+
+    .rt-noData {
+      padding: 0.5rem;
+    }
   }
 }

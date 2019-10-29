@@ -12,7 +12,7 @@ import './Cabinet.scss';
 export const CabinetInterior = forwardRef(
   (
     {children, handleClick, handleKeyPress, show, header, visibleInPrint},
-    ref
+    ref,
   ) => {
     const coverClasses = classNames({
       'uic--cabinet-cover': true,
@@ -48,7 +48,7 @@ export const CabinetInterior = forwardRef(
         </aside>
       </Fragment>
     );
-  }
+  },
 );
 
 CabinetInterior.propTypes = {
@@ -99,7 +99,7 @@ class Cabinet extends Component {
       document.removeEventListener(
         'mousedown',
         this.handleDocumentClick,
-        false
+        false,
       );
       document.removeEventListener('keydown', this.handleEscapePress, false);
     }
@@ -181,7 +181,7 @@ class Cabinet extends Component {
       {
         'uic--cabinet-container': true,
       },
-      className
+      className,
     );
 
     return (

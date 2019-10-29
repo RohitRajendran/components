@@ -42,7 +42,7 @@ export const validateChildren = (children, startValidated = false) => {
               child.props.isValid(child.props.value);
           } else if (child.props.mask) {
             isChildValid = maskEnum[child.props.mask].mask.regex.test(
-              child.props.value
+              child.props.value,
             );
           } else if (child.props.isValid) {
             isChildValid = child.props.isValid(child.props.value);
@@ -67,7 +67,7 @@ export const validateChildren = (children, startValidated = false) => {
             (child.props.isValid && !child.props.isValid(child.props.value)) ||
             (child.props.mask &&
               !maskEnum[child.props.mask].mask.regex.test(
-                child.props.value
+                child.props.value,
               )))) ||
         (child.props.fetchStatus && child.props.isFetching)
       ) {
@@ -78,13 +78,13 @@ export const validateChildren = (children, startValidated = false) => {
       // Check if element uses follow ups and if so validate those followups
       if (child.props.options) {
         const option = child.props.options.find(
-          (opt) => opt.value === child.props.value
+          (opt) => opt.value === child.props.value,
         );
 
         if (option && option.followup) {
           const revalidated = validateChildren(
             [option.followup],
-            startValidated
+            startValidated,
           );
           isChildValid = isChildValid && revalidated.isChildValid;
           hasIncompleteRequiredFields =
@@ -94,7 +94,7 @@ export const validateChildren = (children, startValidated = false) => {
       }
       const revalidated = validateChildren(
         child.props.children,
-        startValidated
+        startValidated,
       );
       isChildValid = isChildValid && revalidated.isChildValid;
       hasIncompleteRequiredFields =
@@ -122,7 +122,7 @@ export const validateChildren = (children, startValidated = false) => {
 
         return accumulator;
       },
-      {isChildValid: true, hasIncompleteRequiredFields: false}
+      {isChildValid: true, hasIncompleteRequiredFields: false},
     );
   }
   return {isChildValid: true, hasIncompleteRequiredFields: false};
@@ -200,7 +200,7 @@ class CardShell extends Component {
 
     await this.props.onSubmit(
       e, // Gets passed through because of Hogwarts
-      this.props.outputDefaults
+      this.props.outputDefaults,
     );
 
     this.setState({
@@ -256,7 +256,7 @@ class CardShell extends Component {
         {
           cardContext: {showRequiredError: true},
         },
-        this.scrollToFirstErrorField
+        this.scrollToFirstErrorField,
       );
     } else {
       // Jiggle error message if user continues to click
@@ -323,7 +323,7 @@ class CardShell extends Component {
         'uic--card-error': hasError,
         'uic--position-relative': true,
       },
-      className
+      className,
     );
     const cardShellClass = classNames({
       'uic--mcgonagall-card-shell': true,

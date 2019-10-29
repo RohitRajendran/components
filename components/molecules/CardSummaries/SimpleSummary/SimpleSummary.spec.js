@@ -8,7 +8,7 @@ test('SimpleSummary - Renders', (t) => {
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
-    />
+    />,
   );
 
   t.equals(component.find('p').length, 2, 'Displays both answers');
@@ -25,13 +25,13 @@ test('SimpleSummary - Renders with customized link', (t) => {
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
       editCardText={editCardText}
-    />
+    />,
   );
 
   t.equals(
     component.find('Button').text(),
     editCardText,
-    'Modified edit text is displayed'
+    'Modified edit text is displayed',
   );
 
   t.end();

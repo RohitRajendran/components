@@ -32,7 +32,7 @@ const defaultProps = () => ({
   labelVariant: select(
     'labelVariant',
     ['link', 'icon', 'tertiary', 'secondary', 'primary'],
-    'link'
+    'link',
   ),
   config: {
     name: 'input',

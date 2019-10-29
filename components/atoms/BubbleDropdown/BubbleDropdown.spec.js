@@ -12,7 +12,7 @@ test('BubbleDropdown - render', (t) => {
       options={[{value: 'Yo', color: 'Red'}, {value: 'Dawg'}]}
       value="Dawg"
       onChange={onChangeSpy}
-    />
+    />,
   );
 
   // The child component has a weird name for some reason
@@ -21,25 +21,25 @@ test('BubbleDropdown - render', (t) => {
   t.deepEqual(
     select.prop('options'),
     [{label: 'Yo', value: 'Yo'}, {label: 'Dawg', value: 'Dawg'}],
-    'Pass correct options to Select component'
+    'Pass correct options to Select component',
   );
 
   t.deepEqual(
     select.prop('styles').control({}),
     {backgroundColor: colors.royal},
-    'Set correct background color for each option'
+    'Set correct background color for each option',
   );
 
   t.deepEqual(
     select.prop('styles').option({}),
     {backgroundColor: colors.royal, ':active': {backgroundColor: '#4d00ba'}},
-    'Set correct background color for each option'
+    'Set correct background color for each option',
   );
 
   t.deepEqual(
     select.prop('styles').menu({}),
     {backgroundColor: colors.royal},
-    'Set correct background color for dropdown menu'
+    'Set correct background color for dropdown menu',
   );
 
   component.instance().onChange({value: 'Yo', label: 'Yo'});

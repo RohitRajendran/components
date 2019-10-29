@@ -9,7 +9,7 @@ test('ThumbsUpIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the ThumbsUpIcon component.'
+    'Should load the ThumbsUpIcon component.',
   );
 
   t.end();

@@ -199,7 +199,7 @@ Ranking.propTypes = {
       movable: PropTypes.bool,
       /** Set to true if this is the only item in the list which is movable, and you'd like to always display the controls. */
       focus: PropTypes.bool,
-    })
+    }),
   ).isRequired,
   /** Handler which passes back the name, and the re-ordered array on change. */
   onChange: PropTypes.func.isRequired,

@@ -22,7 +22,7 @@ test('Checkboxes - Should be able to render a basic question.', (t) => {
       ]}
       value={['no']}
       onChange={stub()}
-    />
+    />,
   );
 
   t.equals(
@@ -31,7 +31,7 @@ test('Checkboxes - Should be able to render a basic question.', (t) => {
       .at(0)
       .text(),
     'Yes',
-    'Should find the yes label.'
+    'Should find the yes label.',
   );
 
   t.equals(
@@ -40,7 +40,7 @@ test('Checkboxes - Should be able to render a basic question.', (t) => {
       .at(1)
       .text(),
     'No',
-    'Should find the no label.'
+    'Should find the no label.',
   );
 });
 
@@ -61,7 +61,7 @@ test('Checkboxes - Should be able to display a secondaryLabel', (t) => {
       ]}
       value={['no']}
       onChange={stub()}
-    />
+    />,
   );
 
   t.true(component.find('.uic--label-value-secondary').length);
@@ -89,7 +89,7 @@ test('Checkboxes - Should be able to display a followup question', (t) => {
       ]}
       value={['yes']}
       onChange={stub()}
-    />
+    />,
   );
 
   t.true(component.find('.followup-question').length);
@@ -117,7 +117,7 @@ test('Checkboxes - Followup question should be hidden if the parent question is 
       ]}
       value={['no']}
       onChange={stub()}
-    />
+    />,
   );
 
   t.false(component.find('.followup-question').length);
@@ -158,7 +158,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
   t.deepEquals(
     props.onChange.args[0],
     ['yesNo', ['yes']],
-    'Should add yes to the array.'
+    'Should add yes to the array.',
   );
 
   component
@@ -174,7 +174,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
   t.deepEquals(
     props.onChange.args[1],
     ['yesNo', []],
-    'Should remove yes from the array.'
+    'Should remove yes from the array.',
   );
 
   t.end();

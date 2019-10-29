@@ -21,7 +21,7 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
   t.equals(
     component.find('style').length,
     1,
-    'Should include the component inline styles'
+    'Should include the component inline styles',
   );
 
   t.end();
@@ -43,7 +43,7 @@ test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid 
       .at(0)
       .prop('fontSize'),
     '4rem',
-    'Should have the correct font size'
+    'Should have the correct font size',
   );
 
   t.equals(
@@ -52,7 +52,7 @@ test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid 
       .find('text')
       .text(),
     'TBD',
-    'Should have the correct text indicating it is TBD'
+    'Should have the correct text indicating it is TBD',
   );
 
   t.end();

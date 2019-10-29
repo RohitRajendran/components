@@ -124,7 +124,7 @@ class TooltipInput extends PureComponent {
       {
         'uic--tooltip-input': true,
       },
-      className
+      className,
     );
 
     const buttonContainerClasses = classNames({

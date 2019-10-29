@@ -76,9 +76,9 @@ FormSummary.propTypes = {
           label: PropTypes.string.isRequired,
           /** The value of the answer to display. */
           value: PropTypes.string.isRequired,
-        })
+        }),
       ).isRequired,
-    })
+    }),
   ).isRequired,
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
   editCard: and([PropTypes.func, exclusive(['to'])]),

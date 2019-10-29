@@ -57,7 +57,7 @@ BubbleSelector.propTypes = {
       value: PropTypes.string.isRequired,
       /** Optional custom option color */
       color: PropTypes.string,
-    })
+    }),
   ).isRequired,
   /** Currently selected value */
   value: PropTypes.string.isRequired,

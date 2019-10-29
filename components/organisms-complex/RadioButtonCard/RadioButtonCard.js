@@ -77,7 +77,7 @@ RadioButtonCard.propTypes = {
         secondaryLabel: PropTypes.string,
         /** Disables the option. */
         disabled: PropTypes.bool,
-      })
+      }),
     ).isRequired,
   }),
   /** Whether it should animate on mount */

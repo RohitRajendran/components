@@ -22,7 +22,7 @@ store.subscribe(() => {
 });
 
 const defaultProps = (
-  options = [{value: 'Big', color: 'Red'}, {value: 'Small'}]
+  options = [{value: 'Big', color: 'Red'}, {value: 'Small'}],
 ) => ({
   options: object('Options', options),
   value: store.get('value'),

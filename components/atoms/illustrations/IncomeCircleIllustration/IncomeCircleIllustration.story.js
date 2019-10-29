@@ -6,7 +6,7 @@ import IncomeCircleIllustrationReadMe from './IncomeCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/IncomeCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

@@ -59,7 +59,7 @@ class Input extends Component {
 
       const isVisible = isInViewport(
         this.tooltipNode.current,
-        this.tooltipNode.current.scrollHeight
+        this.tooltipNode.current.scrollHeight,
       );
 
       // If the tooltip element is not in view it will automatically scroll the user to it.
@@ -182,7 +182,7 @@ class Input extends Component {
 
       if (mask.type === MaskTypes.currency && !onChange) {
         throw new Error(
-          'CurrencyMasks require explicit onChange handler for IE11'
+          'CurrencyMasks require explicit onChange handler for IE11',
         );
       }
       attrs.mask = mask.mask;
@@ -206,7 +206,7 @@ class Input extends Component {
           name,
           sanitize && mask && mask.sanitize
             ? e.target.value.replace(mask.sanitize, '')
-            : e.target.value
+            : e.target.value,
         );
     }
 
@@ -232,7 +232,7 @@ class Input extends Component {
               'uic--disabled': disabled,
               'uic--mcgonagall-input__tooltip-present': this.state.height !== 0,
             },
-            className
+            className,
           );
 
           const tooltipClasses = classNames({

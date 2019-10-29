@@ -6,7 +6,7 @@ import AccountCircleIllustrationReadMe from './AccountCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/AccountCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

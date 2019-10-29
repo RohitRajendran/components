@@ -11,7 +11,7 @@ test('OptionBox - Should be able to render a check', (t) => {
   t.equals(
     component1.find('.uic--option-box-check').length,
     1,
-    'Should render the check box with the correct classes.'
+    'Should render the check box with the correct classes.',
   );
 
   const component2 = mount(<OptionBox variant="radio" />);
@@ -19,7 +19,7 @@ test('OptionBox - Should be able to render a check', (t) => {
   t.equals(
     component2.find('.uic--option-box-radio').length,
     1,
-    'Should render the radio box with the correct classes.'
+    'Should render the radio box with the correct classes.',
   );
 });
 

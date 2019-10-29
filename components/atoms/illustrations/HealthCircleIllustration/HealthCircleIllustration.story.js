@@ -6,7 +6,7 @@ import HealthCircleIllustrationReadMe from './HealthCircleIllustration.mdx';
 
 const stories = storiesOf(
   'Atoms/Illustrations/HealthCircleIllustration',
-  module
+  module,
 );
 
 stories.addParameters({

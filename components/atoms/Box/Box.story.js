@@ -18,7 +18,7 @@ const defaultProps = (selected, disabled, showCheck) => ({
   label: text('label', 'Essentials'),
   description: text(
     'description',
-    'These are the basics: paying the bills and putting food on the table. They include your non-discretionary spending.'
+    'These are the basics: paying the bills and putting food on the table. They include your non-discretionary spending.',
   ),
   disabled: boolean('disabled', disabled),
   showCheck: boolean('showCheck', showCheck),

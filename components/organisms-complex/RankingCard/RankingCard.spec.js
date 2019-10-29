@@ -45,7 +45,7 @@ test('RankingCard - renders', (t) => {
       .first()
       .text(),
     'Question',
-    'Shows title'
+    'Shows title',
   );
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
@@ -54,7 +54,7 @@ test('RankingCard - renders', (t) => {
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
   t.equals(comp.find('Ranking').length, 1, 'Displays ranking component');
 
@@ -112,14 +112,14 @@ test('RankingCard - collapsed with focus answer', (t) => {
       .first()
       .text(),
     '2',
-    'Shows answer'
+    'Shows answer',
   );
   t.false(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should not show error state'
+    'Should not show error state',
   );
 
   t.end();
@@ -176,7 +176,7 @@ test('RankingCard - collapsed without focus answer', (t) => {
       .at(0)
       .text(),
     '1. Montezuma',
-    'Shows answer'
+    'Shows answer',
   );
   t.equals(
     comp
@@ -184,7 +184,7 @@ test('RankingCard - collapsed without focus answer', (t) => {
       .at(1)
       .text(),
     '2. Pica',
-    'Shows answer'
+    'Shows answer',
   );
   t.equals(
     comp
@@ -192,7 +192,7 @@ test('RankingCard - collapsed without focus answer', (t) => {
       .at(2)
       .text(),
     '3. Pixie',
-    'Shows answer'
+    'Shows answer',
   );
 });
 
@@ -248,14 +248,14 @@ test('RankingCard - latest collapsed', (t) => {
       .first()
       .text(),
     'Q',
-    'Shows incomplete summary'
+    'Shows incomplete summary',
   );
   t.true(
     comp
       .find('CardShell')
       .first()
       .prop('hasError'),
-    'Should show error state'
+    'Should show error state',
   );
 
   t.end();

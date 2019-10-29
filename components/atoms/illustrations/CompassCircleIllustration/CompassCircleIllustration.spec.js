@@ -9,7 +9,7 @@ test('CompassCircleIllustration - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the CompassCircleIllustration component.'
+    'Should load the CompassCircleIllustration component.',
   );
 
   t.end();
@@ -21,7 +21,7 @@ test('CompassCircleIllustration - renders and animates', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the animated CompassCircleIllustration component.'
+    'Should load the animated CompassCircleIllustration component.',
   );
 
   t.end();

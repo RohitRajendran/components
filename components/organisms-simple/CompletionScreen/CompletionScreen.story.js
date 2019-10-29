@@ -19,7 +19,7 @@ stories.addDecorator(withKnobs).add('default', () => (
     title={text('title', 'Congrats! You completed something.')}
     description={text(
       'description',
-      'This is where the optional description goes.'
+      'This is where the optional description goes.',
     )}
     actions={
       <Button type="submit" variant="secondary" light>

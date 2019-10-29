@@ -9,7 +9,7 @@ test('CategoryBubble - render', (t) => {
   t.equal(
     component.find('div').prop('style').backgroundColor,
     '#b30052',
-    'Correct background color'
+    'Correct background color',
   );
 
   t.equal(component.find('div').text(), 'Blogs', 'Correct text');

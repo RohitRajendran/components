@@ -11,7 +11,7 @@ test('Navbar - renders', (t) => {
   t.equals(
     component.find('nav').length,
     1,
-    'Should load the Navbar component.'
+    'Should load the Navbar component.',
   );
 
   t.end();
@@ -35,7 +35,7 @@ test('Navbar - toggleDrawer', (t) => {
   t.equals(
     component.state().open,
     false,
-    'Drawer open should start as false if not specified as such.'
+    'Drawer open should start as false if not specified as such.',
   );
 
   component.instance().toggleDrawer();
@@ -43,7 +43,7 @@ test('Navbar - toggleDrawer', (t) => {
   t.equals(
     component.state().open,
     true,
-    'Drawer open state should toggle to true.'
+    'Drawer open state should toggle to true.',
   );
   t.end();
 });
@@ -62,7 +62,7 @@ test('Navbar - toggleFixed', (t) => {
   t.equals(
     component.state().fixed,
     false,
-    'Unless specified the fixed state should start as false.'
+    'Unless specified the fixed state should start as false.',
   );
 
   component.instance().toggleFixed();
@@ -114,7 +114,7 @@ test('Navbar - toggleActive', (t) => {
   t.equals(
     component.state().open,
     false,
-    'Should close the drawer if it is open'
+    'Should close the drawer if it is open',
   );
 
   t.end();
@@ -173,7 +173,7 @@ test('Navbar - componentDidUpdate', (t) => {
   t.deepEquals(
     component.state().fixed,
     false,
-    'Should still not be fixed as the props never updated.'
+    'Should still not be fixed as the props never updated.',
   );
 });
 
@@ -197,7 +197,7 @@ test('Navbar - handleResize', (t) => {
   t.deepEquals(
     component.state().mobile,
     true,
-    'Should toggle to the mobile state.'
+    'Should toggle to the mobile state.',
   );
 
   t.end();
@@ -227,7 +227,7 @@ test('Navbar - handleResize (Close)', (t) => {
   t.deepEquals(
     component.state().open,
     false,
-    'Should toggle to the state to closed.'
+    'Should toggle to the state to closed.',
   );
 
   t.end();

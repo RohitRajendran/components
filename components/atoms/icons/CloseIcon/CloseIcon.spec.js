@@ -9,7 +9,7 @@ test('CloseIcon - renders', (t) => {
   t.equals(
     component.find('svg').length,
     1,
-    'Should load the CloseIcon component.'
+    'Should load the CloseIcon component.',
   );
 
   t.end();

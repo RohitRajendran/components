@@ -62,7 +62,7 @@ class Box extends PureComponent {
         'uic--box-hover': this.state.hover,
         'uic--box__disabled': disabled,
       },
-      className
+      className,
     );
 
     const BoxIcon = icon ? icon : null;

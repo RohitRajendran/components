@@ -85,7 +85,7 @@ class Modal extends Component {
       document.removeEventListener(
         'mousedown',
         this.handleDocumentClick,
-        false
+        false,
       );
       document.removeEventListener('keydown', this.handleEscapePress, false);
     }
@@ -149,7 +149,7 @@ class Modal extends Component {
       {
         'uic--modal-wrapper': true,
       },
-      className
+      className,
     );
 
     const containerClasses = classNames({

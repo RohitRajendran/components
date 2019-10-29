@@ -56,7 +56,7 @@ test('Ranking - Correctly re-orders the items array', (t) => {
         movable: true,
       },
     ],
-    'State should switch item 1 with 2.'
+    'State should switch item 1 with 2.',
   );
 
   t.end();
@@ -123,7 +123,7 @@ test('Ranking - onDragEnd', (t) => {
         movable: true,
       },
     ],
-    'State should switch item 1 with 2.'
+    'State should switch item 1 with 2.',
   );
 
   component.instance().onDragEnd({
@@ -154,7 +154,7 @@ test('Ranking - onDragEnd', (t) => {
         movable: true,
       },
     ],
-    'State return early and not modify the order.'
+    'State return early and not modify the order.',
   );
 });
 
@@ -216,7 +216,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
         movable: true,
       },
     ],
-    'Should modify the order.'
+    'Should modify the order.',
   );
 
   component
@@ -247,7 +247,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
         movable: true,
       },
     ],
-    'Should modify the order again.'
+    'Should modify the order again.',
   );
 });
 
@@ -309,7 +309,7 @@ test('Ranking - changeOrder key down simulation', (t) => {
         movable: true,
       },
     ],
-    'Should modify the order.'
+    'Should modify the order.',
   );
 
   component
@@ -340,6 +340,6 @@ test('Ranking - changeOrder key down simulation', (t) => {
         movable: true,
       },
     ],
-    'Should modify the order again.'
+    'Should modify the order again.',
   );
 });

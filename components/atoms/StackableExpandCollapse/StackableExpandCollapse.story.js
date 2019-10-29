@@ -15,7 +15,7 @@ stories.addParameters({
 const defaultProps = (
   defaultLabel = 'Click to Open Me',
   defaultIconColor = StackableExpandCollapse.defaultProps.fill,
-  defaultChildren = 'This was hidden before you opened me.'
+  defaultChildren = 'This was hidden before you opened me.',
 ) => ({
   label: text('label', defaultLabel),
   iconColor: color('iconColor', defaultIconColor),

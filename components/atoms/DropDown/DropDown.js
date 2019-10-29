@@ -41,7 +41,7 @@ class DropDown extends Component {
       // This is done so the DropDown can live inside containers with a hidden overflow property.
       this.portal.classList.add(
         'uic--mcgonagall-dropdown',
-        'uic--mcgonagall-dropdown-internal'
+        'uic--mcgonagall-dropdown-internal',
       );
       document.body.appendChild(this.portal);
     }
@@ -63,7 +63,7 @@ class DropDown extends Component {
     ) {
       this.setState(
         {touched: this.state.touched || this.props.isSubmitted},
-        this.validate
+        this.validate,
       );
     }
   }
@@ -139,12 +139,12 @@ class DropDown extends Component {
     if (this.props.getOptions) {
       this.props.onChange(
         this.props.name,
-        newValue && this.state.options[newValue.value] ? newValue.value : ''
+        newValue && this.state.options[newValue.value] ? newValue.value : '',
       );
     } else {
       this.props.onChange(
         this.props.name,
-        newValue && newValue.value ? newValue.value : ''
+        newValue && newValue.value ? newValue.value : '',
       );
     }
   }
@@ -161,7 +161,7 @@ class DropDown extends Component {
           ...this.state.options,
           ...options.reduce(
             (acc, {label, value}) => ({...acc, [value]: label}),
-            {}
+            {},
           ),
         },
       });
@@ -313,7 +313,7 @@ DropDown.propTypes = {
       label: PropTypes.string.isRequired,
       /** The value of the option. */
       value: PropTypes.string.isRequired,
-    })
+    }),
   ),
   /** The currently selected option in the dropdown.  */
   value: PropTypes.string,

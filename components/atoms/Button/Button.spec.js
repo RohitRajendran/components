@@ -13,7 +13,7 @@ test('Button - rendering', (t) => {
   t.equal(
     buttonComponent.find('button').length,
     1,
-    'should render as an html button'
+    'should render as an html button',
   );
 
   const linkComponent = mount(<Button to="/url">Testing</Button>);
@@ -27,7 +27,7 @@ test('Button - rendering with a linkComponent prop', (t) => {
   const linkComponent = mount(
     <Button to="/url" linkComponent={Button}>
       Testing
-    </Button>
+    </Button>,
   );
 
   t.equal(linkComponent.find('Button').length, 2, 'should render as a Link');
@@ -39,7 +39,7 @@ test('Button - disabling', (t) => {
   const buttonComponent = mount(
     <Button disabled onClick={() => null}>
       Testing
-    </Button>
+    </Button>,
   );
 
   t.true(
@@ -47,13 +47,13 @@ test('Button - disabling', (t) => {
       .find('button')
       .first()
       .prop('disabled'),
-    'should render as disabled button'
+    'should render as disabled button',
   );
 
   const linkComponent = mount(
     <Button disabled to="/url">
       Testing
-    </Button>
+    </Button>,
   );
 
   t.true(
@@ -61,7 +61,7 @@ test('Button - disabling', (t) => {
       .find('a')
       .first()
       .hasClass('disabled'),
-    'should include "disabled" class'
+    'should include "disabled" class',
   );
 });
 
@@ -75,13 +75,13 @@ test('Button - variant', (t) => {
       .find('button')
       .first()
       .hasClass('btn-primary'),
-    'should render a primary button'
+    'should render a primary button',
   );
 
   const variantIcon = mount(
     <Button variant="icon" title="Delete Me">
       <TrashIcon />
-    </Button>
+    </Button>,
   );
 
   t.true(
@@ -89,7 +89,7 @@ test('Button - variant', (t) => {
       .find('button')
       .first()
       .hasClass('btn-icon'),
-    'should render an icon button'
+    'should render an icon button',
   );
 
   const noVariant = mount(<Button>Hello</Button>);
@@ -99,7 +99,7 @@ test('Button - variant', (t) => {
       .find('button')
       .first()
       .hasClass('btn-primary'),
-    'should not have a variant class'
+    'should not have a variant class',
   );
 });
 
@@ -109,36 +109,36 @@ test('Button - loading', (t) => {
   const loadingPrimary = mount(
     <Button variant="primary" isLoading>
       Hello
-    </Button>
+    </Button>,
   );
 
   t.equals(
     loadingPrimary.find('Spinner').prop('fill'),
     colors.white,
-    'Shows white spinner'
+    'Shows white spinner',
   );
 
   const loadingSecondaryDark = mount(
     <Button variant="secondary" dark isLoading>
       Hello
-    </Button>
+    </Button>,
   );
 
   t.equals(
     loadingSecondaryDark.find('Spinner').prop('fill'),
     colors['super-dark'],
-    'Shows colored spinner'
+    'Shows colored spinner',
   );
 
   const loadingTertiaryLight = mount(
     <Button variant="tertiary" light isLoading>
       Hello
-    </Button>
+    </Button>,
   );
 
   t.equals(
     loadingTertiaryLight.find('Spinner').prop('fill'),
     colors['royal'],
-    'Shows colored spinner'
+    'Shows colored spinner',
   );
 });
