@@ -6,7 +6,7 @@ import {colors} from '~constants/js/colors';
 /**
  * Display the StarCircleIcon component.
  * @param {object} props - Component props
- * @returns {JSX.Component} The rendered component
+ * @returns {JSX.Element} The rendered component
  */
 const StarCircleIcon = ({width, height, fill, outerFill, className, style}) => (
   <svg
