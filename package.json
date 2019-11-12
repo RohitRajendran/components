@@ -27,7 +27,7 @@
     "url": "https://github.com/UnitedIncome/components.git"
   },
   "devDependencies": {
-    "@babel/core": "7.6.4",
+    "@babel/core": "7.7.2",
     "@babel/plugin-transform-runtime": "7.6.2",
     "@babel/plugin-transform-spread": "7.6.2",
     "@babel/preset-env": "7.6.3",
