@@ -95,6 +95,10 @@ $fast-transition-time: 0.2s;
   .uic--ec-aside {
     color: $slate;
     font-size: 1.4rem;
+
+    .uic--option-box-check {
+      top: 0.2rem;
+    }
   }
 }
 
