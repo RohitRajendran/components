@@ -17,7 +17,7 @@ Expander.propTypes = {
 /**
  * A component for displaying tabular data. The API matches that of react-table.
  * @param {object} props - Component props
- * @returns {JSX.Component} The rendered component
+ * @returns {JSX.Element} The rendered component
  */
 const DataTable = ({columns, data, ...props}) => (
   <ReactTable
