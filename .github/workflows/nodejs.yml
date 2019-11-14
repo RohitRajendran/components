@@ -21,4 +21,4 @@ jobs:
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
         PERCY_BRANCH: develop
-        PERCY_COMMIT: $GITHUB_SHA
+        PERCY_COMMIT: ${{ $GITHUB_SHA }}
