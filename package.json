@@ -90,7 +90,7 @@
     "react-text-mask": "5.4.3",
     "react-tooltip": "3.11.1",
     "sass-lint": "1.13.1",
-    "sass-lint-auto-fix": "0.18.1",
+    "sass-lint-auto-fix": "0.18.4",
     "sass-loader": "8.0.0",
     "sinon": "7.5.0",
     "style-loader": "1.0.0",
