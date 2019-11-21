@@ -10939,10 +10939,10 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-lint-auto-fix@0.18.4:
-  version "0.18.4"
-  resolved "https://registry.yarnpkg.com/sass-lint-auto-fix/-/sass-lint-auto-fix-0.18.4.tgz#06c2f48ad8ce2296d020e50950e59338d2f4506e"
-  integrity sha512-RiOkUL6mpBQwAUDz2lcmu/gmMGvHVxcz/SDeqYITHyLqhX2dcxmaGolM/+Euak8CKBzPfZ+Sc96dAQ9clYaxGA==
+sass-lint-auto-fix@0.18.5:
+  version "0.18.5"
+  resolved "https://registry.yarnpkg.com/sass-lint-auto-fix/-/sass-lint-auto-fix-0.18.5.tgz#78380fde3b9a6da70bbe76be25a515906f3519c2"
+  integrity sha512-oq7MCy12jh6nykDV63YKnkGFKAUHCgDmGwpckpli1jd2J71PFxFYJPaja1dhfVXMhLv0IZUtlz843BvMDBF+Hw==
   dependencies:
     "@sentry/node" "^5.7.0"
     chalk "^2.4.2"
