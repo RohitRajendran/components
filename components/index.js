@@ -15,6 +15,7 @@ import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import HouseIcon from '~components/atoms/icons/HouseIcon/HouseIcon';
 import PrinterIcon from '~components/atoms/icons/PrinterIcon/PrinterIcon';
 import PrinterCircleIcon from '~components/atoms/icons/PrinterCircleIcon/PrinterCircleIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
@@ -111,6 +112,7 @@ export {
   DiceIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
+  HouseIcon,
   Slider,
   BubbleDropdown,
   BubbleSelector,

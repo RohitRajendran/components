@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import HouseIcon from './HouseIcon';
+
+# HouseIcon
+
+The HouseIcon component creates a house icon (or multiple house icons) using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import HouseIcon from '@unitedincome/components/dist/HouseIcon';
+```
+
+```javascript
+import {HouseIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <HouseIcon height="3rem" width="3rem" houses={10} />
+</Preview>
+
+```javascript
+<HouseIcon height="3rem" width="3rem" houses={10} />
+```
+
+### Animating the houses
+
+You can animate the fill on the houses by providing a `highlight` prop to the component. If you want to display `100` houses, and highlight `50` of them you do so. The fill animation is disabled for Internet Explorer users.
+
+<Preview>
+  <HouseIcon height="3rem" width="3rem" houses={100} highlight={50} />
+</Preview>
+
+```javascript
+<HouseIcon height="3rem" width="3rem" houses={10} highlight={50} />
+```
+
+## Props 🔧
+
+<Props of={HouseIcon} />
