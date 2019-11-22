@@ -1,4 +1,5 @@
 // Atoms
+import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
 import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
@@ -105,6 +106,7 @@ import Confirm from '~components/utilities/Confirm/Confirm';
 import {colors} from '~constants/js/colors';
 
 export {
+  ItemizationBox,
   CheckIcon,
   CardContentDescription,
   ArrowLineIcon,
