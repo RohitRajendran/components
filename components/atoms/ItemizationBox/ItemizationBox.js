@@ -15,7 +15,7 @@ class ItemizationBox extends PureComponent {
     super(props);
 
     this.state = {
-      height: props.isCollapsed ? 0 : 'auto',
+      height: props.isCollapsed ? 0 : '100%',
     };
 
     this.contentNode = createRef();
@@ -86,7 +86,7 @@ class ItemizationBox extends PureComponent {
           {(animationStyle) => (
             <animated.div style={{overflow: 'hidden', ...animationStyle}}>
               <div
-                className="uic--itemization-box__itemizations"
+                className="uic--itemization-box__itemizations uic--h-100"
                 ref={this.contentNode}
               >
                 {values.map((item, index) => {

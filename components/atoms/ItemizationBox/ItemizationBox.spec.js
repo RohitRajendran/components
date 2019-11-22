@@ -173,7 +173,7 @@ test('ItemizationBox - componentDidUpdate', (t) => {
 
   t.deepEquals(
     component.state(),
-    {height: 'auto'},
+    {height: '100%'},
     'The collapsed state should be false',
   );
 
