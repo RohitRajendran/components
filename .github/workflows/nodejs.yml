@@ -20,3 +20,4 @@ jobs:
       run: yarn snapshot
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        PERCY_BRANCH: develop

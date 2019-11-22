@@ -37,7 +37,7 @@ To import all components together, you can import more simply:
 import {Button, CardShell, Slider} from '@unitedincome/components';
 ```
 
-You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes a prefixed grid layout and utility classes from [Bootstrap](https://getbootstrap.com/).
+You will also need to import the relevant CSS files. You have the choice between importing them individually into your style manifest or in bulk. For both methods you'll need to also include the `util.css` file which includes prefixed grid layout and utility classes from [Bootstrap](https://getbootstrap.com/). These classes are prefixed with `uic--` and can be used like so: `uic--col-md-6`.
 
 For individual imports you can use the following:
 

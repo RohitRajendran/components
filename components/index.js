@@ -1,4 +1,5 @@
 // Atoms
+import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
 import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
@@ -15,6 +16,7 @@ import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
+import HouseIcon from '~components/atoms/icons/HouseIcon/HouseIcon';
 import PrinterIcon from '~components/atoms/icons/PrinterIcon/PrinterIcon';
 import PrinterCircleIcon from '~components/atoms/icons/PrinterCircleIcon/PrinterCircleIcon';
 import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
@@ -104,6 +106,7 @@ import Confirm from '~components/utilities/Confirm/Confirm';
 import {colors} from '~constants/js/colors';
 
 export {
+  ItemizationBox,
   CheckIcon,
   CardContentDescription,
   ArrowLineIcon,
@@ -111,6 +114,7 @@ export {
   DiceIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
+  HouseIcon,
   Slider,
   BubbleDropdown,
   BubbleSelector,
