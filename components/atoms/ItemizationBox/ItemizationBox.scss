@@ -1,4 +1,5 @@
 .uic--itemization-box {
+  background-color: $table-alternate;
   border: 1px solid $light-gray;
 
   .uic--itemization-box__total {
@@ -19,7 +20,6 @@
 
   .uic--itemization-box__itemizations {
     @include source-sans-pro(1.6rem);
-    background-color: $table-alternate;
     border-top: 1px solid $light-gray;
     color: $slate;
 
