@@ -3,6 +3,7 @@ import {
   cleanCurrency,
   formatCurrency,
   formatCurrencyNoDecimal,
+  formatEllipsis,
 } from './FormatUtils';
 
 test('FormatUtils - cleanCurrency', (t) => {
@@ -33,6 +34,22 @@ test('FormatUtils - formatCurrencyNoDecimal', (t) => {
     formatCurrencyNoDecimal('2000.12'),
     '$2,000',
     'Should format the currency without a decimal place.',
+  );
+  t.end();
+});
+
+test('FormatUtils - formatEllipsis', (t) => {
+  const charLimit = 25;
+
+  t.equal(
+    formatEllipsis('short title', charLimit),
+    'short title',
+    'Should return title if it is under limit',
+  );
+  t.equal(
+    formatEllipsis('This is a very, very long string', charLimit).length,
+    charLimit,
+    'Should truncate string appropirately',
   );
   t.end();
 });

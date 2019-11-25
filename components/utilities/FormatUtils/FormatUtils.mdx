@@ -41,3 +41,15 @@ FormatUtils.formatCurrencyNoDecimal(2000);
 
 // $2,000
 ```
+
+### formatEllipsis
+
+Formats a string into a truncated version based on a specified character limit.
+
+```javascript
+import {FormatUtils} from '@unitedincome/components';
+
+FormatUtils.formatEllipsis('This is a very, very long string', 25);
+
+// This is a very, very lon...
+```

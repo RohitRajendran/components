@@ -43,3 +43,13 @@ export const formatCurrencyNoDecimal = (numString) => {
     },
   });
 };
+
+/**
+ * Format strings of arbitrary length with ellipsis
+ * @param {String} str - String to format
+ * @param {Number} charLimit - Number of charactes to limit str to
+ * @returns {String} Formatted str
+ */
+export const formatEllipsis = (str, charLimit) => {
+  return str.length <= charLimit ? str : `${str.substring(0, charLimit - 1)}…`;
+};

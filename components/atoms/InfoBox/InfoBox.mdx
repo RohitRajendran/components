@@ -1,0 +1,56 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import InfoBox from './InfoBox';
+
+# InfoBox
+
+The InfoBox component renders a card which can be used to display custom
+information to a user in a convenient format.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import InfoBox from '@unitedincome/components/dist/InfoBox';
+```
+
+```javascript
+import {InfoBox} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <InfoBox
+    title="Giannis - 401k"
+    imageURL="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg"
+    content="Here is some content"
+    footer="Some Funky (Optional) Footer!"
+  />
+</Preview>
+
+```javascript
+<InfoBox
+  title="Giannis - 401k"
+  imageURL="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg"
+  content="Here is some content"
+  footer="Some Funky (Optional) Footer!"
+/>
+```
+
+## Styling Content as Formatted Rows 👔
+
+While InfoBox gives you the flexibility to pass in any custom content and/or footer and have them be rendered
+to your speicifications, it also has built-in logic that allows you to create neatly formatted rows of
+`(label, value)` pairs. The [InfoBoxFormattedRows](/?path=/docs/atoms-infoboxformattedrows--default) component
+allows you to easily pass in your data as an array of JS objects and have it render neatly within the InfoBox component.
+Additionally, it should be noted that when you add footers we automatically create a light gray `<hr />` divider between
+the card content and the footer.
+
+## Props 🔧
+
+<Props of={InfoBox} />
+
+## Related ✨
+
+[InfoBoxFormattedRows](/?path=/story/atoms-infoboxformattedrows--default)
