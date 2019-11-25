@@ -74,8 +74,6 @@ class InfoBox extends Component {
       content,
       imageURL,
       footer,
-      onClick,
-      selectable,
       className,
       style,
     } = this.props;
@@ -83,12 +81,8 @@ class InfoBox extends Component {
     const containerClass = classNames(
       {
         'uic--info-box': true,
-      },
-      {
         'uic--info-box-expand': this.state.showFullTitle,
-      },
-      {
-        'uic--info-box-selectable': selectable,
+        'uic--info-box-selectable': this.props.onClick,
       },
       className,
     );
@@ -101,7 +95,7 @@ class InfoBox extends Component {
       imgStyle.backgroundImage = `url(${imageURL})`;
     }
 
-    if (onClick) {
+    if (this.props.onClick) {
       containerProps.onClick = this.handleClick;
       containerProps.role = 'button';
       containerProps.tabIndex = 0;
@@ -116,11 +110,11 @@ class InfoBox extends Component {
           onMouseEnter={this.handleMouseOver}
           onMouseLeave={this.handleMouseOut}
         >
-          <h2 className="uic--info-box-title-text uic--header-2-text">
+          <div className="uic--info-box-title-text uic--header-2-text">
             {this.state.showFullTitle
               ? title
               : formatEllipsis(title, titleCharLimit)}
-          </h2>
+          </div>
         </div>
         <div className="uic--info-box-information-area">
           {content}
@@ -147,8 +141,6 @@ InfoBox.propTypes = {
   imageURL: PropTypes.string,
   /** Optional footer JSX to be displayed below the content. */
   footer: PropTypes.node,
-  /** Optionally make the InfoBox card appear clickable/selectable. */
-  selectable: PropTypes.bool,
   /** Additional class names to apply to the container. */
   className: PropTypes.string,
   /** Additional style properties to apply to the container. */

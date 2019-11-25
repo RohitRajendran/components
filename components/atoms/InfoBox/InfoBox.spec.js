@@ -77,7 +77,7 @@ test('InfoBox - state and hover updated correctly', (t) => {
   const component = shallow(<InfoBox {...testProps} />);
 
   t.equal(
-    component.find('h2').prop('children'),
+    component.find('.uic--info-box-title-text').prop('children'),
     'This is a very, very lon…',
     'Shortened title should be displayed',
   );
@@ -91,7 +91,7 @@ test('InfoBox - state and hover updated correctly', (t) => {
     'Should apply uic--info-box-expand on hover',
   );
   t.equal(
-    component.find('h2').prop('children'),
+    component.find('.uic--info-box-title-text').prop('children'),
     'This is a very, very long title',
     'Full title should be displayed on hover',
   );
