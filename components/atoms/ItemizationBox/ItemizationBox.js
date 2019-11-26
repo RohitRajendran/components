@@ -134,7 +134,7 @@ class ItemizationBox extends PureComponent {
                   );
                 })}
 
-                <div className="uic--itemization-box__button uic--text-left">
+                <div className="uic--itemization-box__button uic--text-left uic--position-absolute">
                   {buttonOptions && (
                     <Button variant="link" to={buttonOptions.path} light>
                       {buttonOptions.label}
