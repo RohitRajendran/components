@@ -1,0 +1,45 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import InfoIcon from './InfoIcon';
+
+# InfoIcon
+
+The InfoIcon component creates an generic information icon using inline SVG.
+This icon is typically used to for tooltips or help indicators.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import InfoIcon from '@unitedincome/components/dist/InfoIcon';
+```
+
+```javascript
+import {InfoIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <InfoIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<InfoIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <InfoIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<InfoIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={InfoIcon} />

@@ -25,6 +25,8 @@ import Ranking from '~components/atoms/Ranking/Ranking';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
 import ExpandCollapse from '~components/atoms/ExpandCollapse/ExpandCollapse';
 import ItemizationWidget from '~components/atoms/ItemizationWidget/ItemizationWidget';
+import InfoBox from '~components/atoms/InfoBox/InfoBox';
+import InfoBoxFormattedRows from '~components/atoms/InfoBoxFormattedRows/InfoBoxFormattedRows';
 import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
 import AccountCircleIllustration from '~components/atoms/illustrations/AccountCircleIllustration/AccountCircleIllustration';
 import GiftCircleIllustration from '~components/atoms/illustrations/GiftCircleIllustration/GiftCircleIllustration';
@@ -146,6 +148,8 @@ export {
   TrashIcon,
   ArrowIconEllipsis,
   Ranking,
+  InfoBox,
+  InfoBoxFormattedRows,
   OptionBox,
   Checkboxes,
   detectBrowser,

@@ -56,7 +56,7 @@ class DollarCircleIllustration extends PureComponent {
           id={`${id}-illuminated`}
           viewBox="0 0 140 140"
           xmlns="http://www.w3.org/2000/svg"
-          xmlnsClink="http://www.w3.org/1999/xlink"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
         >
           <pattern
             id={`${id}-a`}

@@ -1,6 +1,10 @@
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
-import {formatCurrency, formatCurrencyNoDecimal} from './FormatUtils';
+import {
+  formatCurrency,
+  formatCurrencyNoDecimal,
+  formatEllipsis,
+} from './FormatUtils';
 import FormatUtilsReadMe from './FormatUtils.mdx';
 
 const stories = storiesOf('Utilities/FormatUtils', module);
@@ -25,5 +29,17 @@ const FormatCurrencyNoDecimal = () => (
   </Fragment>
 );
 
+const FormatEllipsis = () => (
+  <Fragment>
+    <h1>formatEllipsis</h1>
+    <p>With a 25 character limit, we can easily turn</p>
+    <p>
+      &#39;This is a very, very long string&#39; into &#39;
+      {formatEllipsis('This is a very, very long string', 25)}&#39;
+    </p>
+  </Fragment>
+);
+
 stories.add('formatCurrency', () => <FormatCurrency />);
 stories.add('formatCurrencyNoDecimal', () => <FormatCurrencyNoDecimal />);
+stories.add('formatEllipsis', () => <FormatEllipsis />);
