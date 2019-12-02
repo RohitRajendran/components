@@ -43,7 +43,7 @@ const defaultProps = (
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
-  moreDetails: object('moreDetails', {
+  moreDetails: {
     label: 'Show more details',
     cabinetContent: (
       <div>
@@ -52,7 +52,7 @@ const defaultProps = (
       </div>
     ),
     header: 'Montezuma is the best cat',
-  }),
+  },
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,

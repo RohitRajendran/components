@@ -26,7 +26,7 @@ store.subscribe(() => {
 });
 
 const defaultProps = (variant, formName) => ({
-  tooltipStickyVariant: select('Variant', ['green', 'purple', null], variant),
+  tooltipStickyVariant: select('variant', ['green', 'purple', null], variant),
   leftAnnotate: text('leftAnnotate', 'Less Cats'),
   rightAnnotate: text('rightAnnotate', 'More Cats'),
   tooltip: text('tooltip', 'How many cats would you like?'),

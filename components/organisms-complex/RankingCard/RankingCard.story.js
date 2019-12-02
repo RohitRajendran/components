@@ -1,5 +1,5 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {boolean, object, text} from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
 import RankingCard from './RankingCard';
@@ -63,7 +63,7 @@ const defaultProps = (
   isLatestCard: boolean('isLatestCard', isLatestCard),
   isFetching: boolean('isFetching', false),
   loading: boolean('loading', false),
-  moreDetails: object('moreDetails', {
+  moreDetails: {
     label: 'Show more details',
     cabinetContent: (
       <div>
@@ -72,7 +72,7 @@ const defaultProps = (
       </div>
     ),
     header: 'Montezuma is the best cat',
-  }),
+  },
   shortTitle: 'Question',
   title: text('title', 'This is where the question goes.'),
   editCard: () => true,

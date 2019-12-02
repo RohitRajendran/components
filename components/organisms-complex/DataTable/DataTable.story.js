@@ -63,8 +63,8 @@ const defaultData = [
 ];
 
 const defaultProps = (columns = defaultColumns, data = defaultData) => ({
-  data: object('Data', data),
-  columns: object('Columns', columns),
+  data: object('data', data),
+  columns: object('columns', columns),
 });
 
 stories.add('default', () => <DataTable {...defaultProps()} />);

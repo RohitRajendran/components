@@ -13,7 +13,7 @@ stories.addParameters({
 });
 
 const defaultProps = (defaultVariant, checked) => ({
-  variant: select('Variant', ['check', 'radio'], defaultVariant),
+  variant: select('variant', ['check', 'radio'], defaultVariant),
   checked: boolean('checked', checked),
   disabled: boolean('disabled', false),
 });

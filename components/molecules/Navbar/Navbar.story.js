@@ -1,4 +1,4 @@
-import {boolean, number, object} from '@storybook/addon-knobs';
+import {boolean, number} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
 import {catIpsum} from '~constants/js/ipsum';
@@ -140,7 +140,7 @@ const defaultProps = ({isOpen, isFixed, isStatic}) => ({
       />
     </svg>
   ),
-  leftNavigation: object('leftNavigation', [
+  leftNavigation: [
     {
       label: 'How We Help',
       link: '/help',
@@ -158,9 +158,8 @@ const defaultProps = ({isOpen, isFixed, isStatic}) => ({
       label: 'Library',
       link: '/library',
     },
-  ]),
-
-  rightNavigation: object('rightNavigation', [
+  ],
+  rightNavigation: [
     {
       label: 'Login',
       link: '/login',
@@ -171,7 +170,7 @@ const defaultProps = ({isOpen, isFixed, isStatic}) => ({
       variant: 'secondary',
       hideStatic: true,
     },
-  ]),
+  ],
   isStatic: boolean('isStatic', isStatic),
   isFixed: boolean('isFixed', isFixed),
   isOpen: boolean('isOpen', isOpen),

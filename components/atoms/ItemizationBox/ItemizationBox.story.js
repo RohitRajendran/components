@@ -21,10 +21,10 @@ stories.addParameters({
 
 const defaultProps = (values, collapsed) => ({
   label: text('label', 'Expense Totals'),
-  buttonOptions: object('buttonOptions', {
+  buttonOptions: {
     label: 'View External Accounts',
     path: 'https://jamesiv.es',
-  }),
+  },
   values: object('values', values),
   isCollapsed: boolean('isCollapsed', collapsed),
 });
