@@ -63,6 +63,7 @@ import ThumbsDownIcon from '~components/atoms/icons/ThumbsDownIcon/ThumbsDownIco
 import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon';
 import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon';
 import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
+import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon';
 
 // Molecules
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
@@ -110,6 +111,7 @@ import {colors} from '~constants/js/colors';
 export {
   ItemizationBox,
   CheckIcon,
+  InfoIcon,
   CardContentDescription,
   ArrowLineIcon,
   CompassCircleIllustration,
