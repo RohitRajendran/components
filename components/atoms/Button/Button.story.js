@@ -89,9 +89,9 @@ const defaultProps = (
     // Icon buttons are meant to display components,
     // but the text field is not applicable for components.
     defaultVariant === 'icon' ? defaultText : text('Button Text', defaultText),
-  disabled: boolean('Disabled', false),
+  disabled: boolean('disabled', false),
   isLoading: boolean('isLoading', false),
-  title: text('Title Text', defaultTitle),
+  title: text('title', defaultTitle),
 });
 
 for (const permutation of permutations) {
