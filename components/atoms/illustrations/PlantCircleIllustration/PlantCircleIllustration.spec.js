@@ -1,7 +1,19 @@
-import {mount, shallow} from 'enzyme';
-import React from 'react';
+import {shallow} from 'enzyme';
 import test from 'tape';
-import PlantCircleIllustration from './PlantCircleIllustration';
+import {stub} from 'sinon';
+
+/* This order is important. useState must be stubbed before we import the component.
+ We also need to require React instead of importing it. */
+const React = require('react');
+const setStateStub = stub();
+
+stub(React, 'useState').callsFake(() =>
+  // The default state gets assigned on the left, and the stubbed setState on the right.
+  [false, setStateStub],
+);
+
+/* The component must be imported using require instead of import. */
+const PlantCircleIllustration = require('./PlantCircleIllustration').default;
 
 test('PlantCircleIllustration - renders', (t) => {
   const component = shallow(<PlantCircleIllustration id="foo" fill="white" />);
@@ -58,15 +70,11 @@ test('PlantCircleIllustration - renders illuminated', (t) => {
 });
 
 test('PlantCircleIllustration - handleClick', (t) => {
-  const component = mount(<PlantCircleIllustration fill="white" />);
+  const component = shallow(<PlantCircleIllustration id="foo" fill="white" />);
 
-  component.instance().handleClick();
+  component.simulate('click');
 
-  t.equals(
-    component.state().illuminated,
-    true,
-    'Should toggle illuminated to true.',
-  );
+  t.equals(setStateStub.args[0][0], true, 'Should toggle illuminated to true.');
 
   t.end();
 });
