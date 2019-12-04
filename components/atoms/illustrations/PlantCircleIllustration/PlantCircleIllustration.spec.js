@@ -1,18 +1,18 @@
 import {shallow} from 'enzyme';
 import test from 'tape';
-import {stub} from 'sinon';
+const sinon = require('sinon')
 
 /* This order is important. useState must be stubbed before we import the component.
  We also need to require React instead of importing it. */
 const React = require('react');
-const setStateStub = stub();
+const setStateStub = sinon.stub();
 
-stub(React, 'useState').callsFake(() =>
-  // The default state gets assigned on the left, and the stubbed setState on the right.
-  [false, setStateStub],
-);
+sinon.stub(React, 'useState').callsFake(() => {
+  // The default state value is on the left, and the setState stub is on the right.
+  return [false, setStateStub];
+});
 
-/* The component must be imported using require instead of import. */
+/* The component must be imported using require().default instead of import. */
 const PlantCircleIllustration = require('./PlantCircleIllustration').default;
 
 test('PlantCircleIllustration - renders', (t) => {
