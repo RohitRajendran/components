@@ -97,7 +97,14 @@ class ItemizationWidget extends PureComponent {
 
   /** @inheritdoc */
   render() {
-    const {title, values, totalSuffix, className, style} = this.props;
+    const {
+      title,
+      values,
+      totalSuffix,
+      className,
+      style,
+      totalLabel,
+    } = this.props;
     const completeTotal = formatCurrencyNoDecimal(this.sumTotal(values));
 
     const containerClasses = classNames(
@@ -262,7 +269,9 @@ class ItemizationWidget extends PureComponent {
                     /{totalSuffix}
                   </span>
                 )}
-                <div className="uic--itemization-widget__label">Total</div>
+                <div className="uic--itemization-widget__label">
+                  {totalLabel}
+                </div>
               </div>
             </div>
           </animated.div>
@@ -281,6 +290,8 @@ ItemizationWidget.propTypes = {
   className: PropTypes.string,
   /** Optional inline styles to apply to the container. */
   style: PropTypes.shape(PropTypes.string),
+  /** Overrides the total label */
+  totalLabel: PropTypes.string,
   /** An array of items to itemize. */
   values: PropTypes.arrayOf(
     PropTypes.shape({
@@ -350,6 +361,10 @@ ItemizationWidget.propTypes = {
       }),
     }),
   ).isRequired,
+};
+
+ItemizationWidget.defaultProps = {
+  totalLabel: 'Total',
 };
 
 export default ItemizationWidget;
