@@ -1,4 +1,4 @@
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
@@ -173,7 +173,7 @@ test('ItemizationBox - componentDidUpdate', (t) => {
 
   t.deepEquals(
     component.state(),
-    {height: '100%'},
+    {isAnimating: true, height: '100%'},
     'The collapsed state should be false',
   );
 
@@ -182,9 +182,53 @@ test('ItemizationBox - componentDidUpdate', (t) => {
   // Height is 0 here due to how the components render in Enzyme.
   t.deepEquals(
     component.state(),
-    {height: 0},
+    {isAnimating: true, height: 0},
     'The collapsed state should be true',
   );
+
+  t.end();
+});
+
+test('ItemizationBox - onAnimationStart and onAnimationEnd', (t) => {
+  t.plan(3);
+
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    values: [
+      {
+        label: 'Montezumas Cat Food',
+        value: -900000,
+      },
+      {
+        label: 'Spice 6 Palak Paneer',
+        value: 200,
+      },
+      {
+        label:
+          'Things that I really should not spend my money on but I do because I do not really care is this long enough yet because I want a really long title',
+        value: 600,
+      },
+      {
+        label:
+          'Things that I really should not spend my money on but I do because I do not really care is this long enough yet because I want a really long title',
+        value: 600,
+      },
+    ],
+    label: 'External Accounts',
+  };
+
+  const component = shallow(<ItemizationBox {...props} />);
+
+  t.equals(component.state().isAnimating, false, 'Should not be animating');
+
+  component.instance().onAnimationStart();
+
+  t.equals(component.state().isAnimating, true, 'Should be animating');
+
+  component.instance().onAnimationEnd();
+
+  t.equals(component.state().isAnimating, false, 'Should not be animating');
 
   t.end();
 });

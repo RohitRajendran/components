@@ -15,10 +15,13 @@ class ItemizationBox extends PureComponent {
     super(props);
 
     this.state = {
+      isAnimating: false,
       height: props.isCollapsed ? 0 : '100%',
     };
 
     this.contentNode = createRef();
+    this.onAnimationEnd = this.onAnimationEnd.bind(this);
+    this.onAnimationStart = this.onAnimationStart.bind(this);
   }
 
   /** @inheritdoc */
@@ -41,10 +44,33 @@ class ItemizationBox extends PureComponent {
     return values.reduce((accumulator, obj) => accumulator + obj.value || 0, 0);
   }
 
+  /**
+   * Runs on start of animation to remove animation ended class
+   * @returns {undefined}
+   */
+  onAnimationStart() {
+    this.setState({isAnimating: true});
+  }
+
+  /**
+   * Run on end of animation to add animation ended class and specify animations have been run
+   * @returns {undefined}
+   */
+  onAnimationEnd() {
+    this.setState({isAnimating: false});
+  }
+
   /** @inheritdoc */
   render() {
-    const {className, style, label, buttonOptions, values} = this.props;
-    const {height} = this.state;
+    const {
+      className,
+      style,
+      label,
+      buttonOptions,
+      values,
+      isCollapsed,
+    } = this.props;
+    const {height, isAnimating} = this.state;
     const total = this.sumTotal(values);
 
     const containerClasses = classNames(
@@ -53,6 +79,12 @@ class ItemizationBox extends PureComponent {
       },
       className,
     );
+
+    const buttonClasses = classNames({
+      'uic--itemization-box__button': true,
+      'uic--text-left': true,
+      'uic--itemization-box__button-visible': !isCollapsed && !isAnimating,
+    });
 
     const totalValueClasses = classNames({
       'uic--itemization-box__summary-total': true,
@@ -82,11 +114,13 @@ class ItemizationBox extends PureComponent {
           to={{
             height,
           }}
+          onStart={this.onAnimationStart}
+          onRest={this.onAnimationEnd}
         >
-          {(animationStyle) => (
-            <animated.div style={{overflow: 'hidden', ...animationStyle}}>
+          {(animationStyles) => (
+            <animated.div style={{overflow: 'hidden', ...animationStyles}}>
               <div
-                className="uic--itemization-box__itemizations uic--h-100"
+                className="uic--itemization-box__itemizations"
                 ref={this.contentNode}
               >
                 {values.map((item, index) => {
@@ -133,13 +167,14 @@ class ItemizationBox extends PureComponent {
                     </div>
                   );
                 })}
-
-                <div className="uic--itemization-box__button uic--text-left">
-                  {buttonOptions && (
-                    <Button variant="link" to={buttonOptions.path} light>
-                      {buttonOptions.label}
-                    </Button>
-                  )}
+                <div className={buttonClasses}>
+                  <div className="uic--itemization-box__button-wrapper uic--position-absolute">
+                    {buttonOptions && (
+                      <Button variant="link" to={buttonOptions.path} light>
+                        {buttonOptions.label}
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </animated.div>

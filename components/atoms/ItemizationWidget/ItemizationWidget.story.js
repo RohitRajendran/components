@@ -76,6 +76,7 @@ const defaultProps = (valueProp) => ({
   values: valueProp,
   title: text('title', 'Cat Budget'),
   totalSuffix: text('totalSuffix', 'yr'),
+  totalLabel: text('totalLabel', 'Total'),
 });
 
 stories.add('default', () => {

@@ -66,9 +66,8 @@ const QuestionCard = ({
           {beforeButton}
           {hasMadeChanges && showEditWarning && (
             <p className="uic--warning-message">
-              Note: The answer to this question has an impact on subsequent
-              questions. If you change this answer, you will have to revisit the
-              remaining questions.
+              Note: Changing your answer to this question will require you to
+              answer additional questions.
             </p>
           )}
         </Fragment>

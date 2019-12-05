@@ -34,8 +34,25 @@
       width: 0;
     }
 
+    .uic--itemization-box__itemizations-tooltip__label {
+      @include source-sans-pro(1.4rem);
+    }
+
     .uic--itemization-box__button {
+      height: 6rem;
+      opacity: 0;
       padding: 3rem 0 0.8rem;
+      transition: opacity 0.2s linear;
+      visibility: hidden;
+
+      &.uic--itemization-box__button-visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .uic--itemization-box__button-wrapper {
+        bottom: 2.5rem;
+      }
 
       .btn-link {
         text-align: left;

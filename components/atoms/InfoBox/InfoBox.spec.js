@@ -18,7 +18,7 @@ test('InfoBox - renders correctly', (t) => {
     'Should load the InfoBox component.',
   );
   t.equals(
-    component.find('.uic--info-box-title-text').prop('children'),
+    component.find('.uic--info-box-title-text').text(),
     'Here is a title',
     'Should correctly load InfoBox title',
   );
@@ -28,7 +28,7 @@ test('InfoBox - renders correctly', (t) => {
     'Should render a content and footer child',
   );
   t.equals(
-    component.find('.uic--info-box-information-area').prop('children')[0],
+    component.find('.uic--info-box-information-area').text(),
     'Here is some content!',
     'Should correctly load InfoBox content',
   );
@@ -77,7 +77,7 @@ test('InfoBox - state and hover updated correctly', (t) => {
   const component = shallow(<InfoBox {...testProps} />);
 
   t.equal(
-    component.find('.uic--info-box-title-text').prop('children'),
+    component.find('.uic--info-box-title-text').text(),
     'This is a very, very lon…',
     'Shortened title should be displayed',
   );
@@ -90,13 +90,17 @@ test('InfoBox - state and hover updated correctly', (t) => {
     component.hasClass('uic--info-box-expand'),
     'Should apply uic--info-box-expand on hover',
   );
+
   t.equal(
-    component.find('.uic--info-box-title-text').prop('children'),
+    component
+      .find('.uic--info-box-title-text')
+      .first()
+      .text(),
     'This is a very, very long title',
     'Full title should be displayed on hover',
   );
 
-  component.find('.uic--info-box-title-area').simulate('mouseLeave', {
+  component.find('.uic--position-relative').simulate('mouseLeave', {
     stopPropagation: stub(),
   });
 

@@ -20,15 +20,15 @@ $container-min-height: 2.4rem;
     min-height: $min-height;
     overflow: hidden;
     position: relative;
+  }
 
-    .uic--info-box-title-text {
-      color: $white;
-      left: 2rem;
-      pointer-events: none;
-      position: absolute;
-      right: 15rem;
-      top: 2.5rem;
-    }
+  .uic--info-box-title-text {
+    color: $white;
+    left: 2rem;
+    pointer-events: none;
+    position: absolute;
+    right: 6rem;
+    top: 2.5rem;
   }
 
   .uic--info-box-information-area {
@@ -62,13 +62,18 @@ $container-min-height: 2.4rem;
   }
 
   &.uic--info-box-expand {
+    background-color: $midnight;
+
     .uic--info-box-title-area {
-      background-size: 0;
-      min-height: 20rem;
+      opacity: 0;
     }
 
     .uic--info-box-information-area {
-      display: none;
+      opacity: 0;
+    }
+
+    .uic--info-box-title-text {
+      right: 0;
     }
   }
 }
