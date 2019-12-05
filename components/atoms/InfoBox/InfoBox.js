@@ -105,25 +105,32 @@ class InfoBox extends Component {
     return (
       <aside {...containerProps}>
         <div
-          className="uic--info-box-title-area"
-          style={imgStyle}
-          onMouseEnter={this.handleMouseOver}
+          className="uic--position-relative"
           onMouseLeave={this.handleMouseOut}
         >
-          <div className="uic--info-box-title-text uic--header-2-text">
-            {this.state.showFullTitle
-              ? title
-              : formatEllipsis(title, titleCharLimit)}
-          </div>
-        </div>
-        <div className="uic--info-box-information-area">
-          {content}
-          {footer && (
-            <footer>
-              <hr />
-              {footer}
-            </footer>
+          {this.state.showFullTitle && (
+            <div className="uic--info-box-title-text uic--header-2-text">
+              {title}
+            </div>
           )}
+          <div
+            className="uic--info-box-title-area"
+            style={imgStyle}
+            onMouseEnter={this.handleMouseOver}
+          >
+            <div className="uic--info-box-title-text uic--header-2-text">
+              {formatEllipsis(title, titleCharLimit)}
+            </div>
+          </div>
+          <div className="uic--info-box-information-area">
+            {content}
+            {footer && (
+              <footer>
+                <hr />
+                {footer}
+              </footer>
+            )}
+          </div>
         </div>
       </aside>
     );
