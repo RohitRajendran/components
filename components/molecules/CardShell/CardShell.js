@@ -382,14 +382,13 @@ class CardShell extends Component {
                     <div className="uic--card-after-content uic--d-flex uic--align-items-center uic--flex-column">
                       {(beforeButton || showRequiredQuestionError) && (
                         <div className="uic--card-before-button">
-                          {beforeButton}
-
                           {showRequiredQuestionError && (
                             <p className={errorMessageClass}>
                               You must answer this question before hitting
                               continue.
                             </p>
                           )}
+                          {beforeButton}
                         </div>
                       )}
 
