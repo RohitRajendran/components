@@ -19,6 +19,7 @@ export const colors = {
   yellow: '#dc9f00',
   'disabled-text': '#9fa6bb',
   'super-dark': '#0b0037',
+  'orange-text': '#d14900',
 
   /* Tints & Shades */
   'green-ondark': '#1ba21f',
