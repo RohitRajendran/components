@@ -20,6 +20,7 @@ export const colors = {
   'disabled-text': '#9fa6bb',
   'super-dark': '#0b0037',
   'orange-text': '#d14900',
+  'orange-image': '#f17732',
 
   /* Tints & Shades */
   'green-ondark': '#1ba21f',

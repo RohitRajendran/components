@@ -335,7 +335,6 @@ class CardShell extends Component {
 
     const errorMessageClass = classNames({
       'uic--warning-message': true,
-      'uic--warning-message__required': true,
       'uic--animate-shake': shakeError,
     });
 

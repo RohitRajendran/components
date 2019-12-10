@@ -163,20 +163,23 @@ test('CardShell - interacting with disabled continue button', (t) => {
 
   continueBtnWrapper.prop('onClick')();
   comp.update();
-  t.false(
-    comp.find('.uic--warning-message__required').length,
+  t.equal(
+    comp.find('.uic--warning-message').length,
+    0,
     'Should not show required error message on 1st click',
   );
   continueBtnWrapper.prop('onClick')();
   comp.update();
-  t.false(
-    comp.find('.uic--warning-message__required').length,
+  t.equal(
+    comp.find('.uic--warning-message').length,
+    0,
     'Should not show required error message on 2nd click',
   );
   continueBtnWrapper.prop('onClick')();
   comp.update();
-  t.true(
-    comp.find('.uic--warning-message__required').length,
+  t.equal(
+    comp.find('.uic--warning-message').length,
+    1,
     'Should show required error message on 3rd click',
   );
 

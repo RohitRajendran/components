@@ -99,12 +99,6 @@ $active-border-size: 4px;
     text-align: center;
   }
 
-  .uic--warning-message {
-    &.uic--warning-message__required {
-      margin-top: 1.5rem;
-    }
-  }
-
   h2 {
     @extend %uic--mcg-question-text;
   }

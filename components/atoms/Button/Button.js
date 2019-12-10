@@ -57,6 +57,7 @@ const Button = ({
   to,
   type,
   variant,
+  accent,
   ...props
 }) => {
   const btnClass = classNames(
@@ -66,6 +67,7 @@ const Button = ({
       [`btn-${variant}`]: variant,
       'on-light': light,
       'on-dark': dark,
+      [`uic--btn--${accent}`]: accent,
       'show-spinner': isLoading,
       'hide-spinner': !isLoading,
     },
@@ -154,6 +156,8 @@ Button.propTypes = {
   light: PropTypes.bool,
   /** The handler to fire when the button is clicked. */
   onClick: and([PropTypes.func, exclusive(['to'])]),
+  /** Specifies the accent type to affect the color scheme */
+  accent: PropTypes.oneOf(['warning']),
   /** The URL that the user should be directed to when the button is clicked. Used primarily for link buttons. */
   to: and([
     PropTypes.oneOfType([
