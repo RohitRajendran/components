@@ -93,7 +93,7 @@
     "sass-lint-auto-fix": "0.18.5",
     "sass-loader": "8.0.0",
     "sinon": "7.5.0",
-    "style-loader": "1.0.0",
+    "style-loader": "1.0.1",
     "tap-xunit": "2.4.1",
     "tape": "4.11.0",
     "text-mask-addons": "3.8.0",
