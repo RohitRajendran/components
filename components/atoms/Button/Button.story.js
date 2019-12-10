@@ -47,6 +47,11 @@ const permutations = [
     background: 'dark',
   },
   {
+    variant: 'link',
+    background: 'light',
+    accent: 'warning',
+  },
+  {
     variant: 'icon',
     background: 'light',
     text: <TrashIcon />,
@@ -60,12 +65,13 @@ const permutations = [
   },
 ];
 
-const defaultProps = (
+const defaultProps = ({
   defaultVariant = 'primary',
   defaultBackground = 'light',
   defaultText = 'Become A Member',
   defaultTitle = '',
-) => ({
+  defaultAccent = '',
+}) => ({
   variant: select(
     'Variant',
     {
@@ -92,16 +98,24 @@ const defaultProps = (
   disabled: boolean('disabled', false),
   isLoading: boolean('isLoading', false),
   title: text('title', defaultTitle),
+  accent: boolean('accent', defaultAccent),
 });
 
 for (const permutation of permutations) {
-  stories.add(`${permutation.variant} ${permutation.background}`, () => {
-    const props = defaultProps(
-      permutation.variant,
-      permutation.background,
-      permutation.text,
-      permutation.title,
-    );
+  const storyName = [
+    permutation.variant,
+    permutation.background,
+    ...(permutation.accent ? [permutation.accent] : []),
+  ].join(' ');
+
+  stories.add(storyName, () => {
+    const props = defaultProps({
+      defaultVariant: permutation.variant,
+      defaultBackground: permutation.background,
+      defaultText: permutation.text,
+      defaultTitle: permutation.title,
+      defaultAccent: permutation.accent,
+    });
 
     return (
       <Button
@@ -111,6 +125,7 @@ for (const permutation of permutations) {
         disabled={props.disabled}
         isLoading={props.isLoading}
         title={props.title}
+        accent={props.accent}
       >
         {props.text}
       </Button>
