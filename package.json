@@ -41,7 +41,7 @@
     "@storybook/addon-docs": "5.2.6",
     "@storybook/addon-knobs": "5.2.8",
     "@storybook/addon-viewport": "5.2.8",
-    "@storybook/react": "5.2.6",
+    "@storybook/react": "5.2.8",
     "accounting": "0.4.1",
     "airbnb-prop-types": "2.15.0",
     "babel-loader": "8.0.6",
