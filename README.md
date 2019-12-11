@@ -9,7 +9,7 @@
 
 This library aims to standardize the implementation and appearance of [React](https://reactjs.org/) components throughout [United Income's](https://unitedincome.com) properties. It includes a series of exportable components derived from the [United Income Design System](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand) that can be used across teams to build a uniform experience.
 
-# Getting Started 🚀
+## Getting Started 🚀
 
 You can install the United Income component library into your project by running the following command.
 
@@ -19,7 +19,7 @@ yarn add @unitedincome/components
 
 This component library can be installed and initialized by running `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
-## Using a Component 📚
+### Using a Component 📚
 
 We utilize peer dependencies as we often require packages that already exist in our other applications. Because of this you will also need to install the [required peer dependencies](https://github.com/UnitedIncome/components/blob/master/package.json#L109) into your project. You can learn more about peer dependencies [here](https://nodejs.org/es/blog/npm/peer-dependencies/).
 
@@ -65,7 +65,7 @@ These variables can also be utilized in JavaScript.
 import {colors} from '@unitedincome/compnonents';
 ```
 
-# Building a Component 🔩
+## Building a Component 🔩
 
 Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
@@ -83,7 +83,7 @@ Running `yarn generate` will create the folder and files you need to start build
 
 To make utilizing other components within your component easier, the library includes a number of directory aliases which allow for easier importing, you can utilize `~components`, `~constants` and `~proptypes` to access the root directories.
 
-## Testing Changes 💊
+### Testing Changes 💊
 
 As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
 
@@ -91,7 +91,7 @@ You can mimic publishing this repository locally by running `yarn link` in the d
 
 At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
 
-## Best Practices 🏁
+### Best Practices 🏁
 
 While there are always going to be special cases, the following guidelines should be considered when contributing to the library.
 
@@ -105,8 +105,9 @@ While there are always going to be special cases, the following guidelines shoul
 8. Check for the existence of global variables such as those exposed by `window` in a browser before accessing them. We use this library in non-browser environments, [such as `react-static` which requires code to be node-safe](https://github.com/nozzle/react-static/blob/v6/docs/concepts.md#writing-universal-node-safe-code).
 9. Do not remove the browser default `outline` focus state unless you're replacing it with something else.
 10. Documentation should be clear and concise, and offer code samples as much as possible using [mdx](https://mdxjs.com/).
+11. CSS should be written using the [BEM methodology](https://en.bem.info/methodology/quick-start/) and prefixed with `uic--`.
 
-## Creating a `.story.js` file 📒
+### Creating a `.story.js` file 📒
 
 The `.story.js` file should represent a staged version of your component which will display in the Storybook interface. Each story is snapshot tested with a visual regression testing tool called [Percy](https://percy.io/), so capturing different visual variations of your component in a story is preferred.
 
@@ -139,7 +140,7 @@ const defaultProps = () => ({
 stories.add('default', () => <TrashIcon {...defaultProps()} />);
 ```
 
-## State Wrapper 🗽
+### State Wrapper 🗽
 
 If your component is controlled by state, you'll need to add a state wrapper to your story. For this you can use the `storybook-state` addon. You can find more information about the state wrapper we utilize [here](https://github.com/Sambego/storybook-state).
 
@@ -199,7 +200,7 @@ stories.add('default', () => (
 ));
 ```
 
-## Accessibility 💬
+### Accessibility 💬
 
 Components are linted for accessibility using the [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y#readme) and validated using [storybook-addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y).
 
@@ -234,7 +235,7 @@ html {
 }
 ```
 
-# Additional Resources 🍕
+## Additional Resources 🍕
 
 When learning about this library, the following resources may come in handy.
 
