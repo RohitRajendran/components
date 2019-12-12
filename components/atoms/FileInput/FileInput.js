@@ -133,12 +133,14 @@ class FileInput extends Component {
       isLoading,
       buttonText,
       buttonTextWithFile,
+      onClick,
     } = this.props;
 
     const attrs = {
       name,
       required,
       disabled,
+      onClick,
       onChange: this.onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
@@ -267,6 +269,8 @@ FileInput.propTypes = {
   disableOptionalFlag: PropTypes.bool,
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
   onChange: PropTypes.func,
+  /** Handler which is run whenever the input is clicked, given the HTML input event */
+  onClick: PropTypes.func,
   /** Forces the input into an error state. */
   error: PropTypes.bool,
   /** The error message to display when the input fails validation. */
