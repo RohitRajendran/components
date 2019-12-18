@@ -147,6 +147,10 @@ a {
   // Link buttons
   &.btn-link {
     @include source-sans-pro(1.4rem);
+    @include disabled-style {
+      color: $disabled-text;
+      text-decoration: none;
+    }
     background: none !important;
     border: 0;
     color: $royal;
