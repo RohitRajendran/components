@@ -21,7 +21,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         # Docs: https://github.com/JamesIves/github-pages-deploy-action
-        uses: JamesIves/github-pages-deploy-action@releases/v3-test
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BASE_BRANCH: master
