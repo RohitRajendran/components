@@ -1,0 +1,29 @@
+name: deployment-prod
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish_storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Build Storybook
+        run: yarn buildStorybook
+
+      - name: Deploy to GitHub Pages
+        # Docs: https://github.com/JamesIves/github-pages-deploy-action
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: '.build'
+          CLEAN: true

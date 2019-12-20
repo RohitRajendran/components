@@ -9,7 +9,7 @@ const nightwatch_config = {
 
   test_settings: {
     default: {
-      launch_url: 'https://ui.unitedincome.com/develop',
+      launch_url: 'https://unitedincome.github.io/components/develop',
       desiredCapabilities: {
         build: 'storybook',
         'browserstack.user': process.env.BROWSERSTACK_USER,
