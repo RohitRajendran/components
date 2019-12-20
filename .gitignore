@@ -78,3 +78,7 @@ tests_output
 
 # Storybook Output
 storybook-static
+
+# InVision DSM
+.dsm
+.dsmrc
