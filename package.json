@@ -98,7 +98,7 @@
     "text-mask-addons": "3.8.0",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
-    "xstate": "4.6.7"
+    "xstate": "4.7.3"
   },
   "peerDependencies": {
     "accounting": "0.4.1",
@@ -112,6 +112,6 @@
     "react-spring": "8.0.27",
     "react-text-mask": "5.4.3",
     "react-tooltip": "3.11.1",
-    "xstate": "4.6.7"
+    "xstate": "4.7.3"
   }
 }
