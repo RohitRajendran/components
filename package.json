@@ -94,7 +94,7 @@
     "sinon": "7.5.0",
     "style-loader": "1.0.1",
     "tap-xunit": "2.4.1",
-    "tape": "4.11.0",
+    "tape": "4.12.1",
     "text-mask-addons": "3.8.0",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
