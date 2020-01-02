@@ -35,7 +35,7 @@
     "@babel/runtime": "7.7.7",
     "@percy/storybook": "3.2.0",
     "@sambego/storybook-state": "1.3.6",
-    "@storybook/addon-a11y": "5.2.6",
+    "@storybook/addon-a11y": "5.2.8",
     "@storybook/addon-backgrounds": "5.2.8",
     "@storybook/addon-docs": "5.2.8",
     "@storybook/addon-knobs": "5.2.8",
