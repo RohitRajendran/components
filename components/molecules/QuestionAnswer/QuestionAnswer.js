@@ -33,7 +33,10 @@ class QuestionAnswer extends PureComponent {
 
   /** @inheritdoc */
   render() {
-    const {className, style, items, header} = this.props;
+    const {className, style, items, header, description} = this.props;
+
+    const descriptionNode =
+      typeof description === 'string' ? <p>{description}</p> : description;
 
     const containerClasses = classNames(
       {
@@ -46,9 +49,16 @@ class QuestionAnswer extends PureComponent {
       <div className={containerClasses} style={style}>
         <div className="uic--row">
           <div className="uic--question-answer__header uic--d-flex uic--justify-content-center uic--align-items-center uic--col-12 uic--col-md-6">
-            <h2 className="uic--question-answer__header-inner uic--header-1-5-text uic--text-center">
-              {header}
-            </h2>
+            <div className="uic--question-answer__header-inner">
+              <h2 className="uic--question-answer__header-inner-title uic--header-1-5-text uic--text-center">
+                {header}
+              </h2>
+              {descriptionNode && (
+                <div className="uic--question-answer__header-inner-subtitle">
+                  {descriptionNode}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="uic--question-answer__qa uic--col-12 uic--col-md-6">
@@ -82,8 +92,10 @@ QuestionAnswer.propTypes = {
   className: PropTypes.string,
   /** Additional style properties to apply to the container. */
   style: PropTypes.objectOf(PropTypes.string),
-  /** The header of the QuestionAnswer section. */
+  /** The main header of the QuestionAnswer section. */
   header: PropTypes.string.isRequired,
+  /** The subtitle or description of the QuestionAnswer section. */
+  description: PropTypes.node,
   /** The items to appear within the QuestionAnswer component. */
   items: PropTypes.arrayOf(
     PropTypes.shape({

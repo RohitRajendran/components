@@ -21,10 +21,9 @@ jobs:
 
       - name: Deploy to GitHub Pages
         # Docs: https://github.com/JamesIves/github-pages-deploy-action
-        uses: JamesIves/github-pages-deploy-action@releases/v3-test
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: develop
           BRANCH: gh-pages
           FOLDER: '.build'
           # Pushes the development version into the develop folder on the branch.

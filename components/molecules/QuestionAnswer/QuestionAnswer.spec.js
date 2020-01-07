@@ -27,6 +27,7 @@ test('QuestionAnswer - renders', (t) => {
 test('QuestionAnswer - setExpanded', (t) => {
   const props = {
     header: 'FAQs',
+    description: <p>This is description.</p>,
     items: [
       {
         question: 'Montezuma',

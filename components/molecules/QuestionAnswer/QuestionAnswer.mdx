@@ -51,6 +51,44 @@ import {QuestionAnswer} from '@unitedincome/components';
 />
 ```
 
+### Description
+
+You can utilize the `description` prop to render either a `p` tags if given a string, or a node. If given a node, any `p` tags will be styled as shown below.
+
+<Preview>
+  <QuestionAnswer
+    header="FAQs"
+    description={<p>this is my description.</p>}
+    items={[
+      {
+        question: 'This is my question',
+        answer: 'This is my answer',
+      },
+      {
+        question: 'This is my other question',
+        answer: 'This is my other answer',
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<QuestionAnswer
+  header="FAQs"
+  description={<p>this is my description.</p>}
+  items={[
+    {
+      question: 'This is my question',
+      answer: 'This is my answer',
+    },
+    {
+      question: 'This is my other question',
+      answer: 'This is my other answer',
+    },
+  ]}
+/>
+```
+
 ## Props 🔧
 
 <Props of={QuestionAnswer} />
