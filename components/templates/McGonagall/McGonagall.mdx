@@ -54,7 +54,6 @@ The `stateContext` prop is used to setup the initial McGonagall state. You can u
 In the following example `futureOrCurrent` is not asked in the flow, but the information is used to influence questions within the flow. With this setup anytime you have access to McGonagall's state you'll be able to reference `state.futureOrCurrent`. This can be useful if you need to pass in personalized information to reference within a question, for example a users name or something similar.
 
 ```javascript
-/** PropertyEntry Component */
 class Flow extends PureComponent {
   render() {
     const stateContext = {
