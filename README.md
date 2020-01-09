@@ -19,6 +19,8 @@ yarn add @unitedincome/components
 
 This component library can be installed and initialized by running `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
+:octocat: If you'd like to contribute to this project please take a look at the [contributing guide](CONTRIBUTING.md).
+
 ### Using a Component 📚
 
 We utilize peer dependencies as we often require packages that already exist in our other applications. Because of this you will also need to install the [required peer dependencies](https://github.com/UnitedIncome/components/blob/master/package.json#L109) into your project. You can learn more about peer dependencies [here](https://nodejs.org/es/blog/npm/peer-dependencies/).
@@ -85,11 +87,7 @@ To make utilizing other components within your component easier, the library inc
 
 ### Testing Changes 💊
 
-As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
-
-You can mimic publishing this repository locally by running `yarn link` in the directory for this library. To use it in another library you can mimic installing it by running `yarn link @unitedincome/components`.
-
-At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
+Please refer to the [contributing guide](CONTRIBUTING.md) for information on how to test your changes.
 
 ### Best Practices 🏁
 
