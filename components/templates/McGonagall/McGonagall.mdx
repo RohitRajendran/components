@@ -3,7 +3,7 @@ import McGonagall from './McGonagall';
 
 # McGonagall
 
-McGonagall is a question flow framework that uses [xState](https://xstate.js.org/docs/). It's used to collect a large set of data in the form of a questionnaire.
+McGonagall is a question flow framework that uses [xState](https://xstate.js.org/docs/). It's used to collect large sets of data in the form of a questionnaire.
 
 ## Importing 📦
 
@@ -19,7 +19,7 @@ import {McGonagall} from '@unitedincome/components';
 
 ## Example 🚀
 
-You can generate a new McGonagall flow by running the following command within this library and answering a few basic questions. Although not necessary for all implementations, the generator will assumes you're using Redux in your project.
+You can generate a new McGonagall flow by running the following command within this library and answering a few basic questions. Although not necessary for all implementations, the generator will assumes you're using [Redux](https://react-redux.js.org/) in your project.
 
 ```sh
 yarn mcgonagall
@@ -192,7 +192,7 @@ const stateOptions = {
 
 #### stateOptions.actions
 
-Actions are functions that should be called when an event happens. Action functions take in 2 arguments, the machine context and the event payload. If you want to update McGonagall's context, you need to wrap the function in `assign` and return the value to update, similar to the `saveToContext` action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into a redux store that are already in the McGonagall's context.
+Actions are functions that should be called when an event happens. Action functions take in 2 arguments, the machine context and the event payload. If you want to update McGonagall's context, you need to wrap the function in `assign` and return the value to update, similar to the `saveToContext` action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into a Redux store that are already in the McGonagall's context.
 
 It's best to use descriptive names for your actions and create separate actions for functionally different tasks so that if you're viewing it in the [xState visualizer](https://xstate.js.org/viz/), you can easily understand it.
 
@@ -384,10 +384,167 @@ const steps = [
     title: 'Who is the owner',
     description: 'Choose who the owner is',
     shortTitle: 'Owner',
-    outputs: [whose],
+    outputs: [outputs.whose],
     card: renderOwner,
   },
 ];
+```
+
+##### Defaulting Values
+
+If your card needs to have a default value, you can utilize the `outputDefaults` prop. This will automatically populate a choice in the flow so the user can continue straight to the next question without making an input. This prevents the need to pass it through `stateContext` as it will only be added to McGonagall's state when the user hits submit on that question.
+
+```javascript
+const outputs = {
+  whose: 'whose',
+};
+
+const outputDefaults = {
+  whose: whoseEnum.MINE,
+};
+
+export const renderOwner = (props, state) => {
+  return (
+    <RadioButtonCard
+      {...props}
+      outputDefaults={{
+        whose: outputDefaults.whose,
+      }}
+      config={{
+        name: outputs.whose,
+        value: state[outputs.whose],
+        options: [
+          {
+            label: 'I own this property',
+            value: whoseEnum.MINE,
+          },
+          {
+            label: `${state.userData.spouseFirstName} owns this property`,
+            value: whoseEnum.THEIRS,
+          },
+          {
+            label: `${state.userData.spouseFirstName} and I are joint owners of this property`,
+            value: whoseEnum.OURS,
+          },
+        ],
+      }}
+    />
+  );
+};
+
+const steps = [
+  {
+    name: 'owner',
+    title: 'Who is the owner',
+    description: 'Choose who the owner is',
+    shortTitle: 'Owner',
+    outputs: [outputs.whose],
+    card: renderOwner,
+  },
+];
+```
+
+##### Clearing Future Questions and Values
+
+If a user goes back to a previous question in the flow and makes a change, it may be necessary for you to clear any followup questions and values. For example if you ask a question that is related to users who specifically inherited something but then they go back and say they purchased it instead.
+
+In the `steps` object you can add the prop `clearFuture: true` to alert the user that making a change will affect any followup questions.
+
+```javascript
+const steps = [
+  {
+    name: 'acquisition',
+    title: 'How will you acquire this?',
+    shortTitle: 'Purchased or Inherited',
+    outputs: [outputs.assetPurchased],
+    card: renderAcquisition,
+    clearFuture: true,
+  },
+];
+```
+
+This will clear the questions from the flow, but you'll still need to use an action to clear the value from McGonagall's state. In the following example `clearPurchaseDependencies` is used to clear any outputs generated by the `name` state node whenever this question has been changed. Using `assign` this will reset the values back to `undefined` so McGonagall's state remains clean. Within the example an additional function is fired that also clears the value from the application state so the two remain in sync.
+
+```javascript
+const stateConfig = {
+  id: 'Assets - Current - Real Estate',
+  initial: 'name',
+  states: {
+    name: {
+      on: {
+        NEXT: [
+          {
+            cond: 'hasNameAndIsMarried',
+            target: 'owner',
+            actions: ['saveToContext', 'addNewAsset'],
+          },
+          {
+            cond: 'hasNameAndIsNotMarried',
+            target: 'acquisition',
+            actions: ['saveToContext', 'addNewAsset'],
+          },
+        ],
+      },
+    },
+    acquisition: {
+      on: {
+        NEXT: [
+          {
+            cond: 'hasAcquisition',
+            target: 'owner',
+            actions: [
+              // This action will trigger if there's a change in assetPurchased.
+              'clearPurchaseDependencies',
+              'saveToStateContext',
+              'insertUserDataValue',
+              'saveUserData',
+            ],
+          },
+        ],
+      },
+    },
+    owner: {
+      type: 'final',
+    },
+    acquisition: {
+      type: 'final',
+    },
+  },
+};
+
+const stateOptions = {
+  actions: {
+    saveToContext: assign((ctx, eve) => eve),
+    // assign is used to clear the McGonagall state.
+    clearPurchaseDependencies: assign((ctx, eve) => {
+      if (ctx[outputs.assetPurchased] !== eve[outputs.assetPurchased]) {
+        // This will clear any outputs generated from the 'name' state node. Refer to the stateOptions.actions section for more details.
+        const propsToClear = [
+          ...steps.find((step) => step.name === 'name').outputs,
+        ];
+
+        const clearedValues = propsToClear.reduce((accum, prop) => {
+          // A function that clears your application state should be executed here.
+          ctx.insertUserDataValue(ctx.id, prop, undefined);
+
+          return {
+            ...accum,
+            [prop]: undefined,
+          };
+        }, {});
+
+        return clearedValues;
+      }
+    }),
+    addNewAsset: (ctx) => {
+      //...
+    },
+  },
+  guards: {
+    hasNameAndIsMarried: (ctx, eve) => true,
+    hasNameAndIsNotMarried: (ctx, eve) => true,
+  },
+};
 ```
 
 ## Visualizing the Flow 📊
@@ -462,6 +619,13 @@ import {saveToStateContext} from '@unitedincome/components/dist/McGonagall';
 ### Typography Styles
 
 There are a number of typography utility classes that be found [here](/?path=/story/utilities-styles--typography).
+
+## Best Practices 🏁
+
+McGonagall has a number of best practices that have been tested during its life cycle, below you'll find a few of them.
+
+- Sharing outputs, cards, actions and guards as much as possible between similar flows will cut down on the amount of time it takes to build out a question flow.
+- Scaffolding your flow using the [xState visualizer tool](https://statecharts.github.io/xstate-viz/) is a good way to help determine if the question flow cycle is correct before you start development.
 
 ## Props 🔧
 
