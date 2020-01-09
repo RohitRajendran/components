@@ -3,7 +3,7 @@ import McGonagall from './McGonagall';
 
 # McGonagall
 
-McGonagall is a question flow framework. McGonagall uses [xState](https://xstate.js.org/docs/), a finite-state machine library, to help it navigate through the flow.
+McGonagall is a question flow framework that uses [xState](https://xstate.js.org/docs/). It's used to collect a large set of data in the form of a questionnaire.
 
 ## Importing 📦
 
@@ -19,49 +19,109 @@ import {McGonagall} from '@unitedincome/components';
 
 ## Example 🚀
 
-There's 4 key parts to creating a flow in McGonagall: `stateConfig`, `stateOptions`, `stateContext`, and `steps`. Depending on the project a scaffolder tool may be available to you by running `yarn generate mcg new`.
+You can generate a new McGonagall flow by running the following command within this library and answering a few basic questions. Although not necessary for all implementations, the generator will assumes you're using Redux in your project.
 
-1. In the `.xstate.js` file, lay out the flow by adding state nodes to the `stateConfig` with the names for the conditions
-2. In the `.steps.js` file, add an object to the steps array for each state node that you created in the `stateConfig`
-3. In the `.js` file, fill out the `stateContext` object with any data you need to pull in
-4. Starting with the first step, start adding the render card function for the step in `.step,js` and updating the `stateConfig` and the `stateOptions` with necessary actions and guards
+```sh
+yarn mcgonagall
+```
 
-### stateConfig
+Once the process is complete you'll be presented with a flow that you can start to use as soon as you fix all of the relative imports. There's also a number of todo items flagged in each file that need to be addressed.
 
-The `stateConfig` is an xState defined object that will be passed through to the state machine to configure the machine and specify the different potential states and transitions.
+```markdown
+├── Flow
+│ ├── Flow.js - A parent component that renders the McGonagall component and passes in the necessary information.
+│ ├── Flow.cards.js - Includes the card render functions and the steps object.
+│ ├── Flow.xstate.js - Includes the stateConfig and the stateOptions.
+│ └── Flow.constants.js - Includes an outputs constant (to help keep output names consistent across the files) and other constants needed for the flow.
+```
+
+The following sections will go over the `stateConfig`, `stateOptions`, `stateContext` and `steps` props which are used to navigate user's through the question flow.
 
 ```javascript
-{
-  // Machine identifier
-  id: 'questions',
+<McGonagall
+  name="Question Flow"
+  stateConfig={stateConfig}
+  stateContext={stateContext}
+  stateOptions={stateOptions}
+  steps={steps}
+/>
+```
 
-  // Initial state node
-  initial: 'first',
+### stateContext 💡
 
-  // State definitions
-  states: {
-    first: {
-      /* ... */
-    },
-    second: {
-      /* ... */
-    },
-    third: {
-      /* ... */
-    }
+The `stateContext` prop is used to setup the initial McGonagall state. You can use this prop to pass in functions or pieces of data that are sourced from outside of the question flow.
+
+In the following example `futureOrCurrent` is not asked in the flow, but the information is used to influence questions within the flow. With this setup anytime you have access to McGonagall's state you'll be able to reference `state.futureOrCurrent`. This can be useful if you need to pass in personalized information to reference within a question, for example a users name or something similar.
+
+```javascript
+/** PropertyEntry Component */
+class Flow extends PureComponent {
+  render() {
+    const stateContext = {
+      [outputs.futureOrCurrent]: this.props.match.params.screen,
+    };
+
+    return (
+      <McGonagall
+        name="Add a Property"
+        browserHistory={browserHistory}
+        exitLocation={FPE_PROPERTIES}
+        location={this.props.location}
+        stateConfig={stateConfig}
+        stateContext={stateContext}
+        steps={steps}
+        isFetching={this.props.isFetching}
+      />
+    );
   }
 }
 ```
 
-### State Nodes
+### stateConfig 💡
 
-In the `stateConfig`, each step of the flow should be declared as a seperate state node. Each state node declares events that can occur, which state nodes it can transition to, what conditions should apply to be able to transition to another state node, and any actions that should be executed. McGonagall only supports one event, "NEXT", but within that event you can navigate to different steps by specifying conditions.
-
-Below is an example of a `stateConfig` that has three state nodes with "name" branching off between "owner" and "acquisition" depending on the conditions specified. Depending on which state node is transitoned to, you can see that different actions will also be executed. Since "owner" and "acquisition" are the last steps of this flow, it is declared as `type: final` to indicate it is the last step in the flow. The logic for the conditions and actions are specified in the `stateOptions`.
+The `stateConfig` prop is where you'll configure the transitions between each step in the question flow, this should be imported from the `Flow.xstate.js` file. Here you can add logic to determine which question is presented after the current one and logic that ensures that certain information is present before the user will be allowed to advance.
 
 ```javascript
 const stateConfig = {
-  id: 'Assets - Current - Real Estate',
+  id: 'questions',
+  // The state to start on...
+  initial: 'first',
+  // State definitions...
+  states: {
+    first: {
+      on: {
+        NEXT: [
+          {
+            target: 'second',
+          },
+        ],
+      },
+    },
+    second: {
+      on: {
+        NEXT: [
+          {
+            target: 'third',
+          },
+        ],
+      },
+    },
+    third: {
+      /* ... */
+    },
+  },
+};
+
+export {stateConfig};
+```
+
+In the `stateConfig`, each step of the flow should be declared as a separate state node. Each state node declares events that can occur, which state nodes it can transition to, what conditions should apply to be able to transition to another state node, and any actions that should be executed. McGonagall only supports one event, `NEXT`, but within that event you can navigate to different steps by specifying conditions.
+
+Below is an example of a `stateConfig` object that has three state nodes with "name" branching off between "owner" and "acquisition" depending on the conditions specified. Depending on which state node is transitioned to, you can see that different actions will also be executed. Since "owner" and "acquisition" are the last steps of this flow, it is declared as `type: final` to indicate it is the last step in the flow. The logic for the conditions and actions are specified in the `stateOptions` prop.
+
+```javascript
+const stateConfig = {
+  id: 'Flow',
   initial: 'name',
   states: {
     name: {
@@ -101,48 +161,47 @@ const stateConfig = {
     },
   },
 };
+
+export {stateConfig};
 ```
 
-### stateOptions
+### stateOptions 💡
 
-`stateOptions` is an xState defined object that declares all the implementations for actions and guards that are used in the `stateConfig`.
+`stateOptions` is an object that declares all the implementations for actions and guards that are used in the `stateConfig`. These are primarily used to modify data after a transition or to prevent incorrect data from being submitted.
 
 ```javascript
 const stateOptions = {
   actions: {
     saveToContext: assign((ctx, eve) => eve),
     addNewAsset: (ctx) => {
-      if (!ctx.userData.externalAccounts[ctx.id]) {
-        ctx.insertAssetValue('id', ctx.id);
-        ctx.insertAssetValue('type', assetTypeEnum.REAL_ESTATE);
+      if (!ctx.id]) {
+        //...
       }
     },
   },
   guards: {
     hasNameAndIsMarried: (ctx, eve) =>
-      !isNullOrUndefined(eve[outputs.nickname]) &&
-      ctx.userData.maritalStatus === MARRIED,
+      !isNullOrUndefined(eve.nickname) &&
+      ctx.maritalStatus === MARRIED,
     hasNameAndIsNotMarried: (ctx, eve) =>
-      !isNullOrUndefined(eve[outputs.nickname]) &&
-      ctx.userData.maritalStatus !== MARRIED,
+      !isNullOrUndefined(eve.nickname) &&
+      ctx.maritalStatus !== MARRIED,
   },
 };
 ```
 
-#### Actions
+#### stateOptions.actions
 
-Actions are functions that should be called when an event happens. Action functions take in 2 arguments, the machine context and the event payload.
+Actions are functions that should be called when an event happens. Action functions take in 2 arguments, the machine context and the event payload. If you want to update McGonagall's context, you need to wrap the function in `assign` and return the value to update, similar to the `saveToContext` action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into a redux store that are already in the McGonagall's context.
 
-If you want to update the State Machine's context, you need to wrap the function in `assign` and return the value to update similar to the "saveToContext" action in the example above. Any actions wrapped in `assign` will get executed first. In the example below, `saveToContext` is wrapped in `assign` so that it can take the event payload and update the state machine context with it. In the `addNewAsset` action is not wrapped in `assign` because it's just inserting some initial values for a new asset into redux that are already in the state machine context.
-
-It's best to use descriptive names for your actions and create seperate actions for functionally different tasks so that if you're viewing it in the xState visualizer, you can easily understand it.
+It's best to use descriptive names for your actions and create separate actions for functionally different tasks so that if you're viewing it in the [xState visualizer](https://xstate.js.org/viz/), you can easily understand it.
 
 ```javascript
 const stateOptions = {
   actions: {
     saveToContext: assign((ctx, eve) => eve),
     addNewAsset: (ctx) => {
-      if (!ctx.userData.externalAccounts[ctx.id]) {
+      if (!ctx.id) {
         ctx.insertAssetValue('id', ctx.id);
         ctx.insertAssetValue('type', assetTypeEnum.REAL_ESTATE);
       }
@@ -151,9 +210,7 @@ const stateOptions = {
 };
 ```
 
-In an event for a state node, you can pass in an array of strings that correspond to the name of the action to excute.
-
-In the below example, there are 2 potential state nodes a user can go from the `name` state node. The state machine will first check if it passes the condition for the first object in the array so if the `hasNameAndIsMarried` guard returns true, the flow will transition to the owner step and run the 5 actions that are listed. If `hasNameAndIsMarried` returns false, it will then check the next condition. A state node should be able to pass at least one of the conditions.
+In an event for a state node, you can pass in an array of strings that correspond to the name of the action to execute. In the below example, there are 2 potential state nodes a user can go to from the `name` state node. The state machine will first check if it passes the condition for the first object in the array; so if the `hasNameAndIsMarried` guard returns true, the flow will transition to the owner step and run the 5 actions that are listed. If `hasNameAndIsMarried` returns false, it will then check the next condition. A state node should be able to pass at least one of the conditions.
 
 ```javascript
 name: {
@@ -187,9 +244,9 @@ name: {
 },
 ```
 
-#### Guards
+#### stateOptions.guards
 
-If you want a transition to a state node to happen only under certain conditions, you can create guards to see if the conditions are met. Guards are function that take in 2 arguments, the machine context and the event payload, and return a boolean on whether it should transition or not. In the below example.
+If you want a transition to a state node to happen only under certain conditions, you can create guards to see if the conditions are met. Guards are function that take in 2 arguments, the machine context and the event payload, and return a boolean on whether it should transition or not.
 
 ```javascript
 const stateOptions = {
@@ -219,27 +276,13 @@ name: {
 };
 ```
 
-It's best to use descriptive names for your guards and create seperate guards for functionally different conditions so that if you're viewing it in the xState visualizer, you can easily understand it.
+It's best to use descriptive names for your guards and create separate guards for functionally different conditions so that if you're viewing it in the [xState visualizer](https://xstate.js.org/viz/), you can easily understand it.
 
-When the McGonagall component first mounts, the framework uses the guards to essentially rehydrate the flow. It trys transitioning at each step until it hits a step that it can't navigate away from because it doesn't satisfy any condition. It's important to add guards to each State Node possible transition so that it the flow starts back up at the appropriate place.
+When the McGonagall component first mounts, the framework uses the guards to rehydrate the flow. It tries transitioning at each step until it hits a step that it can't navigate away from because it doesn't satisfy any condition. It's important to add guards to each State Node possible transition so that the flow starts back up at the appropriate place.
 
-### State Context
+### steps 💡
 
-State context is an xState defined object that sets up the state machine's initial extended state. Any values or functions that you need should be passed through the state context and will then be accessible through the ctx argument of an action/argument or as the state argument of a render card function. Any changes to the state context object you pass in will not be reflected in McGonagall after initialization. After the initialization, any changes to the state context should happen through actions.
-
-```javascript
-const stateContext = {
-  id: this.assetId,
-  ...asset,
-  userData: this.props.userData || null,
-  insertAssetValue: this.insertAssetValue,
-  saveUserData: this.props.saveUserData,
-};
-```
-
-### Steps
-
-The steps array helps render the appropriate card for a specific state node by matching the names between the two. Properties like title, description, and short title are optional in case you need to have dynamic content.
+The steps prop helps render the appropriate card for a specific state node by matching the names between the two. Properties like title, description, and short title are optional in case you need to have dynamic content. You can find a list of all available properties below, the `steps` array lives in the `Flow.cards.js` file.
 
 | Prop         | Prop Type     | Description                                                                   |
 | ------------ | ------------- | ----------------------------------------------------------------------------- |
@@ -270,24 +313,23 @@ const steps = [
       'Explain why we need this. Giving this property a name helps you identify this asset when viewing it in your financial plan.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     shortTitle: 'Name',
     outputs: [outputs.nickname],
-    card: renderName, //
-    clearFuture: false, // Boolean to indicate whether all future cards needs to be cleared when editing thihs card
+    card: renderName,
+    clearFuture: false, // Boolean to indicate whether all future cards needs to be cleared when editing this card
   },
 ];
 ```
 
-#### Card
+#### steps.card
 
 The function in the card property will get passed 2 arguments, props and state.
 
-The props argument will include information from the mcgonagall framework and was designed so you can pass it straight through to the cards:
+The props argument will include information from the McGonagall framework and was designed so you can pass it straight through to the cards:
 
 | Prop           | Prop Type | Description                                                                                                |
 | -------------- | --------- | ---------------------------------------------------------------------------------------------------------- |
 | animate        | boolean   | whether it should be animated or not (true when it's not the latest card)                                  |
 | cancelChanges  | function  | function to call to cancel changes and navigate back to latest step                                        |
-| clearFuture    | boolean   | passed through from the steps object                                                                       |
-| context        | object    | current context from xState                                                                                |
+| clearFuture    | boolean   | passed through from the steps object                                                                       |  |
 | defaultValues  | object    | object defining default values to use for an output if a specified output of the step is null or undefined |
 | description    | string    | passed through from the steps object                                                                       |
 | editCard       | function  | function that gets used by the card summary to edit a card                                                 |
@@ -303,7 +345,7 @@ The props argument will include information from the mcgonagall framework and wa
 | stepIndex      | number    | index of the current step                                                                                  |
 | title          | string    | title of the card                                                                                          |
 
-The state argument will pass down the McGonagall component's state which will include everything you passed into `stateContext`.
+The state argument will pass down the McGonagall component's state which will include everything you passed into the `stateContext` prop.
 
 ```javascript
 const outputs = {
@@ -348,35 +390,9 @@ const steps = [
 ];
 ```
 
-##### Text Styles
+## Visualizing the Flow 💡
 
-You can find examples of text style classes to use with cards in the [Typography section](/?path=/story/utilities-styles--typography)
-
-## File Structure
-
-When creating a McGonagall flow, the code is split up across 4 files:
-
-```markdown
-├── FlowName
-│ ├── FlowName.js - A parent component that renders the McGonagall component and passes in the necessary information
-│ ├── FlowName.cards.js - Includes the card render functions and the steps object
-│ ├── FlowName.xstate.js - Includes the stateConfig and the stateOptions
-│ └── FlowName.constants.js - Includes an outputs constant (to help keep output names consistent across the files) and other constants needed for the flow
-```
-
-In client, you can easily scaffold out these files by running `yarn generate mcg new`
-
-## How Data is Handled
-
-There's 2 layers to how data is handled within the McGonagall framework, the state machine context and the local component state.
-
-The state machine's context is the source of truth of the values as you navigate through the flow. This is updated by using the an action that is wrapped in `assign` and only gets updated when the `onSubmit` function is called.
-
-The state machine's context is replicated in the local component state. This is so that you can make changes in a card, decide to cancel it, and revert back to the original value. The local component state values get changed when the `onChange` function gets called. When the `onSubmit` function is called, it pulls the outputs you specified in the `steps` object from the component state and passes it through as the event payload of the state machine.
-
-## Visualizing the Flow
-
-Thanks to xState, it's now much easier to visualize the entire flow. You just have to copy and paste the `stateConfig` and `stateOptions` (which is essentially the entire `.xstate.js` file except for the import and exports) into the [xState visualizer tool](https://statecharts.github.io/xstate-viz/) and pass both of the variables into the machine like so:
+If you'd like to visualize your McGonagall flow you can copy and paste the `stateConfig` and `stateOptions` objects into the [xState visualizer tool](https://statecharts.github.io/xstate-viz/) and pass both of the variables into `Machine` like so.
 
 ```javascript
 const stateConfig = {
@@ -419,19 +435,19 @@ const stateOptions = {
     },
   },
   guards: {
-    hasNameAndIsMarried: (ctx, eve) =>
-      !isNullOrUndefined(eve[outputs.nickname]) &&
-      ctx.userData.maritalStatus === MARRIED,
-    hasNameAndIsNotMarried: (ctx, eve) =>
-      !isNullOrUndefined(eve[outputs.nickname]) &&
-      ctx.userData.maritalStatus !== MARRIED,
+    hasNameAndIsMarried: (ctx, eve) => true,
+    hasNameAndIsNotMarried: (ctx, eve) => true,
   },
 };
 
 const fetchMachine = Machine(stateConfig, stateOptions);
 ```
 
-## Utilities
+This will produce the following, allowing you to see how each question transitions and affects each other.
+
+![xState Visualizer](https://i.imgur.com/zcapBX3.png)
+
+## Utilities 💡
 
 You're able to import a number of utilities from McGonagall to help build your flows.
 
@@ -440,8 +456,12 @@ You're able to import a number of utilities from McGonagall to help build your f
 The `saveToStateContext` function will allow you to save data to your state context. It can be imported using the following pattern.
 
 ```javascript
-import {saveToStateContext} from '@unitedincome/components/dist/mcgonagall';
+import {saveToStateContext} from '@unitedincome/components/dist/McGonagall';
 ```
+
+### Typography Styles
+
+There are a number of typography utility classes that be found [here](/?path=/story/utilities-styles--typography).
 
 ## Props 🔧
 
