@@ -64,7 +64,7 @@ This component library also comes packaged with a series of color variables that
 These variables can also be utilized in JavaScript.
 
 ```javascript
-import {colors} from '@unitedincome/compnonents';
+import {colors} from '@unitedincome/components';
 ```
 
 ## Building a Component 🔩
