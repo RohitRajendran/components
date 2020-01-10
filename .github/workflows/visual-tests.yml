@@ -20,3 +20,5 @@ jobs:
         uses: percy/storybook-action@v0.1.1
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_TARGET_BRANCH: ${{ secrets.PERCY_TARGET_BRANCH }}
+          PERCY_TARGET_COMMIT: ${{ secret.PERCY_TARGET_COMMIT }}
