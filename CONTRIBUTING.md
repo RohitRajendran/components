@@ -3,7 +3,7 @@
 When contributing to this project, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change.
 
-### Testing Changes 💊
+## Testing Changes 💊
 
 As you are developing new components or updating existing ones, testing these components in the context of an existing front-end repository can be useful. Instead of going through the life cycle of publishing new versions, the easier way of handling this is utilizing package linking.
 
@@ -18,7 +18,7 @@ At this point, whenever you make changes to the component library and run `yarn 
 3. When making a pull request, highlight any areas that may cause a breaking change so the maintainer can update the version number accordingly, even if it's as simple as changing the name of a prop.
 4. If you need to manually bump the version number to a large number you can do so by modifying it in `package.json` in your pull request.
 
-# Deploying 🔧
+## Deploying 🔧
 
 This project utilizes [GitHub Actions](https://github.com/features/actions) and [CircleCI](https://circleci.com/) to make automatic deployments.
 
