@@ -16,6 +16,11 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Run Percy Tests
+        uses: percy/storybook-action@v0.1.1
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
       - name: Build Storybook
         run: yarn buildStorybook
 

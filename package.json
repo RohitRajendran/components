@@ -17,6 +17,7 @@
     "lint": "eslint './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' --cache && sass-lint -v -q && prettier -l './components/**/*.js' './proptypes/**/*.js' && prettier -l './components/**/*.md' './*.md' --parser=markdown && prettier -l './components/**/*.mdx' './*.mdx' --parser=mdx && prettier -l './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss || (echo need formatting, use yarn format ; exit 1)",
     "format": "prettier --write './components/**/*.js' './proptypes/**/*.js' './.storybook/*.js' && prettier --write  './components/**/*.md' './*.md' --parser=markdown && prettier --write './components/**/*.mdx' './*.mdx' --parser=mdx && sass-lint-auto-fix && prettier --write './components/**/*.scss' './constants/sass/**/*.scss' './constants/sass/*.scss' --parser=scss",
     "generate": "yarn hygen component new",
+    "mcgonagall": "yarn hygen mcgonagall new",
     "browserstack": "yarn nightwatch -c nightwatch/config.js",
     "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')"
   },
@@ -94,11 +95,11 @@
     "sinon": "8.0.4",
     "style-loader": "1.1.2",
     "tap-xunit": "2.4.1",
-    "tape": "4.12.1",
+    "tape": "4.13.0",
     "text-mask-addons": "3.8.0",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
-    "xstate": "4.7.5"
+    "xstate": "4.7.6"
   },
   "peerDependencies": {
     "accounting": "0.4.1",
@@ -112,6 +113,6 @@
     "react-spring": "8.0.27",
     "react-text-mask": "5.4.3",
     "react-tooltip": "3.11.2",
-    "xstate": "4.7.5"
+    "xstate": "4.7.6"
   }
 }
