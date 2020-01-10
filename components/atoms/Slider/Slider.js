@@ -50,7 +50,7 @@ const Slider = ({
 
   return (
     <div className={containerClasses}>
-      {tooltipStickyVariant && (
+      {tooltipStickyVariant && tooltipStickyPosition && (
         <style>
           {`
         .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition + 1}) {
