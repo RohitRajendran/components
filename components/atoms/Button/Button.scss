@@ -62,7 +62,7 @@ a {
       color: $btn-primary-disabled-light;
     }
     @include source-sans-pro(2rem);
-    background-color: pink;
+    background-color: $midnight;
     border: 0;
     border-radius: 0.5rem;
     color: $white;
