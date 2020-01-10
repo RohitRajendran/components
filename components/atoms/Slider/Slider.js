@@ -4,6 +4,7 @@ import fromPairs from 'lodash/fromPairs';
 import PropTypes from 'prop-types';
 import ReactSlider from 'rc-slider';
 import React, {memo} from 'react';
+import {isNullOrUndefined} from 'util';
 import {colors} from '~constants/js/colors';
 import './Slider.scss';
 
@@ -50,7 +51,7 @@ const Slider = ({
 
   return (
     <div className={containerClasses}>
-      {tooltipStickyVariant && tooltipStickyPosition && (
+      {tooltipStickyVariant && !isNullOrUndefined(tooltipStickyPosition) && (
         <style>
           {`
         .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition + 1}) {
