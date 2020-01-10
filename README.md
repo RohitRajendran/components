@@ -19,7 +19,7 @@ yarn add @unitedincome/components
 
 This component library can be installed and initialized by running `yarn start`. This will start a local instance of Storybook, allowing you to view a series of stories that represent each component.
 
-:octocat: If you'd like to contribute to this project please take a look at the [contributing guide](CONTRIBUTING.md)..
+:octocat: If you'd like to contribute to this project please take a look at the [contributing guide](CONTRIBUTING.md).
 
 ### Using a Component 📚
 
