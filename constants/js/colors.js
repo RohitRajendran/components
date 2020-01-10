@@ -9,6 +9,7 @@ export const colors = {
   white: '#ffffff',
   'table-alternate': '#fcfbfa',
   parchment: '#f8f7f4',
+  'table-hover': '#f6f5f3',
   'light-gray': '#dddddd',
   slate: '#5b6279',
 
@@ -56,6 +57,7 @@ export const colors = {
 
   /* Graph Shades and Colors */
   // Solids
+  'graph-ocean': '#1a718e',
   'graph-robin': '#4db0cf',
   'graph-turquoise': '#88e6f2',
   'graph-gray-1': '#a5a8b3',
