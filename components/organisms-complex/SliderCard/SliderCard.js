@@ -54,8 +54,8 @@ SliderCard.propTypes = {
   config: PropTypes.shape({
     /** A string representing the name of the select button group. For example `yesNo` or something similar. */
     name: PropTypes.string.isRequired,
-    /** The current selected option in the select button group. */
-    value: PropTypes.string,
+    /** The selected slider position. */
+    value: PropTypes.number,
     /** Data to display inside of the tooltip. */
     tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text to display to the left of the slider. */
