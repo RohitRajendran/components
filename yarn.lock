@@ -2286,17 +2286,17 @@
     ts-dedent "^1.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-backgrounds@5.2.8":
-  version "5.2.8"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.2.8.tgz#352c477cde3fdabc6d85fd5407f0e67ffa35b1f5"
-  integrity sha512-FUcNQyIzJwzHUSlzghA41PSA/crf1NwsrVItAsYDf/e0St/XERuZ4hMYGqLFRqBeKXuy6KUJpHbbqucXl/2U4g==
+"@storybook/addon-backgrounds@5.3.3":
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.3.3.tgz#51bbd1e23e7a28d3ccb6e24297968fd657b1aae6"
+  integrity sha512-iTuFLkPJo9YVpbvetl+8MJiZoFfb20IipmN/j2UcfB+/9R2ofWoxxPDUxmKS7uH9okhRNP+xb67mBzdzIUsevg==
   dependencies:
-    "@storybook/addons" "5.2.8"
-    "@storybook/api" "5.2.8"
-    "@storybook/client-logger" "5.2.8"
-    "@storybook/components" "5.2.8"
-    "@storybook/core-events" "5.2.8"
-    "@storybook/theming" "5.2.8"
+    "@storybook/addons" "5.3.3"
+    "@storybook/api" "5.3.3"
+    "@storybook/client-logger" "5.3.3"
+    "@storybook/components" "5.3.3"
+    "@storybook/core-events" "5.3.3"
+    "@storybook/theming" "5.3.3"
     core-js "^3.0.1"
     memoizerific "^1.11.3"
     react "^16.8.3"
@@ -12976,14 +12976,6 @@ schema-utils@^1.0.0:
     ajv-keywords "^3.1.0"
 
 schema-utils@^2.0.1, schema-utils@^2.4.1, schema-utils@^2.5.0, schema-utils@^2.6.0, schema-utils@^2.6.1:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.2.tgz#9205ec5978709b0d9edbccb9a316faf11617a017"
-  integrity sha512-sazKNMBX/jwrXRkOI7N6dtiTVYqzSckzol8SGuHt0lE/v3xSW6cUkOqzu6Bq2tW+dlUzq3CWIqHU3ZKauliqdg==
-  dependencies:
-    ajv "^6.10.2"
-    ajv-keywords "^3.4.1"
-
-schema-utils@^2.6.1:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.2.tgz#9205ec5978709b0d9edbccb9a316faf11617a017"
   integrity sha512-sazKNMBX/jwrXRkOI7N6dtiTVYqzSckzol8SGuHt0lE/v3xSW6cUkOqzu6Bq2tW+dlUzq3CWIqHU3ZKauliqdg==
