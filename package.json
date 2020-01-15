@@ -39,7 +39,7 @@
     "@storybook/addon-a11y": "5.3.3",
     "@storybook/addon-backgrounds": "5.2.8",
     "@storybook/addon-docs": "5.2.8",
-    "@storybook/addon-knobs": "5.2.8",
+    "@storybook/addon-knobs": "5.3.3",
     "@storybook/addon-viewport": "5.2.8",
     "@storybook/react": "5.2.8",
     "accounting": "0.4.1",
