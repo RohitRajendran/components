@@ -8,7 +8,7 @@
     cursor: pointer;
     line-height: 1.2;
     padding: 0.7rem 0;
-    z-index: 1;
+    z-index: $z-index-default;
 
     &:hover {
       border: 1px solid $slate-80;
@@ -44,7 +44,7 @@
   }
 
   .uic--simple-dropdown__menu {
-    z-index: 2;
+    z-index: $z-index-menu;
   }
 
   .uic--simple-dropdown__option {

@@ -108,6 +108,9 @@ import Confirm from '~components/utilities/Confirm/Confirm';
 // Colors
 import {colors} from '~constants/js/colors';
 
+// zindex
+import {zindex} from '~constants/js/zindex';
+
 export {
   ItemizationBox,
   CheckIcon,
@@ -205,4 +208,5 @@ export {
   PlantCircleIllustration,
   DollarCircleIllustration,
   colors,
+  zindex,
 };

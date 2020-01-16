@@ -27,9 +27,14 @@ const sassColorVariables = path.resolve(
   'constants/sass/variables/colors.scss'
 )
 
+const zIndexVariables = path.resolve(
+  __dirname,
+  'constants/sass/variables/zindex.scss'
+)
+
 entries.index = path.resolve(__dirname, 'components/index.js');
 entries.util = prefixUtilFilepath;
-entries.shared = sassColorVariables;
+entries.shared = [sassColorVariables, zIndexVariables];
 
 module.exports = {
   entry: entries,
@@ -60,6 +65,19 @@ module.exports = {
         ],
       },
       {
+        // Exports the Sass zindex variables into the dist folder.
+        test: zIndexVariables,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'zindex.scss',
+              context: '',
+            },
+          },
+        ],
+      },
+      {
         include: prefixUtilFilepath,
         use: [
           {
@@ -82,7 +100,7 @@ module.exports = {
       {
 
         test: /\.scss$/,
-        exclude: [prefixUtilFilepath, sassColorVariables],
+        exclude: [prefixUtilFilepath, sassColorVariables, zIndexVariables],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

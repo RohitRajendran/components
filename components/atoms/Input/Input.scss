@@ -56,7 +56,7 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     margin: 0 -2px;
     padding: 0.9rem 1.2rem 0.7rem;
     width: calc(100% + 4px);
-    z-index: 1499;
+    z-index: $z-index-overlay;
 
     &.uic--mcgonagall-input__tooltip-hidden {
       visibility: hidden;
@@ -145,7 +145,7 @@ $input-data-value-color: rgba(255, 255, 255, 0);
       left: 1.3rem;
       position: absolute;
       top: 2.7rem;
-      z-index: 1000;
+      z-index: $z-index-default;
     }
 
     input {
@@ -184,14 +184,14 @@ $input-data-value-color: rgba(255, 255, 255, 0);
         caret-color: $royal;
         color: $input-data-value-color;
         position: relative;
-        z-index: 1499;
+        z-index: $z-index-overlay;
       }
 
       &.uic--disabled {
         input {
           background-color: $table-alternate;
           position: inherit;
-          z-index: 0;
+          z-index: $z-index-auto;
         }
 
         &::after {

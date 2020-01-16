@@ -161,7 +161,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
     max-height: 6.3rem;
     padding: 2.3rem 1.2rem 1rem 1rem;
     position: relative;
-    z-index: 999;
+    z-index: $z-index-default;
 
     input {
       @include source-sans-pro(2rem);
@@ -197,7 +197,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: normal;
-    z-index: 99999;
+    z-index: $z-index-menu;
 
     .uic--mcgonagall-dropdown__menu-list {
       background-color: $white;
@@ -222,7 +222,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
 
 // The z-index here makes it so the drop down doesn't get hidden behind other drop downs.
 .uic--mcgonagall-dropdown-internal > div {
-  z-index: 99999;
+  z-index: $z-index-menu;
 }
 
 // Modify styling when in card
