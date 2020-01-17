@@ -113,7 +113,11 @@ workflows:
   version: 2.1
   components:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - smoke_test:
           requires:
             - build
