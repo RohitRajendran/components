@@ -11,7 +11,7 @@
     justify-content: center;
     min-height: $height;
     transition: none;
-    z-index: 1;
+    z-index: $z-index-default;
   }
 
   .uic--bubble-dropdown__control--is-focused {
@@ -62,7 +62,7 @@
     margin: 0;
     overflow: hidden;
     padding: 0 2rem;
-    z-index: 2;
+    z-index: $z-index-menu;
   }
 
   .uic--bubble-dropdown__option {

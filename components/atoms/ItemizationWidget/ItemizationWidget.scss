@@ -7,7 +7,7 @@ $background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1031;
+    z-index: $z-index-menu;
   }
   @include media-breakpoint-up(xl) {
     // Overrides background color on unapplicable screen sizes.

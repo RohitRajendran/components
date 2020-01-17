@@ -1,0 +1,96 @@
+import {zindex} from '~constants/js/zindex';
+import {IndexStyles} from './zindex.story.js';
+
+# Z-Index Styles
+
+Here you can find a collection of global utility styles for z-indexes.
+
+## Importing 📦
+
+These can be imported into your [Sass](https://sass-lang.com/) manifest like so:
+
+```scss
+@import '~@unitedincome/components/dist/zindex';
+```
+
+These variables can also be utilized in JavaScript.
+
+```javascript
+import {zindex} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+You can use each z-index either via a Sass or JavaScript variable or you can use a provided helper class. You can view some common use cases for these values below.
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>z-index-below</td>
+    <td>Used if you need to have a negative z-index value.</td>
+    <td>-1</td>
+  </tr>
+  <tr>
+    <td>z-index-auto</td>
+    <td>
+      Auto should be used if an element needs a z-index value but you don't want
+      it to have a specific index.
+    </td>
+    <td>auto</td>
+  </tr>
+  <tr>
+    <td>z-index-default</td>
+    <td>Used if you need a positive z-index value and auto won't suffice.</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>z-index-tooltip</td>
+    <td>Primarily used for mouseover tooltips.</td>
+    <td>5000</td>
+  </tr>
+  <tr>
+    <td>z-index-dropdown</td>
+    <td>Primarily used for elements with a dropdown.</td>
+    <td>6000</td>
+  </tr>
+  <tr>
+    <td>z-index-overlay</td>
+    <td>
+      Primarily used for elements which overlay content. For example the Cabinet
+      component.
+    </td>
+    <td>7000</td>
+  </tr>
+  <tr>
+    <td>z-index-menu</td>
+    <td>
+      Primarily used for navigation bar menus which should appear over any
+      content. This is ranked higher than z-index-overlay as this it's used
+      during interactions.
+    </td>
+    <td>8000</td>
+  </tr>
+  <tr>
+    <td>z-index-modal</td>
+    <td>Primarily used for modals which overlay the entire screen.</td>
+    <td>9000</td>
+  </tr>
+  <tr>
+    <td>z-index-toast</td>
+    <td>
+      This should be used for small urgent notifications that alert the user to
+      perform an action.
+    </td>
+    <td>10000</td>
+  </tr>
+</table>
+
+### Stacking Example
+
+You can view an example of how each `z-index` value stacks below.
+
+<IndexStyles />

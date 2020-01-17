@@ -64,7 +64,19 @@ This component library also comes packaged with a series of color variables that
 These variables can also be utilized in JavaScript.
 
 ```javascript
-import {colors} from '@unitedincome/compnonents';
+import {colors} from '@unitedincome/components';
+```
+
+In addition to color variables this component library also has a number of [z-index values available to use](https://unitedincome.github.io/components/?path=/docs/utilities-styles--zindex). You can maintain the same ordering hierarchy by importing these variables into your project like so:
+
+```scss
+@import '~@unitedincome/components/dist/zindex.scss';
+```
+
+These are also available as a JavaScript object..
+
+```javascript
+import {zindex} from '@unitedincome/components';
 ```
 
 ## Building a Component 🔩

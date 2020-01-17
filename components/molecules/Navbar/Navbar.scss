@@ -2,7 +2,6 @@ $fixed-navbar-height: 48px;
 $static-navbar-height: 100px;
 $static-navbar-border: hsla(0, 0%, 0%, 0.1);
 $fixed-navbar-border: hsla(0, 0%, 100%, 0.1);
-$navigation-z-index: 1450;
 
 .uic--navbar__prevent-scroll {
   height: 100%;
@@ -15,7 +14,7 @@ $navigation-z-index: 1450;
   justify-content: space-between;
   padding: 15px;
   transition: all 0.3s linear;
-  z-index: $navigation-z-index;
+  z-index: $z-index-menu + 1;
 
   .uic--navbar__logo {
     svg {
@@ -28,7 +27,7 @@ $navigation-z-index: 1450;
       display: none;
     }
 
-    z-index: $navigation-z-index;
+    z-index: $z-index-menu + 1;
 
     .uic--navbar__mobile-drawer-wrapper {
       left: 0;

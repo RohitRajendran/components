@@ -7,7 +7,7 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
     left: 0;
     pointer-events: none;
     top: 0;
-    z-index: 1500;
+    z-index: $z-index-modal;
 
     .uic--modal-dialog {
       max-width: 100%;
@@ -28,7 +28,7 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
         right: 0;
         top: -1.5rem;
         width: 36px;
-        z-index: 99999;
+        z-index: $z-index-modal + 2;
       }
 
       .uic--modal-body {
@@ -42,7 +42,7 @@ $modal-backdrop: rgba(0, 0, 0, 0.85);
         padding: 2rem 4rem 4rem;
         text-align: center;
         width: 56.4rem;
-        z-index: 99998;
+        z-index: $z-index-modal + 1;
 
         .uic--modal-bottom {
           margin-top: 3.1rem;

@@ -129,7 +129,7 @@
         position: absolute;
         top: -3.4rem;
         width: 20px;
-        z-index: 1;
+        z-index: $z-index-default;
       }
 
       &.uic--green {
@@ -186,7 +186,7 @@
     .rc-slider-rail {
       color: $light-gray;
       height: 2px;
-      z-index: 0;
+      z-index: $z-index-auto;
     }
 
     .rc-slider-dot {

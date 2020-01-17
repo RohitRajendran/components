@@ -78,7 +78,7 @@ class Flow extends PureComponent {
 
 ### stateConfig 💡
 
-The `stateConfig` prop is where you'll configure the transitions between each step in the question flow, this should be imported from the `Flow.xstate.js` file. Here you can add logic to determine which question is presented after the current one and logic that ensures that certain information is present before the user will be allowed to advance.
+The `stateConfig` prop is where you'll configure the transition between each step in the question flow, this should be imported from the `Flow.xstate.js` file. Here you can add logic to determine which question is presented after the current one and logic that ensures that certain information is present before the user will be allowed to advance.
 
 ```javascript
 const stateConfig = {
@@ -241,6 +241,24 @@ name: {
     ],
   },
 },
+```
+
+Actions run on the transitions between one state to another. When a user returns to a flow McGonagall will also sweep through each state for questions that have already been answered. Depending on the purpose of the action it may be required to check if `eve.navigatingToLatestCard` is false to prevent data from being incorrectly cleared, you can view an example of this below in the `makeIncomplete` action.
+
+```javascript
+const stateOptions = {
+  actions: {
+    makeIncomplete: assign((ctx, eve) => {
+      if (!eve.navigatingToLatestCard) {
+        ctx.insertUserDataValue(ctx.id, outputs.completionDate, null);
+
+        return {
+          completionDate: null,
+        };
+      }
+    });
+  },
+};
 ```
 
 #### stateOptions.guards
