@@ -67,6 +67,18 @@ These variables can also be utilized in JavaScript.
 import {colors} from '@unitedincome/components';
 ```
 
+In addition to color variables this component library also has a number of [z-index values available to use](https://unitedincome.github.io/components/?path=/docs/utilities-styles--zindex). You can maintain the same ordering hierarchy by importing these variables into your project like so:
+
+```scss
+@import '~@unitedincome/components/dist/zindex.scss';
+```
+
+These are also available as a JavaScript object..
+
+```javascript
+import {zindex} from '@unitedincome/components';
+```
+
 ## Building a Component 🔩
 
 Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
