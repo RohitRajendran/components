@@ -36,3 +36,4 @@ jobs:
           # Pushes the development version into the develop folder on the branch.
           TARGET_FOLDER: 'develop'
           CLEAN: true
+          COMMIT_MESSAGE: '[skip ci]' 
