@@ -23,9 +23,15 @@ const defaultProps = (color, draft, illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <HealthCircleIllustration {...defaultProps(false, false)} />
-));
+stories.add(
+  'default',
+  () => <HealthCircleIllustration {...defaultProps(false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f90ae8c220d2c663b398e',
+    },
+  },
+);
 stories.add('color', () => (
   <HealthCircleIllustration {...defaultProps(true, false)} />
 ));

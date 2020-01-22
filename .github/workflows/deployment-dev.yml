@@ -8,7 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false 
+      
+      - name: Install SSH Client
+        uses: webfactory/ssh-agent@v0.2.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Install
         run: yarn install
@@ -23,9 +30,10 @@ jobs:
         # Docs: https://github.com/JamesIves/github-pages-deploy-action
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SSH: true
           BRANCH: gh-pages
           FOLDER: '.build'
           # Pushes the development version into the develop folder on the branch.
           TARGET_FOLDER: 'develop'
           CLEAN: true
+          COMMIT_MESSAGE: '[skip ci]' 

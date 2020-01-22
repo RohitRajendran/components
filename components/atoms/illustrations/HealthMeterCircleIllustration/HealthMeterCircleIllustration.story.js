@@ -21,9 +21,15 @@ const defaultProps = (illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <HealthMeterCircleIllustration {...defaultProps(false)} />
-));
+stories.add(
+  'default',
+  () => <HealthMeterCircleIllustration {...defaultProps(false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f92fe8c220d56123b3a1e',
+    },
+  },
+);
 
 stories.add('illuminated', () => (
   <HealthMeterCircleIllustration {...defaultProps(true)} />

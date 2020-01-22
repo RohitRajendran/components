@@ -108,26 +108,34 @@ const defaultProps = ({
   key: formName,
 });
 
-stories.add('default', () => (
-  <DropDown
-    {...defaultProps({
-      formName: 'selectedExample',
-      options: [
-        {
-          value: 'uk',
-          label: 'United Kingdom',
-        },
-        {
-          value: 'usa',
-          label: 'United States',
-        },
-      ],
-      placeholder: 'Choose a country',
-      description: 'Pick your country',
-      label: 'Country',
-    })}
-  />
-));
+stories.add(
+  'default',
+  () => (
+    <DropDown
+      {...defaultProps({
+        formName: 'selectedExample',
+        options: [
+          {
+            value: 'uk',
+            label: 'United Kingdom',
+          },
+          {
+            value: 'usa',
+            label: 'United States',
+          },
+        ],
+        placeholder: 'Choose a country',
+        description: 'Pick your country',
+        label: 'Country',
+      })}
+    />
+  ),
+  {
+    'in-dsm': {
+      id: '5df7f5abb7f967049446a1d1',
+    },
+  },
+);
 
 stories.add('open', () => (
   <DropDown

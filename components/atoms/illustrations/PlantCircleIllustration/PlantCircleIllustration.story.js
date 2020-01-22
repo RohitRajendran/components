@@ -23,9 +23,15 @@ const defaultProps = (color, draft, illuminate) => ({
   draft: boolean('draft', draft),
 });
 
-stories.add('default', () => (
-  <PlantCircleIllustration {...defaultProps(false, false, false)} />
-));
+stories.add(
+  'default',
+  () => <PlantCircleIllustration {...defaultProps(false, false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f92c0c8dd1c41f02e6eb6',
+    },
+  },
+);
 stories.add('color', () => (
   <PlantCircleIllustration {...defaultProps(true, false, false)} />
 ));

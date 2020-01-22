@@ -18,6 +18,12 @@ const defaultProps = (defaultVariant, checked) => ({
   disabled: boolean('disabled', false),
 });
 
-stories.add('check', () => <OptionBox {...defaultProps('check', true)} />);
+stories.add('check', () => <OptionBox {...defaultProps('check', true)} />, {
+  'in-dsm': {id: '5df7b5063d4d18e218b4cf38'},
+});
 
-stories.add('radio', () => <OptionBox {...defaultProps('radio', true)} />);
+stories.add('radio', () => <OptionBox {...defaultProps('radio', true)} />, {
+  'in-dsm': {
+    id: '5df7b50d22502a9caa860487',
+  },
+});

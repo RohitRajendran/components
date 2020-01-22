@@ -23,9 +23,15 @@ const defaultProps = (color, draft, illuminate) => ({
   draft: boolean('draft', draft),
 });
 
-stories.add('default', () => (
-  <DollarCircleIllustration {...defaultProps(false, false, false)} />
-));
+stories.add(
+  'default',
+  () => <DollarCircleIllustration {...defaultProps(false, false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f928f8c220d14123b39e0',
+    },
+  },
+);
 stories.add('color', () => (
   <DollarCircleIllustration {...defaultProps(true, false, false)} />
 ));

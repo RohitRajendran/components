@@ -23,9 +23,15 @@ const defaultProps = (color, draft, illuminate) => ({
   draft: boolean('draft', draft),
 });
 
-stories.add('default', () => (
-  <CreditCardCircleIllustration {...defaultProps(false, false, false)} />
-));
+stories.add(
+  'default',
+  () => <CreditCardCircleIllustration {...defaultProps(false, false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f9294c8dd1cb8cd2e6ea1',
+    },
+  },
+);
 stories.add('color', () => (
   <CreditCardCircleIllustration {...defaultProps(true, false, false)} />
 ));
