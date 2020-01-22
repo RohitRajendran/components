@@ -39,9 +39,14 @@ function loadStories() {
     .filter((reqFiltered) => Boolean(reqFiltered.default));
 }
 
-// Initialize Storybook & DSM
-initDsm({
-  addDecorator,
-  addParameters,
-  callback: () => configure(loadStories, module),
-});
+if (process.env.NODE_ENV === 'dsm') {
+  // Initialize InVision DSM.
+  initDsm({
+    addDecorator,
+    addParameters,
+    callback: () => configure(loadStories, module),
+  });
+} else {
+  // Initialize Storybook normally.
+  configure(loadStories, module);
+}

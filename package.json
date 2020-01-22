@@ -20,8 +20,8 @@
     "mcgonagall": "yarn hygen mcgonagall new",
     "browserstack": "yarn nightwatch -c nightwatch/config.js",
     "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')",
-    "dsm-storybook:publish": "dsm-storybook publish",
-    "dsm-storybook:preview": "dsm-storybook preview"
+    "dsm-storybook:publish": "NODE_ENV=dsm dsm-storybook publish",
+    "dsm-storybook:preview": "NODE_ENV=dsm dsm-storybook preview"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
