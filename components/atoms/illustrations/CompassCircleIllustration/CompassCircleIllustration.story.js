@@ -22,4 +22,12 @@ const defaultProps = () => ({
   animationDuration: number('animationDuration', 10),
 });
 
-stories.add('default', () => <CompassCircleIllustration {...defaultProps()} />);
+stories.add(
+  'default',
+  () => <CompassCircleIllustration {...defaultProps()} />,
+  {
+    'in-dsm': {
+      id: '5e0f931153102bec042c09f1',
+    },
+  },
+);

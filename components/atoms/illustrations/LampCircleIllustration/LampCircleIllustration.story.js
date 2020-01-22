@@ -20,9 +20,15 @@ const defaultProps = (color, draft, illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <LampCircleIllustration {...defaultProps(false, false, false)} />
-));
+stories.add(
+  'default',
+  () => <LampCircleIllustration {...defaultProps(false, false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f90878c220d36433b3978',
+    },
+  },
+);
 stories.add('color', () => (
   <LampCircleIllustration {...defaultProps(true, false, false)} />
 ));

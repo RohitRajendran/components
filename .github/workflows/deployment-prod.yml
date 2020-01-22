@@ -22,6 +22,22 @@ jobs:
       - name: Install
         run: yarn install
 
+      - name: Install InVision .dsmrc
+        run: |
+          echo '{
+            "authToken": "${{ secrets.DSM_AUTH_TOKEN }}",
+            "dsmHost": "${{ secrets.DSM_HOST }}",
+            "organization": "${{ secrets.DSM_ORG }}",
+            "outputDir": ".dsm",
+            "storyPath": "components/**/**/*.story.js"
+          }' > '.dsmrc'
+
+      - name: Publish InVision DSM
+        run: yarn dsm-storybook:publish
+
+      - name: Cleanup InVision Temp Files
+        run: rm -rf .dsmrc && rm -rf .dsm
+
       - name: Build
         run: yarn build
 

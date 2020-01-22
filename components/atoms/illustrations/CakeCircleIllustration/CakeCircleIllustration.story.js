@@ -18,9 +18,15 @@ const defaultProps = (illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <CakeCircleIllustration {...defaultProps(false)} />
-));
+stories.add(
+  'default',
+  () => <CakeCircleIllustration {...defaultProps(false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f92f88c220d707a3b3a07',
+    },
+  },
+);
 
 stories.add('illuminated', () => (
   <CakeCircleIllustration {...defaultProps(true)} />
