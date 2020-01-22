@@ -35,7 +35,11 @@ const defaultProps = ({
   fixedWidth: text('Fixed Width', fixedWidth),
 });
 
-stories.add('dynamic width', () => <BubbleSelector {...defaultProps({})} />);
+stories.add('dynamic width', () => <BubbleSelector {...defaultProps({})} />, {
+  'in-dsm': {
+    id: '5df7b4e7b7f96738f046a1a8',
+  },
+});
 
 stories.add('fixed width', () => (
   <BubbleSelector {...defaultProps({fixedWidth: '17rem'})} />

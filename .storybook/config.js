@@ -1,3 +1,4 @@
+import {initDsm} from '@invisionapp/dsm-storybook';
 import {withA11y} from '@storybook/addon-a11y';
 import {withKnobs} from '@storybook/addon-knobs';
 import {addDecorator, addParameters, configure} from '@storybook/react';
@@ -38,4 +39,9 @@ function loadStories() {
     .filter((reqFiltered) => Boolean(reqFiltered.default));
 }
 
-configure(loadStories, module);
+// Initialize Storybook & DSM
+initDsm({
+  addDecorator,
+  addParameters,
+  callback: () => configure(loadStories, module),
+});

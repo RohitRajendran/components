@@ -23,9 +23,15 @@ const defaultProps = (color, draft, illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <RamenCircleIllustration {...defaultProps(false, false, false)} />
-));
+stories.add(
+  'default',
+  () => <RamenCircleIllustration {...defaultProps(false, false, false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f904e53102b787e2c092e',
+    },
+  },
+);
 stories.add('color', () => (
   <RamenCircleIllustration {...defaultProps(true, false, false)} />
 ));

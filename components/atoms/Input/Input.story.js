@@ -96,20 +96,28 @@ const storyStyles = {
   paddingTop: '3rem',
 };
 
-stories.add('default', () => (
-  <div className="row" style={storyStyles}>
-    <div className="col-xs-12">
-      <Input
-        {...defaultProps({
-          formName: 'default',
-          label: 'Address',
-          description: 'This is where you live.',
-          placeholder: '1660 L Street',
-        })}
-      />
+stories.add(
+  'default',
+  () => (
+    <div className="row" style={storyStyles}>
+      <div className="col-xs-12">
+        <Input
+          {...defaultProps({
+            formName: 'default',
+            label: 'Address',
+            description: 'This is where you live.',
+            placeholder: '1660 L Street',
+          })}
+        />
+      </div>
     </div>
-  </div>
-));
+  ),
+  {
+    'in-dsm': {
+      id: '5df7f59022502a3e0b8604b6',
+    },
+  },
+);
 
 stories.add('default with explanation', () => (
   <div className="row" style={storyStyles}>

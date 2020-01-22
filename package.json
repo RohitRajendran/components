@@ -19,7 +19,9 @@
     "generate": "yarn hygen component new",
     "mcgonagall": "yarn hygen mcgonagall new",
     "browserstack": "yarn nightwatch -c nightwatch/config.js",
-    "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')"
+    "testVisual": "node ./utils-for-tests/branch.js && yarn snapshot || (echo 'Visual tests not required!')",
+    "dsm-storybook:publish": "dsm-storybook publish",
+    "dsm-storybook:preview": "dsm-storybook preview"
   },
   "homepage": "https://github.com/UnitedIncome/components",
   "repository": {
@@ -41,7 +43,9 @@
     "@storybook/addon-docs": "5.2.8",
     "@storybook/addon-knobs": "5.3.3",
     "@storybook/addon-viewport": "5.2.8",
+    "@storybook/addons": "^5.2.8",
     "@storybook/react": "5.2.8",
+    "@invisionapp/dsm-storybook": "^0.0.123",
     "accounting": "0.4.1",
     "airbnb-prop-types": "2.15.0",
     "babel-loader": "8.0.6",

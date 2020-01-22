@@ -147,7 +147,31 @@ const defaultProps = () => ({
   width: text('width', '2rem'),
 });
 
-stories.add('default', () => <TrashIcon {...defaultProps()} />);
+stories.add('default', () => (<TrashIcon {...defaultProps()} />), { // Options ... });
+```
+
+#### InVision Configuration
+
+This Storybook has integration with InVision's DSM product. If a story exists in the DSM you can attach the corresponding id to the story by passing the following into the stories options object. You can learn more about how to generate an id [here](https://support.invisionapp.com/hc/en-us/articles/360028509991-Getting-Started-with-Live-Components).
+
+```javascript
+{
+  'in-dsm': {
+    id: 'abc123
+  }
+}
+```
+
+#### Percy Configuration
+
+Depending on the type of story it may be necessary to skip it from being tested with [Percy](https://percy.io/). You can do this by passing the following into the stories options object.
+
+```javascript
+{
+  'percy': {
+    skip: true
+  }
+}
 ```
 
 ### State Wrapper 🗽

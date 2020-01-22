@@ -21,10 +21,12 @@ const permutations = [
   {
     variant: 'primary',
     background: 'dark',
+    dsm: '5df7b41b22502a247286047a',
   },
   {
     variant: 'secondary',
     background: 'light',
+    dsm: '5df7b49f22502a500b86047d',
   },
   {
     variant: 'secondary',
@@ -108,29 +110,41 @@ for (const permutation of permutations) {
     ...(permutation.accent ? [permutation.accent] : []),
   ].join(' ');
 
-  stories.add(storyName, () => {
-    const props = defaultProps({
-      defaultVariant: permutation.variant,
-      defaultBackground: permutation.background,
-      defaultText: permutation.text,
-      defaultTitle: permutation.title,
-      defaultAccent: permutation.accent,
-    });
+  const options = {};
 
-    return (
-      <Button
-        variant={props.variant}
-        light={props.background === 'light'}
-        dark={props.background === 'dark'}
-        disabled={props.disabled}
-        isLoading={props.isLoading}
-        title={props.title}
-        accent={props.accent}
-      >
-        {props.text}
-      </Button>
-    );
-  });
+  if (permutation.dsm) {
+    options['in-dsm'] = {
+      id: permutation.dsm,
+    };
+  }
+
+  stories.add(
+    storyName,
+    () => {
+      const props = defaultProps({
+        defaultVariant: permutation.variant,
+        defaultBackground: permutation.background,
+        defaultText: permutation.text,
+        defaultTitle: permutation.title,
+        defaultAccent: permutation.accent,
+      });
+
+      return (
+        <Button
+          variant={props.variant}
+          light={props.background === 'light'}
+          dark={props.background === 'dark'}
+          disabled={props.disabled}
+          isLoading={props.isLoading}
+          title={props.title}
+          accent={props.accent}
+        >
+          {props.text}
+        </Button>
+      );
+    },
+    options,
+  );
 }
 
 stories.add('disabled', () => <Button disabled>Testing</Button>);

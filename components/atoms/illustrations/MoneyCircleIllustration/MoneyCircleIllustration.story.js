@@ -21,9 +21,15 @@ const defaultProps = (illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <MoneyCircleIllustration {...defaultProps(false)} />
-));
+stories.add(
+  'default',
+  () => <MoneyCircleIllustration {...defaultProps(false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f930853102b31b42c09d8',
+    },
+  },
+);
 
 stories.add('illuminated', () => (
   <MoneyCircleIllustration {...defaultProps(true)} />

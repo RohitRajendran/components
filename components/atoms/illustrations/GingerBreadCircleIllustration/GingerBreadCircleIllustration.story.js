@@ -21,9 +21,15 @@ const defaultProps = (illuminate) => ({
   illuminate: boolean('illuminate', illuminate),
 });
 
-stories.add('default', () => (
-  <GingerBreadCircleIllustration {...defaultProps(false)} />
-));
+stories.add(
+  'default',
+  () => <GingerBreadCircleIllustration {...defaultProps(false)} />,
+  {
+    'in-dsm': {
+      id: '5e0f930c8c220d12193b3a36',
+    },
+  },
+);
 
 stories.add('illuminated', () => (
   <GingerBreadCircleIllustration {...defaultProps(true)} />
