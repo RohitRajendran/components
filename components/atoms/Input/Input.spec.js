@@ -37,6 +37,33 @@ test('Input - Renders props as attributes on the input', (t) => {
   t.deepEquals(onChangeSpy.args[0], ['fancy_input', 5]);
 });
 
+test('Input - multiline', (t) => {
+  const component = mount(
+    <Input
+      name="fancy_input"
+      type="text"
+      value={'1\n2\n3'}
+      placeholder="$0"
+      label="Value"
+      multiline
+    />,
+  );
+
+  t.equal(component.find('input').length, 0, 'Do not render input element');
+  t.equal(component.find('textarea').length, 1, 'Render textarea element');
+
+  const componentInputProps = component.find('textarea').props();
+
+  t.equal(componentInputProps.name, 'fancy_input');
+  t.equal(componentInputProps.value, '1\n2\n3');
+  t.equal(componentInputProps.type, 'text');
+  t.equal(componentInputProps.placeholder, '$0');
+  t.equal(componentInputProps['aria-label'], 'Value (Optional)');
+  t.equal(componentInputProps.required, undefined);
+
+  t.end();
+});
+
 test('Input - required field error', (t) => {
   const onChangeSpy = spy();
 

@@ -59,6 +59,8 @@ const defaultProps = ({
   explanation,
   error,
   disabled,
+  multiline,
+  rows,
   mask,
   validationErrorMsg,
   validateOnBlur,
@@ -74,6 +76,8 @@ const defaultProps = ({
   value: store.get(formName),
   required: boolean('required', true),
   maxLength: number('maxLength'),
+  multiline: boolean('multiline', multiline),
+  rows: number('rows', rows),
   mask: inputMask(mask),
   min: number('min'),
   max: number('max'),
@@ -134,6 +138,30 @@ stories.add('default with explanation', () => (
     </div>
   </div>
 ));
+
+stories.add(
+  'multiline',
+  () => (
+    <div className="row" style={storyStyles}>
+      <div className="col-xs-12">
+        <Input
+          {...defaultProps({
+            formName: 'default',
+            label: 'Address',
+            multiline: true,
+            rows: 3,
+            placeholder: 'Enter text...',
+          })}
+        />
+      </div>
+    </div>
+  ),
+  {
+    'in-dsm': {
+      id: '5df7f59022502a3e0b8604b6',
+    },
+  },
+);
 
 stories.add('currency', () => (
   <div className="row" style={storyStyles}>

@@ -45,6 +45,40 @@ import {Input} from '@unitedincome/components';
 
 You can provide the `Input` component with a `mask` prop which will force a certain type of input value. The available masks can be found in the prop table and `Input.masks.js`.
 
+### Multi-line inputs
+
+You can create a multi-line input similar to an HTML text area. Multi-line inputs do not support the `mask` prop.
+
+<Preview>
+  <Input
+    label="Institution Names"
+    type="text"
+    placeholder="Enter several lines of text here..."
+    description="Not the right account? Visit the Manage Linked Accounts page."
+    onChange={(name, value) => true}
+    value={`Montezuma!!!
+Montezuma!!!
+Montezuma!!!`}
+    multiline
+    rows={2}
+  />
+</Preview>
+
+```javascript
+<Input
+  label="Institution Names"
+  type="text"
+  placeholder="Enter several lines of text here..."
+  description="Not the right account? Visit the Manage Linked Accounts page."
+  onChange={(name, value) => true}
+  value={`Montezuma!!!
+Montezuma!!!
+Montezuma!!!`}
+  multiline
+  rows={2}
+/>
+```
+
 ### Appending
 
 You can append a character to the input by using the `append` prop. The appended character is not considered part of the input value and does _not_ need to be stripped out when working with the data. Certain masks automatically include the appropriate appended character for their type.
