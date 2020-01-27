@@ -110,15 +110,17 @@ jobs:
             git push --set-upstream origin $CIRCLE_BRANCH --tags
 
 workflows:
-  version: 2.1
+  version: 2.1 # Required due to some issue with Percy builds
   components:
     jobs:
       - build:
+          context: Development
           filters:
             branches:
               ignore:
                 - gh-pages
       - smoke_test:
+          context: Development
           requires:
             - build
           filters:
@@ -127,6 +129,7 @@ workflows:
                 - master
                 - develop
       - publish_package:
+          context: Development
           requires:
             - build
           filters:
