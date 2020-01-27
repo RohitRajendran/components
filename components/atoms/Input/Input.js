@@ -117,6 +117,8 @@ class Input extends Component {
       required,
       pattern,
       maxLength,
+      multiline,
+      rows,
       onChange,
       onKeyPress,
       min,
@@ -151,7 +153,9 @@ class Input extends Component {
       appendCharacter = '%';
     }
 
-    if (this.props.mask) {
+    if (multiline) {
+      InputType = 'textarea';
+    } else if (this.props.mask) {
       InputType = MaskedInput;
     }
 
@@ -175,6 +179,7 @@ class Input extends Component {
       disabled,
       pattern,
       onKeyPress,
+      rows,
     };
 
     if (this.props.mask) {
@@ -358,6 +363,10 @@ Input.propTypes = {
   pattern: PropTypes.string,
   /** The max length of the input field value. */
   maxLength: PropTypes.number,
+  /** Whether the input is text area vs a single line */
+  multiline: PropTypes.bool,
+  /** The number of text rows in the input */
+  rows: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf(Object.keys(maskEnum)),
   /** Handle which is run whenever a user makes a key press within the input. */

@@ -6,16 +6,33 @@ $input-data-value-color: rgba(255, 255, 255, 0);
   text-align: left;
 
   &.uic--error {
-    input {
-      border: 1px solid $pink;
+    input,
+    textarea {
       box-shadow: none;
       color: $pink;
 
       &:focus,
       &:active {
-        border: 1px solid $pink;
         box-shadow: none;
         color: $pink;
+      }
+    }
+
+    input {
+      border: 1px solid $pink;
+
+      &:focus,
+      &:active {
+        border: 1px solid $pink;
+      }
+    }
+
+    textarea {
+      outline: 1px solid $pink;
+
+      &:focus,
+      &:active {
+        outline: 1px solid $pink;
       }
     }
 
@@ -41,6 +58,10 @@ $input-data-value-color: rgba(255, 255, 255, 0);
       border: 1px solid transparent !important;
     }
 
+    textarea {
+      outline: 1px solid transparent !important;
+    }
+
     .uic--mcgonagall-input__wrapper {
       outline: 2px solid $royal;
     }
@@ -63,12 +84,11 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     }
   }
 
-  input {
+  input,
+  textarea {
     @include source-sans-pro(2rem);
     background-color: $white;
-    border: 1px solid $light-gray;
     color: $midnight;
-    padding: 2.6rem 1.2rem 1rem 1rem;
     width: 100%;
 
     // Styles the label of the input which appears directly beneath it in the DOM.
@@ -78,10 +98,8 @@ $input-data-value-color: rgba(255, 255, 255, 0);
 
     &:focus,
     &:active {
-      border: 1px solid $royal;
       box-shadow: 0 0 4px 0 $input-shadow;
       color: $royal;
-      outline: none;
     }
 
     &:disabled {
@@ -92,7 +110,6 @@ $input-data-value-color: rgba(255, 255, 255, 0);
       // when it's in a disabled state.
       &:focus,
       &:active {
-        border: 1px solid $light-gray;
         box-shadow: none;
       }
     }
@@ -101,6 +118,53 @@ $input-data-value-color: rgba(255, 255, 255, 0);
       color: $disabled-text;
       font-style: italic;
       font-weight: normal;
+    }
+  }
+
+  input {
+    border: 1px solid $light-gray;
+    padding: 2.6rem 1.2rem 1rem 1rem;
+
+    &:focus,
+    &:active {
+      border: 1px solid $royal;
+      outline: none;
+    }
+
+    &:disabled {
+      // Resets the focus and active styles for the input
+      // when it's in a disabled state.
+      &:focus,
+      &:active {
+        border: 1px solid $light-gray;
+      }
+    }
+  }
+
+  textarea {
+    border: 0 solid $white;
+    border-bottom-width: 1rem;
+    border-left-width: 1.2rem;
+    border-top-width: 2.6rem;
+    outline: 1px solid $light-gray;
+    outline-offset: 0;
+    padding: 0;
+    resize: vertical;
+
+    &:focus,
+    &:active {
+      outline: 1px solid $royal;
+    }
+
+    &:disabled {
+      border-color: $table-alternate;
+
+      // Resets the focus and active styles for the input
+      // when it's in a disabled state.
+      &:focus,
+      &:active {
+        outline: 1px solid $light-gray;
+      }
     }
   }
 
@@ -151,6 +215,10 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     input {
       padding-left: 2.3rem;
     }
+
+    textarea {
+      border-left-width: 2.3rem;
+    }
   }
 
   .uic--validation-error {
@@ -179,7 +247,8 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     }
 
     &[data-value] {
-      input {
+      input,
+      textarea {
         background-color: transparent;
         caret-color: $royal;
         color: $input-data-value-color;
@@ -187,11 +256,20 @@ $input-data-value-color: rgba(255, 255, 255, 0);
         z-index: $z-index-overlay;
       }
 
+      textarea {
+        border-color: transparent;
+      }
+
       &.uic--disabled {
-        input {
+        input,
+        textarea {
           background-color: $table-alternate;
           position: inherit;
           z-index: $z-index-auto;
+        }
+
+        textarea {
+          border-color: $table-alternate;
         }
 
         &::after {
