@@ -97,7 +97,7 @@
     "sass-lint": "1.13.1",
     "sass-lint-auto-fix": "0.21.0",
     "sass-loader": "8.0.2",
-    "sinon": "8.0.4",
+    "sinon": "8.1.1",
     "style-loader": "1.1.2",
     "tap-xunit": "2.4.1",
     "tape": "4.13.0",
