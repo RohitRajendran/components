@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
+import TextareaAutosize from 'react-textarea-autosize';
 import {isInViewport} from '~components/atoms/Input/Input.util';
 import {CardShellContext} from '~components/molecules/CardShell/CardShell';
 import {
@@ -118,7 +119,7 @@ class Input extends Component {
       pattern,
       maxLength,
       multiline,
-      rows,
+      minRows,
       onChange,
       onKeyPress,
       min,
@@ -154,7 +155,7 @@ class Input extends Component {
     }
 
     if (multiline) {
-      InputType = 'textarea';
+      InputType = TextareaAutosize;
     } else if (this.props.mask) {
       InputType = MaskedInput;
     }
@@ -179,7 +180,7 @@ class Input extends Component {
       disabled,
       pattern,
       onKeyPress,
-      rows,
+      minRows,
     };
 
     if (this.props.mask) {
@@ -365,8 +366,8 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   /** Whether the input is text area vs a single line */
   multiline: PropTypes.bool,
-  /** The number of text rows in the input */
-  rows: PropTypes.number,
+  /** The starting number of text rows in the input */
+  minRows: PropTypes.number,
   /** Allows you to select which input type is allowed in the field. */
   mask: PropTypes.oneOf(Object.keys(maskEnum)),
   /** Handle which is run whenever a user makes a key press within the input. */
@@ -406,6 +407,7 @@ Input.propTypes = {
 Input.defaultProps = {
   type: 'text',
   value: '',
+  minRows: 3,
 };
 
 export default Input;

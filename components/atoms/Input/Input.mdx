@@ -47,7 +47,7 @@ You can provide the `Input` component with a `mask` prop which will force a cert
 
 ### Multi-line inputs
 
-You can create a multi-line input similar to an HTML text area. Multi-line inputs do not support the `mask` prop.
+You can create a multi-line input similar to an HTML text area with auto-resizing capability. Multi-line inputs do not support the `mask` prop.
 
 <Preview>
   <Input
@@ -60,7 +60,7 @@ You can create a multi-line input similar to an HTML text area. Multi-line input
 Montezuma!!!
 Montezuma!!!`}
     multiline
-    rows={2}
+    minRows={2}
   />
 </Preview>
 
@@ -75,7 +75,7 @@ Montezuma!!!`}
 Montezuma!!!
 Montezuma!!!`}
   multiline
-  rows={2}
+  minRows={2}
 />
 ```
 
