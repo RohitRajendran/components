@@ -149,7 +149,7 @@ $input-data-value-color: rgba(255, 255, 255, 0);
     outline: 1px solid $light-gray;
     outline-offset: 0;
     padding: 0;
-    resize: vertical;
+    resize: none;
 
     &:focus,
     &:active {
