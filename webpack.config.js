@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPrefixer = require('postcss-prefixer');
 
 const entries = glob
-  .sync('./components/**/**/*.js', {
-    ignore: ['./components/**/**/*.spec.js', './components/**/**/*.story.js'],
+  .sync('./components/**/*.[jt]sx?', {
+    ignore: ['./components/**/*.spec.[jt]sx?', './components/**/*.story.[jt]sx?'],
   })
   .reduce((allEntries, entry) => {
     const splitPath = entry.split('/');
@@ -129,6 +129,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new MiniCssExtractPlugin({

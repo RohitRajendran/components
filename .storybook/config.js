@@ -6,7 +6,7 @@ import {colors} from '~constants/js/colors';
 import '../constants/sass/util/prefixed-utils.scss';
 import unitedIncomeTheme from './theme';
 
-const req = require.context('../components', true, /(story)\.(js|mdx)$/);
+const req = require.context('../components', true, /(story)\.([jt]sx?|mdx)$/);
 
 // Registers global decorators.
 addDecorator(withA11y);
