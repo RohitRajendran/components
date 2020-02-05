@@ -1,6 +1,6 @@
 // Atoms
 import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
-import Box from '~components/atoms/Box/Box';
+import Box from '~components/atoms/Box/Box.tsx';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import Button from '~components/atoms/Button/Button';

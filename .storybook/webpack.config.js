@@ -5,6 +5,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [['react-app', {flow: false, typescript: true}]],
+        },
+      },
+      {
         test: /prefixed-utils.scss$/,
         use: [
           {

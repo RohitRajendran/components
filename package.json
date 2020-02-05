@@ -53,6 +53,7 @@
     "@storybook/addon-viewport": "5.2.6",
     "@storybook/addons": "5.2.6",
     "@storybook/react": "5.2.6",
+    "@types/classnames": "2.2.9",
     "@typescript-eslint/eslint-plugin": "2.19.0",
     "@typescript-eslint/parser": "2.19.0",
     "accounting": "0.4.1",

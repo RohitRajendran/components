@@ -1,15 +1,35 @@
 /** @module Box */
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, {PureComponent} from 'react';
-import requiredIf from 'react-required-if';
+import React, {PureComponent, CSSProperties} from 'react';
 import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
+interface BoxProps {
+  /* Additional class names to apply to the container. */
+  className: string;
+  /** Additional style properties to apply to the container. */
+  style: CSSProperties;
+  /** The title to appear on the box. */
+  label: string;
+  /** The description to appear on the box. */
+  description: React.ReactNode;
+  /** Determines if the box is selected or not. */
+  selected: boolean;
+  /** The icon to display at the top of the card. */
+  icon: React.ReactType;
+  /** Optional onClick handler which passes back the name and the id of the selected box. */
+  onClick: (val: string) => null;
+  /** The value of the selection. Only applicable if using an onClick handler. */
+  value: string;
+  /** Shows check icon */
+  showCheck: boolean;
+  /** Disables the box */
+  disabled: boolean;
+}
+
 /** Displays content within a simple box with an icon, label, and description. */
-class Box extends PureComponent {
-  /** @inheritdoc */
-  constructor(props) {
+class Box extends PureComponent<BoxProps, {hover: boolean}> {
+  constructor(props: BoxProps) {
     super(props);
 
     this.state = {
@@ -20,11 +40,11 @@ class Box extends PureComponent {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  /** Handles the click event within the box.
-   * @param {object} event - The event object.
-   * @returns {undefined}
+  /**
+   * Handles the click event within the box.
+   * @param event - The event object.
    */
-  handleClick(event) {
+  handleClick(event: MouseEvent) {
     event.stopPropagation();
 
     if (this.props.onClick) {
@@ -32,8 +52,8 @@ class Box extends PureComponent {
     }
   }
 
-  /** Handles the hover event.
-   * @returns {undefined}
+  /**
+   * Handles the hover event.
    */
   handleHover() {
     this.setState({
@@ -41,7 +61,6 @@ class Box extends PureComponent {
     });
   }
 
-  /** @inheritdoc */
   render() {
     const {
       className,
@@ -72,8 +91,8 @@ class Box extends PureComponent {
         className={containerClasses}
         style={style}
         role="button"
-        tabIndex="0"
-        onClick={(!disabled && this.handleClick) || null}
+        tabIndex={0}
+        onClick={(!disabled && this.handleClick) || undefined}
         onKeyPress={(!disabled && this.handleClick) || null}
         onMouseEnter={(!disabled && this.handleHover) || null}
         onMouseLeave={(!disabled && this.handleHover) || null}
@@ -103,27 +122,8 @@ class Box extends PureComponent {
   }
 }
 
-Box.propTypes = {
-  /* Additional class names to apply to the container. */
-  className: PropTypes.string,
-  /** Additional style properties to apply to the container. */
-  style: PropTypes.objectOf(PropTypes.string),
-  /** The title to appear on the box. */
-  label: PropTypes.string,
-  /** The description to appear on the box. */
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  /** Determines if the box is selected or not. */
-  selected: PropTypes.bool,
-  /** The icon to display at the top of the card. */
-  icon: PropTypes.node,
-  /** Optional onClick handler which passes back the name and the id of the selected box. */
-  onClick: PropTypes.func,
-  /** The value of the selection. Only applicable if using an onClick handler. */
-  value: requiredIf(PropTypes.string, (props) => props.onClick),
-  /** Shows check icon */
-  showCheck: PropTypes.bool,
-  /** Disables the box */
-  disabled: PropTypes.bool,
-};
+// Box.propTypes = {
+//   value: requiredIf(PropTypes.string, (props) => props.onClick),
+// };
 
 export default Box;

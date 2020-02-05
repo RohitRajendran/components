@@ -3,7 +3,7 @@ import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
-import Box from './Box';
+import Box from './Box.tsx';
 
 test('Box - renders', (t) => {
   const component = shallow(<Box />);
