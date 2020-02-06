@@ -1,6 +1,6 @@
 /** @module Box */
 import classNames from 'classnames';
-import React, {PureComponent, CSSProperties} from 'react';
+import React, {PureComponent} from 'react';
 import CheckIcon from '../icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
@@ -8,7 +8,7 @@ type BoxPropsBase = {
   /* Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   /** The title to appear on the box. */
   label?: string;
   /** The description to appear on the box. */
@@ -16,7 +16,7 @@ type BoxPropsBase = {
   /** Determines if the box is selected or not. */
   selected?: boolean;
   /** The icon to display at the top of the card. */
-  icon?: React.ReactType;
+  icon?: React.ElementType;
   /** Shows check icon */
   showCheck?: boolean;
   /** Disables the box */
@@ -35,7 +35,15 @@ type BoxPropsOnClick = {
   value: string;
 };
 
-// Union these two interfaces to mimic the react-required-if prop type
+/**
+ * Union these two interfaces to mimic the react-required-if prop type.
+ * Storybook's docgen doesn't support union/intersection types:
+ * https://github.com/strothj/react-docgen-typescript-loader/issues/47
+ * https://github.com/strothj/react-docgen-typescript-loader/issues/81
+ * Note you can bypass this check using spread props because TS allows excess props when using them:
+ * https://github.com/microsoft/TypeScript/issues/29883
+ * https://github.com/microsoft/TypeScript/issues/29509
+ */
 type BoxProps = BoxPropsBase & (BoxPropsOnClick | BoxPropsNoClick);
 
 /** Displays content within a simple box with an icon, label, and description. */
