@@ -11,19 +11,16 @@
     "clients": true
   },
   "extends": [
-    "eslint:recommended", 
-    "prettier", 
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended"
   ],
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "plugins": ["react", "jsx-a11y"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
   "rules": {
     "react/prop-types": "error",
     "linebreak-style": ["error", "unix"],
@@ -45,7 +42,6 @@
     "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",
     "no-unsafe-negation": "error",
-    "valid-jsdoc": "error",
     "block-scoped-var": "error",
     "default-case": "error",
     "dot-location": ["error", "property"],
@@ -196,8 +192,17 @@
     "react/jsx-no-target-blank": "error",
     "react/forbid-prop-types": 2,
     "curly": ["error", "all"],
-    "prefer-destructuring":"error"
+    "prefer-destructuring":"error",
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ],
   "settings": {
     "react": {
       "createClass": "createReactClass",

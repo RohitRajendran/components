@@ -52,7 +52,7 @@ test('Box - should hand back the value onClick', (t) => {
     .find('.uic--box')
     .at(0)
     .prop('onClick');
-    
+
   if (onClickHandler) {
     onClickHandler(event);
   }

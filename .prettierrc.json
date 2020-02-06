@@ -2,7 +2,6 @@
   "singleQuote": true,
   "trailingComma": "all",
   "bracketSpacing": false,
-  "arrowParens": "always",
-  "parser": "babel"
+  "arrowParens": "always"
 }
 

@@ -40,6 +40,7 @@ type BoxProps = BoxPropsBase & (BoxPropsOnClick | BoxPropsNoClick);
 
 /** Displays content within a simple box with an icon, label, and description. */
 class Box extends PureComponent<BoxProps, {hover: boolean}> {
+  /** @inheritdoc */
   constructor(props: BoxProps) {
     super(props);
 
@@ -55,7 +56,7 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
    * Handles the click event within the box.
    * @param event - The event object.
    */
-  handleClick(event: React.MouseEvent | React.KeyboardEvent) {
+  handleClick(event: React.MouseEvent | React.KeyboardEvent): void {
     event.stopPropagation();
 
     const propsWithOnClick = this.props as BoxPropsOnClick;
@@ -68,13 +69,14 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
   /**
    * Handles the hover event.
    */
-  handleHover() {
+  handleHover(): void {
     this.setState({
       hover: !this.state.hover,
     });
   }
 
-  render() {
+  /** @inheritdoc */
+  render(): JSX.Element {
     const {
       className,
       description,
