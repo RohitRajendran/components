@@ -7,11 +7,11 @@
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "build": "npm run buildTypes && npm run buildJs",
+    "build": "yarn buildTypes && yarn buildJs",
     "buildTypes": "tsc --emitDeclarationOnly",
     "buildJs": "webpack",
     "typeCheck": "tsc --noEmit",
-    "typeCheckWatch": "npm run typeCheck -- --watch",
+    "typeCheckWatch": "yarn typeCheck -- --watch",
     "snapshot": "build-storybook && percy-storybook --widths=320,1280 -s storybook-static",
     "test": "yarn testSingle './components/**/*.spec.js' './components/**/*.spec.jsx' './components/**/*.spec.ts' './components/**/*.spec.tsx' './proptypes/**/*.spec.js' | faucet",
     "testCI": "NODE_ENV=test nyc tape -r @babel/register -r ts-node/register -r ./utils-for-tests/configureEnzyme.js -r jsdom-global/register -r ignore-styles './components/**/*.spec.js' './components/**/*.spec.jsx' './components/**/*.spec.ts' './components/**/*.spec.tsx' './proptypes/**/*.spec.js'  | tap-xunit > ./reports/tape/results.xml",
