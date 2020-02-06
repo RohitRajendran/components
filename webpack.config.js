@@ -1,11 +1,11 @@
-const path = require('path');
 const glob = require('glob');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPrefixer = require('postcss-prefixer');
 
 const entries = glob
-  .sync('./components/**/*.[jt]sx?', {
-    ignore: ['./components/**/*.spec.[jt]sx?', './components/**/*.story.[jt]sx?'],
+  .sync('./components/**/*.@(js|jsx|ts|tsx)', {
+    ignore: ['./components/**/*.spec.@(js|jsx|ts|tsx)', './components/**/*.story.@(js|jsx|ts|tsx)'],
   })
   .reduce((allEntries, entry) => {
     const splitPath = entry.split('/');
