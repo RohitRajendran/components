@@ -4,36 +4,36 @@ import React, {PureComponent, CSSProperties} from 'react';
 import CheckIcon from '../icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
-interface BoxPropsBase {
+type BoxPropsBase = {
   /* Additional class names to apply to the container. */
-  className: string;
+  className?: string;
   /** Additional style properties to apply to the container. */
-  style: CSSProperties;
+  style?: CSSProperties;
   /** The title to appear on the box. */
-  label: string;
+  label?: string;
   /** The description to appear on the box. */
-  description: React.ReactNode;
+  description?: React.ReactNode;
   /** Determines if the box is selected or not. */
-  selected: boolean;
+  selected?: boolean;
   /** The icon to display at the top of the card. */
-  icon: React.ReactType;
+  icon?: React.ReactType;
   /** Shows check icon */
-  showCheck: boolean;
+  showCheck?: boolean;
   /** Disables the box */
-  disabled: boolean;
-}
+  disabled?: boolean;
+};
 
-interface BoxPropsNoClick {
+type BoxPropsNoClick = {
   /** The optional value of the selection. */
   value?: string;
-}
+};
 
-interface BoxPropsOnClick {
+type BoxPropsOnClick = {
   /** Click event handler which passes back the name and the id of the selected box. */
   onClick: (val: string) => void;
   /** The value of the selection. */
   value: string;
-}
+};
 
 // Union these two interfaces to mimic the react-required-if prop type
 type BoxProps = BoxPropsBase & (BoxPropsOnClick | BoxPropsNoClick);
