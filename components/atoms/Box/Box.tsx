@@ -4,7 +4,7 @@ import React, {PureComponent, CSSProperties} from 'react';
 import CheckIcon from '../icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
-interface BoxProps {
+interface BoxPropsBase {
   /* Additional class names to apply to the container. */
   className: string;
   /** Additional style properties to apply to the container. */
@@ -17,15 +17,26 @@ interface BoxProps {
   selected: boolean;
   /** The icon to display at the top of the card. */
   icon: React.ReactType;
-  /** Optional onClick handler which passes back the name and the id of the selected box. */
-  onClick: (val: string) => void;
-  /** The value of the selection. Only applicable if using an onClick handler. */
-  value: string;
   /** Shows check icon */
   showCheck: boolean;
   /** Disables the box */
   disabled: boolean;
 }
+
+interface BoxPropsNoClick {
+  /** The optional value of the selection. */
+  value?: string;
+}
+
+interface BoxPropsOnClick {
+  /** Click event handler which passes back the name and the id of the selected box. */
+  onClick: (val: string) => void;
+  /** The value of the selection. */
+  value: string;
+}
+
+// Union these two interfaces to mimic the react-required-if prop type
+type BoxProps = BoxPropsBase & (BoxPropsOnClick | BoxPropsNoClick);
 
 /** Displays content within a simple box with an icon, label, and description. */
 class Box extends PureComponent<BoxProps, {hover: boolean}> {
@@ -47,8 +58,10 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
   handleClick(event: React.MouseEvent | React.KeyboardEvent) {
     event.stopPropagation();
 
-    if (this.props.onClick) {
-      return this.props.onClick(this.props.value);
+    const propsWithOnClick = this.props as BoxPropsOnClick;
+
+    if (propsWithOnClick) {
+      return propsWithOnClick.onClick(propsWithOnClick.value);
     }
   }
 
@@ -121,9 +134,5 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
     );
   }
 }
-
-// Box.propTypes = {
-//   value: requiredIf(PropTypes.string, (props) => props.onClick),
-// };
 
 export default Box;
