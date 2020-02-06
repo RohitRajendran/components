@@ -2,8 +2,8 @@ import {mount, shallow} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
-import Box from './Box.tsx';
+import CarCircleIllustration from '../illustrations/CarCircleIllustration/CarCircleIllustration';
+import Box from './Box';
 
 test('Box - renders', (t) => {
   const component = shallow(<Box />);
@@ -44,12 +44,18 @@ test('Box - should hand back the value onClick', (t) => {
   };
   const component = mount(<Box {...props} />);
 
-  component
+  const event = {
+    stopPropagation: stub() as () => void,
+  } as React.MouseEvent;
+
+  const onClickHandler = component
     .find('.uic--box')
     .at(0)
-    .prop('onClick')({
-    stopPropagation: stub(),
-  });
+    .prop('onClick');
+    
+  if (onClickHandler) {
+    onClickHandler(event);
+  }
 
   t.deepEquals(
     props.onClick.args[0][0],
@@ -67,7 +73,7 @@ test('Box - handleHover', (t) => {
     description: 'v ginger and v good',
     onClick: stub(),
   };
-  const component = mount(<Box {...props} />);
+  const component = mount<Box>(<Box {...props} />);
 
   t.deepEquals(component.state().hover, false, 'Defaults to false.');
 
