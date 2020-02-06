@@ -1,7 +1,7 @@
 /** @module Box */
 import classNames from 'classnames';
 import React, {PureComponent, CSSProperties} from 'react';
-import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
+import CheckIcon from '../icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
 interface BoxProps {
@@ -18,7 +18,7 @@ interface BoxProps {
   /** The icon to display at the top of the card. */
   icon: React.ReactType;
   /** Optional onClick handler which passes back the name and the id of the selected box. */
-  onClick: (val: string) => null;
+  onClick: (val: string) => void;
   /** The value of the selection. Only applicable if using an onClick handler. */
   value: string;
   /** Shows check icon */
@@ -44,7 +44,7 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
    * Handles the click event within the box.
    * @param event - The event object.
    */
-  handleClick(event: MouseEvent) {
+  handleClick(event: React.MouseEvent | React.KeyboardEvent) {
     event.stopPropagation();
 
     if (this.props.onClick) {
@@ -92,10 +92,10 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
         style={style}
         role="button"
         tabIndex={0}
-        onClick={(!disabled && this.handleClick) || undefined}
-        onKeyPress={(!disabled && this.handleClick) || null}
-        onMouseEnter={(!disabled && this.handleHover) || null}
-        onMouseLeave={(!disabled && this.handleHover) || null}
+        onClick={!disabled ? this.handleClick : undefined}
+        onKeyPress={!disabled ? this.handleClick : undefined}
+        onMouseEnter={!disabled ? this.handleHover : undefined}
+        onMouseLeave={!disabled ? this.handleHover : undefined}
       >
         {BoxIcon && (
           <BoxIcon
