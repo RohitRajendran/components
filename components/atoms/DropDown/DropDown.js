@@ -2,7 +2,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import Select, {Async, components} from 'react-select';
+import Select, {components} from 'react-select';
+import AsyncSelect from 'react-select/async';
 import {isNullOrUndefined, isUndefined} from 'util';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
@@ -204,7 +205,7 @@ class DropDown extends Component {
       optionProps,
       dropDownLabel = label;
     if (this.props.getOptions) {
-      ComponentType = Async;
+      ComponentType = AsyncSelect;
       optionProps = {
         loadOptions: this.getOptions,
       };
