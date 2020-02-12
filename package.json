@@ -89,7 +89,7 @@
     "react-beautiful-dnd": "10.1.1",
     "react-dom": "16.12.0",
     "react-required-if": "1.0.3",
-    "react-select": "=2.4.4",
+    "react-select": "3.0.8",
     "react-spring": "8.0.27",
     "react-table": "6.8.6",
     "react-text-mask": "5.4.3",

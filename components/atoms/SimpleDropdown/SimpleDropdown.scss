@@ -51,6 +51,10 @@
     color: $midnight;
     cursor: pointer;
     padding: 0.8rem 1rem;
+
+    &:active {
+      background-color: $parchment;
+    }
   }
 
   .uic--simple-dropdown__option--is-selected {
