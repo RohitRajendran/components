@@ -1,4 +1,5 @@
 {
+  "extends": "@istanbuljs/nyc-config-typescript",
   "sourceMap": false,
   "instrument": false,
   "include": [
@@ -6,7 +7,10 @@
     "proptypes"
   ],
   "exclude": [
-    "**/*.spec.js"
+    "**/*.spec.js",
+    "**/*.spec.jsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ],
   "reporter": [
     "lcov"
