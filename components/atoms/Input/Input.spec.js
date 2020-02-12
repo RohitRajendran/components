@@ -328,7 +328,6 @@ test('Input - Testing required and validate function', (t) => {
       placeholder="some placeholder"
       required={false}
       validate={(input) => {
-        console.warn('HERE');
         if (input.length < 4) {
           return '';
         }
@@ -357,6 +356,32 @@ test('Input - Testing required and validate function', (t) => {
     'Invalid small string!',
     'Should trigger the correct error message',
   );
+
+  component.unmount();
+
+  const component2 = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value=""
+      placeholder="some placeholder"
+      validate={(input) => {
+        if (input.length < 4) {
+          return '';
+        }
+
+        return 'Invalid small string!';
+      }}
+    />,
+  );
+  const inputProps = component2.find('input').props();
+
+  t.true(
+    inputProps.required,
+    'When validate is passed input should default to required',
+  );
+  component2.unmount();
 
   t.end();
 });
