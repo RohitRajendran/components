@@ -38,6 +38,7 @@ class Input extends Component {
     this.state = {
       isActive: false,
       height: 0,
+      validationErrorMessage: '',
     };
 
     this.tooltipNode = createRef();
@@ -83,11 +84,7 @@ class Input extends Component {
    * @return {boolean} - Returns true or false depending on the validity.
    */
   isValid() {
-    const {
-      isValid = () => true,
-      validate = () => false,
-      hideValidity = () => true,
-    } = this.props;
+    const {isValid = () => true, hideValidity = () => true} = this.props;
     const deepest = getDeepestInputElement(this);
     const isActive = isDocumentDefined() && deepest === document.activeElement;
     const isEmpty =
@@ -96,11 +93,10 @@ class Input extends Component {
       this.props.mask && maskEnum[this.props.mask].isValid
         ? maskEnum[this.props.mask].isValid(this.props.value)
         : true;
-    const validateResult = validate(this.props.value);
 
     return (
       // eslint-disable-next-line eqeqeq
-      validateResult == false &&
+      this.state.validationErrorMessage == false &&
       ((isValid(this.props.value) && maskValidation) ||
         (hideValidity() && isActive) ||
         isEmpty)
@@ -149,23 +145,26 @@ class Input extends Component {
     const validateFunctionPassed = validate !== undefined;
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
+    const onChangeFuncs = [];
 
     let requiredAttr = undefined;
     let InputType = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
     let inputLabel = label;
-    let errorMsg = validationErrorMsg;
+    let errorMsg = '';
+
+    if (validationErrorMsg) {
+      errorMsg = validationErrorMsg;
+    } else {
+      errorMsg = this.state.validationErrorMessage;
+    }
 
     // Required should take precedence
     if (required !== undefined) {
       requiredAttr = required;
     } else if (validateFunctionPassed) {
       requiredAttr = true;
-    }
-
-    if (validateFunctionPassed) {
-      errorMsg = validate(value);
     }
 
     if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
@@ -226,16 +225,32 @@ class Input extends Component {
         this.toggleFocus();
       };
     }
+
     if (onChange) {
       const mask = this.props.mask && maskEnum[this.props.mask].mask;
 
-      attrs.onChange = (e) =>
+      onChangeFuncs.push((e) =>
         onChange(
           name,
           sanitize && mask && mask.sanitize
             ? e.target.value.replace(mask.sanitize, '')
             : e.target.value,
-        );
+        ),
+      );
+    }
+
+    if (validateFunctionPassed) {
+      onChangeFuncs.push((e) =>
+        this.setState({
+          validationErrorMessage: validate(e.target.value),
+        }),
+      );
+    }
+
+    if (onChangeFuncs.length > 0) {
+      attrs.onChange = (e) => {
+        onChangeFuncs.forEach((func) => func(e));
+      };
     }
 
     return (
@@ -422,7 +437,7 @@ Input.propTypes = {
   showRequiredError: PropTypes.bool,
   /** Optional inline styles. */
   style: PropTypes.objectOf(PropTypes.string),
-  /** Validatioin function */
+  /** Custom validation function that the user wants the input validated against */
   validate: PropTypes.func,
 };
 
