@@ -29,7 +29,7 @@ $cabinet-shadow: rgba(91, 98, 121, 0.2);
   top: 0;
   transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
   width: 50rem;
-  z-index: $z-index-menu;
+  z-index: $z-index-modal - 1;
 
   &.uic--hide-cabinet {
     @include media-breakpoint-down(xs) {
