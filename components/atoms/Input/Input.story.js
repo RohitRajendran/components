@@ -65,6 +65,7 @@ const defaultProps = ({
   validationErrorMsg,
   validateOnBlur,
   showRequiredError,
+  required,
 }) => ({
   name: formName,
   label: text('label', label),
@@ -74,7 +75,7 @@ const defaultProps = ({
   placeholder: text('placeholder', placeholder),
   explanation: text('explanation', explanation),
   value: store.get(formName),
-  required: boolean('required', true),
+  required: boolean('required', required),
   maxLength: number('maxLength'),
   multiline: boolean('multiline', multiline),
   rows: number('rows', rows),
@@ -237,6 +238,7 @@ stories.add('required error', () => (
           validationErrorMsg: 'Not a valid input!',
           mask: null,
           showRequiredError: true,
+          required: true,
         })}
       />
     </div>
@@ -291,6 +293,29 @@ stories.add('disabled with value', () => (
           mask: null,
         })}
         value="1660 L Street"
+      />
+    </div>
+  </div>
+));
+
+stories.add('validate', () => (
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'formy-form',
+          label: 'Four Letters or Less',
+          description: 'Enter an input smaller than 4 characters',
+          placeholder: 'Small string goes here',
+          mask: null,
+        })}
+        validate={(input) => {
+          if (input.length < 4) {
+            return '';
+          } else {
+            return 'Please enter a valid small string';
+          }
+        }}
       />
     </div>
   </div>

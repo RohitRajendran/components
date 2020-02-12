@@ -83,7 +83,11 @@ class Input extends Component {
    * @return {boolean} - Returns true or false depending on the validity.
    */
   isValid() {
-    const {isValid = () => true, hideValidity = () => true} = this.props;
+    const {
+      isValid = () => true,
+      validate = () => false,
+      hideValidity = () => true,
+    } = this.props;
     const deepest = getDeepestInputElement(this);
     const isActive = isDocumentDefined() && deepest === document.activeElement;
     const isEmpty =
@@ -92,11 +96,14 @@ class Input extends Component {
       this.props.mask && maskEnum[this.props.mask].isValid
         ? maskEnum[this.props.mask].isValid(this.props.value)
         : true;
+    const validateResult = validate(this.props.value);
 
     return (
-      (isValid(this.props.value) && maskValidation) ||
-      (hideValidity() && isActive) ||
-      isEmpty
+      // eslint-disable-next-line eqeqeq
+      validateResult == false &&
+      ((isValid(this.props.value) && maskValidation) ||
+        (hideValidity() && isActive) ||
+        isEmpty)
     );
   }
 
@@ -131,6 +138,7 @@ class Input extends Component {
       className,
       sanitize,
       style,
+      validate,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
@@ -138,13 +146,27 @@ class Input extends Component {
       this specific input every time instead of applying it to all inputs on the page. */
     const identifier = Math.round(Math.random() * 10000000);
 
+    const validateFunctionPassed = validate !== undefined;
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
 
+    let requiredAttr = undefined;
     let InputType = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
     let inputLabel = label;
+    let errorMsg = validationErrorMsg;
+
+    // Required should take precedence
+    if (required !== undefined) {
+      requiredAttr = required;
+    } else if (validateFunctionPassed) {
+      requiredAttr = true;
+    }
+
+    if (validateFunctionPassed) {
+      errorMsg = validate(value);
+    }
 
     if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
       prependCharacter = '$';
@@ -160,7 +182,7 @@ class Input extends Component {
       InputType = MaskedInput;
     }
 
-    if (label && !required && !disableOptionalFlag) {
+    if (label && !requiredAttr && !disableOptionalFlag) {
       inputLabel = `${label} (Optional)`;
     }
 
@@ -172,7 +194,7 @@ class Input extends Component {
         (this.props.mask && maskEnum[this.props.mask].placeholder) ||
         null,
       value,
-      required,
+      required: requiredAttr,
       maxLength,
       min,
       max,
@@ -221,9 +243,7 @@ class Input extends Component {
       <CardShellContext.Consumer>
         {({showRequiredError}) => {
           const reqErrorNecessary =
-            (this.props.showRequiredError || showRequiredError) &&
-            required &&
-            !value;
+            showRequiredError || (requiredAttr && !value);
 
           const containerClasses = classNames(
             {
@@ -307,7 +327,7 @@ class Input extends Component {
                 <div className="uic--validation-error">
                   {isEmpty && reqErrorNecessary
                     ? 'Required Field'
-                    : validationErrorMsg ||
+                    : errorMsg ||
                       (this.props.mask &&
                         maskEnum[this.props.mask].validationErrorMsg)}
                 </div>
@@ -402,6 +422,8 @@ Input.propTypes = {
   showRequiredError: PropTypes.bool,
   /** Optional inline styles. */
   style: PropTypes.objectOf(PropTypes.string),
+  /** Validatioin function */
+  validate: PropTypes.func,
 };
 
 Input.defaultProps = {
