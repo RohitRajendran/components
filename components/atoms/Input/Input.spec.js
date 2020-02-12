@@ -317,3 +317,61 @@ test('Input - isInViewport - no browser environment', (t) => {
   isWindowDefinedStub.restore();
   t.end();
 });
+
+test('Input - Testing required and validate function', (t) => {
+  const component = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value=""
+      placeholder="some placeholder"
+      required={false}
+      validate={(input) => {
+        console.warn('HERE');
+        if (input.length < 4) {
+          return '';
+        }
+
+        return 'Invalid small string!';
+      }}
+    />,
+  );
+
+  t.equal(
+    component.state().validationErrorMessage,
+    '',
+    'Should be an empty validation error message',
+  );
+  t.equal(
+    component.find('.uic--validatiion-error').length,
+    0,
+    'There shoud be no validation error message',
+  );
+  component.unmount();
+
+  const component2 = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value="1234"
+      placeholder="some placeholder"
+      validate={(input) => {
+        if (input.length < 4) {
+          return '';
+        }
+
+        return 'Invalid small string!';
+      }}
+    />,
+  );
+
+  t.equal(
+    component2.state().validationErrorMessage,
+    '',
+    'Should trigger the correct error message',
+  );
+
+  t.end();
+});
