@@ -348,28 +348,13 @@ test('Input - Testing required and validate function', (t) => {
     0,
     'There shoud be no validation error message',
   );
-  component.unmount();
 
-  const component2 = mount(
-    <Input
-      name="fancy_input"
-      label="Amount"
-      type="text"
-      value="1234"
-      placeholder="some placeholder"
-      validate={(input) => {
-        if (input.length < 4) {
-          return '';
-        }
-
-        return 'Invalid small string!';
-      }}
-    />,
-  );
+  const componentInputProps = component.find('input').props();
+  componentInputProps.onChange({target: {value: '1234'}});
 
   t.equal(
-    component2.state().validationErrorMessage,
-    '',
+    component.state().validationErrorMessage,
+    'Invalid small string!',
     'Should trigger the correct error message',
   );
 
