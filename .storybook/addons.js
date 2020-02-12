@@ -4,6 +4,7 @@ import '@storybook/addon-a11y/register';
 import '@storybook/addon-backgrounds/register';
 import '@storybook/addon-knobs/register';
 import '@storybook/addon-viewport/register';
+import '@storybook/addon-docs/register';
 import addonAPI from '@storybook/addons';
 import {STORIES_CONFIGURED, STORY_MISSING} from '@storybook/core-events';
 
@@ -19,4 +20,6 @@ addonAPI.register('unitedincome/first-page', (storybookAPI) => {
   });
 });
 
-registerDsm(process.env.STORYBOOK_DSM);
+if (process.env.NODE_ENV === 'dsm') {
+  registerDsm(process.env.STORYBOOK_DSM);
+}
