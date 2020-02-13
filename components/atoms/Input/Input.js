@@ -1,7 +1,7 @@
 /** @module Input */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {Component, createRef} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
 import TextareaAutosize from 'react-textarea-autosize';
 import {isInViewport} from '~components/atoms/Input/Input.util';
@@ -30,7 +30,7 @@ export const getDeepestInputElement = (startObject) => {
 };
 
 /** Renders the Input field component. */
-class Input extends Component {
+class Input extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);
@@ -84,7 +84,11 @@ class Input extends Component {
    * @return {boolean} - Returns true or false depending on the validity.
    */
   isValid() {
-    const {isValid = () => true, hideValidity = () => true} = this.props;
+    const {
+      isValid = () => true,
+      validate = () => '',
+      hideValidity = () => true,
+    } = this.props;
     const deepest = getDeepestInputElement(this);
     const isActive = isDocumentDefined() && deepest === document.activeElement;
     const isEmpty =
@@ -93,10 +97,12 @@ class Input extends Component {
       this.props.mask && maskEnum[this.props.mask].isValid
         ? maskEnum[this.props.mask].isValid(this.props.value)
         : true;
+    this.setState({
+      validationErrorMessage: validate(this.props.value),
+    });
 
     return (
-      // eslint-disable-next-line eqeqeq
-      this.state.validationErrorMessage == false &&
+      !this.state.validationErrorMessage &&
       ((isValid(this.props.value) && maskValidation) ||
         (hideValidity() && isActive) ||
         isEmpty)
@@ -134,7 +140,6 @@ class Input extends Component {
       className,
       sanitize,
       style,
-      validate,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
@@ -142,12 +147,9 @@ class Input extends Component {
       this specific input every time instead of applying it to all inputs on the page. */
     const identifier = Math.round(Math.random() * 10000000);
 
-    const validateFunctionPassed = validate !== undefined;
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
-    const onChangeFuncs = [];
 
-    let requiredAttr = undefined;
     let InputType = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
@@ -158,13 +160,6 @@ class Input extends Component {
       errorMsg = validationErrorMsg;
     } else {
       errorMsg = this.state.validationErrorMessage;
-    }
-
-    // Required should take precedence
-    if (required !== undefined) {
-      requiredAttr = required;
-    } else if (validateFunctionPassed) {
-      requiredAttr = true;
     }
 
     if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
@@ -181,7 +176,7 @@ class Input extends Component {
       InputType = MaskedInput;
     }
 
-    if (label && !requiredAttr && !disableOptionalFlag) {
+    if (label && !required && !disableOptionalFlag) {
       inputLabel = `${label} (Optional)`;
     }
 
@@ -193,7 +188,7 @@ class Input extends Component {
         (this.props.mask && maskEnum[this.props.mask].placeholder) ||
         null,
       value,
-      required: requiredAttr,
+      required,
       maxLength,
       min,
       max,
@@ -219,6 +214,7 @@ class Input extends Component {
         attrs.keepCharPositions = true;
       }
     }
+
     if (validateOnBlur) {
       attrs.onBlur = () => {
         this.forceUpdate();
@@ -229,28 +225,13 @@ class Input extends Component {
     if (onChange) {
       const mask = this.props.mask && maskEnum[this.props.mask].mask;
 
-      onChangeFuncs.push((e) =>
+      attrs.onChange = (e) =>
         onChange(
           name,
           sanitize && mask && mask.sanitize
             ? e.target.value.replace(mask.sanitize, '')
             : e.target.value,
-        ),
-      );
-    }
-
-    if (validateFunctionPassed) {
-      onChangeFuncs.push((e) =>
-        this.setState({
-          validationErrorMessage: validate(e.target.value),
-        }),
-      );
-    }
-
-    if (onChangeFuncs.length > 0) {
-      attrs.onChange = (e) => {
-        onChangeFuncs.forEach((func) => func(e));
-      };
+        );
     }
 
     return (
@@ -258,7 +239,9 @@ class Input extends Component {
       <CardShellContext.Consumer>
         {({showRequiredError}) => {
           const reqErrorNecessary =
-            showRequiredError || (requiredAttr && !value);
+            (this.props.showRequiredError || showRequiredError) &&
+            required &&
+            !value;
 
           const containerClasses = classNames(
             {
