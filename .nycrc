@@ -1,7 +1,5 @@
 {
   "extends": "@istanbuljs/nyc-config-typescript",
-  "sourceMap": false,
-  "instrument": false,
   "include": [
     "components",
     "proptypes"
