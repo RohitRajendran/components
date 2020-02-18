@@ -14,9 +14,11 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended"
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
