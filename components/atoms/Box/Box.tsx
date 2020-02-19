@@ -1,7 +1,7 @@
 /** @module Box */
 import classNames from 'classnames';
 import React, {PureComponent} from 'react';
-import CheckIcon from '../icons/CheckIcon/CheckIcon';
+import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon';
 import './Box.scss';
 
 type BoxPropsBase = {

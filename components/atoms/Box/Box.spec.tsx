@@ -2,7 +2,7 @@ import {mount, shallow} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import CarCircleIllustration from '../illustrations/CarCircleIllustration/CarCircleIllustration';
+import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
 import Box from './Box';
 
 test('Box - renders', (t) => {
