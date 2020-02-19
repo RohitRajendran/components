@@ -4,7 +4,7 @@
   "author": "United Income",
   "version": "2.0.0",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/components/index.d.ts",
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",

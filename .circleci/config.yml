@@ -105,9 +105,7 @@ jobs:
       - deploy:
           name: Publish to NPM
           command: |
-            mv dist/components/**/*.d.ts dist/
-            mv dist/constants/js/*.d.ts dist/
-            rm -rf dist/*.spec.d.ts dist/*.story.d.ts dist/components/ dist/constants dist/nightwatch dist/proptypes dist/utils-for-tests
+            rm -rf dist/**/*.spec.d.ts dist/**/*.story.d.ts dist/nightwatch dist/utils-for-tests
             npm version patch -m "Bump version to %s [skip ci]"
             npm publish --tag beta
             git push --set-upstream origin $CIRCLE_BRANCH --tags
