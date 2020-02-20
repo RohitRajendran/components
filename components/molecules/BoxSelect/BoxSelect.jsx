@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import Box from '~components/atoms/Box/Box.tsx';
+import Box from '~components/atoms/Box/Box';
 import './BoxSelect.scss';
 
 /** Displays a grid of box components.  */
