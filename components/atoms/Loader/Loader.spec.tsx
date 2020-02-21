@@ -1,16 +1,16 @@
 import {cleanup, render} from '@testing-library/react';
 import React from 'react';
 import test from 'tape';
-import AccountCircleIllustration from './AccountCircleIllustration';
+import Loader from './Loader';
 
-test('AccountCircleIllustration - renders', (t) => {
-  const component = render(<AccountCircleIllustration fill="white" />);
-
+test('Loader - renders', (t) => {
   try {
+    const component = render(<Loader />);
+
     t.equals(
       component.container.querySelectorAll('svg').length,
-      1,
-      'Should load the AccountIllustration component.',
+      2,
+      'Should load the Loader component SVG tags.',
     );
   } catch (error) {
     t.fail(error);

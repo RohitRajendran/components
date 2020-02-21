@@ -40,7 +40,6 @@ const AccountCircleIllustration: FC<AccountCircleIllustrationProps> = ({
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    data-testid="default"
   >
     <defs>
       <circle id="path-1" cx="116" cy="116" r="116" />

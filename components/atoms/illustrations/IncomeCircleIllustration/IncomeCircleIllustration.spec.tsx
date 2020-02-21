@@ -12,8 +12,6 @@ test('IncomeCircleIllustration - renders', (t) => {
       1,
       'Should load the IncomeCircleIllustration component.',
     );
-
-    t.true(component.getByTestId('default'), 'Default illustration');
   } catch (error) {
     t.fail(error);
   } finally {

@@ -47,7 +47,6 @@ const MedicareCircleIllustration: FC<MedicareCircleIllustrationProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       aria-labelledby={`${id}-title ${id}-description`}
-      data-testid="default"
     >
       <title id={`${id}-title`}>Medicare Circle Illustration</title>
       <desc id={`${id}-description`}>Medicare logo</desc>

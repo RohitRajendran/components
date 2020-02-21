@@ -12,8 +12,6 @@ test('ProfileCircleIllustration - renders', (t) => {
       1,
       'Should load the ProfileCircleIllustration component.',
     );
-
-    t.true(component.getByTestId('default'), 'Default illustration');
   } catch (error) {
     t.fail(error);
   } finally {
