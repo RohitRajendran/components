@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ArrowEllipsisIcon from './ArrowEllipsisIcon';
+import ArrowEllipsisIcon from './ArrowEllipsisIcon.tsx';
 import ArrowEllipsisIconReadme from './ArrowEllipsisIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ArrowEllipsisIcon', module);

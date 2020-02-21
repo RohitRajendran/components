@@ -1,12 +1,27 @@
 /** @module ArrowEllipsisIcon */
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, {FC, memo} from 'react';
 
-/** Displays the ArrowEllipsisIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the ArrowEllipsisIcon component.
- */
-const ArrowEllipsisIcon = ({width, height, fill, className, style}) => (
+type ArrowEllipsisIconProps = {
+  /** The width of the arrow with unit sizing (px, rem, etc). */
+  width?: string;
+  /** The height of the arrow with unit sizing (px, rem, etc). */
+  height?: string;
+  /** The color of the arrow. */
+  fill?: string;
+  /** Additional class names to apply to the container. */
+  className?: string;
+  /** Additional inline styles to apply to the container. */
+  style?: React.CSSProperties;
+};
+
+/** Renders an arrow ellipsis icon. */
+const ArrowEllipsisIcon: FC<ArrowEllipsisIconProps> = ({
+  width,
+  height,
+  fill,
+  className,
+  style,
+}) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -34,23 +49,10 @@ const ArrowEllipsisIcon = ({width, height, fill, className, style}) => (
   </svg>
 );
 
-ArrowEllipsisIcon.propTypes = {
-  /** The width of the arrow with unit sizing (px, rem, etc). */
-  width: PropTypes.string,
-  /** The height of the arrow with unit sizing (px, rem, etc). */
-  height: PropTypes.string,
-  /** The color of the arrow. */
-  fill: PropTypes.string,
-  /** Additional class names to apply to the container. */
-  className: PropTypes.string,
-  /** Additional inline styles to apply to the container. */
-  style: PropTypes.objectOf(PropTypes.string),
-};
-
 ArrowEllipsisIcon.defaultProps = {
   width: '1.3rem',
   height: '1.3rem',
   fill: '#5B6279',
 };
 
-export default ArrowEllipsisIcon;
+export default memo(ArrowEllipsisIcon);
