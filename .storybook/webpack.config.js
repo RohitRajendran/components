@@ -10,13 +10,10 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: require.resolve('babel-loader'),
-            options: {
-              presets: [['react-app', {flow: false, typescript: true}]],
-            },
+            loader: 'babel-loader',
           },
           {
-            loader: require.resolve('react-docgen-typescript-loader'),
+            loader: 'react-docgen-typescript-loader',
             options: {
               tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
             },
@@ -82,6 +79,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new MiniCssExtractPlugin({
