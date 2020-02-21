@@ -1,8 +1,9 @@
 /** @module Loader */
-import React from 'react';
+import React, {FC, memo} from 'react';
 import './Loader.scss';
 
-const Loader = () => (
+/** Renders an animated loading icon. */
+const Loader: FC = () => (
   <div className="container ui-app-container ui-footer-spacing">
     <div className="uic--ui-loader">
       <svg
@@ -38,4 +39,4 @@ const Loader = () => (
   </div>
 );
 
-export default Loader;
+export default memo(Loader);

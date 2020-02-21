@@ -4,7 +4,7 @@ import Box from '~components/atoms/Box/Box';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
 import Tooltip from '~components/atoms/Tooltip/Tooltip';
 import Button from '~components/atoms/Button/Button';
-import Loader from '~components/atoms/Loader/Loader';
+import Loader from '~components/atoms/Loader/Loader.tsx';
 import Input from '~components/atoms/Input/Input';
 import FileInput from '~components/atoms/FileInput/FileInput';
 import DropDown from '~components/atoms/DropDown/DropDown';
