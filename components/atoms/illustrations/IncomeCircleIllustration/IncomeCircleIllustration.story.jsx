@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import IncomeCircleIllustration from './IncomeCircleIllustration';
+import IncomeCircleIllustration from './IncomeCircleIllustration.tsx';
 import IncomeCircleIllustrationReadMe from './IncomeCircleIllustration.mdx';
 
 const stories = storiesOf(

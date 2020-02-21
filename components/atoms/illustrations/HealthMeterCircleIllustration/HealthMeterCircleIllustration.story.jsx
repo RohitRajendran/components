@@ -1,7 +1,7 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import HealthMeterCircleIllustration from './HealthMeterCircleIllustration';
+import HealthMeterCircleIllustration from './HealthMeterCircleIllustration.tsx';
 import HealthMeterCircleIllustrationReadMe from './HealthMeterCircleIllustration.mdx';
 
 const stories = storiesOf(

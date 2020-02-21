@@ -1,7 +1,7 @@
 import {text, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration';
+import LampCircleIllustration from '~components/atoms/illustrations/LampCircleIllustration/LampCircleIllustration.tsx';
 import {Button} from '../..';
 import CompletionScreen from './CompletionScreen';
 import CompletionScreenReadme from './CompletionScreen.mdx';

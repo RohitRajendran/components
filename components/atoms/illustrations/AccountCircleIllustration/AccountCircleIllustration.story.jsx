@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import AccountCircleIllustration from './AccountCircleIllustration';
+import AccountCircleIllustration from './AccountCircleIllustration.tsx';
 import AccountCircleIllustrationReadMe from './AccountCircleIllustration.mdx';
 
 const stories = storiesOf(

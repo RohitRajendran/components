@@ -1,7 +1,7 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import HomeCircleIllustration from './HomeCircleIllustration';
+import HomeCircleIllustration from './HomeCircleIllustration.tsx';
 import HomeCircleIllustrationReadMe from './HomeCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/HomeCircleIllustration', module);

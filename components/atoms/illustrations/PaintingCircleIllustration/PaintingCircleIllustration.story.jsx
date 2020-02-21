@@ -1,7 +1,7 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import PaintingCircleIllustration from './PaintingCircleIllustration';
+import PaintingCircleIllustration from './PaintingCircleIllustration.tsx';
 import PaintingCircleIllustrationReadMe from './PaintingCircleIllustration.mdx';
 
 const stories = storiesOf(

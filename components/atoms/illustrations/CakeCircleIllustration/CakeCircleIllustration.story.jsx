@@ -1,7 +1,7 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import CakeCircleIllustration from './CakeCircleIllustration';
+import CakeCircleIllustration from './CakeCircleIllustration.tsx';
 import CakeCircleIllustrationReadMe from './CakeCircleIllustration.mdx';
 
 const stories = storiesOf('Atoms/Illustrations/CakeCircleIllustration', module);

@@ -1,7 +1,7 @@
 import {boolean, number, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import CompassCircleIllustration from './CompassCircleIllustration';
+import CompassCircleIllustration from './CompassCircleIllustration.tsx';
 import CompassCircleIllustrationReadMe from './CompassCircleIllustration.mdx';
 
 const stories = storiesOf(

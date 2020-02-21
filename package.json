@@ -1,7 +1,7 @@
 {
   "name": "@unitedincome/components",
   "description": "Component library for all United Income applications.",
-  "author": "United Income",
+  "author": "United Income <engineering@unitedincome.com>",
   "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/components/index.d.ts",

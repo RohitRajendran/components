@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ProfileCircleIllustration from './ProfileCircleIllustration';
+import ProfileCircleIllustration from './ProfileCircleIllustration.tsx';
 import ProfileCircleIllustrationReadMe from './ProfileCircleIllustration.mdx';
 
 const stories = storiesOf(
