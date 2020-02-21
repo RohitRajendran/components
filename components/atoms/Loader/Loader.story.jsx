@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import Loader from './Loader.tsx';
+import Loader from './Loader';
 import LoaderReadme from './Loader.mdx';
 
 const stories = storiesOf('Atoms/Loader', module);
