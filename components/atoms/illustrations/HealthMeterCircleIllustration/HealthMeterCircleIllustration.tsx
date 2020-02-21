@@ -24,7 +24,7 @@ const HealthMeterCircleIllustration: FC<HealthMeterCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: HealthMeterCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

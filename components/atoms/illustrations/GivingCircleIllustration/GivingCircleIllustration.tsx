@@ -30,7 +30,7 @@ const GivingCircleIllustration: FC<GivingCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: GivingCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

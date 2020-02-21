@@ -31,7 +31,7 @@ const RamenCircleIllustration: FC<RamenCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: RamenCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

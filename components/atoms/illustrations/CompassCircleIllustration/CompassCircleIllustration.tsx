@@ -26,7 +26,7 @@ const CompassCircleIllustration: FC<CompassCircleIllustrationProps> = ({
   isAnimated,
   animationDuration,
   id,
-}: CompassCircleIllustrationProps) => {
+}) => {
   const elementProps = {
     //className,
     style: {

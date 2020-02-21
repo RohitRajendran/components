@@ -45,7 +45,7 @@ class <%= compName %> extends Component<<%= compName %>Props> {
   }
 }
 <% } else if (isStateful && hooks) { -%>
-const <%= compName %>: FC<<%= compName %>> = ({className, style}: <%= compName %>Props): JSX.Element => {
+const <%= compName %>: FC<<%= compName %>> = ({className, style}): JSX.Element => {
   const [state, setState] = useState(false);
 
   const containerClasses = classNames(
@@ -62,7 +62,7 @@ const <%= compName %>: FC<<%= compName %>> = ({className, style}: <%= compName %
   );
 };
 <% } else {-%>
-const <%= compName %>: FC<<%= compName %>> = ({className, style}: <%= compName %>Props) => {
+const <%= compName %>: FC<<%= compName %>> = ({className, style}) => {
   const containerClasses = classNames(
     {
       'uic--<%= h.changeCase.paramCase(name) %>': true,

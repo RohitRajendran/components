@@ -28,7 +28,7 @@ const CakeCircleIllustration: FC<CakeCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: CakeCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

@@ -30,7 +30,7 @@ const LampCircleIllustration: FC<LampCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: LampCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

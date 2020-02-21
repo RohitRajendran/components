@@ -24,7 +24,7 @@ const GingerBreadCircleIllustration: FC<GingerBreadCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: GingerBreadCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {

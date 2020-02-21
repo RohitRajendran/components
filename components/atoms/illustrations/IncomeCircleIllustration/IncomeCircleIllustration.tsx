@@ -25,7 +25,7 @@ const IncomeCircleIllustration: FC<IncomeCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: IncomeCircleIllustrationProps) => {
+}) => {
   const elementProps = {
     className,
     style: {

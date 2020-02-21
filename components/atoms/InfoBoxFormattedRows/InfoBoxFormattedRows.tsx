@@ -26,7 +26,7 @@ const InfoBoxFormattedRows: FC<InfoBoxFormattedRowsProps> = ({
   rowData,
   className,
   style,
-}: InfoBoxFormattedRowsProps) => (
+}) => (
   <ul className={className} style={style}>
     {rowData.map((row) => (
       <li

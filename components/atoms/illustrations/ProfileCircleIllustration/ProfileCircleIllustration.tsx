@@ -25,7 +25,7 @@ const ProfileCircleIllustration: FC<ProfileCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: ProfileCircleIllustrationProps) => {
+}) => {
   const elementProps = {
     className,
     style: {

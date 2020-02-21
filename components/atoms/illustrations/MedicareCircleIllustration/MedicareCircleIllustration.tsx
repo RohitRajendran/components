@@ -25,7 +25,7 @@ const MedicareCircleIllustration: FC<MedicareCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: MedicareCircleIllustrationProps) => {
+}) => {
   const elementProps = {
     className,
     style: {

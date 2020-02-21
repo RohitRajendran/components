@@ -22,7 +22,7 @@ const AccountCircleIllustration: FC<AccountCircleIllustrationProps> = ({
   height,
   className,
   style,
-}: AccountCircleIllustrationProps) => (
+}) => (
   <svg
     className={className}
     style={

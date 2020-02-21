@@ -29,7 +29,7 @@ const CreditCardCircleIllustration: FC<CreditCardCircleIllustrationProps> = ({
   className,
   style,
   id,
-}: CreditCardCircleIllustrationProps) => {
+}) => {
   const [illuminated, setIlluminated] = useState(false);
 
   const elementProps = {
