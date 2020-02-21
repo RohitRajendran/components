@@ -7,7 +7,7 @@ import '../constants/sass/util/prefixed-utils.scss';
 import {DocsPage, DocsContainer} from '@storybook/addon-docs/blocks';
 import unitedIncomeTheme from './theme';
 
-const req = require.context('../components', true, /(story)\.(js|mdx)$/);
+const req = require.context('../components', true, /(story)\.([jt]sx?|mdx)$/);
 
 // Registers global decorators.
 addDecorator(withA11y);

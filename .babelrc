@@ -1,6 +1,7 @@
 {
   "plugins": [
     "@babel/transform-spread",
+    "@babel/proposal-class-properties",
     "@babel/transform-runtime",
     ["module-resolver", {
       "alias": {
@@ -17,21 +18,21 @@
       "useBuiltIns": "usage",
       "corejs": 3.6
     }],
-    "@babel/react"
+    "@babel/react",
+    "@babel/typescript"
   ],
   "env": {
     "test": {
       "presets": [
         ["@babel/env", {
-          "modules": "commonjs",
+          "modules": false,
           "useBuiltIns": "usage",
           "corejs": 3.6
-        }],
-        "@babel/react"
+        }]
       ],
       "plugins": [
         "istanbul"
       ]
-    },
+    }
   }
 }

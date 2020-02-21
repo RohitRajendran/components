@@ -2,7 +2,7 @@ import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
-import Box from './Box';
+import Box from './Box.tsx';
 import BoxReadMe from './Box.mdx';
 
 const stories = storiesOf('Atoms/Box', module);

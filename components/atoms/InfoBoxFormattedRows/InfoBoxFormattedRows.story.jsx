@@ -2,8 +2,8 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {object} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
 import React, {Fragment} from 'react';
-import InfoBox from '../InfoBox/InfoBox';
-import InfoBoxFormattedRows from './InfoBoxFormattedRows';
+import InfoBox from '../InfoBox/InfoBox.tsx';
+import InfoBoxFormattedRows from './InfoBoxFormattedRows.tsx';
 import InfoBoxFormattedRowsReadMe from './InfoBoxFormattedRows.mdx';
 
 const stories = storiesOf('Atoms/InfoBoxFormattedRows', module);

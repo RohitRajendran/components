@@ -22,10 +22,11 @@ test('InfoBox - renders correctly', (t) => {
     'Here is a title',
     'Should correctly load InfoBox title',
   );
+
   t.equals(
-    component.find('.uic--info-box-information-area').prop('children').length,
-    2,
-    'Should render a content and footer child',
+    component.find('.uic--info-box-information-area').text(),
+    'Here is some content!',
+    'Should render content',
   );
   t.equals(
     component.find('.uic--info-box-information-area').text(),
