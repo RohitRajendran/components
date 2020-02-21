@@ -7,4 +7,4 @@ after: "// <%= storyPath %>"
 <%
   compName = h.changeCase.pascal(name)
 -%>
-import <%= compName %> from '~components/<%= compPath %>/<%= compName %>/<%= compName %>';
+import <%= compName %> from '~components/<%= compPath %>/<%= compName %>/<%= compName %>.tsx';
