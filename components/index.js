@@ -10,7 +10,7 @@ import FileInput from '~components/atoms/FileInput/FileInput';
 import DropDown from '~components/atoms/DropDown/DropDown';
 import SimpleDropdown from '~components/atoms/SimpleDropdown/SimpleDropdown';
 import Spinner from '~components/atoms/Spinner/Spinner';
-import CategoryBubble from '~components/atoms/CategoryBubble/CategoryBubble';
+import CategoryBubble from '~components/atoms/CategoryBubble/CategoryBubble.tsx';
 import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';

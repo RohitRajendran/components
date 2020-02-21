@@ -1,7 +1,7 @@
 import {color as colorKnob, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import CategoryBubble from './CategoryBubble';
+import CategoryBubble from './CategoryBubble.tsx';
 import CategoryBubbleReadme from './CategoryBubble.mdx';
 
 const stories = storiesOf('Atoms/CategoryBubble', module);
