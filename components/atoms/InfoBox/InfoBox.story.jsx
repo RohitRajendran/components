@@ -2,7 +2,7 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {text, object} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
 import React, {Fragment} from 'react';
-import InfoBox from './InfoBox';
+import InfoBox from './InfoBox.tsx';
 import InfoBoxReadMe from './InfoBox.mdx';
 
 const stories = storiesOf('Atoms/InfoBox', module);

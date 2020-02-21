@@ -1,18 +1,40 @@
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /** @module InfoBox */
-import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import './InfoBox.scss';
 import classNames from 'classnames';
 import {formatEllipsis} from '../../utilities/FormatUtils/FormatUtils';
 
+type InfoBoxProps = {
+  /** The main title that will displayed near the top of our InfoBox. */
+  title: string;
+  /** Optional number of characters to limit the title to before styling it as an ellipsis. */
+  titleCharLimit?: number;
+  /** The content JSX to be displayed below the title. */
+  content: React.ReactNode;
+  /** Optional image URL string to place in your InfoBox - we use the URL to create an image that appears to the right of the title. */
+  imageURL?: string;
+  /** Optional footer JSX to be displayed below the content. */
+  footer?: React.ReactNode;
+  /** Additional class names to apply to the container. */
+  className?: string;
+  /** Additional style properties to apply to the container. */
+  style?: React.CSSProperties;
+  /** Optional onClick handler. */
+  onClick?: (val?: string) => void;
+};
+
 /**
  * Renders a basic card with a title component on top and
  * description/more information below the title portion.
  */
-class InfoBox extends Component {
+class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
   /** @inheritdoc */
-  constructor(props) {
+  public static defaultProps = {
+    titleCharLimit: 25,
+  };
+
+  /** @inheritdoc */
+  constructor(props: InfoBoxProps) {
     super(props);
 
     this.state = {
@@ -24,11 +46,10 @@ class InfoBox extends Component {
     this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
-  /** Handles the click event within the box.
-   * @param {object} event - The event object.
-   * @returns {function} Function to be ran
+  /**
+   * Handles the click event within the box.
    */
-  handleClick(event) {
+  handleClick(event: React.MouseEvent | React.KeyboardEvent): void {
     event.stopPropagation();
 
     if (this.props.onClick) {
@@ -38,13 +59,11 @@ class InfoBox extends Component {
 
   /**
    * Handles our mouseEnter event.
-   * @param {Event} event - Event obj
-   * @returns {undefined}
    */
-  handleMouseOver(event) {
+  handleMouseOver(event: React.MouseEvent): void {
     event.stopPropagation();
 
-    if (this.props.title.length > this.props.titleCharLimit) {
+    if (this.props.title.length > (this.props.titleCharLimit as number)) {
       this.setState({
         showFullTitle: true,
       });
@@ -53,10 +72,8 @@ class InfoBox extends Component {
 
   /**
    * Handles our mouseOut event.
-   * @param {Event} event - Event obj
-   * @returns {undefined}
    */
-  handleMouseOut(event) {
+  handleMouseOut(event: React.MouseEvent): void {
     event.stopPropagation();
 
     if (this.state.showFullTitle) {
@@ -67,7 +84,7 @@ class InfoBox extends Component {
   }
 
   /** @inheritdoc */
-  render() {
+  render(): JSX.Element {
     const {
       title,
       titleCharLimit,
@@ -77,7 +94,6 @@ class InfoBox extends Component {
       className,
       style,
     } = this.props;
-    const imgStyle = {};
     const containerClass = classNames(
       {
         'uic--info-box': true,
@@ -86,24 +102,16 @@ class InfoBox extends Component {
       },
       className,
     );
-    const containerProps = {
-      className: containerClass,
-      style,
-    };
-
-    if (imageURL) {
-      imgStyle.backgroundImage = `url(${imageURL})`;
-    }
-
-    if (this.props.onClick) {
-      containerProps.onClick = this.handleClick;
-      containerProps.role = 'button';
-      containerProps.tabIndex = 0;
-      containerProps.onKeyDown = this.handleClick;
-    }
 
     return (
-      <aside {...containerProps}>
+      <aside
+        className={containerClass}
+        style={style}
+        role={this.props.onClick ? 'button' : undefined}
+        tabIndex={this.props.onClick ? 0 : undefined}
+        onKeyDown={this.props.onClick ? this.handleClick : undefined}
+        onClick={this.props.onClick ? this.handleClick : undefined}
+      >
         <div
           className="uic--position-relative"
           onMouseLeave={this.handleMouseOut}
@@ -115,11 +123,17 @@ class InfoBox extends Component {
           )}
           <div
             className="uic--info-box-title-area"
-            style={imgStyle}
+            style={
+              imageURL
+                ? {
+                    backgroundImage: `url(${imageURL})`,
+                  }
+                : {}
+            }
             onMouseEnter={this.handleMouseOver}
           >
             <div className="uic--info-box-title-text uic--header-2-text">
-              {formatEllipsis(title, titleCharLimit)}
+              {title ? formatEllipsis(title, titleCharLimit as number) : ''}
             </div>
           </div>
           <div className="uic--info-box-information-area">
@@ -136,28 +150,5 @@ class InfoBox extends Component {
     );
   }
 }
-
-InfoBox.propTypes = {
-  /** The main title that will displayed near the top of our InfoBox. */
-  title: PropTypes.string.isRequired,
-  /** Optional number of characters to limit the title to before styling it as an ellipsis. */
-  titleCharLimit: PropTypes.number,
-  /** The content JSX to be displayed below the title. */
-  content: PropTypes.node.isRequired,
-  /** Optional image URL string to place in your InfoBox - we use the URL to create an image that appears to the right of the title. */
-  imageURL: PropTypes.string,
-  /** Optional footer JSX to be displayed below the content. */
-  footer: PropTypes.node,
-  /** Additional class names to apply to the container. */
-  className: PropTypes.string,
-  /** Additional style properties to apply to the container. */
-  style: PropTypes.objectOf(PropTypes.string),
-  /** Optional onClick handler. */
-  onClick: PropTypes.func,
-};
-
-InfoBox.defaultProps = {
-  titleCharLimit: 25,
-};
 
 export default InfoBox;
