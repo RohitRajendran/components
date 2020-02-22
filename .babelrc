@@ -25,10 +25,12 @@
     "test": {
       "presets": [
         ["@babel/env", {
-          "modules": false,
+          "modules": "commonjs",
           "useBuiltIns": "usage",
           "corejs": 3.6
-        }]
+        }],
+        "@babel/react",
+        "@babel/typescript"
       ],
       "plugins": [
         "istanbul"
