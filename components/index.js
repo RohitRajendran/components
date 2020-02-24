@@ -19,7 +19,7 @@ import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon';
 import HouseIcon from '~components/atoms/icons/HouseIcon/HouseIcon';
 import PrinterIcon from '~components/atoms/icons/PrinterIcon/PrinterIcon';
 import PrinterCircleIcon from '~components/atoms/icons/PrinterCircleIcon/PrinterCircleIcon';
-import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon';
+import ArrowIconEllipsis from '~components/atoms/icons/ArrowEllipsisIcon/ArrowEllipsisIcon.tsx';
 import OptionBox from '~components/atoms/OptionBox/OptionBox';
 import Ranking from '~components/atoms/Ranking/Ranking';
 import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
