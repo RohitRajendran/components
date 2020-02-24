@@ -1145,12 +1145,10 @@
     js-yaml "^3.13.1"
     resolve-from "^5.0.0"
 
-"@istanbuljs/nyc-config-typescript@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@istanbuljs/nyc-config-typescript/-/nyc-config-typescript-1.0.1.tgz#55172f5663b3635586add21b14d42ca94a163d58"
-  integrity sha512-/gz6LgVpky205LuoOfwEZmnUtaSmdk0QIMcNFj9OvxhiMhPpKftMgZmGN7jNj7jR+lr8IB1Yks3QSSSNSxfoaQ==
-  dependencies:
-    "@istanbuljs/schema" "^0.1.2"
+"@istanbuljs/nyc-config-babel@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@istanbuljs/nyc-config-babel/-/nyc-config-babel-3.0.0.tgz#56d0a5250d92b9455c7507775fcb5cb7215fee29"
+  integrity sha512-mPnSPXfTRWCzYsT64PnuPlce6/hGMCdVVMgU2FenXipbUd+FDwUlqlTihXxpxWzcNVOp8M+L1t/kIcgoC8A7hg==
 
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"

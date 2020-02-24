@@ -1,5 +1,5 @@
 {
-  "extends": "@istanbuljs/nyc-config-typescript",
+  "extends": "@istanbuljs/nyc-config-babel",
   "include": [
     "components",
     "proptypes"
@@ -11,6 +11,6 @@
     "**/*.spec.tsx"
   ],
   "reporter": [
-    "lcov"
+    "lcovonly"
   ]
 }
