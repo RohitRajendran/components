@@ -122,7 +122,7 @@
     "typescript": "3.7.5",
     "webpack": "4.41.6",
     "webpack-cli": "3.3.11",
-    "xstate": "4.7.6"
+    "xstate": "4.7.8"
   },
   "peerDependencies": {
     "accounting": "0.4.1",
@@ -136,6 +136,6 @@
     "react-spring": "8.0.27",
     "react-text-mask": "5.4.3",
     "react-tooltip": "4.0.3",
-    "xstate": "4.7.6"
+    "xstate": "4.7.8"
   }
 }
