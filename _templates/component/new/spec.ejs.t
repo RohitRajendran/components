@@ -1,5 +1,5 @@
 ---
-to: components/<%= compPath %>/<%= h.changeCase.pascal(name) %>/<%= h.changeCase.pascal(name) %>.spec.js
+to: components/<%= compPath %>/<%= h.changeCase.pascal(name) %>/<%= h.changeCase.pascal(name) %>.spec.tsx
 ---
 <%
   compName = h.changeCase.pascal(name)

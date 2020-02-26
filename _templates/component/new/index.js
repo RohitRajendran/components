@@ -34,6 +34,15 @@ module.exports = {
       message: 'Does it need to be stateful?',
     });
 
+    let hooks;
+    if (isStateful) {
+      hooks = await prompter.prompt({
+        type: 'confirm',
+        name: 'hooks',
+        message: 'Use React Hooks?',
+      });
+    }
+
     let compPath;
     switch (type) {
       default:
@@ -67,6 +76,7 @@ module.exports = {
       compPath,
       description,
       isStateful,
+      hooks,
       name,
       storyPath: type,
     };

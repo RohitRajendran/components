@@ -44,15 +44,15 @@ You will also need to import the relevant CSS files. You have the choice between
 For individual imports you can use the following:
 
 ```scss
-@import '@unitedincome/components/dist/util.css';
-@import '@unitedincome/components/dist/Button.css';
+@import '~@unitedincome/components/dist/util.css';
+@import '~@unitedincome/components/dist/Button.css';
 ```
 
 To import all styles you can use:
 
 ```scss
-@import '@unitedincome/components/dist/util.css';
-@import '@unitedincome/components/dist/index.css';
+@import '~@unitedincome/components/dist/util.css';
+@import '~@unitedincome/components/dist/index.css';
 ```
 
 This component library also comes packaged with a series of color variables that are outlined in the [United Income DSM](https://projects.invisionapp.com/dsm/united-income-design-system/united-income-brand/folder/colors/5bfd958fc541d90011cf975d). These can be imported into your Sass manifest like so:
@@ -81,16 +81,16 @@ import {zindex} from '@unitedincome/components';
 
 ## Building a Component 🔩
 
-Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
+Components should be written using [TypeScript](https://www.typescriptlang.org/). Running `yarn generate` will create the folder and files you need to start building out your component. Each component at the very least should have an export, documentation, testing, and a story file. The general structure should look something like the following.
 
 ```markdown
 •
 └── components
 ├── atoms
 │ └── Input
-│ ├── Input.js
+│ ├── Input.tsx
 │ ├── Input.mdx
-│ ├── Input.spec.js
+│ ├── Input.spec.tsx
 │ └── Input.story.js
 └── molecules
 ```
