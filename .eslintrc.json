@@ -21,7 +21,7 @@
     "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "react-hooks"],
   "rules": {
     "react/prop-types": "error",
     "linebreak-style": ["error", "unix"],
@@ -193,7 +193,7 @@
     "react/jsx-no-target-blank": "error",
     "react/forbid-prop-types": 2,
     "curly": ["error", "all"],
-    "prefer-destructuring":"error",
+    "prefer-destructuring": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-unused-vars": "error"
   },
@@ -214,14 +214,10 @@
       "flowVersion": "0.53"
     },
     "propWrapperFunctions": [
-        "forbidExtraProps",
-        {"property": "freeze", "object": "Object"},
-        {"property": "myFavoriteWrapper"}
+      "forbidExtraProps",
+      {"property": "freeze", "object": "Object"},
+      {"property": "myFavoriteWrapper"}
     ],
-    "linkComponents": [
-      "Hyperlink",
-      {"name": "Link", "linkAttribute": "to"}
-    ]
+    "linkComponents": ["Hyperlink", {"name": "Link", "linkAttribute": "to"}]
   }
 }
-
