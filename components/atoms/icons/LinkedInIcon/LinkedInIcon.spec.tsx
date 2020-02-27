@@ -19,3 +19,20 @@ test('LinkedInIcon - renders', (t) => {
     t.end();
   }
 });
+
+test('LinkedInIcon - renders', (t) => {
+  try {
+    const component = render(<LinkedInIcon isFull={true} />);
+
+    t.equals(
+      component.container.querySelectorAll('path').length,
+      9,
+      'Should load the full version of the LinkedInIcon component.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
