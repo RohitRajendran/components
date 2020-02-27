@@ -21,3 +21,47 @@ test('HouseIcon - renders', (t) => {
     t.end();
   }
 });
+
+test('HouseIcon - renders with IE browser', (t) => {
+  try {
+    const component = render(
+      <PureHouseIcon houses={3} highlight={2} isIE={true} />,
+    );
+
+    t.equals(
+      component.container.querySelectorAll('g[fill="#10004c"]').length,
+      2,
+      'Two houses should be colored on IE.',
+    );
+
+    t.equals(
+      component.container.querySelectorAll('g[fill="#dddddd"]').length,
+      1,
+      'One house should be uncolored on IE.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
+
+test('HouseIcon - Highlight number is higher than house number', (t) => {
+  try {
+    const component = render(
+      <PureHouseIcon houses={3} highlight={20} isIE={true} />,
+    );
+
+    t.equals(
+      component.container.querySelectorAll('g[fill="#10004c"]').length,
+      3,
+      'All houses should be colored on IE.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
