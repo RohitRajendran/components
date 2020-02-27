@@ -13,6 +13,7 @@ test('CaretIcon - renders', (t) => {
       'Should load the CaretIcon component.',
     );
   } catch (error) {
+    t.fail(error);
   } finally {
     cleanup();
     t.end();
