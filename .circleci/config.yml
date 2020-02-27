@@ -107,7 +107,7 @@ jobs:
           command: |
             rm -rf dist/**/*.spec.d.ts dist/**/*.story.d.ts dist/nightwatch dist/utils-for-tests
             npm version patch -m "Bump version to %s [skip ci]"
-            npm publish --tag beta
+            npm publish
             git push --set-upstream origin $CIRCLE_BRANCH --tags
 
 workflows:
