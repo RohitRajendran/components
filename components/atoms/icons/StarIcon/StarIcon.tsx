@@ -15,8 +15,8 @@ type StarIconProps = {
 };
 
 /** Displays the StarIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the StarIcon component.
+ * @param  props - Component props.
+ * @returns - JSX representation of the StarIcon component.
  */
 const StarIcon: FC<StarIconProps> = ({
   width,

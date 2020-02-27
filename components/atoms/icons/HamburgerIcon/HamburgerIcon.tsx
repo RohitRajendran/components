@@ -15,8 +15,8 @@ type HamburgerIconProps = {
 };
 
 /** Displays the HamburgerIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the HamburgerIcon component.
+ * @param props - Component props.
+ * @returns - JSX representation of the HamburgerIcon component.
  */
 const HamburgerIcon: FC<HamburgerIconProps> = ({
   width,

@@ -15,8 +15,8 @@ type ErrorFlagIconProps = {
 };
 
 /** Displays the ErrorFlagIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the ErrorFlagIcon component.
+ * @param props - Component props.
+ * @returns - JSX representation of the ErrorFlagIcon component.
  */
 const ErrorFlagIcon: FC<ErrorFlagIconProps> = ({
   width,

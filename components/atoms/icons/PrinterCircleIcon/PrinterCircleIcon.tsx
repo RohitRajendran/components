@@ -15,8 +15,8 @@ type PrinterCircleIconProps = {
 };
 
 /** Displays the PrinterCircleIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the PrinterCircleIcon component.
+ * @param  props - Component props.
+ * @returns - JSX representation of the PrinterCircleIcon component.
  */
 const PrinterCircleIcon: FC<PrinterCircleIconProps> = ({
   width,

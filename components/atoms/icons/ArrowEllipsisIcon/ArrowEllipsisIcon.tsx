@@ -14,7 +14,10 @@ type ArrowEllipsisIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Renders an arrow ellipsis icon. */
+/** Displays the ArrowEllipsisIcon component.
+ * @param props - Component props.
+ * @returns - JSX representation of the ArrowEllipsisIcon component.
+ */
 const ArrowEllipsisIcon: FC<ArrowEllipsisIconProps> = ({
   width,
   height,

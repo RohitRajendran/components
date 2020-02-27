@@ -17,8 +17,8 @@ type LinkedInIconProps = {
 };
 
 /** Displays the LinkedInIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the LinkedInIcon component.
+ * @param  props - Component props.
+ * @returns - JSX representation of the LinkedInIcon component.
  */
 const LinkedInIcon: FC<LinkedInIconProps> = ({
   width,

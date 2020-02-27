@@ -15,8 +15,8 @@ type FacebookIconProps = {
 };
 
 /** Displays the FacebookIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the FacebookIcon component.
+ * @param props - Component props.
+ * @returns - JSX representation of the FacebookIcon component.
  */
 const FacebookIcon: FC<FacebookIconProps> = ({
   width,

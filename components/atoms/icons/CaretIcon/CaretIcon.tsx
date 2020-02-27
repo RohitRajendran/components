@@ -21,8 +21,8 @@ type CaretIconProps = {
 };
 
 /** Displays the CaretIcon component.
- * @param {object} props - Component props.
- * @returns {JSX.Element} - JSX representation of the CaretIcon component.
+ * @param  props - Component props.
+ * @returns - JSX representation of the CaretIcon component.
  */
 const CaretIcon: FC<CaretIconProps> = ({
   className,

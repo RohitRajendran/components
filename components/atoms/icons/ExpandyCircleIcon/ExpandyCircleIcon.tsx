@@ -18,8 +18,8 @@ type ExpandyCircleIconProps = {
 };
 
 /** Displays the ExpandyCircleIcon component.
- * @param {object} props - Component props.
- * @returns {*} - JSX representation of the ExpandyCircleIcon component.
+ * @param props - Component props.
+ * @returns - JSX representation of the ExpandyCircleIcon component.
  */
 const ExpandyCircleIcon: FC<ExpandyCircleIconProps> = ({
   width,
