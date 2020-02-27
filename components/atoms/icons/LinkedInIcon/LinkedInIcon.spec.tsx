@@ -20,7 +20,7 @@ test('LinkedInIcon - renders', (t) => {
   }
 });
 
-test('LinkedInIcon - renders', (t) => {
+test('LinkedInIcon - renders full version', (t) => {
   try {
     const component = render(<LinkedInIcon isFull={true} />);
 
