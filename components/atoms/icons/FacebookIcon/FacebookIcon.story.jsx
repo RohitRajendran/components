@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import FacebookIcon from './FacebookIcon';
+import FacebookIcon from './FacebookIcon.tsx';
 import FacebookIconReadme from './FacebookIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/FacebookIcon', module);

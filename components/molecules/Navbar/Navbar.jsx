@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React, {Fragment, PureComponent} from 'react';
 import {animated, Spring} from 'react-spring/renderprops.cjs';
 import Button from '~components/atoms/Button/Button';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
-import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon.tsx';
+import HamburgerIcon from '~components/atoms/icons/HamburgerIcon/HamburgerIcon.tsx';
 import {
   isDocumentDefined,
   isWindowDefined,

@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import StarIcon from './StarIcon';
+import StarIcon from './StarIcon.tsx';
 import StarIconReadme from './StarIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/StarIcon', module);

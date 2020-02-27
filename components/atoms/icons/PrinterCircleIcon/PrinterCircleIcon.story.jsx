@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import PrinterCircleIcon from './PrinterCircleIcon';
+import PrinterCircleIcon from './PrinterCircleIcon.tsx';
 import PrinterCircleIconReadme from './PrinterCircleIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/PrinterCircleIcon', module);

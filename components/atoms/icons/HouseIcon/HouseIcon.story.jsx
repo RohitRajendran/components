@@ -1,7 +1,7 @@
 import {number, text, boolean} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import HouseIcon from './HouseIcon';
+import HouseIcon from './HouseIcon.tsx';
 import HouseIconReadme from './HouseIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/HouseIcon', module);
