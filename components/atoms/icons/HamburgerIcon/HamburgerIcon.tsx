@@ -80,4 +80,5 @@ HamburgerIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {HamburgerIcon as PureHamburgerIcon};
 export default memo(HamburgerIcon);

@@ -3,13 +3,13 @@ import React, {FC, memo} from 'react';
 import {colors} from '~constants/js/colors';
 
 type InfoIconProps = {
-  /** The width of the arrow with unit sizing (px, rem, etc). */
+  /** The width of the infoIcon with unit sizing (px, rem, etc). */
   width?: string;
-  /** The height of the arrow with unit sizing (px, rem, etc). */
+  /** The height of the InfoIcon with unit sizing (px, rem, etc). */
   height?: string;
-  /** The color of the arrow. */
+  /** The color of the background. */
   circleFill?: string;
-  /** The color of the arrow. */
+  /** The color of the "i" inside the circle. */
   iconFill?: string;
   /** Additional class names to apply to the container. */
   className?: string;
@@ -56,4 +56,5 @@ InfoIcon.defaultProps = {
   iconFill: colors.white,
 };
 
+export {InfoIcon as PureInfoIcon};
 export default memo(InfoIcon);

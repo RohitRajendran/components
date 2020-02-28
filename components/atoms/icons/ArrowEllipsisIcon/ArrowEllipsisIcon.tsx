@@ -55,5 +55,5 @@ ArrowEllipsisIcon.defaultProps = {
   fill: '#5B6279',
 };
 
-export default ArrowEllipsisIcon;
+export {ArrowEllipsisIcon as PureArrowEllipsisIcon};
 export default memo(ArrowEllipsisIcon);

@@ -62,4 +62,5 @@ PrinterCircleIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {PrinterCircleIcon as PurePrinterCircleIcon};
 export default memo(PrinterCircleIcon);

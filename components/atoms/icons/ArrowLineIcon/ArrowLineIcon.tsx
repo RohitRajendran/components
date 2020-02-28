@@ -62,4 +62,5 @@ ArrowLineIcon.defaultProps = {
   fill: '#5B6279',
 };
 
+export {ArrowLineIcon as PureArrowLineIcon};
 export default memo(ArrowLineIcon);

@@ -48,4 +48,5 @@ ThumbsDownIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {ThumbsDownIcon as PureThumbsDownIcon};
 export default memo(ThumbsDownIcon);

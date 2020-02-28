@@ -44,4 +44,5 @@ ThumbsUpIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {ThumbsUpIcon as PureThumbsUpIcon};
 export default memo(ThumbsUpIcon);
