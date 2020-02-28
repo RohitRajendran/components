@@ -14,10 +14,7 @@ type HamburgerIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the HamburgerIcon component.
- * @param props - Component props.
- * @returns - JSX representation of the HamburgerIcon component.
- */
+/** Displays the HamburgerIcon component.*/
 const HamburgerIcon: FC<HamburgerIconProps> = ({
   width,
   height,

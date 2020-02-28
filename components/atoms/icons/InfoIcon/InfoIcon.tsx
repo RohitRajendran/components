@@ -17,10 +17,7 @@ type InfoIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the InfoIcon component.
- * @param props - Component props.
- * @returns  - JSX representation of the InfoIcon component.
- */
+/** Displays the InfoIcon component.*/
 const InfoIcon: FC<InfoIconProps> = ({
   circleFill,
   className,

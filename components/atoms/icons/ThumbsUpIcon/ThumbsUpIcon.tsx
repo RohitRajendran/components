@@ -14,10 +14,7 @@ type ThumbsUpIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the ThumbsUpIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the ThumbsUpIcon component.
- */
+/** Displays the ThumbsUpIcon component.*/
 const ThumbsUpIcon: FC<ThumbsUpIconProps> = ({
   width,
   height,

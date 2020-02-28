@@ -14,10 +14,7 @@ type PrinterIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the PrinterIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the PrinterIcon component.
- */
+/** Displays the PrinterIcon component.*/
 const PrinterIcon: FC<PrinterIconProps> = ({
   width,
   height,

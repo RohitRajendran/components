@@ -14,10 +14,7 @@ type CheckIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the CheckIcon component.
- * @param props - Component props.
- * @returns - JSX representation of the CheckIcon component.
- */
+/** Displays the CheckIcon component.*/
 const CheckIcon: FC<CheckIconProps> = ({
   width,
   height,

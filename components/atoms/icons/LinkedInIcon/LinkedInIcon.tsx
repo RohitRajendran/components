@@ -16,10 +16,7 @@ type LinkedInIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the LinkedInIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the LinkedInIcon component.
- */
+/** Displays the LinkedInIcon component.*/
 const LinkedInIcon: FC<LinkedInIconProps> = ({
   width,
   height,

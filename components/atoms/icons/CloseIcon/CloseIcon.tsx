@@ -14,10 +14,7 @@ type CloseIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the CloseIcon component.
- * @param props - Component props.
- * @returns - JSX representation of the CloseIcon component.
- */
+/** Displays the CloseIcon component.*/
 const CloseIcon: FC<CloseIconProps> = ({
   width,
   height,

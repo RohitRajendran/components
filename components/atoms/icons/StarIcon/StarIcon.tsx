@@ -14,10 +14,7 @@ type StarIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the StarIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the StarIcon component.
- */
+/** Displays the StarIcon component.*/
 const StarIcon: FC<StarIconProps> = ({
   width,
   height,

@@ -14,10 +14,7 @@ type TrashIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the TrashIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the TrashIcon component.
- */
+/** Displays the TrashIcon component.*/
 const TrashIcon: FC<TrashIconProps> = ({
   width,
   height,

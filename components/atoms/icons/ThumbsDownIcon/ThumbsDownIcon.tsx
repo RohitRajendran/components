@@ -14,10 +14,7 @@ type ThumbsDownIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the ThumbsDownIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the ThumbsDownIcon component.
- */
+/** Displays the ThumbsDownIcon component.*/
 const ThumbsDownIcon: FC<ThumbsDownIconProps> = ({
   width,
   height,

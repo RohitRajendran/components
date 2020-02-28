@@ -14,10 +14,7 @@ type DiceIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the DiceIcon component.
- * @param props - Component props.
- * @returns - JSX representation of the DiceIcon component.
- */
+/** Displays the DiceIcon component.*/
 const DiceIcon: FC<DiceIconProps> = ({
   width,
   height,

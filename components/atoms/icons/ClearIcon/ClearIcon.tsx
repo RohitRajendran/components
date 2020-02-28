@@ -14,10 +14,7 @@ type ClearIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the ClearIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the ClearIcon component.
- */
+/** Displays the ClearIcon component.*/
 const ClearIcon: FC<ClearIconProps> = ({
   width,
   height,

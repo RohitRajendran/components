@@ -20,10 +20,7 @@ type CaretIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the CaretIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the CaretIcon component.
- */
+/** Displays the CaretIcon component.*/
 const CaretIcon: FC<CaretIconProps> = ({
   className,
   direction,

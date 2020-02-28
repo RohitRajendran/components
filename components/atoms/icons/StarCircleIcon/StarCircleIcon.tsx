@@ -17,10 +17,7 @@ type StarCircleIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the StarCircleIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the StarCircleIcon component.
- */
+/** Displays the StarCircleIcon component.*/
 const StarCircleIcon: FC<StarCircleIconProps> = ({
   width,
   height,

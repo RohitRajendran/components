@@ -23,10 +23,7 @@ type HouseIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the HouseIcon component.
- * @param props - Component props.
- * @returns  - JSX representation of the HouseIcon component.
- */
+/** Displays the HouseIcon component.*/
 const HouseIcon: FC<HouseIconProps> = ({
   width,
   height,

@@ -14,10 +14,7 @@ type TwitterIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the TwitterIcon component.
- * @param  props - Component props.
- * @returns - JSX representation of the TwitterIcon component.
- */
+/** Displays the TwitterIcon component.*/
 const TwitterIcon: FC<TwitterIconProps> = ({
   width,
   height,

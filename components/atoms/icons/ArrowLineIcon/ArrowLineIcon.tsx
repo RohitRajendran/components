@@ -16,10 +16,7 @@ type ArrowLineIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Displays the ArrowLineIcon component.
- * @param props - Component props.
- * @returns - JSX representation of the ArrowLineIcon component.
- */
+/** Displays the ArrowLineIcon component.*/
 const ArrowLineIcon: FC<ArrowLineIconProps> = ({
   height,
   fill,
