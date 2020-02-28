@@ -313,3 +313,4 @@ PaintingCircleIllustration.defaultProps = {
 };
 
 export default memo(PaintingCircleIllustration);
+export {PaintingCircleIllustration as PurePaintingCircleIllustration};

@@ -4011,3 +4011,4 @@ MoneyCircleIllustration.defaultProps = {
 };
 
 export default memo(MoneyCircleIllustration);
+export {MoneyCircleIllustration as PureMoneyCircleIllustration};

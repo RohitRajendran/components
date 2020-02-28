@@ -182,3 +182,4 @@ MedicareCircleIllustration.defaultProps = {
 };
 
 export default memo(MedicareCircleIllustration);
+export {MedicareCircleIllustration as PureMedicareCircleIllustration};

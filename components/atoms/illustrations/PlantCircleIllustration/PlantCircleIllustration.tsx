@@ -2775,3 +2775,4 @@ PlantCircleIllustration.defaultProps = {
 };
 
 export default memo(PlantCircleIllustration);
+export {PlantCircleIllustration as PurePlantCircleIllustration};

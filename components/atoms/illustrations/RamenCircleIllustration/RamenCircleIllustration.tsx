@@ -405,3 +405,4 @@ RamenCircleIllustration.defaultProps = {
 };
 
 export default memo(RamenCircleIllustration);
+export {RamenCircleIllustration as PureRamenCircleIllustration};

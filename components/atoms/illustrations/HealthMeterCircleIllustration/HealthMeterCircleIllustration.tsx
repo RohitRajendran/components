@@ -445,3 +445,4 @@ HealthMeterCircleIllustration.defaultProps = {
 };
 
 export default memo(HealthMeterCircleIllustration);
+export {HealthMeterCircleIllustration as PureHealthMeterCircleIllustration};

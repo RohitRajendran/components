@@ -529,3 +529,4 @@ CarCircleIllustration.defaultProps = {
 };
 
 export default memo(CarCircleIllustration);
+export {CarCircleIllustration as PureCarCircleIllustration};

@@ -1043,3 +1043,4 @@ CakeCircleIllustration.defaultProps = {
 };
 
 export default memo(CakeCircleIllustration);
+export {CakeCircleIllustration as PureCakeCircleIllustration};

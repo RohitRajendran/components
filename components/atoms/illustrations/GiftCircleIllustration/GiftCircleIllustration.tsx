@@ -428,3 +428,4 @@ GiftCircleIllustration.defaultProps = {
 };
 
 export default memo(GiftCircleIllustration);
+export {GiftCircleIllustration as PureGiftCircleIllustration};
