@@ -63,6 +63,26 @@ test('Box - renders disabled with check', (t) => {
   }
 });
 
+test('Box - props with no onClick', (t) => {
+  try {
+    const props = {
+      value: 'montezuma',
+      label: 'the best cat',
+      description: 'v ginger and v good',
+    };
+    const component = render(<Box {...props} />);
+
+    fireEvent.click(component.getByRole('button'));
+
+    console.log(component.debug());
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
+
 test('Box - should hand back the value onClick', (t) => {
   try {
     const props = {
