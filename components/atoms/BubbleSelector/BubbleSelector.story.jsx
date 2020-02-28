@@ -2,7 +2,7 @@ import {StateDecorator, Store} from '@sambego/storybook-state';
 import {object, text} from '@storybook/addon-knobs';
 import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
-import BubbleSelector from './BubbleSelector';
+import BubbleSelector from './BubbleSelector.tsx';
 import BubbleSelectorReadme from './BubbleSelector.mdx';
 
 const stories = storiesOf('Atoms/BubbleSelector', module);

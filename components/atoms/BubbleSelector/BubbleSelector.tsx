@@ -1,9 +1,31 @@
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, {Fragment} from 'react';
+import React, {Fragment, FC} from 'react';
 import './BubbleSelector.scss';
 
-const BubbleSelector = ({options, value, onChange, fixedWidth}) => (
+interface OptionsConfig {
+  value: string;
+  color?: string;
+}
+
+type OptionsType = Array<OptionsConfig>;
+
+type BubbleSelectorProps = {
+  /** Collection of option labels and optional colors */
+  options: OptionsType;
+  /** Currently selected value */
+  value: string;
+  /** Handler for when the selected value changes */
+  onChange: (value: string | undefined) => void;
+  /** Optional fixed width of each selector */
+  fixedWidth?: string;
+};
+
+const BubbleSelector: FC<BubbleSelectorProps> = ({
+  options,
+  value,
+  onChange,
+  fixedWidth,
+}) => (
   <Fragment>
     {options &&
       options.length > 0 &&
@@ -48,23 +70,5 @@ const BubbleSelector = ({options, value, onChange, fixedWidth}) => (
       })}
   </Fragment>
 );
-
-BubbleSelector.propTypes = {
-  /** Collection of option labels and optional colors */
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** Option value */
-      value: PropTypes.string.isRequired,
-      /** Optional custom option color */
-      color: PropTypes.string,
-    }),
-  ).isRequired,
-  /** Currently selected value */
-  value: PropTypes.string.isRequired,
-  /** Handler for when the selected value changes */
-  onChange: PropTypes.func.isRequired,
-  /** Optional fixed width of each selector */
-  fixedWidth: PropTypes.string,
-};
 
 export default BubbleSelector;
