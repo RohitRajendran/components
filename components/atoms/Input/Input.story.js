@@ -297,26 +297,3 @@ stories.add('disabled with value', () => (
     </div>
   </div>
 ));
-
-stories.add('validate', () => (
-  <div className="row" style={storyStyles}>
-    <div className="col-xs-12">
-      <Input
-        {...defaultProps({
-          formName: 'formy-form',
-          label: 'Four Letters or Less',
-          description: 'Enter an input smaller than 4 characters',
-          placeholder: 'Small string goes here',
-          mask: null,
-        })}
-        validate={(input) => {
-          if (input.length < 4) {
-            return '';
-          } else {
-            return 'Please enter a valid small string';
-          }
-        }}
-      />
-    </div>
-  </div>
-));

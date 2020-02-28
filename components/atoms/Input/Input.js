@@ -149,18 +149,12 @@ class Input extends PureComponent {
 
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
+    const errorMsg = validationErrorMsg || this.state.validationErrorMessage;
 
     let InputType = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
     let inputLabel = label;
-    let errorMsg = '';
-
-    if (validationErrorMsg) {
-      errorMsg = validationErrorMsg;
-    } else {
-      errorMsg = this.state.validationErrorMessage;
-    }
 
     if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
       prependCharacter = '$';

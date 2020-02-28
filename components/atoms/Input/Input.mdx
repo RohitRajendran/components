@@ -163,6 +163,46 @@ The `explanation` prop allows you to add additional text that appears above the 
 />
 ```
 
+### Input Validation
+
+Currently, the `Input` component allows you to validate user input and alert the user through a combination of a few different props. We realized that there may be room for consolidation and have introduced the new `validate` prop. To validate input according to your use case, simply pass in a function to the `validate` prop that returns an empty string when the input is **valid** and returns an error message when the input is **invalid**. The invalid message will be displayed and the `Input` component will automatically trigger into error state for you when an error message is returned. Conversely, when an empty string is returned, the `Input` component will show its valid state. A working example is provided below:
+
+<Preview>
+  <Input
+    type="text"
+    label="Four Letters or Less"
+    description="Enter an input smaller than 4 characters"
+    placeholder="Small input goes here"
+    value="Big Input"
+    validate={(input) => {
+      if (input.length < 4) {
+        return '';
+      } else {
+        return 'Please enter a valid small input';
+      }
+    }}
+  />
+</Preview>
+
+```javascript
+<Input
+  type="text"
+  label="Four Letters or Less"
+  description="Enter an input smaller than 4 characters"
+  placeholder="Small input goes here"
+  value="Big Input"
+  validate={(input) => {
+    if (input.length < 4) {
+      return '';
+    } else {
+      return 'Please enter a valid small input';
+    }
+  }}
+/>
+```
+
+Due to these changes, the `isValid` component will no longer be necessary and **will be deprecated** in a future release of our component library. The other props that the `validate` prop manipulates on your behalf (`error`, `hideValidity`, and `validationErrorMsg`) will remain as-is in order to allow full customizability.
+
 ## Props 🔧
 
 <Props of={Input} />
