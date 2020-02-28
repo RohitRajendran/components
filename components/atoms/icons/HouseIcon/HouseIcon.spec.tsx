@@ -22,6 +22,23 @@ test('HouseIcon - renders', (t) => {
   }
 });
 
+test('HouseIcon - renders with no highlight', (t) => {
+  try {
+    const component = render(<PureHouseIcon houses={10} isIE={false} />);
+
+    t.equals(
+      component.container.querySelectorAll('g[fill="#dddddd"]').length,
+      10,
+      'All houses should be uncolored.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
+
 test('HouseIcon - renders with IE browser', (t) => {
   try {
     const component = render(
