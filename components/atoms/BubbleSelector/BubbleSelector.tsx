@@ -41,7 +41,7 @@ const BubbleSelector: FC<BubbleSelectorProps> = ({
             key={option.value}
             type="button"
             className={className}
-            onClick={() => {
+            onClick={(): void => {
               onChange(option.value);
             }}
             style={{
