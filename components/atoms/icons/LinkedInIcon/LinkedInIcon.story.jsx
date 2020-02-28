@@ -1,7 +1,7 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import LinkedInIcon from './LinkedInIcon';
+import LinkedInIcon from './LinkedInIcon.tsx';
 import LinkedInIconReadme from './LinkedInIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/LinkedInIcon', module);

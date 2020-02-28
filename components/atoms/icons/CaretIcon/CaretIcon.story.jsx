@@ -1,7 +1,7 @@
 import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import CaretIcon from './CaretIcon';
+import CaretIcon from './CaretIcon.tsx';
 import CaretIconReadme from './CaretIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/CaretIcon', module);

@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon.tsx';
 import {isDocumentDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import {colors} from '~constants/js/colors';
 import './Modal.scss';

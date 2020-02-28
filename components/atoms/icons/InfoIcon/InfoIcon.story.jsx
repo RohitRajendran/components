@@ -1,7 +1,7 @@
 import {color, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import InfoIcon from './InfoIcon';
+import InfoIcon from './InfoIcon.tsx';
 import InfoIconReadme from './InfoIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/InfoIcon', module);

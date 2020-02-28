@@ -1,7 +1,7 @@
 import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ArrowIcon from './ArrowIcon';
+import ArrowIcon from './ArrowIcon.tsx';
 import ArrowIconReadme from './ArrowIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ArrowIcon', module);

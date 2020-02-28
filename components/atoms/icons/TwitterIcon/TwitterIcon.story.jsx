@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import TwitterIcon from './TwitterIcon';
+import TwitterIcon from './TwitterIcon.tsx';
 import TwitterIconReadme from './TwitterIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/TwitterIcon', module);

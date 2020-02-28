@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactTable from 'react-table';
-import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
+import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon.tsx';
 import './DataTable.scss';
 
 const Expander = ({isExpanded}) => (

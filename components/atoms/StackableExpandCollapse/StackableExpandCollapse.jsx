@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
+import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon.tsx';
 import {colors} from '~constants/js/colors';
 import './StackableExpandCollapse.scss';
 

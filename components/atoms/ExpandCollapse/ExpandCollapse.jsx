@@ -2,8 +2,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {Component, createRef} from 'react';
-import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon';
-import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon';
+import ErrorFlagIcon from '~components/atoms/icons/ErrorFlagIcon/ErrorFlagIcon.tsx';
+import ExpandyCircleIcon from '~components/atoms/icons/ExpandyCircleIcon/ExpandyCircleIcon.tsx';
 import {validateChildren} from '~components/molecules/CardShell/CardShell';
 import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './ExpandCollapse.scss';

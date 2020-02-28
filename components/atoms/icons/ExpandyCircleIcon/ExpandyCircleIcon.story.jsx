@@ -1,7 +1,7 @@
 import {select, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ExpandyCircleIcon from './ExpandyCircleIcon';
+import ExpandyCircleIcon from './ExpandyCircleIcon.tsx';
 import ExpandyCircleIconReadme from './ExpandyCircleIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ExpandyCircleIcon', module);

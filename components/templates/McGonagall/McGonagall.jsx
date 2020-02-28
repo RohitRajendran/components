@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as queryString from 'query-string';
 import React from 'react';
 import {assign, Machine} from 'xstate';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon.tsx';
 import Confirm from '~components/utilities/Confirm/Confirm';
 import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './McGonagall.scss';

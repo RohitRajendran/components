@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import PrinterIcon from './PrinterIcon';
+import PrinterIcon from './PrinterIcon.tsx';
 import PrinterIconReadme from './PrinterIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/PrinterIcon', module);

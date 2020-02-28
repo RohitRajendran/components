@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import StarCircleIcon from './StarCircleIcon';
+import StarCircleIcon from './StarCircleIcon.tsx';
 import StarCircleIconReadme from './StarCircleIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/StarCircleIcon', module);
