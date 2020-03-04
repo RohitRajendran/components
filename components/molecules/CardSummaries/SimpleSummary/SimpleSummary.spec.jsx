@@ -8,6 +8,7 @@ test('SimpleSummary - Renders', (t) => {
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
+      to="test"
     />,
   );
 
@@ -25,6 +26,7 @@ test('SimpleSummary - Renders with customized link', (t) => {
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
       editCardText={editCardText}
+      to="test"
     />,
   );
 
@@ -32,6 +34,22 @@ test('SimpleSummary - Renders with customized link', (t) => {
     component.find('Button').text(),
     editCardText,
     'Modified edit text is displayed',
+  );
+
+  t.end();
+});
+
+test('SimpleSummary - Renders without link', (t) => {
+  const component = mount(
+    <SimpleSummary
+      shortTitle="This is a simpler question"
+      answers={['This is the first answer', 'This is the second answer']}
+    />,
+  );
+
+  t.false(
+    component.find('Button').length,
+    'Should not display edit card button',
   );
 
   t.end();

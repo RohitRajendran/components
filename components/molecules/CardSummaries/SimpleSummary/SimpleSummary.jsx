@@ -7,19 +7,23 @@ import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 
 const SimpleSummary = ({shortTitle, editCard, editCardText, answers, to}) => {
+  const showEditButton = Boolean(editCard || to);
+
   return (
     <div className="uic--card-summary uic--container-fluid">
       <div className="uic--row">
         <div className="uic--col-6">
           <h2 className="uic--card-summary-label">{shortTitle}</h2>
         </div>
-        <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
-          <div className="uic--d-flex uic--justify-content-end">
-            <Button variant="link" onClick={editCard} to={to}>
-              {editCardText}
-            </Button>
+        {showEditButton && (
+          <div className="uic--col-6 uic--col-sm-1 uic--order-sm-last">
+            <div className="uic--d-flex uic--justify-content-end">
+              <Button variant="link" onClick={editCard} to={to}>
+                {editCardText}
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
         <div className="uic--col-12 uic--col-sm-5">
           {answers.map((answer) => {
             return (
