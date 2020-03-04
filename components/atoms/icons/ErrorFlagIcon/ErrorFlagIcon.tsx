@@ -52,4 +52,5 @@ ErrorFlagIcon.defaultProps = {
   fill: '#B30052',
 };
 
+export {ErrorFlagIcon as PureErrorFlagIcon};
 export default memo(ErrorFlagIcon);

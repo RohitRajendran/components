@@ -58,4 +58,5 @@ PrinterIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {PrinterIcon as PurePrinterIcon};
 export default memo(PrinterIcon);

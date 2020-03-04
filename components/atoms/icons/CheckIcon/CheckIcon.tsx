@@ -58,4 +58,5 @@ CheckIcon.defaultProps = {
   fill: '#008422',
 };
 
+export {CheckIcon as PureCheckIcon};
 export default memo(CheckIcon);

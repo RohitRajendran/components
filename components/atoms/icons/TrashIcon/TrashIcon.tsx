@@ -53,4 +53,5 @@ TrashIcon.defaultProps = {
   fill: '#4D00BA',
 };
 
+export {TrashIcon as PureTrashIcon};
 export default memo(TrashIcon);

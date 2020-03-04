@@ -53,4 +53,5 @@ ClearIcon.defaultProps = {
   fill: '#5B6279',
 };
 
+export {ClearIcon as PureClearIcon};
 export default memo(ClearIcon);

@@ -118,4 +118,5 @@ LinkedInIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {LinkedInIcon as PureLinkedInIcon};
 export default memo(LinkedInIcon);

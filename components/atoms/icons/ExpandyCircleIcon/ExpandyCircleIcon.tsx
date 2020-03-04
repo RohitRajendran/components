@@ -73,4 +73,5 @@ ExpandyCircleIcon.defaultProps = {
   fill: '#4d00ba',
 };
 
+export {ExpandyCircleIcon as PureExpandyCircleIcon};
 export default memo(ExpandyCircleIcon);

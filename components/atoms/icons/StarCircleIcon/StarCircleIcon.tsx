@@ -56,4 +56,5 @@ StarCircleIcon.defaultProps = {
   outerFill: colors.green,
 };
 
+export {StarCircleIcon as PureStarCircleIcon};
 export default memo(StarCircleIcon);

@@ -77,4 +77,5 @@ CaretIcon.defaultProps = {
   fill: colors.slate,
 };
 
+export {CaretIcon as PureCaretIcon};
 export default memo(CaretIcon);

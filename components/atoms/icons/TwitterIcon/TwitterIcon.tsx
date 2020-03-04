@@ -54,4 +54,5 @@ TwitterIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {TwitterIcon as PureTwitterIcon};
 export default memo(TwitterIcon);

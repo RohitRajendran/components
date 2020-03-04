@@ -54,4 +54,5 @@ FacebookIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {FacebookIcon as PureFacebookIcon};
 export default memo(FacebookIcon);

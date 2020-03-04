@@ -50,4 +50,5 @@ DiceIcon.defaultProps = {
   fill: '#fff',
 };
 
+export {DiceIcon as PureDiceIcon};
 export default memo(DiceIcon);

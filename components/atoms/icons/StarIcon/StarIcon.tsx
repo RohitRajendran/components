@@ -49,4 +49,5 @@ StarIcon.defaultProps = {
   fill: '#5B6279',
 };
 
+export {StarIcon as PureStarIcon};
 export default memo(StarIcon);

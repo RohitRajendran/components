@@ -53,4 +53,5 @@ CloseIcon.defaultProps = {
   fill: '#5B6279',
 };
 
+export {CloseIcon as PureCloseIcon};
 export default memo(CloseIcon);
