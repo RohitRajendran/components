@@ -15,7 +15,7 @@ type BubbleSelectorProps = {
   /** Currently selected value */
   value: string;
   /** Handler for when the selected value changes */
-  onChange: (value: string | undefined) => void;
+  onChange: (value: string) => void;
   /** Optional fixed width of each selector */
   fixedWidth?: string;
 };
