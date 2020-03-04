@@ -230,3 +230,4 @@ CompassCircleIllustration.defaultProps = {
 };
 
 export default memo(CompassCircleIllustration);
+export {CompassCircleIllustration as PureCompassCircleIllustration};

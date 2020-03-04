@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ErrorFlagIcon from './ErrorFlagIcon';
+import ErrorFlagIcon from './ErrorFlagIcon.tsx';
 import ErrorFlagIconReadme from './ErrorFlagIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ErrorFlagIcon', module);

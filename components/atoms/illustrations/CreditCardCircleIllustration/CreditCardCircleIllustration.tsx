@@ -373,3 +373,4 @@ CreditCardCircleIllustration.defaultProps = {
 };
 
 export default memo(CreditCardCircleIllustration);
+export {CreditCardCircleIllustration as PureCreditCardCircleIllustration};

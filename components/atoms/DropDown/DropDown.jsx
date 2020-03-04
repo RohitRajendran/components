@@ -5,8 +5,8 @@ import React, {Component} from 'react';
 import Select, {components} from 'react-select';
 import AsyncSelect from 'react-select/async';
 import {isNullOrUndefined, isUndefined} from 'util';
-import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon';
-import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon';
+import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon.tsx';
+import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon.tsx';
 import {CardShellContext} from '../../molecules/CardShell/CardShell';
 import './DropDown.scss';
 

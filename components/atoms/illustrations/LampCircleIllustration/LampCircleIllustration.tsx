@@ -443,3 +443,4 @@ LampCircleIllustration.defaultProps = {
 };
 
 export default memo(LampCircleIllustration);
+export {LampCircleIllustration as PureLampCircleIllustration};

@@ -14,7 +14,7 @@ type ArrowEllipsisIconProps = {
   style?: React.CSSProperties;
 };
 
-/** Renders an arrow ellipsis icon. */
+/** Displays the ArrowEllipsisIcon component.*/
 const ArrowEllipsisIcon: FC<ArrowEllipsisIconProps> = ({
   width,
   height,
@@ -55,4 +55,5 @@ ArrowEllipsisIcon.defaultProps = {
   fill: '#5B6279',
 };
 
+export {ArrowEllipsisIcon as PureArrowEllipsisIcon};
 export default memo(ArrowEllipsisIcon);

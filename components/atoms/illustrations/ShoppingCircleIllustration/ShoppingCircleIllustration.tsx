@@ -601,3 +601,4 @@ ShoppingCircleIllustration.defaultProps = {
 };
 
 export default ShoppingCircleIllustration;
+export {ShoppingCircleIllustration as PureShoppingCircleIllustration};

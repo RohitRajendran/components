@@ -225,3 +225,4 @@ AccountCircleIllustration.defaultProps = {
 };
 
 export default memo(AccountCircleIllustration);
+export {AccountCircleIllustration as PureAccountCircleIllustration};

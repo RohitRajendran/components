@@ -1,4 +1,4 @@
-import {mount, shallow} from 'enzyme';
+import {render, cleanup, fireEvent} from '@testing-library/react';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
@@ -6,80 +6,109 @@ import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllu
 import Box from './Box';
 
 test('Box - renders', (t) => {
-  const component = shallow(<Box />);
+  try {
+    const component = render(<Box />);
 
-  t.equals(component.find('div').length, 1, 'Should load the Box component.');
-
-  t.end();
+    t.equals(
+      component.container.querySelectorAll('div').length,
+      1,
+      'Should load the Box component.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });
 
 test('Box - renders with an icon', (t) => {
-  const component = shallow(<Box icon={CarCircleIllustration} />);
+  try {
+    const component = render(<Box icon={CarCircleIllustration} />);
 
-  t.equals(component.find('div').length, 1, 'Should load the Box component.');
-
-  t.end();
+    t.equals(
+      component.container.querySelectorAll('div').length,
+      1,
+      'Should load the Box component.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });
 
 test('Box - renders disabled with check', (t) => {
-  const component = shallow(
-    <Box icon={CarCircleIllustration} disabled={true} showCheck={true} />,
-  );
+  try {
+    const component = render(
+      <Box icon={CarCircleIllustration} disabled={true} showCheck={true} />,
+    );
 
-  t.equals(
-    component.find('.uic--box__disabled').length,
-    1,
-    'Should load the Box component with disabled class.',
-  );
-  t.equals(component.find('CheckIcon').length, 1, 'Shows check');
-  t.end();
+    t.equals(
+      component.container.querySelectorAll('.uic--box__disabled').length,
+      1,
+      'Should load the Box component with disabled class.',
+    );
+    t.equals(
+      component.container.querySelectorAll('.uic--box__check').length,
+      1,
+      'Shows check',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });
 
 test('Box - should hand back the value onClick', (t) => {
-  const props = {
-    value: 'montezuma',
-    label: 'the best cat',
-    description: 'v ginger and v good',
-    onClick: stub(),
-  };
-  const component = mount(<Box {...props} />);
+  try {
+    const props = {
+      value: 'montezuma',
+      label: 'the best cat',
+      description: 'v ginger and v good',
+      onClick: stub(),
+    };
+    const component = render(<Box {...props} />);
 
-  const event = {
-    stopPropagation: stub() as () => void,
-  } as React.MouseEvent;
+    fireEvent.click(component.getByRole('button'));
 
-  const onClickHandler = component
-    .find('.uic--box')
-    .at(0)
-    .prop('onClick');
-
-  if (onClickHandler) {
-    onClickHandler(event);
+    t.deepEquals(
+      props.onClick.args[0][0],
+      'montezuma',
+      'The montezuma box was selected.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
   }
-
-  t.deepEquals(
-    props.onClick.args[0][0],
-    'montezuma',
-    'The montezuma box was selected.',
-  );
-
-  t.end();
 });
 
 test('Box - handleHover', (t) => {
-  const props = {
-    value: 'montezuma',
-    label: 'the best cat',
-    description: 'v ginger and v good',
-    onClick: stub(),
-  };
-  const component = mount<Box>(<Box {...props} />);
+  try {
+    const props = {
+      value: 'montezuma',
+      label: 'the best cat',
+      description: 'v ginger and v good',
+      onClick: stub(),
+      icon: CarCircleIllustration,
+    };
 
-  t.deepEquals(component.state().hover, false, 'Defaults to false.');
+    const component = render(<Box {...props} />);
 
-  component.instance().handleHover();
+    fireEvent.mouseEnter(component.getByTestId('color'));
+    t.ok(component.getByTestId('illuminated'), 'icon is illuminated');
 
-  t.deepEquals(component.state().hover, true, 'Hover state should be true.');
-
-  t.end();
+    fireEvent.mouseLeave(component.getByTestId('illuminated'));
+    t.ok(component.getByTestId('color'), 'icon is no longer illuminated');
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });

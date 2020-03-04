@@ -106,3 +106,4 @@ ProfileCircleIllustration.defaultProps = {
 };
 
 export default memo(ProfileCircleIllustration);
+export {ProfileCircleIllustration as PureProfileCircleIllustration};

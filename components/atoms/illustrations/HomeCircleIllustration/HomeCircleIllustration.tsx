@@ -401,3 +401,4 @@ HomeCircleIllustration.defaultProps = {
 };
 
 export default memo(HomeCircleIllustration);
+export {HomeCircleIllustration as PureHomeCircleIllustration};

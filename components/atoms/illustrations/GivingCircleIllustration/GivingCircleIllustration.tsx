@@ -364,3 +364,4 @@ GivingCircleIllustration.defaultProps = {
 };
 
 export default memo(GivingCircleIllustration);
+export {GivingCircleIllustration as PureGivingCircleIllustration};

@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import CheckIcon from './CheckIcon';
+import CheckIcon from './CheckIcon.tsx';
 import CheckIconReadMe from './CheckIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/CheckIcon', module);

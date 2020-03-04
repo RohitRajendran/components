@@ -358,3 +358,4 @@ GingerBreadCircleIllustration.defaultProps = {
 };
 
 export default memo(GingerBreadCircleIllustration);
+export {GingerBreadCircleIllustration as PureGingerBreadCircleIllustration};

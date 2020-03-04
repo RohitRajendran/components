@@ -1,7 +1,7 @@
 import {text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import ThumbsDownIcon from './ThumbsDownIcon';
+import ThumbsDownIcon from './ThumbsDownIcon.tsx';
 import ThumbsDownIconReadme from './ThumbsDownIcon.mdx';
 
 const stories = storiesOf('Atoms/Icons/ThumbsDownIcon', module);

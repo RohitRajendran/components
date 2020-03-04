@@ -660,3 +660,4 @@ DollarCircleIllustration.defaultProps = {
 };
 
 export default memo(DollarCircleIllustration);
+export {DollarCircleIllustration as PureDollarCircleIllustration};

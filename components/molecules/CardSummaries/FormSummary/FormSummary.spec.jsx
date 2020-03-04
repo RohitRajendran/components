@@ -36,11 +36,12 @@ test('FormSummary - Renders one answer', (t) => {
     3,
     'Should show 3 answers',
   );
+  t.true(comp.find('Button').length, 'Should have edit card button');
 
   t.end();
 });
 
-test('FormSummary - Renders one answer', (t) => {
+test('FormSummary - Renders one answer without edit card button', (t) => {
   const comp = mount(
     <FormSummary
       shortTitle="This is a simpler question"
@@ -63,7 +64,6 @@ test('FormSummary - Renders one answer', (t) => {
           ],
         },
       ]}
-      editCard={() => true}
     />,
   );
 
@@ -84,6 +84,7 @@ test('FormSummary - Renders one answer', (t) => {
     6,
     'Should show 3 answers',
   );
+  t.false(comp.find('Button').length, 'Should not have edit card button');
 
   t.end();
 });

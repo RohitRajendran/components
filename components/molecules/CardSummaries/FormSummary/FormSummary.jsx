@@ -9,6 +9,8 @@ import '../CardSummaries.scss';
 import './FormSummary.scss';
 
 const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
+  const showEditButton = Boolean(editCard || to);
+
   return (
     <Fragment>
       <div className="uic--card-summary uic--container-fluid">
@@ -16,13 +18,15 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
           <div className="uic--col-6 uic--col-sm-11">
             <h2 className="uic--card-summary-label">{shortTitle}</h2>
           </div>
-          <div className="uic--col-6 uic--col-sm-1">
-            <div className="uic--d-flex uic--justify-content-end">
-              <Button variant="link" onClick={editCard} to={to}>
-                Edit
-              </Button>
+          {showEditButton && (
+            <div className="uic--col-6 uic--col-sm-1">
+              <div className="uic--d-flex uic--justify-content-end">
+                <Button variant="link" onClick={editCard} to={to}>
+                  Edit
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       {answerGroups.map((group, index) => {

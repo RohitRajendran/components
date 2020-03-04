@@ -208,3 +208,4 @@ IncomeCircleIllustration.defaultProps = {
 };
 
 export default memo(IncomeCircleIllustration);
+export {IncomeCircleIllustration as PureIncomeCircleIllustration};
