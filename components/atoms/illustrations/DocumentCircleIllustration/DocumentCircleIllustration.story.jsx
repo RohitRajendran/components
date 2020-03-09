@@ -1,17 +1,17 @@
 import {boolean, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
-import UmbrellaCircleIllustration from './UmbrellaCircleIllustration.tsx';
-import UmbrellaCircleIllustrationReadMe from './UmbrellaCircleIllustration.mdx';
+import DocumentCircleIllustration from './DocumentCircleIllustration.tsx';
+import DocumentCircleIllustrationReadMe from './DocumentCircleIllustration.mdx';
 
 const stories = storiesOf(
-  'Atoms/Illustrations/UmbrellaCircleIllustration',
+  'Atoms/Illustrations/DocumentCircleIllustration',
   module,
 );
 
 stories.addParameters({
   docs: {
-    page: UmbrellaCircleIllustrationReadMe,
+    page: DocumentCircleIllustrationReadMe,
   },
 });
 
@@ -24,14 +24,14 @@ const defaultProps = (color, draft, illuminate) => ({
 });
 
 stories.add('default', () => (
-  <UmbrellaCircleIllustration {...defaultProps(false, false, false)} />
+  <DocumentCircleIllustration {...defaultProps(false, false, false)} />
 ));
 stories.add('color', () => (
-  <UmbrellaCircleIllustration {...defaultProps(true, false, false)} />
+  <DocumentCircleIllustration {...defaultProps(true, false, false)} />
 ));
 stories.add('draft', () => (
-  <UmbrellaCircleIllustration {...defaultProps(false, true, false)} />
+  <DocumentCircleIllustration {...defaultProps(false, true, false)} />
 ));
 stories.add('illuminated', () => (
-  <UmbrellaCircleIllustration {...defaultProps(false, false, true)} />
+  <DocumentCircleIllustration {...defaultProps(false, false, true)} />
 ));

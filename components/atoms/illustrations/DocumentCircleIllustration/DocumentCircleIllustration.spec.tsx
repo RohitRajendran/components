@@ -1,16 +1,16 @@
 import {cleanup, fireEvent, getByTestId, render} from '@testing-library/react';
 import React from 'react';
 import test from 'tape';
-import InsuranceCircleIllustration from './InsuranceCircleIllustration';
+import DocumentCircleIllustration from './DocumentCircleIllustration';
 
-test('InsuranceCircleIllustration - renders', (t) => {
+test('DocumentCircleIllustration - renders', (t) => {
   try {
-    const component = render(<InsuranceCircleIllustration />);
+    const component = render(<DocumentCircleIllustration />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
       1,
-      'Should load the InsuranceCircleIllustration component.',
+      'Should load the DocumentCircleIllustration component.',
     );
 
     t.true(component.getByTestId('default'), 'Default illustration');
@@ -22,14 +22,14 @@ test('InsuranceCircleIllustration - renders', (t) => {
   }
 });
 
-test('InsuranceCircleIllustration - renders the draft illustration', (t) => {
+test('DocumentCircleIllustration - renders the draft illustration', (t) => {
   try {
-    const component = render(<InsuranceCircleIllustration draft={true} />);
+    const component = render(<DocumentCircleIllustration draft={true} />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
       1,
-      'Should load the InsuranceCircleIllustration component.',
+      'Should load the DocumentCircleIllustration component.',
     );
 
     t.true(component.getByTestId('draft'), 'Draft illustration');
@@ -41,14 +41,14 @@ test('InsuranceCircleIllustration - renders the draft illustration', (t) => {
   }
 });
 
-test('InsuranceCircleIllustration - renders the colored illustration', (t) => {
+test('DocumentCircleIllustration - renders the colored illustration', (t) => {
   try {
-    const component = render(<InsuranceCircleIllustration color={true} />);
+    const component = render(<DocumentCircleIllustration color={true} />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
       1,
-      'Should load the InsuranceCircleIllustration component.',
+      'Should load the DocumentCircleIllustration component.',
     );
 
     t.true(component.getByTestId('color'), 'Color illustration');
@@ -60,14 +60,14 @@ test('InsuranceCircleIllustration - renders the colored illustration', (t) => {
   }
 });
 
-test('InsuranceCircleIllustration - handleClick', (t) => {
+test('DocumentCircleIllustration - handleClick', (t) => {
   try {
-    const component = render(<InsuranceCircleIllustration />);
+    const component = render(<DocumentCircleIllustration />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
       1,
-      'Should load the InsuranceCircleIllustration component.',
+      'Should load the DocumentCircleIllustration component.',
     );
 
     t.true(component.getByTestId('default'), 'Default illustration');
