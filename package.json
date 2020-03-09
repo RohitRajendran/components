@@ -87,7 +87,7 @@
     "hygen": "5.0.3",
     "ignore-styles": "5.0.1",
     "isomorphic-fetch": "2.2.1",
-    "jsdom": "16.2.0",
+    "jsdom": "15.2.1",
     "jsdom-global": "3.0.2",
     "lodash": "4.17.15",
     "mini-css-extract-plugin": "0.9.0",
