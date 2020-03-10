@@ -59,8 +59,8 @@ class DropDown extends Component {
   componentDidUpdate(prevProps) {
     if (
       (!this.state.touched && this.props.isSubmitted) ||
-      (prevProps.value !== this.props.value ||
-        prevProps.validate !== this.props.validate)
+      prevProps.value !== this.props.value ||
+      prevProps.validate !== this.props.validate
     ) {
       this.setState(
         {touched: this.state.touched || this.props.isSubmitted},

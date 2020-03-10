@@ -56,7 +56,8 @@ export const validateChildren = (children, startValidated = false) => {
         }
       } else if (
         (!child.props.disabled &&
-          (!isNullOrUndefined(child.props.value) && child.props.value !== '') &&
+          !isNullOrUndefined(child.props.value) &&
+          child.props.value !== '' &&
           ((child.props.pattern &&
             !new RegExp(child.props.pattern).test(child.props.value)) ||
             (child.props.min && child.props.value < child.props.min) ||
