@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Portal from './Portal';
+import Portal from './Portal.tsx';
 import PortalReadMe from './Portal.mdx';
 
 const stories = storiesOf('Utilities/Portal', module);
