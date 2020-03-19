@@ -35,3 +35,13 @@ const CabinetInterior = React.forwardRef((props, ref) => {
   return <aside {...props} ref={ref} />;
 });
 ```
+
+### usePortal Hook
+
+If you'd like to consume the logic that creates a `div` at the root of `body` you can use the `usePortal` hook.
+
+```javascript
+const portal = usePortal()
+
+<Component portalElement={portal} />
+```

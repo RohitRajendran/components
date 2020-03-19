@@ -6,10 +6,10 @@ $container-min-height: 2.4rem;
   border: 1px solid $light-gray;
 
   hr {
-    background-color: $light-gray;
     border: 0;
-    color: $light-gray;
-    height: 1px;
+    border-top: 1px solid $light-gray;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
   .uic--info-box-title-area {
@@ -28,7 +28,7 @@ $container-min-height: 2.4rem;
     pointer-events: none;
     position: absolute;
     right: 6rem;
-    top: 2.5rem;
+    top: 1rem;
   }
 
   .uic--info-box-information-area {
@@ -76,4 +76,8 @@ $container-min-height: 2.4rem;
       right: 0;
     }
   }
+}
+
+.uic--info-box-inactive {
+  opacity: 0.4;
 }

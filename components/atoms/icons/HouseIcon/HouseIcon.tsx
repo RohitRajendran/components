@@ -57,7 +57,8 @@ const HouseIcon: FC<HouseIconProps> = ({
             <svg viewBox="0 0 30 30" preserveAspectRatio="none">
               <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 {highlight &&
-                  ((item < highlight - 1 || item === highlight - 1) && !isIE && (
+                  (item < highlight - 1 || item === highlight - 1) &&
+                  !isIE && (
                     <linearGradient id={`${id}-${i}`} x2="0" y1="0" y2="1">
                       <stop offset="0%" stopColor={colors['light-gray']} />
                       <stop offset="100%" stopColor={colors['light-gray']}>
@@ -79,7 +80,7 @@ const HouseIcon: FC<HouseIconProps> = ({
                         />
                       </stop>
                     </linearGradient>
-                  ))}
+                  )}
                 <g
                   transform="translate(-1161.000000, -558.000000)"
                   fill={
