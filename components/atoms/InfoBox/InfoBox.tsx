@@ -15,6 +15,8 @@ type InfoBoxProps = {
   imageURL?: string;
   /** Optional footer JSX to be displayed below the content. */
   footer?: React.ReactNode;
+  /** Optional isInactive flag, if true sets the background of the card to grey */
+  isInactive?: boolean;
   /** Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */
@@ -92,6 +94,7 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
       imageURL,
       footer,
       className,
+      isInactive,
       style,
     } = this.props;
     const containerClass = classNames(
@@ -99,9 +102,14 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
         'uic--info-box': true,
         'uic--info-box-expand': this.state.showFullTitle,
         'uic--info-box-selectable': this.props.onClick,
+        'uic--info-box-inactive': isInactive,
       },
       className,
     );
+
+    const cardStyling = {
+      backgroundImage: imageURL ? `url(${imageURL})` : 'none',
+    };
 
     return (
       <aside
@@ -123,13 +131,7 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
           )}
           <div
             className="uic--info-box-title-area"
-            style={
-              imageURL
-                ? {
-                    backgroundImage: `url(${imageURL})`,
-                  }
-                : {}
-            }
+            style={cardStyling}
             onMouseEnter={this.handleMouseOver}
           >
             <div className="uic--info-box-title-text uic--header-2-text">

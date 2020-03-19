@@ -1,5 +1,5 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {text, object} from '@storybook/addon-knobs';
+import {text, object, boolean} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
 import React, {Fragment} from 'react';
 import InfoBox from './InfoBox.tsx';
@@ -23,11 +23,19 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = ({formName, title, imageURL, content, footer}) => ({
+const defaultProps = ({
+  formName,
+  title,
+  imageURL,
+  content,
+  isInactive,
+  footer,
+}) => ({
   name: formName,
   title: text('title', title),
   imageURL: text('imageURL', imageURL),
   content: object('content', content),
+  isInactive: boolean('isInactive', isInactive),
   footer: object('footer', footer),
 });
 
@@ -39,6 +47,30 @@ stories.add('default', () => (
       imageURL:
         'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg',
       content: <div>Here is some unstyled content!</div>,
+      footer: (
+        <Fragment>
+          <div className="uic--info-box-formatted-row">
+            <div className="uic--row-label">Equity Allocation Override</div>
+            <div className="uic--mcg-subhead-text">95%</div>
+          </div>
+          <div className="uic--field-description-text">
+            High Investment Risk and Return Potential
+          </div>
+        </Fragment>
+      ),
+    })}
+  />
+));
+
+stories.add('isInactive', () => (
+  <InfoBox
+    {...defaultProps({
+      formName: 'isInactive',
+      title: 'Giannis - 401k',
+      imageURL:
+        'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg',
+      content: <div>Here is some unstyled content!</div>,
+      isInactive: true,
       footer: (
         <Fragment>
           <div className="uic--info-box-formatted-row">

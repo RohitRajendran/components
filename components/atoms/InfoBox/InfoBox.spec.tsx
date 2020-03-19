@@ -1,114 +1,153 @@
-import {shallow} from 'enzyme';
+import {render, cleanup, fireEvent, getByText} from '@testing-library/react';
 import React from 'react';
 import test from 'tape';
 import {stub} from 'sinon';
 import InfoBox from './InfoBox';
 
 test('InfoBox - renders correctly', (t) => {
-  const testProps = {
-    title: 'Here is a title',
-    content: 'Here is some content!',
-  };
+  try {
+    const testProps = {
+      title: 'Here is a title',
+      content: 'Here is some content!',
+    };
 
-  const component = shallow(<InfoBox {...testProps} />);
+    const component = render(<InfoBox {...testProps} />);
 
-  t.equals(
-    component.find('aside').length,
-    1,
-    'Should load the InfoBox component.',
-  );
-  t.equals(
-    component.find('.uic--info-box-title-text').text(),
-    'Here is a title',
-    'Should correctly load InfoBox title',
-  );
+    t.equals(
+      component.container.querySelectorAll('aside').length,
+      1,
+      'Should load the InfoBox component.',
+    );
+    t.true(
+      getByText(component.container, 'Here is a title'),
+      'Should correctly load InfoBox title',
+    );
+    t.true(
+      getByText(component.container, 'Here is some content!'),
+      'Should render content',
+    );
+    t.equals(
+      component.container.querySelectorAll('footer').length,
+      0,
+      'Should not render a footer',
+    );
 
-  t.equals(
-    component.find('.uic--info-box-information-area').text(),
-    'Here is some content!',
-    'Should render content',
-  );
-  t.equals(
-    component.find('.uic--info-box-information-area').text(),
-    'Here is some content!',
-    'Should correctly load InfoBox content',
-  );
-  t.equals(component.find('footer').length, 0, 'Should not render a footer');
-  t.deepEqual(
-    component.find('.uic--info-box-title-area').prop('style'),
-    {},
-    'There should be no additional style applied if no image provided',
-  );
+    const onClickStub = stub();
 
-  const onClickStub = stub();
+    const component2 = render(
+      <InfoBox
+        {...{
+          ...testProps,
+          imageURL: 'urlLocation',
+          footer: 'Here is a footer',
+          onClick: onClickStub,
+        }}
+      />,
+    );
 
-  const component2 = shallow(
-    <InfoBox
-      {...{
-        ...testProps,
-        imageURL: 'urlLocation',
-        footer: 'Here is a footer',
-        onClick: onClickStub,
-      }}
-    />,
-  );
+    t.equals(
+      component2.container.querySelectorAll('footer').length,
+      1,
+      'Should render a footer',
+    );
 
-  t.notDeepEqual(
-    component2.find('.uic--info-box-title-area').prop('style'),
-    {},
-    'There should be an additional style applied if an image provided',
-  );
-  t.equals(component2.find('footer').length, 1, 'Should render a footer');
+    fireEvent.click(component2.container.querySelectorAll('aside')[0], {
+      stopPropagation: stub(),
+    });
 
-  component2.find('aside').simulate('click', {
-    stopPropagation: stub(),
-  });
-
-  t.equals(onClickStub.callCount, 1, 'onClick functionality works');
-
-  t.end();
+    t.equals(onClickStub.callCount, 1, 'onClick functionality works');
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });
 
 test('InfoBox - state and hover updated correctly', (t) => {
-  const testProps = {
-    title: 'This is a very, very long title',
-    content: 'Here is some content!',
-  };
+  try {
+    const testProps = {
+      title: 'This is a very, very long title',
+      content: 'Here is some content!',
+    };
 
-  const component = shallow(<InfoBox {...testProps} />);
+    const component = render(<InfoBox {...testProps} />);
 
-  t.equal(
-    component.find('.uic--info-box-title-text').text(),
-    'This is a very, very lon…',
-    'Shortened title should be displayed',
-  );
+    t.true(
+      getByText(component.container, 'This is a very, very lon…'),
+      'Shortened title should be displayed',
+    );
 
-  component.find('.uic--info-box-title-area').simulate('mouseEnter', {
-    stopPropagation: stub(),
-  });
+    fireEvent.mouseEnter(
+      component.container.querySelectorAll('.uic--info-box-title-area')[0],
+      {
+        stopPropagation: stub(),
+      },
+    );
 
-  t.true(
-    component.hasClass('uic--info-box-expand'),
-    'Should apply uic--info-box-expand on hover',
-  );
+    t.equal(
+      component.container.querySelectorAll('.uic--info-box-expand').length,
+      1,
+      'Should apply uic--info-box-expand on hover',
+    );
 
-  t.equal(
-    component
-      .find('.uic--info-box-title-text')
-      .first()
-      .text(),
-    'This is a very, very long title',
-    'Full title should be displayed on hover',
-  );
+    t.true(
+      getByText(component.container, 'This is a very, very long title'),
+      'Full title should be displayed on hover',
+    );
 
-  component.find('.uic--position-relative').simulate('mouseLeave', {
-    stopPropagation: stub(),
-  });
+    fireEvent.mouseLeave(
+      component.container.querySelectorAll('.uic--position-relative')[0],
+      {
+        stopPropagation: stub(),
+      },
+    );
 
-  t.false(
-    component.hasClass('uic--info-box-expand'),
-    'uic--info-box-expand should no longer be applied',
-  );
+    t.equal(
+      component.container.querySelectorAll('.uic--info-box-expand').length,
+      0,
+      'uic--info-box-expand should no longer be applied',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
 
-  t.end();
+test('InfoBox - isInactive', (t) => {
+  try {
+    const testProps = {
+      title: 'This is a very, very long title',
+      content: 'Here is some content!',
+      isInactive: true,
+    };
+
+    const component = render(<InfoBox {...testProps} />);
+
+    t.equal(
+      component.container.querySelectorAll('.uic--info-box-inactive').length,
+      1,
+      'Should render the opacity to 0.4',
+    );
+
+    fireEvent.mouseEnter(
+      component.container.querySelectorAll('.uic--info-box-title-area')[0],
+      {
+        stopPropagation: stub(),
+      },
+    );
+
+    t.equal(
+      component.container.querySelectorAll('.uic--info-box-inactive').length,
+      1,
+      'Should render the opacity to 0.4',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
 });
