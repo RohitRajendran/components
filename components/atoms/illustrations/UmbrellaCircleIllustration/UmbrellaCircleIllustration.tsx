@@ -226,7 +226,7 @@ const UmbrellaCircleIllustration: FC<UmbrellaCircleIllustrationProps> = ({
               <line
                 fill="none"
                 stroke="#F8F7F4"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 strokeMiterlimit="10"
                 strokeDasharray="14.0066,7.0033,2.3344,5.8361"
                 x1="61.81"
