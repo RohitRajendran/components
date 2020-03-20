@@ -115,7 +115,7 @@ workflows:
   components:
     jobs:
       - build:
-          context: Development
+          context: Everyone
           filters:
             branches:
               ignore:
