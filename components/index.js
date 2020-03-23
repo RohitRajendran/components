@@ -40,6 +40,8 @@ import ShoppingCircleIllustration from '~components/atoms/illustrations/Shopping
 import RamenCircleIllustration from '~components/atoms/illustrations/RamenCircleIllustration/RamenCircleIllustration.tsx';
 import PlantCircleIllustration from '~components/atoms/illustrations/PlantCircleIllustration/PlantCircleIllustration.tsx';
 import CreditCardCircleIllustration from '~components/atoms/illustrations/CreditCardCircleIllustration/CreditCardCircleIllustration.tsx';
+import DocumentCircleIllustration from '~components/atoms/illustrations/DocumentCircleIllustration/DocumentCircleIllustration.tsx';
+import UmbrellaCircleIllustration from '~components/atoms/illustrations/UmbrellaCircleIllustration/UmbrellaCircleIllustration.tsx';
 import DollarCircleIllustration from '~components/atoms/illustrations/DollarCircleIllustration/DollarCircleIllustration.tsx';
 import StackableExpandCollapse from '~components/atoms/StackableExpandCollapse/StackableExpandCollapse';
 import LinkedInIcon from '~components/atoms/icons/LinkedInIcon/LinkedInIcon.tsx';
@@ -207,6 +209,8 @@ export {
   CreditCardCircleIllustration,
   PlantCircleIllustration,
   DollarCircleIllustration,
+  UmbrellaCircleIllustration,
+  DocumentCircleIllustration,
   colors,
   zindex,
 };

@@ -135,7 +135,7 @@ Slider.propTypes = {
   /** Shows a ghost dot on the slider, set the position between 1 and 10. */
   tooltipStickyPosition: PropTypes.number,
   /** Determines which variant to set the slider to, can either be set to null, green or orange. */
-  tooltipStickyVariant: PropTypes.oneOf(['green', 'purple']),
+  tooltipStickyVariant: PropTypes.oneOf(['green', 'purple', 'orange']),
   /** Applies  */
   className: PropTypes.string,
   /** Determines if the input is required or not. */

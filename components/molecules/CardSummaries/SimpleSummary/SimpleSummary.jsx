@@ -48,7 +48,7 @@ SimpleSummary.propTypes = {
   /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
   to: and([PropTypes.string, exclusive(['editCard'])]),
   /** A shorter version of the card title. */
-  shortTitle: PropTypes.string.isRequired,
+  shortTitle: PropTypes.node.isRequired,
 };
 
 SimpleSummary.defaultProps = {editCardText: 'Edit'};
