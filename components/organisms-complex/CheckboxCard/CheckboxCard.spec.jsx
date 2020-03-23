@@ -174,7 +174,6 @@ test('CheckboxCard - latest collapsed', (t) => {
           value: 'no',
         },
       ],
-      value: [],
     },
     onChange: stub(),
     cancelChanges: () => true,

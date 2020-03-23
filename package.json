@@ -58,6 +58,7 @@
     "@types/classnames": "2.2.10",
     "@types/enzyme": "3.10.5",
     "@types/react-dom": "16.9.5",
+    "@types/react-table": "6.8.6",
     "@types/sinon": "7.5.2",
     "@types/tape": "4.2.34",
     "@typescript-eslint/eslint-plugin": "2.24.0",
