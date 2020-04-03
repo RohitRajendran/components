@@ -1097,10 +1097,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@invisionapp/dsm-storybook@0.0.127":
-  version "0.0.127"
-  resolved "https://registry.yarnpkg.com/@invisionapp/dsm-storybook/-/dsm-storybook-0.0.127.tgz#4fe719aba11a04acee61e426929d5597eca84057"
-  integrity sha512-PWLhWAsDriDwKijqxMMqAO9dk2NvXeP1Zgi2V8v4NKW6/1Mo+5GvNu0hz1n3DJVhtVnDaGo2T/uz14gD6keOfA==
+"@invisionapp/dsm-storybook@0.0.128":
+  version "0.0.128"
+  resolved "https://registry.yarnpkg.com/@invisionapp/dsm-storybook/-/dsm-storybook-0.0.128.tgz#a88d7da8a07d279cfb06d99b4ec4e9a3631c4599"
+  integrity sha512-Dfdc0QNRc1AiGtLboaoQuwWJ6+pxw4Edkzcpw+2ffS1dtjjOhBOXMM+A/xKsUUAuGDkbiXAExlFhGc8hWpGsvg==
   dependencies:
     "@angular/compiler" "7.1.2"
     "@babel/traverse" "7.1.6"
