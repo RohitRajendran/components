@@ -22,29 +22,16 @@ test('InputCard - renders', (t) => {
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Question',
-    'Shows title',
-  );
+  t.equals(comp.find('h2').first().text(), 'Question', 'Shows title');
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
 
   t.true(
-    comp
-      .find('.uic--card-submit')
-      .first()
-      .prop('disabled'),
+    comp.find('.uic--card-submit').first().prop('disabled'),
     'Continue should be disabled since no value',
   );
 
@@ -79,19 +66,9 @@ test('InputCard - collapsed with answer override', (t) => {
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
 
-  t.equals(
-    comp
-      .find('p')
-      .first()
-      .text(),
-    'Yup',
-    'Shows answer',
-  );
+  t.equals(comp.find('p').first().text(), 'Yup', 'Shows answer');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
 
@@ -224,19 +201,9 @@ test('InputCard - latest collapsed', (t) => {
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Q',
-    'Shows incomplete summary',
-  );
+  t.equals(comp.find('h2').first().text(), 'Q', 'Shows incomplete summary');
   t.true(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should show error state',
   );
 

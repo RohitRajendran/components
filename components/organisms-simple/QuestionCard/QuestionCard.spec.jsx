@@ -14,21 +14,11 @@ test('QuestionCard - renders', (t) => {
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Question',
-    'Shows title',
-  );
+  t.equals(comp.find('h2').first().text(), 'Question', 'Shows title');
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
   t.end();
@@ -60,13 +50,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
     'Should show warning text',
   );
   t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
-  t.equals(
-    comp
-      .find('.uic--card-submit')
-      .first()
-      .text(),
-    'Save Changes',
-  );
+  t.equals(comp.find('.uic--card-submit').first().text(), 'Save Changes');
 
   t.end();
 });
@@ -91,19 +75,9 @@ test('QuestionCard - collapsed', (t) => {
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Summary',
-    'Shows summary',
-  );
+  t.equals(comp.find('h2').first().text(), 'Summary', 'Shows summary');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
 
@@ -131,19 +105,9 @@ test('QuestionCard - latest collapsed', (t) => {
 
   const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Q',
-    'Shows incomplete summary',
-  );
+  t.equals(comp.find('h2').first().text(), 'Q', 'Shows incomplete summary');
   t.true(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should show error state',
   );
 

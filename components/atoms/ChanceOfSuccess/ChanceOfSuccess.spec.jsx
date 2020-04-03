@@ -37,20 +37,13 @@ test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid 
   const component = mount(<PureChanceOfSuccess {...props} />);
 
   t.equals(
-    component
-      .find('svg')
-      .find('text')
-      .at(0)
-      .prop('fontSize'),
+    component.find('svg').find('text').at(0).prop('fontSize'),
     '4rem',
     'Should have the correct font size',
   );
 
   t.equals(
-    component
-      .find('svg')
-      .find('text')
-      .text(),
+    component.find('svg').find('text').text(),
     'TBD',
     'Should have the correct text indicating it is TBD',
   );

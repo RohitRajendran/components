@@ -188,11 +188,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
 
   const component = mount(<Ranking {...props} />);
 
-  component
-    .find('li')
-    .at(1)
-    .find('.uic--up')
-    .prop('onClick')();
+  component.find('li').at(1).find('.uic--up').prop('onClick')();
 
   t.deepEquals(
     component.state().items,
@@ -219,11 +215,7 @@ test('Ranking - changeOrder button press simulation', (t) => {
     'Should modify the order.',
   );
 
-  component
-    .find('li')
-    .at(1)
-    .find('.uic--down')
-    .prop('onClick')();
+  component.find('li').at(1).find('.uic--down').prop('onClick')();
 
   t.deepEquals(
     component.state().items,
@@ -281,11 +273,7 @@ test('Ranking - changeOrder key down simulation', (t) => {
 
   const component = mount(<Ranking {...props} />);
 
-  component
-    .find('li')
-    .at(1)
-    .find('.uic--up')
-    .prop('onKeyDown')();
+  component.find('li').at(1).find('.uic--up').prop('onKeyDown')();
 
   t.deepEquals(
     component.state().items,
@@ -312,11 +300,7 @@ test('Ranking - changeOrder key down simulation', (t) => {
     'Should modify the order.',
   );
 
-  component
-    .find('li')
-    .at(1)
-    .find('.uic--down')
-    .prop('onKeyDown')();
+  component.find('li').at(1).find('.uic--down').prop('onKeyDown')();
 
   t.deepEquals(
     component.state().items,

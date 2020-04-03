@@ -52,10 +52,7 @@ test('Slider - onChange', (t) => {
 
   const component = mount(<PureSlider {...props} />);
 
-  component
-    .find('.uic--react-slider')
-    .at(0)
-    .prop('onChange')(5);
+  component.find('.uic--react-slider').at(0).prop('onChange')(5);
 
   t.equals(
     props.onChange.args[0][0],

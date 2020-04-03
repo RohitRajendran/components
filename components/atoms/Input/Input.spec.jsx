@@ -109,10 +109,7 @@ test('Input - Renders a masked input if mask is provided', (t) => {
   );
 
   t.equals(
-    component
-      .find('input')
-      .first()
-      .prop('placeholder'),
+    component.find('input').first().prop('placeholder'),
     'MM/DD/YYYY',
     'Uses default mask placeholder',
   );

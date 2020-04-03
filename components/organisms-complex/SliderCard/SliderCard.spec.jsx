@@ -32,21 +32,11 @@ test('SliderCard - renders', (t) => {
 
   const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Question',
-    'Shows title',
-  );
+  t.equals(comp.find('h2').first().text(), 'Question', 'Shows title');
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
   t.equals(comp.find('QuestionCard').length, 1, 'Displays slider');
@@ -81,19 +71,9 @@ test('SliderCard - collapsed with answer override', (t) => {
 
   const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
-  t.equals(
-    comp
-      .find('p')
-      .first()
-      .text(),
-    'Yup',
-    'Shows answer',
-  );
+  t.equals(comp.find('p').first().text(), 'Yup', 'Shows answer');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
 
@@ -156,19 +136,9 @@ test('SliderCard - latest collapsed', (t) => {
 
   const comp = mount(<SliderCard {...props}>Content</SliderCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Q',
-    'Shows incomplete summary',
-  );
+  t.equals(comp.find('h2').first().text(), 'Q', 'Shows incomplete summary');
   t.true(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should show error state',
   );
 

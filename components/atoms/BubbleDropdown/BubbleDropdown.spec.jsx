@@ -20,7 +20,10 @@ test('BubbleDropdown - render', (t) => {
 
   t.deepEqual(
     select.prop('options'),
-    [{label: 'Yo', value: 'Yo'}, {label: 'Dawg', value: 'Dawg'}],
+    [
+      {label: 'Yo', value: 'Yo'},
+      {label: 'Dawg', value: 'Dawg'},
+    ],
     'Pass correct options to Select component',
   );
 

@@ -43,10 +43,7 @@ test('Button - disabling', (t) => {
   );
 
   t.true(
-    buttonComponent
-      .find('button')
-      .first()
-      .prop('disabled'),
+    buttonComponent.find('button').first().prop('disabled'),
     'should render as disabled button',
   );
 
@@ -57,10 +54,7 @@ test('Button - disabling', (t) => {
   );
 
   t.true(
-    linkComponent
-      .find('a')
-      .first()
-      .hasClass('disabled'),
+    linkComponent.find('a').first().hasClass('disabled'),
     'should include "disabled" class',
   );
 });
@@ -71,10 +65,7 @@ test('Button - variant', (t) => {
   const variantPrimary = mount(<Button variant="primary">Hello</Button>);
 
   t.true(
-    variantPrimary
-      .find('button')
-      .first()
-      .hasClass('btn-primary'),
+    variantPrimary.find('button').first().hasClass('btn-primary'),
     'should render a primary button',
   );
 
@@ -85,20 +76,14 @@ test('Button - variant', (t) => {
   );
 
   t.true(
-    variantIcon
-      .find('button')
-      .first()
-      .hasClass('btn-icon'),
+    variantIcon.find('button').first().hasClass('btn-icon'),
     'should render an icon button',
   );
 
   const noVariant = mount(<Button>Hello</Button>);
 
   t.false(
-    noVariant
-      .find('button')
-      .first()
-      .hasClass('btn-primary'),
+    noVariant.find('button').first().hasClass('btn-primary'),
     'should not have a variant class',
   );
 });

@@ -35,10 +35,7 @@ test('CardShell - active', (t) => {
   );
 
   t.true(
-    comp
-      .find('div')
-      .first()
-      .hasClass('uic--active'),
+    comp.find('div').first().hasClass('uic--active'),
     'Shows active state',
   );
 
@@ -75,10 +72,7 @@ test('CardShell - active and isFetching', (t) => {
   );
 
   t.true(
-    comp
-      .find('div')
-      .first()
-      .hasClass('uic--active'),
+    comp.find('div').first().hasClass('uic--active'),
     'Shows active state',
   );
 
@@ -101,10 +95,7 @@ test('CardShell - collapsed', (t) => {
   );
 
   t.true(
-    comp
-      .find('div')
-      .first()
-      .hasClass('uic--collapsed'),
+    comp.find('div').first().hasClass('uic--collapsed'),
     'Shows collapsed state',
   );
 
@@ -127,10 +118,7 @@ test('CardShell - error', (t) => {
   );
 
   t.true(
-    comp
-      .find('div')
-      .first()
-      .hasClass('uic--card-error'),
+    comp.find('div').first().hasClass('uic--card-error'),
     'Shows error state',
   );
 
