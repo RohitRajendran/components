@@ -121,7 +121,10 @@ const renderSupportDependents = (props, state) => {
       {...props}
       config={{
         name: 'supportDependents',
-        options: [{value: 'Yes', label: 'Yes'}, {value: 'No', label: 'No'}],
+        options: [
+          {value: 'Yes', label: 'Yes'},
+          {value: 'No', label: 'No'},
+        ],
         value: state.supportDependents || '',
       }}
     />
@@ -134,7 +137,10 @@ const renderListDependents = (props, state) => {
       {...props}
       config={{
         name: 'dependents',
-        options: [{value: 'Yes', label: 'Yes'}, {value: 'No', label: 'No'}],
+        options: [
+          {value: 'Yes', label: 'Yes'},
+          {value: 'No', label: 'No'},
+        ],
         value: state.dependents || '',
       }}
     />

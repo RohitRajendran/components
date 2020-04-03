@@ -66,6 +66,7 @@ import ThumbsUpIcon from '~components/atoms/icons/ThumbsUpIcon/ThumbsUpIcon.tsx'
 import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon.tsx';
 import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon.tsx';
 import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
+import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 
 // Molecules
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
@@ -114,6 +115,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  AdminIcon,
   ItemizationBox,
   CheckIcon,
   InfoIcon,

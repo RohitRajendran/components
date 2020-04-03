@@ -13,21 +13,11 @@ test('MessageCard - renders', (t) => {
 
   const comp = mount(<MessageCard {...props}>Content</MessageCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Title',
-    'Shows title',
-  );
+  t.equals(comp.find('h2').first().text(), 'Title', 'Shows title');
 
   t.equals(comp.find('p').length, 0, 'Should not show a description');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
   t.end();
@@ -91,19 +81,9 @@ test('MessageCard - collapsed', (t) => {
 
   const comp = mount(<MessageCard {...props}>Content</MessageCard>);
 
-  t.equals(
-    comp
-      .find('h2')
-      .first()
-      .text(),
-    'Title',
-    'Shows collapsed state',
-  );
+  t.equals(comp.find('h2').first().text(), 'Title', 'Shows collapsed state');
   t.false(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should not show error state',
   );
 
@@ -123,18 +103,12 @@ test('MessageCard - latest collapsed', (t) => {
   const comp = mount(<MessageCard {...props}>Content</MessageCard>);
 
   t.equals(
-    comp
-      .find('p')
-      .first()
-      .text(),
+    comp.find('p').first().text(),
     'Pick up where you left off',
     'Shows incomplete summary',
   );
   t.true(
-    comp
-      .find('CardShell')
-      .first()
-      .prop('hasError'),
+    comp.find('CardShell').first().prop('hasError'),
     'Should show error state',
   );
 

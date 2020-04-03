@@ -26,19 +26,13 @@ test('Checkboxes - Should be able to render a basic question.', (t) => {
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(0)
-      .text(),
+    component.find('.uic--label-value').at(0).text(),
     'Yes',
     'Should find the yes label.',
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(1)
-      .text(),
+    component.find('.uic--label-value').at(1).text(),
     'No',
     'Should find the no label.',
   );
@@ -144,10 +138,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
 
   const component = mount(<Checkboxes {...props} />);
 
-  component
-    .find('input')
-    .at(0)
-    .prop('onChange')({
+  component.find('input').at(0).prop('onChange')({
     target: {
       value: 'yes',
       checked: true,
@@ -161,10 +152,7 @@ test('Checkboxes - onChange should pass back the correct values.', (t) => {
     'Should add yes to the array.',
   );
 
-  component
-    .find('input')
-    .at(0)
-    .prop('onChange')({
+  component.find('input').at(0).prop('onChange')({
     target: {
       value: 'yes',
     },

@@ -26,19 +26,13 @@ test('RadioButtons - Should be able to render a basic question.', (t) => {
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(0)
-      .text(),
+    component.find('.uic--label-value').at(0).text(),
     'Yes',
     'Should find the yes label.',
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(1)
-      .text(),
+    component.find('.uic--label-value').at(1).text(),
     'No',
     'Should find the no label.',
   );
@@ -66,19 +60,13 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(0)
-      .text(),
+    component.find('.uic--label-value').at(0).text(),
     'Yes',
     'Should find the yes label.',
   );
 
   t.equals(
-    component
-      .find('.uic--label-value')
-      .at(1)
-      .text(),
+    component.find('.uic--label-value').at(1).text(),
     'No',
     'Should find the no label.',
   );
@@ -217,10 +205,7 @@ test('RadioButtons - onChange should pass back the correct value', (t) => {
 
   const component = mount(<RadioButtons {...props} />);
 
-  component
-    .find('input')
-    .at(0)
-    .prop('onChange')();
+  component.find('input').at(0).prop('onChange')();
 
   t.equals(
     props.onChange.args[0][0],
