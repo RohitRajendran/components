@@ -63,6 +63,8 @@ dist-old
 
 # IDE Settings
 .vscode
+.idea
+*.iml
 
 # Lint Cache
 .eslintcache

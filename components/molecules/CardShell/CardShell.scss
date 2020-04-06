@@ -12,7 +12,10 @@ $active-border-size: 4px;
   &.uic--active {
     border-top: 0;
     margin-bottom: 3.6rem;
-    margin-top: 3.6rem;
+
+    .uic--mcg-framework & {
+      margin-top: 3.6rem;
+    }
 
     .uic--active-border {
       background: $royal;
