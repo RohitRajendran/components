@@ -11,6 +11,21 @@ You can mimic publishing this repository locally by running `yarn link` in the d
 
 At this point, whenever you make changes to the component library and run `yarn build`, the code running in the other repository will automatically change.
 
+If you are getting errors with hooks after using `yarn link` (*Error: Invalid hook call. Hooks can only be called inside of the body of a function component.*), try this workaround found [here](https://github.com/facebook/react/issues/14257#issuecomment-595183610/):
+```shell
+cd components
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../../node_modules/react-dom
+yarn link
+cd <YOUR_PROJECT>
+yarn link components
+yarn link react
+yarn link react-dom
+```
+
 ## Pull Request Best Practices :octocat:
 
 1. Ensure that you've tested your feature/change yourself. For details on how to test your changes in another project please follow the `Testing Changes` section of this document.
