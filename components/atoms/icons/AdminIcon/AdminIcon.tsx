@@ -36,7 +36,7 @@ const AdminIcon: FC<AdminIconProps> = ({
         ...style,
       }
     }
-    viewBox="0 0 24 24"
+    viewBox="0 0 18 18"
     transform="rotate(0)"
   >
     <path
