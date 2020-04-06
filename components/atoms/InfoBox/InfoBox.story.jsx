@@ -1,7 +1,7 @@
 import {StateDecorator, Store} from '@sambego/storybook-state';
-import {text, object, boolean} from '@storybook/addon-knobs';
+import {text, object, boolean, number} from '@storybook/addon-knobs';
 import {storiesOf, forceReRender} from '@storybook/react';
-import React, {Fragment} from 'react';
+import React from 'react';
 import InfoBox from './InfoBox.tsx';
 import InfoBoxReadMe from './InfoBox.mdx';
 
@@ -29,14 +29,16 @@ const defaultProps = ({
   imageURL,
   content,
   isInactive,
-  footer,
+  isDeemphasized,
+  titleCharLimit,
 }) => ({
   name: formName,
   title: text('title', title),
   imageURL: text('imageURL', imageURL),
   content: object('content', content),
   isInactive: boolean('isInactive', isInactive),
-  footer: object('footer', footer),
+  isDeemphasized: boolean('isDeemphasized', isDeemphasized),
+  titleCharLimit: number('titleCharLimit', titleCharLimit),
 });
 
 stories.add('default', () => (
@@ -46,9 +48,10 @@ stories.add('default', () => (
       title: 'Giannis - 401k',
       imageURL:
         'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg',
-      content: <div>Here is some unstyled content!</div>,
-      footer: (
-        <Fragment>
+      content: (
+        <div>
+          Here is some unstyled content!
+          <hr />
           <div className="uic--info-box-formatted-row">
             <div className="uic--row-label">Equity Allocation Override</div>
             <div className="uic--mcg-subhead-text">95%</div>
@@ -56,7 +59,7 @@ stories.add('default', () => (
           <div className="uic--field-description-text">
             High Investment Risk and Return Potential
           </div>
-        </Fragment>
+        </div>
       ),
     })}
   />
@@ -69,10 +72,10 @@ stories.add('isInactive', () => (
       title: 'Giannis - 401k',
       imageURL:
         'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg',
-      content: <div>Here is some unstyled content!</div>,
-      isInactive: true,
-      footer: (
-        <Fragment>
+      content: (
+        <div>
+          Here is some unstyled content!
+          <hr />
           <div className="uic--info-box-formatted-row">
             <div className="uic--row-label">Equity Allocation Override</div>
             <div className="uic--mcg-subhead-text">95%</div>
@@ -80,8 +83,34 @@ stories.add('isInactive', () => (
           <div className="uic--field-description-text">
             High Investment Risk and Return Potential
           </div>
-        </Fragment>
+        </div>
       ),
+      isInactive: true,
+    })}
+  />
+));
+
+stories.add('isDeemphasized', () => (
+  <InfoBox
+    {...defaultProps({
+      formName: 'isInactive',
+      title: 'Giannis - 401k',
+      imageURL:
+        'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/greek_freak_j2qb.svg',
+      content: (
+        <div>
+          Here is some unstyled content!
+          <hr />
+          <div className="uic--info-box-formatted-row">
+            <div className="uic--row-label">Equity Allocation Override</div>
+            <div className="uic--mcg-subhead-text">95%</div>
+          </div>
+          <div className="uic--field-description-text">
+            High Investment Risk and Return Potential
+          </div>
+        </div>
+      ),
+      isDeemphasized: true,
     })}
   />
 ));
