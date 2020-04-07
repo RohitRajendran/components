@@ -1,8 +1,8 @@
 /** @module InfoBox */
-import React, {Component} from 'react';
-import './InfoBox.scss';
 import classNames from 'classnames';
+import React, {Component} from 'react';
 import {formatEllipsis} from '../../utilities/FormatUtils/FormatUtils';
+import './InfoBox.scss';
 
 type InfoBoxProps = {
   /** The main title that will displayed near the top of our InfoBox. */
@@ -13,10 +13,10 @@ type InfoBoxProps = {
   content: React.ReactNode;
   /** Optional image URL string to place in your InfoBox - we use the URL to create an image that appears to the right of the title. */
   imageURL?: string;
-  /** Optional footer JSX to be displayed below the content. */
-  footer?: React.ReactNode;
   /** Optional isInactive flag, if true sets the background of the card to grey */
   isInactive?: boolean;
+  /** Whether the info box has a de-emphasized style */
+  isDeemphasized?: boolean;
   /** Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */
@@ -92,10 +92,10 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
       titleCharLimit,
       content,
       imageURL,
-      footer,
       className,
       isInactive,
       style,
+      isDeemphasized,
     } = this.props;
     const containerClass = classNames(
       {
@@ -103,6 +103,7 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
         'uic--info-box-expand': this.state.showFullTitle,
         'uic--info-box-selectable': this.props.onClick,
         'uic--info-box-inactive': isInactive,
+        'uic--info-box-deemphasized': isDeemphasized,
       },
       className,
     );
@@ -112,7 +113,7 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
     };
 
     return (
-      <aside
+      <div
         className={containerClass}
         style={style}
         role={this.props.onClick ? 'button' : undefined}
@@ -138,17 +139,9 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
               {title ? formatEllipsis(title, titleCharLimit as number) : ''}
             </div>
           </div>
-          <div className="uic--info-box-information-area">
-            {content}
-            {footer && (
-              <footer>
-                <hr />
-                {footer}
-              </footer>
-            )}
-          </div>
+          <div className="uic--info-box-information-area">{content}</div>
         </div>
-      </aside>
+      </div>
     );
   }
 }

@@ -14,7 +14,7 @@ test('InfoBox - renders correctly', (t) => {
     const component = render(<InfoBox {...testProps} />);
 
     t.equals(
-      component.container.querySelectorAll('aside').length,
+      component.container.querySelectorAll('.uic--info-box').length,
       1,
       'Should load the InfoBox component.',
     );
@@ -26,11 +26,6 @@ test('InfoBox - renders correctly', (t) => {
       getByText(component.container, 'Here is some content!'),
       'Should render content',
     );
-    t.equals(
-      component.container.querySelectorAll('footer').length,
-      0,
-      'Should not render a footer',
-    );
 
     const onClickStub = stub();
 
@@ -39,21 +34,17 @@ test('InfoBox - renders correctly', (t) => {
         {...{
           ...testProps,
           imageURL: 'urlLocation',
-          footer: 'Here is a footer',
           onClick: onClickStub,
         }}
       />,
     );
 
-    t.equals(
-      component2.container.querySelectorAll('footer').length,
-      1,
-      'Should render a footer',
+    fireEvent.click(
+      component2.container.querySelectorAll('.uic--info-box')[0],
+      {
+        stopPropagation: stub(),
+      },
     );
-
-    fireEvent.click(component2.container.querySelectorAll('aside')[0], {
-      stopPropagation: stub(),
-    });
 
     t.equals(onClickStub.callCount, 1, 'onClick functionality works');
   } catch (error) {

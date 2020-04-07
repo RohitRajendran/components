@@ -38,11 +38,12 @@ $container-min-height: 2.4rem;
 
     ul {
       list-style-type: none;
+      margin: 0;
       padding: 0;
     }
   }
 
-  &-formatted-row {
+  .uic--info-box-formatted-row {
     display: flex;
     justify-content: space-between;
     min-height: $container-min-height;
@@ -74,6 +75,16 @@ $container-min-height: 2.4rem;
 
     .uic--info-box-title-text {
       right: 0;
+    }
+  }
+
+  &.uic--info-box-deemphasized {
+    .uic--info-box-title-area {
+      background-color: $middle-purple;
+    }
+
+    .uic--info-box-information-area {
+      background-color: $parchment;
     }
   }
 }
