@@ -4,6 +4,9 @@ $container-min-height: 2.4rem;
 
 .uic--info-box {
   border: 1px solid $light-gray;
+  display: flex;
+  flex-direction: column;
+  min-height: $min-height * 2;
 
   hr {
     border: 0;
@@ -33,6 +36,7 @@ $container-min-height: 2.4rem;
 
   .uic--info-box-information-area {
     background-color: $white;
+    flex-grow: 1;
     min-height: $min-height;
     padding: 1.6rem 2rem;
 
