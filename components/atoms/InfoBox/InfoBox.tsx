@@ -100,6 +100,7 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
     const containerClass = classNames(
       {
         'uic--info-box': true,
+        'uic--position-relative': true,
         'uic--info-box-expand': this.state.showFullTitle,
         'uic--info-box-selectable': this.props.onClick,
         'uic--info-box-inactive': isInactive,
@@ -120,27 +121,23 @@ class InfoBox extends Component<InfoBoxProps, {showFullTitle: boolean}> {
         tabIndex={this.props.onClick ? 0 : undefined}
         onKeyDown={this.props.onClick ? this.handleClick : undefined}
         onClick={this.props.onClick ? this.handleClick : undefined}
+        onMouseLeave={this.handleMouseOut}
       >
-        <div
-          className="uic--position-relative"
-          onMouseLeave={this.handleMouseOut}
-        >
-          {this.state.showFullTitle && (
-            <div className="uic--info-box-title-text uic--header-2-text">
-              {title}
-            </div>
-          )}
-          <div
-            className="uic--info-box-title-area"
-            style={cardStyling}
-            onMouseEnter={this.handleMouseOver}
-          >
-            <div className="uic--info-box-title-text uic--header-2-text">
-              {title ? formatEllipsis(title, titleCharLimit as number) : ''}
-            </div>
+        {this.state.showFullTitle && (
+          <div className="uic--info-box-title-text uic--header-2-text">
+            {title}
           </div>
-          <div className="uic--info-box-information-area">{content}</div>
+        )}
+        <div
+          className="uic--info-box-title-area"
+          style={cardStyling}
+          onMouseEnter={this.handleMouseOver}
+        >
+          <div className="uic--info-box-title-text uic--header-2-text">
+            {title ? formatEllipsis(title, titleCharLimit as number) : ''}
+          </div>
         </div>
+        <div className="uic--info-box-information-area">{content}</div>
       </div>
     );
   }
