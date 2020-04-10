@@ -1,0 +1,68 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureShieldCircleIllustration as ShieldCircleIllustration} from './ShieldCircleIllustration.tsx';
+
+# ShieldCircleIllustration
+
+The ShieldCircleIllustration component creates an shield illustration using inline SVG. This illustration is commonly used within McGonnagall introduction cards.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ShieldCircleIllustration from '@unitedincome/components/dist/ShieldCircleIllustration';
+```
+
+```javascript
+import {ShieldCircleIllustration} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ShieldCircleIllustration height="14rem" width="14rem" />
+</Preview>
+
+```javascript
+<ShieldCircleIllustration height="14rem" width="14rem" />
+```
+
+### Draft
+
+You can use the `draft` prop to render the illustrations draft mode variant.
+
+<Preview>
+  <ShieldCircleIllustration height="14rem" width="14rem" draft />
+</Preview>
+
+```javascript
+<ShieldCircleIllustration height="14rem" width="14rem" draft />
+```
+
+### Color
+
+You can use the `color` prop to render the illustrations full color variant.
+
+<Preview>
+  <ShieldCircleIllustration height="14rem" width="14rem" color />
+</Preview>
+
+```javascript
+<ShieldCircleIllustration height="14rem" width="14rem" color />
+```
+
+### Illuminate
+
+The `illuminate` prop activates the interaction variant of the illustration. By default the interaction occurs when the illustration is clicked, this prop allows you to override that behavior so you can trigger it as a side effect of another action.
+
+<Preview>
+  <ShieldCircleIllustration height="14rem" width="14rem" illuminate />
+</Preview>
+
+```javascript
+<ShieldCircleIllustration height="14rem" width="14rem" illuminate />
+```
+
+## Props 🔧
+
+<Props of={ShieldCircleIllustration} />
