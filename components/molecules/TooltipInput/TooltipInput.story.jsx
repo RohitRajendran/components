@@ -43,7 +43,7 @@ const defaultProps = () => ({
 });
 
 stories.add('default', () => (
-  <CardShell hideButton={true} onSubmit={() => true}>
+  <CardShell hideButton onSubmit={() => true}>
     <p style={{fontSize: '1.2rem'}}>
       Meow meow, i tell my human sit in window and stare oooh, a bird, yum meow
       and walk away but stare at ceiling. Cat gets stuck in tree firefighters
@@ -82,7 +82,7 @@ stories.add('default', () => (
 ));
 
 stories.add('remove option', () => (
-  <CardShell hideButton={true} onSubmit={() => true}>
+  <CardShell hideButton onSubmit={() => true}>
     <p style={{fontSize: '1.2rem'}}>
       Meow meow, i tell my human sit in window and stare oooh, a bird, yum meow
       and walk away but stare at ceiling. Cat gets stuck in tree firefighters

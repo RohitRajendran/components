@@ -78,7 +78,7 @@ test('Input - required field error', (t) => {
       maxLength={5}
       onChange={onChangeSpy}
       required
-      showRequiredError={true}
+      showRequiredError
     />,
   );
 
@@ -280,7 +280,7 @@ test('Input - onBlur correctly fires both handlers', (t) => {
       placeholder="some placeholder"
       mask="Date"
       description="This is the description"
-      validateOnBlur={true}
+      validateOnBlur
     />,
   );
 

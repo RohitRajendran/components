@@ -24,7 +24,7 @@ test('CakeCircleIllustration - renders', (t) => {
 
 test('CakeCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(<CakeCircleIllustration illuminate={true} />);
+    const component = render(<CakeCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

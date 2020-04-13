@@ -154,7 +154,7 @@ stories.add('active with simple form', () => (
         },
       ]}
       value="montezuma"
-      disabled={true}
+      disabled
       description="The acount to transfer the money to."
       label="To"
     />
@@ -167,7 +167,7 @@ stories.add('active with simple form', () => (
           mask="PercentageWithDecimal"
           onChange={(name, value) => store.set({[name]: value})}
           value={store.get('interest')}
-          disabled={true}
+          disabled
         />
       </div>
 
@@ -178,7 +178,7 @@ stories.add('active with simple form', () => (
           mask="Currency"
           onChange={(name, value) => store.set({[name]: value})}
           value={store.get('catTax')}
-          disabled={true}
+          disabled
         />
       </div>
     </div>
@@ -263,7 +263,7 @@ stories.add('active with expand/collapse', () => (
                 value={store.get('input')}
                 label="Date"
                 placeholder="MM/DD/YYYY"
-                validateOnBlur={true}
+                validateOnBlur
                 validationErrorMsg="Not a valid date range"
                 mask="Date"
                 required

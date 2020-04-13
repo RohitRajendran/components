@@ -41,9 +41,7 @@ test('HouseIcon - renders with no highlight', (t) => {
 
 test('HouseIcon - renders with IE browser', (t) => {
   try {
-    const component = render(
-      <PureHouseIcon houses={3} highlight={2} isIE={true} />,
-    );
+    const component = render(<PureHouseIcon houses={3} highlight={2} isIE />);
 
     t.equals(
       component.container.querySelectorAll('g[fill="#10004c"]').length,
@@ -66,9 +64,7 @@ test('HouseIcon - renders with IE browser', (t) => {
 
 test('HouseIcon - Highlight number is higher than house number', (t) => {
   try {
-    const component = render(
-      <PureHouseIcon houses={3} highlight={20} isIE={true} />,
-    );
+    const component = render(<PureHouseIcon houses={3} highlight={20} isIE />);
 
     t.equals(
       component.container.querySelectorAll('g[fill="#10004c"]').length,

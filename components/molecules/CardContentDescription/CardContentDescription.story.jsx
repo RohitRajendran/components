@@ -130,7 +130,7 @@ stories.add('static text', () => {
       />
       <CardContentDescription
         {...contentDescriptionProps()}
-        isValid={true}
+        isValid
         isFetching={false}
       >
         Montezuma is the best cat

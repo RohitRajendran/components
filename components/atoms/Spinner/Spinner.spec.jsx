@@ -4,7 +4,7 @@ import test from 'tape';
 import {PureSpinner} from './Spinner';
 
 test('Spinner - renders the IE version', (t) => {
-  const component = shallow(<PureSpinner fill="white" isIe={true} />);
+  const component = shallow(<PureSpinner fill="white" isIe />);
 
   t.equals(
     component.find('.spinner-ie').length,

@@ -48,7 +48,7 @@ stories.add('default', () => (
     <div className="uic--modal-bottom">
       <Button
         variant="secondary"
-        light={true}
+        light
         onClick={() => store.set({modal1: !store.get('modal1')})}
       >
         You are correct he is the best cat.
@@ -69,7 +69,7 @@ stories.add('prevent close', () => (
     <h2>Montezuma is the best cat</h2>
     <p>Close this modal if you disagree.</p>
     <div className="uic--modal-bottom">
-      <Button variant="secondary" light={true}>
+      <Button variant="secondary" light>
         Certified the best
       </Button>
     </div>

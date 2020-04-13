@@ -24,7 +24,7 @@ test('MoneyCircleIllustration - renders', (t) => {
 
 test('MoneyCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(<MoneyCircleIllustration illuminate={true} />);
+    const component = render(<MoneyCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

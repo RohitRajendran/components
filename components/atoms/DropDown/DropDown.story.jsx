@@ -139,7 +139,7 @@ stories.add(
 
 stories.add('open', () => (
   <DropDown
-    menuIsOpen={true}
+    menuIsOpen
     {...defaultProps({
       formName: 'selectedExample2',
       options: [

@@ -145,10 +145,10 @@ class ItemizationBox extends PureComponent {
                               <Tooltip
                                 label={item.tooltip.label}
                                 labelVariant="link"
-                                isDarkTooltip={true}
-                                lightLabel={true}
+                                isDarkTooltip
+                                lightLabel
                                 placement="bottom"
-                                hover={true}
+                                hover
                               >
                                 {item.tooltip.description}
                               </Tooltip>

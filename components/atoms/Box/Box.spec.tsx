@@ -42,7 +42,7 @@ test('Box - renders with an icon', (t) => {
 test('Box - renders disabled with check', (t) => {
   try {
     const component = render(
-      <Box icon={CarCircleIllustration} disabled={true} showCheck={true} />,
+      <Box icon={CarCircleIllustration} disabled showCheck />,
     );
 
     t.equals(

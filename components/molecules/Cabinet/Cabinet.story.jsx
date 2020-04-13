@@ -127,7 +127,7 @@ stories.add('open', () => (
     {...defaultProps({
       header: 'Montezuma is the Best Cat',
     })}
-    show={true}
+    show
     handleWithState={false}
   >
     <p>Let us talk about Montezuma.</p>
