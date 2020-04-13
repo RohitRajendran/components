@@ -159,22 +159,23 @@
         }
       }
 
-      @if ($i) < 1 {
-        left: 36px;
+      left: percentage(($i) * 1/10);
 
-        &::before {
-          left: 28.5%;
-        }
-      } @else if $i == 10 {
-        left: auto;
-        right: -63px;
+      &.uic--tooltip {
+        @if ($i) < 1 {
+          left: 36px;
 
-        &::before {
-          left: 64.5%;
+          &::before {
+            left: 28.5%;
+          }
+        } @else if $i == 10 {
+          left: auto;
+          right: -63px;
+
+          &::before {
+            left: 64.5%;
+          }
         }
-      } @else {
-        $position: percentage(($i) * 1/10);
-        left: $position;
       }
     }
   }
