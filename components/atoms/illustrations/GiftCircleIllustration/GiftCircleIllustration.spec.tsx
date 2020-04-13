@@ -24,7 +24,7 @@ test('GiftCircleIllustration - renders', (t) => {
 
 test('GiftCircleIllustration - renders the draft illustration', (t) => {
   try {
-    const component = render(<GiftCircleIllustration draft={true} />);
+    const component = render(<GiftCircleIllustration draft />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -43,7 +43,7 @@ test('GiftCircleIllustration - renders the draft illustration', (t) => {
 
 test('GiftCircleIllustration - renders the color illustration', (t) => {
   try {
-    const component = render(<GiftCircleIllustration color={true} />);
+    const component = render(<GiftCircleIllustration color />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -62,7 +62,7 @@ test('GiftCircleIllustration - renders the color illustration', (t) => {
 
 test('GiftCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(<GiftCircleIllustration illuminate={true} />);
+    const component = render(<GiftCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

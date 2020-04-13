@@ -36,7 +36,7 @@ const defaultProps = (hoverEnabled, darkTooltip) => ({
 });
 
 stories.add('default', () => (
-  <CardShell hideButton={true}>
+  <CardShell hideButton>
     <p style={{fontSize: '1.2rem'}}>
       Meow meow, i tell my human sit in window and stare oooh, a bird, yum meow
       and walk away but stare at ceiling. Cat gets stuck in tree firefighters
@@ -74,7 +74,7 @@ stories.add('default', () => (
 ));
 
 stories.add('hover', () => (
-  <CardShell hideButton={true}>
+  <CardShell hideButton>
     <p style={{fontSize: '1.2rem'}}>
       Meow meow, i tell my human sit in window and stare oooh, a bird, yum meow
       and walk away but stare at ceiling. Cat gets stuck in tree firefighters
@@ -112,7 +112,7 @@ stories.add('hover', () => (
 ));
 
 stories.add('dark default', () => (
-  <CardShell hideButton={true}>
+  <CardShell hideButton>
     <p style={{fontSize: '1.2rem'}}>
       Meow meow, i tell my human sit in window and stare oooh, a bird, yum meow
       and walk away but stare at ceiling. Cat gets stuck in tree firefighters

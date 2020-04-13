@@ -24,9 +24,7 @@ test('HealthMeterCircleIllustration - renders', (t) => {
 
 test('HealthMeterCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(
-      <HealthMeterCircleIllustration illuminate={true} />,
-    );
+    const component = render(<HealthMeterCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

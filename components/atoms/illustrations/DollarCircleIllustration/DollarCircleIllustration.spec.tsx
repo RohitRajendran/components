@@ -24,7 +24,7 @@ test('DollarCircleIllustration - renders', (t) => {
 
 test('DollarCircleIllustration - renders color', (t) => {
   try {
-    const component = render(<DollarCircleIllustration color={true} />);
+    const component = render(<DollarCircleIllustration color />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -43,7 +43,7 @@ test('DollarCircleIllustration - renders color', (t) => {
 
 test('DollarCircleIllustration - renders draft', (t) => {
   try {
-    const component = render(<DollarCircleIllustration draft={true} />);
+    const component = render(<DollarCircleIllustration draft />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -62,7 +62,7 @@ test('DollarCircleIllustration - renders draft', (t) => {
 
 test('DollarCircleIllustration - renders illuminated', (t) => {
   try {
-    const component = render(<DollarCircleIllustration illuminate={true} />);
+    const component = render(<DollarCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

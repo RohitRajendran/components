@@ -13,12 +13,7 @@ const Confirm = ({name, title, description, okLabel, cancelLabel}) => {
 
   const promise = new Promise((resolve, reject) => {
     ReactDOM.render(
-      <Modal
-        name={name}
-        toggle={reject}
-        show={true}
-        className="uic--confirm-modal"
-      >
+      <Modal name={name} toggle={reject} show className="uic--confirm-modal">
         <h2>{title}</h2>
         {description && <p className="uic--font-italic">{description}</p>}
         <div className="uic--modal-bottom">

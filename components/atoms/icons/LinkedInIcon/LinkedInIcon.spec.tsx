@@ -22,7 +22,7 @@ test('LinkedInIcon - renders', (t) => {
 
 test('LinkedInIcon - renders full version', (t) => {
   try {
-    const component = render(<LinkedInIcon isFull={true} />);
+    const component = render(<LinkedInIcon isFull />);
 
     t.equals(
       component.container.querySelectorAll('path').length,

@@ -24,7 +24,7 @@ test('ShieldCircleIllustration - renders', (t) => {
 
 test('ShieldCircleIllustration - renders the draft illustration', (t) => {
   try {
-    const component = render(<ShieldCircleIllustration draft={true} />);
+    const component = render(<ShieldCircleIllustration draft />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -43,7 +43,7 @@ test('ShieldCircleIllustration - renders the draft illustration', (t) => {
 
 test('ShieldCircleIllustration - renders the colored illustration', (t) => {
   try {
-    const component = render(<ShieldCircleIllustration color={true} />);
+    const component = render(<ShieldCircleIllustration color />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

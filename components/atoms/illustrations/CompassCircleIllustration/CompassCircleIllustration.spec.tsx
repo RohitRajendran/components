@@ -24,7 +24,7 @@ test('CompassCircleIllustration - renders', (t) => {
 
 test('CompassCircleIllustration - renders and animates', (t) => {
   try {
-    const component = render(<CompassCircleIllustration isAnimated={true} />);
+    const component = render(<CompassCircleIllustration isAnimated />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

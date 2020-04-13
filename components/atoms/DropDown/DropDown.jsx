@@ -275,8 +275,8 @@ class DropDown extends Component {
                     onChange={this.onChange}
                     onFocus={this.onFocus}
                     onBlur={this.onBlur}
-                    autosize={true}
-                    simpleValue={true}
+                    autosize
+                    simpleValue
                     isSearchable={searchable}
                     isClearable={clearable}
                     isDisabled={disabled}
