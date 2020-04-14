@@ -15,7 +15,7 @@ stories.addParameters({
 
 stories.addDecorator(withKnobs).add('default', () => (
   <CardShell
-    isCollapsed={true}
+    isCollapsed
     summary={
       <FormSummary
         shortTitle={text('shortTitle', 'This is a simpler question')}
@@ -37,7 +37,7 @@ stories.addDecorator(withKnobs).add('default', () => (
 
 stories.addDecorator(withKnobs).add('multiple categories', () => (
   <CardShell
-    isCollapsed={true}
+    isCollapsed
     summary={
       <FormSummary
         shortTitle={text('shortTitle', 'This is a simpler question')}

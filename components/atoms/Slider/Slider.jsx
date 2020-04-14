@@ -20,11 +20,13 @@ const Slider = ({
   className,
   required,
 }) => {
+  const hasTooltipStickyPosition = !isNullOrUndefined(tooltipStickyPosition);
   const tooltipStickyPositionStr =
-    tooltipStickyPosition && tooltipStickyPosition.toString();
+    hasTooltipStickyPosition && tooltipStickyPosition.toString();
   const valueStr = value && value.toString();
   const tooltipStickyClasses = classNames({
-    'uic--show': tooltipStickyPosition && tooltipStickyPositionStr !== valueStr,
+    'uic--show':
+      hasTooltipStickyPosition && tooltipStickyPositionStr !== valueStr,
     [`uic--${tooltipStickyVariant}`]: tooltipStickyVariant,
     'uic--tooltip-sticky-hint': true,
     [`uic--tooltip-position-${tooltipStickyPosition}`]: true,
@@ -34,7 +36,7 @@ const Slider = ({
     {
       [`uic--highlighted-${tooltipStickyVariant}`]:
         tooltipStickyVariant &&
-        tooltipStickyPosition &&
+        hasTooltipStickyPosition &&
         tooltipStickyPositionStr === valueStr,
       'uic--slider-wrapper': true,
       'uic--position-relative': true,
@@ -51,7 +53,7 @@ const Slider = ({
 
   return (
     <div className={containerClasses}>
-      {tooltipStickyVariant && !isNullOrUndefined(tooltipStickyPosition) && (
+      {tooltipStickyVariant && hasTooltipStickyPosition && (
         <style>
           {`
         .rc-slider-mark-text:nth-of-type(${tooltipStickyPosition + 1}) {
@@ -67,7 +69,7 @@ const Slider = ({
         </style>
       )}
 
-      {tooltipStickyPosition && (
+      {hasTooltipStickyPosition && (
         <style>
           {`
         .rc-slider-handle[aria-valuenow="${tooltipStickyPosition}"] {

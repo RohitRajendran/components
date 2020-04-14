@@ -63,7 +63,7 @@ stories.add('unanswered question error', () => (
       ]}
       placeholder="optional"
       value={''}
-      required={true}
+      required
     />
   </CardShell>
 ));

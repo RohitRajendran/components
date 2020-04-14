@@ -76,7 +76,7 @@ test('DropDown - required field error', (t) => {
       placeholder="Find your option"
       value=""
       required
-      showRequiredError={true}
+      showRequiredError
     />,
   );
 

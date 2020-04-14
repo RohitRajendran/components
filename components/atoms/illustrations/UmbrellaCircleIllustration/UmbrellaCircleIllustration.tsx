@@ -572,8 +572,8 @@ const UmbrellaCircleIllustration: FC<UmbrellaCircleIllustrationProps> = ({
         aria-labelledby={`${id}-title ${id}-description`}
         data-testid="draft"
       >
-        <title id={`${id}-title`}>Insurance Circle Illustration</title>
-        <desc id={`${id}-description`}>Draft insurance illustration</desc>
+        <title id={`${id}-title`}>Umbrella Circle Illustration</title>
+        <desc id={`${id}-description`}>Draft Umbrella illustration</desc>
         <g id={`${id}-Circle-BG`}>
           <circle fill="#5B6279" cx="70" cy="70" r="70" />
         </g>
@@ -616,8 +616,8 @@ const UmbrellaCircleIllustration: FC<UmbrellaCircleIllustrationProps> = ({
         aria-labelledby={`${id}-title ${id}-description`}
         data-testid="default"
       >
-        <title id={`${id}-title`}>Insurance Circle Illustration</title>
-        <desc id={`${id}-description`}>Purple insurance illustration</desc>
+        <title id={`${id}-title`}>Umbrella Circle Illustration</title>
+        <desc id={`${id}-description`}>Purple Umbrella illustration</desc>
         <g id={`${id}-Circle-BG`}>
           <circle fill="#10004C" cx="70" cy="70" r="70" />
         </g>

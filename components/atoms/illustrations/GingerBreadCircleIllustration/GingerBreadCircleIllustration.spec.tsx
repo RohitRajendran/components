@@ -24,9 +24,7 @@ test('GingerBreadCircleIllustration - renders', (t) => {
 
 test('GingerBreadCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(
-      <GingerBreadCircleIllustration illuminate={true} />,
-    );
+    const component = render(<GingerBreadCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

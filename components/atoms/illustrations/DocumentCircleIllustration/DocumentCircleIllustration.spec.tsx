@@ -24,7 +24,7 @@ test('DocumentCircleIllustration - renders', (t) => {
 
 test('DocumentCircleIllustration - renders the draft illustration', (t) => {
   try {
-    const component = render(<DocumentCircleIllustration draft={true} />);
+    const component = render(<DocumentCircleIllustration draft />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -43,7 +43,7 @@ test('DocumentCircleIllustration - renders the draft illustration', (t) => {
 
 test('DocumentCircleIllustration - renders the colored illustration', (t) => {
   try {
-    const component = render(<DocumentCircleIllustration color={true} />);
+    const component = render(<DocumentCircleIllustration color />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

@@ -57,7 +57,7 @@ const Tooltip = ({
         place={placement}
         ref={tooltipRef || null}
         effect="solid"
-        clickable={true}
+        clickable
       >
         {children}
       </ReactTooltip>

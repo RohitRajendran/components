@@ -54,7 +54,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
           value: false,
         },
       ]}
-      value={true}
+      value
       onChange={stub()}
     />,
   );
@@ -87,7 +87,7 @@ test('RadioButtons - Should be able to render a basic question (with boolean val
             value: false,
           },
         ]}
-        value={true}
+        value
       />,
     );
 

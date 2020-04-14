@@ -24,7 +24,7 @@ test('HealthCircleIllustration - renders', (t) => {
 
 test('HealthCircleIllustration - renders the draft illustration', (t) => {
   try {
-    const component = render(<HealthCircleIllustration draft={true} />);
+    const component = render(<HealthCircleIllustration draft />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -43,7 +43,7 @@ test('HealthCircleIllustration - renders the draft illustration', (t) => {
 
 test('HealthCircleIllustration - renders the color illustration', (t) => {
   try {
-    const component = render(<HealthCircleIllustration color={true} />);
+    const component = render(<HealthCircleIllustration color />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,
@@ -62,7 +62,7 @@ test('HealthCircleIllustration - renders the color illustration', (t) => {
 
 test('HealthCircleIllustration - renders the illuminated illustration', (t) => {
   try {
-    const component = render(<HealthCircleIllustration illuminate={true} />);
+    const component = render(<HealthCircleIllustration illuminate />);
 
     t.equals(
       component.container.querySelectorAll('svg').length,

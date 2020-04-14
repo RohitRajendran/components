@@ -24,7 +24,7 @@ test('OptionBox - Should be able to render a check', (t) => {
 });
 
 test('OptionBox - Should apply the checked class when checked', (t) => {
-  const component = mount(<OptionBox variant="check" checked={true} />);
+  const component = mount(<OptionBox variant="check" checked />);
 
   t.equals(component.find('.uic--checked').length, 1, 'Should be checked.');
 
@@ -32,7 +32,7 @@ test('OptionBox - Should apply the checked class when checked', (t) => {
 });
 
 test('OptionBox - Should apply the disabled class when disabled', (t) => {
-  const component = mount(<OptionBox variant="check" disabled={true} />);
+  const component = mount(<OptionBox variant="check" disabled />);
 
   t.equals(component.find('.uic--disabled').length, 1, 'Should be disabled.');
 

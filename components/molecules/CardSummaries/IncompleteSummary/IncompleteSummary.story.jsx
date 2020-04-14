@@ -17,8 +17,8 @@ stories
   .addDecorator(withKnobs)
   .add('default', () => (
     <CardShell
-      isCollapsed={true}
-      hasError={true}
+      isCollapsed
+      hasError
       summary={
         <IncompleteSummary
           shortTitle={text('shortTitle', 'This is a simpler question')}
