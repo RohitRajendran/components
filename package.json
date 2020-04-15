@@ -112,7 +112,7 @@
     "react-table": "6.8.6",
     "react-text-mask": "5.4.3",
     "react-textarea-autosize": "7.1.2",
-    "react-tooltip": "4.1.2",
+    "react-tooltip": "4.2.3",
     "sass-lint": "1.13.1",
     "sass-lint-auto-fix": "0.21.0",
     "sass-loader": "8.0.2",
@@ -142,7 +142,7 @@
     "react-spring": "8.0.27",
     "react-table": "6.8.6",
     "react-text-mask": "5.4.3",
-    "react-tooltip": "4.1.2",
+    "react-tooltip": "4.2.3",
     "text-mask-addons": "3.8.0",
     "xstate": "4.8.0"
   }

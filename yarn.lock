@@ -11492,12 +11492,13 @@ react-textarea-autosize@7.1.2, react-textarea-autosize@^7.1.0:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
 
-react-tooltip@4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.1.2.tgz#bc9f8620759518f6ef294198d082097e968d549c"
-  integrity sha512-AXQ5uumN/ZpPO6mlPrV52S1As1OOHhyp3pinWFEtTlpKojS8+CL5r/n0oiO8GR5hWqrvEONU34NEF01N2ODwqg==
+react-tooltip@4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.3.tgz#da9bdc9f4322392fb43de0dd6cf002f95e43d35b"
+  integrity sha512-VduZryAPVlgnSLlq6qukBrzBkiATXorx3FzC1eX3OaCknPxTuULEQwR0nJkxo2MgpzKMw0t9LFjzVbS9KQGaYA==
   dependencies:
     prop-types "^15.7.2"
+    uuid "^7.0.3"
 
 react-transition-group@^2.2.1:
   version "2.9.0"
@@ -14015,6 +14016,11 @@ uuid@^3.1.0, uuid@^3.3.2, uuid@^3.3.3:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@2.0.3:
   version "2.0.3"
