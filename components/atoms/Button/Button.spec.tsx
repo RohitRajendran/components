@@ -8,7 +8,9 @@ import Button from './Button';
 test('Button - rendering', (t) => {
   t.plan(2);
 
-  const buttonComponent = mount(<Button onClick={() => null}>Testing</Button>);
+  const buttonComponent = mount(
+    <Button onClick={(() => null) as React.MouseEventHandler}>Testing</Button>,
+  );
 
   t.equal(
     buttonComponent.find('button').length,
@@ -37,7 +39,7 @@ test('Button - disabling', (t) => {
   t.plan(2);
 
   const buttonComponent = mount(
-    <Button disabled onClick={() => null}>
+    <Button disabled onClick={(() => null) as React.MouseEventHandler}>
       Testing
     </Button>,
   );
@@ -62,7 +64,11 @@ test('Button - disabling', (t) => {
 test('Button - variant', (t) => {
   t.plan(3);
 
-  const variantPrimary = mount(<Button variant="primary">Hello</Button>);
+  const variantPrimary = mount(
+    <Button onClick={(() => null) as React.MouseEventHandler} variant="primary">
+      Hello
+    </Button>,
+  );
 
   t.true(
     variantPrimary.find('button').first().hasClass('btn-primary'),
@@ -70,7 +76,11 @@ test('Button - variant', (t) => {
   );
 
   const variantIcon = mount(
-    <Button variant="icon" title="Delete Me">
+    <Button
+      onClick={(() => null) as React.MouseEventHandler}
+      variant="icon"
+      title="Delete Me"
+    >
       <TrashIcon />
     </Button>,
   );
@@ -80,7 +90,9 @@ test('Button - variant', (t) => {
     'should render an icon button',
   );
 
-  const noVariant = mount(<Button>Hello</Button>);
+  const noVariant = mount(
+    <Button onClick={(() => null) as React.MouseEventHandler}>Hello</Button>,
+  );
 
   t.false(
     noVariant.find('button').first().hasClass('btn-primary'),
@@ -92,7 +104,7 @@ test('Button - loading', (t) => {
   t.plan(3);
 
   const loadingPrimary = mount(
-    <Button variant="primary" isLoading>
+    <Button to="/url" variant="primary" isLoading>
       Hello
     </Button>,
   );
@@ -104,7 +116,7 @@ test('Button - loading', (t) => {
   );
 
   const loadingSecondaryDark = mount(
-    <Button variant="secondary" dark isLoading>
+    <Button to="/url" variant="secondary" dark isLoading>
       Hello
     </Button>,
   );
@@ -116,7 +128,7 @@ test('Button - loading', (t) => {
   );
 
   const loadingTertiaryLight = mount(
-    <Button variant="tertiary" light isLoading>
+    <Button to="/url" variant="tertiary" light isLoading>
       Hello
     </Button>,
   );
