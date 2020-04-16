@@ -70,7 +70,6 @@ import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
 import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 
 // Molecules
-import InterstitialScreen from '~components/molecules/InterstitialScreen/InterstitialScreen.tsx';
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
 import Navbar from '~components/molecules/Navbar/Navbar';
@@ -117,7 +116,6 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
-  InterstitialScreen,
   AdminIcon,
   ItemizationBox,
   CheckIcon,

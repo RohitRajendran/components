@@ -45,7 +45,7 @@ class <%= compName %> extends Component<<%= compName %>Props> {
   }
 }
 <% } else if (isStateful && hooks) { -%>
-const <%= compName %>: FC<<%= compName %>Props> = ({className, style}): JSX.Element => {
+const <%= compName %>: FC<<%= compName %>> = ({className, style}): JSX.Element => {
   const [state, setState] = useState(false);
 
   const containerClasses = classNames(
