@@ -1,0 +1,50 @@
+.uic--interstitial-screen {
+  background-color: $royal;
+
+  &__inner {
+    margin: 2rem auto 3rem;
+    max-width: 76rem;
+    min-height: 100vh;
+
+    h1,
+    p {
+      color: $white;
+      -webkit-font-smoothing: antialiased;
+      // TODO: Re-verify this to ensure its PP
+      margin: 0.67em 0;
+    }
+
+    &-icon {
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    &-step-box {
+      margin-top: 4rem;
+
+      &--highlighted {
+        // TODO: Figure out this cluster of rules
+        opacity: 1 !important;
+      }
+
+      ol {
+        font-size: 1.6rem;
+        line-height: 3rem;
+        list-style-type: none;
+        padding: 0;
+
+      
+        li {
+          color: $white;
+          opacity: 0.5;
+        }
+      }
+
+      &__inner {
+        background-color: $midnight;
+        width: 36.4rem;
+        min-height: 16.1rem;
+      }
+    }
+  }
+}
