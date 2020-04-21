@@ -71,7 +71,7 @@
     "bootstrap": "4.4.1",
     "classnames": "2.2.6",
     "core-js": "3.6.4",
-    "css-loader": "3.5.1",
+    "css-loader": "3.5.2",
     "d3-array": "=1.2.4",
     "d3-interpolate": "1.4.0",
     "d3-scale": "=2.2.2",
