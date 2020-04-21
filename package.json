@@ -40,7 +40,7 @@
     "@babel/preset-env": "7.8.7",
     "@babel/preset-react": "7.9.1",
     "@babel/preset-typescript": "7.9.0",
-    "@babel/register": "7.8.6",
+    "@babel/register": "7.9.0",
     "@babel/runtime": "7.9.2",
     "@invisionapp/dsm-storybook": "0.0.128",
     "@istanbuljs/nyc-config-babel": "3.0.0",
