@@ -1,4 +1,4 @@
-import {text} from '@storybook/addon-knobs';
+import {text, boolean} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import CheckIcon from './CheckIcon.tsx';
@@ -12,10 +12,13 @@ stories.addParameters({
   },
 });
 
-const defaultProps = () => ({
+const defaultProps = (removeBackground) => ({
   fill: text('fill', '#008422'),
   height: text('height', '2rem'),
   width: text('width', '2rem'),
+  removeBackground: boolean('removeBackground', removeBackground),
 });
 
-stories.add('default', () => <CheckIcon {...defaultProps()} />);
+stories.add('default', () => <CheckIcon {...defaultProps(false)} />);
+
+stories.add('no background', () => <CheckIcon {...defaultProps(true)} />);

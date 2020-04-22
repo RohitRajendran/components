@@ -1,0 +1,29 @@
+.uic--step-box {
+  &__inner {
+    background-color: $midnight;
+    margin: 0 auto;
+    min-height: 16.1rem;
+    width: 36.4rem;
+
+    &--button {
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translate(-50%, 75%);
+    }
+
+    &--check {
+      margin-left: 0.5rem;
+    }
+
+    ol {
+      font-size: 1.6rem;
+      line-height: 3rem;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        color: $white;
+      }
+    }
+  }
+}

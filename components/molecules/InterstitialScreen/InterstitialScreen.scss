@@ -1,0 +1,24 @@
+.uic--interstitial-screen {
+  background-color: $royal;
+
+  &__inner {
+    margin: 0 auto;
+    max-width: 76rem;
+
+    h1,
+    p {
+      color: $white;
+      margin: 1.67rem 0;
+    }
+
+    &--icon {
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    .uic--step-box {
+      margin-bottom: 1rem;
+      margin-top: 4rem;
+    }
+  }
+}

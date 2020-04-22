@@ -70,6 +70,7 @@ import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
 import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 
 // Molecules
+import StepBox from '~components/molecules/StepBox/StepBox.tsx';
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
 import Navbar from '~components/molecules/Navbar/Navbar';
@@ -84,6 +85,7 @@ import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSum
 import Modal from '~components/molecules/Modal/Modal';
 import Cabinet from '~components/molecules/Cabinet/Cabinet';
 import BubbleNav from '~components/molecules/BubbleNav/BubbleNav';
+import InterstitialScreen from '~components/molecules/InterstitialScreen/InterstitialScreen';
 
 // Simple Organisms
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
@@ -116,6 +118,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  StepBox,
   AdminIcon,
   ItemizationBox,
   CheckIcon,
@@ -215,6 +218,7 @@ export {
   UmbrellaCircleIllustration,
   DocumentCircleIllustration,
   ShieldCircleIllustration,
+  InterstitialScreen,
   colors,
   zindex,
 };

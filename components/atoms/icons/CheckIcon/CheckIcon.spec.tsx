@@ -19,3 +19,20 @@ test('CheckIcon - renders', (t) => {
     t.end();
   }
 });
+
+test('CheckIcon - renders with no background', (t) => {
+  try {
+    const component = render(<CheckIcon removeBackground />);
+
+    t.equals(
+      component.container.querySelectorAll('svg').length,
+      1,
+      'Should load the CheckIcon component.',
+    );
+  } catch (error) {
+    t.fail(error);
+  } finally {
+    cleanup();
+    t.end();
+  }
+});
