@@ -57,7 +57,7 @@ type ButtonPropsWithOnClick = {
   onClick: React.MouseEventHandler;
 };
 
-type ButtonProps = {
+export type ButtonProps = {
   /** Optional button component, allowing you to wrap the button in things such as react-router-dom's Link. */
   linkComponent?: React.ElementType;
   /** Optional class names to appear on the container. */

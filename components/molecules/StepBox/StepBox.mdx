@@ -1,0 +1,124 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import StepBox from './StepBox';
+
+# StepBox
+
+Renders a step box which can be used in conjunction with the InterstitialScreen component to display to a user their progress.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import StepBox from '@unitedincome/components/dist/StepBox';
+```
+
+```javascript
+import {StepBox} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <StepBox
+    current={1}
+    steps={[
+      {
+        stepLabel: 'Answer a Series of Questions',
+      },
+      {
+        stepLabel: 'Analyze Your Plan Results',
+      },
+      {
+        stepLabel: 'Confirm Your Plan',
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<StepBox
+  current={1}
+  steps={[
+    {
+      stepLabel: 'Answer a Series of Questions',
+    },
+    {
+      stepLabel: 'Analyze Your Plan Results',
+    },
+    {
+      stepLabel: 'Confirm Your Plan',
+    },
+  ]}
+/>
+```
+
+### Adding a Button
+
+You're able to add a call to action button to each step by defining a `buttonLabel` and `buttonOptions` prop within the step object.
+
+<Preview>
+  <StepBox
+    current={1}
+    steps={[
+      {
+        stepLabel: 'Answer a Series of Questions',
+        buttonLabel: 'Answer Questions',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Analyze Your Plan Results',
+        buttonLabel: 'Analyze',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Confirm Your Plan',
+        buttonLabel: 'Confirm',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<StepBox
+  current={1}
+  steps={[
+    {
+      stepLabel: 'Answer a Series of Questions',
+      buttonLabel: 'Answer Questions',
+      buttonOptions: {
+        to: 'https://unitedincome.com',
+      },
+    },
+    {
+      stepLabel: 'Analyze Your Plan Results',
+      buttonLabel: 'Analyze',
+      buttonOptions: {
+        to: 'https://unitedincome.com',
+      },
+    },
+    {
+      stepLabel: 'Confirm Your Plan',
+      buttonLabel: 'Confirm',
+      buttonOptions: {
+        to: 'https://unitedincome.com',
+      },
+    },
+  ]}
+/>
+```
+
+## Props 🔧
+
+<Props of={StepBox} />
+
+## Related ✨
+
+- [InterstitialScreen](/?path=/docs/molecules-interstitialscreen--default)
