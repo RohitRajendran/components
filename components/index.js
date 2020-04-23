@@ -68,6 +68,7 @@ import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon.t
 import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon.tsx';
 import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
 import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
+import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
 
 // Molecules
 import StepBox from '~components/molecules/StepBox/StepBox.tsx';
@@ -199,6 +200,7 @@ export {
   ExpandyCircleIcon,
   LampCircleIllustration,
   AccountCircleIllustration,
+  PencilCircleIllustration,
   GiftCircleIllustration,
   GivingCircleIllustration,
   HealthCircleIllustration,
