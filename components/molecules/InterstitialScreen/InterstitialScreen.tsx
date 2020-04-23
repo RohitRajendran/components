@@ -35,7 +35,7 @@ const InterstitialScreen: FC<InterstitialScreenProps> = ({
   return (
     <div className={containerClasses} style={style}>
       <div className="uic--interstitial-screen__inner uic--d-flex uic--flex-column uic--justify-content-center uic--align-items-center">
-        <div className="uic--row uic--text-center">
+        <div className="uic--d-flex uic--flex-wrap uic--text-center">
           {Icon && (
             <div className="uic--interstitial-screen__inner--icon">
               <Icon />
