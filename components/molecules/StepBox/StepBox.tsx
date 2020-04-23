@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import React, {FC} from 'react';
 import './StepBox.scss';
-import Button, {ButtonProps} from '~components/atoms/Button/Button';
+import Button, {ButtonProps} from '../../atoms/Button/Button';
 import {isNullOrUndefined} from 'util';
 import CheckIcon from '../../atoms/icons/CheckIcon/CheckIcon';
 
