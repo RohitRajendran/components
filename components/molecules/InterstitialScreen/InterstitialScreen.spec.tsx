@@ -10,6 +10,12 @@ test('InterstitialScreen - renders', (t) => {
       Icon: PureCarCircleIllustration,
       title: 'Welcome to Your Draft Plan',
       description: <p>Hello</p>,
+      actionBar: {
+        buttonLabel: 'Switch to a Draft Investment Plan',
+        buttonOptions: {
+          to: '#',
+        },
+      },
     };
 
     const {getByText} = render(<InterstitialScreen {...props} />);
