@@ -9,6 +9,10 @@
       bottom: 0.5rem;
       left: 50%;
       transform: translate(-50%, 75%);
+
+      .btn {
+        text-decoration: none;
+      }
     }
 
     &--check {
@@ -17,12 +21,17 @@
 
     ol {
       font-size: 1.6rem;
-      line-height: 3rem;
       list-style-type: none;
+      margin-top: 0;
       padding: 0;
 
       li {
         color: $white;
+        margin-bottom: 1.2rem;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }

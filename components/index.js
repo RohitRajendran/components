@@ -68,8 +68,10 @@ import ArrowLineIcon from '~components/atoms/icons/ArrowLineIcon/ArrowLineIcon.t
 import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon.tsx';
 import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
 import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
+import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
 
 // Molecules
+import InterstitialStepScreen from '~components/molecules/InterstitialStepScreen/InterstitialStepScreen.tsx';
 import StepBox from '~components/molecules/StepBox/StepBox.tsx';
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
 import QuestionAnswer from '~components/molecules/QuestionAnswer/QuestionAnswer';
@@ -118,6 +120,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  InterstitialStepScreen,
   StepBox,
   AdminIcon,
   ItemizationBox,
@@ -199,6 +202,7 @@ export {
   ExpandyCircleIcon,
   LampCircleIllustration,
   AccountCircleIllustration,
+  PencilCircleIllustration,
   GiftCircleIllustration,
   GivingCircleIllustration,
   HealthCircleIllustration,

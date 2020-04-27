@@ -1,14 +1,57 @@
 .uic--interstitial-screen {
   background-color: $royal;
+  min-height: 100vh;
+  padding: 0 2rem;
+
+  &__action-bar {
+    margin-bottom: 2.4rem;
+    padding: 1.3rem 0;
+
+    .btn-link {
+      font-size: 1.2rem;
+      text-align: right;
+
+      .text-wrapper {
+        align-items: center;
+        display: flex;
+      }
+    }
+
+    &--icon {
+      margin-left: 0.8rem;
+    }
+
+    &::after {
+      background-color: $white;
+      content: ' ';
+      display: block;
+      height: 1px;
+      margin: 1.3rem 0;
+      opacity: 0.3;
+      width: 100%;
+    }
+  }
 
   &__inner {
-    margin: 0 auto;
+    margin: 2rem auto;
     max-width: 76rem;
 
     h1,
     p {
       color: $white;
-      margin: 1.67rem 0;
+    }
+
+    h1 {
+      margin-bottom: 1.7rem;
+      margin-top: 2rem;
+    }
+
+    p {
+      margin: 0 0 1.67rem;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
 
     &--icon {
@@ -19,6 +62,10 @@
     .uic--step-box {
       margin-bottom: 1rem;
       margin-top: 4rem;
+
+      .ui-link {
+        text-decoration: none;
+      }
     }
   }
 }

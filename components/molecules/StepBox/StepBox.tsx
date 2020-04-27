@@ -17,7 +17,7 @@ type StepProps = {
   buttonLabel?: string;
 };
 
-type StepBoxProps = {
+export type StepBoxProps = {
   /* Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */

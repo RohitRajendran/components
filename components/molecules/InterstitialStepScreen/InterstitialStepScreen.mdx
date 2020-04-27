@@ -1,0 +1,235 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import InterstitialStepScreen from './InterstitialStepScreen';
+import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
+
+# InterstitialStepScreen
+
+Displays a full page interstitial step screen. This component is commonly used to inform/guide the user regarding the next steps they should take.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import InterstitialStepScreen from '@unitedincome/components/dist/InterstitialStepScreen';
+```
+
+```javascript
+import {InterstitialStepScreen} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <InterstitialStepScreen
+    title="Welcome to Your Draft Plan"
+    description={
+      <Fragment>
+        <p>
+          Let’s get to know one another. By giving us more information about
+          your life, finances, and spending needs, we can provide you with in
+          depth financial advice tailored specifically to you. Completing your
+          financial plan also gives you access to our full suite of investment
+          and performance projections.
+        </p>
+        <p>
+          This can take about 45 minutes but we’ll guide you through the process
+          every step of the way. Don’t worry if you don’t have all the answers
+          right now. You can come back and make changes at any time.
+        </p>
+      </Fragment>
+    }
+    Icon={CarCircleIllustration}
+    stepOptions={{
+      current: 1,
+      steps: [
+        {
+          stepLabel: 'Answer a Series of Questions',
+          buttonLabel: 'Answer Questions',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+        {
+          stepLabel: 'Analyze Your Plan Results',
+          buttonLabel: 'Analyze',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+        {
+          stepLabel: 'Confirm Your Plan',
+          buttonLabel: 'Confirm',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+      ],
+    }}
+  />
+</Preview>
+
+```javascript
+<InterstitialStepScreen
+  title="Welcome to Your Draft Plan"
+  description={
+    <Fragment>
+      <p>
+        Let’s get to know one another. By giving us more information about your
+        life, finances, and spending needs, we can provide you with in depth
+        financial advice tailored specifically to you. Completing your financial
+        plan also gives you access to our full suite of investment and
+        performance projections.
+      </p>
+      <p>
+        This can take about 45 minutes but we’ll guide you through the process
+        every step of the way. Don’t worry if you don’t have all the answers
+        right now. You can come back and make changes at any time.
+      </p>
+    </Fragment>
+  }
+  Icon={CarCircleIllustration}
+  stepOptions={{
+    current: 1,
+    steps: [
+      {
+        stepLabel: 'Answer a Series of Questions',
+        buttonLabel: 'Answer Questions',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Analyze Your Plan Results',
+        buttonLabel: 'Analyze',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Confirm Your Plan',
+        buttonLabel: 'Confirm',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+    ],
+  }}
+/>
+```
+
+### Cabinet
+
+You can position a cabinet link at the bottom of the screen by passing in the `moreDetails` props.
+
+<Preview>
+  <InterstitialStepScreen
+    title="Welcome to Your Draft Plan"
+    description={
+      <Fragment>
+        <p>
+          Let’s get to know one another. By giving us more information about
+          your life, finances, and spending needs, we can provide you with in
+          depth financial advice tailored specifically to you. Completing your
+          financial plan also gives you access to our full suite of investment
+          and performance projections.
+        </p>
+        <p>
+          This can take about 45 minutes but we’ll guide you through the process
+          every step of the way. Don’t worry if you don’t have all the answers
+          right now. You can come back and make changes at any time.
+        </p>
+      </Fragment>
+    }
+    Icon={CarCircleIllustration}
+    stepOptions={{
+      current: 1,
+      steps: [
+        {
+          stepLabel: 'Answer a Series of Questions',
+          buttonLabel: 'Answer Questions',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+        {
+          stepLabel: 'Analyze Your Plan Results',
+          buttonLabel: 'Analyze',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+        {
+          stepLabel: 'Confirm Your Plan',
+          buttonLabel: 'Confirm',
+          buttonOptions: {
+            to: 'https://unitedincome.com',
+          },
+        },
+      ],
+    }}
+    moreDetails={{
+      label: 'What You Will Need to Build a Plan',
+      header: 'What You Will Need to Build a Plan',
+      cabinetContent: <p>Montezuma the Cat!</p>,
+    }}
+  />
+</Preview>
+
+```javascript
+<InterstitialStepScreen
+  title="Welcome to Your Draft Plan"
+  description={
+    <Fragment>
+      <p>
+        Let’s get to know one another. By giving us more information about your
+        life, finances, and spending needs, we can provide you with in depth
+        financial advice tailored specifically to you. Completing your financial
+        plan also gives you access to our full suite of investment and
+        performance projections.
+      </p>
+      <p>
+        This can take about 45 minutes but we’ll guide you through the process
+        every step of the way. Don’t worry if you don’t have all the answers
+        right now. You can come back and make changes at any time.
+      </p>
+    </Fragment>
+  }
+  Icon={CarCircleIllustration}
+  stepOptions={{
+    current: 1,
+    steps: [
+      {
+        stepLabel: 'Answer a Series of Questions',
+        buttonLabel: 'Answer Questions',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Analyze Your Plan Results',
+        buttonLabel: 'Analyze',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+      {
+        stepLabel: 'Confirm Your Plan',
+        buttonLabel: 'Confirm',
+        buttonOptions: {
+          to: 'https://unitedincome.com',
+        },
+      },
+    ],
+  }}
+  moreDetails={{
+    label: 'What You Will Need to Build a Plan',
+    header: 'What You Will Need to Build a Plan',
+    cabinetContent: <p>Montezuma the Cat!</p>,
+  }}
+/>
+```
+
+## Props 🔧
+
+<Props of={InterstitialStepScreen} />
