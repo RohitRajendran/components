@@ -107,7 +107,7 @@ const InputCard: FC<InputCardProps> = ({
     ? [`$${config.value}`]
     : percentageMasks.includes(config.mask)
     ? [`${config.value}%`]
-    : [config.value];
+    : [config.value || ''];
 
   return (
     <QuestionCard

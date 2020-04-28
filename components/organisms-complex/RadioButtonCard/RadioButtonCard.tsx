@@ -80,7 +80,9 @@ const RadioButtonCard: FC<RadioButtonCardProps> = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [getSelectedAnswerLabel(config.options, config.value)]
+            answers || [
+              getSelectedAnswerLabel(config.options, config.value) || '',
+            ]
           }
           editCard={editCard}
           shortTitle={shortTitle || title}
