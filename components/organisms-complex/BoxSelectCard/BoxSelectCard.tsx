@@ -78,7 +78,9 @@ const BoxSelectCard: FC<BoxSelectCardProps> = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [getSelectedAnswerLabel(config.options, config.value)]
+            answers || [
+              getSelectedAnswerLabel(config.options, config.value) || '',
+            ]
           }
           editCard={editCard}
           shortTitle={shortTitle || title}

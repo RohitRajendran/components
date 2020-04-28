@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureSaveIcon as SaveIcon} from './SaveIcon.tsx';
+
+# SaveIcon
+
+The SaveIcon component creates a floppy disc save icon using inline SVG. This icon is typically used to represent a save action.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import SaveIcon from '@unitedincome/components/dist/SaveIcon';
+```
+
+```javascript
+import {SaveIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <SaveIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<SaveIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <SaveIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<SaveIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={SaveIcon} />

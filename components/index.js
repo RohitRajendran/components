@@ -16,6 +16,9 @@ import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon.tsx';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon.tsx';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon.tsx';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon.tsx';
+import SaveIcon from '~components/atoms/icons/SaveIcon/SaveIcon.tsx';
+import AddIcon from '~components/atoms/icons/AddIcon/AddIcon.tsx';
+import TradeIcon from '~components/atoms/icons/TradeIcon/TradeIcon.tsx';
 import HouseIcon from '~components/atoms/icons/HouseIcon/HouseIcon.tsx';
 import PrinterIcon from '~components/atoms/icons/PrinterIcon/PrinterIcon.tsx';
 import PrinterCircleIcon from '~components/atoms/icons/PrinterCircleIcon/PrinterCircleIcon.tsx';
@@ -162,6 +165,9 @@ export {
   PrinterIcon,
   PrinterCircleIcon,
   TrashIcon,
+  SaveIcon,
+  AddIcon,
+  TradeIcon,
   ArrowIconEllipsis,
   Ranking,
   InfoBox,

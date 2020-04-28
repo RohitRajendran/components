@@ -1,10 +1,10 @@
-import {mount} from 'enzyme';
+import {render} from '@testing-library/react';
 import React from 'react';
 import test from 'tape';
 import SimpleSummary from './SimpleSummary';
 
 test('SimpleSummary - Renders', (t) => {
-  const component = mount(
+  const {container, getByText} = render(
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
@@ -12,16 +12,16 @@ test('SimpleSummary - Renders', (t) => {
     />,
   );
 
-  t.equals(component.find('p').length, 2, 'Displays both answers');
+  t.equals(container.querySelectorAll('p').length, 2, 'Displays both answers');
 
-  t.equals(component.find('Button').text(), 'Edit', 'Edit button is displayed');
+  t.true(getByText('Edit'));
 
   t.end();
 });
 
 test('SimpleSummary - Renders with customized link', (t) => {
   const editCardText = 'Go back, sucka';
-  const component = mount(
+  const {getByText} = render(
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
@@ -30,17 +30,13 @@ test('SimpleSummary - Renders with customized link', (t) => {
     />,
   );
 
-  t.equals(
-    component.find('Button').text(),
-    editCardText,
-    'Modified edit text is displayed',
-  );
+  t.true(getByText(editCardText));
 
   t.end();
 });
 
 test('SimpleSummary - Renders without link', (t) => {
-  const component = mount(
+  const {container} = render(
     <SimpleSummary
       shortTitle="This is a simpler question"
       answers={['This is the first answer', 'This is the second answer']}
@@ -48,7 +44,7 @@ test('SimpleSummary - Renders without link', (t) => {
   );
 
   t.false(
-    component.find('Button').length,
+    container.querySelectorAll('Button').length,
     'Should not display edit card button',
   );
 

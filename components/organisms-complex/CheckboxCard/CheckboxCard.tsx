@@ -26,12 +26,14 @@ type CheckboxCardOption = {
 const getSelectedAnswerLabel = (
   options: CheckboxCardOption[],
   currValue: string[],
-): (string | undefined)[] => {
+): string[] => {
   return currValue.map((val) => {
     const option = options.find((opt) => opt.value === val);
 
     if (option) {
       return option.label;
+    } else {
+      return '';
     }
   });
 };
