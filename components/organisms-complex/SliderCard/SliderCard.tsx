@@ -30,7 +30,7 @@ type SliderCardProps = typeof QuestionCard.propTypes & {
   /** Additional class names to apply to the button. */
   className?: string;
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard: typeof QuestionCard.propTypes.editCard;
+  editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof PureSlider.propTypes.onChange;
   /** Shorter title to be used with the card summary. */

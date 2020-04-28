@@ -10,7 +10,7 @@ type SimpleSummaryWithTo = {
 
 type SimpleSummaryWithEdit = {
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
-  editCard: Function;
+  editCard: React.MouseEventHandler;
 };
 
 type SimpleSummaryProps = {
@@ -49,10 +49,7 @@ const SimpleSummary: FC<SimpleSummaryProps> = ({
               )}
 
               {propsWithEdit && propsWithEdit.editCard && (
-                <Button
-                  variant="link"
-                  onClick={propsWithEdit.editCard as React.MouseEventHandler}
-                >
+                <Button variant="link" onClick={propsWithEdit.editCard}>
                   {editCardText}
                 </Button>
               )}
