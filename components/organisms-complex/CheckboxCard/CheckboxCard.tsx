@@ -55,7 +55,7 @@ type CheckboxCardProps = typeof QuestionCard.propTypes & {
   /** Values to pass into checkbox group */
   config: CheckboxCardConfig;
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard: typeof QuestionCard.propTypes.editCard;
+  editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof Checkboxes.propTypes.onChange;
   /** Shorter title to be used with the card summary. */
