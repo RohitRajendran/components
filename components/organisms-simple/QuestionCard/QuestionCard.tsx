@@ -8,7 +8,7 @@ import CardShell from '~components/molecules/CardShell/CardShell.jsx';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary.jsx';
 import './QuestionCard.scss';
 
-type QuestionCardProps = {
+export type QuestionCardProps = {
   /** Enables browser auto complete. */
   autoComplete?: boolean;
   /** Whether it should animate on mount */

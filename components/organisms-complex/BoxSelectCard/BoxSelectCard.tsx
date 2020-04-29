@@ -4,7 +4,9 @@ import React, {FC} from 'react';
 import BoxSelect from '../../../components/molecules/BoxSelect/BoxSelect';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import {getSelectedAnswerLabel} from '../../../components/organisms-complex/RadioButtonCard/RadioButtonCard';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 import './BoxSelectCard.scss';
 
 type BoxSelectCardOption = {
@@ -31,21 +33,15 @@ type BoxSelectCardConfig = {
   value?: string;
 };
 
-type BoxSelectCardProps = typeof QuestionCard.propTypes & {
+type BoxSelectCardProps = QuestionCardProps & {
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
-  /** Additional class names to apply to the card. */
-  className?: string;
   /** Values to pass into  BoxSelect component. */
   config: BoxSelectCardConfig;
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof BoxSelect.propTypes.onChange;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
 };
 
 /**
