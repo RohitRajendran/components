@@ -1,6 +1,6 @@
 /** @module QuestionCard */
 import classNames from 'classnames';
-import React, {FC, Fragment, ReactChild, ReactNode} from 'react';
+import React, {FC, Fragment, ReactNode} from 'react';
 import Button from '~components/atoms/Button/Button';
 import Cabinet from '~components/molecules/Cabinet/Cabinet.jsx';
 import '~components/molecules/CardShell/Cards.scss';
@@ -22,7 +22,7 @@ export type QuestionCardProps = {
   /** Handler to cancel the changes. */
   cancelChanges?: () => void;
   /** HTML element that should appear within the card when not collapsed */
-  children: ReactChild;
+  children: ReactNode;
   /** Applies additional class names to the button. */
   className?: string;
   /** Whether making changes should clear out any changes made in steps after this. */
@@ -32,7 +32,7 @@ export type QuestionCardProps = {
   /** Forces the button to be disabled. */
   disabled?: boolean;
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard?: () => void;
+  editCard?: React.MouseEventHandler;
   /** Displays the error state of the card. */
   hasError?: boolean;
   /** If changes have been made */
@@ -48,7 +48,7 @@ export type QuestionCardProps = {
   /** Displays a Cabinet component beneath the question, suitable for displaying additional information about the card. */
   moreDetails: {
     /** The contents of the cabinet. */
-    cabinetContent: ReactChild;
+    cabinetContent: ReactNode;
     /** The header to display at the top of the cabinet. */
     header: string;
     /** Determines if the cabinet is visible when the page is printed or not. */
@@ -63,14 +63,14 @@ export type QuestionCardProps = {
   /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
   outputDefaults?: {};
   /** Shorter title to be used with the card summary. */
-  shortTitle: ReactChild;
+  shortTitle: ReactNode;
   /** The summary view that should display when the card is collapsed.
    * If it is the latest step and the card is collapsed, the incomplete summary component will be displayed instead */
   summary?: ReactNode;
   /** The index of this card in the flow, used for animation purposes */
   stepIndex?: number;
   /** The title of the card. */
-  title: ReactChild;
+  title: ReactNode;
 };
 
 const QuestionCard: FC<QuestionCardProps> = ({
