@@ -82,6 +82,8 @@ type InputCardProps = QuestionCardProps & {
   answers?: string[];
   /** The handler to fire when a change happens. */
   onChange: Function;
+  /** Handler called to edit the card, only necessary for McGonagall. */
+  editCard: React.MouseEventHandler;
 };
 
 /**

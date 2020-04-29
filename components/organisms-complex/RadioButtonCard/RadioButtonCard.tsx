@@ -53,6 +53,8 @@ type RadioButtonCardProps = QuestionCardProps & {
   answers?: string[];
   /** The handler to fire when a change happens. */
   onChange: typeof RadioButtons.propTypes.onChange;
+  /** Handler called to edit the card, only necessary for McGonagall. */
+  editCard: React.MouseEventHandler;
 };
 
 /**
