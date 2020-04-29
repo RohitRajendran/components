@@ -6,7 +6,9 @@ import {
   percentageMasks,
 } from '../../../components/atoms/Input/Input.masks';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
 type InputCardConfig = {
   /** A string or symbol to append to the end of the input. For example `%`. */
@@ -73,19 +75,13 @@ type InputCardConfig = {
   sanitize?: boolean;
 };
 
-type InputCardProps = typeof QuestionCard.propTypes & {
+type InputCardProps = QuestionCardProps & {
   /** Values to pass into input group */
   config: InputCardConfig;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
-  /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard?: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: Function;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
 };
 
 /**

@@ -2,7 +2,9 @@
 import React, {FC} from 'react';
 import Ranking from '../../../components/atoms/Ranking/Ranking';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
 type RankingCardConfig = {
   /** A string representing the name of the select button group. For example `yesNo` or something similar. */
@@ -22,7 +24,7 @@ type RankingCardConfig = {
   }[];
 };
 
-type RankingCardProps = typeof QuestionCard.propTypes & {
+type RankingCardProps = QuestionCardProps & {
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** Values to pass into Ranking component. */
@@ -31,10 +33,6 @@ type RankingCardProps = typeof QuestionCard.propTypes & {
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof Ranking.propTypes.onChange;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
 };
 
 /**
