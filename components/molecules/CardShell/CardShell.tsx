@@ -1,7 +1,6 @@
 /** @module CardShell */
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, {Component, createRef} from 'react';
+import React, {Component, createRef, FormEvent, ReactNode} from 'react';
 import {animated, config, Spring} from 'react-spring/renderprops.cjs';
 import {isNullOrUndefined} from 'util';
 import Button from '~components/atoms/Button/Button';
@@ -14,7 +13,9 @@ import './CardShell.scss';
 /**
  * Creates context for showing the required error state
  */
-export const CardShellContext = React.createContext({showRequiredError: false});
+export const CardShellContext = React.createContext<{
+  showRequiredError: boolean;
+}>({showRequiredError: false});
 
 /**
  * Validates children to see if it is valid
@@ -22,7 +23,13 @@ export const CardShellContext = React.createContext({showRequiredError: false});
  * @param {boolean} startValidated - Determines if the validation should start as validated or not.
  * @returns {object} - An object containing information about the validation.
  */
-export const validateChildren = (children, startValidated = false) => {
+export const validateChildren = (
+  children: ReactNode,
+  startValidated = false,
+): {
+  isChildValid: boolean;
+  hasIncompleteRequiredFields: boolean;
+} => {
   const childValidity = React.Children.map(children, (child) => {
     let isChildValid = startValidated;
     let hasIncompleteRequiredFields = false;
@@ -79,7 +86,7 @@ export const validateChildren = (children, startValidated = false) => {
       // Check if element uses follow ups and if so validate those followups
       if (child.props.options) {
         const option = child.props.options.find(
-          (opt) => opt.value === child.props.value,
+          (opt: {value: string}) => opt.value === child.props.value,
         );
 
         if (option && option.followup) {
@@ -129,20 +136,83 @@ export const validateChildren = (children, startValidated = false) => {
   return {isChildValid: true, hasIncompleteRequiredFields: false};
 };
 
+type CardShellProps = {
+  /** Whether it should animate on mount */
+  animate?: boolean;
+  /** To display something after the Submit button. */
+  afterButton?: ReactNode;
+  /** Enables browser auto complete. */
+  autoComplete?: boolean;
+  /** To display something before the Submit button. */
+  beforeButton?: ReactNode;
+  /** Changes the text in the Submit button. */
+  buttonText?: string;
+  /** HTML element that should appear within the card when not collapsed. */
+  children: ReactNode;
+  /** Additional class names to apply */
+  className?: string;
+  /** Force disables the button. */
+  disabled?: boolean;
+  /** Displays the error state of the card. */
+  hasError?: boolean;
+  /** Hides the button on the card. */
+  hideButton?: boolean;
+  /** Shows the collapsed state of the card which switches the content to the summary. */
+  isCollapsed?: boolean;
+  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+  isFetching?: boolean;
+  /** Shows a loading indicator on the button for actions after the button is clicked. */
+  loading?: boolean;
+  /** The handler to fire when a change happens. */
+  onChange: (fieldName: string, fieldValue: string) => void;
+  /** The handler to fire when the Submit button is clicked. */
+  onSubmit: (event: FormEvent, outputDefaults?: {}) => void;
+  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+  outputDefaults?: {};
+  /** Force show the question must be answered error, usually shows on the third click of the disabled Submit button */
+  forceUnansweredQuestionError?: boolean;
+  /** The summary view that should display when the card is collapsed. */
+  summary?: ReactNode;
+  /** The index of this card in the flow, used for animation purposes */
+  stepIndex?: number;
+};
+
+type CardShellState = {
+  animationEnded: boolean;
+  cardContext: {showRequiredError: boolean};
+  hasAnimationRun: boolean;
+  height: number | 'auto';
+  isInvalid: boolean;
+  isSubmitting: boolean;
+  shakeError: boolean;
+  disabledClickCount: number;
+};
+
 /** CardShell Component */
-class CardShell extends Component {
+class CardShell extends Component<CardShellProps, CardShellState> {
+  static defaultProps = {
+    autoComplete: false,
+    animate: false,
+    buttonText: 'Continue',
+    stepIndex: 0,
+  };
+
+  private contentNode: React.RefObject<HTMLDivElement>;
   /**
    * Standard react constructor method
    * @param {Object} props - component props
    * @returns {undefined}
    */
-  constructor(props) {
+  constructor(props: CardShellProps) {
     super(props);
 
     this.contentNode = createRef();
+
     this.state = {
       animationEnded: false, // Used to add a class that can be used to trigger other css animations in children
-      cardContext: {showRequiredError: props.forceUnansweredQuestionError},
+      cardContext: {
+        showRequiredError: props.forceUnansweredQuestionError || false,
+      },
       hasAnimationRun: false, // Used to prevent delay in animation effect in subsequent animations,
       height: props.animate ? 0 : 'auto',
       isInvalid: !validateChildren(props.children).isChildValid,
@@ -160,7 +230,7 @@ class CardShell extends Component {
 
   /** @inheritdoc */
   componentDidMount() {
-    const height = this.contentNode.current.scrollHeight;
+    const height = this.contentNode!.current!.scrollHeight;
 
     this.setState({
       height,
@@ -168,25 +238,28 @@ class CardShell extends Component {
   }
 
   /** @inheritdoc */
-  componentDidUpdate(prevProps) {
-    const updatedState = {};
+  componentDidUpdate(prevProps: CardShellProps) {
+    let updatedState: CardShellState = this.state;
 
     const {isChildValid} = validateChildren(this.props.children);
+
     if (this.state.isInvalid !== !isChildValid) {
       updatedState.isInvalid = !isChildValid;
     }
 
-    if (
-      prevProps.isCollapsed !== this.props.isCollapsed &&
-      this.state.height !== this.contentNode.current.scrollHeight
-    ) {
-      updatedState.height =
-        this.contentNode.current.scrollHeight +
-        (this.props.isCollapsed ? 2 : 1); // Accounts for difference in border thickness
-    }
+    if (this.contentNode && this.contentNode.current) {
+      if (
+        prevProps.isCollapsed !== this.props.isCollapsed &&
+        this.state.height !== this.contentNode.current.scrollHeight
+      ) {
+        updatedState.height =
+          this.contentNode.current.scrollHeight +
+          (this.props.isCollapsed ? 2 : 1); // Accounts for difference in border thickness
+      }
 
-    if (Object.keys(updatedState).length > 0) {
-      this.setState(updatedState);
+      if (Object.keys(updatedState).length > 0) {
+        this.setState(updatedState);
+      }
     }
   }
 
@@ -195,7 +268,7 @@ class CardShell extends Component {
    * @param {object} e event
    * @returns {undefined}
    */
-  async onSubmit(e) {
+  async onSubmit(e: React.FormEvent) {
     e.preventDefault();
     this.setState({isSubmitting: true});
 
@@ -217,7 +290,7 @@ class CardShell extends Component {
    * @param {object} e event
    * @returns {undefined}
    */
-  onChange(e) {
+  onChange(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     this.props.onChange(e.target.name, e.target.value);
   }
@@ -305,6 +378,7 @@ class CardShell extends Component {
       stepIndex,
       summary,
     } = this.props;
+
     const {
       animationEnded,
       cardContext,
@@ -354,7 +428,7 @@ class CardShell extends Component {
           height,
           border: '',
         }}
-        delay={hasAnimationRun ? 0 : 150 * stepIndex}
+        delay={hasAnimationRun ? 0 : 150 * (stepIndex || 1)}
         onStart={this.onAnimationStart}
         onRest={this.onAnimationEnd}
       >
@@ -402,11 +476,9 @@ class CardShell extends Component {
                         ) : (
                           <div
                             className="uic--card-submit-wrapper"
-                            onClick={
-                              isInvalid || disabled
-                                ? this.onDisabledContinueClick
-                                : null
-                            }
+                            {...(isInvalid || disabled
+                              ? {onClick: this.onDisabledContinueClick}
+                              : {})}
                             role="presentation"
                           >
                             <Button
@@ -416,6 +488,8 @@ class CardShell extends Component {
                               light
                               type="submit"
                               variant="secondary"
+                              to="foo"
+                              onClick={() => false}
                             >
                               {buttonText}
                             </Button>
@@ -439,52 +513,52 @@ class CardShell extends Component {
   }
 }
 
-CardShell.propTypes = {
-  /** Whether it should animate on mount */
-  animate: PropTypes.bool,
-  /** To display something after the Submit button. */
-  afterButton: PropTypes.node,
-  /** Enables browser auto complete. */
-  autoComplete: PropTypes.bool,
-  /** To display something before the Submit button. */
-  beforeButton: PropTypes.node,
-  /** Changes the text in the Submit button. */
-  buttonText: PropTypes.string,
-  /** HTML element that should appear within the card when not collapsed. */
-  children: PropTypes.node.isRequired,
-  /** Additional class names to apply */
-  className: PropTypes.string,
-  /** Force disables the button. */
-  disabled: PropTypes.bool,
-  /** Displays the error state of the card. */
-  hasError: PropTypes.bool,
-  /** Hides the button on the card. */
-  hideButton: PropTypes.bool,
-  /** Shows the collapsed state of the card which switches the content to the summary. */
-  isCollapsed: PropTypes.bool,
-  /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
-  isFetching: PropTypes.bool,
-  /** Shows a loading indicator on the button for actions after the button is clicked. */
-  loading: PropTypes.bool,
-  /** The handler to fire when a change happens. */
-  onChange: PropTypes.func,
-  /** The handler to fire when the Submit button is clicked. */
-  onSubmit: PropTypes.func.isRequired,
-  /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
-  outputDefaults: PropTypes.shape({}),
-  /** Force show the question must be answered error, usually shows on the third click of the disabled Submit button */
-  forceUnansweredQuestionError: PropTypes.bool,
-  /** The summary view that should display when the card is collapsed. */
-  summary: PropTypes.node,
-  /** The index of this card in the flow, used for animation purposes */
-  stepIndex: PropTypes.number,
-};
+// CardShell.propTypes = {
+//   /** Whether it should animate on mount */
+//   animate: PropTypes.bool,
+//   /** To display something after the Submit button. */
+//   afterButton: PropTypes.node,
+//   /** Enables browser auto complete. */
+//   autoComplete: PropTypes.bool,
+//   /** To display something before the Submit button. */
+//   beforeButton: PropTypes.node,
+//   /** Changes the text in the Submit button. */
+//   buttonText: PropTypes.string,
+//   /** HTML element that should appear within the card when not collapsed. */
+//   children: PropTypes.node.isRequired,
+//   /** Additional class names to apply */
+//   className: PropTypes.string,
+//   /** Force disables the button. */
+//   disabled: PropTypes.bool,
+//   /** Displays the error state of the card. */
+//   hasError: PropTypes.bool,
+//   /** Hides the button on the card. */
+//   hideButton: PropTypes.bool,
+//   /** Shows the collapsed state of the card which switches the content to the summary. */
+//   isCollapsed: PropTypes.bool,
+//   /** Shows spinner in place of card button, used when need to prevent actions while card is loading  */
+//   isFetching: PropTypes.bool,
+//   /** Shows a loading indicator on the button for actions after the button is clicked. */
+//   loading: PropTypes.bool,
+//   /** The handler to fire when a change happens. */
+//   onChange: PropTypes.func,
+//   /** The handler to fire when the Submit button is clicked. */
+//   onSubmit: PropTypes.func.isRequired,
+//   /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
+//   outputDefaults: PropTypes.shape({}),
+//   /** Force show the question must be answered error, usually shows on the third click of the disabled Submit button */
+//   forceUnansweredQuestionError: PropTypes.bool,
+//   /** The summary view that should display when the card is collapsed. */
+//   summary: PropTypes.node,
+//   /** The index of this card in the flow, used for animation purposes */
+//   stepIndex: PropTypes.number,
+// };
 
-CardShell.defaultProps = {
-  autoComplete: false,
-  animate: false,
-  buttonText: 'Continue',
-  stepIndex: 0,
-};
+// CardShell.defaultProps = {
+//   autoComplete: false,
+//   animate: false,
+//   buttonText: 'Continue',
+//   stepIndex: 0,
+// };
 
 export default CardShell;
