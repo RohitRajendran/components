@@ -42,7 +42,7 @@ export const ButtonInterior: FC<ButtonInteriorProps> = ({
 
 type ButtonPropsWithTo = {
   /** The URL that the user should be directed to when the button is clicked. Used primarily for link buttons. */
-  to:
+  to?:
     | string
     | {
         pathname: string;
@@ -54,7 +54,7 @@ type ButtonPropsWithTo = {
 
 type ButtonPropsWithOnClick = {
   /** The handler to fire when the button is clicked. */
-  onClick: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler;
 };
 
 export type ButtonProps = {
