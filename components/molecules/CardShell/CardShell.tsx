@@ -13,9 +13,7 @@ import './CardShell.scss';
 /**
  * Creates context for showing the required error state
  */
-export const CardShellContext = React.createContext<{
-  showRequiredError: boolean;
-}>({showRequiredError: false});
+export const CardShellContext = React.createContext({showRequiredError: false});
 
 /**
  * Validates children to see if it is valid
@@ -181,8 +179,8 @@ type CardShellState = {
   animationEnded: boolean;
   cardContext: {showRequiredError: boolean};
   hasAnimationRun: boolean;
-  height: number | 'auto';
-  isInvalid: boolean;
+  height?: number | 'auto';
+  isInvalid?: boolean;
   isSubmitting: boolean;
   shakeError: boolean;
   disabledClickCount: number;
@@ -239,7 +237,10 @@ class CardShell extends Component<CardShellProps, CardShellState> {
 
   /** @inheritdoc */
   componentDidUpdate(prevProps: CardShellProps) {
-    let updatedState: CardShellState = this.state;
+    let updatedState: Partial<Pick<
+      CardShellState,
+      'isInvalid' | 'height'
+    >> = {};
 
     const {isChildValid} = validateChildren(this.props.children);
 
@@ -247,19 +248,17 @@ class CardShell extends Component<CardShellProps, CardShellState> {
       updatedState.isInvalid = !isChildValid;
     }
 
-    if (this.contentNode && this.contentNode.current) {
-      if (
-        prevProps.isCollapsed !== this.props.isCollapsed &&
-        this.state.height !== this.contentNode.current.scrollHeight
-      ) {
-        updatedState.height =
-          this.contentNode.current.scrollHeight +
-          (this.props.isCollapsed ? 2 : 1); // Accounts for difference in border thickness
-      }
+    if (
+      prevProps.isCollapsed !== this.props.isCollapsed &&
+      this.state.height !== this.contentNode!.current!.scrollHeight
+    ) {
+      updatedState.height =
+        this.contentNode!.current!.scrollHeight +
+        (this.props.isCollapsed ? 2 : 1); // Accounts for difference in border thickness
+    }
 
-      if (Object.keys(updatedState).length > 0) {
-        this.setState(updatedState);
-      }
+    if (Object.keys(updatedState).length > 0) {
+      this.setState(updatedState);
     }
   }
 

@@ -209,7 +209,7 @@ test('CardShell - componentDidUpdate (isCollapsed = true)', (t) => {
     comp.state(),
     {
       animationEnded: false,
-      cardContext: {showRequiredError: undefined},
+      cardContext: {showRequiredError: false},
       hasAnimationRun: false,
       height: 2,
       isInvalid: false,
@@ -253,7 +253,7 @@ test('CardShell - componentDidUpdate (isCollapsed = false)', (t) => {
     comp.state(),
     {
       animationEnded: false,
-      cardContext: {showRequiredError: undefined},
+      cardContext: {showRequiredError: false},
       hasAnimationRun: false,
       height: 1,
       isInvalid: false,
