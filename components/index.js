@@ -74,6 +74,7 @@ import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
 
 // Molecules
+import ActionBar from '~components/molecules/ActionBar/ActionBar.tsx';
 import InterstitialStepScreen from '~components/molecules/InterstitialStepScreen/InterstitialStepScreen.tsx';
 import StepBox from '~components/molecules/StepBox/StepBox.tsx';
 import CardContentDescription from '~components/molecules/CardContentDescription/CardContentDescription';
@@ -123,6 +124,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  ActionBar,
   InterstitialStepScreen,
   StepBox,
   AdminIcon,

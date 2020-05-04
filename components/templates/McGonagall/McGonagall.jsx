@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import * as queryString from 'query-string';
 import React from 'react';
 import {assign, Machine} from 'xstate';
-import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon.tsx';
 import Confirm from '~components/utilities/Confirm/Confirm';
 import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 import './McGonagall.scss';
+import ActionBar from '~components/molecules/ActionBar/ActionBar';
 
 // Saves the user data to McGonagalls state context.
 export const saveToStateContext = assign((ctx, eve) => ({
@@ -414,14 +414,7 @@ class McGonagall extends React.Component {
 
     return (
       <div className="uic--mcg-framework">
-        <div className="uic--mcg-subnav uic--d-flex uic--align-items-center uic--justify-content-between uic--position-fixed">
-          <span /> {/** To help with flex positioning */}
-          <h1>{name}</h1>
-          <button type="button" onClick={this.close}>
-            <CloseIcon height="2rem" width="2rem" />
-          </button>
-        </div>
-
+        <ActionBar title={name} onClose={this.onClose} />
         {this.isFinalStep(stateConfig.states, cardHistory[0].name) ? (
           this.renderStep(cardHistory[0], 0)
         ) : (
