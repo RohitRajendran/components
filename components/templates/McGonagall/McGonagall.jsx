@@ -414,7 +414,7 @@ class McGonagall extends React.Component {
 
     return (
       <div className="uic--mcg-framework">
-        <ActionBar title={name} onClose={this.onClose} />
+        <ActionBar title={name} onClose={this.close} />
         {this.isFinalStep(stateConfig.states, cardHistory[0].name) ? (
           this.renderStep(cardHistory[0], 0)
         ) : (
