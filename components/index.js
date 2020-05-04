@@ -84,7 +84,7 @@ import TooltipInput from '~components/molecules/TooltipInput/TooltipInput';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
-import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
+import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary.tsx';
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import Modal from '~components/molecules/Modal/Modal';
@@ -94,7 +94,7 @@ import InterstitialScreen from '~components/molecules/InterstitialScreen/Interst
 
 // Simple Organisms
 import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
-import MessageCard from '~components/organisms-simple/MessageCard/MessageCard';
+import MessageCard from '~components/organisms-simple/MessageCard/MessageCard.tsx';
 import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
 // Complex Organisms

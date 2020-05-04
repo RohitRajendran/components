@@ -5,12 +5,12 @@ import '../CardSummaries.scss';
 
 type SimpleSummaryWithTo = {
   /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
-  to: string;
+  to?: string;
 };
 
 type SimpleSummaryWithEdit = {
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
-  editCard: React.MouseEventHandler;
+  editCard?: React.MouseEventHandler;
 };
 
 type SimpleSummaryProps = {
