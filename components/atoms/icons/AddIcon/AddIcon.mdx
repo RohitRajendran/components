@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureAddIcon as AddIcon} from './AddIcon.tsx';
+
+# AddIcon
+
+The AddIcon component creates a plus icon using inline SVG. This icon is typically used to represent an add action.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import AddIcon from '@unitedincome/components/dist/AddIcon';
+```
+
+```javascript
+import {AddIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <AddIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<AddIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <AddIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<AddIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={AddIcon} />

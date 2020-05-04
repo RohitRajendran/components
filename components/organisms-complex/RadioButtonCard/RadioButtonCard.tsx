@@ -50,7 +50,7 @@ type RadioButtonCardProps = typeof QuestionCard.propTypes & {
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard?: Function;
+  editCard?: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof RadioButtons.propTypes.onChange;
   /** Shorter title to be used with the card summary. */
@@ -80,7 +80,9 @@ const RadioButtonCard: FC<RadioButtonCardProps> = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [getSelectedAnswerLabel(config.options, config.value)]
+            answers || [
+              getSelectedAnswerLabel(config.options, config.value) || '',
+            ]
           }
           editCard={editCard}
           shortTitle={shortTitle || title}

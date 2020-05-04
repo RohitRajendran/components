@@ -39,7 +39,7 @@ type BoxSelectCardProps = typeof QuestionCard.propTypes & {
   /** Values to pass into  BoxSelect component. */
   config: BoxSelectCardConfig;
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard: typeof QuestionCard.propTypes.editCard;
+  editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof BoxSelect.propTypes.onChange;
   /** Shorter title to be used with the card summary. */
@@ -78,7 +78,9 @@ const BoxSelectCard: FC<BoxSelectCardProps> = ({
       summary={
         <SimpleSummary
           answers={
-            answers || [getSelectedAnswerLabel(config.options, config.value)]
+            answers || [
+              getSelectedAnswerLabel(config.options, config.value) || '',
+            ]
           }
           editCard={editCard}
           shortTitle={shortTitle || title}

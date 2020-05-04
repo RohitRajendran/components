@@ -28,7 +28,7 @@ type RankingCardProps = typeof QuestionCard.propTypes & {
   /** Values to pass into Ranking component. */
   config: RankingCardConfig;
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard: typeof QuestionCard.propTypes.editCard;
+  editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof Ranking.propTypes.onChange;
   /** Shorter title to be used with the card summary. */

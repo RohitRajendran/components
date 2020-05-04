@@ -1,0 +1,51 @@
+$button-spacing: 1rem;
+
+.uic--action-bar {
+  background-color: $white;
+  border-bottom: 1px solid $light-gray;
+  height: 5rem;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: $z-index-menu + 1;
+
+  h1 {
+    @include source-sans-pro(1.4rem);
+    color: $slate;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &--back {
+    @include media-breakpoint-up(sm) {
+      $button-spacing: 1.7rem;
+
+      margin-left: $button-spacing;
+    }
+
+    margin-left: $button-spacing;
+  }
+
+  &--close {
+    @include media-breakpoint-up(sm) {
+      $button-spacing: 1.7rem;
+
+      margin-right: $button-spacing;
+    }
+
+    margin-right: $button-spacing;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button,
+  span {
+    background-color: transparent;
+    border: 0;
+    margin-top: 5px;
+    padding: 0;
+    width: 1.6rem;
+  }
+}

@@ -5,13 +5,17 @@ import MessageCard from './MessageCard';
 
 test('MessageCard - renders', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): undefined => undefined,
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
   };
 
-  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+  const comp = mount(
+    <MessageCard editCard={(() => null) as React.MouseEventHandler} {...props}>
+      Content
+    </MessageCard>,
+  );
 
   t.equals(comp.find('h2').first().text(), 'Title', 'Shows title');
 
@@ -25,7 +29,7 @@ test('MessageCard - renders', (t) => {
 
 test('MessageCard - shows description and feature image', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): undefined => undefined,
     name: 'test',
     title: 'Title',
     description: 'Description',
@@ -38,7 +42,11 @@ test('MessageCard - shows description and feature image', (t) => {
     ),
   };
 
-  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+  const comp = mount(
+    <MessageCard editCard={(() => null) as React.MouseEventHandler} {...props}>
+      Content
+    </MessageCard>,
+  );
 
   t.equals(comp.find('p').length, 1, 'Should show a description');
   t.equals(comp.find('img').length, 1, 'Should feature image');
@@ -48,7 +56,7 @@ test('MessageCard - shows description and feature image', (t) => {
 
 test('MessageCard - shows description node and feature image', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): undefined => undefined,
     name: 'test',
     title: 'Title',
     description: <p>Description</p>,
@@ -61,7 +69,11 @@ test('MessageCard - shows description node and feature image', (t) => {
     ),
   };
 
-  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+  const comp = mount(
+    <MessageCard editCard={(() => null) as React.MouseEventHandler} {...props}>
+      Content
+    </MessageCard>,
+  );
 
   t.equals(comp.find('p').length, 1, 'Should show a description');
   t.equals(comp.find('img').length, 1, 'Should feature image');
@@ -71,7 +83,7 @@ test('MessageCard - shows description node and feature image', (t) => {
 
 test('MessageCard - collapsed', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): undefined => undefined,
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
@@ -79,7 +91,11 @@ test('MessageCard - collapsed', (t) => {
     isCollapsed: true,
   };
 
-  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+  const comp = mount(
+    <MessageCard editCard={(() => null) as React.MouseEventHandler} {...props}>
+      Content
+    </MessageCard>,
+  );
 
   t.equals(comp.find('h2').first().text(), 'Title', 'Shows collapsed state');
   t.false(
@@ -92,7 +108,7 @@ test('MessageCard - collapsed', (t) => {
 
 test('MessageCard - latest collapsed', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): undefined => undefined,
     name: 'test',
     title: 'Title',
     description: 'Description',
@@ -100,7 +116,11 @@ test('MessageCard - latest collapsed', (t) => {
     isLatestCard: true,
   };
 
-  const comp = mount(<MessageCard {...props}>Content</MessageCard>);
+  const comp = mount(
+    <MessageCard editCard={(() => null) as React.MouseEventHandler} {...props}>
+      Content
+    </MessageCard>,
+  );
 
   t.equals(
     comp.find('p').first().text(),

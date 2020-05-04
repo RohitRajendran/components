@@ -1,15 +1,48 @@
 /** @module FormSummary */
-import {and} from 'airbnb-prop-types';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, {Fragment} from 'react';
+import React, {Fragment, FC} from 'react';
 import Button from '~components/atoms/Button/Button';
-import {exclusive} from '~proptypes';
 import '../CardSummaries.scss';
 import './FormSummary.scss';
 
-const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
-  const showEditButton = Boolean(editCard || to);
+type FormSummaryWithTo = {
+  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
+  to?: string;
+};
+
+type FormSummaryWithEdit = {
+  /** Handler called to edit the card, used instead of `to` for McGonagall. */
+  editCard?: React.MouseEventHandler;
+};
+
+type FormSummaryProps = {
+  /** An array of objects containing the groups of answers to display. The object is broken down below. */
+  answerGroups: {
+    /** The React key to use for the group of data */
+    key?: string;
+    /** The name of the group of data */
+    groupName?: string;
+    /** An array of objects containing the answers for the group. The object is broken down below. */
+    answers: {
+      /** The label for the answer to display. */
+      label: string;
+      /** The value of the answer to display. */
+      value: string;
+    }[];
+  }[];
+  /** A shorter version of the card title. */
+  shortTitle: string;
+} & (FormSummaryWithTo | FormSummaryWithEdit);
+
+const FormSummary: FC<FormSummaryProps> = ({
+  shortTitle,
+  answerGroups,
+  ...props
+}) => {
+  const propsWithTo = props as FormSummaryWithTo;
+  const propsWithEdit = props as FormSummaryWithEdit;
+
+  const showEditButton = Boolean(propsWithTo.to || propsWithEdit.editCard);
 
   return (
     <Fragment>
@@ -21,9 +54,17 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
           {showEditButton && (
             <div className="uic--col-6 uic--col-sm-1">
               <div className="uic--d-flex uic--justify-content-end">
-                <Button variant="link" onClick={editCard} to={to}>
-                  Edit
-                </Button>
+                {propsWithTo && propsWithTo.to && (
+                  <Button variant="link" to={propsWithTo.to}>
+                    Edit
+                  </Button>
+                )}
+
+                {propsWithEdit && propsWithEdit.editCard && (
+                  <Button variant="link" onClick={propsWithEdit.editCard}>
+                    Edit
+                  </Button>
+                )}
               </div>
             </div>
           )}
@@ -63,33 +104,6 @@ const FormSummary = ({shortTitle, editCard, answerGroups, to}) => {
       })}
     </Fragment>
   );
-};
-
-FormSummary.propTypes = {
-  /** An array of objects containing the groups of answers to display. The object is broken down below. */
-  answerGroups: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** The React key to use for the group of data */
-      key: PropTypes.string,
-      /** The name of the group of data */
-      groupName: PropTypes.string,
-      /** An array of objects containing the answers for the group. The object is broken down below. */
-      answers: PropTypes.arrayOf(
-        PropTypes.shape({
-          /** The label for the answer to display. */
-          label: PropTypes.string.isRequired,
-          /** The value of the answer to display. */
-          value: PropTypes.string.isRequired,
-        }),
-      ).isRequired,
-    }),
-  ).isRequired,
-  /** Handler called to edit the card, used instead of `to` for McGonagall. */
-  editCard: and([PropTypes.func, exclusive(['to'])]),
-  /** A shorter version of the card title. */
-  shortTitle: PropTypes.string.isRequired,
-  /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
-  to: and([PropTypes.string, exclusive(['editCard'])]),
 };
 
 export default FormSummary;

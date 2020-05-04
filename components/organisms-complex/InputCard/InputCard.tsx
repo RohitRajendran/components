@@ -79,7 +79,7 @@ type InputCardProps = typeof QuestionCard.propTypes & {
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard?: Function;
+  editCard?: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: Function;
   /** Shorter title to be used with the card summary. */
@@ -107,7 +107,7 @@ const InputCard: FC<InputCardProps> = ({
     ? [`$${config.value}`]
     : percentageMasks.includes(config.mask)
     ? [`${config.value}%`]
-    : [config.value];
+    : [config.value || ''];
 
   return (
     <QuestionCard
