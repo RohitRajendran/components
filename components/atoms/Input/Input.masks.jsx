@@ -114,6 +114,17 @@ export const numberMask = {
   regex: /[0-9]+/,
 };
 
+/** @constant {object} - A percentage mask that does not allow decimals */
+export const percentageWithoutDecimalMask = {
+  mask: createNumberMask({
+    prefix: '',
+    allowDecimal: false,
+    integerLimit: 3,
+    includeThousandsSeparator: false,
+  }),
+  regex: /[0-9]+/,
+};
+
 /** @constant {object} - A percentage mask that allows decimals */
 export const percentageWithDecimalMask = {
   mask: createNumberMask({
@@ -144,7 +155,7 @@ export const percentageWithDecimalMaskAllowNegative = {
 export const smallPercentageWithDecimalMask = {
   mask: createNumberMask({
     prefix: '',
-    allowDecimal: true,
+    allowDecimal: false,
     includeThousandsSeparator: false,
     decimalLimit: 3,
     integerLimit: 2,
@@ -186,6 +197,7 @@ export const maskEnum = {
   CurrencyDecimal: {mask: currencyDecimalMask},
   CurrencyAllowNegative: {mask: currencyMaskAllowNegative},
   Number: {mask: numberMask},
+  percentageWithoutDecimal: {mask: percentageWithoutDecimalMask},
   PercentageWithDecimal: {mask: percentageWithDecimalMask},
   PercentageWithDecimalAllowNegative: {
     mask: percentageWithDecimalMaskAllowNegative,
@@ -196,6 +208,7 @@ export const maskEnum = {
 /** @constant {Array} - Masks that should have '%' appended to it */
 export const percentageMasks = [
   'SmallPercentageWithDecimal',
+  'percentageWithoutDecimal',
   'PercentageWithDecimal',
   'PercentageWithDecimalAllowNegative',
 ];

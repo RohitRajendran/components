@@ -43,6 +43,7 @@ export const inputMask = (defaultMask) =>
       'CurrencyAllowNegative',
       'Number',
       'PercentageWithDecimal',
+      'percentageWithoutDecimal',
       'SmallPercentageWithDecimal',
       'PercentageWithDecimalAllowNegative',
     ],
