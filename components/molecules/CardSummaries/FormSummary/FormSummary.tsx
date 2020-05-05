@@ -7,12 +7,12 @@ import './FormSummary.scss';
 
 type FormSummaryWithTo = {
   /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
-  to?: string;
+  to?: string | null;
 };
 
 type FormSummaryWithEdit = {
   /** Handler called to edit the card, used instead of `to` for McGonagall. */
-  editCard?: React.MouseEventHandler;
+  editCard?: React.MouseEventHandler | null;
 };
 
 type FormSummaryProps = {
