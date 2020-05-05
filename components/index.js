@@ -1,4 +1,5 @@
 // Atoms
+import Tile from '~components/atoms/Tile/Tile.tsx';
 import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
 import Box from '~components/atoms/Box/Box.tsx';
 import ContentSection from '~components/atoms/ContentSection/ContentSection';
@@ -124,6 +125,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  Tile,
   ActionBar,
   InterstitialStepScreen,
   StepBox,

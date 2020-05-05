@@ -1,0 +1,33 @@
+$border-size: 1px;
+$footer-padding: 1.1rem 3.65rem;
+$inner-padding: 3.1rem 3.65rem;
+
+.uic--tile {
+  background-color: $white;
+
+  &--dark {
+    background-color: $midnight;
+    color: $white;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $white-30;
+    }
+  }
+
+  &--light {
+    background-color: $white;
+    border: $border-size solid $light-gray;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $light-gray;
+    }
+  }
+
+  &__inner {
+    padding: $inner-padding;
+  }
+
+  &__footer {
+    padding: $footer-padding;
+  }
+}

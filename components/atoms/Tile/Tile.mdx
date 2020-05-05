@@ -1,0 +1,73 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import Button from '~components/atoms/Button/Button';
+import Tile from './Tile';
+
+# Tile
+
+Renders a basic UI tile which can display arbitrary content. The `Tile` component does not enforce any styles on the elements you place within it.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import Tile from '@unitedincome/components/dist/Tile';
+```
+
+```javascript
+import {Tile} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <Tile>
+    <div className="uic--body-text">Some content</div>
+  </Tile>
+</Preview>
+
+```javascript
+<Tile>
+  <div className="uic--body-text">Some content</div>
+</Tile>
+```
+
+### Dark Mode
+
+You can render the dark version of the tile by passing in the `isDark` prop.
+
+<Preview>
+  <Tile>
+    <div className="uic--body-text" style={{color: '#fff'}}>
+      Some content
+    </div>
+  </Tile>
+</Preview>
+
+```javascript
+<Tile>
+  <div className="uic--body-text" style={{color: '#fff'}}>
+    Some content
+  </div>
+</Tile>
+```
+
+### Footer
+
+You can add an element to the footer of the tile by passing in the `footerContent` prop.
+
+<Preview>
+  <Tile footerContent={<div className="uic--body-text">Footer content</div>}>
+    <div className="uic--body-text">Some content</div>
+  </Tile>
+</Preview>
+
+```javascript
+<Tile footerContent={<div className="uic--body-text">Footer content</div>}>
+  <div className="uic--body-text">Some content</div>
+</Tile>
+```
+
+## Props 🔧
+
+<Props of={Tile} />
