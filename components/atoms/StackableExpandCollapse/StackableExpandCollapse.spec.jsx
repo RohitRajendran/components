@@ -1,8 +1,9 @@
 import {mount} from 'enzyme';
 import React from 'react';
-import {spy} from 'sinon';
+import {spy, stub} from 'sinon';
 import test from 'tape';
 import StackableExpandCollapse from './StackableExpandCollapse';
+import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
 
 test('StackableExpandCollapse - render', (t) => {
   // JSDOM doesn't support custom CSS properties or the DOM API around them,
@@ -56,5 +57,46 @@ test('StackableExpandCollapse - expand/collapse', (t) => {
 
   t.equal(component.state().isExpanded, true, 'Component expands on click');
 
+  t.end();
+});
+
+test('StackableExpandCollapse - handleResize (window exists)', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    true,
+  );
+  const removeSpy = spy(window, 'removeEventListener');
+  const props = {
+    label: 'Hello I am a label',
+    children: <div>I am a child</div>,
+  };
+  const component = mount(<StackableExpandCollapse {...props} />);
+
+  component.instance().handleResize();
+  t.pass();
+
+  component.unmount();
+  t.true(removeSpy.calledOnce, 'Should trigger removeEventListener');
+
+  removeSpy.restore();
+  isWindowDefinedStub.restore();
+  t.end();
+});
+
+test('StackableExpandCollapse - handleResize (window does not exist)', (t) => {
+  const isWindowDefinedStub = stub(DetectBrowser, 'isWindowDefined').returns(
+    false,
+  );
+  const removeSpy = spy(window, 'removeEventListener');
+  const props = {
+    label: 'Hello I am a label',
+    children: <div>I am a child</div>,
+  };
+  const component = mount(<StackableExpandCollapse {...props} />);
+
+  component.unmount();
+  t.false(removeSpy.called, 'Should NOT trigger removeEventListener');
+
+  removeSpy.restore();
+  isWindowDefinedStub.restore();
   t.end();
 });

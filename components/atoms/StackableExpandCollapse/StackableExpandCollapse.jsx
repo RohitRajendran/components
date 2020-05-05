@@ -5,6 +5,7 @@ import React, {Component, createRef} from 'react';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon.tsx';
 import {colors} from '~constants/js/colors';
 import './StackableExpandCollapse.scss';
+import {isWindowDefined} from '~components/utilities/DetectBrowser/DetectBrowser';
 
 /**
  * StackableExpandCollapse component that can be stacked vertically with others of itself.
@@ -16,6 +17,7 @@ class StackableExpandCollapse extends Component {
 
     this.setContentHeight = this.setContentHeight.bind(this);
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.handleResize = this.handleResize.bind(this);
 
     this.contentsRef = createRef();
     this.contentsInnerRef = createRef();
@@ -24,13 +26,28 @@ class StackableExpandCollapse extends Component {
   }
 
   /** @inheritdoc */
+  componentWillUnmount() {
+    if (isWindowDefined()) {
+      window.removeEventListener('resize', this.handleResize);
+    }
+  }
+
+  /** @inheritdoc */
   componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
     this.setContentHeight();
   }
 
   /** @inheritdoc */
   componentDidUpdate() {
     this.setContentHeight();
+  }
+
+  /** Handles the resizing event when the user makes the screen larger/smaller.
+   * @returns {undefined}
+   */
+  handleResize() {
+    return this.forceUpdate();
   }
 
   /**
