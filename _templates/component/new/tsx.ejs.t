@@ -62,7 +62,7 @@ const <%= compName %>: FC<<%= compName %>Props> = ({className, style}): JSX.Elem
   );
 };
 <% } else {-%>
-const <%= compName %>: FC<<%= compName %>> = ({className, style}) => {
+const <%= compName %>: FC<<%= compName %>Props> = ({className, style}) => {
   const containerClasses = classNames(
     {
       'uic--<%= h.changeCase.paramCase(name) %>': true,

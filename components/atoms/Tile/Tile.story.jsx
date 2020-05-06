@@ -17,16 +17,8 @@ const defaultProps = (isDark) => ({
   isDark: boolean('isDark', isDark),
 });
 
-const lightCopy = (
-  <p className="uic--body-text" style={{margin: 0}}>
-    When you retire, this is our recommendation for the order in which you
-    should withdraw funds from your accounts. This could save you money over
-    time by avoiding fees and optimizing tax benefits.
-  </p>
-);
-
-const darkCopy = (
-  <p className="uic--body-text" style={{margin: 0, color: '#fff'}}>
+const copy = (
+  <p className="uic--body-text" style={{margin: 0, color: 'inherit'}}>
     When you retire, this is our recommendation for the order in which you
     should withdraw funds from your accounts. This could save you money over
     time by avoiding fees and optimizing tax benefits.
@@ -45,16 +37,16 @@ const darkFooter = (
   </Button>
 );
 
-stories.add('default', () => <Tile {...defaultProps()}>{lightCopy}</Tile>);
-stories.add('dark', () => <Tile {...defaultProps(true)}>{darkCopy}</Tile>);
+stories.add('default', () => <Tile {...defaultProps()}>{copy}</Tile>);
+stories.add('dark', () => <Tile {...defaultProps(true)}>{copy}</Tile>);
 
 stories.add('with footer', () => (
   <Tile {...defaultProps()} footerContent={lightFooter}>
-    {lightCopy}
+    {copy}
   </Tile>
 ));
 stories.add('dark with footer', () => (
   <Tile {...defaultProps(true)} footerContent={darkFooter}>
-    {darkCopy}
+    {copy}
   </Tile>
 ));
