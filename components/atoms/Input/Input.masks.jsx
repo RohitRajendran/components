@@ -117,7 +117,7 @@ export const numberMask = {
 /** @constant {regex[]} The mask for a zip code */
 export const percentageWithoutDecimalMask = {
   mask: [/[1-9]/, /\d/, /\d/],
-  regex: /^[0-9]*$/,
+  regex: /[0-9]+/,
 };
 
 /** @constant {object} - A percentage mask that allows decimals */
