@@ -2,7 +2,9 @@
 import React, {FC} from 'react';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import RadioButtons from '../../../components/molecules/RadioButtons/RadioButtons';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
 type RadioButtonCardOption = {
   /** The value of the button. */
@@ -44,19 +46,15 @@ export const getSelectedAnswerLabel = (
   }
 };
 
-type RadioButtonCardProps = typeof QuestionCard.propTypes & {
+type RadioButtonCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** Values to pass into radio button */
   config: RadioButtonCardConfig;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
-  /** Handler called to edit the card, only necessary for McGonagall. */
-  editCard?: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof RadioButtons.propTypes.onChange;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
+  /** Handler called to edit the card, only necessary for McGonagall. */
+  editCard: React.MouseEventHandler;
 };
 
 /**

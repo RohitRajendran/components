@@ -4,7 +4,7 @@ import {forceReRender, storiesOf} from '@storybook/react';
 import React from 'react';
 import Input from '~components/atoms/Input/Input';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary.tsx';
-import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard.tsx';
 import CardContentDescription from './CardContentDescription';
 import CardContentDescriptionReadMe from './CardContentDescription.mdx';
 

@@ -96,7 +96,7 @@ import BubbleNav from '~components/molecules/BubbleNav/BubbleNav';
 import InterstitialScreen from '~components/molecules/InterstitialScreen/InterstitialScreen';
 
 // Simple Organisms
-import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard.tsx';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard.tsx';
 import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
