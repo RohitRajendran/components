@@ -203,7 +203,7 @@ export const maskEnum = {
 /** @constant {Array} - Masks that should have '%' appended to it */
 export const percentageMasks = [
   'SmallPercentageWithDecimal',
-  'percentageWithoutDecimal',
+  'PercentageWithoutDecimal',
   'PercentageWithDecimal',
   'PercentageWithDecimalAllowNegative',
 ];
