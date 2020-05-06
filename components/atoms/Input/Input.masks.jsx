@@ -192,7 +192,7 @@ export const maskEnum = {
   CurrencyDecimal: {mask: currencyDecimalMask},
   CurrencyAllowNegative: {mask: currencyMaskAllowNegative},
   Number: {mask: numberMask},
-  percentageWithoutDecimal: {mask: percentageWithoutDecimalMask},
+  PercentageWithoutDecimal: {mask: percentageWithoutDecimalMask},
   PercentageWithDecimal: {mask: percentageWithDecimalMask},
   PercentageWithDecimalAllowNegative: {
     mask: percentageWithDecimalMaskAllowNegative,
