@@ -155,7 +155,7 @@ stories.add('active with simple form', () => (
       ]}
       value="montezuma"
       disabled
-      description="The acount to transfer the money to."
+      description="The account to transfer the money to."
       label="To"
     />
 
