@@ -114,15 +114,10 @@ export const numberMask = {
   regex: /[0-9]+/,
 };
 
-/** @constant {object} - A percentage mask that does not allow decimals */
+/** @constant {regex[]} The mask for a zip code */
 export const percentageWithoutDecimalMask = {
-  mask: createNumberMask({
-    prefix: '',
-    allowDecimal: false,
-    integerLimit: 3,
-    includeThousandsSeparator: false,
-  }),
-  regex: /[0-9]+/,
+  mask: [/[1-9]/, /\d/, /\d/],
+  regex: /^[0-9]*$/,
 };
 
 /** @constant {object} - A percentage mask that allows decimals */
@@ -155,7 +150,7 @@ export const percentageWithDecimalMaskAllowNegative = {
 export const smallPercentageWithDecimalMask = {
   mask: createNumberMask({
     prefix: '',
-    allowDecimal: false,
+    allowDecimal: true,
     includeThousandsSeparator: false,
     decimalLimit: 3,
     integerLimit: 2,
