@@ -16,6 +16,6 @@ export default create({
   inputBorder: colors['light-gray'],
   inputTextColor: colors['midnight'],
   brandTitle: 'United Income',
-  brandUrl: 'components/?path=/story/introduction--page',
+  brandUrl: '?path=/story/introduction--page',
   brandImage: 'https://i.imgur.com/rPP3kdY.png',
 });
