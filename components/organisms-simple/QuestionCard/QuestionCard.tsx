@@ -20,7 +20,7 @@ export type QuestionCardProps = {
   /** Changes the text in the Submit button */
   buttonText?: string;
   /** Handler to cancel the changes. */
-  cancelChanges: () => void;
+  cancelChanges?: () => void;
   /** HTML element that should appear within the card when not collapsed */
   children: ReactNode;
   /** Applies additional class names to the button. */
@@ -139,7 +139,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
       afterButton={
         <Fragment>
           {afterButton}
-          {!isLatestCard && (
+          {!isLatestCard && cancelChanges && (
             <Button
               variant="link"
               onClick={cancelChanges}
