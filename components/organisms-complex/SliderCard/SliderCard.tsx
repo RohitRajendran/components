@@ -1,7 +1,7 @@
 /** @module SliderCard */
 import classNames from 'classnames';
 import React, {FC} from 'react';
-import Slider, {PureSlider} from '../../../components/atoms/Slider/Slider';
+import Slider from '../../../components/atoms/Slider/Slider';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
   QuestionCardProps,
@@ -24,7 +24,7 @@ type SliderCardConfig = {
   tooltipStickyVariant?: 'green' | 'purple' | 'orange'; //typeof PureSlider.propTypes.tooltipStickyVariant;
 };
 
-type SliderCardProps = Omit<QuestionCardProps, 'summary'> & {
+type SliderCardProps = Omit<QuestionCardProps, 'summary' | 'children'> & {
   /** Values to pass into select button */
   config: SliderCardConfig;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
@@ -32,7 +32,7 @@ type SliderCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
-  onChange: typeof PureSlider.propTypes.onChange;
+  onChange: () => void;
 };
 
 /**
