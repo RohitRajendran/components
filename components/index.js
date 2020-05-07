@@ -1,3 +1,4 @@
+import LockCircleIcon from '~components/atoms/icons/LockCircleIcon/LockCircleIcon.tsx';
 // Atoms
 import Tile from '~components/atoms/Tile/Tile.tsx';
 import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
@@ -126,6 +127,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  LockCircleIcon,
   TabbedTile,
   Tile,
   ActionBar,
