@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, {FC} from 'react';
 import './Tile.scss';
 
-type TileProps = {
+export type TileProps = {
   /* Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */

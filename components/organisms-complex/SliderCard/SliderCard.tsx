@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import React, {FC} from 'react';
 import Slider, {PureSlider} from '../../../components/atoms/Slider/Slider';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
 type SliderCardConfig = {
   /** A string representing the name of the select button group. For example `yesNo` or something similar. */
@@ -22,21 +24,15 @@ type SliderCardConfig = {
   tooltipStickyVariant?: 'green' | 'purple' | 'orange'; //typeof PureSlider.propTypes.tooltipStickyVariant;
 };
 
-type SliderCardProps = typeof QuestionCard.propTypes & {
+type SliderCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** Values to pass into select button */
   config: SliderCardConfig;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
-  /** Additional class names to apply to the button. */
-  className?: string;
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof PureSlider.propTypes.onChange;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
 };
 
 /**

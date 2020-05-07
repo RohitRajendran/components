@@ -116,7 +116,12 @@ export const numberMask = {
 
 /** @constant {regex[]} A percentage mask that does not allow decimals */
 export const percentageWithoutDecimalMask = {
-  mask: [/[1-9]/, /\d/, /\d/],
+  mask: createNumberMask({
+    prefix: '',
+    allowNegative: false,
+    allowDecimal: false,
+    includeThousandsSeparator: false,
+  }),
   regex: /[0-9]+/,
 };
 

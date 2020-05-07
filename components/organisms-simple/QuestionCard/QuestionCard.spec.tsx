@@ -1,32 +1,39 @@
-import {mount} from 'enzyme';
+import {cleanup, render} from '@testing-library/react';
 import React from 'react';
+import {stub} from 'sinon';
 import test from 'tape';
 import QuestionCard from './QuestionCard';
 
+window.requestAnimationFrame = stub();
+
 test('QuestionCard - renders', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): boolean => true,
     name: 'test',
     title: 'Question',
     shortTitle: 'Q',
-    cancelChanges: () => true,
+    cancelChanges: (): boolean => true,
   };
 
-  const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
-
-  t.equals(comp.find('h2').first().text(), 'Question', 'Shows title');
-
-  t.equals(comp.find('p').length, 0, 'Should not show a description');
-  t.false(
-    comp.find('CardShell').first().prop('hasError'),
-    'Should not show error state',
+  const {getByText, container} = render(
+    <QuestionCard {...props}>Content</QuestionCard>,
   );
+
+  t.true(getByText('Question'), 'Shows title');
+
+  t.equals(
+    container.querySelectorAll('p').length,
+    0,
+    'Should not show a description',
+  );
+
+  cleanup();
   t.end();
 });
 
 test('QuestionCard - shows description, more detail, and edit warning', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): boolean => true,
     name: 'test',
     title: 'Question',
     description: 'Description',
@@ -36,28 +43,33 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
       label: 'Learn more about Montezuma',
     },
     shortTitle: 'Q',
-    cancelChanges: () => true,
+    cancelChanges: (): boolean => true,
     hasMadeChanges: true,
     clearFuture: true,
     isLatestCard: false,
   };
 
-  const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
+  const {getByText} = render(<QuestionCard {...props}>Content</QuestionCard>);
 
-  t.equals(
-    comp.find('.uic--warning-message').length,
-    1,
+  t.true(
+    getByText(
+      'Note: Changing your answer to this question will require you to answer additional questions.',
+    ),
+
     'Should show warning text',
   );
-  t.equals(comp.find('Cabinet').length, 1, 'Should show more detail');
-  t.equals(comp.find('.uic--card-submit').first().text(), 'Save Changes');
 
+  t.true(getByText(props.moreDetails.label), 'Should show more detail');
+
+  t.true(getByText('Save Changes'), 'Should show Save Changes button');
+
+  cleanup();
   t.end();
 });
 
 test('QuestionCard - collapsed', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): boolean => true,
     name: 'test',
     title: 'Question',
     description: 'Description',
@@ -70,23 +82,26 @@ test('QuestionCard - collapsed', (t) => {
     },
     isCollapsed: true,
     shortTitle: 'Q',
-    cancelChanges: () => true,
+    cancelChanges: (): boolean => true,
   };
 
-  const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
+  const {getByText, container} = render(
+    <QuestionCard {...props}>Content</QuestionCard>,
+  );
 
-  t.equals(comp.find('h2').first().text(), 'Summary', 'Shows summary');
+  t.true(getByText('Summary'), 'Shows summary');
   t.false(
-    comp.find('CardShell').first().prop('hasError'),
+    container.querySelectorAll('.uic--card-error').length > 0,
     'Should not show error state',
   );
 
+  cleanup();
   t.end();
 });
 
 test('QuestionCard - latest collapsed', (t) => {
   const props = {
-    onSubmit: () => true,
+    onSubmit: (): boolean => true,
     name: 'test',
     title: 'Question',
     description: 'Description',
@@ -100,16 +115,20 @@ test('QuestionCard - latest collapsed', (t) => {
     isCollapsed: true,
     isLatestCard: true,
     shortTitle: 'Q',
-    cancelChanges: () => true,
+    cancelChanges: (): boolean => true,
   };
 
-  const comp = mount(<QuestionCard {...props}>Content</QuestionCard>);
+  const {getByText, container} = render(
+    <QuestionCard {...props}>Content</QuestionCard>,
+  );
 
-  t.equals(comp.find('h2').first().text(), 'Q', 'Shows incomplete summary');
+  t.true(getByText('Q'), 'Shows incomplete summary');
+
   t.true(
-    comp.find('CardShell').first().prop('hasError'),
+    container.querySelectorAll('.uic--card-error').length > 0,
     'Should show error state',
   );
 
+  cleanup();
   t.end();
 });

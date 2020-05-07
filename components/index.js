@@ -75,6 +75,7 @@ import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
 
 // Molecules
+import TabbedTile from '~components/molecules/TabbedTile/TabbedTile.tsx';
 import ActionBar from '~components/molecules/ActionBar/ActionBar.tsx';
 import InterstitialStepScreen from '~components/molecules/InterstitialStepScreen/InterstitialStepScreen.tsx';
 import StepBox from '~components/molecules/StepBox/StepBox.tsx';
@@ -95,7 +96,7 @@ import BubbleNav from '~components/molecules/BubbleNav/BubbleNav';
 import InterstitialScreen from '~components/molecules/InterstitialScreen/InterstitialScreen';
 
 // Simple Organisms
-import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard.tsx';
 import MessageCard from '~components/organisms-simple/MessageCard/MessageCard.tsx';
 import CompletionScreen from '~components/organisms-simple/CompletionScreen/CompletionScreen';
 
@@ -125,6 +126,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  TabbedTile,
   Tile,
   ActionBar,
   InterstitialStepScreen,

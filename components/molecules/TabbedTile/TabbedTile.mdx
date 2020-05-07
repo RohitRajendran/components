@@ -1,0 +1,134 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import TabbedTile from './TabbedTile';
+
+# TabbedTile
+
+Creates a Tile component with a series of tab navigation anchors at the top of it. The tabbed tile is optimized for 2-3 navigation items.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import TabbedTile from '@unitedincome/components/dist/TabbedTile';
+```
+
+```javascript
+import {TabbedTile} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <TabbedTile
+    items={[
+      {
+        title: 'Montezuma',
+        tileContent: <div className="uic--body-text">Some content</div>,
+        tileProps: {
+          footerContent: <div className="uic--body-text">Footer Content</div>,
+        },
+      },
+      {
+        title: 'James',
+        tileContent: <div className="uic--body-text">Some content</div>,
+        tileProps: {
+          footerContent: <div className="uic--body-text">Footer Content</div>,
+        },
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<TabbedTile
+  items={[
+    {
+      title: 'Montezuma',
+      tileContent: <div className="uic--body-text">Some content</div>,
+      tileProps: {
+        footerContent: <div className="uic--body-text">Footer Content</div>,
+      },
+    },
+    {
+      title: 'James',
+      tileContent: <div className="uic--body-text">Some content</div>,
+      tileProps: {
+        footerContent: <div className="uic--body-text">Footer Content</div>,
+      },
+    },
+  ]}
+/>
+```
+
+### Dark Mode
+
+You can render the dark version of the tabbed tile by passing in the `isDark` prop.
+
+<Preview>
+  <TabbedTile
+    isDark
+    items={[
+      {
+        title: 'Montezuma',
+        tileContent: <div className="uic--body-text">Some content</div>,
+        tileProps: {
+          footerContent: <div className="uic--body-text">Footer Content</div>,
+        },
+      },
+      {
+        title: 'James',
+        tileContent: <div className="uic--body-text">Some content</div>,
+        tileProps: {
+          footerContent: <div className="uic--body-text">Footer Content</div>,
+        },
+      },
+    ]}
+  />
+</Preview>
+
+```javascript
+<TabbedTile
+  isDark
+  items={[
+    {
+      title: 'Montezuma',
+      tileContent: (
+        <div className="uic--body-text" style={{color: 'inherit'}}>
+          Some content
+        </div>
+      ),
+      tileProps: {
+        footerContent: (
+          <div className="uic--body-text" style={{color: 'inherit'}}>
+            Footer Content
+          </div>
+        ),
+      },
+    },
+    {
+      title: 'James',
+      tileContent: (
+        <div className="uic--body-text" style={{color: 'inherit'}}>
+          Some content
+        </div>
+      ),
+      tileProps: {
+        footerContent: (
+          <div className="uic--body-text" style={{color: 'inherit'}}>
+            Footer Content
+          </div>
+        ),
+      },
+    },
+  ]}
+/>
+```
+
+## Props 🔧
+
+<Props of={TabbedTile} />
+
+## Related ✨
+
+- [Tile](/?path=/docs/atoms-tile--default)

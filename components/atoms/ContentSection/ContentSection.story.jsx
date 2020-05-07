@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import Checkboxes from '../../molecules/Checkboxes/Checkboxes';
-import QuestionCard from '../../organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard from '../../organisms-simple/QuestionCard/QuestionCard.tsx';
 import ContentSection from './ContentSection';
 import ContentSectionReadMe from './ContentSection.mdx';
 

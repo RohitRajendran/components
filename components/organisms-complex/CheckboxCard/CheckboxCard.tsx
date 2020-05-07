@@ -2,7 +2,9 @@
 import React, {FC} from 'react';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Checkboxes from '../../../components/molecules/Checkboxes/Checkboxes';
-import QuestionCard from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import QuestionCard, {
+  QuestionCardProps,
+} from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
 type CheckboxCardOption = {
   /** The value of the checkbox, for example `yes` or `no`. */
@@ -49,7 +51,7 @@ type CheckboxCardConfig = {
   options: CheckboxCardOption[];
 };
 
-type CheckboxCardProps = typeof QuestionCard.propTypes & {
+type CheckboxCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** Values to pass into checkbox group */
@@ -58,10 +60,6 @@ type CheckboxCardProps = typeof QuestionCard.propTypes & {
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
   onChange: typeof Checkboxes.propTypes.onChange;
-  /** Shorter title to be used with the card summary. */
-  shortTitle: React.ReactNode;
-  /** The title of the card. */
-  title: React.ReactNode;
 };
 
 /**
