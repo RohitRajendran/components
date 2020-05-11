@@ -30,7 +30,7 @@ const Slider = ({
     [`uic--${tooltipStickyVariant}`]: tooltipStickyVariant,
     'uic--tooltip-sticky-hint': true,
     [`uic--tooltip-position-${tooltipStickyPosition}`]: true,
-    'uic--position-absolute': true,
+    'uic--position-relative': true,
   });
   const containerClasses = classNames(
     {
@@ -88,7 +88,7 @@ const Slider = ({
       )}
       {tooltip && (
         <div
-          className={`uic--tooltip uic--tooltip-position-${value} uic--position-absolute`}
+          className={`uic--tooltip uic--tooltip-position-${value} uic--position-relative`}
         >
           {tooltip}
         </div>

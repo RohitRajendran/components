@@ -18,7 +18,7 @@
     margin-right: 3rem;
   }
 
-  margin: 16rem 5rem 9rem;
+  margin: -10rem 5rem 9rem;
 
   &.uic--highlighted-green {
     .uic--tooltip {
@@ -82,11 +82,11 @@
   .uic--tooltip {
     background-color: $royal;
     color: $white;
-    height: 10rem;
     margin-left: -10.1rem;
+    max-height: 10rem;
     padding: 1.5rem 2rem;
     text-align: left;
-    top: -13rem;
+    top: 12rem;
     transition-duration: 200ms;
     transition-property: left;
     transition-timing-function: ease-in-out;
@@ -113,7 +113,7 @@
     margin-left: -9rem;
     pointer-events: none;
     text-align: center;
-    top: 3rem;
+    top: 18rem;
     width: 18rem;
 
     &.uic--show {
@@ -163,17 +163,36 @@
 
       &.uic--tooltip {
         @if ($i) < 1 {
-          left: 36px;
+          left: 4rem;
+
+          @media (max-width: 36rem) {
+            left: 6rem;
+          }
 
           &::before {
-            left: 28.5%;
+            left: 26.5%;
           }
         } @else if $i == 10 {
-          left: auto;
-          right: -63px;
+          margin-left: -14rem;
+
+          @media (max-width: 22rem) {
+            margin-left: 0;
+          }
+
+          @media (min-width: 22rem) and (max-width: 26rem) {
+            margin-left: 6rem;
+          }
+
+          @media (min-width: 26rem) and (max-width: 30rem) {
+            margin-left: 12rem;
+          }
+
+          @media (min-width: 30rem) and (max-width: 36rem) {
+            margin-left: 16rem;
+          }
 
           &::before {
-            left: 64.5%;
+            left: 66%;
           }
         }
       }
