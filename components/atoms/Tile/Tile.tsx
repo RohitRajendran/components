@@ -12,6 +12,7 @@ export type TileProps = {
   footerContent?: React.ReactNode;
   /** Determines if the card should be rendered on a dark background or not. */
   isDark?: boolean;
+  paginationControls?: React.ReactNode;
 };
 
 const Tile: FC<TileProps> = ({
@@ -20,6 +21,7 @@ const Tile: FC<TileProps> = ({
   children,
   footerContent,
   isDark,
+  paginationControls,
 }) => {
   const containerClasses = classNames(
     {
@@ -34,8 +36,11 @@ const Tile: FC<TileProps> = ({
     <div className={containerClasses} style={style}>
       <div className="uic--tile__inner">{children}</div>
 
-      {footerContent && (
-        <footer className="uic--tile__footer">{footerContent}</footer>
+      {(footerContent || paginationControls) && (
+        <footer className="uic--tile__footer">
+          {footerContent ? footerContent : null}
+          {paginationControls ? paginationControls : null}
+        </footer>
       )}
     </div>
   );

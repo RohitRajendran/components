@@ -77,6 +77,7 @@ import PencilCircleIllustration from '~components/atoms/illustrations/PencilCirc
 
 // Molecules
 import DoubleDonut from '~components/molecules/DoubleDonut/DoubleDonut.tsx';
+import PaginatedTile from '~components/molecules/PaginatedTile/PaginatedTile.tsx';
 import TabbedTile from '~components/molecules/TabbedTile/TabbedTile.tsx';
 import ActionBar from '~components/molecules/ActionBar/ActionBar.tsx';
 import InterstitialStepScreen from '~components/molecules/InterstitialStepScreen/InterstitialStepScreen.tsx';
@@ -129,6 +130,7 @@ import {zindex} from '~constants/js/zindex';
 
 export {
   DoubleDonut,
+  PaginatedTile,
   LockCircleIcon,
   TabbedTile,
   Tile,
