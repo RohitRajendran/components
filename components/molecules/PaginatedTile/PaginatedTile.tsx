@@ -4,6 +4,8 @@ import React, {FC, useState} from 'react';
 import './PaginatedTile.scss';
 import Tile, {TileProps} from '~components/atoms/Tile/Tile';
 import Button from '~components/atoms/Button/Button';
+import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
+import {colors} from '~constants/js/colors';
 
 type PaginatedTileProps = {
   /* Additional class names to apply to the container. */
@@ -106,19 +108,35 @@ const PaginationControls: FC<PaginationControlsProps> = ({
   goToPrevious,
   goToNext,
 }): JSX.Element => {
+  const buttonProps = {
+    variant: 'secondary',
+    light: true,
+  };
   return (
-    <React.Fragment>
+    <div style={{float: 'right', position: 'relative', top: -25}}>
       {page > 0 ? (
-        <Button onClick={goToPrevious}>Previous</Button>
+        <Button
+          {...buttonProps}
+          onClick={goToPrevious}
+          style={{marginRight: 1}}
+        >
+          <CaretIcon direction="left" fill={colors.white} />
+        </Button>
       ) : (
-        <Button disabled>Previous</Button>
+        <Button {...buttonProps} disabled style={{marginRight: 1}}>
+          <CaretIcon direction="left" fill={'rgb(122,84,199)'} />
+        </Button>
       )}
       {page + 1 < Math.ceil(numberOfItems / itemsPerPage) ? (
-        <Button onClick={goToNext}>Next</Button>
+        <Button {...buttonProps} onClick={goToNext}>
+          <CaretIcon direction="right" fill={colors.white} />
+        </Button>
       ) : (
-        <Button disabled>Next</Button>
+        <Button {...buttonProps} disabled>
+          <CaretIcon direction="right" fill={'rgb(122,84,199)'} />
+        </Button>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 
