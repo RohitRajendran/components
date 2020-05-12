@@ -16,7 +16,7 @@ type PaginatedTileProps = {
   isDark?: boolean;
   tileProps: TileProps;
   /** The tile items.
-   * This can contain items to be rendered in the Template component.
+   * This can contain items to be rendered in ListTemplate.
    * If not, this can be JSX elements that can be readily rendered.
    */
   items: any[];
@@ -78,7 +78,7 @@ type PageProps = {
   items: any[];
   page: number;
   itemsPerPage: number;
-  ListTemplate: React.ComponentType<{paginatedItems: any[]}> | undefined;
+  ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
 };
 const Page: FC<PageProps> = ({
   items,
