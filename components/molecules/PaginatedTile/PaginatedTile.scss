@@ -1,33 +1,29 @@
 .uic--paginated-tile {
-  // Review the README for info on how to namespace css classes
-  // Delete this file and the import in the js if the component doesn't need any custom stylings
-  // https://github.com/UnitedIncome/components#best-practices-
-
   .uic--tile__footer {
     padding-top: 0;
     padding-bottom: 0;
     padding-right: 0;
   }
 
-  .uic--d-flex.pagination-footer {
+  &__pagination-footer {
     align-items: center;
     justify-content: space-between;
     height: 100%;
   }
 
-  .uic--d-flex.pagination-footer.pagination-only {
+  &__pagination-only {
     justify-content: flex-end;
   }
 
-  .pagination-controls {
+  &__pagination-controls {
     align-self: stretch;
 
-    button {
+    .uic--paginated-tile__pagination-button {
       height: 100%;
       border-radius: 0;
     }
 
-    button:first-child {
+    .uic--paginated-tile__pagination-button:first-child {
       margin-right: 1px;
     }
   }

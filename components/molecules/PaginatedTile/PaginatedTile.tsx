@@ -43,27 +43,22 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
     className,
   );
 
-  const footerContent = (
-    <div
-      className={classNames(
-        {'pagination-only': !tileProps?.footerContent},
-        'uic--d-flex pagination-footer',
-      )}
-    >
-      {tileProps?.footerContent && <div>{tileProps.footerContent}</div>}
-      <PaginationControls
-        page={page}
-        numberOfItems={items.length}
-        itemsPerPage={itemsPerPage}
-        goToPrevious={() => setPage(page - 1)}
-        goToNext={() => setPage(page + 1)}
-      />
-    </div>
-  );
-
   return (
     <div className={containerClasses} style={style}>
-      <Tile isDark={isDark} {...tileProps} footerContent={footerContent}>
+      <Tile
+        isDark={isDark}
+        {...tileProps}
+        footerContent={
+          <PageFooter
+            footerContent={tileProps?.footerContent}
+            page={page}
+            numberOfItems={items.length}
+            itemsPerPage={itemsPerPage}
+            previous={() => setPage(page - 1)}
+            next={() => setPage(page + 1)}
+          />
+        }
+      >
         <Page
           items={items}
           page={page}
@@ -74,10 +69,51 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
     </div>
   );
 };
-
 PaginatedTile.defaultProps = {
   className: 'uic--default-placeholder',
   itemsPerPage: 1,
+};
+
+type PageFooterProps = {
+  footerContent?: React.ReactNode;
+  page: number;
+  numberOfItems: number;
+  itemsPerPage: number;
+  previous: () => void;
+  next: () => void;
+};
+const PageFooter: FC<PageFooterProps> = ({
+  footerContent,
+  page,
+  numberOfItems,
+  itemsPerPage,
+  previous,
+  next,
+}): JSX.Element => {
+  const previousDisabled = page == 0;
+  const nextDisabled = page + 1 == Math.ceil(numberOfItems / itemsPerPage);
+  return (
+    <div
+      className={classNames(
+        {'uic--paginated-tile__pagination-only': !footerContent},
+        'uic--d-flex uic--paginated-tile__pagination-footer',
+      )}
+    >
+      {footerContent && <div>{footerContent}</div>}
+      <div className="uic--paginated-tile__pagination-controls">
+        <PaginationButton
+          disabled={previousDisabled}
+          direction="left"
+          onClick={previous}
+        />
+        <PaginationButton
+          disabled={nextDisabled}
+          direction="right"
+          onClick={next}
+        />
+      </div>
+    </div>
+  );
 };
 
 type PageProps = {
@@ -100,46 +136,29 @@ const Page: FC<PageProps> = ({
   return <ListTemplate paginatedItems={items.slice(startIndex, endIndex)} />;
 };
 
-type PaginationControlsProps = {
-  page: number;
-  numberOfItems: number;
-  itemsPerPage: number;
-  goToPrevious: () => void;
-  goToNext: () => void;
-  className?: string;
+type PaginationButtonProps = {
+  disabled: boolean;
+  onClick: () => void;
+  direction: 'right' | 'left';
 };
-const PaginationControls: FC<PaginationControlsProps> = ({
-  page,
-  numberOfItems,
-  itemsPerPage,
-  goToPrevious,
-  goToNext,
+const PaginationButton: FC<PaginationButtonProps> = ({
+  disabled,
+  onClick,
+  direction,
 }): JSX.Element => {
-  const buttonProps = {
-    variant: 'secondary',
-    light: true,
-  };
   return (
-    <div className="pagination-controls">
-      {page > 0 ? (
-        <Button {...buttonProps} onClick={goToPrevious}>
-          <CaretIcon direction="left" fill={colors.white} />
-        </Button>
-      ) : (
-        <Button {...buttonProps} disabled>
-          <CaretIcon direction="left" fill={'rgb(122,84,199)'} />
-        </Button>
-      )}
-      {page + 1 < Math.ceil(numberOfItems / itemsPerPage) ? (
-        <Button {...buttonProps} onClick={goToNext}>
-          <CaretIcon direction="right" fill={colors.white} />
-        </Button>
-      ) : (
-        <Button {...buttonProps} disabled>
-          <CaretIcon direction="right" fill={'rgb(122,84,199)'} />
-        </Button>
-      )}
-    </div>
+    <Button
+      variant="secondary"
+      light={true}
+      disabled={disabled}
+      className="uic--paginated-tile__pagination-button"
+      onClick={onClick}
+    >
+      <CaretIcon
+        direction={direction}
+        fill={disabled ? 'rgb(122,84,199)' : colors.white}
+      />
+    </Button>
   );
 };
 
