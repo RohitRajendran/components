@@ -12,8 +12,6 @@ type PaginatedTileProps = {
   className?: string;
   /** Additional style properties to apply to the container. */
   style?: React.CSSProperties;
-  /** Determines if the navigation tile should be dark or not. */
-  isDark?: boolean;
   tileProps?: TileProps;
   /** The tile items.
    * This can contain items to be rendered in ListTemplate.
@@ -29,7 +27,6 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
   className,
   style,
   items,
-  isDark,
   ListTemplate,
   tileProps,
   itemsPerPage,
@@ -46,7 +43,6 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
   return (
     <div className={containerClasses} style={style}>
       <Tile
-        isDark={isDark}
         {...tileProps}
         footerContent={
           <PageFooter
@@ -89,29 +85,40 @@ const PageFooter: FC<PageFooterProps> = ({
   itemsPerPage,
   previous,
   next,
-}): JSX.Element => {
-  const previousDisabled = page == 0;
-  const nextDisabled = page + 1 == Math.ceil(numberOfItems / itemsPerPage);
+}): JSX.Element | null => {
+  const firstPage = page == 0;
+  const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
+  const pagination = !(firstPage && lastPage);
+
+  if (!footerContent && !pagination) {
+    return null;
+  }
+
   return (
     <div
       className={classNames(
         {'uic--paginated-tile__pagination-only': !footerContent},
+        {
+          'uic--paginated-tile__footer-content-only': !pagination,
+        },
         'uic--d-flex uic--paginated-tile__pagination-footer',
       )}
     >
       {footerContent && <div>{footerContent}</div>}
-      <div className="uic--paginated-tile__pagination-controls">
-        <PaginationButton
-          disabled={previousDisabled}
-          direction="left"
-          onClick={previous}
-        />
-        <PaginationButton
-          disabled={nextDisabled}
-          direction="right"
-          onClick={next}
-        />
-      </div>
+      {pagination && (
+        <div className="uic--paginated-tile__pagination-controls">
+          <PaginationButton
+            disabled={firstPage}
+            direction="left"
+            onClick={previous}
+          />
+          <PaginationButton
+            disabled={lastPage}
+            direction="right"
+            onClick={next}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -3,6 +3,7 @@
     padding-top: 0;
     padding-bottom: 0;
     padding-right: 0;
+    height: 5rem;
   }
 
   &__pagination-footer {
@@ -13,6 +14,10 @@
 
   &__pagination-only {
     justify-content: flex-end;
+  }
+
+  &__footer-content-only {
+    justify-content: flex-start;
   }
 
   &__pagination-controls {

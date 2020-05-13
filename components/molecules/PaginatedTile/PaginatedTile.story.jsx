@@ -19,7 +19,7 @@ stories.addParameters({
   },
 });
 
-const defaultProps = (isDark) => ({
+const paginationOnly = () => ({
   // Add props that the component uses with the appropriate storybook knob
   // https://stackoverflow.com/c/unitedincome/questions/136
 
@@ -35,7 +35,7 @@ const defaultProps = (isDark) => ({
   itemsPerPage: 3,
   ListTemplate: ({paginatedItems}) => {
     return (
-      <ul style={{fontSize: 15}}>
+      <ul style={{fontSize: '1.4rem'}}>
         {paginatedItems.map((item) => (
           <li>{item}</li>
         ))}
@@ -44,7 +44,7 @@ const defaultProps = (isDark) => ({
   },
 });
 
-const paginatorWithFooterContent = (isDark) => ({
+const footerContentWithPagination = () => ({
   // Add props that the component uses with the appropriate storybook knob
   // https://stackoverflow.com/c/unitedincome/questions/136
 
@@ -58,16 +58,41 @@ const paginatorWithFooterContent = (isDark) => ({
     'Sunday',
   ],
   itemsPerPage: 3,
+  ListTemplate: ({paginatedItems}) => {
+    return (
+      <ul style={{fontSize: '1.4rem'}}>
+        {paginatedItems.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    );
+  },
   tileProps: {
     footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#" dark={isDark}>
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
         View Montezuma the Cat
       </Button>
     ),
   },
+});
+
+const footerContentOnly = (isDark) => ({
+  // Add props that the component uses with the appropriate storybook knob
+  // https://stackoverflow.com/c/unitedincome/questions/136
+
+  items: [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ],
+  itemsPerPage: 7,
   ListTemplate: ({paginatedItems}) => {
     return (
-      <ul style={{fontSize: 15}}>
+      <ul style={{fontSize: '1.4rem'}}>
         {paginatedItems.map((item) => (
           <li>{item}</li>
         ))}
@@ -76,9 +101,40 @@ const paginatorWithFooterContent = (isDark) => ({
   },
 });
 
-stories.add('default', () => <PaginatedTile {...defaultProps()} />);
-stories.add('with footer content', () => (
-  <PaginatedTile {...paginatorWithFooterContent()} />
+const noFooterContentAndNoPagination = () => ({
+  // Add props that the component uses with the appropriate storybook knob
+  // https://stackoverflow.com/c/unitedincome/questions/136
+
+  items: [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ],
+  itemsPerPage: 7,
+  ListTemplate: ({paginatedItems}) => {
+    return (
+      <ul style={{fontSize: '1.4rem'}}>
+        {paginatedItems.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    );
+  },
+});
+
+stories.add('default', () => <PaginatedTile {...paginationOnly()} />);
+stories.add('footer content with pagination', () => (
+  <PaginatedTile {...footerContentWithPagination()} />
+));
+stories.add('footer content no pagination', () => (
+  <PaginatedTile {...footerContentOnly()} />
+));
+stories.add('no footer content and no pagination', () => (
+  <PaginatedTile {...noFooterContentAndNoPagination()} />
 ));
 
 // Add more stories: https://stackoverflow.com/c/unitedincome/questions/140
