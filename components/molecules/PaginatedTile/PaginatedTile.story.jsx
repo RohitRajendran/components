@@ -33,6 +33,31 @@ const defaultProps = (isDark) => ({
     'Sunday',
   ],
   itemsPerPage: 3,
+  ListTemplate: ({paginatedItems}) => {
+    return (
+      <ul style={{fontSize: 15}}>
+        {paginatedItems.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    );
+  },
+});
+
+const paginatorWithFooterContent = (isDark) => ({
+  // Add props that the component uses with the appropriate storybook knob
+  // https://stackoverflow.com/c/unitedincome/questions/136
+
+  items: [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ],
+  itemsPerPage: 3,
   tileProps: {
     footerContent: (
       <Button style={{textAlign: 'left'}} variant="link" to="#" dark={isDark}>
@@ -42,7 +67,7 @@ const defaultProps = (isDark) => ({
   },
   ListTemplate: ({paginatedItems}) => {
     return (
-      <ul>
+      <ul style={{fontSize: 15}}>
         {paginatedItems.map((item) => (
           <li>{item}</li>
         ))}
@@ -52,5 +77,8 @@ const defaultProps = (isDark) => ({
 });
 
 stories.add('default', () => <PaginatedTile {...defaultProps()} />);
+stories.add('with footer content', () => (
+  <PaginatedTile {...paginatorWithFooterContent()} />
+));
 
 // Add more stories: https://stackoverflow.com/c/unitedincome/questions/140

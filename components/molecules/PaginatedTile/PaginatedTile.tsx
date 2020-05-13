@@ -14,7 +14,7 @@ type PaginatedTileProps = {
   style?: React.CSSProperties;
   /** Determines if the navigation tile should be dark or not. */
   isDark?: boolean;
-  tileProps: TileProps;
+  tileProps?: TileProps;
   /** The tile items.
    * This can contain items to be rendered in ListTemplate.
    * If not, this can be JSX elements that can be readily rendered.
@@ -43,21 +43,27 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
     className,
   );
 
+  const footerContent = (
+    <div
+      className={classNames(
+        {'pagination-only': !tileProps?.footerContent},
+        'uic--d-flex pagination-footer',
+      )}
+    >
+      {tileProps?.footerContent && <div>{tileProps.footerContent}</div>}
+      <PaginationControls
+        page={page}
+        numberOfItems={items.length}
+        itemsPerPage={itemsPerPage}
+        goToPrevious={() => setPage(page - 1)}
+        goToNext={() => setPage(page + 1)}
+      />
+    </div>
+  );
+
   return (
     <div className={containerClasses} style={style}>
-      <Tile
-        isDark={isDark}
-        {...tileProps}
-        paginationControls={
-          <PaginationControls
-            page={page}
-            numberOfItems={items.length}
-            itemsPerPage={itemsPerPage}
-            goToPrevious={() => setPage(page - 1)}
-            goToNext={() => setPage(page + 1)}
-          />
-        }
-      >
+      <Tile isDark={isDark} {...tileProps} footerContent={footerContent}>
         <Page
           items={items}
           page={page}
@@ -100,6 +106,7 @@ type PaginationControlsProps = {
   itemsPerPage: number;
   goToPrevious: () => void;
   goToNext: () => void;
+  className?: string;
 };
 const PaginationControls: FC<PaginationControlsProps> = ({
   page,
@@ -113,17 +120,13 @@ const PaginationControls: FC<PaginationControlsProps> = ({
     light: true,
   };
   return (
-    <div style={{float: 'right', position: 'relative', top: -25}}>
+    <div className="pagination-controls">
       {page > 0 ? (
-        <Button
-          {...buttonProps}
-          onClick={goToPrevious}
-          style={{marginRight: 1}}
-        >
+        <Button {...buttonProps} onClick={goToPrevious}>
           <CaretIcon direction="left" fill={colors.white} />
         </Button>
       ) : (
-        <Button {...buttonProps} disabled style={{marginRight: 1}}>
+        <Button {...buttonProps} disabled>
           <CaretIcon direction="left" fill={'rgb(122,84,199)'} />
         </Button>
       )}
