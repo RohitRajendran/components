@@ -24,9 +24,9 @@ type PaginatedTileProps<T> = {
   isDark?: boolean;
 };
 
-const PaginatedTile = <T,>(
+const PaginatedTile = function <T>(
   props: PaginatedTileProps<T>,
-): ReactElement | null => {
+): ReactElement | null {
   const fn: FC<PaginatedTileProps<T>> = ({
     className,
     style,
@@ -56,8 +56,8 @@ const PaginatedTile = <T,>(
               page={page}
               numberOfItems={items.length}
               itemsPerPage={itemsPerPage}
-              previous={() => setPage(page - 1)}
-              next={() => setPage(page + 1)}
+              previous={(): void => setPage(page - 1)}
+              next={(): void => setPage(page + 1)}
             />
           }
         >
@@ -99,7 +99,7 @@ const PageFooter: FC<PageFooterProps> = ({
   previous,
   next,
 }): JSX.Element | null => {
-  const firstPage = page == 0;
+  const firstPage = page === 0;
   const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
   const pagination = !(firstPage && lastPage);
 
@@ -149,7 +149,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
   return (
     <Button
       variant="secondary"
-      light={true}
+      light
       disabled={disabled}
       className="uic--paginated-tile__pagination-button"
       onClick={onClick}

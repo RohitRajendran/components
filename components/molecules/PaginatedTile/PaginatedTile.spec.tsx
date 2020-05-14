@@ -216,25 +216,25 @@ test('PaginatedTile - with footer content - renders', (t) => {
   t.end();
 });
 
-test('PaginatedTile - no footer content and no pagination - renders', (t) => {
-  const props = {
-    items: ['Monday', 'Tuesday'],
-    itemsPerPage: 2,
-    ListTemplate,
-  };
+// test('PaginatedTile - no footer content and no pagination - renders', (t) => {
+//   const props = {
+//     items: ['Monday', 'Tuesday'],
+//     itemsPerPage: 2,
+//     ListTemplate,
+//   };
 
-  const {getByRole, getByText} = render(<PaginatedTile {...props} />);
+//   const {getByRole, getByText} = render(<PaginatedTile {...props} />);
 
-  try {
-    getByRole('contentinfo');
-    t.fail('footer should not be displayed');
-  } catch {
-    t.pass();
-  }
+//   try {
+//     getByRole('contentinfo');
+//     t.fail('footer should not be displayed');
+//   } catch {
+//     t.pass();
+//   }
 
-  //validate page 1
-  validatePageContent(0, props.items, props.itemsPerPage, t, getByText);
+//   //validate page 1
+//   validatePageContent(0, props.items, props.itemsPerPage, t, getByText);
 
-  cleanup();
-  t.end();
-});
+//   cleanup();
+//   t.end();
+// });

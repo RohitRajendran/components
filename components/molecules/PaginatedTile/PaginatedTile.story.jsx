@@ -1,10 +1,11 @@
 import React from 'react';
-import {StateDecorator, Store} from '@sambego/storybook-state';
+import {Store} from '@sambego/storybook-state';
 import {storiesOf, forceReRender} from '@storybook/react';
 import PaginatedTile from './PaginatedTile';
 import PaginatedTileReadMe from './PaginatedTile.mdx';
 import Button from '~components/atoms/Button/Button';
 import {boolean, number} from '@storybook/addon-knobs';
+import PropTypes from 'prop-types';
 
 const stories = storiesOf('Molecules/PaginatedTile', module);
 
@@ -20,6 +21,20 @@ stories.addParameters({
   },
 });
 
+const ListTemplate = ({paginatedItems}) => {
+  return (
+    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+      {paginatedItems.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
+};
+ListTemplate.displayName = 'ListTemplate';
+ListTemplate.propTypes = {
+  paginatedItems: PropTypes.arrayOf(PropTypes.string),
+};
+
 const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
   items: [
     'Monday',
@@ -31,15 +46,7 @@ const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
     'Sunday',
   ],
   itemsPerPage: number('itemsPerPage', itemsPerPage || 1),
-  ListTemplate: ({paginatedItems}) => {
-    return (
-      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-        {paginatedItems.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    );
-  },
+  ListTemplate,
   tileProps: hasFooter
     ? {
         footerContent: (
