@@ -2,7 +2,7 @@
   "name": "@unitedincome/components",
   "description": "Component library for all United Income applications.",
   "author": "United Income <engineering@unitedincome.com>",
-  "version": "2.0.13",
+  "version": "2.0.24",
   "main": "dist/index.js",
   "types": "dist/components/index.d.ts",
   "license": "MIT",
