@@ -33,7 +33,7 @@ import {PaginatedTile} from '@unitedincome/components'
   itemsPerPage={3}
   ListTemplate={({paginatedItems}) => {
     return (
-      <ul style={{fontSize: '1.4rem'}}>
+      <ul>
         {paginatedItems.map((item) => (
           <li>{item}</li>
         ))}
@@ -63,7 +63,7 @@ import {PaginatedTile} from '@unitedincome/components'
   itemsPerPage={3}
   ListTemplate={({paginatedItems}) => {
     return (
-      <ul style={{fontSize: '1.4rem'}}>
+      <ul>
         {paginatedItems.map((item) => (
           <li>{item}</li>
         ))}
@@ -83,19 +83,19 @@ import {PaginatedTile} from '@unitedincome/components'
 ### No ListTemplate
 
 The items rendered in the pagination tile can be different views as well. 
-In that case, embed the markup in the items list property and omit the ListTemplate property.
-The itemsPerPage property can also be omitted as that is redundant in this case.
+In that case, embed the list of views(markup) in the `items` property and make sure to omit the `ListTemplate` property.
+The `itemsPerPage` property can also be omitted as it becomes redundant in this case.
 
 <Preview>
   <PaginatedTile
     items={[
     <React.Fragment>
-      <p style={{fontSize: '1.4rem'}}>
+      <p>
         This is a pagination example where the pages don't follow the same
         markup/template.
       </p>
     </React.Fragment>,
-    <ul style={{fontSize: '1.4rem'}}>
+    <ul>
       {['Monday', 'Tuesday'].map((item) => (
         <li>{item}</li>
       ))}
@@ -114,12 +114,12 @@ The itemsPerPage property can also be omitted as that is redundant in this case.
   <PaginatedTile
     items={[
     <React.Fragment>
-      <p style={{fontSize: '1.4rem'}}>
+      <p>
         This is a pagination example where the pages don't follow the same
         markup/template.
       </p>
     </React.Fragment>,
-    <ul style={{fontSize: '1.4rem'}}>
+    <ul>
       {['Monday', 'Tuesday'].map((item) => (
         <li>{item}</li>
       ))}
@@ -134,6 +134,70 @@ The itemsPerPage property can also be omitted as that is redundant in this case.
   />
 ```
 
+### Dark Mode
+
+You can render the dark version of the paginated tile by passing in the `isDark` prop.
+
+<Preview>
+  <PaginatedTile
+    isDark
+    items={[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ]}
+  itemsPerPage={3}
+  ListTemplate={({paginatedItems}) => {
+    return (
+      <ul >
+        {paginatedItems.map((item) => (
+          <li style={{color: 'inherit'}}>{item}</li>
+        ))}
+      </ul>
+    );
+  }}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
+</Preview>
+
+```javascript
+<PaginatedTile
+    items={[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ]}
+  itemsPerPage={3}
+  ListTemplate={({paginatedItems}) => {
+    return (
+      <ul className="uic--body-text">
+        {paginatedItems.map((item) => (
+          <li style={{color: 'inherit'}}>{item}</li>
+        ))}
+      </ul>
+    );
+  }}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
+```
 
 ## Props 🔧
 

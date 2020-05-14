@@ -4,6 +4,7 @@ import {storiesOf, forceReRender} from '@storybook/react';
 import PaginatedTile from './PaginatedTile';
 import PaginatedTileReadMe from './PaginatedTile.mdx';
 import Button from '~components/atoms/Button/Button';
+import {boolean, number} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Molecules/PaginatedTile', module);
 
@@ -19,9 +20,7 @@ stories.addParameters({
   },
 });
 
-const paginationOnly = () => ({
-  // Add props that the component uses with the appropriate storybook knob
-  // https://stackoverflow.com/c/unitedincome/questions/136
+const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
   items: [
     'Monday',
     'Tuesday',
@@ -31,149 +30,56 @@ const paginationOnly = () => ({
     'Saturday',
     'Sunday',
   ],
-  itemsPerPage: 3,
+  itemsPerPage: number('itemsPerPage', itemsPerPage || 1),
   ListTemplate: ({paginatedItems}) => {
     return (
-      <ul style={{fontSize: '1.4rem'}}>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
+      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+        {paginatedItems.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
     );
   },
+  tileProps: hasFooter
+    ? {
+        footerContent: (
+          <Button
+            style={{textAlign: 'left'}}
+            variant="link"
+            to="#"
+            dark={isDark}
+          >
+            View Montezuma the Cat
+          </Button>
+        ),
+      }
+    : null,
+  isDark: boolean('isDark', isDark),
 });
 
-const footerContentWithPagination = () => ({
-  // Add props that the component uses with the appropriate storybook knob
-  // https://stackoverflow.com/c/unitedincome/questions/136
-
-  items: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ],
-  itemsPerPage: 3,
-  ListTemplate: ({paginatedItems}) => {
-    return (
-      <ul style={{fontSize: '1.4rem'}}>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
-  },
-  tileProps: {
-    footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-    ),
-  },
-});
-
-const darkFooterContentWithPagination = () => ({
-  // Add props that the component uses with the appropriate storybook knob
-  // https://stackoverflow.com/c/unitedincome/questions/136
-  isDark: true,
-  items: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ],
-  itemsPerPage: 3,
-  ListTemplate: ({paginatedItems}) => {
-    return (
-      <ul style={{fontSize: '1.4rem'}}>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
-  },
-  tileProps: {
-    footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#" dark>
-        View Montezuma the Cat
-      </Button>
-    ),
-  },
-});
-
-const footerContentOnly = () => ({
-  // Add props that the component uses with the appropriate storybook knob
-  // https://stackoverflow.com/c/unitedincome/questions/136
-
-  items: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ],
-  itemsPerPage: 7,
-  ListTemplate: ({paginatedItems}) => {
-    return (
-      <ul style={{fontSize: '1.4rem'}}>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
-  },
-  tileProps: {
-    footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-    ),
-  },
-});
-
-const noFooterContentAndNoPagination = () => ({
-  // Add props that the component uses with the appropriate storybook knob
-  // https://stackoverflow.com/c/unitedincome/questions/136
-
-  items: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ],
-  itemsPerPage: 7,
-  ListTemplate: ({paginatedItems}) => {
-    return (
-      <ul style={{fontSize: '1.4rem'}}>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
-  },
-});
-
-stories.add('default', () => <PaginatedTile {...paginationOnly()} />);
+stories.add('default', () => (
+  <PaginatedTile {...defaultProps({itemsPerPage: 3})} />
+));
 stories.add('footer content with pagination', () => (
-  <PaginatedTile {...footerContentWithPagination()} />
+  <PaginatedTile
+    {...defaultProps({
+      itemsPerPage: 3,
+      hasFooter: true,
+    })}
+  />
 ));
 stories.add('dark', () => (
-  <PaginatedTile {...darkFooterContentWithPagination()} />
+  <PaginatedTile
+    {...defaultProps({
+      itemsPerPage: 3,
+      isDark: true,
+      hasFooter: true,
+    })}
+  />
 ));
 stories.add('footer content no pagination', () => (
-  <PaginatedTile {...footerContentOnly()} />
+  <PaginatedTile {...defaultProps({itemsPerPage: 7, hasFooter: true})} />
 ));
 stories.add('no footer content and no pagination', () => (
-  <PaginatedTile {...noFooterContentAndNoPagination()} />
+  <PaginatedTile {...defaultProps({itemsPerPage: 7})} />
 ));

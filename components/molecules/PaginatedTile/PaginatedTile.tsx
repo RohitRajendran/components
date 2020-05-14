@@ -20,6 +20,7 @@ type PaginatedTileProps<T> = {
   ListTemplate?: React.ComponentType<{paginatedItems: T[]}>;
   /** Number of items to be displayed per page. This is used in conjuction with the ListTemplate property. */
   itemsPerPage: number;
+  /** Determines if the navigation tile should be dark or not. */
   isDark?: boolean;
 };
 
@@ -134,26 +135,6 @@ const PageFooter: FC<PageFooterProps> = ({
     </div>
   );
 };
-
-// type PageProps = {
-//   items: any[];
-//   page: number;
-//   itemsPerPage: number;
-//   ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
-// };
-// const Page: FC<PageProps> = ({
-//   items,
-//   page,
-//   itemsPerPage,
-//   ListTemplate,
-// }): JSX.Element => {
-//   if (!ListTemplate) {
-//     return items[page];
-//   }
-//   const startIndex = page * itemsPerPage;
-//   const endIndex = startIndex + itemsPerPage;
-//   return <ListTemplate paginatedItems={items.slice(startIndex, endIndex)} />;
-// };
 
 type PaginationButtonProps = {
   disabled: boolean;
