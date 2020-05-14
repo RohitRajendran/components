@@ -10,11 +10,11 @@ Creates a Tile component that enables pagination. This allows the tile to render
 You can use this component using one of the following import patterns.
 
 ```javascript
-import PaginatedTile from '@unitedincome/components/dist/PaginatedTile'
+import PaginatedTile from '@unitedincome/components/dist/PaginatedTile';
 ```
 
 ```javascript
-import {PaginatedTile} from '@unitedincome/components'
+import {PaginatedTile} from '@unitedincome/components';
 ```
 
 ## Example 🚀
@@ -22,30 +22,31 @@ import {PaginatedTile} from '@unitedincome/components'
 <Preview>
   <PaginatedTile
     items={[
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ]}
-  itemsPerPage={3}
-  ListTemplate={({paginatedItems}) => {
-    return (
-      <ul>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
-  }}
-  tileProps={{
-    footerContent:
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-  }}
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ]}
+    itemsPerPage={3}
+    ListTemplate={({paginatedItems}) => {
+      return (
+        <ul>
+          {paginatedItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      );
+    }}
+    tileProps={{
+      footerContent: (
+        <Button style={{textAlign: 'left'}} variant="link" to="#">
+          View Montezuma the Cat
+        </Button>
+      ),
+    }}
   />
 </Preview>
 
@@ -82,37 +83,38 @@ import {PaginatedTile} from '@unitedincome/components'
 
 ### No ListTemplate
 
-The items rendered in the pagination tile can be different views as well. 
+The items rendered in the pagination tile can be different views as well.
 In that case, embed the list of views(markup) in the `items` property and make sure to omit the `ListTemplate` property.
 The `itemsPerPage` property can also be omitted as it becomes redundant in this case.
 
 <Preview>
   <PaginatedTile
     items={[
-    <React.Fragment>
-      <p>
-        This is a pagination example where the pages don't follow the same
-        markup/template.
-      </p>
-    </React.Fragment>,
-    <ul>
-      {['Monday', 'Tuesday'].map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>,
-  ]}
-  tileProps={{
-    footerContent:
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-  }}
+      <React.Fragment>
+        <p>
+          This is a pagination example where the pages don't follow the same
+          markup/template.
+        </p>
+      </React.Fragment>,
+      <ul>
+        {['Monday', 'Tuesday'].map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>,
+    ]}
+    tileProps={{
+      footerContent: (
+        <Button style={{textAlign: 'left'}} variant="link" to="#">
+          View Montezuma the Cat
+        </Button>
+      ),
+    }}
   />
 </Preview>
 
 ```javascript
-  <PaginatedTile
-    items={[
+<PaginatedTile
+  items={[
     <React.Fragment>
       <p>
         This is a pagination example where the pages don't follow the same
@@ -126,12 +128,13 @@ The `itemsPerPage` property can also be omitted as it becomes redundant in this 
     </ul>,
   ]}
   tileProps={{
-    footerContent:
+    footerContent: (
       <Button style={{textAlign: 'left'}} variant="link" to="#">
         View Montezuma the Cat
       </Button>
+    ),
   }}
-  />
+/>
 ```
 
 ### Dark Mode
@@ -142,36 +145,37 @@ You can render the dark version of the paginated tile by passing in the `isDark`
   <PaginatedTile
     isDark
     items={[
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ]}
-  itemsPerPage={3}
-  ListTemplate={({paginatedItems}) => {
-    return (
-      <ul >
-        {paginatedItems.map((item) => (
-          <li style={{color: 'inherit'}}>{item}</li>
-        ))}
-      </ul>
-    );
-  }}
-  tileProps={{
-    footerContent:
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-  }}
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ]}
+    itemsPerPage={3}
+    ListTemplate={({paginatedItems}) => {
+      return (
+        <ul>
+          {paginatedItems.map((item) => (
+            <li style={{color: 'inherit'}}>{item}</li>
+          ))}
+        </ul>
+      );
+    }}
+    tileProps={{
+      footerContent: (
+        <Button style={{textAlign: 'left'}} variant="link" to="#">
+          View Montezuma the Cat
+        </Button>
+      ),
+    }}
   />
 </Preview>
 
 ```javascript
 <PaginatedTile
-    items={[
+  items={[
     'Monday',
     'Tuesday',
     'Wednesday',
@@ -191,12 +195,13 @@ You can render the dark version of the paginated tile by passing in the `isDark`
     );
   }}
   tileProps={{
-    footerContent:
+    footerContent: (
       <Button style={{textAlign: 'left'}} variant="link" to="#">
         View Montezuma the Cat
       </Button>
+    ),
   }}
-  />
+/>
 ```
 
 ## Props 🔧
