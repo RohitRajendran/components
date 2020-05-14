@@ -1,16 +1,39 @@
-import {render, cleanup, fireEvent, getAllByRole} from '@testing-library/react';
-import React from 'react';
+import {
+  render,
+  cleanup,
+  fireEvent,
+  Matcher,
+  SelectorMatcherOptions,
+} from '@testing-library/react';
+import React, {FC} from 'react';
 import test from 'tape';
 import PaginatedTile from './PaginatedTile';
 import Button from '~components/atoms/Button/Button';
+import Tile from '~components/atoms/Tile/Tile';
+
+const ListTemplate: FC<{paginatedItems: any[]}> = ({
+  paginatedItems,
+}): JSX.Element => {
+  return (
+    <ul>
+      {paginatedItems.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
+};
 
 const validatePageContent = (
   page: number,
-  items: any[],
+  items: Matcher[],
   itemsPerPage: number,
   t: test.Test,
-  getByText: any,
-) => {
+  getByText: (
+    text: Matcher,
+    options?: SelectorMatcherOptions | undefined,
+    waitForElementOptions?: unknown,
+  ) => HTMLElement,
+): void => {
   const start = page * itemsPerPage;
   const included = items.slice(start, start + itemsPerPage);
   const excluded = items.filter((item) => !included.includes(item));
@@ -40,15 +63,7 @@ test('PaginatedTile - renders', (t) => {
       'Sunday',
     ],
     itemsPerPage: 3,
-    ListTemplate: ({paginatedItems}: {paginatedItems: any}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item: any) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      );
-    },
+    ListTemplate,
   };
 
   const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
@@ -122,24 +137,17 @@ test('PaginatedTile - no pagination controls - renders', (t) => {
       'Saturday',
       'Sunday',
     ],
-    itemsPerPage: 1,
-    ListTemplate: ({paginatedItems}: {paginatedItems: any}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item: any) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      );
-    },
+    itemsPerPage: 7,
+    ListTemplate,
   };
 
   const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
 
   try {
     getAllByRole('button');
+    t.fail('no pagination controls expected');
   } catch {
-    t.ok;
+    t.pass();
   }
 
   //validate page 1
@@ -160,7 +168,9 @@ test('PaginatedTile - no template - renders', (t) => {
   try {
     getAllByRole('button');
     t.fail('no pagination controls expected');
-  } catch {}
+  } catch {
+    t.pass();
+  }
 
   //validate page 1
   validatePageContent(0, props.items, props.itemsPerPage, t, getByText);
@@ -181,15 +191,7 @@ test('PaginatedTile - with footer content - renders', (t) => {
       'Sunday',
     ],
     itemsPerPage: 2,
-    ListTemplate: ({paginatedItems}: {paginatedItems: any}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item: any) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      );
-    },
+    ListTemplate,
     tileProps: {
       footerContent: (
         <Button variant="link" to="#">
@@ -219,23 +221,17 @@ test('PaginatedTile - no footer content and no pagination - renders', (t) => {
   const props = {
     items: ['Monday', 'Tuesday'],
     itemsPerPage: 2,
-    ListTemplate: ({paginatedItems}: {paginatedItems: any}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item: any) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      );
-    },
+    ListTemplate,
   };
 
   const {getByRole, getByText} = render(<PaginatedTile {...props} />);
 
   try {
-    console.log(getByRole('contentinfo'));
+    getByRole('contentinfo');
     t.fail('footer should not be displayed');
-  } catch {}
+  } catch {
+    t.pass();
+  }
 
   //validate page 1
   validatePageContent(0, props.items, props.itemsPerPage, t, getByText);

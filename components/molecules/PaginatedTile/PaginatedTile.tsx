@@ -12,15 +12,15 @@ type PaginatedTileProps = {
   className?: string;
   /** Additional style properties to apply to the container. */
   style?: React.CSSProperties;
+  /**Tile Properties*/
   tileProps?: TileProps;
-  /** The tile items.
-   * This can contain items to be rendered in ListTemplate.
-   * If not, this can be JSX elements that can be readily rendered.
-   */
+  /** Items to be rendered in the ListTemplate property or individual views to be rendered as pages.*/
   items: any[];
-  /** Template used to render a list of items*/
+  /** Template used to render a list of items.*/
   ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
+  /** Number of items to be displayed per page. This is used in conjuction with the ListTemplate property. */
   itemsPerPage: number;
+  isDark?: boolean;
 };
 
 const PaginatedTile: FC<PaginatedTileProps> = ({
@@ -30,12 +30,14 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
   ListTemplate,
   tileProps,
   itemsPerPage,
+  isDark,
 }): JSX.Element => {
   const [page, setPage] = useState(0);
 
   const containerClasses = classNames(
     {
       'uic--paginated-tile': true,
+      // 'uic--tile--dark': isDark,
     },
     className,
   );
@@ -43,6 +45,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
   return (
     <div className={containerClasses} style={style}>
       <Tile
+        isDark={isDark}
         {...tileProps}
         footerContent={
           <PageFooter

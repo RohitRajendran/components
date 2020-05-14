@@ -3,7 +3,7 @@ import PaginatedTile from './PaginatedTile';
 
 # PaginatedTile
 
-Enables Pagination within Tiles
+Creates a Tile component that enables pagination. This allows the tile to render different views on separate pages.
 
 ## Importing 📦
 
@@ -20,14 +20,125 @@ import {PaginatedTile} from '@unitedincome/components'
 ## Example 🚀
 
 <Preview>
-  <PaginatedTile />
+  <PaginatedTile
+    items={[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ]}
+  itemsPerPage={3}
+  ListTemplate={({paginatedItems}) => {
+    return (
+      <ul style={{fontSize: '1.4rem'}}>
+        {paginatedItems.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    );
+  }}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
 </Preview>
 
 ```javascript
-<PaginatedTile />
+  <PaginatedTile
+    items={[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ]}
+  itemsPerPage={3}
+  ListTemplate={({paginatedItems}) => {
+    return (
+      <ul style={{fontSize: '1.4rem'}}>
+        {paginatedItems.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    );
+  }}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
+  />
 ```
+
+### No ListTemplate
+
+The items rendered in the pagination tile can be different views as well. 
+In that case, embed the markup in the items list property and omit the ListTemplate property.
+The itemsPerPage property can also be omitted as that is redundant in this case.
+
+<Preview>
+  <PaginatedTile
+    items={[
+    <React.Fragment>
+      <p style={{fontSize: '1.4rem'}}>
+        This is a pagination example where the pages don't follow the same
+        markup/template.
+      </p>
+    </React.Fragment>,
+    <ul style={{fontSize: '1.4rem'}}>
+      {['Monday', 'Tuesday'].map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>,
+  ]}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
+</Preview>
+
+```javascript
+  <PaginatedTile
+    items={[
+    <React.Fragment>
+      <p style={{fontSize: '1.4rem'}}>
+        This is a pagination example where the pages don't follow the same
+        markup/template.
+      </p>
+    </React.Fragment>,
+    <ul style={{fontSize: '1.4rem'}}>
+      {['Monday', 'Tuesday'].map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>,
+  ]}
+  tileProps={{
+    footerContent:
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+  }}
+  />
+```
+
 
 ## Props 🔧
 
 <Props of={PaginatedTile} />
 
+## Related ✨
+
+- [Tile](/?path=/docs/atoms-tile--default)
