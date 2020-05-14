@@ -1,13 +1,13 @@
 /** @module PaginatedTile */
 import classNames from 'classnames';
-import React, {FC, useState} from 'react';
+import React, {FC, useState, ReactElement} from 'react';
 import './PaginatedTile.scss';
 import Tile, {TileProps} from '~components/atoms/Tile/Tile';
 import Button from '~components/atoms/Button/Button';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import {colors} from '~constants/js/colors';
 
-type PaginatedTileProps = {
+type PaginatedTileProps<T> = {
   /* Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */
@@ -15,59 +15,68 @@ type PaginatedTileProps = {
   /**Tile Properties*/
   tileProps?: TileProps;
   /** Items to be rendered in the ListTemplate property or individual views to be rendered as pages.*/
-  items: any[];
+  items: T[];
   /** Template used to render a list of items.*/
-  ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
+  ListTemplate?: React.ComponentType<{paginatedItems: T[]}>;
   /** Number of items to be displayed per page. This is used in conjuction with the ListTemplate property. */
   itemsPerPage: number;
   isDark?: boolean;
 };
 
-const PaginatedTile: FC<PaginatedTileProps> = ({
-  className,
-  style,
-  items,
-  ListTemplate,
-  tileProps,
-  itemsPerPage,
-  isDark,
-}): JSX.Element => {
-  const [page, setPage] = useState(0);
-
-  const containerClasses = classNames(
-    {
-      'uic--paginated-tile': true,
-      // 'uic--tile--dark': isDark,
-    },
+const PaginatedTile = <T,>(
+  props: PaginatedTileProps<T>,
+): ReactElement | null => {
+  const fn: FC<PaginatedTileProps<T>> = ({
     className,
-  );
+    style,
+    items,
+    ListTemplate,
+    tileProps,
+    itemsPerPage,
+    isDark,
+  }): JSX.Element => {
+    const [page, setPage] = useState(0);
 
-  return (
-    <div className={containerClasses} style={style}>
-      <Tile
-        isDark={isDark}
-        {...tileProps}
-        footerContent={
-          <PageFooter
-            footerContent={tileProps?.footerContent}
-            page={page}
-            numberOfItems={items.length}
-            itemsPerPage={itemsPerPage}
-            previous={() => setPage(page - 1)}
-            next={() => setPage(page + 1)}
-          />
-        }
-      >
-        <Page
-          items={items}
-          page={page}
-          itemsPerPage={itemsPerPage}
-          ListTemplate={ListTemplate}
-        />
-      </Tile>
-    </div>
-  );
+    const containerClasses = classNames(
+      {
+        'uic--paginated-tile': true,
+      },
+      className,
+    );
+
+    return (
+      <div className={containerClasses} style={style}>
+        <Tile
+          isDark={isDark}
+          {...tileProps}
+          footerContent={
+            <PageFooter
+              footerContent={tileProps?.footerContent}
+              page={page}
+              numberOfItems={items.length}
+              itemsPerPage={itemsPerPage}
+              previous={() => setPage(page - 1)}
+              next={() => setPage(page + 1)}
+            />
+          }
+        >
+          {!ListTemplate ? (
+            items[page]
+          ) : (
+            <ListTemplate
+              paginatedItems={items.slice(
+                page * itemsPerPage,
+                page * itemsPerPage + itemsPerPage,
+              )}
+            />
+          )}
+        </Tile>
+      </div>
+    );
+  };
+  return fn({...props});
 };
+
 PaginatedTile.defaultProps = {
   className: 'uic--default-placeholder',
   itemsPerPage: 1,
@@ -126,25 +135,25 @@ const PageFooter: FC<PageFooterProps> = ({
   );
 };
 
-type PageProps = {
-  items: any[];
-  page: number;
-  itemsPerPage: number;
-  ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
-};
-const Page: FC<PageProps> = ({
-  items,
-  page,
-  itemsPerPage,
-  ListTemplate,
-}): JSX.Element => {
-  if (!ListTemplate) {
-    return items[page];
-  }
-  const startIndex = page * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  return <ListTemplate paginatedItems={items.slice(startIndex, endIndex)} />;
-};
+// type PageProps = {
+//   items: any[];
+//   page: number;
+//   itemsPerPage: number;
+//   ListTemplate?: React.ComponentType<{paginatedItems: any[]}>;
+// };
+// const Page: FC<PageProps> = ({
+//   items,
+//   page,
+//   itemsPerPage,
+//   ListTemplate,
+// }): JSX.Element => {
+//   if (!ListTemplate) {
+//     return items[page];
+//   }
+//   const startIndex = page * itemsPerPage;
+//   const endIndex = startIndex + itemsPerPage;
+//   return <ListTemplate paginatedItems={items.slice(startIndex, endIndex)} />;
+// };
 
 type PaginationButtonProps = {
   disabled: boolean;

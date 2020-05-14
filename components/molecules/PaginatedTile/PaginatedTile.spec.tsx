@@ -9,9 +9,8 @@ import React, {FC} from 'react';
 import test from 'tape';
 import PaginatedTile from './PaginatedTile';
 import Button from '~components/atoms/Button/Button';
-import Tile from '~components/atoms/Tile/Tile';
 
-const ListTemplate: FC<{paginatedItems: any[]}> = ({
+const ListTemplate: FC<{paginatedItems: string[]}> = ({
   paginatedItems,
 }): JSX.Element => {
   return (
