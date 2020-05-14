@@ -27,9 +27,33 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
   t.end();
 });
 
-test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid ', (t) => {
+test('ChanceOfSuccess - running plan', (t) => {
   const props = {
-    percent: 20000,
+    percent: 5,
+    isRunningPlan: true,
+    isDraftPlan: false,
+  };
+
+  const component = mount(<PureChanceOfSuccess {...props} />);
+
+  t.equals(
+    component.find('svg').find('text').at(0).prop('fontSize'),
+    '3.8rem',
+    'Should have the correct font size',
+  );
+
+  t.equals(
+    component.find('svg').find('text').text(),
+    'TBD',
+    'Should have the correct text indicating it is TBD',
+  );
+
+  t.end();
+});
+
+test('ChanceOfSuccess - missing percent', (t) => {
+  const props = {
+    percent: null,
     isRunningPlan: false,
     isDraftPlan: false,
   };
@@ -38,14 +62,14 @@ test('ChanceOfSuccess - renders adjusts the text if the percentage is not valid 
 
   t.equals(
     component.find('svg').find('text').at(0).prop('fontSize'),
-    '4rem',
-    'Should have the correct font size',
+    '3.8rem',
+    'Use font size for word values',
   );
 
   t.equals(
     component.find('svg').find('text').text(),
-    'TBD',
-    'Should have the correct text indicating it is TBD',
+    'N/A',
+    'Use text for missing percent value',
   );
 
   t.end();

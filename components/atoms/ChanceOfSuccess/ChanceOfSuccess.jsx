@@ -88,13 +88,18 @@ const ChanceOfSuccess = (props) => {
   const circleTheta = angleScale(50);
   const arcRadiusForCircle = radius - thickness / 2;
 
+  const wordSize = compact ? '2.7rem' : '3.8rem';
+
   let percentageText = percent;
   let percentageSize = compact ? '3.2rem' : '4.4rem';
   const isPercentageValid = percentIsValid(percent);
 
-  if (!isPercentageValid) {
+  if (isRunningPlan) {
     percentageText = 'TBD';
-    percentageSize = '4rem';
+    percentageSize = wordSize;
+  } else if (!isPercentageValid) {
+    percentageText = 'N/A';
+    percentageSize = wordSize;
   }
 
   // Adds approximate space for the shadow on the indicator circle
@@ -244,7 +249,7 @@ const ChanceOfSuccess = (props) => {
           >
             {percentageText}
           </text>
-          {isPercentageValid && !compact && (
+          {isPercentageValid && !isRunningPlan && !compact && (
             <g>
               {refreshedPlanChanceOfSuccess &&
                 currentPlanChanceOfSuccess &&
