@@ -6,28 +6,38 @@ import QuestionCard, {
   QuestionCardProps,
 } from '../../../components/organisms-simple/QuestionCard/QuestionCard';
 
-type RadioButtonCardOption = {
-  /** The value of the button. */
+type RadioButtonsOptions = {
+  /** The value of the radio button, for example `yes` or `no`. */
   value: string | boolean;
-  /** The label of the button. */
+  /** The text that should appear next to the radio button. */
   label: string;
-  /** Optional followup input JSX. */
+  /** Renders a followup input or message if the radio button is selected. */
   followup?: React.ReactNode;
-  /** Label to appear to the right of the selection. */
+  /** Displays a secondary label to the far right of the radio button.  */
   secondaryLabel?: string;
   /** Disables the option. */
   disabled?: boolean;
 };
 
-type RadioButtonCardConfig = {
+type HandleRadioButtonChange = (name: string, value: string | boolean) => any;
+
+type RadioButtonsProps = {
   /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
   name: string;
+  /** Additional class names to apply to the container. */
+  className?: string;
+  /** Determines if the entire group of radio buttons should be disabled or not. */
+  disabled?: boolean;
   /** Renders the radio button group in a table. */
   table?: boolean;
+  /** An array of objects containing options that should be rendered. */
+  options: RadioButtonsOptions[];
+  /** Determines if an input from the group is required or not for form validation. */
+  required?: boolean;
   /** The current selected option in the radio button group. */
   value?: string | boolean;
-  /** An array of objects containing options that should be rendered. */
-  options: RadioButtonCardOption[];
+  /** Change handler which takes in the `name` of the input and the `value` of the option which is currently selected. */
+  onChange: HandleRadioButtonChange;
 };
 
 /**
@@ -46,13 +56,16 @@ export const getSelectedAnswerLabel = (
   }
 };
 
-type RadioButtonCardProps = Omit<QuestionCardProps, 'summary'> & {
+export type RadioButtonCardProps = Omit<
+  QuestionCardProps,
+  'summary' | 'onChange'
+> & {
   /** Values to pass into radio button */
-  config: RadioButtonCardConfig;
+  config: Omit<RadioButtonsProps, 'onChange'>;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** The handler to fire when a change happens. */
-  onChange: typeof RadioButtons.propTypes.onChange;
+  onChange: HandleRadioButtonChange;
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
 };
@@ -83,7 +96,7 @@ const RadioButtonCard: FC<RadioButtonCardProps> = ({
             ]
           }
           editCard={editCard}
-          shortTitle={shortTitle || title}
+          shortTitle={shortTitle}
         />
       }
     >

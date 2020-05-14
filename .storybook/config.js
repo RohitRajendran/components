@@ -29,7 +29,7 @@ addParameters({
     {name: 'Parchment', value: colors['parchment']},
     {name: 'Royal', value: colors['royal']},
     {name: 'Midnight', value: colors['midnight']},
-    {name: 'Middle Purple', value: colors['midnight-purple']},
+    {name: 'Middle Purple', value: colors['middle-purple']},
   ],
 });
 

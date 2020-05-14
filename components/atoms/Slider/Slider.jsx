@@ -19,6 +19,7 @@ const Slider = ({
   tooltipStickyVariant,
   className,
   required,
+  ariaLabelForHandle,
 }) => {
   const hasTooltipStickyPosition = !isNullOrUndefined(tooltipStickyPosition);
   const tooltipStickyPositionStr =
@@ -30,7 +31,7 @@ const Slider = ({
     [`uic--${tooltipStickyVariant}`]: tooltipStickyVariant,
     'uic--tooltip-sticky-hint': true,
     [`uic--tooltip-position-${tooltipStickyPosition}`]: true,
-    'uic--position-absolute': true,
+    'uic--position-relative': true,
   });
   const containerClasses = classNames(
     {
@@ -88,7 +89,7 @@ const Slider = ({
       )}
       {tooltip && (
         <div
-          className={`uic--tooltip uic--tooltip-position-${value} uic--position-absolute`}
+          className={`uic--tooltip uic--tooltip-position-${value} uic--position-relative`}
         >
           {tooltip}
         </div>
@@ -116,10 +117,13 @@ const Slider = ({
         marks={markers}
         included={false}
         required={required}
+        ariaLabelForHandle={ariaLabelForHandle}
       />
     </div>
   );
 };
+
+Slider.defaultProps = {ariaLabelForHandle: 'slider handle'};
 
 Slider.propTypes = {
   /** The name of the component. */
@@ -142,6 +146,7 @@ Slider.propTypes = {
   className: PropTypes.string,
   /** Determines if the input is required or not. */
   required: PropTypes.bool,
+  ariaLabelForHandle: PropTypes.string,
 };
 
 export default memo(Slider);

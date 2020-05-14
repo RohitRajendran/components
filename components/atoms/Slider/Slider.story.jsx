@@ -25,11 +25,15 @@ store.subscribe(() => {
   forceReRender();
 });
 
-const defaultProps = (variant, formName) => ({
+const defaultProps = (
+  variant,
+  formName,
+  tooltipText = 'How many cats would you like?',
+) => ({
   tooltipStickyVariant: select('variant', ['green', 'purple', null], variant),
   leftAnnotate: text('leftAnnotate', 'Less Cats'),
   rightAnnotate: text('rightAnnotate', 'More Cats'),
-  tooltip: text('tooltip', 'How many cats would you like?'),
+  tooltip: text('tooltip', tooltipText),
   tooltipStickyPosition: number('tooltipStickyPosition', 4),
   value: store.get(formName),
   name: formName,
@@ -41,3 +45,13 @@ stories.add('default', () => <Slider {...defaultProps(null, 'slider1')} />);
 stories.add('green', () => <Slider {...defaultProps('green', 'slider2')} />);
 
 stories.add('purple', () => <Slider {...defaultProps('purple', 'slider3')} />);
+
+stories.add('with long tooltip', () => (
+  <Slider
+    {...defaultProps(
+      'purple',
+      'slider3',
+      'I would like to keep so many cats all throughout my castle and feed them 4 times everyday and they will be so happy and love me.',
+    )}
+  />
+));

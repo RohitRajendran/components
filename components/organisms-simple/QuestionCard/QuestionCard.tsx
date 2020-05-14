@@ -57,9 +57,9 @@ export type QuestionCardProps = {
     label: string;
   };
   /** The handler to fire when a change happens. */
-  onChange?: () => void;
+  onChange?: React.ChangeEventHandler;
   /** The handler to fire when the Submit button is clicked. */
-  onSubmit: () => void;
+  onSubmit: React.FormEventHandler;
   /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
   outputDefaults?: {};
   /** Shorter title to be used with the card summary. */

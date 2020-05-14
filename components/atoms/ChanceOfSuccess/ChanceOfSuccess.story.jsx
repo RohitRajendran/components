@@ -80,3 +80,13 @@ stories.add(
   ),
   {percy: {skip: true}},
 );
+
+stories.add(
+  'missing percent',
+  () => (
+    <ChanceOfSuccess
+      {...defaultProps({draft: false, running: false, compact: false})}
+    />
+  ),
+  {percy: {skip: true}},
+);

@@ -1,0 +1,46 @@
+.uic--double-donut {
+  // Prevents double clicks within the donut from highlighting nearby text incorrectly.
+  user-select: none;
+
+  // Ensures that each slice within the donut shows a proper click cursor.
+  path {
+    cursor: pointer;
+  }
+
+  &__legend {
+    padding-left: 3.4rem;
+  }
+
+  &__category-container {
+    cursor: pointer;
+    margin-bottom: 1.2rem;
+  }
+
+  &__category {
+    @include source-sans-pro(1.6rem);
+    max-width: 9rem;
+
+    span {
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__subcategory-container {
+    @include source-sans-pro(1.2rem);
+    margin: 0.5rem 0 0 1.5rem;
+  }
+
+  @include media-breakpoint-down(xs) {
+    &__legend {
+      position: initial;
+      text-align: center;
+      transform: none;
+      .category {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+}
