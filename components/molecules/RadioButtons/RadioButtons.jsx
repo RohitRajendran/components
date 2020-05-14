@@ -101,6 +101,8 @@ const RadioButtons = ({
     </fieldset>
   );
 };
+
+// TS types for RadioButtons' props are defined in RadioButtonCards
 RadioButtons.propTypes = {
   /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
   name: PropTypes.string.isRequired,
