@@ -38,6 +38,7 @@ test('Cabinet - handleKeyPress', (t) => {
     'Should toggle the Cabinet as enter/return has been pressed.',
   );
 
+  component.unmount();
   t.end();
 });
 
@@ -61,6 +62,7 @@ test('Cabinet - handleClick', (t) => {
 
   t.deepEquals(props.toggle.callCount, 1, 'Should toggle the Cabinet.');
 
+  component.unmount();
   t.end();
 });
 
@@ -86,6 +88,7 @@ test('Cabinet - handleClick (handleWithState)', (t) => {
     'Should toggle the Cabinet state to true.',
   );
 
+  component.unmount();
   t.end();
 });
 
@@ -109,6 +112,7 @@ test('Cabinet - handleEscapePress', (t) => {
 
   t.deepEquals(props.toggle.callCount, 1, 'Should toggle the Cabinet.');
 
+  component.unmount();
   t.end();
 });
 
@@ -136,6 +140,7 @@ test('Cabinet - handleEscapePress (handleWithState)', (t) => {
     'Should toggle the Cabinet state to false.',
   );
 
+  component.unmount();
   t.end();
 });
 
@@ -167,6 +172,7 @@ test('Cabinet - handleDocumentClick', (t) => {
     'Should fire the toggle handler as the click is outside of the Cabinet.',
   );
 
+  component.unmount();
   t.end();
 });
 
