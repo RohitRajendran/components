@@ -30,15 +30,17 @@ import {PaginatedTile} from '@unitedincome/components';
       'Saturday',
       'Sunday',
     ]}
-    itemsPerPage={3}
-    ListTemplate={({paginatedItems}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      );
+    listTemplate={{
+      itemsPerPage: 3,
+      Template: ({paginatedItems}) => {
+        return (
+          <ul>
+            {paginatedItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        );
+      },
     }}
     tileProps={{
       footerContent: (
@@ -61,15 +63,17 @@ import {PaginatedTile} from '@unitedincome/components';
     'Saturday',
     'Sunday',
   ]}
-  itemsPerPage={3}
-  ListTemplate={({paginatedItems}) => {
-    return (
-      <ul>
-        {paginatedItems.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    );
+  listTemplate={{
+      itemsPerPage: 3,
+      Template: ({paginatedItems}) => {
+      return (
+        <ul>
+          {paginatedItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      );
+    },
   }}
   tileProps={{
     footerContent:
@@ -85,7 +89,6 @@ import {PaginatedTile} from '@unitedincome/components';
 
 The items rendered in the pagination tile can be different views as well.
 In that case, embed the list of views(markup) in the `items` property and make sure to omit the `ListTemplate` property.
-The `itemsPerPage` property can also be omitted as it becomes redundant in this case.
 
 <Preview>
   <PaginatedTile
@@ -153,15 +156,17 @@ You can render the dark version of the paginated tile by passing in the `isDark`
       'Saturday',
       'Sunday',
     ]}
-    itemsPerPage={3}
-    ListTemplate={({paginatedItems}) => {
-      return (
-        <ul>
-          {paginatedItems.map((item) => (
-            <li style={{color: 'inherit'}}>{item}</li>
-          ))}
-        </ul>
-      );
+    listTemplate={{
+      itemsPerPage: 3,
+      Template: ({paginatedItems}) => {
+        return (
+          <ul>
+            {paginatedItems.map((item) => (
+              <li style={{color: 'inherit'}}>{item}</li>
+            ))}
+          </ul>
+        );
+      },
     }}
     tileProps={{
       footerContent: (
@@ -184,15 +189,17 @@ You can render the dark version of the paginated tile by passing in the `isDark`
     'Saturday',
     'Sunday',
   ]}
-  itemsPerPage={3}
-  ListTemplate={({paginatedItems}) => {
-    return (
-      <ul className="uic--body-text">
-        {paginatedItems.map((item) => (
-          <li style={{color: 'inherit'}}>{item}</li>
-        ))}
-      </ul>
-    );
+  listTemplate={{
+    itemsPerPage: 3,
+    Template: ({paginatedItems}) => {
+      return (
+        <ul>
+          {paginatedItems.map((item) => (
+            <li style={{color: 'inherit'}}>{item}</li>
+          ))}
+        </ul>
+      );
+    },
   }}
   tileProps={{
     footerContent: (
@@ -211,3 +218,4 @@ You can render the dark version of the paginated tile by passing in the `isDark`
 ## Related ✨
 
 - [Tile](/?path=/docs/atoms-tile--default)
+- [TabbedTile](/?path=/docs/molecules-tabbedtile--default)

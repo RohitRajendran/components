@@ -21,7 +21,7 @@ stories.addParameters({
   },
 });
 
-const ListTemplate = ({paginatedItems}) => {
+const Template = ({paginatedItems}) => {
   return (
     <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
       {paginatedItems.map((item, index) => (
@@ -30,12 +30,12 @@ const ListTemplate = ({paginatedItems}) => {
     </ul>
   );
 };
-ListTemplate.displayName = 'ListTemplate';
-ListTemplate.propTypes = {
+Template.displayName = 'Template';
+Template.propTypes = {
   paginatedItems: PropTypes.arrayOf(PropTypes.string),
 };
 
-const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
+const defaultProps = ({listTemplate, isDark, hasFooter}) => ({
   items: [
     'Monday',
     'Tuesday',
@@ -45,8 +45,7 @@ const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
     'Saturday',
     'Sunday',
   ],
-  itemsPerPage: number('itemsPerPage', itemsPerPage || 1),
-  ListTemplate,
+  listTemplate,
   tileProps: hasFooter
     ? {
         footerContent: (
@@ -65,12 +64,16 @@ const defaultProps = ({itemsPerPage, isDark, hasFooter}) => ({
 });
 
 stories.add('default', () => (
-  <PaginatedTile {...defaultProps({itemsPerPage: 3})} />
+  <PaginatedTile
+    {...defaultProps({
+      listTemplate: {itemsPerPage: number('itemsPerPage', 3), Template},
+    })}
+  />
 ));
 stories.add('footer content with pagination', () => (
   <PaginatedTile
     {...defaultProps({
-      itemsPerPage: 3,
+      listTemplate: {itemsPerPage: number('itemsPerPage', 3), Template},
       hasFooter: true,
     })}
   />
@@ -78,15 +81,24 @@ stories.add('footer content with pagination', () => (
 stories.add('dark', () => (
   <PaginatedTile
     {...defaultProps({
-      itemsPerPage: 3,
+      listTemplate: {itemsPerPage: number('itemsPerPage', 3), Template},
       isDark: true,
       hasFooter: true,
     })}
   />
 ));
 stories.add('footer content no pagination', () => (
-  <PaginatedTile {...defaultProps({itemsPerPage: 7, hasFooter: true})} />
+  <PaginatedTile
+    {...defaultProps({
+      listTemplate: {itemsPerPage: number('itemsPerPage', 7), Template},
+      hasFooter: true,
+    })}
+  />
 ));
 stories.add('no footer content and no pagination', () => (
-  <PaginatedTile {...defaultProps({itemsPerPage: 7})} />
+  <PaginatedTile
+    {...defaultProps({
+      listTemplate: {itemsPerPage: number('itemsPerPage', 7), Template},
+    })}
+  />
 ));

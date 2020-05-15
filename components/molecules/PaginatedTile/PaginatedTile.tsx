@@ -7,46 +7,62 @@ import Button from '~components/atoms/Button/Button';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import {colors} from '~constants/js/colors';
 
-type Pagination = {firstPage: boolean; lastPage: boolean} | null;
-const hasPagination = (
+type PaginationControls = {
+  /**Indicates if on first page */
+  firstPage: boolean;
+  /**Indicates if on last page */
+  lastPage: boolean;
+  /**Function to invoke when going to previous page */
+  previous: () => void;
+  /**Function to invoke when going to next page */
+  next: () => void;
+} | null;
+const paginationControls = (
   page: number,
   numberOfItems: number,
   itemsPerPage: number,
-): Pagination => {
+  previous: () => void,
+  next: () => void,
+): PaginationControls => {
   const firstPage = page === 0;
   const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
-  return !(firstPage && lastPage) ? {firstPage, lastPage} : null;
+  return !(firstPage && lastPage)
+    ? {firstPage, lastPage, previous, next}
+    : null;
 };
 
 type PaginatedTileProps<T> = {
+  /** Items to be rendered in the ListTemplate property or individual views to be rendered as pages.*/
+  items: T[];
+  /** Template used to render a list of items.*/
+  listTemplate?: {
+    /** Number of items to be displayed per page.*/
+    itemsPerPage: number;
+    /** Template markup.*/
+    Template: React.ComponentType<{paginatedItems: T[]}>;
+  };
   /* Additional class names to apply to the container. */
   className?: string;
   /** Additional style properties to apply to the container. */
   style?: React.CSSProperties;
   /**Tile Properties*/
   tileProps?: TileProps;
-  /** Items to be rendered in the ListTemplate property or individual views to be rendered as pages.*/
-  items: T[];
-  /** Template used to render a list of items.*/
-  ListTemplate?: React.ComponentType<{paginatedItems: T[]}>;
-  /** Number of items to be displayed per page. This is used in conjuction with the ListTemplate property. */
-  itemsPerPage: number;
   /** Determines if the navigation tile should be dark or not. */
   isDark?: boolean;
 };
+
 const PaginatedTile = function <T>(
   props: PaginatedTileProps<T>,
 ): ReactElement | null {
   const fn: FC<PaginatedTileProps<T>> = ({
+    items,
+    listTemplate,
     className,
     style,
-    items,
-    ListTemplate,
     tileProps,
-    itemsPerPage,
     isDark,
   }) => {
-    const [page, setPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const containerClasses = classNames(
       {
@@ -55,79 +71,75 @@ const PaginatedTile = function <T>(
       className,
     );
 
-    const pagination = hasPagination(page, items.length, itemsPerPage);
+    const itemsPerPage = listTemplate?.itemsPerPage || 1;
+    const paginationCtrls = paginationControls(
+      currentPage,
+      items.length,
+      itemsPerPage,
+      (): void => setCurrentPage(currentPage - 1),
+      (): void => setCurrentPage(currentPage + 1),
+    );
     return (
-      <div className={containerClasses} style={style}>
-        <Tile
-          isDark={isDark}
-          {...tileProps}
-          footerContent={
-            (tileProps?.footerContent || pagination) && (
-              <PageFooter
-                footerContent={tileProps?.footerContent}
-                pagination={pagination}
-                previous={(): void => setPage(page - 1)}
-                next={(): void => setPage(page + 1)}
-              />
-            )
-          }
-        >
-          {!ListTemplate ? (
-            items[page]
-          ) : (
-            <ListTemplate
-              paginatedItems={items.slice(
-                page * itemsPerPage,
-                page * itemsPerPage + itemsPerPage,
-              )}
+      <Tile
+        className={containerClasses}
+        style={style}
+        isDark={isDark}
+        {...tileProps}
+        footerContent={
+          (tileProps?.footerContent || paginationCtrls) && (
+            <PageFooter
+              footerContent={tileProps?.footerContent}
+              paginationCtrls={paginationCtrls}
             />
-          )}
-        </Tile>
-      </div>
+          )
+        }
+      >
+        {!listTemplate ? (
+          items[currentPage]
+        ) : (
+          <listTemplate.Template
+            paginatedItems={items.slice(
+              currentPage * itemsPerPage,
+              currentPage * itemsPerPage + itemsPerPage,
+            )}
+          />
+        )}
+      </Tile>
     );
   };
   return fn({...props});
 };
 
-PaginatedTile.defaultProps = {
-  className: 'uic--default-placeholder',
-  itemsPerPage: 1,
+type PageFooterProps = {
+  /**Provides pagination controls */
+  paginationCtrls?: PaginationControls;
+  /**Markup for footer content */
+  footerContent?: React.ReactNode;
 };
 
-type PageFooterProps = {
-  footerContent?: React.ReactNode;
-  pagination: Pagination;
-  previous: () => void;
-  next: () => void;
-};
-const PageFooter: FC<PageFooterProps> = ({
-  footerContent,
-  pagination,
-  previous,
-  next,
-}) => {
+const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
   return (
     <div
       className={classNames(
         {'uic--paginated-tile__pagination-only': !footerContent},
         {
-          'uic--paginated-tile__footer-content-only': !pagination,
+          'uic--paginated-tile__footer-content-only': !paginationCtrls,
         },
         'uic--d-flex uic--paginated-tile__pagination-footer',
       )}
     >
       {footerContent && <div>{footerContent}</div>}
-      {pagination && (
+      {paginationCtrls && (
         <div className="uic--paginated-tile__pagination-controls">
           <PaginationButton
-            disabled={pagination.firstPage}
+            disabled={paginationCtrls.firstPage}
             direction="left"
-            onClick={previous}
+            onClick={paginationCtrls.previous}
           />
           <PaginationButton
-            disabled={pagination.lastPage}
+            disabled={paginationCtrls.lastPage}
             direction="right"
-            onClick={next}
+            onClick={paginationCtrls.next}
           />
         </div>
       )}
@@ -136,10 +148,14 @@ const PageFooter: FC<PageFooterProps> = ({
 };
 
 type PaginationButtonProps = {
+  /**Determines if the button is disabled or not. */
   disabled: boolean;
+  /**Function to invoke on button click. */
   onClick: () => void;
+  /**Direction of flow the button is for. */
   direction: 'right' | 'left';
 };
+
 const PaginationButton: FC<PaginationButtonProps> = ({
   disabled,
   onClick,
@@ -155,7 +171,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
     >
       <CaretIcon
         direction={direction}
-        fill={disabled ? 'rgb(122,84,199)' : colors.white}
+        fill={disabled ? colors['fuchsia-blue'] : colors.white}
       />
     </Button>
   );
