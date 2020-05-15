@@ -26,7 +26,7 @@ type PaginatedTileProps<T> = {
 
 const PaginatedTile = function <T>(
   props: PaginatedTileProps<T>,
-): ReactElement | null {
+): JSX.Element | null {
   const fn: FC<PaginatedTileProps<T>> = ({
     className,
     style,
@@ -35,7 +35,7 @@ const PaginatedTile = function <T>(
     tileProps,
     itemsPerPage,
     isDark,
-  }): JSX.Element => {
+  }) => {
     const [page, setPage] = useState(0);
 
     const containerClasses = classNames(
