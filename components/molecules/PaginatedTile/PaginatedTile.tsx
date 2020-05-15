@@ -121,11 +121,12 @@ const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
   return (
     <div
       className={classNames(
-        {'uic--paginated-tile__pagination-only': !footerContent},
         {
-          'uic--paginated-tile__footer-content-only': !paginationCtrls,
+          'uic--justify-content-end': !footerContent,
+          'uic--justify-content-start': !paginationCtrls,
+          'uic--justify-content-between': footerContent && paginationCtrls,
         },
-        'uic--d-flex uic--paginated-tile__pagination-footer',
+        'uic--d-flex uic--align-items-center uic--h-100',
       )}
     >
       {footerContent && <div>{footerContent}</div>}
