@@ -1,11 +1,22 @@
 /** @module PaginatedTile */
 import classNames from 'classnames';
-import React, {FC, useState} from 'react';
+import React, {FC, useState, ReactElement} from 'react';
 import './PaginatedTile.scss';
 import Tile, {TileProps} from '~components/atoms/Tile/Tile';
 import Button from '~components/atoms/Button/Button';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
 import {colors} from '~constants/js/colors';
+
+type Pagination = {firstPage: boolean; lastPage: boolean} | null;
+const hasPagination = (
+  page: number,
+  numberOfItems: number,
+  itemsPerPage: number,
+): Pagination => {
+  const firstPage = page === 0;
+  const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
+  return !(firstPage && lastPage) ? {firstPage, lastPage} : null;
+};
 
 type PaginatedTileProps<T> = {
   /* Additional class names to apply to the container. */
@@ -23,10 +34,9 @@ type PaginatedTileProps<T> = {
   /** Determines if the navigation tile should be dark or not. */
   isDark?: boolean;
 };
-
 const PaginatedTile = function <T>(
   props: PaginatedTileProps<T>,
-): JSX.Element | null {
+): ReactElement | null {
   const fn: FC<PaginatedTileProps<T>> = ({
     className,
     style,
@@ -45,20 +55,21 @@ const PaginatedTile = function <T>(
       className,
     );
 
+    const pagination = hasPagination(page, items.length, itemsPerPage);
     return (
       <div className={containerClasses} style={style}>
         <Tile
           isDark={isDark}
           {...tileProps}
           footerContent={
-            <PageFooter
-              footerContent={tileProps?.footerContent}
-              page={page}
-              numberOfItems={items.length}
-              itemsPerPage={itemsPerPage}
-              previous={(): void => setPage(page - 1)}
-              next={(): void => setPage(page + 1)}
-            />
+            (tileProps?.footerContent || pagination) && (
+              <PageFooter
+                footerContent={tileProps?.footerContent}
+                pagination={pagination}
+                previous={(): void => setPage(page - 1)}
+                next={(): void => setPage(page + 1)}
+              />
+            )
           }
         >
           {!ListTemplate ? (
@@ -85,28 +96,16 @@ PaginatedTile.defaultProps = {
 
 type PageFooterProps = {
   footerContent?: React.ReactNode;
-  page: number;
-  numberOfItems: number;
-  itemsPerPage: number;
+  pagination: Pagination;
   previous: () => void;
   next: () => void;
 };
 const PageFooter: FC<PageFooterProps> = ({
   footerContent,
-  page,
-  numberOfItems,
-  itemsPerPage,
+  pagination,
   previous,
   next,
-}): JSX.Element | null => {
-  const firstPage = page === 0;
-  const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
-  const pagination = !(firstPage && lastPage);
-
-  if (!footerContent && !pagination) {
-    return null;
-  }
-
+}) => {
   return (
     <div
       className={classNames(
@@ -121,12 +120,12 @@ const PageFooter: FC<PageFooterProps> = ({
       {pagination && (
         <div className="uic--paginated-tile__pagination-controls">
           <PaginationButton
-            disabled={firstPage}
+            disabled={pagination.firstPage}
             direction="left"
             onClick={previous}
           />
           <PaginationButton
-            disabled={lastPage}
+            disabled={pagination.lastPage}
             direction="right"
             onClick={next}
           />
@@ -145,7 +144,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
   disabled,
   onClick,
   direction,
-}): JSX.Element => {
+}) => {
   return (
     <Button
       variant="secondary"
