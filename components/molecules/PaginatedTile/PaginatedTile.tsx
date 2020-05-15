@@ -1,6 +1,6 @@
 /** @module PaginatedTile */
 import classNames from 'classnames';
-import React, {FC, useState, ReactElement} from 'react';
+import React, {FC, useState} from 'react';
 import './PaginatedTile.scss';
 import Tile, {TileProps} from '~components/atoms/Tile/Tile';
 import Button from '~components/atoms/Button/Button';
