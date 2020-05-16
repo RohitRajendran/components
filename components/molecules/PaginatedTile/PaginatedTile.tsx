@@ -119,19 +119,10 @@ type PageFooterProps = {
 
 const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
   return (
-    <div
-      className={classNames(
-        {
-          'uic--justify-content-end': !footerContent,
-          'uic--justify-content-start': !paginationCtrls,
-          'uic--justify-content-between': footerContent && paginationCtrls,
-        },
-        'uic--d-flex uic--align-items-center uic--h-100',
-      )}
-    >
+    <React.Fragment>
       {footerContent && <div>{footerContent}</div>}
       {paginationCtrls && (
-        <div className="uic--paginated-tile__pagination-controls">
+        <div className="uic--paginated-tile__pagination-controls uic--position-absolute">
           <PaginationButton
             disabled={paginationCtrls.firstPage}
             direction="left"
@@ -144,7 +135,7 @@ const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
           />
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -167,7 +158,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
       variant="secondary"
       light
       disabled={disabled}
-      className="uic--paginated-tile__pagination-button"
+      className="uic--paginated-tile__pagination-button uic--h-100"
       onClick={onClick}
     >
       <CaretIcon
