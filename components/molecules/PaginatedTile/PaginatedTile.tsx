@@ -41,34 +41,21 @@ type PaginatedTileProps<T> = {
     /** Template markup.*/
     Template: React.ComponentType<{paginatedItems: T[]}>;
   };
-  /* Additional class names to apply to the container. */
-  className?: string;
-  /** Additional style properties to apply to the container. */
-  style?: React.CSSProperties;
-  /**Tile Properties*/
+  /**Additional Tile Properties*/
   tileProps?: TileProps;
-  /** Determines if the navigation tile should be dark or not. */
-  isDark?: boolean;
 };
 
 const PaginatedTile = function <T>(
   props: PaginatedTileProps<T>,
 ): ReactElement | null {
-  const fn: FC<PaginatedTileProps<T>> = ({
-    items,
-    listTemplate,
-    className,
-    style,
-    tileProps,
-    isDark,
-  }) => {
+  const fn: FC<PaginatedTileProps<T>> = ({items, listTemplate, tileProps}) => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const containerClasses = classNames(
       {
         'uic--paginated-tile': true,
       },
-      className,
+      tileProps?.className,
     );
 
     const itemsPerPage = listTemplate?.itemsPerPage || 1;
@@ -82,9 +69,8 @@ const PaginatedTile = function <T>(
     return (
       <Tile
         className={containerClasses}
-        style={style}
-        isDark={isDark}
-        {...tileProps}
+        style={tileProps?.style}
+        isDark={tileProps?.isDark}
         footerContent={
           (tileProps?.footerContent || paginationCtrls) && (
             <PageFooter
