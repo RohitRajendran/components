@@ -39,7 +39,7 @@ type PaginatedTileProps<T> = {
     /** Number of items to be displayed per page.*/
     itemsPerPage: number;
     /** Template markup.*/
-    Template: FC<{paginatedItems: T[]}>;
+    Template: React.ComponentType<{paginatedItems: T[]}>;
   };
   /**Additional Tile Properties*/
   tileProps?: TileProps;
