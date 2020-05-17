@@ -120,7 +120,7 @@ type PageFooterProps = {
 const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
   return (
     <React.Fragment>
-      {footerContent && <div>{footerContent}</div>}
+      {footerContent}
       {paginationCtrls && (
         <div className="uic--paginated-tile__pagination-controls uic--position-absolute">
           <PaginationButton
