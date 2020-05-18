@@ -54,7 +54,10 @@ const defaultProps = ({listTemplate, tileProps}) => ({
     'Saturday',
     'Sunday',
   ],
-  listTemplate: {itemsPerPage: number('itemsPerPage', 3), ...listTemplate},
+  listTemplate: {
+    itemsPerPage: number('itemsPerPage', listTemplate.itemsPerPage),
+    ...listTemplate,
+  },
   tileProps,
 });
 
