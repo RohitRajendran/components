@@ -73,10 +73,45 @@ const PaginatedTile = function <T>(
         isDark={tileProps?.isDark}
         footerContent={
           (tileProps?.footerContent || paginationCtrls) && (
-            <PageFooter
-              footerContent={tileProps?.footerContent}
-              paginationCtrls={paginationCtrls}
-            />
+            <React.Fragment>
+              {tileProps?.footerContent}
+              {paginationCtrls && (
+                <div className="uic--paginated-tile__pagination-controls uic--position-absolute">
+                  <Button
+                    variant="secondary"
+                    light
+                    disabled={paginationCtrls.firstPage}
+                    className="uic--paginated-tile__pagination-button uic--h-100"
+                    onClick={paginationCtrls.previous}
+                  >
+                    <CaretIcon
+                      direction={'left'}
+                      fill={
+                        paginationCtrls.firstPage
+                          ? colors['fuchsia-blue']
+                          : colors.white
+                      }
+                    />
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    light
+                    disabled={paginationCtrls.lastPage}
+                    className="uic--paginated-tile__pagination-button uic--h-100"
+                    onClick={paginationCtrls.next}
+                  >
+                    <CaretIcon
+                      direction={'right'}
+                      fill={
+                        paginationCtrls.lastPage
+                          ? colors['fuchsia-blue']
+                          : colors.white
+                      }
+                    />
+                  </Button>
+                </div>
+              )}
+            </React.Fragment>
           )
         }
       >
@@ -94,65 +129,6 @@ const PaginatedTile = function <T>(
     );
   };
   return fn({...props});
-};
-
-type PageFooterProps = {
-  /**Provides pagination controls */
-  paginationCtrls?: PaginationControls;
-  /**Markup for footer content */
-  footerContent?: React.ReactNode;
-};
-
-const PageFooter: FC<PageFooterProps> = ({paginationCtrls, footerContent}) => {
-  return (
-    <React.Fragment>
-      {footerContent}
-      {paginationCtrls && (
-        <div className="uic--paginated-tile__pagination-controls uic--position-absolute">
-          <PaginationButton
-            disabled={paginationCtrls.firstPage}
-            direction="left"
-            onClick={paginationCtrls.previous}
-          />
-          <PaginationButton
-            disabled={paginationCtrls.lastPage}
-            direction="right"
-            onClick={paginationCtrls.next}
-          />
-        </div>
-      )}
-    </React.Fragment>
-  );
-};
-
-type PaginationButtonProps = {
-  /**Determines if the button is disabled or not. */
-  disabled: boolean;
-  /**Function to invoke on button click. */
-  onClick: () => void;
-  /**Direction of flow the button is for. */
-  direction: 'right' | 'left';
-};
-
-const PaginationButton: FC<PaginationButtonProps> = ({
-  disabled,
-  onClick,
-  direction,
-}) => {
-  return (
-    <Button
-      variant="secondary"
-      light
-      disabled={disabled}
-      className="uic--paginated-tile__pagination-button uic--h-100"
-      onClick={onClick}
-    >
-      <CaretIcon
-        direction={direction}
-        fill={disabled ? colors['fuchsia-blue'] : colors.white}
-      />
-    </Button>
-  );
 };
 
 export default PaginatedTile;
