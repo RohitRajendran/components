@@ -3,6 +3,7 @@ import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {PureChanceOfSuccess as ChanceOfSuccess} from './ChanceOfSuccess';
 import ChanceOfSuccessReadme from './ChanceOfSuccess.mdx';
+import {storybookBackgrounds} from '~constants/js/colors';
 
 const stories = storiesOf('Atoms/ChanceOfSuccess', module);
 
@@ -10,6 +11,9 @@ stories.addParameters({
   docs: {
     page: ChanceOfSuccessReadme,
   },
+});
+stories.addParameters({
+  backgrounds: storybookBackgrounds.defaultRoyalBackground,
 });
 
 const defaultProps = ({percent, draft, running, compact}) => ({
