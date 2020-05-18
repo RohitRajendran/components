@@ -5,26 +5,41 @@ import {
   Matcher,
   SelectorMatcherOptions,
 } from '@testing-library/react';
-import React, {FC} from 'react';
+import React from 'react';
 import test from 'tape';
 import PaginatedTile from './PaginatedTile';
 import Button from '~components/atoms/Button/Button';
 
-const Template: FC<{paginatedItems: string[]}> = ({
-  paginatedItems,
-}): JSX.Element => {
-  return (
-    <ul>
-      {paginatedItems.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  );
+const items = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+
+const getPages = (itemsPerPage: number): React.ReactNode[] => {
+  const pages = [];
+  for (let page = 0; page < items.length / itemsPerPage; page++) {
+    const pageItems = items.slice(
+      page * itemsPerPage,
+      page * itemsPerPage + itemsPerPage,
+    );
+    pages.push(
+      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+        {pageItems.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>,
+    );
+  }
+  return pages;
 };
 
 const validatePageContent = (
   page: number,
-  items: Matcher[],
   itemsPerPage: number,
   t: test.Test,
   getByText: (
@@ -51,23 +66,10 @@ const validatePageContent = (
 };
 
 test('PaginatedTile - renders', (t) => {
-  const props = {
-    items: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ],
-    listTemplate: {
-      itemsPerPage: 3,
-      Template,
-    },
-  };
-
-  const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
+  const itemsPerPage = 3;
+  const {getAllByRole, getByText} = render(
+    <PaginatedTile pages={getPages(itemsPerPage)} />,
+  );
 
   const paginationControls = getAllByRole('button');
 
@@ -76,165 +78,44 @@ test('PaginatedTile - renders', (t) => {
   //validate page 1
   t.true(paginationControls[0].hasAttribute('disabled'));
   t.false(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(
-    0,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
-  );
+  validatePageContent(0, itemsPerPage, t, getByText);
 
   //validate page 2
   fireEvent.click(paginationControls[1]);
   t.false(paginationControls[0].hasAttribute('disabled'));
   t.false(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(
-    1,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
-  );
+  validatePageContent(1, itemsPerPage, t, getByText);
 
   //validate page 3
   fireEvent.click(paginationControls[1]);
   t.false(paginationControls[0].hasAttribute('disabled'));
   t.true(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(
-    2,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
-  );
+  validatePageContent(2, itemsPerPage, t, getByText);
 
   //validate page 2 (after transitioning from page 3)
   fireEvent.click(paginationControls[0]);
   t.false(paginationControls[0].hasAttribute('disabled'));
   t.false(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(
-    1,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
+  validatePageContent(1, itemsPerPage, t, getByText);
+
+  cleanup();
+  t.end();
+});
+
+test('PaginatedTile - footer content with pagination - renders', (t) => {
+  const itemsPerPage = 2;
+  const {getAllByRole, getByText} = render(
+    <PaginatedTile
+      pages={getPages(itemsPerPage)}
+      tileProps={{
+        footerContent: (
+          <Button variant="link" to="#">
+            View Montezuma the Cat
+          </Button>
+        ),
+      }}
+    />,
   );
-
-  cleanup();
-  t.end();
-});
-
-test('PaginatedTile - no template - renders', (t) => {
-  const props = {
-    items: ['Page 1', 'Page 2'],
-  };
-
-  const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
-
-  const paginationControls = getAllByRole('button');
-
-  t.equals(paginationControls.length, 2);
-
-  //validate page 1
-  t.true(paginationControls[0].hasAttribute('disabled'));
-  t.false(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(0, props.items, 1, t, getByText);
-
-  //validate page 2
-  fireEvent.click(paginationControls[1]);
-  t.false(paginationControls[0].hasAttribute('disabled'));
-  t.true(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(1, props.items, 1, t, getByText);
-
-  cleanup();
-  t.end();
-});
-
-test('PaginatedTile - no pagination controls - renders', (t) => {
-  const props = {
-    items: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ],
-    listTemplate: {
-      itemsPerPage: 7,
-      Template,
-    },
-  };
-
-  const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
-
-  try {
-    getAllByRole('button');
-    t.fail('no pagination controls expected');
-  } catch {
-    t.pass();
-  }
-
-  //validate page 1
-  validatePageContent(
-    0,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
-  );
-
-  cleanup();
-  t.end();
-});
-
-test('PaginatedTile - no template - renders', (t) => {
-  const props = {
-    items: ['Page 1'],
-  };
-
-  const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
-
-  try {
-    getAllByRole('button');
-    t.fail('no pagination controls expected');
-  } catch {
-    t.pass();
-  }
-
-  //validate page 1
-  validatePageContent(0, props.items, 1, t, getByText);
-
-  cleanup();
-  t.end();
-});
-
-test('PaginatedTile - with footer content - renders', (t) => {
-  const props = {
-    items: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ],
-    listTemplate: {
-      itemsPerPage: 2,
-      Template,
-    },
-    tileProps: {
-      footerContent: (
-        <Button variant="link" to="#">
-          View Montezuma the Cat
-        </Button>
-      ),
-    },
-  };
-
-  const {getAllByRole, getByText} = render(<PaginatedTile {...props} />);
 
   const paginationControls = getAllByRole('button');
   t.equals(paginationControls.length, 2);
@@ -244,29 +125,52 @@ test('PaginatedTile - with footer content - renders', (t) => {
   //validate page 1
   t.true(paginationControls[0].hasAttribute('disabled'));
   t.false(paginationControls[1].hasAttribute('disabled'));
-  validatePageContent(
-    0,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
+  validatePageContent(0, itemsPerPage, t, getByText);
+
+  cleanup();
+  t.end();
+});
+
+test('PaginatedTile - footer content with no pagination - renders', (t) => {
+  const itemsPerPage = 7;
+  const {getAllByRole, getByText} = render(
+    <PaginatedTile
+      pages={getPages(itemsPerPage)}
+      tileProps={{
+        footerContent: (
+          <Button variant="link" to="#">
+            View Montezuma the Cat
+          </Button>
+        ),
+      }}
+    />,
   );
+
+  //validate pagination controls
+  try {
+    getAllByRole('button');
+    t.fail('no pagination controls expected');
+  } catch {
+    t.pass();
+  }
+
+  //validate footer content
+  t.equals(getAllByRole('link').length, 1);
+
+  //validate page 1
+  validatePageContent(0, itemsPerPage, t, getByText);
 
   cleanup();
   t.end();
 });
 
 test('PaginatedTile - no footer content and no pagination - renders', (t) => {
-  const props = {
-    items: ['Monday', 'Tuesday'],
-    listTemplate: {
-      itemsPerPage: 2,
-      Template,
-    },
-  };
+  const itemsPerPage = 7;
+  const {getByRole, getByText} = render(
+    <PaginatedTile pages={getPages(itemsPerPage)} />,
+  );
 
-  const {getByRole, getByText} = render(<PaginatedTile {...props} />);
-
+  //validate footer
   try {
     getByRole('contentinfo');
     t.fail('footer should not be displayed');
@@ -275,13 +179,7 @@ test('PaginatedTile - no footer content and no pagination - renders', (t) => {
   }
 
   //validate page 1
-  validatePageContent(
-    0,
-    props.items,
-    props.listTemplate.itemsPerPage,
-    t,
-    getByText,
-  );
+  validatePageContent(0, itemsPerPage, t, getByText);
 
   cleanup();
   t.end();

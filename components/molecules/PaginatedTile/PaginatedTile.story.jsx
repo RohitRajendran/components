@@ -4,8 +4,7 @@ import {storiesOf, forceReRender} from '@storybook/react';
 import PaginatedTile from './PaginatedTile';
 import PaginatedTileReadMe from './PaginatedTile.mdx';
 import Button from '~components/atoms/Button/Button';
-import {boolean, number} from '@storybook/addon-knobs';
-import PropTypes from 'prop-types';
+import {boolean} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Molecules/PaginatedTile', module);
 
@@ -21,31 +20,8 @@ stories.addParameters({
   },
 });
 
-const Template = ({paginatedItems}) => {
-  return (
-    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-      {paginatedItems.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  );
-};
-Template.displayName = 'Template';
-Template.propTypes = {
-  paginatedItems: PropTypes.arrayOf(PropTypes.string),
-};
-
-const getTileProps = (hasFooter, isDark) => ({
-  footerContent: hasFooter && (
-    <Button style={{textAlign: 'left'}} variant="link" to="#" dark={isDark}>
-      View Montezuma the Cat
-    </Button>
-  ),
-  isDark: boolean('isDark', isDark),
-});
-
-const defaultProps = ({listTemplate, tileProps}) => ({
-  items: [
+const getPages = (itemsPerPage) => {
+  const items = [
     'Monday',
     'Tuesday',
     'Wednesday',
@@ -53,51 +29,47 @@ const defaultProps = ({listTemplate, tileProps}) => ({
     'Friday',
     'Saturday',
     'Sunday',
-  ],
-  listTemplate: {
-    ...listTemplate,
-    itemsPerPage: number('itemsPerPage', listTemplate.itemsPerPage),
+  ];
+  const pages = [];
+
+  for (let page = 0; page < items.length / itemsPerPage; page++) {
+    const pageItems = items.slice(
+      page * itemsPerPage,
+      page * itemsPerPage + itemsPerPage,
+    );
+    pages.push(
+      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+        {pageItems.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>,
+    );
+  }
+  return pages;
+};
+
+const defaultProps = (itemsPerPage, hasFooter, isDark) => ({
+  pages: getPages(itemsPerPage),
+  tileProps: {
+    footerContent: hasFooter && (
+      <Button style={{textAlign: 'left'}} variant="link" to="#" dark={isDark}>
+        View Montezuma the Cat
+      </Button>
+    ),
+    isDark: boolean('isDark', isDark),
   },
-  tileProps,
 });
 
 stories.add('default', () => (
-  <PaginatedTile
-    {...defaultProps({
-      listTemplate: {itemsPerPage: 3, Template},
-      tileProps: getTileProps(false, false),
-    })}
-  />
+  <PaginatedTile {...defaultProps(3, false, false)} />
 ));
 stories.add('footer content with pagination', () => (
-  <PaginatedTile
-    {...defaultProps({
-      listTemplate: {itemsPerPage: 3, Template},
-      tileProps: getTileProps(true, false),
-    })}
-  />
+  <PaginatedTile {...defaultProps(3, true, false)} />
 ));
-stories.add('dark', () => (
-  <PaginatedTile
-    {...defaultProps({
-      listTemplate: {itemsPerPage: 3, Template},
-      tileProps: getTileProps(true, true),
-    })}
-  />
-));
+stories.add('dark', () => <PaginatedTile {...defaultProps(3, true, true)} />);
 stories.add('footer content no pagination', () => (
-  <PaginatedTile
-    {...defaultProps({
-      listTemplate: {itemsPerPage: 7, Template},
-      tileProps: getTileProps(true, false),
-    })}
-  />
+  <PaginatedTile {...defaultProps(7, true, false)} />
 ));
 stories.add('no footer content and no pagination', () => (
-  <PaginatedTile
-    {...defaultProps({
-      listTemplate: {itemsPerPage: 7, Template},
-      tileProps: getTileProps(false, false),
-    })}
-  />
+  <PaginatedTile {...defaultProps(7, false, false)} />
 ));
