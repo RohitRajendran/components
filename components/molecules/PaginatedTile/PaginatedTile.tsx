@@ -32,7 +32,7 @@ const paginationControls = (
 };
 
 type PaginatedTileProps = {
-  /** Pages to be rendered in the ListTemplate property or individual views to be rendered as pages.*/
+  /** List of pages to be rendered in the Tile.*/
   pages: React.ReactNode[];
   /**Additional Tile Properties*/
   tileProps?: TileProps;
@@ -77,7 +77,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
                     direction={'left'}
                     fill={
                       paginationCtrls.firstPage
-                        ? colors['fuchsia-blue']
+                        ? colors['white-30']
                         : colors.white
                     }
                   />
@@ -93,7 +93,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
                     direction={'right'}
                     fill={
                       paginationCtrls.lastPage
-                        ? colors['fuchsia-blue']
+                        ? colors['white-30']
                         : colors.white
                     }
                   />
