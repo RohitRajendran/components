@@ -55,8 +55,8 @@ const defaultProps = ({listTemplate, tileProps}) => ({
     'Sunday',
   ],
   listTemplate: {
-    itemsPerPage: number('itemsPerPage', listTemplate.itemsPerPage),
     ...listTemplate,
+    itemsPerPage: number('itemsPerPage', listTemplate.itemsPerPage),
   },
   tileProps,
 });
@@ -65,6 +65,7 @@ stories.add('default', () => (
   <PaginatedTile
     {...defaultProps({
       listTemplate: {itemsPerPage: 3, Template},
+      tileProps: getTileProps(false, false),
     })}
   />
 ));
@@ -96,6 +97,7 @@ stories.add('no footer content and no pagination', () => (
   <PaginatedTile
     {...defaultProps({
       listTemplate: {itemsPerPage: 7, Template},
+      tileProps: getTileProps(false, false),
     })}
   />
 ));
