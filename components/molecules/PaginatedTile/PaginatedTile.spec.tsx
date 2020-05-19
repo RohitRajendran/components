@@ -107,13 +107,11 @@ test('PaginatedTile - footer content with pagination - renders', (t) => {
   const {getAllByRole, getByText} = render(
     <PaginatedTile
       pages={getPages(itemsPerPage)}
-      tileProps={{
-        footerContent: (
-          <Button variant="link" to="#">
-            View Montezuma the Cat
-          </Button>
-        ),
-      }}
+      footerContent={
+        <Button variant="link" to="#">
+          View Montezuma the Cat
+        </Button>
+      }
     />,
   );
 
@@ -136,13 +134,11 @@ test('PaginatedTile - footer content with no pagination - renders', (t) => {
   const {getAllByRole, getByText} = render(
     <PaginatedTile
       pages={getPages(itemsPerPage)}
-      tileProps={{
-        footerContent: (
-          <Button variant="link" to="#">
-            View Montezuma the Cat
-          </Button>
-        ),
-      }}
+      footerContent={
+        <Button variant="link" to="#">
+          View Montezuma the Cat
+        </Button>
+      }
     />,
   );
 

@@ -4,7 +4,7 @@ import React, {FC} from 'react';
 import './PaginationControls.scss';
 import Button from '../Button/Button';
 import CaretIcon from '../icons/CaretIcon/CaretIcon';
-import {colors} from '~constants/js/colors';
+import {colors} from '../../../constants/js/colors';
 
 type PaginationControlsProps = {
   /**Disables/Enables the previous button. */
@@ -46,7 +46,7 @@ const PaginationControls: FC<PaginationControlsProps> = ({
         onClick={previous}
       >
         <CaretIcon
-          direction={'left'}
+          direction="left"
           fill={previousDisabled ? colors['white-30'] : colors.white}
         />
       </Button>
@@ -58,7 +58,7 @@ const PaginationControls: FC<PaginationControlsProps> = ({
         onClick={next}
       >
         <CaretIcon
-          direction={'right'}
+          direction="right"
           fill={nextDisabled ? colors['white-30'] : colors.white}
         />
       </Button>

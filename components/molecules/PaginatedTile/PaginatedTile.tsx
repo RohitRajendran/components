@@ -1,25 +1,29 @@
 /** @module PaginatedTile */
 import classNames from 'classnames';
-import React, {FC, useState} from 'react';
+import React, {FC, useState, Fragment} from 'react';
 import './PaginatedTile.scss';
-import Tile, {TileProps} from '~components/atoms/Tile/Tile';
-import PaginationControls from '~components/atoms/PaginationControls/PaginationControls';
+import Tile, {TileProps} from '../../atoms/Tile/Tile';
+import PaginationControls from '../../atoms/PaginationControls/PaginationControls';
 
 type PaginatedTileProps = {
   /** List of pages to be rendered in the Tile.*/
   pages: React.ReactNode[];
-  /**Additional Tile Properties*/
-  tileProps?: TileProps;
-};
+} & TileProps;
 
-const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
+const PaginatedTile: FC<PaginatedTileProps> = ({
+  pages,
+  className,
+  style,
+  footerContent,
+  isDark,
+}) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const containerClasses = classNames(
     {
       'uic--paginated-tile': true,
     },
-    tileProps?.className,
+    className,
   );
 
   const firstPage = currentPage === 0;
@@ -29,12 +33,12 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
   return (
     <Tile
       className={containerClasses}
-      style={tileProps?.style}
-      isDark={tileProps?.isDark}
+      style={style}
+      isDark={isDark}
       footerContent={
-        (tileProps?.footerContent || hasMultiplePages) && (
-          <React.Fragment>
-            {tileProps?.footerContent}
+        (footerContent || hasMultiplePages) && (
+          <Fragment>
+            {footerContent}
             {hasMultiplePages && (
               <PaginationControls
                 className="uic--paginated-tile__pagination-controls uic--position-absolute"
@@ -44,7 +48,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
                 next={(): void => setCurrentPage(currentPage + 1)}
               />
             )}
-          </React.Fragment>
+          </Fragment>
         )
       }
     >

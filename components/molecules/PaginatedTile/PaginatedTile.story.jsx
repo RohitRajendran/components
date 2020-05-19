@@ -50,19 +50,17 @@ const getPages = (itemsPerPage) => {
 
 const defaultProps = (itemsPerPage, hasFooter, isDark) => ({
   pages: getPages(itemsPerPage),
-  tileProps: {
-    footerContent: hasFooter && (
-      <Button
-        style={{textAlign: 'left'}}
-        variant="link"
-        to="#"
-        dark={boolean('isDark', isDark)}
-      >
-        View Montezuma the Cat
-      </Button>
-    ),
-    isDark: boolean('isDark', isDark),
-  },
+  footerContent: hasFooter && (
+    <Button
+      style={{textAlign: 'left'}}
+      variant="link"
+      to="#"
+      dark={boolean('isDark', isDark)}
+    >
+      View Montezuma the Cat
+    </Button>
+  ),
+  isDark: boolean('isDark', isDark),
 });
 
 stories.add('default', () => (

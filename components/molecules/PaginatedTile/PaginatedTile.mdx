@@ -31,13 +31,11 @@ import {PaginatedTile} from '@unitedincome/components';
         <li>Thursday</li>
       </ul>,
     ]}
-    tileProps={{
-      footerContent: (
-        <Button style={{textAlign: 'left'}} variant="link" to="#">
-          View Montezuma the Cat
-        </Button>
-      ),
-    }}
+    footerContent={
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+    }
   />
 </Preview>
 
@@ -53,14 +51,11 @@ import {PaginatedTile} from '@unitedincome/components';
       <li>Thursday</li>
     </ul>,
   ]}
-  tileProps={{
-    footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-    ),
-    isDark: true,
-  }}
+  footerContent={
+    <Button style={{textAlign: 'left'}} variant="link" to="#">
+      View Montezuma the Cat
+    </Button>
+  }
 />
 ```
 
@@ -80,14 +75,12 @@ You can render the dark version of the paginated tile by passing in the `tilePro
         <li style={{color: 'inherit'}}>Thursday</li>
       </ul>,
     ]}
-    tileProps={{
-      footerContent: (
-        <Button style={{textAlign: 'left'}} variant="link" to="#">
-          View Montezuma the Cat
-        </Button>
-      ),
-      isDark: true,
-    }}
+    footerContent={
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+    }
+    isDark
   />
 </Preview>
 
@@ -103,14 +96,12 @@ You can render the dark version of the paginated tile by passing in the `tilePro
       <li style={{color: 'inherit'}}>Thursday</li>
     </ul>,
   ]}
-  tileProps={{
-    footerContent: (
-      <Button style={{textAlign: 'left'}} variant="link" to="#">
-        View Montezuma the Cat
-      </Button>
-    ),
-    isDark: true,
-  }}
+  footerContent={
+    <Button style={{textAlign: 'left'}} variant="link" to="#">
+      View Montezuma the Cat
+    </Button>
+  }
+  isDark
 />
 ```
 
@@ -122,3 +113,4 @@ You can render the dark version of the paginated tile by passing in the `tilePro
 
 - [Tile](/?path=/docs/atoms-tile--default)
 - [TabbedTile](/?path=/docs/molecules-tabbedtile--default)
+- [PaginationControls](/?path=/docs/atoms-paginationcontrols--default)
