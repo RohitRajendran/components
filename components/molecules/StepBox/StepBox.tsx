@@ -6,7 +6,7 @@ import Button, {ButtonProps} from '../../atoms/Button/Button';
 import {isNullOrUndefined} from 'util';
 import CheckIcon from '../../atoms/icons/CheckIcon/CheckIcon';
 
-type StepProps = {
+export type StepProps = {
   /** The step label. */
   stepLabel: string;
   /** Determines if the check icon should be excluded from the step or not. */

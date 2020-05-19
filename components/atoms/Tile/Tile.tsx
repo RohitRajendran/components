@@ -3,6 +3,12 @@ import classNames from 'classnames';
 import React, {FC} from 'react';
 import './Tile.scss';
 
+export enum TileBackgrounds {
+  Light = 'light',
+  Dark = 'dark',
+  Draft = 'draft',
+}
+
 export type TileProps = {
   /* Additional class names to apply to the container. */
   className?: string;
@@ -10,8 +16,8 @@ export type TileProps = {
   style?: React.CSSProperties;
   /** Content which should appear in the footer of the tile. */
   footerContent?: React.ReactNode;
-  /** Determines if the card should be rendered on a dark background or not. */
-  isDark?: boolean;
+  /** Determines the background color of the tile */
+  background?: TileBackgrounds;
 };
 
 const Tile: FC<TileProps> = ({
@@ -19,13 +25,14 @@ const Tile: FC<TileProps> = ({
   style,
   children,
   footerContent,
-  isDark,
+  background,
 }) => {
   const containerClasses = classNames(
     {
       'uic--tile': true,
-      'uic--tile--dark': isDark,
-      'uic--tile--light': !isDark,
+      'uic--tile--dark': background === TileBackgrounds.Dark,
+      'uic--tile--light': background === TileBackgrounds.Light,
+      'uic--tile--draft': background === TileBackgrounds.Draft,
     },
     className,
   );
@@ -39,6 +46,10 @@ const Tile: FC<TileProps> = ({
       )}
     </div>
   );
+};
+
+Tile.defaultProps = {
+  background: TileBackgrounds.Light,
 };
 
 export default Tile;

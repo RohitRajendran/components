@@ -1,9 +1,9 @@
-import React from 'react';
+import {select} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import Tile from './Tile';
-import TileReadMe from './Tile.mdx';
+import React from 'react';
 import Button from '~components/atoms/Button/Button';
-import {boolean} from '@storybook/addon-knobs';
+import Tile, {TileBackgrounds} from './Tile';
+import TileReadMe from './Tile.mdx';
 
 const stories = storiesOf('Atoms/Tile', module);
 
@@ -13,8 +13,8 @@ stories.addParameters({
   },
 });
 
-const defaultProps = (isDark) => ({
-  isDark: boolean('isDark', isDark),
+const defaultProps = (defaultBackground) => ({
+  background: select('Background', TileBackgrounds, defaultBackground),
 });
 
 const copy = (
@@ -38,7 +38,12 @@ const darkFooter = (
 );
 
 stories.add('default', () => <Tile {...defaultProps()}>{copy}</Tile>);
-stories.add('dark', () => <Tile {...defaultProps(true)}>{copy}</Tile>);
+stories.add('dark', () => (
+  <Tile {...defaultProps(TileBackgrounds.Dark)}>{copy}</Tile>
+));
+stories.add('draft', () => (
+  <Tile {...defaultProps(TileBackgrounds.Draft)}>{copy}</Tile>
+));
 
 stories.add('with footer', () => (
   <Tile {...defaultProps()} footerContent={lightFooter}>
@@ -46,7 +51,12 @@ stories.add('with footer', () => (
   </Tile>
 ));
 stories.add('dark with footer', () => (
-  <Tile {...defaultProps(true)} footerContent={darkFooter}>
+  <Tile {...defaultProps(TileBackgrounds.Dark)} footerContent={darkFooter}>
+    {copy}
+  </Tile>
+));
+stories.add('draft with footer', () => (
+  <Tile {...defaultProps(TileBackgrounds.Draft)} footerContent={darkFooter}>
     {copy}
   </Tile>
 ));
