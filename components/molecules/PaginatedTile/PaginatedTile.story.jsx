@@ -52,7 +52,12 @@ const defaultProps = (itemsPerPage, hasFooter, isDark) => ({
   pages: getPages(itemsPerPage),
   tileProps: {
     footerContent: hasFooter && (
-      <Button style={{textAlign: 'left'}} variant="link" to="#" dark={isDark}>
+      <Button
+        style={{textAlign: 'left'}}
+        variant="link"
+        to="#"
+        dark={boolean('isDark', isDark)}
+      >
         View Montezuma the Cat
       </Button>
     ),
