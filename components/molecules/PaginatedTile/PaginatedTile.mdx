@@ -1,0 +1,117 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import PaginatedTile from './PaginatedTile';
+import {TileBackgrounds} from '../../../components/atoms/Tile/Tile';
+
+# PaginatedTile
+
+Creates a Tile component that enables pagination. This allows the tile to render different views on separate pages.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import PaginatedTile from '@unitedincome/components/dist/PaginatedTile';
+```
+
+```javascript
+import {PaginatedTile} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <PaginatedTile
+    pages={[
+      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+        <li>Monday</li>
+        <li>Tuesday</li>
+      </ul>,
+      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+        <li>Wednesday</li>
+        <li>Thursday</li>
+      </ul>,
+    ]}
+    footerContent={
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+    }
+  />
+</Preview>
+
+```javascript
+<PaginatedTile
+  pages={[
+    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+      <li>Monday</li>
+      <li>Tuesday</li>
+    </ul>,
+    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+      <li>Wednesday</li>
+      <li>Thursday</li>
+    </ul>,
+  ]}
+  footerContent={
+    <Button style={{textAlign: 'left'}} variant="link" to="#">
+      View Montezuma the Cat
+    </Button>
+  }
+/>
+```
+
+### Dark Mode
+
+You can render the dark version of the paginated tile by passing in the `tileProps.isDark` prop.
+
+<Preview>
+  <PaginatedTile
+    pages={[
+      <ul style={{fontSize: '1.4rem'}}>
+        <li style={{color: 'inherit'}}>Monday</li>
+        <li style={{color: 'inherit'}}>Tuesday</li>
+      </ul>,
+      <ul style={{fontSize: '1.4rem'}}>
+        <li style={{color: 'inherit'}}>Wednesday</li>
+        <li style={{color: 'inherit'}}>Thursday</li>
+      </ul>,
+    ]}
+    footerContent={
+      <Button style={{textAlign: 'left'}} variant="link" to="#">
+        View Montezuma the Cat
+      </Button>
+    }
+    background={TileBackgrounds.Dark}
+  />
+</Preview>
+
+```javascript
+<PaginatedTile
+  pages={[
+    <ul style={{fontSize: '1.4rem'}}>
+      <li style={{color: 'inherit'}}>Monday</li>
+      <li style={{color: 'inherit'}}>Tuesday</li>
+    </ul>,
+    <ul style={{fontSize: '1.4rem'}}>
+      <li style={{color: 'inherit'}}>Wednesday</li>
+      <li style={{color: 'inherit'}}>Thursday</li>
+    </ul>,
+  ]}
+  footerContent={
+    <Button style={{textAlign: 'left'}} variant="link" to="#">
+      View Montezuma the Cat
+    </Button>
+  }
+  background={TileBackgrounds.Dark}
+/>
+```
+
+## Props 🔧
+
+<Props of={PaginatedTile} />
+
+## Related ✨
+
+- [Tile](/?path=/docs/atoms-tile--default)
+- [TabbedTile](/?path=/docs/molecules-tabbedtile--default)
+- [PaginationControls](/?path=/docs/atoms-paginationcontrols--default)

@@ -72,5 +72,6 @@ test('BoxSelect - toggleSelected', (t) => {
     'Should be called with the correct arguments.',
   );
 
+  component.unmount();
   t.end();
 });
