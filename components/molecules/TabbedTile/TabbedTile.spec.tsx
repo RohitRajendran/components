@@ -76,6 +76,7 @@ test('TabbedTile - renders', (t) => {
 test('TabbedTile - renders correctly in dark mode', (t) => {
   try {
     const props = {
+      isDark: true,
       items: [
         {
           title: 'darknav1',
@@ -112,7 +113,6 @@ test('TabbedTile - renders correctly in dark mode', (t) => {
           tileProps: {
             footerContent: <div />,
           },
-          isDark: true,
         },
       ],
     };

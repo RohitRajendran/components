@@ -1,11 +1,11 @@
 /** @module TabbedTile */
 import classNames from 'classnames';
 import React, {FC, useState} from 'react';
-import Tile, {TileProps} from '../../atoms/Tile/Tile';
-import BubbleDropdown from '../../atoms/BubbleDropdown/BubbleDropdown';
-import './TabbedTile.scss';
-import {colors} from '../../../constants/js/colors';
 import {isNullOrUndefined} from 'util';
+import {colors} from '../../../constants/js/colors';
+import BubbleDropdown from '../../atoms/BubbleDropdown/BubbleDropdown';
+import Tile, {TileBackgrounds, TileProps} from '../../atoms/Tile/Tile';
+import './TabbedTile.scss';
 
 type TabbedTileProps = {
   /* Additional class names to apply to the container. */
@@ -88,7 +88,10 @@ const TabbedTile: FC<TabbedTileProps> = ({
           })}
         </ul>
       </div>
-      <Tile isDark={isDark} {...items[currentView].tileProps}>
+      <Tile
+        background={isDark ? TileBackgrounds.Dark : undefined}
+        {...items[currentView].tileProps}
+      >
         {items[currentView].tileContent}
       </Tile>
     </div>
