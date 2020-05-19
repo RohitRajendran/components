@@ -1,0 +1,9 @@
+.uic--pagination-controls {
+  .uic--pagination-controls__pagination-button {
+    border-radius: 0;
+
+    &:first-child {
+      margin-right: 1px;
+    }
+  }
+}

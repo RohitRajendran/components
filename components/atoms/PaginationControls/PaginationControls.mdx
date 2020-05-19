@@ -1,0 +1,43 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import PaginationControls from './PaginationControls';
+
+# PaginationControls
+
+This component creates Pagination Controls that can be used to simulate paging.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import PaginationControls from '@unitedincome/components/dist/PaginationControls'
+```
+
+```javascript
+import {PaginationControls} from '@unitedincome/components'
+```
+
+## Example 🚀
+
+<Preview>
+  <PaginationControls
+  previousDisabled={true}
+  nextDisabled={false}
+  previous={() => setPage(currentPage - 1)}
+  next={() => setPage(currentPage + 1)}
+  />
+</Preview>
+
+```javascript
+<PaginationControls
+  previousDisabled={true}
+  nextDisabled={false}
+  previous={() => setPage(currentPage - 1)}
+  next={() => setPage(currentPage + 1}}
+  />
+```
+
+## Props 🔧
+
+<Props of={PaginationControls} />
+

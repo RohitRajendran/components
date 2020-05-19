@@ -3,33 +3,7 @@ import classNames from 'classnames';
 import React, {FC, useState} from 'react';
 import './PaginatedTile.scss';
 import Tile, {TileProps} from '~components/atoms/Tile/Tile';
-import Button from '~components/atoms/Button/Button';
-import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon';
-import {colors} from '~constants/js/colors';
-
-type PaginationControls = {
-  /**Indicates if on first page */
-  firstPage: boolean;
-  /**Indicates if on last page */
-  lastPage: boolean;
-  /**Function to invoke when going to previous page */
-  previous: () => void;
-  /**Function to invoke when going to next page */
-  next: () => void;
-} | null;
-const paginationControls = (
-  page: number,
-  numberOfItems: number,
-  itemsPerPage: number,
-  previous: () => void,
-  next: () => void,
-): PaginationControls => {
-  const firstPage = page === 0;
-  const lastPage = page + 1 >= Math.ceil(numberOfItems / itemsPerPage);
-  return !(firstPage && lastPage)
-    ? {firstPage, lastPage, previous, next}
-    : null;
-};
+import PaginationControls from '~components/atoms/PaginationControls/PaginationControls';
 
 type PaginatedTileProps = {
   /** List of pages to be rendered in the Tile.*/
@@ -48,58 +22,26 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
     tileProps?.className,
   );
 
-  const paginationCtrls = paginationControls(
-    currentPage,
-    pages.length,
-    1,
-    (): void => setCurrentPage(currentPage - 1),
-    (): void => setCurrentPage(currentPage + 1),
-  );
+  const firstPage = currentPage === 0;
+  const lastPage = currentPage + 1 === pages.length;
+  const hasMultiplePages = !(firstPage && lastPage);
+
   return (
     <Tile
       className={containerClasses}
       style={tileProps?.style}
       isDark={tileProps?.isDark}
       footerContent={
-        (tileProps?.footerContent || paginationCtrls) && (
+        (tileProps?.footerContent || hasMultiplePages) && (
           <React.Fragment>
             {tileProps?.footerContent}
-            {paginationCtrls && (
-              <div className="uic--paginated-tile__pagination-controls uic--position-absolute">
-                <Button
-                  variant="secondary"
-                  light
-                  disabled={paginationCtrls.firstPage}
-                  className="uic--paginated-tile__pagination-button uic--h-100"
-                  onClick={paginationCtrls.previous}
-                >
-                  <CaretIcon
-                    direction={'left'}
-                    fill={
-                      paginationCtrls.firstPage
-                        ? colors['white-30']
-                        : colors.white
-                    }
-                  />
-                </Button>
-                <Button
-                  variant="secondary"
-                  light
-                  disabled={paginationCtrls.lastPage}
-                  className="uic--paginated-tile__pagination-button uic--h-100"
-                  onClick={paginationCtrls.next}
-                >
-                  <CaretIcon
-                    direction={'right'}
-                    fill={
-                      paginationCtrls.lastPage
-                        ? colors['white-30']
-                        : colors.white
-                    }
-                  />
-                </Button>
-              </div>
-            )}
+            <PaginationControls
+              className="uic--paginated-tile__pagination-controls uic--position-absolute"
+              previousDisabled={firstPage}
+              nextDisabled={lastPage}
+              previous={(): void => setCurrentPage(currentPage - 1)}
+              next={(): void => setCurrentPage(currentPage + 1)}
+            />
           </React.Fragment>
         )
       }

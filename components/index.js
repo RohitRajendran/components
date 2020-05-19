@@ -1,5 +1,6 @@
 import LockCircleIcon from '~components/atoms/icons/LockCircleIcon/LockCircleIcon.tsx';
 // Atoms
+import PaginationControls from '~components/atoms/PaginationControls/PaginationControls.tsx';
 import Tile from '~components/atoms/Tile/Tile.tsx';
 import ItemizationBox from '~components/atoms/ItemizationBox/ItemizationBox';
 import Box from '~components/atoms/Box/Box.tsx';
@@ -129,6 +130,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  PaginationControls,
   DoubleDonut,
   PaginatedTile,
   LockCircleIcon,
