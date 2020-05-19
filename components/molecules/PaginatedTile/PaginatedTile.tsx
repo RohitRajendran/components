@@ -35,13 +35,15 @@ const PaginatedTile: FC<PaginatedTileProps> = ({pages, tileProps}) => {
         (tileProps?.footerContent || hasMultiplePages) && (
           <React.Fragment>
             {tileProps?.footerContent}
-            <PaginationControls
-              className="uic--paginated-tile__pagination-controls uic--position-absolute"
-              previousDisabled={firstPage}
-              nextDisabled={lastPage}
-              previous={(): void => setCurrentPage(currentPage - 1)}
-              next={(): void => setCurrentPage(currentPage + 1)}
-            />
+            {hasMultiplePages && (
+              <PaginationControls
+                className="uic--paginated-tile__pagination-controls uic--position-absolute"
+                previousDisabled={firstPage}
+                nextDisabled={lastPage}
+                previous={(): void => setCurrentPage(currentPage - 1)}
+                next={(): void => setCurrentPage(currentPage + 1)}
+              />
+            )}
           </React.Fragment>
         )
       }

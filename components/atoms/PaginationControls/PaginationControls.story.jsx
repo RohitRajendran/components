@@ -2,7 +2,7 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import PaginationControls from './PaginationControls';
 import PaginationControlsReadMe from './PaginationControls.mdx';
-import {number, boolean} from '@storybook/addon-knobs';
+import {boolean} from '@storybook/addon-knobs';
 
 const stories = storiesOf('Atoms/PaginationControls', module);
 
