@@ -4,7 +4,7 @@ import {storiesOf, forceReRender} from '@storybook/react';
 import PaginatedTile from './PaginatedTile';
 import PaginatedTileReadMe from './PaginatedTile.mdx';
 import Button from '~components/atoms/Button/Button';
-import {boolean, select} from '@storybook/addon-knobs';
+import {select} from '@storybook/addon-knobs';
 import {TileBackgrounds} from '~components/atoms/Tile/Tile';
 
 const stories = storiesOf('Molecules/PaginatedTile', module);
@@ -56,7 +56,14 @@ const defaultProps = (itemsPerPage, hasFooter, background) => ({
       style={{textAlign: 'left'}}
       variant="link"
       to="#"
-      dark={boolean('isDark', background === TileBackgrounds.Dark)}
+      dark={
+        TileBackgrounds.Light !==
+        select(
+          'Background',
+          TileBackgrounds,
+          background || TileBackgrounds.Light,
+        )
+      }
     >
       View Montezuma the Cat
     </Button>
