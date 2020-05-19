@@ -1,5 +1,6 @@
 import {Preview, Props} from '@storybook/addon-docs/blocks';
 import PaginatedTile from './PaginatedTile';
+import {TileBackgrounds} from '../../../components/atoms/Tile/Tile';
 
 # PaginatedTile
 
@@ -80,7 +81,7 @@ You can render the dark version of the paginated tile by passing in the `tilePro
         View Montezuma the Cat
       </Button>
     }
-    isDark
+    background={TileBackgrounds.Dark}
   />
 </Preview>
 
@@ -101,7 +102,7 @@ You can render the dark version of the paginated tile by passing in the `tilePro
       View Montezuma the Cat
     </Button>
   }
-  isDark
+  background={TileBackgrounds.Dark}
 />
 ```
 

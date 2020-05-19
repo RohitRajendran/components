@@ -15,7 +15,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
   className,
   style,
   footerContent,
-  isDark,
+  background,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -34,7 +34,7 @@ const PaginatedTile: FC<PaginatedTileProps> = ({
     <Tile
       className={containerClasses}
       style={style}
-      isDark={isDark}
+      background={background}
       footerContent={
         (footerContent || hasMultiplePages) && (
           <Fragment>
