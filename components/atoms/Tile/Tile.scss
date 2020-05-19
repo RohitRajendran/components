@@ -23,6 +23,16 @@ $inner-padding: 3.1rem 3.65rem;
     }
   }
 
+  &--draft {
+    background-color: $slate;
+    border: $border-size solid $white-30;
+    color: $white;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $white-30;
+    }
+  }
+
   &__inner {
     padding: $inner-padding;
   }
