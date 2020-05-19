@@ -23,9 +23,6 @@ export const colors = {
   'orange-text': '#d14900',
   'orange-image': '#f17732',
 
-  /** Pagination Tile Controls colors */
-  'fuchsia-blue': '#7A54C7',
-
   /* Tints & Shades */
   'green-ondark': '#1ba21f',
   'midnight-90': '#281a5e',
