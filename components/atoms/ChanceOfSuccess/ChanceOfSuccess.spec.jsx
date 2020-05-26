@@ -12,6 +12,7 @@ test('ChanceOfSuccess - renders correctly ', (t) => {
     currentPlanChanceOfSuccess: 30,
     refreshedPlanChanceOfSuccess: 30,
     isRunningPlan: false,
+    isDark: true,
   };
 
   const component = mount(<PureChanceOfSuccess {...props} />);
