@@ -99,6 +99,28 @@ You can also provide the `isRunningPlan` prop to indicate that the user is curre
 <ChanceOfSuccess isRunningPlan={true} />
 ```
 
+### Displaying on a Light Background
+
+If you need to display the ChanceOfSuccess meter on a light background you can pass the `isDark` prop into the component to change the color of the text.
+
+<Preview>
+  <ChanceOfSuccess
+    percent={50}
+    isDraftPlan={false}
+    currentPlanChanceOfSuccess={50}
+    isDark
+  />
+</Preview>
+
+```javascript
+<ChanceOfSuccess
+  percent={50}
+  isDraftPlan={false}
+  currentPlanChanceOfSuccess={50}
+  isDark
+/>
+```
+
 ## Props 🔧
 
 <Props of={ChanceOfSuccess} />

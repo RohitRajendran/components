@@ -1,6 +1,6 @@
 import {Preview, Props} from '@storybook/addon-docs/blocks';
 import Button from '~components/atoms/Button/Button';
-import Tile from './Tile';
+import Tile, {TileBackgrounds} from './Tile';
 
 # Tile
 
@@ -32,12 +32,12 @@ import {Tile} from '@unitedincome/components';
 </Tile>
 ```
 
-### Dark Mode
+### Backgrounds
 
-You can render the dark version of the tile by passing in the `isDark` prop.
+You can render the dark or draft versions of the tile by passing using the `background` prop.
 
 <Preview>
-  <Tile isDark>
+  <Tile background={TileBackgrounds.Dark}>
     <div className="uic--body-text" style={{color: '#fff'}}>
       Some content
     </div>
@@ -45,7 +45,23 @@ You can render the dark version of the tile by passing in the `isDark` prop.
 </Preview>
 
 ```javascript
-<Tile isDark>
+<Tile background={TileBackgrounds.Dark}>
+  <div className="uic--body-text" style={{color: '#fff'}}>
+    Some content
+  </div>
+</Tile>
+```
+
+<Preview>
+  <Tile background={TileBackgrounds.Draft}>
+    <div className="uic--body-text" style={{color: '#fff'}}>
+      Some content
+    </div>
+  </Tile>
+</Preview>
+
+```javascript
+<Tile background={TileBackgrounds.Draft}>
   <div className="uic--body-text" style={{color: '#fff'}}>
     Some content
   </div>
@@ -75,3 +91,4 @@ You can add an element to the footer of the tile by passing in the `footerConten
 ## Related ✨
 
 - [TabbedTile](/?path=/docs/molecules-tabbedtile--default)
+- [PaginatedTile](/?path=/docs/molecules-paginatedtile--default)
