@@ -77,6 +77,7 @@ import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
 
 // Molecules
+import TableTile from '~components/molecules/TableTile/TableTile.tsx';
 import DoubleDonut from '~components/molecules/DoubleDonut/DoubleDonut.tsx';
 import PaginatedTile from '~components/molecules/PaginatedTile/PaginatedTile.tsx';
 import TabbedTile from '~components/molecules/TabbedTile/TabbedTile.tsx';
@@ -131,6 +132,7 @@ import {zindex} from '~constants/js/zindex';
 
 export {
   PaginationControls,
+  TableTile,
   DoubleDonut,
   PaginatedTile,
   LockCircleIcon,
