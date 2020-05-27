@@ -261,12 +261,6 @@ This component library uses [CSS rem sizing](https://css-tricks.com/rem-global-e
 html {
   font-size: 10px;
 }
-
-@media (max-width: 991px) {
-  html {
-    font-size: 8px;
-  }
-}
 ```
 
 ## Additional Resources 🍕
