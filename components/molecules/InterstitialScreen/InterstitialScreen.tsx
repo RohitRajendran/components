@@ -54,6 +54,7 @@ const InterstitialScreen: FC<InterstitialScreenProps> = ({
   const innerContainerClasses = classNames(
     {
       'uic--interstitial-screen__inner': true,
+      'uic--w-100': true,
       'uic--d-flex': true,
       'uic--flex-column': true,
       'uic--justify-content-center': true,
