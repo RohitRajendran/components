@@ -49,6 +49,7 @@ const ChanceOfSuccess = (props) => {
     isDraftPlan,
     compact,
     isIe,
+    isDark,
   } = props;
 
   const refreshedPlanChanceOfSuccessDifference =
@@ -241,7 +242,7 @@ const ChanceOfSuccess = (props) => {
             </g>
           )}
           <text
-            fill={colors.white}
+            fill={isDark ? colors.midnight : colors.white}
             x="0"
             y={compact ? 9 : 11}
             fontSize={percentageSize}
@@ -269,7 +270,7 @@ const ChanceOfSuccess = (props) => {
                   />
                 )}
               <text
-                fill={colors.white}
+                fill={isDark ? colors.midnight : colors.white}
                 x={`${
                   refreshedPlanChanceOfSuccess &&
                   currentPlanChanceOfSuccess &&
@@ -322,6 +323,8 @@ ChanceOfSuccess.propTypes = {
   compact: PropTypes.bool,
   /** Adjusts the appearance of the component if the user is using Internet Explorer. */
   isIe: PropTypes.bool,
+  /** Renders the ChanceOfSuccess meter to appear more kindly on light backgrounds. */
+  isDark: PropTypes.bool,
 };
 
 export default detectBrowser(ChanceOfSuccess);

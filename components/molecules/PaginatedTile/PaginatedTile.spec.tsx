@@ -22,7 +22,7 @@ const items = [
 
 const getPages = (itemsPerPage: number): React.ReactNode[] => {
   const pages = [];
-  for (let page = 0; page < items.length / itemsPerPage; page++) {
+  for (let page = 0; page < Math.ceil(items.length / itemsPerPage); page++) {
     const pageItems = items.slice(
       page * itemsPerPage,
       page * itemsPerPage + itemsPerPage,
@@ -67,6 +67,7 @@ const validatePageContent = (
 
 test('PaginatedTile - renders', (t) => {
   const itemsPerPage = 3;
+
   const {getAllByRole, getByText} = render(
     <PaginatedTile pages={getPages(itemsPerPage)} />,
   );

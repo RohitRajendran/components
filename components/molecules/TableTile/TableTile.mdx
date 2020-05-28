@@ -1,0 +1,84 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import TableTile from './TableTile';
+
+# TableTile
+
+Creates a Table tile that reprsents data in a single column with pagination.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import TableTile from '@unitedincome/components/dist/TableTile';
+```
+
+```javascript
+import {TableTile} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <TableTile
+    title="1. Test-Exempt Accounts"
+    items={[
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Monday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Tuesday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Wednesday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Thursday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Friday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Saturday
+      </span>,
+      <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+        Sunday
+      </span>,
+    ]}
+    itemsPerPage={3}
+  />
+</Preview>
+
+```javascript
+<TableTile
+  title="1. Test-Exempt Accounts"
+  items={[
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Monday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Tuesday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Wednesday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Thursday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Friday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Saturday
+    </span>,
+    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
+      Sunday
+    </span>,
+  ]}
+  itemsPerPage={3}
+/>
+```
+
+## Props 🔧
+
+<Props of={TableTile} />

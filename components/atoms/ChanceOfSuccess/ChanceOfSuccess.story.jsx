@@ -28,6 +28,7 @@ const defaultProps = ({percent, draft, running, compact}) => ({
   refreshedPlanChanceOfSuccess: number('refreshedPlanChanceOfSuccess'),
   isRunningPlan: boolean('isRunningPlan', running),
   compact: boolean('compact', compact),
+  isDark: boolean('isDark', false),
 });
 
 stories.add(
