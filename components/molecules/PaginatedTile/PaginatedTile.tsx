@@ -5,7 +5,7 @@ import './PaginatedTile.scss';
 import Tile, {TileProps} from '../../atoms/Tile/Tile';
 import PaginationControls from '../../atoms/PaginationControls/PaginationControls';
 
-type PaginatedTileProps = {
+export type PaginatedTileProps = {
   /** List of pages to be rendered in the Tile.*/
   pages: React.ReactNode[];
 } & TileProps;

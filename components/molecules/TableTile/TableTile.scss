@@ -1,0 +1,38 @@
+.uic--table-tile {
+  .uic--tile__inner {
+    padding: 0;
+  }
+
+  .uic--tile__footer {
+    padding-left: 1.8rem;
+  }
+
+  &__title {
+    color: $midnight;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    line-height: 2.8rem;
+    padding: 0.9rem 1.8rem 0.7rem;
+    text-transform: uppercase;
+  }
+
+  &__cell {
+    border-color: $light-gray;
+    border-style: solid;
+    border-width: 1px 0 0;
+    padding: 1.168rem 1.8rem 1.772rem;
+
+    &--even {
+      background-color: $white;
+    }
+
+    &--odd {
+      background-color: $table-alternate;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid $light-gray;
+      margin-bottom: -1px;
+    }
+  }
+}
