@@ -128,14 +128,15 @@ class ItemizationBox extends PureComponent {
                     'uic--itemization-box__itemizations-total': true,
                     'uic--itemization-box__total-negative': item.value < 0,
                     'uic--itemization-box__total': true,
-                    'uic--col-4': true,
+                    'uic--col-md-4': true,
+                    'uic--col-6': true,
                     'uic--text-right': true,
                   });
 
                   return (
                     <div className="uic--row" key={index}>
                       {item.tooltip ? (
-                        <div className="uic--col-8">
+                        <div className="uic--col-md-8 uic--col-6">
                           <div className="uic--row uic--align-items-center">
                             <div className="uic--itemization-box__itemizations-title uic--col-sm-6 uic--col-5">
                               {item.label}
@@ -157,7 +158,7 @@ class ItemizationBox extends PureComponent {
                           </div>
                         </div>
                       ) : (
-                        <div className="uic--itemization-box__itemizations-title uic--col-8">
+                        <div className="uic--itemization-box__itemizations-title uic--col-md-8 uic--col-6">
                           {item.label}
                         </div>
                       )}
