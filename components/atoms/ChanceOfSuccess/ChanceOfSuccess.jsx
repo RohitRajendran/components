@@ -40,16 +40,19 @@ export const percentIsValid = (percent) =>
  */
 const ChanceOfSuccess = (props) => {
   const {
-    currentPlanChanceOfSuccess,
-    refreshedPlanChanceOfSuccess,
-    identifier,
-    percent,
-    isRunningPlan,
     className,
-    isDraftPlan,
     compact,
-    isIe,
+    currentPlanChanceOfSuccess,
+    height,
+    identifier,
     isDark,
+    isDraftPlan,
+    isIe,
+    isRunningPlan,
+    percent,
+    refreshedPlanChanceOfSuccess,
+    style,
+    width,
   } = props;
 
   const refreshedPlanChanceOfSuccessDifference =
@@ -183,6 +186,11 @@ const ChanceOfSuccess = (props) => {
             ? `uic--chance-of-success_static-${identifier}`
             : `uic--chance-of-success_static_draft-${identifier}`
         } ${className || ''}`}
+        style={{
+          width,
+          height,
+          ...style,
+        }}
       >
         <defs>
           <filter
@@ -325,6 +333,17 @@ ChanceOfSuccess.propTypes = {
   isIe: PropTypes.bool,
   /** Renders the ChanceOfSuccess meter to appear more kindly on light backgrounds. */
   isDark: PropTypes.bool,
+  /** The height of the meter. */
+  height: PropTypes.string,
+  /** The width of the meter. */
+  width: PropTypes.string,
+  /** Additional style properties to apply to the container. */
+  style: PropTypes.objectOf(PropTypes.string),
+};
+
+ChanceOfSuccess.defaultProps = {
+  height: '14.1rem',
+  width: '15rem',
 };
 
 export default detectBrowser(ChanceOfSuccess);
