@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Store} from '@sambego/storybook-state';
 import {storiesOf, forceReRender} from '@storybook/react';
 import PaginatedTile from './PaginatedTile';
@@ -39,11 +39,16 @@ const getPages = (itemsPerPage) => {
       page * itemsPerPage + itemsPerPage,
     );
     pages.push(
-      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
+      <Fragment>
         {pageItems.map((item, index) => (
-          <li key={index}>{item}</li>
+          <div
+            key={index}
+            style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}
+          >
+            {item}
+          </div>
         ))}
-      </ul>,
+      </Fragment>,
     );
   }
   return pages;
