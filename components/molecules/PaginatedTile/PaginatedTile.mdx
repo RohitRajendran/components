@@ -23,14 +23,22 @@ import {PaginatedTile} from '@unitedincome/components';
 <Preview>
   <PaginatedTile
     pages={[
-      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-        <li>Monday</li>
-        <li>Tuesday</li>
-      </ul>,
-      <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-        <li>Wednesday</li>
-        <li>Thursday</li>
-      </ul>,
+      <Fragment>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Monday
+        </div>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Tuesday
+        </div>
+      </Fragment>,
+      <Fragment>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Wednesday
+        </div>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Thursday
+        </div>
+      </Fragment>,
     ]}
     footerContent={
       <Button style={{textAlign: 'left'}} variant="link" to="#">
@@ -43,14 +51,22 @@ import {PaginatedTile} from '@unitedincome/components';
 ```javascript
 <PaginatedTile
   pages={[
-    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-      <li>Monday</li>
-      <li>Tuesday</li>
-    </ul>,
-    <ul style={{fontSize: '1.4rem', color: 'inherit'}}>
-      <li>Wednesday</li>
-      <li>Thursday</li>
-    </ul>,
+    <Fragment>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Monday
+      </div>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Tuesday
+      </div>
+    </Fragment>,
+    <Fragment>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Wednesday
+      </div>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Thursday
+      </div>
+    </Fragment>,
   ]}
   footerContent={
     <Button style={{textAlign: 'left'}} variant="link" to="#">
@@ -62,19 +78,27 @@ import {PaginatedTile} from '@unitedincome/components';
 
 ### Dark Mode
 
-You can render the dark version of the paginated tile by passing in the `tileProps.isDark` prop.
+You can render the dark version of the paginated tile by setting the TileBackgrounds property `background={TileBackgrounds.Dark}`.
 
 <Preview>
   <PaginatedTile
     pages={[
-      <ul style={{fontSize: '1.4rem'}}>
-        <li style={{color: 'inherit'}}>Monday</li>
-        <li style={{color: 'inherit'}}>Tuesday</li>
-      </ul>,
-      <ul style={{fontSize: '1.4rem'}}>
-        <li style={{color: 'inherit'}}>Wednesday</li>
-        <li style={{color: 'inherit'}}>Thursday</li>
-      </ul>,
+      <Fragment>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Monday
+        </div>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Tuesday
+        </div>
+      </Fragment>,
+      <Fragment>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Wednesday
+        </div>
+        <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+          Thursday
+        </div>
+      </Fragment>,
     ]}
     footerContent={
       <Button style={{textAlign: 'left'}} variant="link" to="#">
@@ -88,14 +112,22 @@ You can render the dark version of the paginated tile by passing in the `tilePro
 ```javascript
 <PaginatedTile
   pages={[
-    <ul style={{fontSize: '1.4rem'}}>
-      <li style={{color: 'inherit'}}>Monday</li>
-      <li style={{color: 'inherit'}}>Tuesday</li>
-    </ul>,
-    <ul style={{fontSize: '1.4rem'}}>
-      <li style={{color: 'inherit'}}>Wednesday</li>
-      <li style={{color: 'inherit'}}>Thursday</li>
-    </ul>,
+    <Fragment>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Monday
+      </div>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Tuesday
+      </div>
+    </Fragment>,
+    <Fragment>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Wednesday
+      </div>
+      <div style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 5}}>
+        Thursday
+      </div>
+    </Fragment>,
   ]}
   footerContent={
     <Button style={{textAlign: 'left'}} variant="link" to="#">

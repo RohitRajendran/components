@@ -1,4 +1,4 @@
-import {boolean, number} from '@storybook/addon-knobs';
+import {boolean, number, text} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 import {PureChanceOfSuccess as ChanceOfSuccess} from './ChanceOfSuccess';
@@ -29,6 +29,8 @@ const defaultProps = ({percent, draft, running, compact}) => ({
   isRunningPlan: boolean('isRunningPlan', running),
   compact: boolean('compact', compact),
   isDark: boolean('isDark', false),
+  height: text('height', '14.1rem'),
+  width: text('width', '15rem'),
 });
 
 stories.add(
