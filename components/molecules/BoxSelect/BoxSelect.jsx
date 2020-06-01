@@ -75,7 +75,7 @@ class BoxSelect extends Component {
         {options.map((item) => (
           <div
             key={item.value}
-            className="uic--col-6 uic--col-sm-4"
+            className="uic--col-12 uic--col-sm-6 uic--col-md-4"
             style={{minHeight: this.state.height}}
           >
             <Box
