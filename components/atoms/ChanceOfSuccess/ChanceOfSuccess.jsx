@@ -79,9 +79,12 @@ const ChanceOfSuccess = (props) => {
     .domain([min, max])
     .range([-0.75 * Math.PI, 0.75 * Math.PI]);
 
-  const colorArray = isDraftPlan
-    ? ['#484b5a', colors.white]
-    : [colors.pink, '#B34D00', '#C76501', '#ED9403', '#6BB508', '#1ba21f'];
+  const colorArray =
+    isDraftPlan && isDark
+      ? [colors['midnight-20'], colors.royal]
+      : isDraftPlan
+      ? ['#484b5a', colors.white]
+      : [colors.pink, '#B34D00', '#C76501', '#ED9403', '#6BB508', '#1ba21f'];
   const colorScale = d3Scale
     .scaleSequential(d3Interpolate.interpolateRgbBasis(colorArray))
     .domain([min, max]);
@@ -287,7 +290,7 @@ const ChanceOfSuccess = (props) => {
                     : '0'
                 }`}
                 y={radius - 14}
-                fontSize="1.4rem"
+                fontSize="1.6rem"
                 textAnchor="middle"
               >
                 {refreshedPlanChanceOfSuccess &&
