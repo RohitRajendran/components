@@ -57,6 +57,7 @@ test('ChanceOfSuccess - missing percent', (t) => {
     percent: null,
     isRunningPlan: false,
     isDraftPlan: false,
+    isDark: true,
   };
 
   const component = mount(<PureChanceOfSuccess {...props} />);

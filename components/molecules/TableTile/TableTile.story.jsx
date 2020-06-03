@@ -13,31 +13,31 @@ stories.addParameters({
   },
 });
 
+const items = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+].map((item, index) => (
+  <div
+    key={index}
+    style={{
+      fontSize: '1.4rem',
+      color: 'inherit',
+      height: '5rem',
+      lineHeight: '5rem',
+    }}
+  >
+    {item}
+  </div>
+));
+
 const defaultProps = (itemsPerPage, hasFooter) => ({
   title: '1. Test-Exempt Accounts',
-  items: [
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Monday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Tuesday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Wednesday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Thursday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Friday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Saturday
-    </span>,
-    <span key="0" style={{fontSize: '1.4rem', color: 'inherit'}}>
-      Sunday
-    </span>,
-  ],
+  items,
   itemsPerPage: number('itemsPerPage', itemsPerPage),
   footerContent: hasFooter && (
     <Button style={{textAlign: 'left'}} variant="link" to="#">
