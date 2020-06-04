@@ -1,0 +1,124 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import MultiColumnTile from './MultiColumnTile';
+
+# MultiColumnTile
+
+Creates a MultiColumn tile that represents data in a single column for small devices and two columns for medium to large devices. This component also provides pagination.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import MultiColumnTile from '@unitedincome/components/dist/MultiColumnTile';
+```
+
+```javascript
+import {MultiColumnTile} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <MultiColumnTile
+    items={[
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Essentials
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Healthcare
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Gift for the University of
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Kid's College
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Second Kid's College
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Favorite Charity
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Repayment
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        Something Awesome
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        More something repayment awesome
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        More Something Else
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        More Something Else
+      </div>,
+      <div
+        key="0"
+        style={{fontSize: '1.4rem', color: 'inherit', paddingBottom: 8}}
+      >
+        More Something charity repayment awesome
+      </div>,
+    ]}
+    itemsPerPage={{smallDevice: 5, mediumDevice: 10}}
+  />
+</Preview>
+
+```javascript
+<MultiColumnTile
+  items={[
+    'Essentials',
+    'Healthcare',
+    'Gift for the University of',
+    `Kid's College`,
+    `Second Kid's College`,
+    'Favorite Charity',
+    'Repayment',
+    'Something Awesome',
+    'More Something favorite favourit charity repayment awesome',
+    'More Something Else',
+    'More Something Else',
+    'More Something favorite favourit charity repayment awesome',
+  ]}
+  itemsPerPage={{smallDevice: 5, mediumDevice: 10}}
+/>
+```
+
+## Props 🔧
+
+<Props of={MultiColumnTile} />
