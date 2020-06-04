@@ -81,7 +81,7 @@ const ChanceOfSuccess = (props) => {
 
   const colorArray =
     isDraftPlan && isDark
-      ? [colors['midnight-20'], colors.royal]
+      ? [colors['midnight-20'], colors.midnight]
       : isDraftPlan
       ? ['#484b5a', colors.white]
       : [colors.pink, '#B34D00', '#C76501', '#ED9403', '#6BB508', '#1ba21f'];
