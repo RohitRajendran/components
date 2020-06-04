@@ -5,7 +5,7 @@ import MessageCard from './MessageCard';
 
 test('MessageCard - renders', (t) => {
   const props = {
-    onSubmit: (): undefined => undefined,
+    onSubmit: (): Promise<void> => Promise.resolve(),
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
@@ -29,7 +29,7 @@ test('MessageCard - renders', (t) => {
 
 test('MessageCard - shows description and feature image', (t) => {
   const props = {
-    onSubmit: (): undefined => undefined,
+    onSubmit: (): Promise<void> => Promise.resolve(),
     name: 'test',
     title: 'Title',
     description: 'Description',
@@ -56,7 +56,7 @@ test('MessageCard - shows description and feature image', (t) => {
 
 test('MessageCard - shows description node and feature image', (t) => {
   const props = {
-    onSubmit: (): undefined => undefined,
+    onSubmit: (): Promise<void> => Promise.resolve(),
     name: 'test',
     title: 'Title',
     description: <p>Description</p>,
@@ -83,7 +83,7 @@ test('MessageCard - shows description node and feature image', (t) => {
 
 test('MessageCard - collapsed', (t) => {
   const props = {
-    onSubmit: (): undefined => undefined,
+    onSubmit: (): Promise<void> => Promise.resolve(),
     name: 'test',
     title: 'Title',
     shortTitle: 'Q',
@@ -108,7 +108,7 @@ test('MessageCard - collapsed', (t) => {
 
 test('MessageCard - latest collapsed', (t) => {
   const props = {
-    onSubmit: (): undefined => undefined,
+    onSubmit: (): Promise<void> => Promise.resolve(),
     name: 'test',
     title: 'Title',
     description: 'Description',
