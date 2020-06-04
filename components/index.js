@@ -18,6 +18,7 @@ import ChanceOfSuccess from '~components/atoms/ChanceOfSuccess/ChanceOfSuccess';
 import ArrowIcon from '~components/atoms/icons/ArrowIcon/ArrowIcon.tsx';
 import CaretIcon from '~components/atoms/icons/CaretIcon/CaretIcon.tsx';
 import ClearIcon from '~components/atoms/icons/ClearIcon/ClearIcon.tsx';
+import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon.tsx';
 import TrashIcon from '~components/atoms/icons/TrashIcon/TrashIcon.tsx';
 import SaveIcon from '~components/atoms/icons/SaveIcon/SaveIcon.tsx';
 import AddIcon from '~components/atoms/icons/AddIcon/AddIcon.tsx';
@@ -78,6 +79,7 @@ import PencilCircleIllustration from '~components/atoms/illustrations/PencilCirc
 
 // Molecules
 import TableTile from '~components/molecules/TableTile/TableTile.tsx';
+import MultiColumnTile from '~components/molecules/MultiColumnTile/MultiColumnTile.tsx';
 import DoubleDonut from '~components/molecules/DoubleDonut/DoubleDonut.tsx';
 import PaginatedTile from '~components/molecules/PaginatedTile/PaginatedTile.tsx';
 import TabbedTile from '~components/molecules/TabbedTile/TabbedTile.tsx';
@@ -131,6 +133,7 @@ import {colors} from '~constants/js/colors';
 import {zindex} from '~constants/js/zindex';
 
 export {
+  MultiColumnTile,
   PaginationControls,
   TableTile,
   DoubleDonut,
@@ -178,6 +181,7 @@ export {
   ArrowIcon,
   CaretIcon,
   ClearIcon,
+  CloseIcon,
   PrinterIcon,
   PrinterCircleIcon,
   TrashIcon,

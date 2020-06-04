@@ -1,0 +1,25 @@
+.uic--spending-needs-story {
+  .uic--multi-column-tile__first-column {
+    margin-left: -0.7rem;
+  }
+
+  &__check-icon,
+  &__close-icon {
+    position: relative;
+  }
+
+  &__check-icon {
+    left: 0.5rem;
+    margin-right: 0.5rem;
+    min-height: 2.4rem;
+    min-width: 2.4rem;
+    top: 0.7rem;
+  }
+
+  &__close-icon {
+    margin-right: 0.7rem;
+    min-height: 2.2rem;
+    min-width: 2.2rem;
+    top: 0.1rem;
+  }
+}
