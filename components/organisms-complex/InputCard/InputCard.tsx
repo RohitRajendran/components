@@ -21,6 +21,8 @@ type InputCardConfig = {
   name: string;
   /** The description of the input field. Displayed separately to the label. */
   description?: string;
+  /** The explanation of the input field. Displayed separately to the label. */
+  explanation?: string;
   /** The type of input field. */
   type:
     | 'date'
@@ -75,10 +77,10 @@ type InputCardConfig = {
   sanitize?: boolean;
 };
 
-type InputCardProps = Omit<QuestionCardProps, 'summary'> & {
+type InputCardProps = Omit<QuestionCardProps, 'summary' | 'children'> & {
   /** Values to pass into input group */
   config: InputCardConfig;
-  /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
+  /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the selected value */
   answers?: string[];
   /** The handler to fire when a change happens. */
   onChange: Function;
