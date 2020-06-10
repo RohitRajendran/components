@@ -113,6 +113,7 @@ class Box extends PureComponent<BoxProps, {hover: boolean}> {
       <div
         className={containerClasses}
         style={style}
+        data-cy={label}
         role="button"
         tabIndex={0}
         onClick={!disabled ? this.handleClick : undefined}

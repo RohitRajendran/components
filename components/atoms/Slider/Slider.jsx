@@ -53,7 +53,7 @@ const Slider = ({
   };
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} data-cy={name}>
       {tooltipStickyVariant && hasTooltipStickyPosition && (
         <style>
           {`
