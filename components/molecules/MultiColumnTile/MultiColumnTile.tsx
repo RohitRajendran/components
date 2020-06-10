@@ -15,6 +15,8 @@ export type MultiColumnProps = {
   items: React.ReactNode[];
   /**Items per page for different device sizes*/
   itemsPerPage?: MultiColumnItemsPerPage;
+  /**aria role to describe semantic meaning of container for items*/
+  ariaRole?: string;
 } & TileProps;
 
 /**
@@ -30,11 +32,13 @@ const singleColumnLayout = (
   const pages: React.ReactNode[] = [];
   for (let page = 0; page < Math.ceil(items.length / itemsPerPage); page++) {
     pages.push(
-      <div className="uic--multi-column-tile__first-column">
+      <div className="uic--multi-column-tile__first-column" role="presentation">
         {items
           .slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage)
           .map((item, index) => (
-            <div key={index}>{item}</div>
+            <div role="presentation" key={index}>
+              {item}
+            </div>
           ))}
       </div>,
     );
@@ -63,17 +67,27 @@ const multiColumnlayout = (
 
     pages.push(
       <Fragment>
-        <div className="uic--multi-column-tile__first-column">
+        <div
+          className="uic--multi-column-tile__first-column"
+          role="presentation"
+        >
           {pageItems.slice(0, maxItemsPerColumn).map((item, index) => (
-            <div key={index}>{item}</div>
+            <div role="presentation" key={index}>
+              {item}
+            </div>
           ))}
         </div>
         {pageItems.length > maxItemsPerColumn && (
-          <div className="uic--multi-column-tile__second-column">
+          <div
+            className="uic--multi-column-tile__second-column"
+            role="presentation"
+          >
             {pageItems
               .slice(maxItemsPerColumn, itemsPerPage)
               .map((item, index) => (
-                <div key={index}>{item}</div>
+                <div role="presentation" key={index}>
+                  {item}
+                </div>
               ))}
           </div>
         )}
@@ -89,6 +103,7 @@ const MultiColumnTile: FC<MultiColumnProps> = ({
     smallDevice: 5,
     mediumDevice: 10,
   },
+  ariaRole = 'presentation',
   footerContent,
   className,
   style,
@@ -101,7 +116,7 @@ const MultiColumnTile: FC<MultiColumnProps> = ({
   );
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} role={ariaRole}>
       <PaginatedTile
         pages={singleColumnLayout(items, itemsPerPage)}
         footerContent={footerContent}

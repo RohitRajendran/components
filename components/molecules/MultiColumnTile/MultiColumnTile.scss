@@ -2,13 +2,8 @@
   @include media-breakpoint-down(sm) {
     .uic--tile__inner {
       padding-bottom: 3rem;
-      padding-left: 3.2rem;
       padding-right: 7.9rem;
       padding-top: 3.1rem;
-    }
-
-    .uic--tile__footer {
-      padding-left: 3.2rem;
     }
   }
 
@@ -16,12 +11,7 @@
     .uic--tile__inner {
       display: flex;
       padding-bottom: 2.8rem;
-      padding-left: 2.9rem;
       padding-top: 3.2rem;
-    }
-
-    .uic--tile__footer {
-      padding-left: 2.9rem;
     }
 
     &__first-column,
