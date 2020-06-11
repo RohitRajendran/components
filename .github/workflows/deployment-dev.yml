@@ -12,6 +12,11 @@ jobs:
         with:
           persist-credentials: false 
       
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
       - name: Install SSH Client
         uses: webfactory/ssh-agent@v0.2.0
         with:

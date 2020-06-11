@@ -146,7 +146,10 @@ class ItemizationWidget extends PureComponent {
                 <div className="uic--row">
                   <div className="uic--col-6">{title}</div>
 
-                  <div className="uic--col-6 uic--text-right uic--d-xl-none">
+                  <div
+                    className="uic--col-6 uic--text-right uic--d-xl-none"
+                    data-cy={title}
+                  >
                     {completeTotal}
                     {totalSuffix && (
                       <span className="uic--itemization-widget__suffix">
@@ -261,7 +264,10 @@ class ItemizationWidget extends PureComponent {
                   </animated.div>
                 )}
               </Spring>
-              <div className="uic--itemization-widget__item uic--itemization-widget__total uic--itemization-widget__title uic--d-none uic--d-xl-block">
+              <div
+                className="uic--itemization-widget__item uic--itemization-widget__total uic--itemization-widget__title uic--d-none uic--d-xl-block"
+                data-cy={title}
+              >
                 {completeTotal}
                 {totalSuffix && (
                   <span className="uic--itemization-widget__suffix">

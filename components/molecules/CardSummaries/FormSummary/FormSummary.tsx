@@ -49,7 +49,9 @@ const FormSummary: FC<FormSummaryProps> = ({
       <div className="uic--card-summary uic--container-fluid">
         <div className="uic--row">
           <div className="uic--col-6 uic--col-sm-11">
-            <h2 className="uic--card-summary-label">{shortTitle}</h2>
+            <h2 className="uic--card-summary-label" data-cy={shortTitle}>
+              {shortTitle}
+            </h2>
           </div>
           {showEditButton && (
             <div className="uic--col-6 uic--col-sm-1">

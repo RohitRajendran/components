@@ -75,7 +75,9 @@ const MessageCard: FC<MessageCardProps> = ({
   const content = (
     <div className="uic--card-titleset uic--text-center">
       {featureImage && (
-        <div className="uic--card-feature-image">{featureImage}</div>
+        <div className="uic--card-feature-image" data-cy={title}>
+          {featureImage}
+        </div>
       )}
 
       <h2>{title}</h2>

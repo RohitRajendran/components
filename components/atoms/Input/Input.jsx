@@ -285,6 +285,7 @@ class Input extends Component {
                 )}
                 <InputType
                   type="text"
+                  data-cy={label}
                   aria-label={inputLabel}
                   autoComplete={
                     appendCharacter ? 'off' : autoComplete ? autoComplete : null

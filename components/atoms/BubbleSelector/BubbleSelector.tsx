@@ -53,6 +53,7 @@ const BubbleSelector: FC<BubbleSelectorProps> = ({
                   }),
               maxWidth: fixedWidth,
             }}
+            data-cy={option.value.toLowerCase()}
           >
             {option.value}
             <div

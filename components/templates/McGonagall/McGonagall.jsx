@@ -418,7 +418,7 @@ class McGonagall extends React.Component {
         {this.isFinalStep(stateConfig.states, cardHistory[0].name) ? (
           this.renderStep(cardHistory[0], 0)
         ) : (
-          <div className="uic--mcg-card-container">
+          <div className="uic--mcg-card-container" data-cy={name}>
             {cardHistory.map(this.renderStep)}
           </div>
         )}

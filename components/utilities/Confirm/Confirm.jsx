@@ -17,10 +17,10 @@ const Confirm = ({name, title, description, okLabel, cancelLabel}) => {
         <h2>{title}</h2>
         {description && <p className="uic--font-italic">{description}</p>}
         <div className="uic--modal-bottom">
-          <Button variant="secondary" light onClick={resolve}>
+          <Button variant="secondary" light onClick={resolve} data-cy="yes">
             {okLabel}
           </Button>
-          <Button variant="secondary" light onClick={reject}>
+          <Button variant="secondary" light onClick={reject} data-cy="no">
             {cancelLabel}
           </Button>
         </div>

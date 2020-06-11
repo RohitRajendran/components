@@ -86,6 +86,7 @@ class StackableExpandCollapse extends Component {
         <button
           className="uic--stackable-expand-collapse-clickable uic--d-flex uic--justify-content-between uic--w-100 uic--text-left"
           onClick={this.toggleDrawer}
+          data-cy={label}
           type="button"
         >
           {label}
