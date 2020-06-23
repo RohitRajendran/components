@@ -24,4 +24,20 @@
       padding-right: 3.5rem;
     }
   }
+
+  &--skeleton {
+    .uic--multi-column-tile__first-column,
+    .uic--multi-column-tile__second-column {
+      > div {
+        padding-bottom: 0.3rem;
+        &:last-of-type {
+          padding-bottom: 0;
+        }
+
+        .uic--multi-column-tile__item {
+          height: 1.9rem;
+        }
+      }
+    }
+  }
 }

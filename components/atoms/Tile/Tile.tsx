@@ -18,6 +18,8 @@ export type TileProps = {
   footerContent?: React.ReactNode;
   /** Determines the background color of the tile */
   background?: TileBackgrounds;
+  /** Whether to show skeleton layout */
+  showSkeleton?: boolean;
 };
 
 const Tile: FC<TileProps> = ({

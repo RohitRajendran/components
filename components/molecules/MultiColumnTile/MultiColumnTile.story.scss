@@ -26,47 +26,4 @@
     min-width: 2.2rem;
     top: 0.1rem;
   }
-
-  &--skeleton {
-    .uic--multi-column-tile__first-column,
-    .uic--multi-column-tile__second-column {
-      > div {
-        // @keyframes animateSkeletonItems {
-        //   from {
-        //     opacity: 1;
-        //   }
-
-        //   to {
-        //     opacity: 0;
-        //   }
-        // }
-
-        // animation-duration: 5s;
-        // animation-name: animateSkeletonItems;
-        // animation-iteration-count: infinite;
-
-        // @for $i from 1 through 5 {
-        //   &:nth-child(#{$i}) {
-        //     animation-delay: 0.5s * $i;
-        //   }
-        // }
-
-        // width: 80%;
-        padding-bottom: 0.3rem;
-        // opacity: 0;
-        &:last-of-type {
-          padding-bottom: 0;
-        }
-
-        .uic--spending-needs-story__item {
-          height: 1.9rem;
-        }
-
-        // div {
-        //   height: 1.9rem;
-        //   background-image: linear-gradient($light-gray 2.4rem, transparent 0);
-        // }
-      }
-    }
-  }
 }

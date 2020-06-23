@@ -79,14 +79,13 @@ const defaultProps = () => ({
 });
 
 const skeletonProps = () => ({
-  items: Array.from({length: 10}, (v, i) => i).map((val) => (
-    <Skeleton className="uic--spending-needs-story__item" />
-  )),
+  items: [],
   itemsPerPage: {
     smallDevice: number('smallDevice', 5),
     mediumDevice: number('mediumDevice', 10),
   },
-  className: 'uic--spending-needs-story uic--spending-needs-story--skeleton',
+  className: 'uic--spending-needs-story',
+  showSkeleton: true,
 });
 
 stories.add('default', () => <MultiColumnTile {...defaultProps()} />);

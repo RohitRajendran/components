@@ -4,6 +4,7 @@ import React, {FC, Fragment, ReactNode} from 'react';
 import './MultiColumnTile.scss';
 import {TileProps} from '../../atoms/Tile/Tile';
 import PaginatedTile from '../PaginatedTile/PaginatedTile';
+import Skeleton from 'react-loading-skeleton';
 
 export type MultiColumnItemsPerPage = {
   smallDevice: number;
@@ -97,6 +98,11 @@ const multiColumnlayout = (
   return pages;
 };
 
+const getSkeletonItems = (itemCount: number) =>
+  Array(itemCount)
+    .fill(0)
+    .map(() => <Skeleton className="uic--multi-column-tile__item" />);
+
 const MultiColumnTile: FC<MultiColumnProps> = ({
   items,
   itemsPerPage = {
@@ -107,10 +113,12 @@ const MultiColumnTile: FC<MultiColumnProps> = ({
   footerContent,
   className,
   style,
+  showSkeleton,
 }) => {
   const containerClasses = classNames(
     {
       'uic--multi-column-tile': true,
+      'uic--multi-column-tile--skeleton': showSkeleton,
     },
     className,
   );
@@ -118,13 +126,19 @@ const MultiColumnTile: FC<MultiColumnProps> = ({
   return (
     <div className={containerClasses} role={ariaRole}>
       <PaginatedTile
-        pages={singleColumnLayout(items, itemsPerPage)}
+        pages={singleColumnLayout(
+          showSkeleton ? getSkeletonItems(itemsPerPage.smallDevice) : items,
+          itemsPerPage,
+        )}
         footerContent={footerContent}
         className={'uic--d-sm-block uic--d-md-none'}
         style={style}
       />
       <PaginatedTile
-        pages={multiColumnlayout(items, itemsPerPage)}
+        pages={multiColumnlayout(
+          showSkeleton ? getSkeletonItems(itemsPerPage.mediumDevice) : items,
+          itemsPerPage,
+        )}
         footerContent={footerContent}
         className={'uic--d-none uic--d-md-block'}
         style={style}
