@@ -151,5 +151,8 @@
     "react-tooltip": "4.2.3",
     "text-mask-addons": "3.8.0",
     "xstate": "4.8.0"
+  },
+  "dependencies": {
+    "react-loading-skeleton": "^2.1.1"
   }
 }

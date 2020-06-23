@@ -8,6 +8,7 @@ import Button from '~components/atoms/Button/Button';
 import './MultiColumnTile.story.scss';
 import CloseIcon from '~components/atoms/icons/CloseIcon/CloseIcon';
 import {number} from '@storybook/addon-knobs';
+import Skeleton from 'react-loading-skeleton';
 
 const stories = storiesOf('Molecules/MultiColumnTile', module);
 
@@ -78,7 +79,9 @@ const defaultProps = () => ({
 });
 
 const skeletonProps = () => ({
-  items: Array.from({length: 10}, (v, i) => i).map((val) => <div></div>),
+  items: Array.from({length: 10}, (v, i) => i).map((val) => (
+    <Skeleton className="uic--spending-needs-story__item" />
+  )),
   itemsPerPage: {
     smallDevice: number('smallDevice', 5),
     mediumDevice: number('mediumDevice', 10),
