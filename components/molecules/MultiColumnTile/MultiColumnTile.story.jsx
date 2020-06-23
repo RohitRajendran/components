@@ -77,4 +77,19 @@ const defaultProps = () => ({
   className: 'uic--spending-needs-story',
 });
 
+const skeletonProps = () => ({
+  items: Array.from({length: 10}, (v, i) => i).map((val) => <div></div>),
+  itemsPerPage: {
+    smallDevice: number('smallDevice', 5),
+    mediumDevice: number('mediumDevice', 10),
+  },
+  footerContent: (
+    <Button style={{textAlign: 'left'}} variant="link" to="#">
+      View Montezuma the Cat
+    </Button>
+  ),
+  className: 'uic--spending-needs-story uic--spending-needs-story--skeleton',
+});
+
 stories.add('default', () => <MultiColumnTile {...defaultProps()} />);
+stories.add('skeleton', () => <MultiColumnTile {...skeletonProps()} />);
