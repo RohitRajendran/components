@@ -13,18 +13,23 @@ const CompletionScreen = ({
   const containerClass = classNames(
     {
       'uic--mcg-completion-screen': true,
-      'uic--align-items-center': true,
-      'uic--d-flex': true,
-      'uic--flex-column': true,
-      'uic--justify-content-center': true,
       'uic--w-100': true,
+      'uic--d-flex': true,
     },
     className,
   );
+  const innerClass = classNames({
+    'uic--mcg-completion-screen__inner': true,
+    'uic--align-items-center': true,
+    'uic--d-flex': true,
+    'uic--flex-column': true,
+    'uic--justify-content-center': true,
+    'uic--w-100': true,
+  });
 
   return (
-    <div className="uic--mcg-completion-screen-container uic--w-100 uic--d-flex">
-      <div className={containerClass} data-cy={title}>
+    <div className={containerClass}>
+      <div className={innerClass} data-cy={title}>
         {feature && <div className="uic--feature">{feature}</div>}
         <h2>{title}</h2>
         <p className="uic--text-center">{description}</p>

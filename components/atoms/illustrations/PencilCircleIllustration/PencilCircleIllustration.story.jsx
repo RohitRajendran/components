@@ -22,3 +22,11 @@ const defaultProps = () => ({
 });
 
 stories.add('default', () => <PencilCircleIllustration {...defaultProps()} />);
+
+stories.add('color', () => (
+  <PencilCircleIllustration {...defaultProps()} color />
+));
+
+stories.add('illuminated', () => (
+  <PencilCircleIllustration {...defaultProps()} illuminate />
+));
