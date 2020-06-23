@@ -83,11 +83,6 @@ const skeletonProps = () => ({
     smallDevice: number('smallDevice', 5),
     mediumDevice: number('mediumDevice', 10),
   },
-  footerContent: (
-    <Button style={{textAlign: 'left'}} variant="link" to="#">
-      View Montezuma the Cat
-    </Button>
-  ),
   className: 'uic--spending-needs-story uic--spending-needs-story--skeleton',
 });
 
