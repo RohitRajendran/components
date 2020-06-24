@@ -48,7 +48,7 @@ type InputCardConfig = {
   /** The max length of the input field value. */
   maxLength?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask:
+  mask?:
     | 'PhoneNumber'
     | 'SsnNumber'
     | 'Date'
@@ -77,7 +77,7 @@ type InputCardConfig = {
   sanitize?: boolean;
 };
 
-type InputCardProps = Omit<QuestionCardProps, 'summary' | 'children'> & {
+export type InputCardProps = Omit<QuestionCardProps, 'summary' | 'children'> & {
   /** Values to pass into input group */
   config: InputCardConfig;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the selected value */
@@ -103,9 +103,9 @@ const InputCard: FC<InputCardProps> = ({
   // Automatically prepend/append depending on type of mask if answers is not passed through
   const answer = answers
     ? answers
-    : currencyMasks.includes(config.mask)
+    : currencyMasks.includes(config.mask || '')
     ? [`$${config.value}`]
-    : percentageMasks.includes(config.mask)
+    : percentageMasks.includes(config.mask || '')
     ? [`${config.value}%`]
     : [config.value || ''];
 

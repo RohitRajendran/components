@@ -2,10 +2,10 @@ import {mount} from 'enzyme';
 import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
-import InputCard from './InputCard';
+import InputCard, {InputCardProps} from './InputCard';
 
 test('InputCard - renders', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
     title: 'Question',
     shortTitle: 'Q',
@@ -18,6 +18,7 @@ test('InputCard - renders', (t) => {
     isLatestCard: true,
     onChange: stub(),
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
@@ -39,12 +40,10 @@ test('InputCard - renders', (t) => {
 });
 
 test('InputCard - collapsed with answer override', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
-    name: 'test',
     title: 'Question',
     description: 'Description',
-    summary: <h2>Summary</h2>,
     moreDetails: {
       cabinetContent: <span>Test detail</span>,
       header: 'Test detail',
@@ -62,6 +61,7 @@ test('InputCard - collapsed with answer override', (t) => {
     onChange: stub(),
     answers: ['Yup'],
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
@@ -76,12 +76,10 @@ test('InputCard - collapsed with answer override', (t) => {
 });
 
 test('InputCard - collapsed without answer override', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
-    name: 'test',
     title: 'Question',
     description: 'Description',
-    summary: <h2>Summary</h2>,
     moreDetails: {
       cabinetContent: <span>Test detail</span>,
       header: 'Test detail',
@@ -98,6 +96,7 @@ test('InputCard - collapsed without answer override', (t) => {
     },
     onChange: stub(),
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
@@ -108,12 +107,10 @@ test('InputCard - collapsed without answer override', (t) => {
 });
 
 test('InputCard - collapsed with currency answer', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
-    name: 'test',
     title: 'Question',
     description: 'Description',
-    summary: <h2>Summary</h2>,
     moreDetails: {
       cabinetContent: <span>Test detail</span>,
       header: 'Test detail',
@@ -131,6 +128,7 @@ test('InputCard - collapsed with currency answer', (t) => {
     },
     onChange: stub(),
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
@@ -141,12 +139,10 @@ test('InputCard - collapsed with currency answer', (t) => {
 });
 
 test('InputCard - collapsed with percentage answer', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
-    name: 'test',
     title: 'Question',
     description: 'Description',
-    summary: <h2>Summary</h2>,
     moreDetails: {
       cabinetContent: <span>Test detail</span>,
       header: 'Test detail',
@@ -164,6 +160,7 @@ test('InputCard - collapsed with percentage answer', (t) => {
     },
     onChange: stub(),
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
@@ -174,12 +171,10 @@ test('InputCard - collapsed with percentage answer', (t) => {
 });
 
 test('InputCard - latest collapsed', (t) => {
-  const props = {
+  const props: InputCardProps = {
     onSubmit: () => true,
-    name: 'test',
     title: 'Question',
     description: 'Description',
-    summary: <h2>Summary</h2>,
     moreDetails: {
       cabinetContent: <span>Test detail</span>,
       header: 'Test detail',
@@ -197,6 +192,7 @@ test('InputCard - latest collapsed', (t) => {
     },
     onChange: stub(),
     cancelChanges: () => true,
+    editCard: stub(),
   };
 
   const comp = mount(<InputCard {...props}>Content</InputCard>);
