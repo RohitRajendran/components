@@ -130,7 +130,7 @@
     "typescript": "3.8.3",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",
-    "xstate": "4.8.0"
+    "xstate": "4.10.0"
   },
   "peerDependencies": {
     "accounting": "0.4.1",
@@ -151,6 +151,6 @@
     "react-text-mask": "5.4.3",
     "react-tooltip": "4.2.3",
     "text-mask-addons": "3.8.0",
-    "xstate": "4.8.0"
+    "xstate": "4.10.0"
   }
 }
