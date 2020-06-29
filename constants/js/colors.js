@@ -94,15 +94,17 @@ export const colors = {
   'pie-d-midnight-6': '#b4accc',
 
   'pie-teal-1': '#23b1cd',
-  'pie-teal-2': '#42bad2',
-  'pie-teal-3': '#6dc9da',
-  'pie-teal-4': '#98d7e1',
-  'pie-teal-5': '#c2e5e9',
+  'pie-teal-2': '#4fc1d7',
+  'pie-teal-3': '#7bd0e1',
+  'pie-teal-4': '#a7e0eb',
+  'pie-teal-5': '#c8ebf2',
+  'pie-teal-6': '#def4f8',
 
-  'pie-d-slate-2': '#727992',
-  'pie-d-slate-3': '#8a90a5',
-  'pie-d-slate-4': '#a2a6b5',
-  'pie-d-slate-5': '#c2c5ce',
+  'pie-d-slate-2': '#7c8194',
+  'pie-d-slate-3': '#9da1af',
+  'pie-d-slate-4': '#bdc0c9',
+  'pie-d-slate-5': '#d6d8dd',
+  'pie-d-slate-6': '#e7e8eb',
 
   'pie-green-1': '#018e54',
   'pie-green-2': '#259d6c',
@@ -111,4 +113,21 @@ export const colors = {
   'pie-d-warmgray-1': '#888',
   'pie-d-warmgray-2': '#a1a1a1',
   'pie-d-warmgray-3': '#bbb',
+};
+
+export const storybookBackgrounds = {
+  defaultWhiteBackground: [
+    {name: 'White', value: colors['white'], default: true},
+    {name: 'Parchment', value: colors['parchment']},
+    {name: 'Royal', value: colors['royal']},
+    {name: 'Midnight', value: colors['midnight']},
+    {name: 'Middle Purple', value: colors['middle-purple']},
+  ],
+  defaultRoyalBackground: [
+    {name: 'White', value: colors['white']},
+    {name: 'Parchment', value: colors['parchment']},
+    {name: 'Royal', value: colors['royal'], default: true},
+    {name: 'Midnight', value: colors['midnight']},
+    {name: 'Middle Purple', value: colors['middle-purple']},
+  ],
 };

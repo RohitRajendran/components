@@ -212,6 +212,7 @@ $focus-shadow: rgba(77, 0, 186, 0.5);
         display: block;
         padding: 0.8rem 1rem;
 
+        &:active,
         &.uic--mcgonagall-dropdown__option--is-focused {
           background-color: $parchment;
         }

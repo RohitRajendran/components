@@ -1,11 +1,11 @@
-const path = require('path');
 const glob = require('glob');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPrefixer = require('postcss-prefixer');
 
 const entries = glob
-  .sync('./components/**/**/*.js', {
-    ignore: ['./components/**/**/*.spec.js', './components/**/**/*.story.js'],
+  .sync('./components/**/*.@(js|jsx|ts|tsx)', {
+    ignore: ['./components/**/*.spec.@(js|jsx|ts|tsx)', './components/**/*.story.@(js|jsx|ts|tsx)'],
   })
   .reduce((allEntries, entry) => {
     const splitPath = entry.split('/');
@@ -47,7 +47,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
       },
@@ -130,6 +130,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -203,6 +206,7 @@ module.exports = {
       },
     },
     /^lodash\/.+$/,
+    /^core-js\/.+$/,
     /^react-spring\/.+$/,
   ],
 };

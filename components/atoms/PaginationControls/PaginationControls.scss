@@ -1,0 +1,23 @@
+.uic--pagination-controls {
+  .uic--pagination-controls__pagination-button {
+    align-items: center;
+    border-radius: 0 !important;
+    display: inline-flex;
+    justify-content: center;
+    width: 4.4rem;
+
+    .text-wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &:first-child {
+      margin-right: 0.1rem;
+      .text-wrapper {
+        position: relative;
+        top: 0.1rem;
+      }
+    }
+  }
+}

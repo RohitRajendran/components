@@ -1,0 +1,503 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import DoubleDonut from './DoubleDonut';
+
+# DoubleDonut
+
+Renders the Double Donut chart component. This component can be used to display a breakdown of items by percent.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import DoubleDonut from '@unitedincome/components/dist/DoubleDonut';
+```
+
+```javascript
+import {DoubleDonut} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <DoubleDonut
+    items={{
+      Bonds: {
+        value: 21.4,
+        color: '#42bad2',
+      },
+      'Emerging Market Bonds Hedged': {
+        value: 4.3,
+        color: '#98d7e1',
+      },
+      'Emerging Markets Stocks': {
+        value: 5.7,
+        color: '#98d7d0',
+      },
+      'Foreign Bonds': {
+        value: 10.7,
+        color: '#6dc9da',
+      },
+      'International Small Cap Stocks': {
+        value: 6.4,
+        color: '#ccb9e5',
+      },
+      'International Stocks': {
+        value: 13,
+        color: '#ab87d9',
+      },
+      'Large Cap Stocks': {
+        value: 25.7,
+        color: '#6524c2',
+      },
+      'Small Cap Stocks': {
+        value: 5.4,
+        color: '#8856ce',
+      },
+      TIPS: {
+        value: 5.4,
+        color: '#c2e5e9',
+      },
+      Cash: {
+        value: 1,
+        color: '#56b28c',
+      },
+      REITs: {
+        value: 1,
+        color: '#42bad2',
+      },
+    }}
+    categories={{
+      Bonds: {
+        items: [
+          'Bonds',
+          'Foreign Bonds',
+          'Emerging Market Bonds Hedged',
+          'TIPS',
+        ],
+        color: '#23b1cd',
+        value: 41.8,
+      },
+      Stocks: {
+        items: [
+          'Large Cap Stocks',
+          'Small Cap Stocks',
+          'International Stocks',
+          'International Small Cap Stocks',
+          'Emerging Markets Stocks',
+        ],
+        color: '#4d00ba',
+        value: 56.2,
+      },
+      Other: {
+        items: ['Cash', 'REITs'],
+        color: '#018e54',
+        value: 2,
+      },
+    }}
+    title="Asset Double Donut"
+  />
+</Preview>
+
+```javascript
+<DoubleDonut
+  items={{
+    Bonds: {
+      value: 21.4,
+      color: '#42bad2',
+    },
+    'Emerging Market Bonds Hedged': {
+      value: 4.3,
+      color: '#98d7e1',
+    },
+    'Emerging Markets Stocks': {
+      value: 5.7,
+      color: '#98d7d0',
+    },
+    'Foreign Bonds': {
+      value: 10.7,
+      color: '#6dc9da',
+    },
+    'International Small Cap Stocks': {
+      value: 6.4,
+      color: '#ccb9e5',
+    },
+    'International Stocks': {
+      value: 13,
+      color: '#ab87d9',
+    },
+    'Large Cap Stocks': {
+      value: 25.7,
+      color: '#6524c2',
+    },
+    'Small Cap Stocks': {
+      value: 5.4,
+      color: '#8856ce',
+    },
+    TIPS: {
+      value: 5.4,
+      color: '#c2e5e9',
+    },
+    Cash: {
+      value: 1,
+      color: '#56b28c',
+    },
+    REITs: {
+      value: 1,
+      color: '#42bad2',
+    },
+  }}
+  categories={{
+    Bonds: {
+      items: ['Bonds', 'Foreign Bonds', 'Emerging Market Bonds Hedged', 'TIPS'],
+      color: '#23b1cd',
+      value: 41.8,
+    },
+    Stocks: {
+      items: [
+        'Large Cap Stocks',
+        'Small Cap Stocks',
+        'International Stocks',
+        'International Small Cap Stocks',
+        'Emerging Markets Stocks',
+      ],
+      color: '#4d00ba',
+      value: 56.2,
+    },
+    Other: {
+      items: ['Cash', 'REITs'],
+      color: '#018e54',
+      value: 2,
+    },
+  }}
+  title="Asset Double Donut"
+/>
+```
+
+### Scaling
+
+The `DoubleDonut` component can be scaled by assigning a `height` and `width` prop.
+
+<Preview>
+  <DoubleDonut
+    height="17rem"
+    width="17rem"
+    items={{
+      Bonds: {
+        value: 21.4,
+        color: '#42bad2',
+      },
+      'Emerging Market Bonds Hedged': {
+        value: 4.3,
+        color: '#98d7e1',
+      },
+      'Emerging Markets Stocks': {
+        value: 5.7,
+        color: '#98d7d0',
+      },
+      'Foreign Bonds': {
+        value: 10.7,
+        color: '#6dc9da',
+      },
+      'International Small Cap Stocks': {
+        value: 6.4,
+        color: '#ccb9e5',
+      },
+      'International Stocks': {
+        value: 13,
+        color: '#ab87d9',
+      },
+      'Large Cap Stocks': {
+        value: 25.7,
+        color: '#6524c2',
+      },
+      'Small Cap Stocks': {
+        value: 5.4,
+        color: '#8856ce',
+      },
+      TIPS: {
+        value: 5.4,
+        color: '#c2e5e9',
+      },
+      Cash: {
+        value: 1,
+        color: '#56b28c',
+      },
+      REITs: {
+        value: 1,
+        color: '#42bad2',
+      },
+    }}
+    categories={{
+      Bonds: {
+        items: [
+          'Bonds',
+          'Foreign Bonds',
+          'Emerging Market Bonds Hedged',
+          'TIPS',
+        ],
+        color: '#23b1cd',
+        value: 41.8,
+      },
+      Stocks: {
+        items: [
+          'Large Cap Stocks',
+          'Small Cap Stocks',
+          'International Stocks',
+          'International Small Cap Stocks',
+          'Emerging Markets Stocks',
+        ],
+        color: '#4d00ba',
+        value: 56.2,
+      },
+      Other: {
+        items: ['Cash', 'REITs'],
+        color: '#018e54',
+        value: 2,
+      },
+    }}
+    title="Asset Double Donut"
+  />
+</Preview>
+
+```javascript
+<DoubleDonut
+  height="17rem"
+  width="17rem"
+  items={{
+    Bonds: {
+      value: 21.4,
+      color: '#42bad2',
+    },
+    'Emerging Market Bonds Hedged': {
+      value: 4.3,
+      color: '#98d7e1',
+    },
+    'Emerging Markets Stocks': {
+      value: 5.7,
+      color: '#98d7d0',
+    },
+    'Foreign Bonds': {
+      value: 10.7,
+      color: '#6dc9da',
+    },
+    'International Small Cap Stocks': {
+      value: 6.4,
+      color: '#ccb9e5',
+    },
+    'International Stocks': {
+      value: 13,
+      color: '#ab87d9',
+    },
+    'Large Cap Stocks': {
+      value: 25.7,
+      color: '#6524c2',
+    },
+    'Small Cap Stocks': {
+      value: 5.4,
+      color: '#8856ce',
+    },
+    TIPS: {
+      value: 5.4,
+      color: '#c2e5e9',
+    },
+    Cash: {
+      value: 1,
+      color: '#56b28c',
+    },
+    REITs: {
+      value: 1,
+      color: '#42bad2',
+    },
+  }}
+  categories={{
+    Bonds: {
+      items: ['Bonds', 'Foreign Bonds', 'Emerging Market Bonds Hedged', 'TIPS'],
+      color: '#23b1cd',
+      value: 41.8,
+    },
+    Stocks: {
+      items: [
+        'Large Cap Stocks',
+        'Small Cap Stocks',
+        'International Stocks',
+        'International Small Cap Stocks',
+        'Emerging Markets Stocks',
+      ],
+      color: '#4d00ba',
+      value: 56.2,
+    },
+    Other: {
+      items: ['Cash', 'REITs'],
+      color: '#018e54',
+      value: 2,
+    },
+  }}
+  title="Asset Double Donut"
+/>
+```
+
+### Hiding the Legend
+
+By default the legend is displayed that shows the breakdown of each item displayed within the donut. You can hide the legend by passing in the `hideLegend` prop.
+
+<Preview>
+  <DoubleDonut
+    hideLegend
+    items={{
+      Bonds: {
+        value: 21.4,
+        color: '#42bad2',
+      },
+      'Emerging Market Bonds Hedged': {
+        value: 4.3,
+        color: '#98d7e1',
+      },
+      'Emerging Markets Stocks': {
+        value: 5.7,
+        color: '#98d7d0',
+      },
+      'Foreign Bonds': {
+        value: 10.7,
+        color: '#6dc9da',
+      },
+      'International Small Cap Stocks': {
+        value: 6.4,
+        color: '#ccb9e5',
+      },
+      'International Stocks': {
+        value: 13,
+        color: '#ab87d9',
+      },
+      'Large Cap Stocks': {
+        value: 25.7,
+        color: '#6524c2',
+      },
+      'Small Cap Stocks': {
+        value: 5.4,
+        color: '#8856ce',
+      },
+      TIPS: {
+        value: 5.4,
+        color: '#c2e5e9',
+      },
+      Cash: {
+        value: 1,
+        color: '#56b28c',
+      },
+      REITs: {
+        value: 1,
+        color: '#42bad2',
+      },
+    }}
+    categories={{
+      Bonds: {
+        items: [
+          'Bonds',
+          'Foreign Bonds',
+          'Emerging Market Bonds Hedged',
+          'TIPS',
+        ],
+        color: '#23b1cd',
+        value: 41.8,
+      },
+      Stocks: {
+        items: [
+          'Large Cap Stocks',
+          'Small Cap Stocks',
+          'International Stocks',
+          'International Small Cap Stocks',
+          'Emerging Markets Stocks',
+        ],
+        color: '#4d00ba',
+        value: 56.2,
+      },
+      Other: {
+        items: ['Cash', 'REITs'],
+        color: '#018e54',
+        value: 2,
+      },
+    }}
+    title="Asset Double Donut"
+  />
+</Preview>
+
+```javascript
+<DoubleDonut
+  hideLegend
+  items={{
+    Bonds: {
+      value: 21.4,
+      color: '#42bad2',
+    },
+    'Emerging Market Bonds Hedged': {
+      value: 4.3,
+      color: '#98d7e1',
+    },
+    'Emerging Markets Stocks': {
+      value: 5.7,
+      color: '#98d7d0',
+    },
+    'Foreign Bonds': {
+      value: 10.7,
+      color: '#6dc9da',
+    },
+    'International Small Cap Stocks': {
+      value: 6.4,
+      color: '#ccb9e5',
+    },
+    'International Stocks': {
+      value: 13,
+      color: '#ab87d9',
+    },
+    'Large Cap Stocks': {
+      value: 25.7,
+      color: '#6524c2',
+    },
+    'Small Cap Stocks': {
+      value: 5.4,
+      color: '#8856ce',
+    },
+    TIPS: {
+      value: 5.4,
+      color: '#c2e5e9',
+    },
+    Cash: {
+      value: 1,
+      color: '#56b28c',
+    },
+    REITs: {
+      value: 1,
+      color: '#42bad2',
+    },
+  }}
+  categories={{
+    Bonds: {
+      items: ['Bonds', 'Foreign Bonds', 'Emerging Market Bonds Hedged', 'TIPS'],
+      color: '#23b1cd',
+      value: 41.8,
+    },
+    Stocks: {
+      items: [
+        'Large Cap Stocks',
+        'Small Cap Stocks',
+        'International Stocks',
+        'International Small Cap Stocks',
+        'Emerging Markets Stocks',
+      ],
+      color: '#4d00ba',
+      value: 56.2,
+    },
+    Other: {
+      items: ['Cash', 'REITs'],
+      color: '#018e54',
+      value: 2,
+    },
+  }}
+  title="Asset Double Donut"
+/>
+```
+
+## Props 🔧
+
+<Props of={DoubleDonut} />

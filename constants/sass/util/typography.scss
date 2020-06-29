@@ -39,10 +39,7 @@
 
 .uic--body-text,
 %uic--body-text {
-  @include media-breakpoint-up(lg) {
-    font-size: 1.6rem;
-  }
-  @include source-sans-pro(1.75rem);
+  @include source-sans-pro(1.6rem);
   color: $slate;
   font-weight: 400;
 }

@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureTradeIcon as TradeIcon} from './TradeIcon.tsx';
+
+# TradeIcon
+
+The TradeIcon component creates a plus icon using inline SVG. This icon is typically used to represent an add action.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import TradeIcon from '@unitedincome/components/dist/TradeIcon';
+```
+
+```javascript
+import {TradeIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <TradeIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<TradeIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <TradeIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<TradeIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={TradeIcon} />

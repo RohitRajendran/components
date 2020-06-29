@@ -1,0 +1,44 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureAdminIcon as AdminIcon} from './AdminIcon.tsx';
+
+# AdminIcon
+
+The AdminIcon component creates an admin icon using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import AdminIcon from '@unitedincome/components/dist/AdminIcon';
+```
+
+```javascript
+import {AdminIcon} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <AdminIcon height="3rem" width="3rem" />
+</Preview>
+
+```javascript
+<AdminIcon height="3rem" width="3rem" />
+```
+
+### Changing the Color
+
+You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+
+<Preview>
+  <AdminIcon height="3rem" width="3rem" fill="#ababab" />
+</Preview>
+
+```javascript
+<AdminIcon height="3rem" width="3rem" fill="#ababab" />
+```
+
+## Props 🔧
+
+<Props of={AdminIcon} />

@@ -1,0 +1,27 @@
+.uic--multi-column-tile {
+  @include media-breakpoint-down(sm) {
+    .uic--tile__inner {
+      padding-bottom: 3rem;
+      padding-right: 7.9rem;
+      padding-top: 3.1rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .uic--tile__inner {
+      display: flex;
+      padding-bottom: 2.8rem;
+      padding-top: 3.2rem;
+    }
+
+    &__first-column,
+    &__second-column {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    &__first-column {
+      padding-right: 3.5rem;
+    }
+  }
+}

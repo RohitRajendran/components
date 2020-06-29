@@ -1,0 +1,56 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PurePencilCircleIllustration as PencilCircleIllustration} from './PencilCircleIllustration';
+
+# PencilCircleIllustration
+
+The PencilCircleIllustration component creates a pencil illustration using inline SVG.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import PencilCircleIllustration from '@unitedincome/components/dist/PencilCircleIllustration';
+```
+
+```javascript
+import {PencilCircleIllustration} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <PencilCircleIllustration height="14rem" width="14rem" />
+</Preview>
+
+```javascript
+<PencilCircleIllustration height="14rem" width="14rem" />
+```
+
+### Color
+
+You can use the `color` prop to render the illustrations full color variant.
+
+<Preview>
+  <PencilCircleIllustration height="14rem" width="14rem" color />
+</Preview>
+
+```javascript
+<PencilCircleIllustration height="14rem" width="14rem" color />
+```
+
+### Illuminate
+
+The `illuminate` prop activates the interaction variant of the illustration. By default the interaction occurs when the illustration is clicked, this prop allows you to override that behavior so you can trigger it as a side effect of another action.
+
+<Preview>
+  <PencilCircleIllustration height="14rem" width="14rem" illuminate />
+</Preview>
+
+```javascript
+<PencilCircleIllustration height="14rem" width="14rem" illuminate />
+```
+
+## Props 🔧
+
+<Props of={PencilCircleIllustration} />

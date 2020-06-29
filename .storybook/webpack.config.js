@@ -1,9 +1,25 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPrefixer = require('postcss-prefixer');
 
 module.exports = {
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'react-docgen-typescript-loader',
+            options: {
+              tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+            },
+          },
+        ],
+      },
       {
         test: /prefixed-utils.scss$/,
         use: [
@@ -63,6 +79,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new MiniCssExtractPlugin({

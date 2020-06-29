@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:10.16
+      - image: circleci/node:10.19
     steps:
       - checkout
       - restore_cache:
@@ -13,7 +13,7 @@ jobs:
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-            yarn install
+            yarn install --frozen-lockfile
 
       - save_cache:
           key: dependency-cache-v2-{{ checksum "yarn.lock" }}
@@ -55,7 +55,7 @@ jobs:
 
   smoke_test:
     docker:
-      - image: circleci/node:10.16
+      - image: circleci/node:10.19
     resource_class: small
     environment:
       NODE_ENV: production
@@ -71,7 +71,7 @@ jobs:
 
   publish_package:
     docker:
-      - image: circleci/node:10.16
+      - image: circleci/node:10.19
     resource_class: small
     environment:
       NODE_ENV: production
@@ -105,6 +105,7 @@ jobs:
       - deploy:
           name: Publish to NPM
           command: |
+            rm -rf dist/**/*.spec.d.ts dist/**/*.story.d.ts dist/nightwatch dist/utils-for-tests
             npm version patch -m "Bump version to %s [skip ci]"
             npm publish
             git push --set-upstream origin $CIRCLE_BRANCH --tags
@@ -114,7 +115,7 @@ workflows:
   components:
     jobs:
       - build:
-          context: Development
+          context: Everyone
           filters:
             branches:
               ignore:

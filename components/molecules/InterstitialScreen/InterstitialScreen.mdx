@@ -1,0 +1,205 @@
+import {Fragment} from 'react';
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import InterstitialScreen from './InterstitialScreen';
+import CarCircleIllustration from '~components/atoms/illustrations/CarCircleIllustration/CarCircleIllustration';
+import Input from '~components/atoms/Input/Input';
+import StepBox from '~components/molecules/StepBox/StepBox';
+
+# InterstitialScreen
+
+Displays an full page interstitial screen. This component is commonly used to inform/guide the user regarding the next steps they should take.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import InterstitialScreen from '@unitedincome/components/dist/InterstitialScreen';
+```
+
+```javascript
+import {InterstitialScreen} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <InterstitialScreen
+    title="Welcome to Your Draft Plan"
+    description={
+      <Fragment>
+        <p>
+          Let’s get to know one another. By giving us more information about
+          your life, finances, and spending needs, we can provide you with in
+          depth financial advice tailored specifically to you. Completing your
+          financial plan also gives you access to our full suite of investment
+          and performance projections.
+        </p>
+        <p>
+          This can take about 45 minutes but we’ll guide you through the process
+          every step of the way. Don’t worry if you don’t have all the answers
+          right now. You can come back and make changes at any time.
+        </p>
+      </Fragment>
+    }
+    Icon={CarCircleIllustration}
+  />
+</Preview>
+
+```javascript
+<InterstitialScreen
+  title="Welcome to Your Draft Plan"
+  description={
+    <Fragment>
+      <p>
+        Let’s get to know one another. By giving us more information about your
+        life, finances, and spending needs, we can provide you with in depth
+        financial advice tailored specifically to you. Completing your financial
+        plan also gives you access to our full suite of investment and
+        performance projections.
+      </p>
+      <p>
+        This can take about 45 minutes but we’ll guide you through the process
+        every step of the way. Don’t worry if you don’t have all the answers
+        right now. You can come back and make changes at any time.
+      </p>
+    </Fragment>
+  }
+  Icon={CarCircleIllustration}
+/>
+```
+
+### Action Bar
+
+If you need to display an action bar at the top of the interstitial you can do so by passing in the `actionBarOptions` prop.
+
+<Preview>
+  <InterstitialScreen
+    title="Welcome to Your Draft Plan"
+    description={
+      <Fragment>
+        <p>
+          Let’s get to know one another. By giving us more information about
+          your life, finances, and spending needs, we can provide you with in
+          depth financial advice tailored specifically to you. Completing your
+          financial plan also gives you access to our full suite of investment
+          and performance projections.
+        </p>
+        <p>
+          This can take about 45 minutes but we’ll guide you through the process
+          every step of the way. Don’t worry if you don’t have all the answers
+          right now. You can come back and make changes at any time.
+        </p>
+      </Fragment>
+    }
+    Icon={CarCircleIllustration}
+    actionBarOptions={{
+      buttonLabel: 'Switch to a Draft Investment Plan',
+      buttonOptions: {
+        to: '#',
+      },
+    }}
+  />
+</Preview>
+
+```javascript
+<InterstitialScreen
+  title="Welcome to Your Draft Plan"
+  description={
+    <Fragment>
+      <p>
+        Let’s get to know one another. By giving us more information about your
+        life, finances, and spending needs, we can provide you with in depth
+        financial advice tailored specifically to you. Completing your financial
+        plan also gives you access to our full suite of investment and
+        performance projections.
+      </p>
+      <p>
+        This can take about 45 minutes but we’ll guide you through the process
+        every step of the way. Don’t worry if you don’t have all the answers
+        right now. You can come back and make changes at any time.
+      </p>
+    </Fragment>
+  }
+  Icon={CarCircleIllustration}
+  actionBarOptions={{
+    buttonLabel: 'Switch to a Draft Investment Plan',
+    buttonOptions: {
+      to: '#',
+    },
+  }}
+/>
+```
+
+### Custom Use Cases
+
+You're able to pass in any component to render below the body of the interstitial. This is useful for rendering cabinet links or input fields.
+
+<Preview>
+  <InterstitialScreen
+    title="Welcome to Your Draft Plan"
+    description={
+      <Fragment>
+        <p>
+          Let’s get to know one another. By giving us more information about
+          your life, finances, and spending needs, we can provide you with in
+          depth financial advice tailored specifically to you. Completing your
+          financial plan also gives you access to our full suite of investment
+          and performance projections.
+        </p>
+        <p>
+          This can take about 45 minutes but we’ll guide you through the process
+          every step of the way. Don’t worry if you don’t have all the answers
+          right now. You can come back and make changes at any time.
+        </p>
+      </Fragment>
+    }
+    Icon={CarCircleIllustration}
+  >
+    <div style={{marginTop: '3rem', marginBottom: '3rem'}}>
+      <p className="uic--body-text">
+        You are able to enter children here to customize this screen.
+      </p>
+      <Input className="uic--w-100" label="Random Input" value="Montezuma" />
+    </div>
+  </InterstitialScreen>
+</Preview>
+
+```javascript
+<InterstitialScreen
+  title="Welcome to Your Draft Plan"
+  description={
+    <Fragment>
+      <p>
+        Let’s get to know one another. By giving us more information about your
+        life, finances, and spending needs, we can provide you with in depth
+        financial advice tailored specifically to you. Completing your financial
+        plan also gives you access to our full suite of investment and
+        performance projections.
+      </p>
+      <p>
+        This can take about 45 minutes but we’ll guide you through the process
+        every step of the way. Don’t worry if you don’t have all the answers
+        right now. You can come back and make changes at any time.
+      </p>
+    </Fragment>
+  }
+  Icon={CarCircleIllustration}
+>
+  <div style={{marginTop: '3rem', marginBottom: '3rem'}}>
+    <p className="uic--body-text">
+      You are able to enter children here to customize this screen.
+    </p>
+    <Input className="uic--w-100" label="Random Input" value="Montezuma" />
+  </div>
+</InterstitialScreen>
+```
+
+## Props 🔧
+
+<Props of={InterstitialScreen} />
+
+## Related ✨
+
+- [Cabinet](/?path=/story/molecules-cabinet--default)
+- [StepBox](/?path=/docs/molecules-stepbox--default)

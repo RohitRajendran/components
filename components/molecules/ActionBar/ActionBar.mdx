@@ -1,0 +1,49 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import ActionBar from './ActionBar';
+
+# ActionBar
+
+Displays a generic action bar which can be placed on top of a screen.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import ActionBar from '@unitedincome/components/dist/ActionBar';
+```
+
+```javascript
+import {ActionBar} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <ActionBar title="Montezuma" />
+</Preview>
+
+```javascript
+<ActionBar title="Montezuma" />
+```
+
+### Close and Back Buttons
+
+You can render a close and back button by passing in a function to the `onClose` and `onBack` props.
+
+<Preview>
+  <ActionBar title="Montezuma" onClose={() => true} onBack={() => true} />
+</Preview>
+
+```javascript
+<ActionBar title="Montezuma" onClose={() => true} onBack={() => true} />
+```
+
+## Props 🔧
+
+<Props of={ActionBar} />
+
+## Related ✨
+
+- [McGonagall](/?path=/story/templates-mcgonagall--default&step=supportDependents)
+- [InterstitialScreen](/?path=/story/molecules-interstitialscreen--default)

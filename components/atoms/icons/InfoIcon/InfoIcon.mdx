@@ -1,5 +1,5 @@
 import {Preview, Props} from '@storybook/addon-docs/blocks';
-import InfoIcon from './InfoIcon';
+import {PureInfoIcon as InfoIcon} from './InfoIcon.tsx';
 
 # InfoIcon
 
@@ -30,14 +30,19 @@ import {InfoIcon} from '@unitedincome/components';
 
 ### Changing the Color
 
-You can adjust the color of the icon using the `fill` prop. This prop accepts common color names and hex values.
+You can adjust the color of the icon using the `iconFill` or the `circleFill` prop. These props accept common color names and hex values.
 
 <Preview>
-  <InfoIcon height="3rem" width="3rem" fill="#ababab" />
+  <InfoIcon
+    height="3rem"
+    width="3rem"
+    circleFill="#b7b7b7"
+    iconFill="#4d00ba"
+  />
 </Preview>
 
 ```javascript
-<InfoIcon height="3rem" width="3rem" fill="#ababab" />
+<InfoIcon height="3rem" width="3rem" circleFill="#b7b7b7" iconFill="#4d00ba" />
 ```
 
 ## Props 🔧

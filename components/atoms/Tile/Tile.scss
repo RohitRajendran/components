@@ -1,0 +1,43 @@
+$border-size: 1px;
+$footer-padding: 1.3rem 3.65rem 1.5rem;
+$inner-padding: 3.1rem 3.65rem;
+
+.uic--tile {
+  background-color: $white;
+
+  &--dark {
+    background-color: $midnight;
+    color: $white;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $white-30;
+    }
+  }
+
+  &--light {
+    background-color: $white;
+    border: $border-size solid $light-gray;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $light-gray;
+    }
+  }
+
+  &--draft {
+    background-color: $slate;
+    border: $border-size solid $white-30;
+    color: $white;
+
+    .uic--tile__footer {
+      border-top: $border-size solid $white-30;
+    }
+  }
+
+  &__inner {
+    padding: $inner-padding;
+  }
+
+  &__footer {
+    padding: $footer-padding;
+  }
+}

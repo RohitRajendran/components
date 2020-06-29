@@ -1,0 +1,126 @@
+.uic--tabbed-tile {
+  .uic--tile {
+    @include media-breakpoint-down(xs) {
+      .uic--tile__inner {
+        padding-top: 1.6rem;
+      }
+    }
+
+    border-style: none solid solid;
+    border-width: 1px;
+  }
+
+  // Light mode specific styles.
+  &--light {
+    .uic--tile {
+      border-color: $light-gray;
+    }
+  }
+
+  // Dark mode specific styles/overrides.
+  &--dark {
+    .uic--tile {
+      border-color: $white-30;
+    }
+
+    .uic--tabbed-tile__navigation-bubble {
+      background-color: $midnight;
+      border-color: $white-30;
+    }
+
+    .uic--tabbed-tile__navigation-box {
+      border: 0;
+
+      // The following allows the wrapper to have an rgba border below the navigation items.
+      &::after {
+        background-color: $white-30;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+
+      .uic--tabbed-tile__navigation-box--item {
+        background-color: $middle-purple;
+        border-color: $white-30;
+        color: $white;
+
+        &::after {
+          // Overlaps the double border created by needing to support an rgba border on the active element.
+          background-color: $midnight;
+          height: 2px;
+        }
+      }
+
+      .uic--tabbed-tile__navigation-box--item-active {
+        background-color: $midnight;
+        border-color: $white-30;
+      }
+    }
+  }
+
+  // Common
+  &__navigation {
+    &-bubble {
+      @include media-breakpoint-up(sm) {
+        display: none;
+      }
+
+      background-color: $white;
+      border: 1px solid $light-gray;
+      border-bottom: 0;
+      padding: 1.5rem;
+    }
+
+    &-box {
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+      @include source-sans-pro(1.4rem);
+
+      border-bottom: 1px solid $light-gray;
+      color: $midnight;
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      &--item {
+        appearance: none;
+        background-color: $parchment;
+        border-bottom: 0;
+        border-right: 1px solid $light-gray;
+        border-top: 1px solid $light-gray;
+        cursor: pointer;
+        font: inherit;
+        height: 4rem;
+        padding: 0 1.5rem;
+        width: 22rem;
+
+        &:first-of-type {
+          border-left: 1px solid $light-gray;
+        }
+
+        &-active {
+          background-color: $white;
+          font-weight: 600;
+
+          &::after {
+            background-color: $white;
+            bottom: -1px;
+            content: '';
+            display: block;
+            height: 1px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: $z-index-default;
+          }
+        }
+      }
+    }
+  }
+}

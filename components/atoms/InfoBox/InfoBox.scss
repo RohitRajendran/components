@@ -4,12 +4,15 @@ $container-min-height: 2.4rem;
 
 .uic--info-box {
   border: 1px solid $light-gray;
+  display: flex;
+  flex-direction: column;
+  min-height: $min-height * 2;
 
   hr {
-    background-color: $light-gray;
     border: 0;
-    color: $light-gray;
-    height: 1px;
+    border-top: 1px solid $light-gray;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
   .uic--info-box-title-area {
@@ -28,21 +31,23 @@ $container-min-height: 2.4rem;
     pointer-events: none;
     position: absolute;
     right: 6rem;
-    top: 2.5rem;
+    top: 1rem;
   }
 
   .uic--info-box-information-area {
     background-color: $white;
+    flex-grow: 1;
     min-height: $min-height;
     padding: 1.6rem 2rem;
 
     ul {
       list-style-type: none;
+      margin: 0;
       padding: 0;
     }
   }
 
-  &-formatted-row {
+  .uic--info-box-formatted-row {
     display: flex;
     justify-content: space-between;
     min-height: $container-min-height;
@@ -76,4 +81,18 @@ $container-min-height: 2.4rem;
       right: 0;
     }
   }
+
+  &.uic--info-box-deemphasized {
+    .uic--info-box-title-area {
+      background-color: $middle-purple;
+    }
+
+    .uic--info-box-information-area {
+      background-color: $parchment;
+    }
+  }
+}
+
+.uic--info-box-inactive {
+  opacity: 0.4;
 }
