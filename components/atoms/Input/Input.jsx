@@ -29,6 +29,61 @@ export const getDeepestInputElement = (startObject) => {
   return getDeepestInputElement(startObject.inputElement);
 };
 
+/**
+ * Determines if the input should show the required error
+ * @param {object} args - Object of args
+ * @param {boolean} args.cardshellForceUnansweredQuestionError - HOC Cardshell boolean for error state
+ * @param {boolean} args.showRequiredErrorFlagPresent - Does this input have the showRequiredError flag
+ * @param {boolean} args.requiredFlagPresent - Does this input have the required flag
+ * @param {boolean} args.isEmpty - Is the current user input an empty string
+ * @returns {boolean} Should the input be in the requiredError state
+ */
+export const inputHasRequiredError = ({
+  cardshellForceUnansweredQuestionError,
+  showRequiredErrorFlagPresent,
+  requiredFlagPresent,
+  isEmpty,
+}) =>
+  (cardshellForceUnansweredQuestionError || showRequiredErrorFlagPresent) &&
+  requiredFlagPresent &&
+  isEmpty;
+
+/**
+ * Determines if the input component should be in the error state
+ * @param {object} args - Object of args
+ * @param {boolean} args.showInvalidity - Calculated boolean that says we should show an invalidError
+ * @param {boolean} args.errorFlag - Does this input have the error flag
+ * @param {boolean} args.hasRequiredError - Has the input been calculated to show the requiredError
+ * @returns {boolean} Should the input be in a generic error state?
+ */
+export const isInputInErrorState = ({
+  showInvalidity,
+  errorFlag,
+  hasRequiredError,
+}) => showInvalidity || errorFlag || hasRequiredError;
+
+/**
+ * Sends back the appropriate error message for our input component
+ * @param {object} args - Object of args
+ * @param {boolean} args.hasRequiredError - Has the input value been calculated to be in the required error state
+ * @param {string} args.errorMsg - Optional custom errorMsg
+ * @param {string} args.mark - Optional mask for the input
+ * @returns {string} Correct error message
+ */
+export const generateInputErrorMessage = ({
+  hasRequiredError,
+  errorMsg,
+  mask,
+}) => {
+  if (hasRequiredError) {
+    return 'Required Field';
+  } else if (errorMsg) {
+    return errorMsg;
+  }
+
+  return maskEnum[mask].validationErrorMsg;
+};
+
 /** Renders the Input field component. */
 class Input extends PureComponent {
   /** @inheritdoc */
@@ -140,6 +195,7 @@ class Input extends PureComponent {
       className,
       sanitize,
       style,
+      showRequiredError,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
@@ -231,11 +287,23 @@ class Input extends PureComponent {
     return (
       // The Context allows it to get the showRequiredError prop when in the CardShell
       <CardShellContext.Consumer>
-        {({showRequiredError}) => {
-          const reqErrorNecessary =
-            (this.props.showRequiredError || showRequiredError) &&
-            required &&
-            !value;
+        {({cardshellForceUnansweredQuestionError}) => {
+          const hasRequiredError = inputHasRequiredError({
+            cardshellForceUnansweredQuestionError: Boolean(
+              cardshellForceUnansweredQuestionError,
+            ),
+            showRequiredErrorFlagPresent: Boolean(showRequiredError),
+            requiredFlagPresent: required,
+            isEmpty,
+          });
+
+          const inputErrorState = isInputInErrorState({
+            showInvalidity,
+            errorFlag: Boolean(error),
+            hasRequiredError: Boolean(hasRequiredError),
+          });
+
+          const showDescription = Boolean(description) && !inputErrorState;
 
           const containerClasses = classNames(
             {
@@ -246,7 +314,7 @@ class Input extends PureComponent {
               [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
               'uic--empty': isEmpty,
               'uic--focus': this.state.isActive,
-              'uic--error': showInvalidity || error || reqErrorNecessary,
+              'uic--error': inputErrorState,
               'uic--disabled': disabled,
               'uic--mcgonagall-input__tooltip-present': this.state.height !== 0,
             },
@@ -313,16 +381,16 @@ class Input extends PureComponent {
                 />
                 <label className="uic--position-absolute">{inputLabel}</label>
               </div>
-              {description &&
-              !(showInvalidity || error || reqErrorNecessary) ? (
+              {showDescription && (
                 <div className="uic--description">{description}</div>
-              ) : (
+              )}
+              {inputErrorState && (
                 <div className="uic--validation-error">
-                  {isEmpty && reqErrorNecessary
-                    ? 'Required Field'
-                    : errorMsg ||
-                      (this.props.mask &&
-                        maskEnum[this.props.mask].validationErrorMsg)}
+                  {generateInputErrorMessage({
+                    hasRequiredError,
+                    errorMsg,
+                    mask: this.props.mask,
+                  })}
                 </div>
               )}
             </div>

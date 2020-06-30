@@ -481,6 +481,7 @@ test('CardShell - validates different input constraints', (t) => {
         label="test"
         isValid={() => values.date !== 'nope'}
         required
+        validationErrorMsg="Incorrect value"
       />,
       // 8
       <RadioButtons
