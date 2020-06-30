@@ -3,7 +3,12 @@ import React from 'react';
 import {spy, stub} from 'sinon';
 import test from 'tape';
 import * as DetectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
-import Input, {getDeepestInputElement} from './Input';
+import Input, {
+  getDeepestInputElement,
+  inputHasRequiredError,
+  isInputInErrorState,
+  generateInputErrorMessage,
+} from './Input';
 import * as InputUtils from './Input.util';
 
 test('Input - Renders props as attributes on the input', (t) => {
@@ -141,7 +146,7 @@ test('Input - Renders an error message when the form is invalid', (t) => {
       value="05/01/1980"
       placeholder="some placeholder"
       mask="Date"
-      isValid={() => true}
+      isValid={() => false}
       validationErrorMsg="This is not valid!"
     />,
   );
@@ -312,5 +317,158 @@ test('Input - isInViewport - no browser environment', (t) => {
   t.false(InputUtils.isInViewport(element, 500));
 
   isWindowDefinedStub.restore();
+  t.end();
+});
+
+test('Input - Testing required and validate function', (t) => {
+  const onChangeSpy = spy();
+
+  const component = mount(
+    <Input
+      name="fancy_input"
+      label="Amount"
+      type="text"
+      value=""
+      onChange={onChangeSpy}
+      validate={(input) => {
+        if (input.length >= 4) {
+          return 'Invalid small string!';
+        }
+
+        return '';
+      }}
+    />,
+  );
+
+  t.equal(
+    component.state().validationErrorMessage,
+    '',
+    'Should be an empty validation error message',
+  );
+  t.equal(
+    component.find('.uic--validation-error').length,
+    0,
+    'There shoud NOT be a required error message',
+  );
+
+  component.setProps({
+    value: '1234',
+  });
+
+  t.equal(
+    component.state().validationErrorMessage,
+    'Invalid small string!',
+    'Should trigger the correct error message',
+  );
+
+  component.update();
+
+  t.equal(
+    component.find('.uic--validation-error').length,
+    1,
+    'There shoud now be a validation error',
+  );
+
+  t.end();
+});
+
+test('Input - inputHasRequiredError helper function', (t) => {
+  const cardShellError = {
+    cardshellForceUnansweredQuestionError: true,
+    showRequiredErrorFlagPresent: false,
+    requiredFlagPresent: true,
+    isEmpty: true,
+  };
+  const showRequiredError = {
+    cardshellForceUnansweredQuestionError: false,
+    showRequiredErrorFlagPresent: true,
+    requiredFlagPresent: true,
+    isEmpty: true,
+  };
+  const requiredFlagNotPresent = {
+    cardshellForceUnansweredQuestionError: false,
+    showRequiredErrorFlagPresent: true,
+    requiredFlagPresent: false,
+    isEmpty: true,
+  };
+  const nonEmptyInput = {
+    cardshellForceUnansweredQuestionError: false,
+    showRequiredErrorFlagPresent: true,
+    requiredFlagPresent: true,
+    isEmpty: false,
+  };
+  const noInitialError = {
+    cardshellForceUnansweredQuestionError: false,
+    showRequiredErrorFlagPresent: false,
+    requiredFlagPresent: true,
+    isEmpty: true,
+  };
+
+  t.true(inputHasRequiredError(cardShellError));
+  t.true(inputHasRequiredError(showRequiredError));
+  t.false(inputHasRequiredError(requiredFlagNotPresent));
+  t.false(inputHasRequiredError(nonEmptyInput));
+  t.false(inputHasRequiredError(noInitialError));
+
+  t.end();
+});
+
+test('Input - isInputInErrorState helper function', (t) => {
+  const allTrue = {
+    showInvalidity: true,
+    errorFlag: true,
+    hasRequiredError: true,
+  };
+  const hasRequiredError = {
+    showInvalidity: false,
+    errorFlag: false,
+    hasRequiredError: true,
+  };
+  const errorFlag = {
+    showInvalidity: false,
+    errorFlag: true,
+    hasRequiredError: false,
+  };
+  const showInvalidity = {
+    showInvalidity: true,
+    errorFlag: false,
+    hasRequiredError: false,
+  };
+  const allFalse = {
+    showInvalidity: false,
+    errorFlag: false,
+    hasRequiredError: false,
+  };
+
+  t.true(isInputInErrorState(allTrue));
+  t.true(isInputInErrorState(hasRequiredError));
+  t.true(isInputInErrorState(errorFlag));
+  t.true(isInputInErrorState(showInvalidity));
+  t.false(isInputInErrorState(allFalse));
+
+  t.end();
+});
+
+test('Input - generateInputErrorMessage helper function', (t) => {
+  const requiredError = {
+    hasRequiredError: true,
+    errorMsg: false,
+    mask: '',
+  };
+  const customErrorMessage = {
+    hasRequiredError: false,
+    errorMsg: 'I am invalid!',
+    mask: '',
+  };
+  const maskError = {
+    hasRequiredError: false,
+    errorMsg: '',
+    mask: 'Month',
+  };
+
+  t.equals(generateInputErrorMessage(requiredError), 'Required Field');
+  t.equals(generateInputErrorMessage(customErrorMessage), 'I am invalid!');
+  t.equals(generateInputErrorMessage(maskError), 'Invalid date value');
+
   t.end();
 });

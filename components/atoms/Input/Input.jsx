@@ -1,7 +1,7 @@
 /** @module Input */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {Component, createRef} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import MaskedInput from 'react-text-mask';
 import TextareaAutosize from 'react-textarea-autosize';
 import {isInViewport} from '~components/atoms/Input/Input.util';
@@ -29,8 +29,63 @@ export const getDeepestInputElement = (startObject) => {
   return getDeepestInputElement(startObject.inputElement);
 };
 
+/**
+ * Determines if the input should show the required error
+ * @param {object} args - Object of args
+ * @param {boolean} args.cardshellForceUnansweredQuestionError - HOC Cardshell boolean for error state
+ * @param {boolean} args.showRequiredErrorFlagPresent - Does this input have the showRequiredError flag
+ * @param {boolean} args.requiredFlagPresent - Does this input have the required flag
+ * @param {boolean} args.isEmpty - Is the current user input an empty string
+ * @returns {boolean} Should the input be in the requiredError state
+ */
+export const inputHasRequiredError = ({
+  cardshellForceUnansweredQuestionError,
+  showRequiredErrorFlagPresent,
+  requiredFlagPresent,
+  isEmpty,
+}) =>
+  (cardshellForceUnansweredQuestionError || showRequiredErrorFlagPresent) &&
+  requiredFlagPresent &&
+  isEmpty;
+
+/**
+ * Determines if the input component should be in the error state
+ * @param {object} args - Object of args
+ * @param {boolean} args.showInvalidity - Calculated boolean that says we should show an invalidError
+ * @param {boolean} args.errorFlag - Does this input have the error flag
+ * @param {boolean} args.hasRequiredError - Has the input been calculated to show the requiredError
+ * @returns {boolean} Should the input be in a generic error state?
+ */
+export const isInputInErrorState = ({
+  showInvalidity,
+  errorFlag,
+  hasRequiredError,
+}) => showInvalidity || errorFlag || hasRequiredError;
+
+/**
+ * Sends back the appropriate error message for our input component
+ * @param {object} args - Object of args
+ * @param {boolean} args.hasRequiredError - Has the input value been calculated to be in the required error state
+ * @param {string} args.errorMsg - Optional custom errorMsg
+ * @param {string} args.mark - Optional mask for the input
+ * @returns {string} Correct error message
+ */
+export const generateInputErrorMessage = ({
+  hasRequiredError,
+  errorMsg,
+  mask,
+}) => {
+  if (hasRequiredError) {
+    return 'Required Field';
+  } else if (errorMsg) {
+    return errorMsg;
+  }
+
+  return maskEnum[mask].validationErrorMsg;
+};
+
 /** Renders the Input field component. */
-class Input extends Component {
+class Input extends PureComponent {
   /** @inheritdoc */
   constructor(props) {
     super(props);
@@ -38,6 +93,7 @@ class Input extends Component {
     this.state = {
       isActive: false,
       height: 0,
+      validationErrorMessage: '',
     };
 
     this.tooltipNode = createRef();
@@ -83,7 +139,11 @@ class Input extends Component {
    * @return {boolean} - Returns true or false depending on the validity.
    */
   isValid() {
-    const {isValid = () => true, hideValidity = () => true} = this.props;
+    const {
+      isValid = () => true,
+      validate = () => '',
+      hideValidity = () => true,
+    } = this.props;
     const deepest = getDeepestInputElement(this);
     const isActive = isDocumentDefined() && deepest === document.activeElement;
     const isEmpty =
@@ -92,11 +152,15 @@ class Input extends Component {
       this.props.mask && maskEnum[this.props.mask].isValid
         ? maskEnum[this.props.mask].isValid(this.props.value)
         : true;
+    this.setState({
+      validationErrorMessage: validate(this.props.value),
+    });
 
     return (
-      (isValid(this.props.value) && maskValidation) ||
-      (hideValidity() && isActive) ||
-      isEmpty
+      !this.state.validationErrorMessage &&
+      ((isValid(this.props.value) && maskValidation) ||
+        (hideValidity() && isActive) ||
+        isEmpty)
     );
   }
 
@@ -131,6 +195,7 @@ class Input extends Component {
       className,
       sanitize,
       style,
+      showRequiredError,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
@@ -140,6 +205,7 @@ class Input extends Component {
 
     const showInvalidity = !disabled ? !this.isValid() : false;
     const isEmpty = (value && value.length < 1) || !value;
+    const errorMsg = validationErrorMsg || this.state.validationErrorMessage;
 
     let InputType = 'input';
     let prependCharacter = prepend;
@@ -198,12 +264,14 @@ class Input extends Component {
         attrs.keepCharPositions = true;
       }
     }
+
     if (validateOnBlur) {
       attrs.onBlur = () => {
         this.forceUpdate();
         this.toggleFocus();
       };
     }
+
     if (onChange) {
       const mask = this.props.mask && maskEnum[this.props.mask].mask;
 
@@ -219,11 +287,23 @@ class Input extends Component {
     return (
       // The Context allows it to get the showRequiredError prop when in the CardShell
       <CardShellContext.Consumer>
-        {({showRequiredError}) => {
-          const reqErrorNecessary =
-            (this.props.showRequiredError || showRequiredError) &&
-            required &&
-            !value;
+        {({cardshellForceUnansweredQuestionError}) => {
+          const hasRequiredError = inputHasRequiredError({
+            cardshellForceUnansweredQuestionError: Boolean(
+              cardshellForceUnansweredQuestionError,
+            ),
+            showRequiredErrorFlagPresent: Boolean(showRequiredError),
+            requiredFlagPresent: required,
+            isEmpty,
+          });
+
+          const inputErrorState = isInputInErrorState({
+            showInvalidity,
+            errorFlag: Boolean(error),
+            hasRequiredError: Boolean(hasRequiredError),
+          });
+
+          const showDescription = Boolean(description) && !inputErrorState;
 
           const containerClasses = classNames(
             {
@@ -234,7 +314,7 @@ class Input extends Component {
               [`uic--input-prepend uic--input-prepend-${identifier}`]: prependCharacter,
               'uic--empty': isEmpty,
               'uic--focus': this.state.isActive,
-              'uic--error': showInvalidity || error || reqErrorNecessary,
+              'uic--error': inputErrorState,
               'uic--disabled': disabled,
               'uic--mcgonagall-input__tooltip-present': this.state.height !== 0,
             },
@@ -301,16 +381,16 @@ class Input extends Component {
                 />
                 <label className="uic--position-absolute">{inputLabel}</label>
               </div>
-              {description &&
-              !(showInvalidity || error || reqErrorNecessary) ? (
+              {showDescription && (
                 <div className="uic--description">{description}</div>
-              ) : (
+              )}
+              {inputErrorState && (
                 <div className="uic--validation-error">
-                  {isEmpty && reqErrorNecessary
-                    ? 'Required Field'
-                    : validationErrorMsg ||
-                      (this.props.mask &&
-                        maskEnum[this.props.mask].validationErrorMsg)}
+                  {generateInputErrorMessage({
+                    hasRequiredError,
+                    errorMsg,
+                    mask: this.props.mask,
+                  })}
                 </div>
               )}
             </div>
@@ -403,6 +483,8 @@ Input.propTypes = {
   showRequiredError: PropTypes.bool,
   /** Optional inline styles. */
   style: PropTypes.objectOf(PropTypes.string),
+  /** Custom validation function that the user wants the input validated against */
+  validate: PropTypes.func,
 };
 
 Input.defaultProps = {
