@@ -52,10 +52,22 @@ type ButtonPropsWithTo = {
       };
 };
 
-type ButtonPropsWithOnClick = {
-  /** The handler to fire when the button is clicked. */
-  onClick: React.MouseEventHandler;
-};
+type ButtonPropsWithOnClick =
+  | {
+      /** The optional type of button, for example `button` or `reset`. */
+      type?: 'button' | 'reset';
+      /** The handler to fire when the button is clicked. */
+      onClick: React.MouseEventHandler;
+    }
+  | {
+      /** The `submit` button type. */
+      type: 'submit';
+      /**
+       * The optional handler to fire when the button is clicked.
+       * If not provided, defer this handler to the encapsulating form.
+       */
+      onClick?: React.MouseEventHandler;
+    };
 
 export type ButtonProps = {
   /** Optional button component, allowing you to wrap the button in things such as react-router-dom's Link. */
@@ -72,8 +84,6 @@ export type ButtonProps = {
   light?: boolean;
   /** Specifies the accent type to affect the color scheme */
   accent?: 'warning';
-  /** The type of button, for example `button`, `submit` or `reset`. */
-  type?: 'button' | 'submit' | 'reset';
 } & (
   | {
       /** The style of button to be shown */
@@ -96,7 +106,6 @@ const Button: FC<ButtonProps> = ({
   isLoading,
   light,
   linkComponent,
-  type,
   variant,
   accent,
   ...props
@@ -131,7 +140,7 @@ const Button: FC<ButtonProps> = ({
 
   const propsWithTo = props as ButtonPropsWithTo;
 
-  if (propsWithTo.to) {
+  if ('to' in propsWithTo) {
     const linkClass = classNames(btnClass, {
       disabled,
     });
@@ -169,8 +178,15 @@ const Button: FC<ButtonProps> = ({
     );
   }
 
+  const propsWithOnClick = props as ButtonPropsWithOnClick;
+
   return (
-    <button type={type} className={btnClass} disabled={disabled} {...props}>
+    <button
+      type={propsWithOnClick.type}
+      className={btnClass}
+      disabled={disabled}
+      {...propsWithOnClick}
+    >
       <ButtonInterior
         showSpinner={isLoading}
         spinnerSize={spinnerSize}
