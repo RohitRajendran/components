@@ -1,19 +1,10 @@
 /** @module LinkedInIcon */
 import React, {FC, memo} from 'react';
+import {IconProps} from '../icons';
 
-type LinkedInIconProps = {
-  /** The width of the with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the icon with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the icon. */
-  fill?: string;
+type LinkedInIconProps = IconProps & {
   /** Boolean to toggle the full icon vs the logo (defaults to false) */
   isFull?: boolean;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
 };
 
 /** Displays the LinkedInIcon component.*/

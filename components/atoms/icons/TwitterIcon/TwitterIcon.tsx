@@ -1,21 +1,9 @@
 /** @module TwitterIcon */
 import React, {FC, memo} from 'react';
-
-type TwitterIconProps = {
-  /** The width of the with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the icon with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the icon. */
-  fill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
-};
+import {IconProps} from '../icons';
 
 /** Displays the TwitterIcon component.*/
-const TwitterIcon: FC<TwitterIconProps> = ({
+const TwitterIcon: FC<IconProps> = ({
   width,
   height,
   fill,

@@ -1,14 +1,11 @@
 /** @module HouseIcon */
 import classNames from 'classnames';
 import React, {FC, Fragment} from 'react';
-import {colors} from '~constants/js/colors';
 import detectBrowser from '~components/utilities/DetectBrowser/DetectBrowser';
+import {colors} from '~constants/js/colors';
+import {IconProps} from '../icons';
 
-type HouseIconProps = {
-  /** The width of the arrow with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the arrow with unit sizing (px, rem, etc). */
-  height?: string;
+type HouseIconProps = Omit<IconProps, 'fill'> & {
   /** Animations are disabled for ie users as they don't work. */
   isIE: boolean;
   /** Unique identifier for the house component block. */
@@ -17,10 +14,6 @@ type HouseIconProps = {
   houses: number;
   /** How many of the houses should be highlight. */
   highlight?: number;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
 };
 
 /** Displays the HouseIcon component.*/

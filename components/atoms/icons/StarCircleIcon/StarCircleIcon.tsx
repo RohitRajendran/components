@@ -1,20 +1,11 @@
 /** @module StarCircleIcon */
 import React, {FC, memo} from 'react';
 import {colors} from '~constants/js/colors';
+import {IconProps} from '../icons';
 
-type StarCircleIconProps = {
-  /** The width of the icon with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the icon with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the icon. */
-  fill?: string;
+type StarCircleIconProps = IconProps & {
   /** The outer color of the icon. */
   outerFill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
 };
 
 /** Displays the StarCircleIcon component.*/
