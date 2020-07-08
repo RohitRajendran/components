@@ -206,7 +206,6 @@ module.exports = {
       },
     },
     /^lodash\/.+$/,
-    /^core-js\/.+$/,
     /^react-spring\/.+$/,
   ],
 };
