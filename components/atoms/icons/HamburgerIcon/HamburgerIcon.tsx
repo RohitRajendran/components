@@ -1,21 +1,9 @@
 /** @module HamburgerIcon */
 import React, {FC, memo} from 'react';
-
-type HamburgerIconProps = {
-  /** The width of the with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the hamburger with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the hamburger. */
-  fill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
-};
+import {IconProps} from '../icons';
 
 /** Displays the HamburgerIcon component.*/
-const HamburgerIcon: FC<HamburgerIconProps> = ({
+const HamburgerIcon: FC<IconProps> = ({
   width,
   height,
   fill,

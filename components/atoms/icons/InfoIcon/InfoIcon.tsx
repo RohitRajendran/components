@@ -1,20 +1,13 @@
 /** @module InfoIcon */
 import React, {FC, memo} from 'react';
 import {colors} from '~constants/js/colors';
+import {IconProps} from '../icons';
 
-type InfoIconProps = {
-  /** The width of the infoIcon with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the InfoIcon with unit sizing (px, rem, etc). */
-  height?: string;
+type InfoIconProps = Omit<IconProps, 'fill'> & {
   /** The color of the background. */
   circleFill?: string;
   /** The color of the "i" inside the circle. */
   iconFill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
 };
 
 /** Displays the InfoIcon component.*/

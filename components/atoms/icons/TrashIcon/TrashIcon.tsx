@@ -1,27 +1,9 @@
 /** @module TrashIcon */
 import React, {FC, memo} from 'react';
-
-type TrashIconProps = {
-  /** The width of the icon with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the icon with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the icon. */
-  fill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
-};
+import {IconProps} from '../icons';
 
 /** Displays the TrashIcon component.*/
-const TrashIcon: FC<TrashIconProps> = ({
-  width,
-  height,
-  fill,
-  className,
-  style,
-}) => (
+const TrashIcon: FC<IconProps> = ({width, height, fill, className, style}) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"

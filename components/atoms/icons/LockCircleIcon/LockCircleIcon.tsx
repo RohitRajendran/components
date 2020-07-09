@@ -1,18 +1,9 @@
 /** @module LockCircleIcon */
 import React, {FC} from 'react';
 import {colors} from '../../../../constants/js/colors';
+import {IconProps} from '../icons';
 
-type LockCircleIconProps = {
-  /* Additional class names to apply to the container. */
-  className?: string;
-  /** Additional style properties to apply to the container. */
-  style?: React.CSSProperties;
-  /** The width of the with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the icon with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the icon. */
-  fill?: string;
+type LockCircleIconProps = IconProps & {
   /** The color of the circle that surrounds the icon. */
   outerFill?: string;
   /** The aria label for the lock icon. */

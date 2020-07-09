@@ -1,21 +1,9 @@
 /** @module ArrowEllipsisIcon */
 import React, {FC, memo} from 'react';
-
-type ArrowEllipsisIconProps = {
-  /** The width of the arrow with unit sizing (px, rem, etc). */
-  width?: string;
-  /** The height of the arrow with unit sizing (px, rem, etc). */
-  height?: string;
-  /** The color of the arrow. */
-  fill?: string;
-  /** Additional class names to apply to the container. */
-  className?: string;
-  /** Additional inline styles to apply to the container. */
-  style?: React.CSSProperties;
-};
+import {IconProps} from '../icons';
 
 /** Displays the ArrowEllipsisIcon component.*/
-const ArrowEllipsisIcon: FC<ArrowEllipsisIconProps> = ({
+const ArrowEllipsisIcon: FC<IconProps> = ({
   width,
   height,
   fill,

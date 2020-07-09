@@ -15,7 +15,6 @@ stories.addParameters({
 const defaultProps = () => ({
   fill: text('fill', '#000'),
   height: text('height', '44.5rem'),
-  width: text('width', '1.3rem'),
   direction: select('direction', ['down', 'up', 'right', 'left'], 'down'),
 });
 

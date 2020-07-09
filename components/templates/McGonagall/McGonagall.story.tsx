@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import {storiesOf} from '@storybook/react';
 import React, {Fragment} from 'react';
-import {assign} from 'xstate';
+import {assign, DefaultContext} from 'xstate';
 import {colors} from '~constants/js/colors';
 import {
   Button,
@@ -13,7 +13,7 @@ import {
   SliderCard,
 } from '../..';
 import CompletionScreen from '../../organisms-simple/CompletionScreen/CompletionScreen';
-import McGonagall from './McGonagall';
+import McGonagall, {McGonagallCardProps, Step} from './McGonagall';
 import McGonagallReadme from './McGonagall.mdx';
 
 const stateChart = {
@@ -93,7 +93,17 @@ const stateChart = {
   },
 };
 
-const stateContext = {
+type StateContext = {
+  supportDependents: 'Yes' | 'No' | null;
+  dependents: 'Yes' | 'No' | null;
+  lastYearsTaxableIncome: string;
+  lastYearsLTCG: null;
+  state: string[];
+  totalRetirementAccountValue: number;
+  previousAdvisoryFeePercent: null;
+};
+
+const stateContext: StateContext = {
   supportDependents: null,
   dependents: null,
   lastYearsTaxableIncome: '',
@@ -110,12 +120,21 @@ const stateOptions = {
     })),
   },
   guards: {
-    hasDependents: (ctx, eve) => eve.supportDependents === 'Yes',
-    noDependents: (ctx, eve) => eve.supportDependents === 'No',
+    hasDependents: (
+      ctx: DefaultContext,
+      eve: {supportDependents: StateContext['supportDependents']},
+    ): boolean => eve.supportDependents === 'Yes',
+    noDependents: (
+      ctx: DefaultContext,
+      eve: {supportDependents: StateContext['supportDependents']},
+    ): boolean => eve.supportDependents === 'No',
   },
 };
 
-const renderSupportDependents = (props, state) => {
+const renderSupportDependents = (
+  props: McGonagallCardProps,
+  state: StateContext,
+): JSX.Element => {
   return (
     <RadioButtonCard
       {...props}
@@ -131,7 +150,10 @@ const renderSupportDependents = (props, state) => {
   );
 };
 
-const renderListDependents = (props, state) => {
+const renderListDependents = (
+  props: McGonagallCardProps,
+  state: StateContext,
+): JSX.Element => {
   return (
     <RadioButtonCard
       {...props}
@@ -147,7 +169,10 @@ const renderListDependents = (props, state) => {
   );
 };
 
-const renderLastYearsTaxableIncome = (props, state) => {
+const renderLastYearsTaxableIncome = (
+  props: McGonagallCardProps,
+  state: StateContext,
+): JSX.Element => {
   return (
     <InputCard
       {...props}
@@ -156,12 +181,16 @@ const renderLastYearsTaxableIncome = (props, state) => {
         value: state.lastYearsTaxableIncome,
         label: 'value',
         type: 'text',
+        mask: 'Currency',
       }}
     />
   );
 };
 
-const renderState = (props, state) => {
+const renderState = (
+  props: McGonagallCardProps,
+  state: StateContext,
+): JSX.Element => {
   return (
     <CheckboxCard
       {...props}
@@ -188,7 +217,10 @@ const renderState = (props, state) => {
   );
 };
 
-const renderTotalRetirementAccountValue = (props, state) => {
+const renderTotalRetirementAccountValue = (
+  props: McGonagallCardProps,
+  state: StateContext,
+): JSX.Element => {
   return (
     <SliderCard
       {...props}
@@ -209,7 +241,9 @@ const renderTotalRetirementAccountValue = (props, state) => {
   );
 };
 
-const renderPreviousAdvisoryFeePercent = (props) => {
+const renderPreviousAdvisoryFeePercent = (
+  props: McGonagallCardProps,
+): JSX.Element => {
   return (
     <QuestionCard
       {...props}
@@ -224,7 +258,7 @@ const renderPreviousAdvisoryFeePercent = (props) => {
   );
 };
 
-const renderSummary = (props) => {
+const renderSummary = (props: McGonagallCardProps): JSX.Element => {
   return (
     <QuestionCard
       {...props}
@@ -239,12 +273,12 @@ const renderSummary = (props) => {
   );
 };
 
-const renderComplete = (props) => {
+const renderComplete = (props: McGonagallCardProps): JSX.Element => {
   return (
     <CompletionScreen
       {...props}
       actions={
-        <Button variant="secondary" type="submit" light>
+        <Button variant="secondary" light to="done">
           Done
         </Button>
       }
@@ -252,7 +286,7 @@ const renderComplete = (props) => {
   );
 };
 
-const steps = [
+const steps: Step[] = [
   {
     name: 'supportDependents',
     title: 'Do you have children or other family members in your household?',
@@ -343,6 +377,29 @@ stories.addParameters({
   },
 });
 
+const mockPush = (arg0: {} | string): void => {
+  if (typeof arg0 === 'string') {
+    return;
+  } else {
+    const push = ({
+      pathname,
+      query,
+    }: {
+      pathname?: string;
+      query?: any;
+    }): void => {
+      top.history.pushState(
+        {},
+        '',
+        `${pathname}?${Object.keys(query)
+          .map((key) => `${key}=${query[key]}`)
+          .join('&')}`,
+      );
+    };
+    push(arg0);
+  }
+};
+
 stories.add('default', () => {
   return (
     <div
@@ -356,17 +413,7 @@ stories.add('default', () => {
         name="Hogwarts 2.0 aka McGonagall aka McG"
         location={top.window.location}
         exitLocation="/"
-        browserHistory={{
-          push: ({pathname, query}) => {
-            top.history.pushState(
-              {},
-              null,
-              `${pathname}?${Object.keys(query)
-                .map((key) => `${key}=${query[key]}`)
-                .join('&')}`,
-            );
-          },
-        }}
+        browserHistory={{push: mockPush}}
         stateConfig={stateChart}
         stateOptions={stateOptions}
         stateContext={stateContext}

@@ -1,5 +1,6 @@
 /** @module RadioButtonCard */
 import React, {FC} from 'react';
+import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import RadioButtons from '../../../components/molecules/RadioButtons/RadioButtons';
 import QuestionCard, {
@@ -19,8 +20,6 @@ type RadioButtonsOptions = {
   disabled?: boolean;
 };
 
-type HandleRadioButtonChange = (name: string, value: string | boolean) => any;
-
 type RadioButtonsProps = {
   /** A string representing the name of the radio button group. For example `yesNo` or something similar. */
   name: string;
@@ -37,7 +36,7 @@ type RadioButtonsProps = {
   /** The current selected option in the radio button group. */
   value?: string | boolean;
   /** Change handler which takes in the `name` of the input and the `value` of the option which is currently selected. */
-  onChange: HandleRadioButtonChange;
+  onChange: HandleChange;
 };
 
 /**
@@ -56,16 +55,13 @@ export const getSelectedAnswerLabel = (
   }
 };
 
-export type RadioButtonCardProps = Omit<
-  QuestionCardProps,
-  'summary' | 'onChange'
-> & {
+export type RadioButtonCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** Values to pass into radio button */
   config: Omit<RadioButtonsProps, 'onChange'>;
   /** The card answer(s) to show in the collapsed summary. If not provided, will use the label of the seleted value */
   answers?: string[];
   /** The handler to fire when a change happens. */
-  onChange: HandleRadioButtonChange;
+  onChange: (fieldName: string, newValue: string) => void;
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
 };
