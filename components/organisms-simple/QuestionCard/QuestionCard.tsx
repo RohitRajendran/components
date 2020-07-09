@@ -1,14 +1,18 @@
 /** @module QuestionCard */
 import classNames from 'classnames';
-import React, {FC, Fragment, ReactNode} from 'react';
+import React, {FC, Fragment, PropsWithChildren, ReactNode} from 'react';
 import Button from '~components/atoms/Button/Button';
 import Cabinet from '~components/molecules/Cabinet/Cabinet.jsx';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell.jsx';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary.jsx';
+import {
+  HandleChange,
+  HandleSubmit,
+} from '~components/templates/McGonagall/McGonagall';
 import './QuestionCard.scss';
 
-export type QuestionCardProps = {
+export type QuestionCardProps = PropsWithChildren<{
   /** Enables browser auto complete. */
   autoComplete?: boolean;
   /** Whether it should animate on mount */
@@ -21,8 +25,6 @@ export type QuestionCardProps = {
   buttonText?: string;
   /** Handler to cancel the changes. */
   cancelChanges: () => void;
-  /** HTML element that should appear within the card when not collapsed */
-  children: ReactNode;
   /** Applies additional class names to the button. */
   className?: string;
   /** Whether making changes should clear out any changes made in steps after this. */
@@ -57,9 +59,9 @@ export type QuestionCardProps = {
     label: string;
   };
   /** The handler to fire when a change happens. */
-  onChange?: React.ChangeEventHandler;
+  onChange?: HandleChange;
   /** The handler to fire when the Submit button is clicked. */
-  onSubmit: React.FormEventHandler;
+  onSubmit: HandleSubmit;
   /** Output defaults to fallback to on continue if an output is empty. The key should be the output name and the value should be the default value */
   outputDefaults?: {};
   /** Shorter title to be used with the card summary. */
@@ -71,7 +73,7 @@ export type QuestionCardProps = {
   stepIndex?: number;
   /** The title of the card. */
   title: ReactNode;
-};
+}>;
 
 const QuestionCard: FC<QuestionCardProps> = ({
   afterButton,

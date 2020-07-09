@@ -6,7 +6,9 @@ import InputCard, {InputCardProps} from './InputCard';
 
 test('InputCard - renders', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     shortTitle: 'Q',
     config: {
@@ -41,7 +43,9 @@ test('InputCard - renders', (t) => {
 
 test('InputCard - collapsed with answer override', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     description: 'Description',
     moreDetails: {
@@ -77,7 +81,9 @@ test('InputCard - collapsed with answer override', (t) => {
 
 test('InputCard - collapsed without answer override', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     description: 'Description',
     moreDetails: {
@@ -108,7 +114,9 @@ test('InputCard - collapsed without answer override', (t) => {
 
 test('InputCard - collapsed with currency answer', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     description: 'Description',
     moreDetails: {
@@ -140,7 +148,9 @@ test('InputCard - collapsed with currency answer', (t) => {
 
 test('InputCard - collapsed with percentage answer', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     description: 'Description',
     moreDetails: {
@@ -172,7 +182,9 @@ test('InputCard - collapsed with percentage answer', (t) => {
 
 test('InputCard - latest collapsed', (t) => {
   const props: InputCardProps = {
-    onSubmit: () => true,
+    onSubmit: () => {
+      return;
+    },
     title: 'Question',
     description: 'Description',
     moreDetails: {

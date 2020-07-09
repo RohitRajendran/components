@@ -1,6 +1,7 @@
 /** @module SliderCard */
 import classNames from 'classnames';
 import React, {FC} from 'react';
+import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import Slider from '../../../components/atoms/Slider/Slider';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
@@ -32,7 +33,7 @@ type SliderCardProps = Omit<QuestionCardProps, 'summary' | 'children'> & {
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
-  onChange: () => void;
+  onChange: HandleChange;
 };
 
 /**

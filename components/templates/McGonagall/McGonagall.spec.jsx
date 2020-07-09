@@ -1,4 +1,6 @@
+import {cleanup, render} from '@testing-library/react';
 import {shallow} from 'enzyme';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {spy, stub} from 'sinon';
 import test from 'tape';
@@ -101,6 +103,9 @@ const defaultProps = {
   },
   exitLocation: '',
 };
+
+window.scrollTo = stub();
+window.requestAnimationFrame = stub();
 
 test('McGonagall - saveToStateContext', (t) => {
   const eve = {
@@ -378,6 +383,16 @@ test('McGonagall - getMatchingStep', (t) => {
   t.deepEquals(step.name, 'end', 'Finds correct step');
 
   window.scrollTo = scrollTo;
+  t.end();
+});
+
+test('McGonagall - getMatchingStep (error)', (t) => {
+  const comp = new McGonagall(defaultProps);
+
+  t.throws(() =>
+    comp.getMatchingStep(steps, {matches: (name) => name === 'foo'}),
+  );
+
   t.end();
 });
 
@@ -680,5 +695,105 @@ test('McGonagall - renders', async (t) => {
 
   window.scrollTo = scrollTo;
   window.requestAnimationFrame = requestAnimationFrame;
+  t.end();
+});
+
+/**
+ * ErrorBoundary for testing thrown errors
+ */
+class ErrorBoundary extends React.Component {
+  /**
+   * @inheritdoc
+   * @param props - props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {error: ''};
+  }
+  /**
+   * @inheritdoc
+   * @param error - error object
+   */
+  componentDidCatch(error) {
+    this.setState({error: error.message});
+  }
+
+  /**
+   * @inheritdoc
+   * @param props
+   */
+  render() {
+    if (this.state.error) {
+      return <h1>{this.state.error}</h1>;
+    }
+    return this.props.children;
+  }
+}
+
+ErrorBoundary.propTypes = {children: PropTypes.node.isRequired};
+
+test('McGonagall - throws an error when multiple step query params exist', (t) => {
+  const props = {
+    ...defaultProps,
+    stateConfig: {
+      id: 'mcgTest',
+      states: {
+        start: {
+          on: {
+            NEXT: [
+              {
+                target: 'second',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        second: {
+          on: {
+            NEXT: [
+              {
+                target: 'third',
+              },
+            ],
+          },
+        },
+        third: {
+          on: {
+            NEXT: [
+              {
+                target: 'end',
+              },
+            ],
+          },
+        },
+        end: {
+          type: 'final',
+        },
+      },
+      initial: 'start',
+    },
+    location: {
+      search: '?step=third&step=end',
+    },
+  };
+
+  const {getByText} = render(
+    <ErrorBoundary>
+      <McGonagall {...props} />
+    </ErrorBoundary>,
+  );
+
+  t.true(getByText('multiple card values found in query string'));
+
+  cleanup();
+
+  t.end();
+});
+
+test('McGonagall - throws an error when the state value is not a string', (t) => {
+  const comp = new McGonagall(defaultProps);
+
+  t.throws(() => comp.stateValue({state: false}));
+
   t.end();
 });

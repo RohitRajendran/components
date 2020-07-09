@@ -8,7 +8,7 @@ window.requestAnimationFrame = stub();
 
 test('QuestionCard - renders', (t) => {
   const props = {
-    onSubmit: (): boolean => true,
+    onSubmit: (): void => undefined,
     name: 'test',
     title: 'Question',
     shortTitle: 'Q',
@@ -33,7 +33,7 @@ test('QuestionCard - renders', (t) => {
 
 test('QuestionCard - shows description, more detail, and edit warning', (t) => {
   const props = {
-    onSubmit: (): boolean => true,
+    onSubmit: (): void => undefined,
     name: 'test',
     title: 'Question',
     description: 'Description',
@@ -69,7 +69,7 @@ test('QuestionCard - shows description, more detail, and edit warning', (t) => {
 
 test('QuestionCard - collapsed', (t) => {
   const props = {
-    onSubmit: (): boolean => true,
+    onSubmit: (): void => undefined,
     name: 'test',
     title: 'Question',
     description: 'Description',
@@ -101,7 +101,7 @@ test('QuestionCard - collapsed', (t) => {
 
 test('QuestionCard - latest collapsed', (t) => {
   const props = {
-    onSubmit: (): boolean => true,
+    onSubmit: (): void => undefined,
     name: 'test',
     title: 'Question',
     description: 'Description',

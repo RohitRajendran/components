@@ -1,7 +1,19 @@
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import './CompletionScreen.scss';
+
+type CompletionScreenProps = {
+  /** Action button or links to be displayed at the bottom of the screen */
+  actions: ReactNode;
+  /** Additional class names to apply */
+  className?: string;
+  /** Screen description */
+  description?: ReactNode;
+  /** Feature image or content to be displayed at the top */
+  feature?: ReactNode;
+  /** Screen title */
+  title: ReactNode;
+};
 
 const CompletionScreen = ({
   title,
@@ -9,7 +21,7 @@ const CompletionScreen = ({
   actions,
   feature,
   className,
-}) => {
+}: CompletionScreenProps): JSX.Element => {
   const containerClass = classNames(
     {
       'uic--mcg-completion-screen': true,
@@ -42,19 +54,6 @@ const CompletionScreen = ({
       </div>
     </div>
   );
-};
-
-CompletionScreen.propTypes = {
-  /** Action button or links to be displayed at the bottom of the screen */
-  actions: PropTypes.node.isRequired,
-  /** Additional class names to apply */
-  className: PropTypes.string,
-  /** Screen description */
-  description: PropTypes.string,
-  /** Feature image or content to be displayed at the top */
-  feature: PropTypes.node,
-  /** Screen title */
-  title: PropTypes.string.isRequired,
 };
 
 export default CompletionScreen;

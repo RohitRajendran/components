@@ -1,10 +1,11 @@
 /** @module MessageCard */
 import classNames from 'classnames';
-import React, {FC, Fragment, SyntheticEvent} from 'react';
+import React, {FC, Fragment} from 'react';
 import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import '~components/molecules/CardSummaries/CardSummaries.scss';
+import {HandleSubmit} from '~components/templates/McGonagall/McGonagall';
 import './MessageCard.scss';
 
 type MessageCardProps = {
@@ -41,7 +42,7 @@ type MessageCardProps = {
   /** Shows a loading indicator on the button for actions after the button is clicked. */
   loading?: boolean;
   /** The handler to fire when the Submit button is clicked. */
-  onSubmit: (e: SyntheticEvent) => Promise<void>;
+  onSubmit: HandleSubmit;
   /** The index of this card in the flow, used for animation purposes */
   stepIndex?: number;
   /** The title of the card. */

@@ -1,5 +1,6 @@
 /** @module CheckboxCard */
 import React, {FC} from 'react';
+import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Checkboxes from '../../../components/molecules/Checkboxes/Checkboxes';
 import QuestionCard, {
@@ -59,7 +60,7 @@ type CheckboxCardProps = Omit<QuestionCardProps, 'summary'> & {
   /** Handler called to edit the card, only necessary for McGonagall. */
   editCard: React.MouseEventHandler;
   /** The handler to fire when a change happens. */
-  onChange: typeof Checkboxes.propTypes.onChange;
+  onChange: HandleChange;
 };
 
 /**
