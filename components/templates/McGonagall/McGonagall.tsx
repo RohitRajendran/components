@@ -242,7 +242,7 @@ class McGonagall<TContext = DefaultContext> extends Component<
   get activeCard(): string {
     const queryStringCard = queryString.parse(this.props.location.search).step;
 
-    if (typeof queryStringCard !== 'string') {
+    if (Array.isArray(queryStringCard)) {
       throw new Error('multiple card values found in query string');
     }
 
