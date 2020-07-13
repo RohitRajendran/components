@@ -1,11 +1,11 @@
 /** @module CheckboxCard */
 import React, {FC} from 'react';
-import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import Checkboxes from '../../../components/molecules/Checkboxes/Checkboxes';
 import QuestionCard, {
   QuestionCardProps,
 } from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import {HandleChange} from '../../templates/McGonagall/McGonagall';
 
 type CheckboxCardOption = {
   /** The value of the checkbox, for example `yes` or `no`. */

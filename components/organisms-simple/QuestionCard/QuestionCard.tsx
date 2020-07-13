@@ -9,7 +9,7 @@ import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSum
 import {
   HandleChange,
   HandleSubmit,
-} from '~components/templates/McGonagall/McGonagall';
+} from '../../templates/McGonagall/McGonagall';
 import './QuestionCard.scss';
 
 export type QuestionCardProps = PropsWithChildren<{
