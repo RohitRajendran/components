@@ -1,11 +1,11 @@
 /** @module RadioButtonCard */
 import React, {FC} from 'react';
-import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import RadioButtons from '../../../components/molecules/RadioButtons/RadioButtons';
 import QuestionCard, {
   QuestionCardProps,
 } from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import {HandleChange} from '../../templates/McGonagall/McGonagall';
 
 type RadioButtonsOptions = {
   /** The value of the radio button, for example `yes` or `no`. */

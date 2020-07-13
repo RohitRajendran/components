@@ -1,12 +1,12 @@
 /** @module SliderCard */
 import classNames from 'classnames';
 import React, {FC} from 'react';
-import {HandleChange} from '~components/templates/McGonagall/McGonagall';
 import Slider from '../../../components/atoms/Slider/Slider';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
   QuestionCardProps,
 } from '../../../components/organisms-simple/QuestionCard/QuestionCard';
+import {HandleChange} from '../../templates/McGonagall/McGonagall';
 
 type SliderCardConfig = {
   /** A string representing the name of the select button group. For example `yesNo` or something similar. */

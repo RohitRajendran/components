@@ -5,7 +5,7 @@ import Button from '~components/atoms/Button/Button';
 import '~components/molecules/CardShell/Cards.scss';
 import CardShell from '~components/molecules/CardShell/CardShell';
 import '~components/molecules/CardSummaries/CardSummaries.scss';
-import {HandleSubmit} from '~components/templates/McGonagall/McGonagall';
+import {HandleSubmit} from '../../templates/McGonagall/McGonagall';
 import './MessageCard.scss';
 
 type MessageCardProps = {
