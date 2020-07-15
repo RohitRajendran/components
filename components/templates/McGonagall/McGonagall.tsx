@@ -404,6 +404,15 @@ class McGonagall<TContext = DefaultContext> extends Component<
       updatedCurrState = newState;
     }
 
+    const currXStateValue = this.stateValue(this.state.currXState);
+
+    const stepToNavigateTo =
+      this.activeCard !== currXStateValue && !clearFuture
+        ? currXStateValue
+        : this.stateValue(newState);
+
+    this.navigateToStep(stepToNavigateTo);
+
     const updatedData = {
       currXState: updatedCurrState,
       ...updatedCurrState.context,
@@ -422,15 +431,6 @@ class McGonagall<TContext = DefaultContext> extends Component<
     } else {
       this.setState(updatedData);
     }
-
-    const currXStateValue = this.stateValue(this.state.currXState);
-
-    const stepToNavigateTo =
-      this.activeCard !== currXStateValue && !clearFuture
-        ? currXStateValue
-        : this.stateValue(newState);
-
-    this.navigateToStep(stepToNavigateTo);
   }
 
   /**
