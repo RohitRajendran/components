@@ -188,6 +188,7 @@ class McGonagall<TContext = DefaultContext> extends Component<
     const {currXState, activeCard, cardHistory} = this.navigateToLatestCard(
       [firstStep],
       this.stateMachine.initialState,
+      props.location.search,
     );
 
     this.state = {
@@ -237,16 +238,28 @@ class McGonagall<TContext = DefaultContext> extends Component<
   }
 
   /**
-   * Gets active card based on query string
+   * Helper function to get the active card based on the query params for step if it exists
+   * @param queryParams query params from the location object
+   * @returns card name of the requested step
    */
-  get activeCard(): string {
-    const queryStringCard = queryString.parse(this.props.location.search).step;
+  getQueryStringCard(queryParams: string): string | null | undefined {
+    const queryStringCard = queryString.parse(queryParams).step;
 
     if (Array.isArray(queryStringCard)) {
       throw new Error('multiple card values found in query string');
     }
 
-    return queryStringCard || this.stateValue(this.state.currXState);
+    return queryStringCard;
+  }
+
+  /**
+   * Gets active card based on query string
+   */
+  get activeCard(): string {
+    return (
+      this.getQueryStringCard(this.props.location.search) ||
+      this.stateValue(this.state.currXState)
+    );
   }
 
   /**
@@ -269,11 +282,13 @@ class McGonagall<TContext = DefaultContext> extends Component<
    * Recursively transitions until it reaches the last card it can navigate to
    * @param cardHistory current card history
    * @param currXState current xstate object
+   * @param queryParams current query params from the location object
    * @returns updated currXstate, activeCard, and cardHistory
    */
   navigateToLatestCard(
     cardHistory: Step[],
     currXState: State<TContext, McGonagallEvent, any, any>,
+    queryParams: string,
   ): {
     currXState: State<TContext, McGonagallEvent, any, any>;
     activeCard: string;
@@ -313,7 +328,13 @@ class McGonagall<TContext = DefaultContext> extends Component<
       }
     } while (latest.value !== newCardHistory[0].name && !finalReached);
 
-    const activeCard = this.stateValue(latest);
+    // If a query param exists for the step and the step has been completed, show the summary step with the requested step as the active card
+    const queryStringCard = this.getQueryStringCard(queryParams);
+    const activeCard =
+      queryStringCard &&
+      newCardHistory.find((history) => history.name === queryStringCard)
+        ? queryStringCard
+        : this.stateValue(latest);
 
     this.navigateToStep(activeCard);
 

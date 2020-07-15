@@ -93,6 +93,49 @@ const stateChart = {
   },
 };
 
+const completedStateChart = {
+  id: 'household',
+  initial: 'supportDependents',
+  states: {
+    supportDependents: {
+      on: {
+        NEXT: [
+          {
+            target: 'lastYearsTaxableIncome',
+          },
+        ],
+      },
+    },
+    lastYearsTaxableIncome: {
+      on: {
+        NEXT: {
+          target: 'totalRetirementAccountValue',
+        },
+      },
+    },
+    totalRetirementAccountValue: {
+      on: {
+        NEXT: {
+          target: 'summary',
+        },
+      },
+    },
+    summary: {
+      on: {
+        NEXT: {
+          target: 'complete',
+        },
+      },
+    },
+    complete: {
+      type: 'final',
+    },
+    onDone: {
+      actions: 'onDone',
+    },
+  },
+};
+
 type StateContext = {
   supportDependents: 'Yes' | 'No' | null;
   dependents: 'Yes' | 'No' | null;
@@ -111,6 +154,12 @@ const stateContext: StateContext = {
   state: [],
   totalRetirementAccountValue: 5,
   previousAdvisoryFeePercent: null,
+};
+
+const completedStateContext: StateContext = {
+  ...stateContext,
+  supportDependents: 'No',
+  lastYearsTaxableIncome: '1000',
 };
 
 const stateOptions = {
@@ -417,6 +466,29 @@ stories.add('default', () => {
         stateConfig={stateChart}
         stateOptions={stateOptions}
         stateContext={stateContext}
+        steps={steps}
+      />
+    </div>
+  );
+});
+
+stories.add('completed', () => {
+  return (
+    <div
+      style={{
+        backgroundColor: colors.parchment,
+        minHeight: '100vh',
+        padding: '3.6rem 0',
+      }}
+    >
+      <McGonagall
+        name="Hogwarts 2.0 aka McGonagall aka McG - Completed"
+        location={top.window.location}
+        exitLocation="/"
+        browserHistory={{push: mockPush}}
+        stateConfig={completedStateChart}
+        stateOptions={stateOptions}
+        stateContext={completedStateContext}
         steps={steps}
       />
     </div>

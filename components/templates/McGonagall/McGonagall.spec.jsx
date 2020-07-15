@@ -104,6 +104,37 @@ const defaultProps = {
   exitLocation: '',
 };
 
+const completedProps = {
+  ...defaultProps,
+  stateConfig: {
+    id: 'mcgTest',
+    states: {
+      start: {
+        on: {
+          NEXT: [
+            {
+              target: 'second',
+            },
+          ],
+        },
+      },
+      second: {
+        on: {
+          NEXT: [
+            {
+              target: 'end',
+            },
+          ],
+        },
+      },
+      end: {
+        type: 'final',
+      },
+    },
+    initial: 'start',
+  },
+};
+
 window.scrollTo = stub();
 window.requestAnimationFrame = stub();
 
@@ -229,36 +260,7 @@ test('McGonagall - navigateToLatestCard (completed flow)', (t) => {
   const {scrollTo} = window;
   window.scrollTo = stub();
 
-  const comp = new McGonagall({
-    ...defaultProps,
-    stateConfig: {
-      id: 'mcgTest',
-      states: {
-        start: {
-          on: {
-            NEXT: [
-              {
-                target: 'second',
-              },
-            ],
-          },
-        },
-        second: {
-          on: {
-            NEXT: [
-              {
-                target: 'end',
-              },
-            ],
-          },
-        },
-        end: {
-          type: 'final',
-        },
-      },
-      initial: 'start',
-    },
-  });
+  const comp = new McGonagall({...completedProps});
 
   t.equals(
     comp.state.currXState.value,
@@ -795,5 +797,316 @@ test('McGonagall - throws an error when the state value is not a string', (t) =>
 
   t.throws(() => comp.stateValue({state: false}));
 
+  t.end();
+});
+
+test('McGonagall - renders first step completed flow with query param for first step', (t) => {
+  const {scrollTo, requestAnimationFrame} = window;
+  window.scrollTo = stub();
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    ...defaultProps,
+    stateConfig: {
+      id: 'mcgTest',
+      states: {
+        start: {
+          on: {
+            NEXT: [
+              {
+                target: 'second',
+              },
+            ],
+          },
+        },
+        second: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'third',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        third: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'end',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        end: {
+          type: 'final',
+        },
+      },
+      initial: 'start',
+    },
+  };
+  props.browserHistory.push.reset();
+
+  const comp = render(<McGonagall {...props} />);
+
+  t.deepEquals(
+    props.browserHistory.push.args[0][0].query,
+    {step: 'start'},
+    'Navigate to start card',
+  );
+
+  t.equals(
+    comp.container.querySelectorAll('.uic--mcgonagall-card').length,
+    2,
+    'Displays 2 cards',
+  );
+
+  t.equals(
+    comp.container.querySelector('.uic--mcgonagall-card.uic--active h2')
+      .textContent,
+    'Start of the flow',
+    'Displays correct active card',
+  );
+
+  window.scrollTo = scrollTo;
+  window.requestAnimationFrame = requestAnimationFrame;
+  cleanup();
+  t.end();
+});
+
+test('McGonagall - renders first step completed flow with query param for second step', (t) => {
+  const {scrollTo, requestAnimationFrame} = window;
+  window.scrollTo = stub();
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    ...defaultProps,
+    location: {
+      search: '?step=second',
+    },
+    stateConfig: {
+      id: 'mcgTest',
+      states: {
+        start: {
+          on: {
+            NEXT: [
+              {
+                target: 'second',
+              },
+            ],
+          },
+        },
+        second: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'third',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        third: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'end',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        end: {
+          type: 'final',
+        },
+      },
+      initial: 'start',
+    },
+  };
+  props.browserHistory.push.reset();
+
+  const comp = render(<McGonagall {...props} />);
+
+  t.deepEquals(
+    props.browserHistory.push.args[0][0].query,
+    {step: 'second'},
+    'Updated path correctly',
+  );
+
+  t.equals(
+    comp.container.querySelectorAll('.uic--mcgonagall-card').length,
+    2,
+    'Displays 2 cards',
+  );
+
+  t.equals(
+    comp.container.querySelector('.uic--mcgonagall-card.uic--active h2')
+      .textContent,
+    'Second of the flow',
+    'Displays correct active card',
+  );
+
+  window.scrollTo = scrollTo;
+  window.requestAnimationFrame = requestAnimationFrame;
+  cleanup();
+  t.end();
+});
+
+test('McGonagall - renders first step completed flow with query param for third step', (t) => {
+  const {scrollTo, requestAnimationFrame} = window;
+  window.scrollTo = stub();
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    ...defaultProps,
+    location: {
+      search: '?step=third',
+    },
+    stateConfig: {
+      id: 'mcgTest',
+      states: {
+        start: {
+          on: {
+            NEXT: [
+              {
+                target: 'second',
+              },
+            ],
+          },
+        },
+        second: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'third',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        third: {
+          on: {
+            NEXT: [
+              {
+                cond: 'hasValue',
+                target: 'end',
+                actions: ['save'],
+              },
+            ],
+          },
+        },
+        end: {
+          type: 'final',
+        },
+      },
+      initial: 'start',
+    },
+  };
+  props.browserHistory.push.reset();
+
+  const comp = render(<McGonagall {...props} />);
+
+  t.deepEquals(
+    props.browserHistory.push.args[0][0].query,
+    {step: 'second'},
+    'Updated path correctly',
+  );
+
+  t.equals(
+    comp.container.querySelectorAll('.uic--mcgonagall-card').length,
+    2,
+    'Displays 2 cards',
+  );
+
+  t.equals(
+    comp.container.querySelector('.uic--mcgonagall-card h2').textContent,
+    'Second of the flow',
+    'Displays correct active card',
+  );
+
+  window.scrollTo = scrollTo;
+  window.requestAnimationFrame = requestAnimationFrame;
+  cleanup();
+  t.end();
+});
+
+test('McGonagall - renders completed flow with query param for first step', (t) => {
+  const {scrollTo, requestAnimationFrame} = window;
+  window.scrollTo = stub();
+  window.requestAnimationFrame = stub();
+
+  const props = {...completedProps};
+  props.browserHistory.push.reset();
+
+  const comp = render(<McGonagall {...props} />);
+
+  t.deepEquals(
+    props.browserHistory.push.args[0][0].query,
+    {step: 'start'},
+    'Updated path correctly',
+  );
+
+  t.equals(
+    comp.container.querySelectorAll('.uic--mcgonagall-card').length,
+    2,
+    'Displays 2 cards',
+  );
+
+  t.equals(
+    comp.container.querySelector('.uic--mcgonagall-card.uic--active h2')
+      .textContent,
+    'Start of the flow',
+    'Displays correct active card',
+  );
+
+  window.scrollTo = scrollTo;
+  window.requestAnimationFrame = requestAnimationFrame;
+  cleanup();
+  t.end();
+});
+
+test('McGonagall - renders completed flow with query param for second step', (t) => {
+  const {scrollTo, requestAnimationFrame} = window;
+  window.scrollTo = stub();
+  window.requestAnimationFrame = stub();
+
+  const props = {
+    ...completedProps,
+    location: {
+      search: '?step=second',
+    },
+  };
+  props.browserHistory.push.reset();
+
+  const comp = render(<McGonagall {...props} />);
+
+  t.deepEquals(
+    props.browserHistory.push.args[0][0].query,
+    {step: 'second'},
+    'Updated path correctly',
+  );
+
+  t.equals(
+    comp.container.querySelectorAll('.uic--mcgonagall-card').length,
+    2,
+    'Displays 2 cards',
+  );
+
+  t.equals(
+    comp.container.querySelector('.uic--mcgonagall-card.uic--active h2')
+      .textContent,
+    'Second of the flow',
+    'Displays correct active card',
+  );
+
+  window.scrollTo = scrollTo;
+  window.requestAnimationFrame = requestAnimationFrame;
+  cleanup();
   t.end();
 });
