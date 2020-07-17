@@ -55,10 +55,12 @@
         }
       }
 
-      .uic--tabbed-tile__navigation-box--item:hover {
-        background-color: $royal;
-        &.uic--tabbed-tile__navigation-box--item-active {
-          background-color: $midnight;
+      .uic--tabbed-tile__navigation-box--item {
+        &:hover {
+          background-color: $royal;
+          &.uic--tabbed-tile__navigation-box--item-active {
+            background-color: $midnight;
+          }
         }
       }
 
