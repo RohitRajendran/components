@@ -55,6 +55,13 @@
         }
       }
 
+      .uic--tabbed-tile__navigation-box--item:hover {
+        background-color: $royal;
+        &.uic--tabbed-tile__navigation-box--item-active {
+          background-color: $midnight;
+        }
+      }
+
       .uic--tabbed-tile__navigation-box--item-active {
         background-color: $midnight;
         border-color: $white-30;
@@ -102,6 +109,13 @@
 
         &:first-of-type {
           border-left: 1px solid $light-gray;
+        }
+
+        &:hover {
+          background-color: $table-alternate;
+          &.uic--tabbed-tile__navigation-box--item-active {
+            background-color: $white;
+          }
         }
 
         &-active {
