@@ -1,4 +1,4 @@
-/** @module FormSummary */
+/** @module DataTableSummary */
 import React, {Fragment, FC} from 'react';
 import Button from '~components/atoms/Button/Button';
 import '../CardSummaries.scss';
