@@ -1,0 +1,68 @@
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+import {PureFolderCircleIllustration as FolderCircleIllustration} from './FolderCircleIllustration.tsx';
+
+# FolderCircleIllustration
+
+The FolderCircleIllustration component creates a folder illustration using inline SVG. This illustration is commonly used within McGonnagall introduction cards.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import FolderCircleIllustration from '@unitedincome/components/dist/FolderCircleIllustration';
+```
+
+```javascript
+import {FolderCircleIllustration} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <FolderCircleIllustration height="14rem" width="14rem" />
+</Preview>
+
+```javascript
+<FolderCircleIllustration height="14rem" width="14rem" />
+```
+
+### Draft
+
+You can use the `draft` prop to render the illustrations draft mode variant.
+
+<Preview>
+  <FolderCircleIllustration height="14rem" width="14rem" draft />
+</Preview>
+
+```javascript
+<FolderCircleIllustration height="14rem" width="14rem" draft />
+```
+
+### Color
+
+You can use the `color` prop to render the illustrations full color variant.
+
+<Preview>
+  <FolderCircleIllustration height="14rem" width="14rem" color />
+</Preview>
+
+```javascript
+<FolderCircleIllustration height="14rem" width="14rem" color />
+```
+
+### Illuminate
+
+The `illuminate` prop activates the interaction variant of the illustration. By default the interaction occurs when the illustration is clicked, this prop allows you to override that behavior so you can trigger it as a side effect of another action.
+
+<Preview>
+  <FolderCircleIllustration height="14rem" width="14rem" illuminate />
+</Preview>
+
+```javascript
+<FolderCircleIllustration height="14rem" width="14rem" illuminate />
+```
+
+## Props 🔧
+
+<Props of={FolderCircleIllustration} />
