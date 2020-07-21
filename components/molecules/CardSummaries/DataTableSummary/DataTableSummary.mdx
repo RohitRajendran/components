@@ -1,0 +1,98 @@
+import DataTableSummary from './DataTableSummary';
+import QuestionCard from '~components/organisms-simple/QuestionCard/QuestionCard';
+import {Preview, Props} from '@storybook/addon-docs/blocks';
+
+# DataTableSummary
+
+This component renders a summary for McGonnagall question cards. It's primarily used to represent user selections in React Table form.
+
+## Importing 📦
+
+You can use this component using one of the following import patterns.
+
+```javascript
+import DataTableSummary from '@unitedincome/components/dist/DataTableSummary';
+```
+
+```javascript
+import {DataTableSummary} from '@unitedincome/components';
+```
+
+## Example 🚀
+
+<Preview>
+  <QuestionCard
+    isCollapsed={true}
+    summary={
+      <DataTableSummary
+        shortTitle="This is a simpler question"
+        dataTableConfig={{
+          columns: [
+            {
+              accessor: 'name',
+              Header: 'Name',
+            },
+            {
+              accessor: 'id',
+              Header: 'ID',
+            },
+          ],
+          data: [
+            {
+              name: 'James',
+              id: 'abcd',
+            },
+            {
+              name: 'Rohit',
+              id: 'efgh',
+            },
+          ],
+        }}
+        editCard={() => true}
+      />
+    }
+  />
+</Preview>
+
+```javascript
+<QuestionCard
+  isCollapsed={true}
+  summary={
+    <DataTableSummary
+      shortTitle="This is a simpler question"
+      dataTableConfig={{
+        columns: [
+          {
+            accessor: 'name',
+            Header: 'Name',
+          },
+          {
+            accessor: 'id',
+            Header: 'ID',
+          },
+        ],
+        data: [
+          {
+            name: 'James',
+            id: 'abcd',
+          },
+          {
+            name: 'Rohit',
+            id: 'efgh',
+          },
+        ],
+      }}
+      editCard={() => true}
+    />
+  }
+/>
+```
+
+## Props 🔧
+
+<Props of={DataTableSummary} />
+
+## Related ✨
+
+- [QuestionCard](/?path=/story/simple-organisms-questioncard--active)
+- [McGonagall](/?path=/story/templates-mcgonagall--default)

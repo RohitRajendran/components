@@ -13,7 +13,7 @@ const Expander: FC<ExpanderProps> = ({isExpanded}) => (
   <CaretIcon direction={isExpanded ? 'down' : 'right'} />
 );
 
-type DataTableProps = TableProps;
+export type DataTableProps = Partial<TableProps>;
 
 /**
  * A component for displaying tabular data. The API matches that of react-table.
