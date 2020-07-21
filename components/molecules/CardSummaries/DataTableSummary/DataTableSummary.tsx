@@ -4,7 +4,7 @@ import Button from '~components/atoms/Button/Button';
 import '../CardSummaries.scss';
 import DataTable, {
   DataTableProps,
-} from '~components/organisms-complex/DataTable/DataTable';
+} from '../../../organisms-complex/DataTable/DataTable';
 type DataTableSummaryWithTo = {
   /** The URL that the user should be directed to when edit is clicked, used instead of `editCard` for Hogwarts Express. */
   to?: string | null;
