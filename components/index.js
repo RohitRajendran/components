@@ -95,6 +95,7 @@ import CardShell from '~components/molecules/CardShell/CardShell';
 import RadioButtons from '~components/molecules/RadioButtons/RadioButtons';
 import Checkboxes from '~components/molecules/Checkboxes/Checkboxes';
 import SimpleSummary from '~components/molecules/CardSummaries/SimpleSummary/SimpleSummary.tsx';
+import DataTableSummary from '~components/molecules/CardSummaries/DataTableSummary/DataTableSummary.tsx';
 import FormSummary from '~components/molecules/CardSummaries/FormSummary/FormSummary';
 import IncompleteSummary from '~components/molecules/CardSummaries/IncompleteSummary/IncompleteSummary';
 import Modal from '~components/molecules/Modal/Modal';
@@ -213,6 +214,7 @@ export {
   RadioButtons,
   QuestionCard,
   SimpleSummary,
+  DataTableSummary,
   FormSummary,
   IncompleteSummary,
   MessageCard,
