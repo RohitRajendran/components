@@ -76,6 +76,7 @@ import CheckIcon from '~components/atoms/icons/CheckIcon/CheckIcon.tsx';
 import InfoIcon from '~components/atoms/icons/InfoIcon/InfoIcon.tsx';
 import AdminIcon from '~components/atoms/icons/AdminIcon/AdminIcon.tsx';
 import PencilCircleIllustration from '~components/atoms/illustrations/PencilCircleIllustration/PencilCircleIllustration.tsx';
+import FolderCircleIllustration from '~components/atoms/illustrations/FolderCircleIllustration/FolderCircleIllustration.tsx';
 
 // Molecules
 import TableTile from '~components/molecules/TableTile/TableTile.tsx';
@@ -251,6 +252,7 @@ export {
   UmbrellaCircleIllustration,
   DocumentCircleIllustration,
   ShieldCircleIllustration,
+  FolderCircleIllustration,
   InterstitialScreen,
   colors,
   zindex,
