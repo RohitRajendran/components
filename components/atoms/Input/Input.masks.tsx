@@ -1,8 +1,15 @@
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
-export const hideValidityFalse = () => false;
 export const MaskTypes = {currency: 'currency'};
+
+export type Mask = {
+  mask: RegExp[];
+  regex: RegExp;
+  pipe?: any;
+  type?: PercentageMasks | CurrencyMasks;
+  sanitize?: RegExp;
+};
 
 /** @constant {regex[]} The mask for a phone number */
 export const phoneNumberMask = {
@@ -58,7 +65,7 @@ export const zipMask = {
  */
 export const tickerMask = {
   /* istanbul ignore next */
-  mask(input) {
+  mask(input: string): RegExp[] {
     return Array(input.length).fill(/[a-zA-Z]/);
   },
   regex: /[a-zA-Z]+/,
@@ -71,7 +78,7 @@ export const tickerMask = {
  */
 export const commaSeparatedMask = {
   /* istanbul ignore next */
-  mask(input) {
+  mask(input: string): RegExp[] {
     return Array(input.length + 1).fill(/[A-Za-z, ]/);
   },
   regex: /[A-Za-z]+[A-Za-z, ]*/,
@@ -170,14 +177,14 @@ export const apexAccount = {
 };
 
 /** @constant {Object} - Maps prop names prop mask types. */
-export const maskEnum = {
+export const maskEnum = ({
   ApexAccount: {mask: apexAccount},
   PhoneNumber: {mask: phoneNumberMask},
   SsnNumber: {mask: ssnNumberMask},
   Date: {
     mask: dateMask,
     placeholder: 'MM/DD/YYYY',
-    isValid: (val) => {
+    isValid: (val: string): boolean => {
       return val ? val.length === 10 : true;
     },
     validationErrorMsg: 'Invalid date value',
@@ -185,7 +192,7 @@ export const maskEnum = {
   Month: {
     mask: monthMask,
     placeholder: 'MM/YYYY',
-    isValid: (val) => {
+    isValid: (val: string): boolean => {
       return val ? val.length === 7 : true;
     },
     validationErrorMsg: 'Invalid date value',
@@ -203,7 +210,48 @@ export const maskEnum = {
     mask: percentageWithDecimalMaskAllowNegative,
   },
   SmallPercentageWithDecimal: {mask: smallPercentageWithDecimalMask},
+} as unknown) as Masks;
+
+export enum MaskChoices {
+  ApexAccount = 'ApexAccount',
+  PhoneNumber = 'PhoneNumber',
+  SsnNumber = 'SsnNumber',
+  Date = 'Date',
+  Month = 'Month',
+  Zip = 'Zip',
+  Ticker = 'Ticker',
+  CommaSeparated = 'CommaSeparated',
+  Currency = 'Currency',
+  CurrencyDecimal = 'CurrencyDecimal',
+  CurrencyAllowNegative = 'CurrencyAllowNegative',
+  Number = 'Number',
+  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
+  PercentageWithDecimal = 'PercentageWithDecimal',
+  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
+  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
+}
+
+export type MaskObj = {
+  mask: Mask;
+  placeholder?: string;
+  isValid: (value?: string) => boolean;
+  validationErrorMsg: string;
 };
+
+export type Masks = Record<MaskChoices, MaskObj>;
+
+export enum PercentageMasks {
+  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
+  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
+  PercentageWithDecimal = 'PercentageWithDecimal',
+  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
+}
+
+export enum CurrencyMasks {
+  Currency = 'Currency',
+  CurrencyDecimal = 'CurrencyDecimal',
+  CurrencyAllowNegative = 'CurrencyAllowNegative',
+}
 
 /** @constant {Array} - Masks that should have '%' appended to it */
 export const percentageMasks = [

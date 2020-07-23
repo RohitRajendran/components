@@ -1,7 +1,14 @@
 /** @module Input */
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, {PureComponent, createRef} from 'react';
+import React, {
+  PureComponent,
+  createRef,
+  RefObject,
+  CSSProperties,
+  ChangeEvent,
+  ReactNode,
+  ReactElement,
+} from 'react';
 import MaskedInput from 'react-text-mask';
 import TextareaAutosize from 'react-textarea-autosize';
 import {isInViewport} from '~components/atoms/Input/Input.util';
@@ -14,19 +21,161 @@ import {
   currencyMasks,
   maskEnum,
   MaskTypes,
+  Mask,
   percentageMasks,
+  MaskChoices,
+  MaskObj,
 } from './Input.masks';
 import './Input.scss';
+
+enum InputOptions {
+  Date = 'date',
+  DateTimeLocal = 'datetime-local',
+  Email = 'email',
+  File = 'file',
+  Hidden = 'hidden',
+  Month = 'month',
+  Number = 'number',
+  Password = 'password',
+  Search = 'search',
+  Tel = 'tel',
+  Text = 'text',
+  Time = 'time',
+  URL = 'url',
+  Week = 'week',
+}
+
+type InputProps = {
+  /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
+  append?: string;
+  /** Determines the autoComplete type on the input. */
+  autoComplete?: string;
+  /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
+  prepend?: string;
+  /** The label representing the input field. */
+  label: string;
+  /** The name of the input field. */
+  name: string;
+  /** The description of the input field. Displayed separately to the label. */
+  description?: string;
+  /** Displays explanation text on input focus. */
+  explanation?: string;
+  /** The type of input field. */
+  type: InputOptions;
+  /** The placeholder text of the input field. This is displayed if there's no value. */
+  placeholder?: string;
+  /** The current value of the input field.  */
+  value?: string;
+  /** Boolean representing if the input value is required in a form. */
+  required?: boolean;
+  /** Disables the (Optional) flag when a field is not marked as required. */
+  disableOptionalFlag?: boolean;
+  /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
+  pattern?: string;
+  /** The max length of the input field value. */
+  maxLength?: number;
+  /** Whether the input is text area vs a single line */
+  multiline?: boolean;
+  /** The starting number of text rows in the input */
+  minRows?: number;
+  /** Allows you to select which input type is allowed in the field. */
+  mask: MaskChoices;
+  /** Handle which is run whenever a user makes a key press within the input. */
+  onKeyPress?: () => void;
+  /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
+  onChange?: (value1: string, value2: string) => void;
+  /** The minimum number value. Only applicable if the type is set to number. */
+  min?: number;
+  /** The maximum number value. Only applicable if the type is set to number. */
+  max?: number;
+  /** The value step increment. Only applicable if the type is set to number. */
+  step?: number;
+  /** The error message to display when the input fails validation. */
+  validationErrorMsg?: string;
+  /** Runs the validation logic on every blur event if toggled as true. */
+  validateOnBlur?: boolean;
+  /** Determines if the input field should prevent the user interacting with it. */
+  disabled?: boolean;
+  /** Sets the ref to the input. */
+  setRef?: (input: RefObject<HTMLInputElement>) => void;
+  /** Hides the validation message under the defined conditions. */
+  hideValidity?: () => boolean;
+  /** Validates the input based on the provided logic. */
+  isValid?: (value?: string) => boolean;
+  /** Forces the input into an error state. */
+  error?: boolean;
+  /** Additional class names to apply to the container. */
+  className?: string;
+  /** Sanitizes the input when passed back by the onChange handler. */
+  sanitize?: boolean;
+  /** Displays error state for incomplete required fields */
+  showRequiredError?: boolean;
+  /** Optional inline styles. */
+  style?: CSSProperties;
+  /** Custom validation function that the user wants the input validated against */
+  validate?: (value?: string) => string;
+  /** The actual input element in the component */
+  inputElement: RefObject<HTMLInputElement>;
+};
+
+type InputState = {
+  isActive: boolean;
+  height: number;
+  validationErrorMessage: string;
+};
+
+type InputErrorStateProps = {
+  showInvalidity: boolean;
+  errorFlag: boolean;
+  hasRequiredError: boolean;
+};
+
+type InputRequiredProps = {
+  cardshellForceUnansweredQuestionError: boolean;
+  showRequiredErrorFlagPresent: boolean;
+  requiredFlagPresent: boolean;
+  isEmpty: boolean;
+};
+
+type GenerateInputErrorMessageProps = {
+  hasRequiredError: boolean;
+  errorMsg: string;
+  mask: MaskChoices;
+};
+
+type Attrs = {
+  guide?: boolean;
+  keepCharPositions?: boolean;
+  onBlur?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  mask: Mask['mask'];
+} & Pick<
+  InputProps,
+  | 'type'
+  | 'name'
+  | 'placeholder'
+  | 'value'
+  | 'required'
+  | 'maxLength'
+  | 'min'
+  | 'max'
+  | 'step'
+  | 'disabled'
+  | 'pattern'
+  | 'onKeyPress'
+  | 'minRows'
+> &
+  Pick<Mask, 'pipe'>;
 
 /** Gets the deepest input element for validation.
  * @param {object} startObject - The first input.
  * @returns {object} - The deepest input field.
  */
-export const getDeepestInputElement = (startObject) => {
+export const getDeepestInputElement = (startObject: Input): Input => {
   if (!startObject.inputElement) {
     return startObject;
   }
-  return getDeepestInputElement(startObject.inputElement);
+  return getDeepestInputElement((startObject.inputElement as unknown) as Input);
 };
 
 /**
@@ -43,7 +192,7 @@ export const inputHasRequiredError = ({
   showRequiredErrorFlagPresent,
   requiredFlagPresent,
   isEmpty,
-}) =>
+}: InputRequiredProps): boolean =>
   (cardshellForceUnansweredQuestionError || showRequiredErrorFlagPresent) &&
   requiredFlagPresent &&
   isEmpty;
@@ -60,7 +209,8 @@ export const isInputInErrorState = ({
   showInvalidity,
   errorFlag,
   hasRequiredError,
-}) => showInvalidity || errorFlag || hasRequiredError;
+}: InputErrorStateProps): boolean =>
+  showInvalidity || errorFlag || hasRequiredError;
 
 /**
  * Sends back the appropriate error message for our input component
@@ -74,20 +224,24 @@ export const generateInputErrorMessage = ({
   hasRequiredError,
   errorMsg,
   mask,
-}) => {
+}: GenerateInputErrorMessageProps): string => {
   if (hasRequiredError) {
     return 'Required Field';
   } else if (errorMsg) {
     return errorMsg;
   }
 
-  return maskEnum[mask].validationErrorMsg;
+  return (maskEnum[mask] as MaskObj).validationErrorMsg;
 };
 
 /** Renders the Input field component. */
-class Input extends PureComponent {
+class Input extends PureComponent<InputProps, InputState> {
+  tooltipNode: RefObject<HTMLDivElement>;
+  inputNode: RefObject<HTMLInputElement>;
+  inputElement?: RefObject<HTMLInputElement>;
+
   /** @inheritdoc */
-  constructor(props) {
+  constructor(props: InputProps) {
     super(props);
 
     this.state = {
@@ -103,9 +257,9 @@ class Input extends PureComponent {
   }
 
   /** Handles the focus toggling in cases where the default HTML behavior doesn't cut it.
-   * @returns {undefined}
+   * @returns Void
    */
-  toggleFocus() {
+  toggleFocus(): void {
     // Sets the height of the tooltip if applicable.
     if (this.tooltipNode.current && this.inputNode.current) {
       this.setState({
@@ -136,36 +290,40 @@ class Input extends PureComponent {
 
   /**
    * Determines if the input is valid or not.
-   * @return {boolean} - Returns true or false depending on the validity.
+   * @return Returns true or false depending on the validity.
    */
-  isValid() {
+  isValid(): boolean {
     const {
-      isValid = () => true,
-      validate = () => '',
-      hideValidity = () => true,
+      isValid = (): boolean => true,
+      validate = (): string => '',
+      hideValidity = (): boolean => true,
+      mask,
+      value,
     } = this.props;
     const deepest = getDeepestInputElement(this);
-    const isActive = isDocumentDefined() && deepest === document.activeElement;
+    const isActive =
+      isDocumentDefined() &&
+      deepest === ((document.activeElement as unknown) as Input);
     const isEmpty =
       this.props.value === '' || typeof this.props.value === 'undefined';
     const maskValidation =
-      this.props.mask && maskEnum[this.props.mask].isValid
-        ? maskEnum[this.props.mask].isValid(this.props.value)
+      this.props.mask && maskEnum[mask].isValid
+        ? (maskEnum[mask] as MaskObj).isValid(value)
         : true;
     this.setState({
-      validationErrorMessage: validate(this.props.value),
+      validationErrorMessage: validate(value),
     });
 
     return (
       !this.state.validationErrorMessage &&
-      ((isValid(this.props.value) && maskValidation) ||
+      ((isValid(value) && maskValidation) ||
         (hideValidity() && isActive) ||
         isEmpty)
     );
   }
 
   /** @inheritdoc */
-  render() {
+  render(): ReactElement {
     const {
       autoComplete,
       append,
@@ -176,14 +334,14 @@ class Input extends PureComponent {
       explanation,
       label,
       name,
-      type,
+      type = 'text',
       placeholder,
-      value,
+      value = '',
       required,
       pattern,
       maxLength,
       multiline,
-      minRows,
+      minRows = 3,
       onChange,
       onKeyPress,
       min,
@@ -207,7 +365,7 @@ class Input extends PureComponent {
     const isEmpty = (value && value.length < 1) || !value;
     const errorMsg = validationErrorMsg || this.state.validationErrorMessage;
 
-    let InputType = 'input';
+    let InputType: any = 'input';
     let prependCharacter = prepend;
     let appendCharacter = append;
     let inputLabel = label;
@@ -247,16 +405,18 @@ class Input extends PureComponent {
       pattern,
       onKeyPress,
       minRows,
-    };
+    } as Attrs;
 
     if (this.props.mask) {
-      const mask = (this.props.mask && maskEnum[this.props.mask].mask) || null;
+      const mask =
+        ((this.props.mask && maskEnum[this.props.mask].mask) as Mask) || null;
 
       if (mask.type === MaskTypes.currency && !onChange) {
         throw new Error(
           'CurrencyMasks require explicit onChange handler for IE11',
         );
       }
+
       attrs.mask = mask.mask;
       attrs.guide = false;
       if (mask.pipe) {
@@ -266,7 +426,7 @@ class Input extends PureComponent {
     }
 
     if (validateOnBlur) {
-      attrs.onBlur = () => {
+      attrs.onBlur = (): void => {
         this.forceUpdate();
         this.toggleFocus();
       };
@@ -275,7 +435,7 @@ class Input extends PureComponent {
     if (onChange) {
       const mask = this.props.mask && maskEnum[this.props.mask].mask;
 
-      attrs.onChange = (e) =>
+      attrs.onChange = (e): void =>
         onChange(
           name,
           sanitize && mask && mask.sanitize
@@ -286,14 +446,16 @@ class Input extends PureComponent {
 
     return (
       // The Context allows it to get the showRequiredError prop when in the CardShell
+      // @ts-ignore
       <CardShellContext.Consumer>
-        {({cardshellForceUnansweredQuestionError}) => {
+        {/* @ts-ignore */}
+        {({cardshellForceUnansweredQuestionError}): ReactNode => {
           const hasRequiredError = inputHasRequiredError({
             cardshellForceUnansweredQuestionError: Boolean(
               cardshellForceUnansweredQuestionError,
             ),
             showRequiredErrorFlagPresent: Boolean(showRequiredError),
-            requiredFlagPresent: required,
+            requiredFlagPresent: Boolean(required),
             isEmpty,
           });
 
@@ -363,8 +525,8 @@ class Input extends PureComponent {
                     {explanation}
                   </div>
                 )}
+                {/* @ts-ignore */}
                 <InputType
-                  type="text"
                   data-cy={label}
                   aria-label={inputLabel}
                   autoComplete={
@@ -373,7 +535,7 @@ class Input extends PureComponent {
                   className="uic--position-relative"
                   onFocus={this.toggleFocus}
                   onBlur={this.toggleFocus}
-                  ref={(input) => {
+                  ref={(input: RefObject<HTMLInputElement>): void => {
                     this.inputElement = input;
                     this.props.setRef && this.props.setRef(input);
                   }}
@@ -400,97 +562,5 @@ class Input extends PureComponent {
     );
   }
 }
-
-Input.propTypes = {
-  /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
-  append: PropTypes.string,
-  /** Determines the autoComplete type on the input. */
-  autoComplete: PropTypes.string,
-  /** A string or symbol to pre-pend to the start of the input. For example `$`. Automatically applied for currency masks. */
-  prepend: PropTypes.string,
-  /** The label representing the input field. */
-  label: PropTypes.string.isRequired,
-  /** The name of the input field. */
-  name: PropTypes.string.isRequired,
-  /** The description of the input field. Displayed separately to the label. */
-  description: PropTypes.string,
-  /** Displays explanation text on input focus. */
-  explanation: PropTypes.string,
-  /** The type of input field. */
-  type: PropTypes.oneOf([
-    'date',
-    'datetime-local',
-    'email',
-    'file',
-    'hidden',
-    'month',
-    'number',
-    'password',
-    'search',
-    'tel',
-    'text',
-    'time',
-    'url',
-    'week',
-  ]),
-  /** The placeholder text of the input field. This is displayed if there's no value. */
-  placeholder: PropTypes.string,
-  /** The current value of the input field.  */
-  value: PropTypes.string,
-  /** Boolean representing if the input value is required in a form. */
-  required: PropTypes.bool,
-  /** Disables the (Optional) flag when a field is not marked as required. */
-  disableOptionalFlag: PropTypes.bool,
-  /** The regex pattern that determines what input characters are allowed. Validates on form submission. */
-  pattern: PropTypes.string,
-  /** The max length of the input field value. */
-  maxLength: PropTypes.number,
-  /** Whether the input is text area vs a single line */
-  multiline: PropTypes.bool,
-  /** The starting number of text rows in the input */
-  minRows: PropTypes.number,
-  /** Allows you to select which input type is allowed in the field. */
-  mask: PropTypes.oneOf(Object.keys(maskEnum)),
-  /** Handle which is run whenever a user makes a key press within the input. */
-  onKeyPress: PropTypes.func,
-  /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
-  onChange: PropTypes.func,
-  /** The minimum number value. Only applicable if the type is set to number. */
-  min: PropTypes.number,
-  /** The maximum number value. Only applicable if the type is set to number. */
-  max: PropTypes.number,
-  /** The value step increment. Only applicable if the type is set to number. */
-  step: PropTypes.number,
-  /** The error message to display when the input fails validation. */
-  validationErrorMsg: PropTypes.string,
-  /** Runs the validation logic on every blur event if toggled as true. */
-  validateOnBlur: PropTypes.bool,
-  /** Determines if the input field should prevent the user interacting with it. */
-  disabled: PropTypes.bool,
-  /** Sets the ref to the input. */
-  setRef: PropTypes.func,
-  /** Hides the validation message under the defined conditions. */
-  hideValidity: PropTypes.func,
-  /** Validates the input based on the provided logic. */
-  isValid: PropTypes.func,
-  /** Forces the input into an error state. */
-  error: PropTypes.bool,
-  /** Additional class names to apply to the container. */
-  className: PropTypes.string,
-  /** Sanitizes the input when passed back by the onChange handler. */
-  sanitize: PropTypes.bool,
-  /** Displays error state for incomplete required fields */
-  showRequiredError: PropTypes.bool,
-  /** Optional inline styles. */
-  style: PropTypes.objectOf(PropTypes.string),
-  /** Custom validation function that the user wants the input validated against */
-  validate: PropTypes.func,
-};
-
-Input.defaultProps = {
-  type: 'text',
-  value: '',
-  minRows: 3,
-};
 
 export default Input;
