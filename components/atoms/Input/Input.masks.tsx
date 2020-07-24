@@ -36,15 +36,15 @@ export enum CurrencyMask {
 export type Mask = {
   mask: RegExp[];
   regex: RegExp;
-  pipe?: any;
-  type?: PercentageMask | CurrencyMask;
-  sanitize?: RegExp;
+  pipe: any;
+  type: PercentageMask | CurrencyMask;
+  sanitize: RegExp;
 };
 
 export type MaskObj = {
   mask: Mask;
-  placeholder?: string;
-  isValid: (value?: string) => boolean;
+  placeholder: string;
+  isValid: (value: string) => boolean;
   validationErrorMsg: string;
 };
 

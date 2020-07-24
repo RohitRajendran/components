@@ -306,7 +306,7 @@ class Input extends PureComponent<InputProps, InputState> {
       this.props.value === '' || typeof this.props.value === 'undefined';
     const maskValidation =
       this.props.mask && maskEnum[mask as MaskChoice].isValid
-        ? (maskEnum[mask as MaskChoice] as MaskObj).isValid(value)
+        ? (maskEnum[mask as MaskChoice] as MaskObj).isValid(value as string)
         : true;
     this.setState({
       validationErrorMessage: validate(value),
