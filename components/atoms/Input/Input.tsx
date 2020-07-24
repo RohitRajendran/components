@@ -20,10 +20,10 @@ import {
 import {
   maskEnum,
   Mask,
-  GenericMask,
   MaskObj,
   CurrencyMask,
   PercentageMask,
+  MaskChoice,
 } from './Input.masks';
 import './Input.scss';
 
@@ -43,7 +43,7 @@ export type InputOptions =
   | 'url'
   | 'week';
 
-type InputProps = {
+export type InputProps = {
   /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
   append?: string;
   /** Determines the autoComplete type on the input. */
@@ -77,7 +77,7 @@ type InputProps = {
   /** The starting number of text rows in the input */
   minRows?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask?: GenericMask | PercentageMask | CurrencyMask;
+  mask?: MaskChoice;
   /** Handle which is run whe never a user makes a key press within the input. */
   onKeyPress?: () => void;
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
@@ -138,7 +138,7 @@ type InputRequiredProps = {
 type GenerateInputErrorMessageProps = {
   hasRequiredError: boolean;
   errorMsg: string;
-  mask: GenericMask;
+  mask: MaskChoice;
 };
 
 type Attrs = {
@@ -304,8 +304,8 @@ class Input extends PureComponent<InputProps, InputState> {
       deepest === ((document.activeElement as unknown) as Input);
     const isEmpty = value === '' || typeof value === 'undefined';
     const maskValidation =
-      mask && maskEnum[mask as GenericMask].isValid
-        ? (maskEnum[mask as GenericMask] as MaskObj).isValid(value as string)
+      mask && maskEnum[mask as MaskChoice].isValid
+        ? (maskEnum[mask as MaskChoice] as MaskObj).isValid(value as string)
         : true;
     this.setState({
       validationErrorMessage: validate(value),
@@ -398,7 +398,7 @@ class Input extends PureComponent<InputProps, InputState> {
       name,
       placeholder:
         `${placeholder || ''}${appendCharacter || ''}` ||
-        (mask && maskEnum[mask as GenericMask].placeholder) ||
+        (mask && maskEnum[mask as MaskChoice].placeholder) ||
         null,
       value,
       required,
@@ -414,7 +414,7 @@ class Input extends PureComponent<InputProps, InputState> {
 
     if (mask) {
       const curMask =
-        ((mask && maskEnum[mask as GenericMask].mask) as Mask) || null;
+        ((mask && maskEnum[mask as MaskChoice].mask) as Mask) || null;
 
       if (curMask.type === CurrencyMask.Currency && !onChange) {
         throw new Error(
@@ -438,7 +438,7 @@ class Input extends PureComponent<InputProps, InputState> {
     }
 
     if (onChange) {
-      const curMask = mask && maskEnum[mask as GenericMask].mask;
+      const curMask = mask && maskEnum[mask as MaskChoice].mask;
 
       attrs.onChange = (e): void =>
         onChange(
@@ -553,7 +553,7 @@ class Input extends PureComponent<InputProps, InputState> {
                   {generateInputErrorMessage({
                     hasRequiredError,
                     errorMsg,
-                    mask: mask as GenericMask,
+                    mask: mask as MaskChoice,
                   })}
                 </div>
               )}

@@ -4,7 +4,7 @@ import Input, {InputOptions} from '../../../components/atoms/Input/Input';
 import {
   PercentageMask,
   CurrencyMask,
-  GenericMask,
+  MaskChoice,
 } from '../../../components/atoms/Input/Input.masks';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
@@ -35,7 +35,7 @@ type InputCardConfig = {
   /** The max length of the input field value. */
   maxLength?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask?: GenericMask | PercentageMask | CurrencyMask;
+  mask?: MaskChoice;
   /** The minimum number value. Only applicable if the type is set to number. */
   min?: number;
   /** The maximum number value. Only applicable if the type is set to number. */

@@ -26,6 +26,8 @@ export enum CurrencyMask {
   CurrencyAllowNegative = 'CurrencyAllowNegative',
 }
 
+export type MaskChoice = GenericMask | PercentageMask | CurrencyMask;
+
 export type Mask = {
   mask: RegExp[];
   regex: RegExp;
@@ -41,7 +43,7 @@ export type MaskObj = {
   validationErrorMsg: string;
 };
 
-export type Masks = Record<GenericMask, MaskObj>;
+export type Masks = Record<MaskChoice, MaskObj>;
 
 /** @constant {regex[]} The mask for a phone number */
 export const phoneNumberMask = {
