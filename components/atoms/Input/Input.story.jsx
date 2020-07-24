@@ -65,7 +65,7 @@ const defaultProps = ({
   mask,
   validationErrorMsg,
   validateOnBlur,
-  showRequiredError,
+  showErrorState,
 }) => ({
   name: formName,
   label: text('label', label),
@@ -89,7 +89,7 @@ const defaultProps = ({
   error: boolean('error', error),
   onChange: (name, value) => store.set({[name]: value}),
   sanitize: boolean('sanitize'),
-  showRequiredError: boolean('showRequiredError', showRequiredError),
+  showErrorState: boolean('showErrorState', showErrorState),
   type: text('type', 'text'),
   key: formName,
 });
@@ -237,7 +237,7 @@ stories.add('required error', () => (
           placeholder: '1660 L Street',
           validationErrorMsg: 'Not a valid input!',
           mask: null,
-          showRequiredError: true,
+          showErrorState: true,
         })}
       />
     </div>
@@ -290,6 +290,30 @@ stories.add('disabled with value', () => (
           placeholder: 'Enter your address...',
           disabled: true,
           mask: null,
+        })}
+        value="1660 L Street"
+      />
+    </div>
+  </div>
+));
+
+stories.add('validate prop', () => (
+  <div className="row" style={storyStyles}>
+    <div className="col-xs-12">
+      <Input
+        {...defaultProps({
+          formName: 'disabled',
+          label: 'Address',
+          description: 'This is where you live.',
+          placeholder: 'Enter your address...',
+          mask: null,
+          validate: (input) => {
+            if (input.length >= 4) {
+              return 'Invalid small string!';
+            }
+
+            return '';
+          },
         })}
         value="1660 L Street"
       />
