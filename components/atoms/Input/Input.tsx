@@ -417,7 +417,7 @@ class Input extends PureComponent<InputProps, InputState> {
         ((this.props.mask &&
           maskEnum[this.props.mask as MaskChoice].mask) as Mask) || null;
 
-      if (mask.type === 'Currency' && !onChange) {
+      if (mask.type === CurrencyMask.Currency && !onChange) {
         throw new Error(
           'CurrencyMasks require explicit onChange handler for IE11',
         );
