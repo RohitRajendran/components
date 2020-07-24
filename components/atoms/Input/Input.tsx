@@ -451,7 +451,6 @@ class Input extends PureComponent<InputProps, InputState> {
 
     return (
       // The Context allows it to get the showRequiredError prop when in the CardShell
-      // @ts-ignore
       <CardShellContext.Consumer>
         {({showRequiredError}): ReactNode => {
           const hasRequiredError = inputHasRequiredError({

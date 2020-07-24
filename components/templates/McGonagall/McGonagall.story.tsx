@@ -15,6 +15,7 @@ import {
 import CompletionScreen from '../../organisms-simple/CompletionScreen/CompletionScreen';
 import McGonagall, {McGonagallCardProps, Step} from './McGonagall';
 import McGonagallReadme from './McGonagall.mdx';
+import {CurrencyMask} from '~components/atoms/Input/Input.masks';
 
 const stateChart = {
   id: 'household',
@@ -230,7 +231,7 @@ const renderLastYearsTaxableIncome = (
         value: state.lastYearsTaxableIncome,
         label: 'value',
         type: 'text',
-        mask: 'Currency',
+        mask: CurrencyMask.Currency,
       }}
     />
   );

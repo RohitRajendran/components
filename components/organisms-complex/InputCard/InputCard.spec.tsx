@@ -3,6 +3,10 @@ import React from 'react';
 import {stub} from 'sinon';
 import test from 'tape';
 import InputCard, {InputCardProps} from './InputCard';
+import {
+  CurrencyMask,
+  PercentageMask,
+} from '~components/atoms/Input/Input.masks';
 
 test('InputCard - renders', (t) => {
   const props: InputCardProps = {
@@ -132,7 +136,7 @@ test('InputCard - collapsed with currency answer', (t) => {
       type: 'text',
       value: '123',
       label: 'value',
-      mask: 'Currency',
+      mask: CurrencyMask.Currency,
     },
     onChange: stub(),
     cancelChanges: () => true,
@@ -166,7 +170,7 @@ test('InputCard - collapsed with percentage answer', (t) => {
       type: 'text',
       value: '50',
       label: 'value',
-      mask: 'PercentageWithDecimal',
+      mask: PercentageMask.PercentageWithDecimal,
     },
     onChange: stub(),
     cancelChanges: () => true,
