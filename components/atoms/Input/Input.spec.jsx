@@ -83,7 +83,7 @@ test('Input - required field error', (t) => {
       maxLength={5}
       onChange={onChangeSpy}
       required
-      showErrorState
+      showRequiredError
     />,
   );
 

@@ -65,7 +65,7 @@ const defaultProps = ({
   mask,
   validationErrorMsg,
   validateOnBlur,
-  showErrorState,
+  showRequiredError,
 }) => ({
   name: formName,
   label: text('label', label),
@@ -89,7 +89,7 @@ const defaultProps = ({
   error: boolean('error', error),
   onChange: (name, value) => store.set({[name]: value}),
   sanitize: boolean('sanitize'),
-  showErrorState: boolean('showErrorState', showErrorState),
+  showRequiredError: boolean('showRequiredError', showRequiredError),
   type: text('type', 'text'),
   key: formName,
 });
@@ -237,7 +237,7 @@ stories.add('required error', () => (
           placeholder: '1660 L Street',
           validationErrorMsg: 'Not a valid input!',
           mask: null,
-          showErrorState: true,
+          showRequiredError: true,
         })}
       />
     </div>

@@ -81,7 +81,7 @@ export type InputProps = {
   /** Handle which is run whe never a user makes a key press within the input. */
   onKeyPress?: () => void;
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
-  onChange?: (value1: string, value2: string) => void;
+  onChange?: (name: string, value: string) => void;
   /** The minimum number value. Only applicable if the type is set to number. */
   min?: number;
   /** The maximum number value. Only applicable if the type is set to number. */
@@ -99,7 +99,7 @@ export type InputProps = {
   /** Hides the validation message under the defined conditions. */
   hideValidity?: () => boolean;
   /** Validates the input based on the provided logic. */
-  isValid?: (value?: string) => boolean;
+  isValid?: (value: string) => boolean;
   /** Forces the input into an error state. */
   error?: boolean;
   /** Additional class names to apply to the container. */
@@ -107,11 +107,11 @@ export type InputProps = {
   /** Sanitizes the input when passed back by the onChange handler. */
   sanitize?: boolean;
   /** Displays error state for incomplete required fields */
-  showErrorState?: boolean;
+  showRequiredError?: boolean;
   /** Optional inline styles. */
   style?: CSSProperties;
   /** Custom validation function that the user wants the input validated against */
-  validate?: (value?: string) => string;
+  validate?: (value: string) => string;
   /** The actual input element in the component */
   inputElement?: RefObject<HTMLInputElement>;
 };
@@ -308,12 +308,12 @@ class Input extends PureComponent<InputProps, InputState> {
         ? (maskEnum[mask as MaskChoice] as MaskObj).isValid(value as string)
         : true;
     this.setState({
-      validationErrorMessage: validate(value),
+      validationErrorMessage: validate(value as string),
     });
 
     return (
       !this.state.validationErrorMessage &&
-      ((isValid(value) && maskValidation) ||
+      ((isValid(value as string) && maskValidation) ||
         (hideValidity() && isActive) ||
         isEmpty)
     );
@@ -351,7 +351,6 @@ class Input extends PureComponent<InputProps, InputState> {
       className,
       sanitize,
       style,
-      showErrorState,
       mask,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
@@ -455,7 +454,8 @@ class Input extends PureComponent<InputProps, InputState> {
         {({showRequiredError}): ReactNode => {
           const hasRequiredError = inputHasRequiredError({
             cardshellForceUnansweredQuestionError: Boolean(showRequiredError),
-            showRequiredErrorFlagPresent: Boolean(showErrorState),
+            // We use this.props.showRequiredError to distinguish from cardshell
+            showRequiredErrorFlagPresent: Boolean(this.props.showRequiredError),
             requiredFlagPresent: Boolean(required),
             isEmpty,
           });
@@ -526,7 +526,6 @@ class Input extends PureComponent<InputProps, InputState> {
                     {explanation}
                   </div>
                 )}
-                {/* @ts-ignore */}
                 <InputType
                   data-cy={label}
                   aria-label={inputLabel}
