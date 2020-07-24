@@ -28,22 +28,21 @@ import {
 } from './Input.masks';
 import './Input.scss';
 
-enum InputOptions {
-  Date = 'date',
-  DateTimeLocal = 'datetime-local',
-  Email = 'email',
-  File = 'file',
-  Hidden = 'hidden',
-  Month = 'month',
-  Number = 'number',
-  Password = 'password',
-  Search = 'search',
-  Tel = 'tel',
-  Text = 'text',
-  Time = 'time',
-  URL = 'url',
-  Week = 'week',
-}
+type InputOptions =
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'hidden'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
 
 type InputProps = {
   /** A string or symbol to append to the end of the input. For example `%`. Automatically applied for percentage masks. */
@@ -79,7 +78,7 @@ type InputProps = {
   /** The starting number of text rows in the input */
   minRows?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask: MaskChoices;
+  mask?: MaskTypes;
   /** Handle which is run whenever a user makes a key press within the input. */
   onKeyPress?: () => void;
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
@@ -109,13 +108,13 @@ type InputProps = {
   /** Sanitizes the input when passed back by the onChange handler. */
   sanitize?: boolean;
   /** Displays error state for incomplete required fields */
-  showRequiredError?: boolean;
+  showErrorState?: boolean;
   /** Optional inline styles. */
   style?: CSSProperties;
   /** Custom validation function that the user wants the input validated against */
   validate?: (value?: string) => string;
   /** The actual input element in the component */
-  inputElement: RefObject<HTMLInputElement>;
+  inputElement?: RefObject<HTMLInputElement>;
 };
 
 type InputState = {
@@ -307,8 +306,8 @@ class Input extends PureComponent<InputProps, InputState> {
     const isEmpty =
       this.props.value === '' || typeof this.props.value === 'undefined';
     const maskValidation =
-      this.props.mask && maskEnum[mask].isValid
-        ? (maskEnum[mask] as MaskObj).isValid(value)
+      this.props.mask && maskEnum[mask as MaskChoices].isValid
+        ? (maskEnum[mask as MaskChoices] as MaskObj).isValid(value)
         : true;
     this.setState({
       validationErrorMessage: validate(value),
@@ -353,7 +352,7 @@ class Input extends PureComponent<InputProps, InputState> {
       className,
       sanitize,
       style,
-      showRequiredError,
+      showErrorState,
     } = this.props;
     /* We use an identifier here to apply pseudo inline styles to the
       input. This is done so prepended and appended values can get pushed
@@ -370,11 +369,17 @@ class Input extends PureComponent<InputProps, InputState> {
     let appendCharacter = append;
     let inputLabel = label;
 
-    if (!prependCharacter && currencyMasks.includes(this.props.mask)) {
+    if (
+      !prependCharacter &&
+      currencyMasks.includes(this.props.mask as MaskTypes)
+    ) {
       prependCharacter = '$';
     }
 
-    if (!appendCharacter && percentageMasks.includes(this.props.mask)) {
+    if (
+      !appendCharacter &&
+      percentageMasks.includes(this.props.mask as MaskTypes)
+    ) {
       appendCharacter = '%';
     }
 
@@ -448,13 +453,10 @@ class Input extends PureComponent<InputProps, InputState> {
       // The Context allows it to get the showRequiredError prop when in the CardShell
       // @ts-ignore
       <CardShellContext.Consumer>
-        {/* @ts-ignore */}
-        {({cardshellForceUnansweredQuestionError}): ReactNode => {
+        {({showRequiredError}): ReactNode => {
           const hasRequiredError = inputHasRequiredError({
-            cardshellForceUnansweredQuestionError: Boolean(
-              cardshellForceUnansweredQuestionError,
-            ),
-            showRequiredErrorFlagPresent: Boolean(showRequiredError),
+            cardshellForceUnansweredQuestionError: Boolean(showRequiredError),
+            showRequiredErrorFlagPresent: Boolean(showErrorState),
             requiredFlagPresent: Boolean(required),
             isEmpty,
           });
@@ -551,7 +553,7 @@ class Input extends PureComponent<InputProps, InputState> {
                   {generateInputErrorMessage({
                     hasRequiredError,
                     errorMsg,
-                    mask: this.props.mask,
+                    mask: this.props.mask as MaskChoices,
                   })}
                 </div>
               )}

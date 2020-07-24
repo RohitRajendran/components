@@ -240,6 +240,24 @@ export type MaskObj = {
 
 export type Masks = Record<MaskChoices, MaskObj>;
 
+export type MaskTypes =
+  | 'ApexAccount'
+  | 'PhoneNumber'
+  | 'SsnNumber'
+  | 'Date'
+  | 'Month'
+  | 'Zip'
+  | 'Ticker'
+  | 'CommaSeparated'
+  | 'Number'
+  | 'SmallPercentageWithDecimal'
+  | 'PercentageWithoutDecimal'
+  | 'PercentageWithDecimal'
+  | 'PercentageWithDecimalAllowNegative'
+  | 'Currency'
+  | 'CurrencyDecimal'
+  | 'CurrencyAllowNegative';
+
 export enum PercentageMasks {
   SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
   PercentageWithoutDecimal = 'PercentageWithoutDecimal',
