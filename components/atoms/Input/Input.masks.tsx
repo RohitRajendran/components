@@ -29,10 +29,10 @@ export enum CurrencyMask {
 export type MaskChoice = GenericMask | PercentageMask | CurrencyMask;
 
 export type Mask = {
-  mask: RegExp[];
+  mask: ((input: string) => RegExp[]) | RegExp[];
   regex: RegExp;
   pipe: any;
-  type: PercentageMask | CurrencyMask;
+  type: MaskChoice;
   sanitize: RegExp;
 };
 
@@ -211,7 +211,7 @@ export const apexAccount = {
 };
 
 /** @constant {Object} - Maps prop names prop mask types. */
-export const maskEnum = ({
+export const maskEnum = {
   ApexAccount: {mask: apexAccount},
   PhoneNumber: {mask: phoneNumberMask},
   SsnNumber: {mask: ssnNumberMask},
@@ -244,4 +244,4 @@ export const maskEnum = ({
     mask: percentageWithDecimalMaskAllowNegative,
   },
   SmallPercentageWithDecimal: {mask: smallPercentageWithDecimalMask},
-} as unknown) as Masks;
+} as Masks;
