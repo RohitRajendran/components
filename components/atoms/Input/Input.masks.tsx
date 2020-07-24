@@ -1,15 +1,54 @@
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
-export const MaskTypes = {currency: 'currency'};
+export enum MaskChoice {
+  ApexAccount = 'ApexAccount',
+  PhoneNumber = 'PhoneNumber',
+  SsnNumber = 'SsnNumber',
+  Date = 'Date',
+  Month = 'Month',
+  Zip = 'Zip',
+  Ticker = 'Ticker',
+  CommaSeparated = 'CommaSeparated',
+  Currency = 'Currency',
+  CurrencyDecimal = 'CurrencyDecimal',
+  CurrencyAllowNegative = 'CurrencyAllowNegative',
+  Number = 'Number',
+  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
+  PercentageWithDecimal = 'PercentageWithDecimal',
+  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
+  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
+}
+
+export enum PercentageMask {
+  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
+  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
+  PercentageWithDecimal = 'PercentageWithDecimal',
+  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
+}
+
+export enum CurrencyMask {
+  Currency = 'Currency',
+  CurrencyDecimal = 'CurrencyDecimal',
+  CurrencyAllowNegative = 'CurrencyAllowNegative',
+}
 
 export type Mask = {
   mask: RegExp[];
   regex: RegExp;
   pipe?: any;
-  type?: PercentageMasks | CurrencyMasks;
+  type?: PercentageMask | CurrencyMask;
   sanitize?: RegExp;
 };
+
+export type MaskObj = {
+  mask: Mask;
+  placeholder?: string;
+  isValid: (value?: string) => boolean;
+  validationErrorMsg: string;
+};
+
+export type Masks = Record<MaskChoice, MaskObj>;
 
 /** @constant {regex[]} The mask for a phone number */
 export const phoneNumberMask = {
@@ -88,7 +127,7 @@ export const commaSeparatedMask = {
 export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
-  type: MaskTypes.currency,
+  type: MaskChoice.Currency,
   sanitize: /[,]/g,
 };
 
@@ -96,7 +135,7 @@ export const currencyMask = {
 export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
-  type: MaskTypes.currency,
+  type: MaskChoice.Currency,
   sanitize: /[,]/g,
 };
 
@@ -107,7 +146,7 @@ export const currencyDecimalMask = {
     allowDecimal: true,
   }),
   regex: /[0-9]+/,
-  type: MaskTypes.currency,
+  type: MaskChoice.Currency,
   sanitize: /[,]/g,
 };
 
@@ -211,77 +250,3 @@ export const maskEnum = ({
   },
   SmallPercentageWithDecimal: {mask: smallPercentageWithDecimalMask},
 } as unknown) as Masks;
-
-export enum MaskChoices {
-  ApexAccount = 'ApexAccount',
-  PhoneNumber = 'PhoneNumber',
-  SsnNumber = 'SsnNumber',
-  Date = 'Date',
-  Month = 'Month',
-  Zip = 'Zip',
-  Ticker = 'Ticker',
-  CommaSeparated = 'CommaSeparated',
-  Currency = 'Currency',
-  CurrencyDecimal = 'CurrencyDecimal',
-  CurrencyAllowNegative = 'CurrencyAllowNegative',
-  Number = 'Number',
-  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
-  PercentageWithDecimal = 'PercentageWithDecimal',
-  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
-  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
-}
-
-export type MaskObj = {
-  mask: Mask;
-  placeholder?: string;
-  isValid: (value?: string) => boolean;
-  validationErrorMsg: string;
-};
-
-export type Masks = Record<MaskChoices, MaskObj>;
-
-export type MaskTypes =
-  | 'ApexAccount'
-  | 'PhoneNumber'
-  | 'SsnNumber'
-  | 'Date'
-  | 'Month'
-  | 'Zip'
-  | 'Ticker'
-  | 'CommaSeparated'
-  | 'Number'
-  | 'SmallPercentageWithDecimal'
-  | 'PercentageWithoutDecimal'
-  | 'PercentageWithDecimal'
-  | 'PercentageWithDecimalAllowNegative'
-  | 'Currency'
-  | 'CurrencyDecimal'
-  | 'CurrencyAllowNegative';
-
-export enum PercentageMasks {
-  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
-  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
-  PercentageWithDecimal = 'PercentageWithDecimal',
-  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
-}
-
-export enum CurrencyMasks {
-  Currency = 'Currency',
-  CurrencyDecimal = 'CurrencyDecimal',
-  CurrencyAllowNegative = 'CurrencyAllowNegative',
-}
-
-/** @constant {Array} - Masks that should have '%' appended to it */
-export const percentageMasks = [
-  'SmallPercentageWithDecimal',
-  'PercentageWithoutDecimal',
-  'PercentageWithDecimal',
-  'PercentageWithDecimalAllowNegative',
-];
-
-/** @constant {Array} - Masks that should have '$' prepended to it */
-export const currencyMasks = [
-  'Currency',
-  'CurrencyDecimal',
-  'CurrencyAllowNegative',
-];

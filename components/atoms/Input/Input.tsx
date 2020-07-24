@@ -18,13 +18,12 @@ import {
   isWindowDefined,
 } from '~components/utilities/DetectBrowser/DetectBrowser';
 import {
-  currencyMasks,
   maskEnum,
-  MaskTypes,
   Mask,
-  percentageMasks,
-  MaskChoices,
+  MaskChoice,
   MaskObj,
+  CurrencyMask,
+  PercentageMask,
 } from './Input.masks';
 import './Input.scss';
 
@@ -78,8 +77,8 @@ type InputProps = {
   /** The starting number of text rows in the input */
   minRows?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask?: MaskTypes;
-  /** Handle which is run whenever a user makes a key press within the input. */
+  mask?: Mask | Mask['mask'] | string;
+  /** Handle which is run whe never a user makes a key press within the input. */
   onKeyPress?: () => void;
   /** Handler which is run whenever there's a change to the input. Passes back the name and value of input. */
   onChange?: (value1: string, value2: string) => void;
@@ -139,7 +138,7 @@ type InputRequiredProps = {
 type GenerateInputErrorMessageProps = {
   hasRequiredError: boolean;
   errorMsg: string;
-  mask: MaskChoices;
+  mask: MaskChoice;
 };
 
 type Attrs = {
@@ -306,8 +305,8 @@ class Input extends PureComponent<InputProps, InputState> {
     const isEmpty =
       this.props.value === '' || typeof this.props.value === 'undefined';
     const maskValidation =
-      this.props.mask && maskEnum[mask as MaskChoices].isValid
-        ? (maskEnum[mask as MaskChoices] as MaskObj).isValid(value)
+      this.props.mask && maskEnum[mask as MaskChoice].isValid
+        ? (maskEnum[mask as MaskChoice] as MaskObj).isValid(value)
         : true;
     this.setState({
       validationErrorMessage: validate(value),
@@ -371,14 +370,14 @@ class Input extends PureComponent<InputProps, InputState> {
 
     if (
       !prependCharacter &&
-      currencyMasks.includes(this.props.mask as MaskTypes)
+      Object.values(CurrencyMask).includes(this.props.mask as CurrencyMask)
     ) {
       prependCharacter = '$';
     }
 
     if (
       !appendCharacter &&
-      percentageMasks.includes(this.props.mask as MaskTypes)
+      Object.values(PercentageMask).includes(this.props.mask as PercentageMask)
     ) {
       appendCharacter = '%';
     }
@@ -398,7 +397,8 @@ class Input extends PureComponent<InputProps, InputState> {
       name,
       placeholder:
         `${placeholder || ''}${appendCharacter || ''}` ||
-        (this.props.mask && maskEnum[this.props.mask].placeholder) ||
+        (this.props.mask &&
+          maskEnum[this.props.mask as MaskChoice].placeholder) ||
         null,
       value,
       required,
@@ -414,9 +414,10 @@ class Input extends PureComponent<InputProps, InputState> {
 
     if (this.props.mask) {
       const mask =
-        ((this.props.mask && maskEnum[this.props.mask].mask) as Mask) || null;
+        ((this.props.mask &&
+          maskEnum[this.props.mask as MaskChoice].mask) as Mask) || null;
 
-      if (mask.type === MaskTypes.currency && !onChange) {
+      if (mask.type === 'Currency' && !onChange) {
         throw new Error(
           'CurrencyMasks require explicit onChange handler for IE11',
         );
@@ -438,7 +439,8 @@ class Input extends PureComponent<InputProps, InputState> {
     }
 
     if (onChange) {
-      const mask = this.props.mask && maskEnum[this.props.mask].mask;
+      const mask =
+        this.props.mask && maskEnum[this.props.mask as MaskChoice].mask;
 
       attrs.onChange = (e): void =>
         onChange(
@@ -553,7 +555,7 @@ class Input extends PureComponent<InputProps, InputState> {
                   {generateInputErrorMessage({
                     hasRequiredError,
                     errorMsg,
-                    mask: this.props.mask as MaskChoices,
+                    mask: this.props.mask as MaskChoice,
                   })}
                 </div>
               )}

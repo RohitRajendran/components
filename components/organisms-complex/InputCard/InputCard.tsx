@@ -2,8 +2,8 @@
 import React, {FC} from 'react';
 import Input from '../../../components/atoms/Input/Input';
 import {
-  currencyMasks,
-  percentageMasks,
+  PercentageMask,
+  CurrencyMask,
 } from '../../../components/atoms/Input/Input.masks';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
@@ -103,9 +103,11 @@ const InputCard: FC<InputCardProps> = ({
   // Automatically prepend/append depending on type of mask if answers is not passed through
   const answer = answers
     ? answers
-    : currencyMasks.includes(config.mask || '')
+    : Object.values(CurrencyMask).includes((config.mask || '') as CurrencyMask)
     ? [`$${config.value}`]
-    : percentageMasks.includes(config.mask || '')
+    : Object.values(PercentageMask).includes(
+        (config.mask || '') as PercentageMask,
+      )
     ? [`${config.value}%`]
     : [config.value || ''];
 
