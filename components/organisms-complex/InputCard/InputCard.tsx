@@ -1,9 +1,10 @@
 /** @module InputCard */
 import React, {FC} from 'react';
-import Input from '../../../components/atoms/Input/Input';
+import Input, {InputOptions} from '../../../components/atoms/Input/Input';
 import {
   PercentageMask,
   CurrencyMask,
+  GenericMask,
 } from '../../../components/atoms/Input/Input.masks';
 import SimpleSummary from '../../../components/molecules/CardSummaries/SimpleSummary/SimpleSummary';
 import QuestionCard, {
@@ -24,21 +25,7 @@ type InputCardConfig = {
   /** The explanation of the input field. Displayed separately to the label. */
   explanation?: string;
   /** The type of input field. */
-  type:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'hidden'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'; //typeof Input.propTypes.type;
+  type: InputOptions;
   /** The placeholder text of the input field. This is displayed if there's no value. */
   placeholder?: string;
   /** The current value of the input field.  */
@@ -48,19 +35,7 @@ type InputCardConfig = {
   /** The max length of the input field value. */
   maxLength?: number;
   /** Allows you to select which input type is allowed in the field. */
-  mask?:
-    | 'PhoneNumber'
-    | 'SsnNumber'
-    | 'Date'
-    | 'Month'
-    | 'Zip'
-    | 'Ticker'
-    | 'CommaSeparated'
-    | 'Currency'
-    | 'CurrencyAllowNegative'
-    | 'Number'
-    | 'PercentageWithDecimal'
-    | 'SmallPercentageWithDecimal';
+  mask?: GenericMask | PercentageMask | CurrencyMask;
   /** The minimum number value. Only applicable if the type is set to number. */
   min?: number;
   /** The maximum number value. Only applicable if the type is set to number. */

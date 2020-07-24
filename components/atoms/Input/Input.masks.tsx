@@ -1,7 +1,7 @@
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
-export enum MaskChoice {
+export enum GenericMask {
   ApexAccount = 'ApexAccount',
   PhoneNumber = 'PhoneNumber',
   SsnNumber = 'SsnNumber',
@@ -10,14 +10,7 @@ export enum MaskChoice {
   Zip = 'Zip',
   Ticker = 'Ticker',
   CommaSeparated = 'CommaSeparated',
-  Currency = 'Currency',
-  CurrencyDecimal = 'CurrencyDecimal',
-  CurrencyAllowNegative = 'CurrencyAllowNegative',
   Number = 'Number',
-  PercentageWithoutDecimal = 'PercentageWithoutDecimal',
-  PercentageWithDecimal = 'PercentageWithDecimal',
-  PercentageWithDecimalAllowNegative = 'PercentageWithDecimalAllowNegative',
-  SmallPercentageWithDecimal = 'SmallPercentageWithDecimal',
 }
 
 export enum PercentageMask {
@@ -48,7 +41,7 @@ export type MaskObj = {
   validationErrorMsg: string;
 };
 
-export type Masks = Record<MaskChoice, MaskObj>;
+export type Masks = Record<GenericMask, MaskObj>;
 
 /** @constant {regex[]} The mask for a phone number */
 export const phoneNumberMask = {
@@ -127,7 +120,7 @@ export const commaSeparatedMask = {
 export const currencyMask = {
   mask: createNumberMask({prefix: ''}),
   regex: /[0-9]+/,
-  type: MaskChoice.Currency,
+  type: CurrencyMask.Currency,
   sanitize: /[,]/g,
 };
 
@@ -135,7 +128,7 @@ export const currencyMask = {
 export const currencyMaskAllowNegative = {
   mask: createNumberMask({prefix: '', allowNegative: true}),
   regex: /[0-9]+/,
-  type: MaskChoice.Currency,
+  type: CurrencyMask.Currency,
   sanitize: /[,]/g,
 };
 
@@ -146,7 +139,7 @@ export const currencyDecimalMask = {
     allowDecimal: true,
   }),
   regex: /[0-9]+/,
-  type: MaskChoice.Currency,
+  type: CurrencyMask.Currency,
   sanitize: /[,]/g,
 };
 
